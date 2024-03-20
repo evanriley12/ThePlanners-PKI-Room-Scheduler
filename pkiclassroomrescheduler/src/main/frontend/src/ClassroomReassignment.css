@@ -55,40 +55,130 @@
 
 .ClassroomReassignment-workingHeader {
     background-color: lightgray;
-    min-height: 10vh;
+    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: calc(24px + 2vmin);
     font-weight: bold;
-    color: black;
 }
 .ClassroomReassignment-resultsHeader {
     background-color: gray;
-    min-height: 10vh;
+    height: 10vh;
     /*display: flex;
     align-items: center;
     justify-content: center;*/
     font-size: calc(10px + 2vmin);
     font-weight: bold;
-    color: black;
-    padding: 15px;
+    /*padding: 15px;*/
+
+    border: 2px solid purple;
 }
 
 .resultsLabel {
     display: flex;
     align-items: center;
     justify-content: center;
+    float: left;
+
+    width: 70%;
+    height: 100%;
+
+    border: 2px solid cyan;
 }
 
 .clearResultsButton {
     display: flex;
-    align-items: right;
-    justify-content: right;
+    align-items: center;
+    justify-content: center;
+    float: right;
+
+    width: 15%;
+    height: 100%;
+
+    border: 2px solid yellow;
+}
+
+.resultsLeftSpacer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+
+    width: 15%;
+    height: 100%;
+
+    border: 2px solid lime;
 }
 
 textarea {
     justify-content: center;
     width: 100%;
     height: 100%;
+    resize: none;
+}
+
+.ClassroomReassignment-inputForm {
+    display: table;
+}
+
+.ClassroomReassignment-individualInput {
+    width: 100%;
+    height: 16vh;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
+    border: 2px solid orange;
+}
+
+.ClassroomReassignment-dropdownBox {
+    width: 90%;
+    height: 20%;
+}
+
+.ClassroomResassignment-selectBoxLabel {
+    width: 35%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.ClassroomResassignment-selectBox {
+    width: 12%;
+    height: 20%;
+}
+
+.ClassroomReassignment-rescheduleButton {
+    width: 45%;
+    height: 35%;
+}
+
+.ClassroomReassignment-fileSelectionButton {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 15px;
+    border: 2px solid red;
+}
+
+.ClassroomReassignment-fileUploadButton {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue;
+}
+
+.ClassroomReassignment-numberBox3 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 15px;
+    border: 2px solid green;
 }

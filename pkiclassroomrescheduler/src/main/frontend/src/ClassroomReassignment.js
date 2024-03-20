@@ -37,46 +37,76 @@ function ClassroomReassignment() {
           PKI Classroom Rescheduler
         </header>
         <div className="ClassroomReassignment-inputColumn">
+
           <form>
-            <input type="file" onChange={handleFileChange} />
+
+            <div className="ClassroomReassignment-individualInput">
+
+            <div className="ClassroomReassignment-fileSelectionButton">
+            <input type="file" onChange={handleFileChange}/>
+            </div>
+
+            <div className="ClassroomReassignment-fileSelectionButton">
             <button type="button" onClick={handleUpload}>Upload CSV</button>
-            {uploadSuccess && <p className="successMessage">Upload successful!</p>}
-            <p padding="15px">Setup file display here...</p>
-            <select>
+            {uploadSuccess && <p>Upload successful!</p>}
+            </div>
+      
+            </div>
+            
+            <div className="ClassroomReassignment-individualInput">
+            <div className="ClassroomReassignment-fileUploadButton">
+            <select className="ClassroomReassignment-dropdownBox">
               <option selected>Choose Class</option>
             </select>
-            <br></br>
-            <label htmlFor="maxClassSize">Max Class Size </label>
-            <input
+            </div>
+            </div>
+            
+            <div className="ClassroomReassignment-individualInput">
+            <div className="ClassroomReassignment-numberBox3">
+            <label htmlFor="maxClassSize" className="ClassroomResassignment-selectBoxLabel">Max Class Size: </label>
+            <input className="ClassroomResassignment-selectBox"
               type="number"
               id="maxClassSize"
               name="maxClassSize"
               step="1"
               min="0"
             ></input>
-            <br></br>
-            <label htmlFor="enrollmentSize">Enrollment </label>
-            <input
+            </div>
+            </div>
+            
+            <div className="ClassroomReassignment-individualInput">
+            <div className="ClassroomReassignment-numberBox3">
+            <label htmlFor="enrollmentSize" className="ClassroomResassignment-selectBoxLabel">Enrollment: </label>
+            <input className="ClassroomResassignment-selectBox"
               type="number"
               id="enrollmentSize"
               name="enrollmentSize"
               step="1"
               min="0"
             ></input>
-            <br></br>
-            <button type="button">Reschedule</button>
+            </div>
+            </div>
+            
+            <div className="ClassroomReassignment-individualInput">
+            <div className="ClassroomReassignment-fileUploadButton">
+            <button type="button" className="ClassroomReassignment-rescheduleButton">Reschedule</button>
+            </div>
+            </div>
+
           </form>
+
         </div>
         <div className="ClassroomReassignment-displayColumn">
-          <textarea rows="10" cols="10">
+          <textarea rows="10" cols="10" readOnly>
             Display class information here...
           </textarea>
         </div>
       </div>
       <div className="ClassroomReassignment-resultsColumn">
         <header className="ClassroomReassignment-resultsHeader">
+            <div className="resultsLeftSpacer"></div>
             <div className="resultsLabel">
-                Results
+              Results
             </div>
             <div className="clearResultsButton">
                 <button>Clear Results</button>
