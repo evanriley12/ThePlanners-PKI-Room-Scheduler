@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import "./ClassroomReassignment.css";
 
 function ClassroomReassignment() {
@@ -14,19 +14,23 @@ function ClassroomReassignment() {
 
   const handleUpload = async () => {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
     try {
-      const response = await axios.post('http://localhost:8080/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.post(
+        "http://localhost:8080/api/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
-      console.log('File uploaded successfully');
+      );
+      console.log("File uploaded successfully");
       setUploadSuccess(true);
       setCsvData(response.data);
     } catch (error) {
-      console.error('Error uploading file:', error);
+      console.error("Error uploading file:", error);
     }
   };
 
@@ -37,64 +41,72 @@ function ClassroomReassignment() {
           PKI Classroom Rescheduler
         </header>
         <div className="ClassroomReassignment-inputColumn">
-
           <form>
-
             <div className="ClassroomReassignment-individualInput">
-
-            <div className="ClassroomReassignment-fileSelectionButton">
-            <input type="file" onChange={handleFileChange}/>
+              <div className="ClassroomReassignment-fileSelectionButton">
+                <input type="file" onChange={handleFileChange} />
+              </div>
+              <div className="ClassroomReassignment-fileSelectionButton">
+                <button type="button" onClick={handleUpload}>
+                  Upload CSV
+                </button>
+                {uploadSuccess && <p>Upload successful!</p>}
+              </div>
             </div>
-
-            <div className="ClassroomReassignment-fileSelectionButton">
-            <button type="button" onClick={handleUpload}>Upload CSV</button>
-            {uploadSuccess && <p>Upload successful!</p>}
-            </div>
-      
-            </div>
-            
             <div className="ClassroomReassignment-individualInput">
-            <div className="ClassroomReassignment-fileUploadButton">
-            <select className="ClassroomReassignment-dropdownBox">
-              <option selected>Choose Class</option>
-            </select>
+              <div className="ClassroomReassignment-fileUploadButton">
+                <select className="ClassroomReassignment-dropdownBox">
+                  <option selected>Choose Class</option>
+                </select>
+              </div>
             </div>
-            </div>
-            
             <div className="ClassroomReassignment-individualInput">
-            <div className="ClassroomReassignment-numberBox3">
-            <label htmlFor="maxClassSize" className="ClassroomResassignment-selectBoxLabel">Max Class Size: </label>
-            <input className="ClassroomResassignment-selectBox"
-              type="number"
-              id="maxClassSize"
-              name="maxClassSize"
-              step="1"
-              min="0"
-            ></input>
+              <div className="ClassroomReassignment-numberBox">
+                <label
+                  htmlFor="maxClassSize"
+                  className="ClassroomResassignment-selectBoxLabel"
+                >
+                  Max Class Size:{" "}
+                </label>
+                <input
+                  className="ClassroomResassignment-selectBox"
+                  type="number"
+                  id="maxClassSize"
+                  name="maxClassSize"
+                  step="1"
+                  min="0"
+                ></input>
+              </div>
             </div>
-            </div>
-            
             <div className="ClassroomReassignment-individualInput">
-            <div className="ClassroomReassignment-numberBox3">
-            <label htmlFor="enrollmentSize" className="ClassroomResassignment-selectBoxLabel">Enrollment: </label>
-            <input className="ClassroomResassignment-selectBox"
-              type="number"
-              id="enrollmentSize"
-              name="enrollmentSize"
-              step="1"
-              min="0"
-            ></input>
+              <div className="ClassroomReassignment-numberBox">
+                <label
+                  htmlFor="enrollmentSize"
+                  className="ClassroomResassignment-selectBoxLabel"
+                >
+                  Enrollment:{" "}
+                </label>
+                <input
+                  className="ClassroomResassignment-selectBox"
+                  type="number"
+                  id="enrollmentSize"
+                  name="enrollmentSize"
+                  step="1"
+                  min="0"
+                ></input>
+              </div>
             </div>
-            </div>
-            
             <div className="ClassroomReassignment-individualInput">
-            <div className="ClassroomReassignment-fileUploadButton">
-            <button type="button" className="ClassroomReassignment-rescheduleButton">Reschedule</button>
+              <div className="ClassroomReassignment-fileUploadButton">
+                <button
+                  type="button"
+                  className="ClassroomReassignment-rescheduleButton"
+                >
+                  Reschedule
+                </button>
+              </div>
             </div>
-            </div>
-
           </form>
-
         </div>
         <div className="ClassroomReassignment-displayColumn">
           <textarea rows="10" cols="10" readOnly>
@@ -104,13 +116,11 @@ function ClassroomReassignment() {
       </div>
       <div className="ClassroomReassignment-resultsColumn">
         <header className="ClassroomReassignment-resultsHeader">
-            <div className="resultsLeftSpacer"></div>
-            <div className="resultsLabel">
-              Results
-            </div>
-            <div className="clearResultsButton">
-                <button>Clear Results</button>
-            </div>
+          <div className="ClassroomReassignment-resultsLeftSpacer"></div>
+          <div className="ClassroomReassignment-resultsLabel">Results</div>
+          <div className="ClassroomReassignment-clearResultsButton">
+            <button>Clear Results</button>
+          </div>
         </header>
         {csvData && (
           <table>
