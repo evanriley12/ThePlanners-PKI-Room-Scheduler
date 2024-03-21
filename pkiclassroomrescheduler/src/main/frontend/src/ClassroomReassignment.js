@@ -55,9 +55,20 @@ function ClassroomReassignment() {
             </div>
             <div className="ClassroomReassignment-individualInput">
               <div className="ClassroomReassignment-fileUploadButton">
-                <select className="ClassroomReassignment-dropdownBox">
+                <select className="ClassroomReassignment-dropdownBox" id="courseSelect">
                   <option selected>Choose Class</option>
                 </select>
+                  {
+                    csvData && (
+                      csvData.forEach((element) => {
+                        let courseSelect = document.getElementById("courseSelect");
+                        let course = document.createElement("option");
+                        course.text = element;
+                        course.value = element;
+                        courseSelect.appendChild(course);
+                      })
+                    )
+                  }
               </div>
             </div>
             <div className="ClassroomReassignment-individualInput">
@@ -122,19 +133,6 @@ function ClassroomReassignment() {
             <button>Clear Results</button>
           </div>
         </header>
-        {csvData && (
-          <table>
-            <tbody>
-              {csvData.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
       </div>
     </div>
   );
