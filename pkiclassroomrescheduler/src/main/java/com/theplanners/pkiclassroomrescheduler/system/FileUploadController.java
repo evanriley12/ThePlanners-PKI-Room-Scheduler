@@ -9,7 +9,6 @@ import com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter.Meeti
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -22,7 +21,7 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public ArrayList<String> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ArrayList<Section> uploadFile(@RequestParam("file") MultipartFile file) {
         schedule.clearSchedule();
 
         if (file.isEmpty()) {
@@ -48,10 +47,10 @@ public class FileUploadController {
                 }
                 else{
                     MeetingTime meetingTime = MeetingTimeConverter.parseMeetingTime(nextRow[11]);
-                    Section section = new Section(nextRow[1], nextRow[3], nextRow[4], Integer.parseInt(nextRow[5].replaceAll("[^\\d.]", "")), 
+                    Section section = new Section(
                     nextRow[6], Integer.parseInt(nextRow[7].replaceAll("[^\\d.]", "")), nextRow[8], nextRow[9], meetingTime.days, 
                     meetingTime.startTime, meetingTime.endTime, nextRow[13], 
-                    Integer.parseInt(nextRow[14].replaceAll("[^\\d.]", "")), nextRow[18], nextRow[34]);
+                    Integer.parseInt(nextRow[14].replaceAll("[^\\d.]", "")), nextRow[18], nextRow[34], Integer.parseInt(nextRow[28]), Integer.parseInt(nextRow[29]));
                     if(nextCourse != null){
                         nextCourse.addSection(section);
                     }
@@ -62,14 +61,14 @@ public class FileUploadController {
             e.printStackTrace();
         }
 
-        ArrayList<String> sections = new ArrayList<>();
+        ArrayList<Section> sections = new ArrayList<>();
 
         ArrayList<Course> completeSchedule = schedule.returnSchedule();
 
         for(Course course : completeSchedule){
             ArrayList<Section> courseSections = course.getSections();
             for(Section courseSection : courseSections){
-                sections.add(courseSection.getCourse() + " - Section " + courseSection.getSectionNumber());
+                sections.add(courseSection);
             }
         }
 

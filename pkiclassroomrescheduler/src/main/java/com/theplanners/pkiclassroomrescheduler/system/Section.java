@@ -4,10 +4,6 @@ import java.time.LocalTime;
 import java.util.ArrayList; 
 
 public class Section {
-    private String term;
-    private String departmentCode;
-    private String subjectCode;
-    private int catalogNumber;
     private String course;
     private int sectionNumber;
     private String courseTitle;
@@ -19,15 +15,13 @@ public class Section {
     private int roomNumber;
     private String instructionMethod;
     private String crossList;
+    private int enrollment;
+    private int maxEnrollment;
 
-    public Section(String term, String departmentCode, String subjectCode, int catalogNumber, 
+    public Section(
         String course, int sectionNumber, String courseTitle, String sectionType, 
         ArrayList<DayOfWeek> meetingDays, LocalTime startTime, LocalTime endTime, String instructor, 
-        int roomNumber, String instructionMethod, String crossList){
-            this.term = term;
-            this.departmentCode = departmentCode;
-            this.subjectCode = subjectCode;
-            this.catalogNumber = catalogNumber;
+        int roomNumber, String instructionMethod, String crossList, int enrollment, int maxEnrollment){
             this.course = course;
             this.sectionNumber = sectionNumber;
             this.courseTitle = courseTitle;
@@ -39,39 +33,9 @@ public class Section {
             this.roomNumber = roomNumber;
             this.instructionMethod = instructionMethod;
             this.crossList = crossList;
+            this.enrollment = enrollment;
+            this.maxEnrollment = maxEnrollment;
         }
-
-    public String getTerm() {
-        return term;
-    }
-
-    public void setTerm(String term) {
-        this.term = term;
-    }
-
-    public String getDepartmentCode() {
-        return departmentCode;
-    }
-
-    public void setDepartmentCode(String departmentCode) {
-        this.departmentCode = departmentCode;
-    }
-
-    public String getSubjectCode() {
-        return subjectCode;
-    }
-
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
-    }
-
-    public int getCatalogNumber() {
-        return catalogNumber;
-    }
-
-    public void setCatalogNumber(int catalogNumber) {
-        this.catalogNumber = catalogNumber;
-    }
 
     public String getCourse() {
         return course;
@@ -161,12 +125,29 @@ public class Section {
         this.crossList = crossList;
     }
 
+    public int getEnrollment() {
+        return enrollment;
+    }
+
+    public void setEnrollment(int enrollment) {
+        this.enrollment = enrollment;
+    }
+
+    public int getMaxEnrollment() {
+        return maxEnrollment;
+    }
+
+    public void setMaxEnrollment(int maxEnrollment) {
+        this.maxEnrollment = maxEnrollment;
+    }
+
     @Override
     public String toString() {
-        return "Section [term=" + term + ", departmentCode=" + departmentCode + ", subjectCode=" + subjectCode
-                + ", catalogNumber=" + catalogNumber + ", course=" + course + ", sectionNumber=" + sectionNumber
-                + ", courseTitle=" + courseTitle + ", sectionType=" + sectionType + ", meetingDays=" + meetingDays
-                + ", startTime=" + startTime + ", endTime=" + endTime + ", instructor=" + instructor + ", roomNumber="
-                + roomNumber + ", instructionMethod=" + instructionMethod + ", crossList=" + crossList + "]";
+        return "Section [course=" + course + ", sectionNumber=" + sectionNumber + ", courseTitle=" + courseTitle
+                + ", sectionType=" + sectionType + ", meetingDays=" + meetingDays + ", startTime=" + startTime
+                + ", endTime=" + endTime + ", instructor=" + instructor + ", roomNumber=" + roomNumber
+                + ", instructionMethod=" + instructionMethod + ", crossList=" + crossList + ", enrollment=" + enrollment
+                + ", maxEnrollment=" + maxEnrollment + "]";
     }
+
 }
