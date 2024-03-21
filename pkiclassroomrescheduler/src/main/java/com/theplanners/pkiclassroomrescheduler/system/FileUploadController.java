@@ -22,12 +22,11 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public List<String[]> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ArrayList<String> uploadFile(@RequestParam("file") MultipartFile file) {
         schedule.clearSchedule();
-        List<String[]> parsedData; parsedData = new ArrayList<>();
 
         if (file.isEmpty()) {
-            return parsedData;
+            return null;
         }
 
         try (InputStream inputStream = file.getInputStream();
@@ -74,7 +73,7 @@ public class FileUploadController {
             }
         }
 
-        return parsedData;
+        return sections;
     }
 
 }
