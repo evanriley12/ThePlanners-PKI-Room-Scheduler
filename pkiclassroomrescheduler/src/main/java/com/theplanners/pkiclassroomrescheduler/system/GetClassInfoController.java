@@ -1,7 +1,5 @@
 package com.theplanners.pkiclassroomrescheduler.system;
 
-import java.util.ArrayList;
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,7 +23,7 @@ public class GetClassInfoController {
         Section result = null;
         for(Course course : schedule.returnSchedule()){
            for(Section section : course.getSections()){
-                if(section.getCourse().equals(courseSection[0]) && section.getSectionNumber() == Integer.parseInt(courseSection[1])){
+                if(section.getCourse().equals(courseSection[0]) && section.getSectionNumber() == Integer.parseInt(courseSection[1].replaceAll("[^\\d.]", ""))){
                     result = section;
                     break;
                 }

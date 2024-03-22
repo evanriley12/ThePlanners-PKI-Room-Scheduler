@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 import com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter.MeetingTime;
 
@@ -30,12 +31,9 @@ public class FileUploadController {
 
         try (InputStream inputStream = file.getInputStream();
              InputStreamReader reader = new InputStreamReader(inputStream);
-             CSVReader csvReader = new CSVReader(reader)) {
+             CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(3).build()) {
 
             String[] nextRow;
-            nextRow = csvReader.readNext();
-            nextRow = csvReader.readNext();
-            nextRow = csvReader.readNext();
             Course nextCourse = null;
 
             while ((nextRow = csvReader.readNext()) != null) { 
