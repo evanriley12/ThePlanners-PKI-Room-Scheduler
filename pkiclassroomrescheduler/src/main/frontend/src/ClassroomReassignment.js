@@ -29,6 +29,7 @@ function ClassroomReassignment() {
       console.log("File uploaded successfully");
       setUploadSuccess(true);
       setCsvData(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -60,11 +61,12 @@ function ClassroomReassignment() {
                 </select>
                   {
                     csvData && (
+                      // Populate Dropdown box
                       csvData.forEach((element) => {
                         let courseSelect = document.getElementById("courseSelect");
                         let course = document.createElement("option");
-                        course.text = element;
-                        course.value = element;
+                        course.text = element["course"] + " - Section " + element["sectionNumber"];
+                        course.value = element["course"] + " - Section " + element["sectionNumber"];
                         courseSelect.appendChild(course);
                       })
                     )
@@ -84,6 +86,7 @@ function ClassroomReassignment() {
                   type="number"
                   id="maxClassSize"
                   name="maxClassSize"
+                  value="0"
                   step="1"
                   min="0"
                 ></input>
@@ -102,6 +105,7 @@ function ClassroomReassignment() {
                   type="number"
                   id="enrollmentSize"
                   name="enrollmentSize"
+                  value="0"
                   step="1"
                   min="0"
                 ></input>
