@@ -6,11 +6,14 @@ function ClassroomReassignment() {
   const [file, setFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [csvData, setCsvData] = useState(null);
+  const [algoData, setAlgoData] = useState(null);
+  const baseURL = window.location.href;
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
     setUploadSuccess(false); // Reset upload success message when a new file is selected
   };
+
 
   const handleUpload = async () => {
     const formData = new FormData();
@@ -18,7 +21,7 @@ function ClassroomReassignment() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/upload",
+        baseURL+"api/upload",
         formData,
         {
           headers: {
@@ -32,6 +35,19 @@ function ClassroomReassignment() {
       console.log(response.data);
     } catch (error) {
       console.error("Error uploading file:", error);
+    };
+  };
+
+  const runAlgorithm = async () => {
+    try {
+      const response = await axios.get(baseURL + "api/algorithm", {
+        params: { classSection: "AREN 1030 - Section 1", newSize: 50 },
+      });
+      console.log("Algorithm executed successfully");
+      setAlgoData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error executing algorithm:", error);
     }
   };
 
@@ -116,6 +132,7 @@ function ClassroomReassignment() {
                 <button
                   type="button"
                   className="ClassroomReassignment-rescheduleButton"
+                  onClick={runAlgorithm}
                 >
                   Reschedule
                 </button>
