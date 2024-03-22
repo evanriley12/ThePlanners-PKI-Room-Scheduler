@@ -5,8 +5,12 @@ UNO - Spring 2024 CS Capstone Project
 Our application is a tool to manage and reschedule classroom assignments for PKI.
 
 # Release Notes:
-- Connected front and backend (React and Springboot).
-- Implemented a basic frontend to represent what the application will look like with the general layout based on our wireframe.
-- Implemented a file upload button that reads in a csv and displays contents, this was originally planned to be stored as an object, but for now it just displays the text. Parsing and storing data will be implemented once work on the algorithm begins.
+- Polished the frontend for a smoother and more aesthetically pleasing experience.
+- The user is now notified when an upload of the csv succeeds or fails.
+- The application now parses data from the uploaded csv for use in the backend (can also be seen in the dropdown menu).
+- Implemented a very basic algorithm that displays other classrooms that could fit a selected course.
+    - Due to some issues with the dropdown box, this is always showing the algorithm being executed on the first class in the list with a new enrollment of 50.
+- Lots of backend work to prepare for more in-depth algorithm development.
+- Added basic tests to handle uploading and parsing the csv file.
 
-Our Integration branch has most of our content, but has not been pushed to main since we are dealing with some issues running on the server.
+Our Integration branch has our most updated version.
