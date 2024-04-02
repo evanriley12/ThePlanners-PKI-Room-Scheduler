@@ -5,17 +5,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Schedule {
-    private ArrayList<Course> schedule;
+    private ArrayList<Section> schedule;
 
     public Schedule(){
-        this.schedule = new ArrayList<Course>();
+        this.schedule = new ArrayList<Section>();
     }
 
-    public void addCourse(Course course){
-        this.schedule.add(course);
+    public void addSection(Section section){
+        this.schedule.add(section);
     }
 
-    public ArrayList<Course> returnSchedule(){
+    public ArrayList<Section> returnSchedule(){
         return this.schedule;
     }
 

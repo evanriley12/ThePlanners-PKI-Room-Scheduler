@@ -19,7 +19,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.theplanners.pkiclassroomrescheduler.system.Course;
 import com.theplanners.pkiclassroomrescheduler.system.FileUploadController;
 import com.theplanners.pkiclassroomrescheduler.system.Schedule;
 import com.theplanners.pkiclassroomrescheduler.system.Section;
@@ -40,10 +39,9 @@ public class CSVFileTests {
         InputStream inputStream = resource.getInputStream();
 
         Schedule mockSchedule = new Schedule();
-        Course mockCourse = new Course("mock course");
         Section mockSection = new Section(null, 0, null, null, null, null, null, null, 0, null, null, 0, 0);
-        mockCourse.addSection(mockSection);
-        mockSchedule.addCourse(mockCourse);
+        mockSchedule.addSection(mockSection);
+
 
         @SuppressWarnings("null")
         MultipartFile file = new MockMultipartFile(resource.getFilename(), inputStream);

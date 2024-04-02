@@ -28,13 +28,11 @@ public class AlgorithmController {
             courseSection[i] = courseSection[i].trim();
         }
         Section result = null;
-        for(Course course : schedule.returnSchedule()){
-           for(Section section : course.getSections()){
-                if(section.getCourse().equals(courseSection[0]) && section.getSectionNumber() == Integer.parseInt(courseSection[1].replaceAll("[^\\d.]", ""))){
-                    result = section;
-                    break;
-                }
-           }
+        for(Section section : schedule.returnSchedule()){
+            if(section.getCourse().equals(courseSection[0]) && section.getSectionNumber() == Integer.parseInt(courseSection[1].replaceAll("[^\\d.]", ""))){
+                result = section;
+                break;
+            }
         }
 
         return algorithm.doAlgorithm(result, newSize);
