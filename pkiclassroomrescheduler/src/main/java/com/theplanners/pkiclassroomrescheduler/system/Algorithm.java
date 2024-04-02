@@ -11,7 +11,7 @@ public class Algorithm {
         this.classroomList = classroomList;
     }
 
-    public String doAlgorithmOld(Section section, int newSize) {
+    public String doAlgorithm(Section section, int newSize) {
         int currentRoom = section.getRoomNumber();
         ArrayList<Classroom> classrooms = classroomList.returnClassrooms();
         ArrayList<String> newRooms = new ArrayList<String>();
@@ -23,7 +23,7 @@ public class Algorithm {
         return newRooms.toString();
     }
 
-    public String doAlgorithm(Section section, int newSize) {
+    public String doAlgorithmNew(Section section, int newSize) {
         // Get all classrooms
         ArrayList<Classroom> allClassrooms = classroomList.returnClassrooms();
         // Filter out classrooms that will not work
