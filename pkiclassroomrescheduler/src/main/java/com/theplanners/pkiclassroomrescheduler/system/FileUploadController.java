@@ -16,14 +16,18 @@ import java.util.ArrayList;
 public class FileUploadController {
 
     private final Schedule schedule;
+    private final ClassroomList classroomList;
 
-    public FileUploadController(Schedule schedule) {
+    public FileUploadController(Schedule schedule, ClassroomList classroomList) {
         this.schedule = schedule;
+        this.classroomList = classroomList;
     }
 
     @PostMapping("/upload")
     public ArrayList<Section> uploadFile(@RequestParam("file") MultipartFile file) {
         schedule.clearSchedule();
+        ReadClassroom readClassroom = new ReadClassroom(classroomList);
+        readClassroom.readClassroomCSV();
 
         if (file.isEmpty()) {
             return null;

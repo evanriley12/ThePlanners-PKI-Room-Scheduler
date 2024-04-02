@@ -10,9 +10,7 @@ import com.theplanners.pkiclassroomrescheduler.system.ReadClassroom;
 public class PkiclassroomreschedulerApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = SpringApplication.run(PkiclassroomreschedulerApplication.class, args);
-		ReadClassroom readClassroom = applicationContext.getBean(ReadClassroom.class);
-		readClassroom.readClassroomCSV();
+		SpringApplication.run(PkiclassroomreschedulerApplication.class, args);
 	}
 
 }
