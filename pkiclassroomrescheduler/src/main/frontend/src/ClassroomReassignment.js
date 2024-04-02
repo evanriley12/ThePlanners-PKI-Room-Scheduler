@@ -51,6 +51,38 @@ function ClassroomReassignment() {
     }
   };
 
+  const dropDownSelection = (event) => {
+    // Log that a selection has changed
+    console.log("Selection Changed!");
+
+    // Check the updated value from the dropdown box selection change
+    let selectedCourse = event.target.value;
+    console.log(selectedCourse);
+
+    if(csvData) {
+      csvData.every((element) => {
+
+        // Grab the course from an element iteration in the same format of the dropdown selection
+        let currentCourseIteration = element["course"] + " - Section " + element["sectionNumber"];
+        console.log(currentCourseIteration);
+
+        // Check if CSV entry is a match for the dropdown selection
+        if (selectedCourse === currentCourseIteration) {
+          console.log("We have a match!");
+
+          // Set the values of the number boxes for max class size and enrollment
+          document.getElementById("maxClassSize").value = element["maxEnrollment"];
+          document.getElementById("enrollmentSize").value = element["enrollment"];
+
+          // Break out of the loop once match has been found
+          return false;
+        }
+
+        return true;
+      })
+    }
+  };
+
   return (
     <div className="ClassroomReassignment-page">
       <div className="ClassroomReassignment-workingColumn">
@@ -72,7 +104,7 @@ function ClassroomReassignment() {
             </div>
             <div className="ClassroomReassignment-individualInput">
               <div className="ClassroomReassignment-fileUploadButton">
-                <select className="ClassroomReassignment-dropdownBox" id="courseSelect">
+                <select className="ClassroomReassignment-dropdownBox" id="courseSelect" onChange={dropDownSelection}>
                   <option selected>Choose Class</option>
                 </select>
                   {
