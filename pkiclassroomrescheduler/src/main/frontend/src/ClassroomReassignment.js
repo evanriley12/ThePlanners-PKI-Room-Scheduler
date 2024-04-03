@@ -59,16 +59,69 @@ function ClassroomReassignment() {
     let selectedCourse = event.target.value;
     console.log(selectedCourse);
 
+    // Class informational Labels with groupings by return line
+    let courseAndSection = "Course/Section: ";
+    let title = "\nTitle: ";
+    let crosslisted = "\nCrosslisted Courses: ";
+    let instructor = "\n\nInstructor: ";
+    let sectionType = "\nSection Type: ";
+    let instructionMethod = "\nInstruction Method: ";
+    let meetingDays = "\n\nMeeting Days: ";
+    let roomNumber = "\nRoom Number: ";
+    let startTime = "\nStart Time: ";
+    let endTime = "\nEnd Time: ";
+    let maxClassSize = "\n\nMax Class Size: ";
+    let enrollment = "\nEnrollment: ";
+
     if(csvData) {
       csvData.every((element) => {
 
+        // Pad all sections in need of leading 0s (e.g. 001, 002, etc.)
+        let sectionNumberString = element["sectionNumber"].toString();
+        let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
+
         // Grab the course from an element iteration in the same format of the dropdown selection
-        let currentCourseIteration = element["course"] + " - Section " + element["sectionNumber"];
-        console.log(currentCourseIteration);
+        let currentCourseIteration = element["course"] + " - Section " + paddedSectionNumberString;
 
         // Check if CSV entry is a match for the dropdown selection
         if (selectedCourse === currentCourseIteration) {
           console.log("We have a match!");
+
+          // Separate only the instructor name for display purposes
+          let instructorPart = element["instructor"].split(" (", 1);
+          if (element["instructor"].includes("Staff"))
+          {
+            instructorPart = element["instructor"].split(" [", 1);
+          }
+
+          // Separate meeting days with a ", " for matching formatting
+          let meetingDaysString = element["meetingDays"].toString();
+          let fixedMeetingDaysString = meetingDaysString.split(",").join(", ");
+        
+          // Check whether there is a cross listed course, and print "None" if so
+          let crossListedEntry = element["crossList"];
+          if (!crossListedEntry) {
+            crossListedEntry = "None";
+          }
+
+          // Fill Text Area with Class Information
+          let chosenClassInformation = courseAndSection + currentCourseIteration
+          + title + element["courseTitle"]
+          + crosslisted + crossListedEntry
+
+          + instructor + instructorPart
+          + sectionType + element["sectionType"]
+          + instructionMethod + element["instructionMethod"]
+
+          + meetingDays + fixedMeetingDaysString
+          + roomNumber + element["roomNumber"]
+          + startTime + element["startTime"]
+          + endTime + element["endTime"]
+          
+          + maxClassSize + element["maxEnrollment"]
+          + enrollment + element["enrollment"];
+          
+          document.getElementById("classInfoDisplay").value = chosenClassInformation;
 
           // Set the values of the number boxes for max class size and enrollment
           document.getElementById("maxClassSize").value = element["maxEnrollment"];
@@ -113,8 +166,12 @@ function ClassroomReassignment() {
                       csvData.forEach((element) => {
                         let courseSelect = document.getElementById("courseSelect");
                         let course = document.createElement("option");
-                        course.text = element["course"] + " - Section " + element["sectionNumber"];
-                        course.value = element["course"] + " - Section " + element["sectionNumber"];
+
+                        let sectionNumberString = element["sectionNumber"].toString();
+                        let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
+
+                        course.text = element["course"] + " - Section " + paddedSectionNumberString;
+                        course.value = element["course"] + " - Section " + paddedSectionNumberString;
                         courseSelect.appendChild(course);
                       })
                     )
@@ -173,7 +230,7 @@ function ClassroomReassignment() {
           </form>
         </div>
         <div className="ClassroomReassignment-displayColumn">
-          <textarea rows="10" cols="10" readOnly>
+          <textarea id="classInfoDisplay" rows="10" cols="10" readOnly>
             Display class information here...
           </textarea>
         </div>
