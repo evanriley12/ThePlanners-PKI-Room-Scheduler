@@ -11,19 +11,18 @@ public class Algorithm {
         this.classroomList = classroomList;
     }
 
-    public void updateOverlaps(){
-        ArrayList<Section> allSection = schedule.returnSchedule();
-        for(Section section : allSection)
-        {
-            for(Section section2 : allSection)
-            {
-                //System.out.println(section.getCourse() + " " + section.getSectionNumber());
-                //System.out.println(section2.getCourse() + " " + section2.getSectionNumber());
-                if(section.Overlaps(section2)){
+    public void updateOverlaps() {
+        // Get all sections in the schedule.
+        ArrayList<Section> allSections = schedule.returnSchedule();
+        // For each section, loop through every other section to determine if there is an overlap
+        for (Section section : allSections) {
+            for (Section section2 : allSections) {
+                // If there is an overlap and the sections arent the same section, create an edge.
+                if (!section.equals(section2) && section.Overlaps(section2)) {
                     section.addOverlappingSection(section2);
+                    System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
                 }
             }
-            System.out.println(section.getOverlappingSections().size());
         }
     }
 

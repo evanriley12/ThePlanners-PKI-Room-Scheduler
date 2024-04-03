@@ -146,8 +146,11 @@ public class Section {
     }
 
     public boolean Overlaps(Section otherSection) {
-        ArrayList<DayOfWeek> copy = meetingDays;
+        // Create a copy of the meeting days.
+        ArrayList<DayOfWeek> copy = new ArrayList<>(meetingDays);
+        // Get the intersection of the two section's days.
         copy.retainAll(otherSection.getMeetingDays());
+        // Check if the section times and dates overlap.
         if ((this.startTime.isAfter(otherSection.startTime) || this.startTime.equals(otherSection.startTime)) &&
             (this.startTime.isBefore(otherSection.endTime) || this.startTime.equals(otherSection.endTime)) &&
             (copy.size() > 0)) {
