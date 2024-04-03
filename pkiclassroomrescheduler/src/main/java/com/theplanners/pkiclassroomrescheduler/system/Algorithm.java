@@ -11,7 +11,24 @@ public class Algorithm {
         this.classroomList = classroomList;
     }
 
+    public void updateOverlaps(){
+        ArrayList<Section> allSection = schedule.returnSchedule();
+        for(Section section : allSection)
+        {
+            for(Section section2 : allSection)
+            {
+                //System.out.println(section.getCourse() + " " + section.getSectionNumber());
+                //System.out.println(section2.getCourse() + " " + section2.getSectionNumber());
+                if(section.Overlaps(section2)){
+                    section.addOverlappingSection(section2);
+                }
+            }
+            System.out.println(section.getOverlappingSections().size());
+        }
+    }
+
     public String doAlgorithm(Section section, int newSize) {
+        updateOverlaps();
         int currentRoom = section.getRoomNumber();
         ArrayList<Classroom> classrooms = classroomList.returnClassrooms();
         ArrayList<String> newRooms = new ArrayList<String>();

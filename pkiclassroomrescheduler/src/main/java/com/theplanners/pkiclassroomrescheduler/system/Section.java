@@ -1,7 +1,9 @@
 package com.theplanners.pkiclassroomrescheduler.system;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.ArrayList; 
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class Section {
     private String course;
@@ -17,6 +19,8 @@ public class Section {
     private String crossList;
     private int enrollment;
     private int maxEnrollment;
+    @JsonManagedReference
+    private ArrayList<Section> overlappingSections = new ArrayList<Section>();
 
     public Section(
         String course, int sectionNumber, String courseTitle, String sectionType, 
@@ -141,13 +145,38 @@ public class Section {
         this.maxEnrollment = maxEnrollment;
     }
 
+    public boolean Overlaps(Section otherSection) {
+        ArrayList<DayOfWeek> copy = meetingDays;
+        copy.retainAll(otherSection.getMeetingDays());
+        if ((this.startTime.isAfter(otherSection.startTime) || this.startTime.equals(otherSection.startTime)) &&
+            (this.startTime.isBefore(otherSection.endTime) || this.startTime.equals(otherSection.endTime)) &&
+            (copy.size() > 0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public ArrayList<Section> getOverlappingSections() {
+        return overlappingSections;
+    }
+
+    public void addOverlappingSection(Section section){
+        overlappingSections.add(section);
+    }
+
+    public void setOverlappingSections(ArrayList<Section> overlappingSections) {
+        this.overlappingSections = overlappingSections;
+    }
+
     @Override
     public String toString() {
         return "Section [course=" + course + ", sectionNumber=" + sectionNumber + ", courseTitle=" + courseTitle
                 + ", sectionType=" + sectionType + ", meetingDays=" + meetingDays + ", startTime=" + startTime
                 + ", endTime=" + endTime + ", instructor=" + instructor + ", roomNumber=" + roomNumber
                 + ", instructionMethod=" + instructionMethod + ", crossList=" + crossList + ", enrollment=" + enrollment
-                + ", maxEnrollment=" + maxEnrollment + "]";
+                + ", maxEnrollment=" + maxEnrollment + ", overlappingSections=" + overlappingSections + "]";
     }
+
 
 }
