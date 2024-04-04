@@ -1,6 +1,11 @@
 package com.theplanners.pkiclassroomrescheduler.system;
 
+import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @RestController
 @RequestMapping("/api")
@@ -29,6 +34,13 @@ public class GetClassInfoController {
         }
         return result;
     }
+
+    @GetMapping("/all")
+    @JsonManagedReference
+    public ArrayList<Section> getMethodName() {
+        return schedule.returnSchedule();
+    }
+    
 
 }
 
