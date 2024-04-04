@@ -20,7 +20,7 @@ public class Algorithm {
                 // If there is an overlap and the sections arent the same section, create an edge.
                 if (!section.equals(section2) && section.Overlaps(section2)) {
                     section.addOverlappingSection(section2);
-                    System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
+                    //System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
                 }
             }
         }
@@ -66,7 +66,7 @@ public class Algorithm {
         for (int i = 0; i < possibleClassrooms.size(); i++) {
             for (Section neighbor : neighbors) {
                 // If a neighbor already has one of the possible classrooms, remove said classroom from the list of possibilities.
-                if (neighbor.getRoomNumber() == i) {
+                if (neighbor.getRoomNumber() == possibleClassrooms.get(i).getRoom()) {
                     possibleClassrooms.remove(i);
                 }
             }
@@ -78,8 +78,13 @@ public class Algorithm {
             return "No available classrooms.";
         } else {
             // Determine which of the remaining classes is the best option
-            System.out.println(possibleClassrooms.toString());
-            return possibleClassrooms.toString();
+            Classroom bestClassroom = possibleClassrooms.get(0);
+            for (int i = 1; i < possibleClassrooms.size(); i++) {
+                if (possibleClassrooms.get(i).getSeats() < bestClassroom.getSeats()) {
+                    bestClassroom = possibleClassrooms.get(i);
+                }
+            }
+            return "The best option is to move " + section.getCourse() + " Section: " + section.getSectionNumber() + " to room " + bestClassroom.getRoom() + ".";
         }
     }
 }
