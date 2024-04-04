@@ -150,14 +150,15 @@ public class Section {
         ArrayList<DayOfWeek> copy = new ArrayList<>(meetingDays);
         // Get the intersection of the two section's days.
         copy.retainAll(otherSection.getMeetingDays());
-        // Check if the section times and dates overlap.
-        if ((this.startTime.isAfter(otherSection.startTime) || this.startTime.equals(otherSection.startTime)) &&
-            (this.startTime.isBefore(otherSection.endTime) || this.startTime.equals(otherSection.endTime)) &&
-            (copy.size() > 0)) {
-            return true;
-        } else {
+        // If days do not overlap, return false.
+        if (copy.isEmpty()) {
             return false;
         }
+        // Check the overlapping conditions
+        boolean condition1 = !this.startTime.isAfter(otherSection.endTime);
+        boolean condition2 = !this.endTime.isBefore(otherSection.startTime);
+        // Return the rresult
+        return condition1 && condition2;
     }
 
     public ArrayList<Section> getOverlappingSections() {
