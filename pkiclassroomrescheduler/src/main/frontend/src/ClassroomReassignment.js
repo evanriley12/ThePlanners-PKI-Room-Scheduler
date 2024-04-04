@@ -127,6 +127,9 @@ function ClassroomReassignment() {
           document.getElementById("maxClassSize").value = element["maxEnrollment"];
           document.getElementById("enrollmentSize").value = element["enrollment"];
 
+          document.getElementById("maxClassSize").min = element["maxEnrollment"];
+          document.getElementById("enrollmentSize").min = element["enrollment"];
+
           // Break out of the loop once match has been found
           return false;
         }
@@ -191,9 +194,7 @@ function ClassroomReassignment() {
                   type="number"
                   id="maxClassSize"
                   name="maxClassSize"
-                  value="0"
                   step="1"
-                  min="0"
                 ></input>
               </div>
             </div>
@@ -210,9 +211,7 @@ function ClassroomReassignment() {
                   type="number"
                   id="enrollmentSize"
                   name="enrollmentSize"
-                  value="0"
                   step="1"
-                  min="0"
                 ></input>
               </div>
             </div>
