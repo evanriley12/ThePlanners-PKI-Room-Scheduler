@@ -58,10 +58,6 @@ public class Algorithm {
                 possibleClassrooms.add(allClassrooms.get(i));
             }
         }
-        // Check if the list of possible classrooms is empty before continuing.
-        if (possibleClassrooms.size() <= 0) {
-            return null;
-        }
         // Now with a list of potential rooms, see if any of the rooms are not in use by an adjacent node.
         for (int i = 0; i < possibleClassrooms.size(); i++) {
             for (Section neighbor : neighbors) {
