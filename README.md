@@ -21,4 +21,4 @@ Our application is a tool to manage and reschedule classroom assignments for PKI
     - Font and text size changes to make information more readable.
     - The class dropdown menu now adds leading 0's to the section number to make the line length more consistent.
 
-Our Integration branch has our most updated version.
+Our Main branch has our most updated version.

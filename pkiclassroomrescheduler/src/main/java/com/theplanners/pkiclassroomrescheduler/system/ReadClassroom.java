@@ -48,7 +48,7 @@ public class ReadClassroom {
                     String[] displays = stringToArray(nextRecord[5]);
                     nextClassroom = new Classroom(Integer.parseInt(nextRecord[0]), Integer.parseInt(nextRecord[1]), Integer.parseInt(nextRecord[2]), nextRecord[3], connectivity, displays);
                     classroomList.addClassroom(nextClassroom);
-                    System.out.println(nextClassroom.toString());
+                    //System.out.println(nextClassroom.toString());
                 } 
             } 
             csvReader.close();
