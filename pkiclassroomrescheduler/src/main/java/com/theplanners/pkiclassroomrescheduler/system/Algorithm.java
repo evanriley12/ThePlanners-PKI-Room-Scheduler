@@ -77,14 +77,36 @@ public class Algorithm {
             // TODO: Recursive case.
             return "No available classrooms.";
         } else {
-            // Determine which of the remaining classes is the best option
+            // Determine which of the remaining classes is the best option.
             Classroom bestClassroom = possibleClassrooms.get(0);
             for (int i = 1; i < possibleClassrooms.size(); i++) {
                 if (possibleClassrooms.get(i).getSeats() < bestClassroom.getSeats()) {
                     bestClassroom = possibleClassrooms.get(i);
                 }
             }
-            return "The best option is to move " + section.getCourse() + " Section: " + section.getSectionNumber() + " to room " + bestClassroom.getRoom() + ".";
+            String bestOption = "The best option is to move " + section.getCourse() + " Section: " + section.getSectionNumber() + " to room " + bestClassroom.getRoom() + ".";
+            // Determine if the other options are just as good or worse than the best.
+            String otherBest = "Other options with the same class size: None";
+            String otherWorst ="Other options with larger class size: None";
+            for (int i = 0; i < possibleClassrooms.size(); i++) {
+                if (possibleClassrooms.get(i).getSeats() == bestClassroom.getSeats() && possibleClassrooms.get(i) != bestClassroom) {
+                    if (otherBest.length() == 44) {
+                        otherBest = otherBest.substring(0, otherBest.length() - 4);
+                    }
+                    otherBest += possibleClassrooms.get(i).getRoom() + ", ";
+                } else if (possibleClassrooms.get(i) != bestClassroom) {
+                    if (otherWorst.length() == 42) {
+                        otherWorst = otherWorst.substring(0, otherWorst.length() - 4);
+                    }
+                    otherWorst += possibleClassrooms.get(i).getRoom() + ", ";
+                }
+            }
+            // Chop off the last two characters to remove the commas from the end.
+            otherBest = otherBest.substring(0, otherBest.length() - 2);
+            otherWorst = otherWorst.substring(0, otherWorst.length() - 2);
+            // Return the results.
+            String results = bestOption + "\n\n" + otherBest + "\n\n" + otherWorst;
+            return results;
         }
     }
 }
