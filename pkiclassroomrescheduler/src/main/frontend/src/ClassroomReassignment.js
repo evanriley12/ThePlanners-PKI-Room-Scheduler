@@ -40,13 +40,26 @@ function ClassroomReassignment() {
 
   const runAlgorithm = async () => {
     try {
-      const response = await axios.get(baseURL + "api/algorithm", {
-        params: { classSection: "AREN 1030 - Section 1", newSize: 50 },
-      });
-      console.log("Algorithm executed successfully");
-      setAlgoData(response.data);
-      console.log(response.data);
-    } catch (error) {
+
+      // Remove the leading 0s before the section number before passing to Java
+      let selectedClass = document.getElementById("courseSelect").value;
+      let selectedClassNoPadding = selectedClass.replace(/Section 0+/, "Section ");
+      console.log(selectedClassNoPadding);
+
+      // If the default action is chosen, the reschedule button won't do anything
+      if (selectedClass != "Choose Class") {
+        let newMaxEnrollment = document.getElementById("maxClassSize").value;
+
+        const response = await axios.get(baseURL + "api/algorithm", {
+          params: {classSection: selectedClassNoPadding, newSize: newMaxEnrollment},
+        });
+        console.log("Algorithm executed successfully");
+        
+        setAlgoData(response.data);
+        console.log(response.data);
+      }
+    }
+    catch (error) {
       console.error("Error executing algorithm:", error);
     }
   };
