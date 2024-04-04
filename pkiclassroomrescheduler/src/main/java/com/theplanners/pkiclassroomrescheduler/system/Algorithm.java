@@ -102,8 +102,12 @@ public class Algorithm {
                 }
             }
             // Chop off the last two characters to remove the commas from the end.
-            otherBest = otherBest.substring(0, otherBest.length() - 2);
-            otherWorst = otherWorst.substring(0, otherWorst.length() - 2);
+            if (otherBest.length() != 44) {
+                otherBest = otherBest.substring(0, otherBest.length() - 2);
+            }
+            if (otherWorst.length() != 42) {
+                otherWorst = otherWorst.substring(0, otherWorst.length() - 2);
+            }
             // Return the results.
             String results = bestOption + "\n\n" + otherBest + "\n\n" + otherWorst;
             return results;
