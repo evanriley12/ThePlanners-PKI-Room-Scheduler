@@ -79,7 +79,7 @@ public class AlgorithmsTests {
         // Invoke method under test
         String result = algorithm.doAlgorithm(mockSection, 50);
 
-        String expected = "The best option is to move test Section: 1 to room 2.\n\nOther options with the same class size: No\n\nOther options with larger class size: No";
+        String expected = "The best option is to move test Section: 1 to room 2.\n\nOther options with the same class size: None\n\nOther options with larger class size: None";
 
         // Assert the result
         assertEquals(expected, result);
@@ -113,7 +113,7 @@ public class AlgorithmsTests {
         // Invoke method under test
         String result = algorithm.doAlgorithm(mockSection, 50);
 
-        String expected = "The best option is to move test Section: 1 to room 3.\n\nOther options with the same class size: No\n\nOther options with larger class size: 2, 4";
+        String expected = "The best option is to move test Section: 1 to room 3.\n\nOther options with the same class size: None\n\nOther options with larger class size: 2, 4";
 
         // Assert the result
         assertEquals(expected, result);
