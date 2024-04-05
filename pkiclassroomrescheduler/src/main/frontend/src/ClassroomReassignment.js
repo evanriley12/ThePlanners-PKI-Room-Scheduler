@@ -255,7 +255,7 @@ function ClassroomReassignment() {
             <button>Clear Results</button>
           </div>
         </header>
-        {algoData ? JSON.stringify(algoData) : 'No results available'}
+        {algoData ? algoData : 'No results available'}
       </div>
     </div>
   );
