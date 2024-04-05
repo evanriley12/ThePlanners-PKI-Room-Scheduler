@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+.ClassroomReassignment-page:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ClassroomReassignment-workingColumn {
+    background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+    float: left;
+    width: 55%;
+    height: 100vh;
+}
+
+.ClassroomReassignment-resultsColumn {
+    background-color: #FFFFFF; /*Changed to UNO White*/
+    border: 3px solid #0A0A0A; /*Changed to UNO Black*/
+    float: left;
+    width: 45%;
+    height: 100vh;
+
+    white-space: pre-line;
+    font-size: calc(3px + 2vmin);
+}
+
+.ClassroomReassignment-inputColumn {
+    background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+    float: left;
+    width: 45%;
+    height: 90vh;
+    padding: 15px;
+}
+
+.ClassroomReassignment-displayColumn {
+    background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+    float: left;
+    width: 55%;
+    height: 90vh;
+    padding: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+    .ClassroomReassignment-workingColumn {
+        background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+        width: 100%;
+        height: 55vh;
+    }
+    
+    .ClassroomReassignment-resultsColumn {
+        background-color: #FFFFFF; /*Changed to UNO White*/
+        width: 100%;
+        height: 45vh;
+
+        white-space: pre-line;
+        font-size: calc(3px + 2vmin);
+    } 
+}
+
+.ClassroomReassignment-workingHeader {
+    background-color: #0A0A0A; /*Changed to UNO Black*/
+    color: #FFFFFF; /*Changed to UNO White*/
+    border-bottom: 4px solid #D71920; /*Changed to UNO Red*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    font-size: calc(24px + 2vmin);
+    font-weight: bold;
+}
+.ClassroomReassignment-resultsHeader {
+    background-color: #474648; /*Changed to UNO Gray*/
+    color: #FFFFFF; /*Changed to UNO White*/;
+    height: 10vh;
+    font-size: calc(10px + 2vmin);
+    font-weight: bold;
+}
+
+.ClassroomReassignment-resultsLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 70%;
+    height: 100%;
+}
+
+.ClassroomReassignment-clearResultsButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 15%;
+    height: 100%;
+}
+
+.ClassroomReassignment-resultsLeftSpacer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 15%;
+    height: 100%;
+}
+
+textarea {
+    background-color: #FFFFFF; /*Changed to UNO White*/
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    font-size: calc(3px + 2vmin);
+}
+
+.ClassroomReassignment-inputForm {
+    display: table;
+}
+
+.ClassroomReassignment-individualInput {
+    width: 100%;
+    height: 16vh;
+}
+
+.ClassroomReassignment-dropdownBox {
+    width: 90%;
+    height: 20%;
+}
+
+.ClassroomResassignment-selectBoxLabel {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 35%;
+    height: 20%;
+}
+
+.ClassroomResassignment-selectBox {
+    width: 12%;
+    height: 20%;
+}
+
+.ClassroomReassignment-rescheduleButton {
+    width: 45%;
+    height: 35%;
+}
+
+.ClassroomReassignment-fileSelectionButton {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 50%;
+    padding: 15px;
+}
+
+.ClassroomReassignment-fileUploadButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.ClassroomReassignment-numberBox {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}

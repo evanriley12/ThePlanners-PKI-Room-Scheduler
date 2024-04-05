@@ -1,0 +1,36 @@
+Classrooms,,,,,
+Room,Seats,Computers,Information,Connectivity,Displays
+108,12,1,Shared IS&T/CoE classroom - Video Conferencing,"[HDMI, Mini DisplayPort]","[Three 80"" TVs]"
+150,16,1,Shared IS&T/CoE classroom/conference room,[HDMI],"[Two 80"" TVs]"
+153,42,1,Shared IS&T/CoE classroom,"[HDMI, Mini DisplayPort]",[Two Projectors]
+155,40,1,Shared IS&T/CoE classroom,"[HDMI, lapel microphone]",[Projector]
+157,24,1,Shared IS&T/CoE classroom,[HDMI],[Projector]
+160,42,1,Shared IS&T/CoE classroom,"[HDMI, Mini DisplayPort, VGA, lapel microphone]","[Projector, Four 70"" TVs]"
+161,30,1,Shared IS&T/CoE classroom,"[HDMI, lapel microphone]","[Projector, Three TVs]"
+164,56,1,Shared IS&T/CoE classroom,"[HDMI, Mini DisplayPort, VGA, lapel microphone]","[Projector, Four 70"" TVs]"
+250,16,1,"	Shared IS&T/CoE classroom/conference room",[HDMI],"[Two 80"" TVs]"
+252,58,1,Shared IS&T/CoE classroom,"[HDMI, lapel microphone]",[Two Projectors]
+256,40,1,Shared IS&T/CoE classroom,"[HDMI, USB-C]",[Projector]
+259,16,1,Shared IS&T/CoE classroom,"[HDMI, Mini DisplayPort]",[Projector]
+260,60,60,Shared IS&T/CoE classroom,"[HDMI, USB-C]",[Projector]
+261,24,1,Shared IS&T/CoE classroom,"[HDMI, USB-C]",[Projector]
+263,50,1,Shared IS&T/CoE classroom,"[HDMI, lapel microphone]",[Two Projectors]
+269,30,1,"	IS&T classroom","[HDMI, USB-C]",[Projector]
+270,16,1,Shared IS&T/CoE classroom,[HDMI],[Projector]
+274,32,1,Shared IS&T/CoE classroom,"[HDMI, USB-C]",[Projector]
+276,40,35,"	IS&T classroom","[HDMI, USB-C]",[Projector]
+278,40,35,"	IS&T classroom","[HDMI, USB-C]",[Projector]
+279,30,1,IS&T Collaboration & Hosting Center,"[HDMI, Micro HDMI, Mini HDMI, USB Type-C, DisplayPort, Mini DisplayPort, Thunderbolt, Lightning (Apple)]",[Three Projectors]
+350,16,1,Shared IS&T/CoE classroom/conference room,"[HDMI, VGA]","[Two 80"" TVs, One Projector]"
+361,40,40,"	IS&T classroom","[HDMI, USB-C]","[Two Projectors, 86"" TV]"
+391,10,1,IS&T classroom/conference room,[HDMI],"[55"" TV]"
+,,,,,
+Public Student Lab Computers,,,,,
+Room,Seats,Computers,Information,Connectivity,
+145,18,9,Shared IS&T/CoE - 1st floor atrium left,extra power outlets,
+149,10,10,Shared IS&T/CoE - 1st floor atrium middle,N/A,
+151,18,9,Shared IS&T/CoE - 1st floor atrium right,extra power outlets,
+158,100,15,Shared IS&T/CoE - 1st floor near cafe,N/A,
+249,5,5,Shared IS&T/CoE - 2nd floor atrium middle,N/A,
+352,6,6,Shared IS&T/CoE - 3rd floor atrium middle,N/A,
+368,7,7,Shared IS&T/CoE - 3rd floor North,N/A,
