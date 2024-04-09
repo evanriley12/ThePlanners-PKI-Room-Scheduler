@@ -1,17 +1,11 @@
 package com.theplanners.pkiclassroomrescheduler.system;
 import java.util.ArrayList;
 
-public class Algorithm {
+import org.springframework.stereotype.Component;
 
-    private final Schedule schedule;
-    private final ClassroomList classroomList;
-
-    public Algorithm(Schedule schedule, ClassroomList classroomList) {
-        this.schedule = schedule;
-        this.classroomList = classroomList;
-    }
-
-    public void updateOverlaps() {
+@Component
+public final class Algorithm {
+    public static void updateOverlaps(Schedule schedule) {
         // Get all sections in the schedule.
         ArrayList<Section> allSections = schedule.returnSchedule();
         // For each section, loop through every other section to determine if there is an overlap
@@ -26,8 +20,8 @@ public class Algorithm {
         }
     }
 
-    public String doAlgorithmOld(Section section, int newSize) {
-        updateOverlaps();
+    public String doAlgorithmOld(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
+        updateOverlaps(schedule);
         int currentRoom = section.getRoomNumber();
         ArrayList<Classroom> classrooms = classroomList.returnClassrooms();
         ArrayList<String> newRooms = new ArrayList<String>();
@@ -39,9 +33,9 @@ public class Algorithm {
         return newRooms.toString();
     }
 
-    public String doAlgorithm(Section section, int newSize) {
+    public static String doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
         // Create the graph
-        updateOverlaps();
+        updateOverlaps(schedule);
         // Get all classrooms
         ArrayList<Classroom> allClassrooms = classroomList.returnClassrooms();
         // Get all adjacent sections

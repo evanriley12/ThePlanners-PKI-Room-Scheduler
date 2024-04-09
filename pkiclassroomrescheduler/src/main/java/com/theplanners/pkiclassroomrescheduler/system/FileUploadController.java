@@ -1,5 +1,7 @@
 package com.theplanners.pkiclassroomrescheduler.system;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,8 +28,7 @@ public class FileUploadController {
     @PostMapping("/upload")
     public ArrayList<Section> uploadFile(@RequestParam("file") MultipartFile file) {
         schedule.clearSchedule();
-        ReadClassroom readClassroom = new ReadClassroom(classroomList);
-        readClassroom.readClassroomCSV();
+        ReadClassroom.readClassroomCSV(classroomList);
 
         if (file.isEmpty()) {
             return null;

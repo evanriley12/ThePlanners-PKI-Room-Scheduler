@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AlgorithmController {
 
     private final Schedule schedule;
-    private final Algorithm algorithm;
     private final ClassroomList classroomList;
 
 
     public AlgorithmController(Schedule schedule, ClassroomList classroomList) {
         this.schedule = schedule;
         this.classroomList = classroomList;
-        this.algorithm = new Algorithm(schedule, classroomList);
     }
 
     @GetMapping("/algorithm")
@@ -35,6 +33,6 @@ public class AlgorithmController {
             }
         }
 
-        return algorithm.doAlgorithm(result, newSize);
+        return Algorithm.doAlgorithm(result, newSize, schedule, classroomList);
     }
 }

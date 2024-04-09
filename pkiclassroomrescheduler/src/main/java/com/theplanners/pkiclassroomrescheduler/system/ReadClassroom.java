@@ -3,19 +3,18 @@ package com.theplanners.pkiclassroomrescheduler.system;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 @Service
-public class ReadClassroom {
+public final class ReadClassroom {
 
-    private final ClassroomList classroomList;
     private static final String CSV_FILE_PATH = "ClassroomInformation.csv";
 
-    public ReadClassroom(ClassroomList classroomList) {
-        this.classroomList = classroomList;
-    }
-
-    private String[] stringToArray(String input)
+    private static String[] stringToArray(String input)
     {   
         if(input != ""){
         String[] elements = input.substring(1, input.length() - 1).split(","); 
@@ -30,31 +29,36 @@ public class ReadClassroom {
         }
     }
 
-    public void readClassroomCSV(){
-        if(classroomList != null){
-            classroomList.clearClassrooms();
-        }
-        try { 
-            ClassPathResource resource = new ClassPathResource(CSV_FILE_PATH);
+    public static void readClassroomCSV(ClassroomList classroomList){
+        ArrayList<Classroom> readClassroomList = new ArrayList<Classroom>();
+        ClassPathResource resource = new ClassPathResource(CSV_FILE_PATH);
+        String[] nextRecord; 
+        Classroom nextClassroom = null;
+        try {
             InputStreamReader reader = new InputStreamReader(resource.getInputStream());
             CSVReader csvReader = new CSVReader(reader); 
-            String[] nextRecord; 
-            Classroom nextClassroom = null;
-  
             while ((nextRecord = csvReader.readNext()) != null) { 
                 if(nextRecord[0].matches("-?\\d+(\\.\\d+)?"))
-                {
+                    {
                     String[] connectivity = stringToArray(nextRecord[4]);
                     String[] displays = stringToArray(nextRecord[5]);
                     nextClassroom = new Classroom(Integer.parseInt(nextRecord[0]), Integer.parseInt(nextRecord[1]), Integer.parseInt(nextRecord[2]), nextRecord[3], connectivity, displays);
-                    classroomList.addClassroom(nextClassroom);
-                    //System.out.println(nextClassroom.toString());
+                    readClassroomList.add(nextClassroom);
                 } 
             } 
+            
             csvReader.close();
-        } 
-        catch (Exception e) { 
-            e.printStackTrace(); 
-        } 
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CsvValidationException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+
+            e.printStackTrace();
+        }
+        if (classroomList == null){
+            classroomList = new ClassroomList();
+        }
+        classroomList.setClassrooms(readClassroomList);
     }
 }

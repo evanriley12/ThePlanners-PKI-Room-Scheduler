@@ -44,11 +44,8 @@ public class AlgorithmsTests {
         when(schedule.returnSchedule()).thenReturn(mockSchedule.returnSchedule());
         when(classroomList.returnClassrooms()).thenReturn(classrooms);
 
-        // Create instance of Algorithm
-        Algorithm algorithm = new Algorithm(schedule, classroomList);
-
         // Invoke method under test
-        String result = algorithm.doAlgorithm(mockSection, 50);
+        String result = Algorithm.doAlgorithm(mockSection, 50, schedule, classroomList);
 
         // Assert the result
         assertEquals("No available classrooms.", result);
@@ -73,11 +70,8 @@ public class AlgorithmsTests {
         when(schedule.returnSchedule()).thenReturn(mockSchedule.returnSchedule());
         when(classroomList.returnClassrooms()).thenReturn(classrooms);
 
-        // Create instance of Algorithm
-        Algorithm algorithm = new Algorithm(schedule, classroomList);
-
         // Invoke method under test
-        String result = algorithm.doAlgorithm(mockSection, 50);
+        String result = Algorithm.doAlgorithm(mockSection, 50, schedule, classroomList);
 
         String expected = "The best option is to move test Section: 1 to room 2.\n\nOther options with the same class size: None\n\nOther options with larger class size: None";
 
@@ -107,11 +101,8 @@ public class AlgorithmsTests {
         when(schedule.returnSchedule()).thenReturn(mockSchedule.returnSchedule());
         when(classroomList.returnClassrooms()).thenReturn(classrooms);
 
-        // Create instance of Algorithm
-        Algorithm algorithm = new Algorithm(schedule, classroomList);
-
         // Invoke method under test
-        String result = algorithm.doAlgorithm(mockSection, 50);
+        String result = Algorithm.doAlgorithm(mockSection, 50, schedule, classroomList);
 
         String expected = "The best option is to move test Section: 1 to room 3.\n\nOther options with the same class size: None\n\nOther options with larger class size: 2, 4";
 
@@ -140,11 +131,8 @@ public class AlgorithmsTests {
         when(schedule.returnSchedule()).thenReturn(mockSchedule.returnSchedule());
         when(classroomList.returnClassrooms()).thenReturn(classrooms);
 
-        // Create instance of Algorithm
-        Algorithm algorithm = new Algorithm(schedule, classroomList);
-
         // Invoke method under test
-        String result = algorithm.doAlgorithm(mockSection, 50);
+        String result = Algorithm.doAlgorithm(mockSection, 50, schedule, classroomList);
 
         String expected = "No available classrooms.";
 

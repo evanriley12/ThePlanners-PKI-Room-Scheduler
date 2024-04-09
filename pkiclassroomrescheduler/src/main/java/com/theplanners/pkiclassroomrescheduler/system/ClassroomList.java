@@ -20,6 +20,10 @@ public class ClassroomList {
         return this.classrooms;
     }
 
+    public void setClassrooms(ArrayList<Classroom> newClassrooms){
+        classrooms = newClassrooms;
+    }
+
     public void clearClassrooms(){
         this.classrooms.clear();
     }
