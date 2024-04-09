@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ClassroomReassignment.css";
 
+/**
+ * ClassroomReassignment is the function that is responsible for handling the frontend webpage
+ * presentation for the PKI Classroom rescheduler. Constants for handling different frontend
+ * activities are included as well as a return for the HTML used to create the webpage.
+ * 
+ * @returns An HTML webpage for users to interact with when rescheduling PKI classrooms.
+ */
 function ClassroomReassignment() {
   const [file, setFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -161,11 +168,12 @@ function ClassroomReassignment() {
         <div className="ClassroomReassignment-inputColumn">
           <form>
             <div className="ClassroomReassignment-individualInput">
-              <div className="ClassroomReassignment-fileSelectionButton">
-                <input type="file" onChange={handleFileChange} />
+              <div className="ClassroomReassignment-fileSelectionButtonDiv">
+                <input type="file" onChange={handleFileChange}/>
               </div>
-              <div className="ClassroomReassignment-fileSelectionButton">
-                <button type="button" onClick={handleUpload}>
+              <div className="ClassroomReassignment-fileSelectionButtonDiv">
+                <button type="button" onClick={handleUpload}
+                className="ClassroomReassignment-fileSelectionButton">
                   Upload CSV
                 </button>
                 {uploadSuccess && <p>Upload successful!</p>}
@@ -251,8 +259,9 @@ function ClassroomReassignment() {
         <header className="ClassroomReassignment-resultsHeader">
           <div className="ClassroomReassignment-resultsLeftSpacer"></div>
           <div className="ClassroomReassignment-resultsLabel">Results</div>
-          <div className="ClassroomReassignment-clearResultsButton">
-            <button>Clear Results</button>
+          <div className="ClassroomReassignment-clearResultsButtonDiv">
+            <button className="ClassroomReassignment-clearResultsButton">
+              Clear Results</button>
           </div>
         </header>
         {algoData ? algoData : 'No results available'}
