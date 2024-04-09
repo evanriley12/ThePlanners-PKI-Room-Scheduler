@@ -2,10 +2,26 @@ package com.theplanners.pkiclassroomrescheduler.system;
 
 import java.util.ArrayList;
 import java.util.regex.*;
+
+import org.springframework.stereotype.Service;
+
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
-public class MeetingTimeConverter {
+@Service
+/**
+ * MeetingTimeConverter is a class that converts the meeting time string (Ex: "MW 3pm-4:15pm")
+ * into easier to use formats, an ArrayList<DayOfWeek> for meeting days and a LocalTime for 
+ * each the start and end time.
+ */
+public final class MeetingTimeConverter {
+    /**
+     * Takes a meeting time string, formatted as "MW 3pm-4:15pm", parses out the meeting days and 
+     * meeting times, and returns tham as a MeetingTime object.
+     * @param meetingTimeString String directly from csv in format "MW 3pm-4:15pm"
+     * @return MeetingTime: a custom class that contains the meeting days, the start time, and the end time.
+     *         or returns null if pattern doesn't match.
+     */
     public static MeetingTime parseMeetingTime(String meetingTimeString) {
         // Define the regex pattern to match the meeting time format
         Pattern pattern = Pattern.compile("([A-Za-z]+) (\\d{1,2}(?::\\d{2})?(?:am|pm))-(\\d{1,2}(?::\\d{2})?(?:am|pm))");
@@ -26,6 +42,16 @@ public class MeetingTimeConverter {
         return null; // Return null if the format doesn't match
     }
 
+    /**
+     * Given a string, formatted "MW" or "F" representing Monday, Wednesday and Friday respectively,
+     * return an ArrayList of DayOfWeek enumerations
+     * Ex:
+     *  "MW" -> [MONDAY, WEDNESDAY]
+     * @param daysString the string containing the meeting days
+     * @return ArrayList of DayOfWeek enumerations representing the input string
+     * 
+     * @see java.time.DayOfWeek
+     */
     public static ArrayList<DayOfWeek> convertToDayOfWeek(String daysString) {
         ArrayList<DayOfWeek> days = new ArrayList<>();
         for (char c : daysString.toCharArray()) {
@@ -56,6 +82,13 @@ public class MeetingTimeConverter {
         return days;
     }
 
+    /**
+     * Takes a time in the format "3pm" or "8am" and converts it to java.LocalTime
+     * @param timeString the string containing the a time in format "3pm"
+     * @return the time represented as a LocalTime
+     * 
+     * @see java.LocalTime
+     */
     public static LocalTime convertToLocalTime(String timeString) {
         String[] parts = timeString.split("[:]");
         int hour = Integer.parseInt(parts[0].replaceAll("[^0-9]", ""));
@@ -68,6 +101,13 @@ public class MeetingTimeConverter {
         return LocalTime.of(hour, minute);
     }
 
+    /**
+     * MeetingTime class is designed to represent the meeting time of a class, both days and times 
+     * in an easier to use format than a string
+     * 
+     * @see java.LocalTime
+     * @see java.DayOfWeek
+     */
     static class MeetingTime {
         ArrayList<DayOfWeek> days;
         LocalTime startTime;
