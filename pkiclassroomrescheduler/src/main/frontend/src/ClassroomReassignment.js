@@ -267,16 +267,17 @@ function ClassroomReassignment() {
       </div>
       <div className="ClassroomReassignment-resultsColumn">
         <header className="ClassroomReassignment-resultsHeader">
-          <div className="ClassroomReassignment-resultsLeftSpacer"></div>
-          <div className="ClassroomReassignment-resultsLabel">Results</div>
-          <div className="ClassroomReassignment-clearResultsButtonDiv">
-            <button className="ClassroomReassignment-clearResultsButton">
-              Clear Results</button>
-            <button 
+          <div className="ClassroomReassignment-resultsLeftSpacer">
+          <button 
             type="button"
             className="ClassroomReassignment-clearResultsButton"
             onClick={downloadFile}>
             Download Results</button>
+          </div>
+          <div className="ClassroomReassignment-resultsLabel">Results</div>
+          <div className="ClassroomReassignment-clearResultsButtonDiv">
+            <button className="ClassroomReassignment-clearResultsButton">
+              Clear Results</button>
           </div>
         </header>
         {algoData ? algoData : 'No results available'}
