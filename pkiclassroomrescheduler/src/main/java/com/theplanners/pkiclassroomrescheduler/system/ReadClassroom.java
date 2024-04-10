@@ -9,11 +9,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * Read classroom is a utility class that reads in the static ClassroomInformation.csv 
+ */
 @Service
 public final class ReadClassroom {
 
+
+    /**
+     * Filepath to the static resource containing the classroom information
+     */
     private static final String CSV_FILE_PATH = "ClassroomInformation.csv";
 
+    /**
+     * Utility function that takes a String with comma delimiters 
+     * and converts it to and array of Strings
+     * 
+     * @param input String that is comma delimited
+     * @return an array of comma delimited strings
+     */
     private static String[] stringToArray(String input)
     {   
         if(input != ""){
@@ -29,6 +43,14 @@ public final class ReadClassroom {
         }
     }
 
+    /**
+     * Given a ClassroomList object, reads the classrooms from the CSV_FILE_PATH and sets it as 
+     * the ClassroomList's classroomList
+     * 
+     * @param classroomList classroomList object to add classrooms to
+     * 
+     * @see package com.theplanners.pkiclassroomrescheduler.system.ClassroomList
+     */
     public static void readClassroomCSV(ClassroomList classroomList){
         ArrayList<Classroom> readClassroomList = new ArrayList<Classroom>();
         ClassPathResource resource = new ClassPathResource(CSV_FILE_PATH);
@@ -48,12 +70,7 @@ public final class ReadClassroom {
             } 
             
             csvReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (CsvValidationException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-
+        } catch (IOException | CsvValidationException | NumberFormatException e) {
             e.printStackTrace();
         }
         if (classroomList == null){
