@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 
 @Component
+/**
+ * Algorithm is a class that takes a created schedule, which contains information for all courses,
+ * and performs analysis on each course to create relationships between them and determine which classrooms
+ * can support a given change to the schedule.
+ */
 public final class Algorithm {
+    /**
+     * Takes a schedule and adds overlaps to each section within the schedule if the two courses time's overlap.
+     * @param schedule The schedule object, which is a collection of all the currently scheduled courses.
+     */
     public static void updateOverlaps(Schedule schedule) {
         // Get all sections in the schedule.
         ArrayList<Section> allSections = schedule.returnSchedule();
@@ -20,6 +29,15 @@ public final class Algorithm {
         }
     }
 
+    /**
+     * An older version of our Algorithm that simply checks if each classroom can fit the given class
+     * and outputs all classrooms that can. Only used for testing and will later be removed.
+     * @param section The Section object within the schedule that needs to be rescheduled.
+     * @param newSize An integer containing the updated size of the class that a classroom needs to accomodate.
+     * @param schedule The Schedule object which is a collection of all sections in the schedule.
+     * @param classroomList A ClassroomList object containing each Classroom object available in the building.
+     * @return A string containing all of the classrooms that the given section can fit in.
+     */
     public String doAlgorithmOld(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
         updateOverlaps(schedule);
         int currentRoom = section.getRoomNumber();
@@ -32,7 +50,16 @@ public final class Algorithm {
         }
         return newRooms.toString();
     }
-
+    
+    /**
+     * Our algorithm that analyzes the overlaps between each course in the schedule to determine the best option for rescheduling 
+     * a given course.
+     * @param section The Section object within the schedule that needs to be rescheduled.
+     * @param newSize An integer containign the updated course size that a classroom needs to accomodate.
+     * @param schedule The Schedule object which is a collection of all sections in the schedule.
+     * @param classroomList A ClassroomList object containing each Classroom object available in the building.
+     * @return A string containing the best choice for a different classroom, options equal to the best, and options worse than the best.
+     */
     public static String doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
         // Create the graph
         updateOverlaps(schedule);
