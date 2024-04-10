@@ -1,4 +1,4 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Entities;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;

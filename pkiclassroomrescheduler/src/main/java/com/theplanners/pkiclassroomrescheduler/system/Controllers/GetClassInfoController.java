@@ -1,10 +1,13 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Controllers;
 
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
 
 /**
  * A controller hosting endpoints /api to return information about sections uploaded

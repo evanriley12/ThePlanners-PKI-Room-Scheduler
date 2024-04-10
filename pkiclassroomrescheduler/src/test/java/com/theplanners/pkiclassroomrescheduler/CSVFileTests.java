@@ -16,9 +16,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.theplanners.pkiclassroomrescheduler.system.FileUploadController;
-import com.theplanners.pkiclassroomrescheduler.system.Schedule;
-import com.theplanners.pkiclassroomrescheduler.system.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Controllers.FileUploadController;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
 
 @SpringBootTest
 public class CSVFileTests {

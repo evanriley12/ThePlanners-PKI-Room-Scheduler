@@ -1,4 +1,4 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Entities;
 
 import java.util.ArrayList;
 

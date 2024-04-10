@@ -1,4 +1,4 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Controllers;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
+
 /**
 * A controller that hosts an endpoint that returns the list of classrooms
-* @see com.theplanners.pkiclassroomrescheduler.system.Classroom
+* @see com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom
 */
 @RestController
 @RequestMapping("/api")

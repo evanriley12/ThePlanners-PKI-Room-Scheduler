@@ -1,4 +1,4 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Utilites;
 
 import java.util.ArrayList;
 import java.util.regex.*;
@@ -108,14 +108,38 @@ public final class MeetingTimeConverter {
      * @see java.LocalTime
      * @see java.DayOfWeek
      */
-    static class MeetingTime {
-        ArrayList<DayOfWeek> days;
-        LocalTime startTime;
-        LocalTime endTime;
+    public static class MeetingTime {
+        private ArrayList<DayOfWeek> days;
+        private LocalTime startTime;
+        private LocalTime endTime;
 
         public MeetingTime(ArrayList<DayOfWeek> days, LocalTime startTime, LocalTime endTime) {
             this.days = days;
             this.startTime = startTime;
+            this.endTime = endTime;
+        }
+
+        public ArrayList<DayOfWeek> getDays() {
+            return days;
+        }
+
+        public void setDays(ArrayList<DayOfWeek> days) {
+            this.days = days;
+        }
+
+        public LocalTime getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(LocalTime startTime) {
+            this.startTime = startTime;
+        }
+
+        public LocalTime getEndTime() {
+            return endTime;
+        }
+
+        public void setEndTime(LocalTime endTime) {
             this.endTime = endTime;
         }
     }

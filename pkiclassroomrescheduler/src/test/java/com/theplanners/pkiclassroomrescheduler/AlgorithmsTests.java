@@ -12,11 +12,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.theplanners.pkiclassroomrescheduler.system.Algorithm;
-import com.theplanners.pkiclassroomrescheduler.system.Classroom;
-import com.theplanners.pkiclassroomrescheduler.system.ClassroomList;
-import com.theplanners.pkiclassroomrescheduler.system.Schedule;
-import com.theplanners.pkiclassroomrescheduler.system.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Utilites.Algorithm;
 
 public class AlgorithmsTests {
      @Mock

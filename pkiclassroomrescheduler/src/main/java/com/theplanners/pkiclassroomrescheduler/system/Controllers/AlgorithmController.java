@@ -1,9 +1,14 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Utilites.Algorithm;
 
 @RestController
 @RequestMapping("/api")

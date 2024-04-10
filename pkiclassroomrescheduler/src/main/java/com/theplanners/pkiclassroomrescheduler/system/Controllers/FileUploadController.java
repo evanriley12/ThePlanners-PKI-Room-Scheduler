@@ -1,4 +1,4 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -6,7 +6,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
-import com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter.MeetingTime;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Utilites.MeetingTimeConverter;
+import com.theplanners.pkiclassroomrescheduler.system.Utilites.ReadClassroom;
+import com.theplanners.pkiclassroomrescheduler.system.Utilites.MeetingTimeConverter.MeetingTime;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,7 +21,7 @@ import java.util.ArrayList;
  * a csv file containing the current course assignment information. The uploaded 
  * csv then gets parsed and saved as a Schedule
  * 
- * @see com.theplanners.pkiclassroomrescheduler.system.Schedule
+ * @see com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule
  */
 @RestController
 @RequestMapping("/api")
@@ -52,9 +57,9 @@ public class FileUploadController {
      * @param file csv file that is uploaded through the /api/upload endpoint
      * @return the schedule generated from the csv
      * 
-     * @see com.theplanners.pkiclassroomrescheduler.system.Schedule
-     * @see com.theplanners.pkiclassroomrescheduler.system.Section
-     * @see com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter
+     * @see com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule
+     * @see com.theplanners.pkiclassroomrescheduler.system.Entities.Section
+     * @see com.theplanners.pkiclassroomrescheduler.system.Utilites.MeetingTimeConverter
      */
     @PostMapping("/upload")
     public ArrayList<Section> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -75,8 +80,8 @@ public class FileUploadController {
                 if(nextRow[0] == ""){
                     MeetingTime meetingTime = MeetingTimeConverter.parseMeetingTime(nextRow[11]);
                     Section section = new Section(
-                    nextRow[6], Integer.parseInt(nextRow[7].replaceAll("[^\\d.]", "")), nextRow[8], nextRow[9], meetingTime.days, 
-                    meetingTime.startTime, meetingTime.endTime, nextRow[13], 
+                    nextRow[6], Integer.parseInt(nextRow[7].replaceAll("[^\\d.]", "")), nextRow[8], nextRow[9], meetingTime.getDays(), 
+                    meetingTime.getStartTime(), meetingTime.getEndTime(), nextRow[13], 
                     Integer.parseInt(nextRow[14].replaceAll("[^\\d.]", "")), nextRow[18], nextRow[34], Integer.parseInt(nextRow[28]), Integer.parseInt(nextRow[29]));
                     schedule.addSection(section);
                 }

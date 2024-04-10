@@ -1,9 +1,14 @@
-package com.theplanners.pkiclassroomrescheduler.system;
+package com.theplanners.pkiclassroomrescheduler.system.Utilites;
 import java.util.ArrayList;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
+
+@Service
 /**
  * Algorithm is a class that takes a created schedule, which contains information for all courses,
  * and performs analysis on each course to create relationships between them and determine which classrooms
