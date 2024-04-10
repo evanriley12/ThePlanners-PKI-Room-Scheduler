@@ -1,0 +1,293 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{http://json-schema.org}{\texttt{  }} \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/schema-utils}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://github.com/webpack/schema-utils/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack/schema-utils}{\texttt{ }} \href{https://github.com/webpack/webpack/discussions}{\texttt{ }} \href{https://packagephobia.com/result?p=schema-utils}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22626}{}\doxysection{\texorpdfstring{schema-\/utils}{schema-\/utils}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22626}
+Package for validate options in loaders and plugins.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22627}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22627}
+To begin, you\textquotesingle{}ll need to install {\ttfamily schema-\/utils}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ schema-\/utils}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22628}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22628}
+{\bfseries{schema.\+json}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}option"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}boolean"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ schema\ from\ "{}./path/to/schema.json"{};}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ options\ =\ \{\ option:\ true\ \};}
+\DoxyCodeLine{const\ configuration\ =\ \{\ name:\ "{}Loader\ Name/Plugin\ Name/Name"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(schema,\ options,\ configuration);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22629}{}\doxysubsubsection{\texorpdfstring{{\ttfamily schema}}{{\ttfamily schema}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22629}
+Type\+: {\ttfamily String}
+
+JSON schema.
+
+Simple example of schema\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}name"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}description"{}:\ "{}This\ is\ description\ of\ option."{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}string"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22630}{}\doxysubsubsection{\texorpdfstring{{\ttfamily options}}{{\ttfamily options}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22630}
+Type\+: {\ttfamily Object}
+
+Object with options.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ schema\ from\ "{}./path/to/schema.json"{};}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ options\ =\ \{\ foo:\ "{}bar"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(schema,\ \{\ name:\ 123\ \},\ \{\ name:\ "{}MyPlugin"{}\ \});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22631}{}\doxysubsubsection{\texorpdfstring{{\ttfamily configuration}}{{\ttfamily configuration}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22631}
+Allow to configure validator.
+
+There is an alternative method to configure the {\ttfamily name} and{\ttfamily base\+Data\+Path} options via the {\ttfamily title} property in the schema. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}title"{}:\ "{}My\ Loader\ options"{},}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}name"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}description"{}:\ "{}This\ is\ description\ of\ option."{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}string"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The last word used for the {\ttfamily base\+Data\+Path} option, other words used for the {\ttfamily name} option. Based on the example above the {\ttfamily name} option equals {\ttfamily My Loader}, the {\ttfamily base\+Data\+Path} option equals {\ttfamily options}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22632}{}\doxyparagraph{\texorpdfstring{{\ttfamily name}}{{\ttfamily name}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22632}
+Type\+: {\ttfamily Object} Default\+: {\ttfamily "{}\+Object"{}}
+
+Allow to setup name in validation errors.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ schema\ from\ "{}./path/to/schema.json"{};}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ options\ =\ \{\ foo:\ "{}bar"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(schema,\ options,\ \{\ name:\ "{}MyPlugin"{}\ \});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Invalid\ configuration\ object.\ MyPlugin\ has\ been\ initialised\ using\ a\ configuration\ object\ that\ does\ not\ match\ the\ API\ schema.}
+\DoxyCodeLine{\ -\/\ configuration.optionName\ should\ be\ a\ integer.}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22633}{}\doxyparagraph{\texorpdfstring{{\ttfamily base\+Data\+Path}}{{\ttfamily base\+Data\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22633}
+Type\+: {\ttfamily String} Default\+: {\ttfamily "{}configuration"{}}
+
+Allow to setup base data path in validation errors.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ schema\ from\ "{}./path/to/schema.json"{};}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ options\ =\ \{\ foo:\ "{}bar"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(schema,\ options,\ \{\ name:\ "{}MyPlugin"{},\ baseDataPath:\ "{}options"{}\ \});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Invalid\ options\ object.\ MyPlugin\ has\ been\ initialised\ using\ an\ options\ object\ that\ does\ not\ match\ the\ API\ schema.}
+\DoxyCodeLine{\ -\/\ options.optionName\ should\ be\ a\ integer.}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22634}{}\doxyparagraph{\texorpdfstring{{\ttfamily post\+Formatter}}{{\ttfamily post\+Formatter}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22634}
+Type\+: {\ttfamily Function} Default\+: {\ttfamily undefined}
+
+Allow to reformat errors.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ schema\ from\ "{}./path/to/schema.json"{};}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ options\ =\ \{\ foo:\ "{}bar"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(schema,\ options,\ \{}
+\DoxyCodeLine{\ \ name:\ "{}MyPlugin"{},}
+\DoxyCodeLine{\ \ postFormatter:\ (formattedError,\ error)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (error.keyword\ ===\ "{}type"{})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \`{}\$\{formattedError\}\(\backslash\)nAdditional\ Information.`;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ return\ formattedError;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Invalid\ options\ object.\ MyPlugin\ has\ been\ initialized\ using\ an\ options\ object\ that\ does\ not\ match\ the\ API\ schema.}
+\DoxyCodeLine{\ -\/\ options.optionName\ should\ be\ a\ integer.}
+\DoxyCodeLine{\ \ \ Additional\ Information.}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22635}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22635}
+{\bfseries{schema.\+json}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}name"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}string"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}test"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}anyOf"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ "{}type"{}:\ "{}array"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ "{}type"{}:\ "{}string"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ "{}instanceof"{}:\ "{}RegExp"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}transform"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}instanceof"{}:\ "{}Function"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}sourceMap"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}boolean"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22636}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Loader}}{{\ttfamily Loader}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22636}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ getOptions\ \}\ from\ "{}loader-\/utils"{};}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ schema\ from\ "{}path/to/schema.json"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ loader(src,\ map)\ \{}
+\DoxyCodeLine{\ \ const\ options\ =\ getOptions(this);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ validate(schema,\ options,\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ "{}Loader\ Name"{},}
+\DoxyCodeLine{\ \ \ \ baseDataPath:\ "{}options"{},}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Code...}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ loader;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22637}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Plugin}}{{\ttfamily Plugin}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22637}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ schema\ from\ "{}path/to/schema.json"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ Plugin\ \{}
+\DoxyCodeLine{\ \ constructor(options)\ \{}
+\DoxyCodeLine{\ \ \ \ validate(schema,\ options,\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ "{}Plugin\ Name"{},}
+\DoxyCodeLine{\ \ \ \ \ \ baseDataPath:\ "{}options"{},}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.options\ =\ options;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ apply(compiler)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Code...}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ Plugin;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22638}{}\doxysubsubsection{\texorpdfstring{Allow to disable and enable validation (the {\ttfamily validate} function do nothing)}{Allow to disable and enable validation (the {\ttfamily validate} function do nothing)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22638}
+This can be useful when you don\textquotesingle{}t want to do validation for {\ttfamily production} builds.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ disableValidation,\ enableValidation,\ validate\ \}\ from\ "{}schema-\/utils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Disable\ validation}
+\DoxyCodeLine{disableValidation();}
+\DoxyCodeLine{//\ Do\ nothing}
+\DoxyCodeLine{validate(schema,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Enable\ validation}
+\DoxyCodeLine{enableValidation();}
+\DoxyCodeLine{//\ Will\ throw\ an\ error\ if\ schema\ is\ not\ valid}
+\DoxyCodeLine{validate(schema,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Allow\ to\ undestand\ do\ you\ need\ validation\ or\ not}
+\DoxyCodeLine{const\ need\ =\ needValidate();}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(need);}
+
+\end{DoxyCode}
+
+
+Also you can enable/disable validation using the {\ttfamily process.\+env.\+SKIP\+\_\+\+VALIDATION} env variable.
+
+Supported values (case insensitive)\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily yes}/{\ttfamily y}/{\ttfamily true}/{\ttfamily 1}/{\ttfamily on}
+\item {\ttfamily no}/{\ttfamily n}/{\ttfamily false}/{\ttfamily 0}/{\ttfamily off}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22639}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22639}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22640}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2schema-utils_2_r_e_a_d_m_e_autotoc_md22640}
+\href{./LICENSE}{\texttt{ MIT}} 

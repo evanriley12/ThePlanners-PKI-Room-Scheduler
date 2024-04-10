@@ -1,0 +1,56 @@
+\chapter{Selector Specificity}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e}\index{Selector Specificity@{Selector Specificity}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md954}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md954}%
+ \href{https://www.npmjs.com/package/@csstools/selector-specificity}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}npm version"{} src="{}https\+://img.\+shields.\+io/npm/v/@csstools/selector-\/specificity.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Build Status"{} src="{}https\+://github.\+com/csstools/postcss-\/plugins/workflows/test/badge.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md955}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md955}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/packages/selector-specificity}{\texttt{ Selector Specificity}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss\ @csstools/selector-\/specificity\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ parser\ from\ 'postcss-\/selector-\/parser';}
+\DoxyCodeLine{import\ \{\ selectorSpecificity\ \}\ from\ '@csstools/selector-\/specificity';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ selectorAST\ =\ parser().astSync('\#foo:has(>\ .foo)');}
+\DoxyCodeLine{const\ specificity\ =\ selectorSpecificity(selectorAST);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(specificity.a);\ //\ 1}
+\DoxyCodeLine{console.log(specificity.b);\ //\ 1}
+\DoxyCodeLine{console.log(specificity.c);\ //\ 0}
+
+\end{DoxyCode}
+
+
+\+\_\+{\ttfamily selector\+Specificity} takes a single selector, not a list of selectors (not \+: {\ttfamily a, b, c}). To compare or otherwise manipulate lists of selectors you need to call {\ttfamily selector\+Specificity} on each part.\+\_\+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md956}{}\doxysubsection{\texorpdfstring{Comparing}{Comparing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md956}
+The package exports a utility function to compare two specificities.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ selectorSpecificity,\ compare\ \}\ from\ '@csstools/selector-\/specificity';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ s1\ =\ selectorSpecificity(ast1);}
+\DoxyCodeLine{const\ s2\ =\ selectorSpecificity(ast2);}
+\DoxyCodeLine{compare(s1,\ s2);\ //\ -\/1\ |\ 0\ |\ 1}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item if {\ttfamily s1 \texorpdfstring{$<$}{<} s2} then {\ttfamily compare(s1, s2)} returns a negative number ({\ttfamily \texorpdfstring{$<$}{<} 0})
+\item if {\ttfamily s1 \texorpdfstring{$>$}{>} s2} then {\ttfamily compare(s1, s2)} returns a positive number ({\ttfamily \texorpdfstring{$>$}{>} 0})
+\item if {\ttfamily s1 === s2} then {\ttfamily compare(s1, s2)} returns zero ({\ttfamily === 0})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md957}{}\doxysection{\texorpdfstring{Prior Art}{Prior Art}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2selector-specificity_2_r_e_a_d_m_e_autotoc_md957}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/keeganstreet/specificity}{\texttt{ keeganstreet/specificity}}
+\item \href{https://github.com/bramus/specificity}{\texttt{ bramus/specificity}}
+\end{DoxyItemize}
+
+For CSSTools we always use {\ttfamily postcss-\/selector-\/parser} and want to calculate specificity from this AST. 

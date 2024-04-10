@@ -1,0 +1,153 @@
+\chapter{import/no-\/relative-\/parent-\/imports}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports}\index{import/no-\/relative-\/parent-\/imports@{import/no-\/relative-\/parent-\/imports}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports_autotoc_md9991}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports_autotoc_md9991}%
+
+
+Use this rule to prevent imports to folders in relative parent paths.
+
+This rule is useful for enforcing tree-\/like folder structures instead of complex graph-\/like folder structures. While this restriction might be a departure from Node\textquotesingle{}s default resolution style, it can lead large, complex codebases to be easier to maintain. If you\textquotesingle{}ve ever had debates over "{}where to put files"{} this rule is for you.
+
+To fix violations of this rule there are three general strategies. Given this example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{numbers}
+\DoxyCodeLine{└──\ three.js}
+\DoxyCodeLine{add.js}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ./add.js}
+\DoxyCodeLine{export\ default\ function\ (numbers)\ \{}
+\DoxyCodeLine{\ \ return\ numbers.reduce((sum,\ n)\ =>\ sum\ +\ n,\ 0);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ./numbers/three.js}
+\DoxyCodeLine{import\ add\ from\ '../add';\ //\ violates\ import/no-\/relative-\/parent-\/imports}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ function\ three()\ \{}
+\DoxyCodeLine{\ \ return\ add([1,\ 2]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You can,
+
+
+\begin{DoxyEnumerate}
+\item Move the file to be in a sibling folder (or higher) of the dependency.
+
+{\ttfamily three.\+js} could be be in the same folder as {\ttfamily add.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{three.js}
+\DoxyCodeLine{add.js}
+
+\end{DoxyCode}
+
+
+or since {\ttfamily add} doesn\textquotesingle{}t have any imports, it could be in it\textquotesingle{}s own directory (namespace)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{math}
+\DoxyCodeLine{└──\ add.js}
+\DoxyCodeLine{three.js}
+
+\end{DoxyCode}
+
+\item Pass the dependency as an argument at runtime (dependency injection)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ three.js}
+\DoxyCodeLine{export\ default\ function\ three(add)\ \{}
+\DoxyCodeLine{\ \ return\ add([1,\ 2]);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ somewhere\ else\ when\ you\ use\ \`{}three.js`:}
+\DoxyCodeLine{import\ add\ from\ './add';}
+\DoxyCodeLine{import\ three\ from\ './numbers/three';}
+\DoxyCodeLine{console.log(three(add));}
+
+\end{DoxyCode}
+
+\item Make the dependency a package so it\textquotesingle{}s globally available to all files in your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ add\ from\ 'add';\ //\ from\ https://www.npmjs.com/package/add}
+\DoxyCodeLine{export\ default\ function\ three()\ \{}
+\DoxyCodeLine{\ \ return\ add([1,2]);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+These are (respectively) static, dynamic \& global solutions to graph-\/like dependency resolution.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports_autotoc_md9992}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports_autotoc_md9992}
+Given the following folder structure\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{my-\/project}
+\DoxyCodeLine{├──\ lib}
+\DoxyCodeLine{│\ \ \ ├──\ a.js}
+\DoxyCodeLine{│\ \ \ └──\ b.js}
+\DoxyCodeLine{└──\ main.js}
+
+\end{DoxyCode}
+
+
+And the .eslintrc file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{\ \ "{}rules"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}import/no-\/relative-\/parent-\/imports"{}:\ "{}error"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The following patterns are considered problems\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ \ in\ my-\/project/lib/a.js}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ bar\ from\ '../main';\ //\ Import\ parent\ file\ using\ a\ relative\ path}
+
+\end{DoxyCode}
+
+
+The following patterns are NOT considered problems\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ \ in\ my-\/project/main.js}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ foo\ from\ 'foo';\ //\ Import\ package\ using\ module\ path}
+\DoxyCodeLine{import\ a\ from\ './lib/a';\ //\ Import\ child\ file\ using\ relative\ path}
+\DoxyCodeLine{}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ \ in\ my-\/project/lib/a.js}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ b\ from\ './b';\ //\ Import\ sibling\ file\ using\ relative\ path}
+
+\end{DoxyCode}
+ 

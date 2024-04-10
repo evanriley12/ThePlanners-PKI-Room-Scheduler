@@ -1,0 +1,108 @@
+\chapter{bonjour-\/service}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e}\index{bonjour-\/service@{bonjour-\/service}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6303}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6303}%
+      \href{https://deepscan.io/dashboard\#view=project&tid=13435&pid=16430&bid=352351}{\texttt{ }}
+
+A Bonjour/\+Zeroconf protocol implementation in Type\+Script. Publish services on the local network or discover existing services using multicast DNS.
+
+This is a rewrite of the project Bonjour (\href{https://github.com/watson/bonjour}{\texttt{ https\+://github.\+com/watson/bonjour}}) into modern Type\+Script.
+
+bonjour-\/service is supported by \href{https://onlx.ltd/?src=bonjour-service}{\texttt{ ON LX Limited}}. Check out our projects such as \href{https://onlx.ltd/ctrl-suite?src=bonjour-service}{\texttt{ Ctrl Suite}} and \href{https://onlx.ltd/ctrl-for-ipad?src=bonjour-service}{\texttt{ Ctrl for i\+Pad}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6304}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6304}
+Add to your project dependencies using Yarn or NPM.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6305}{}\doxysubsubsection{\texorpdfstring{Install with Yarn}{Install with Yarn}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6305}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ bonjour-\/service}
+
+\end{DoxyCode}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6306}{}\doxysubsubsection{\texorpdfstring{Install with NPM}{Install with NPM}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6306}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ bonjour-\/service}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6307}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6307}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ Bonjour\ from\ 'bonjour-\/service'}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ instance\ =\ new\ Bonjour()}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ advertise\ an\ HTTP\ server\ on\ port\ 3000}
+\DoxyCodeLine{instance.publish(\{\ name:\ 'My\ Web\ Server',\ type:\ 'http',\ port:\ 3000\ \})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ browse\ for\ all\ http\ services}
+\DoxyCodeLine{instance.find(\{\ type:\ 'http'\ \},\ function\ (service)\ \{}
+\DoxyCodeLine{\ \ console.log('Found\ an\ HTTP\ server:',\ service)}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6308}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6308}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6309}{}\doxysubsection{\texorpdfstring{Initializing}{Initializing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6309}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ instance\ =\ new\ Bonjour(\{\ options\ \},\ errorCallback)}
+
+\end{DoxyCode}
+
+
+The {\ttfamily options} are optional and will be used when initializing the underlying multicast-\/dns server. For details see \href{https://github.com/mafintosh/multicast-dns\#mdns--multicastdnsoptions}{\texttt{ the multicast-\/dns documentation}}.
+
+{\ttfamily error\+Callback} is an optional callback used to gracefully handle errors that would otherwise crash the process. While not being strictly required, providing this is highly recommended\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6310}{}\doxysubsection{\texorpdfstring{Publishing}{Publishing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6310}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6311}{}\doxysubsubsection{\texorpdfstring{{\ttfamily var service = bonjour.\+publish(options)}}{{\ttfamily var service = bonjour.\+publish(options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6311}
+Publishes a new service.
+
+Options are\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily name} (string)
+\item {\ttfamily host} (string, optional) -\/ defaults to local hostname
+\item {\ttfamily port} (number)
+\item {\ttfamily type} (string)
+\item {\ttfamily subtypes} (array of strings, optional)
+\item {\ttfamily protocol} (string, optional) -\/ {\ttfamily udp} or {\ttfamily tcp} (default)
+\item {\ttfamily txt} (object, optional) -\/ a key/value object to broadcast as the TXT record
+\item {\ttfamily disable\+IPv6} (boolean, optional) disble IPv6 addresses
+\end{DoxyItemize}
+
+IANA maintains a \href{http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml}{\texttt{ list of official service types and port numbers}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6312}{}\doxysubsubsection{\texorpdfstring{{\ttfamily bonjour.\+unpublish\+All(\mbox{[}callback\mbox{]})}}{{\ttfamily bonjour.\+unpublish\+All(\mbox{[}callback\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6312}
+Unpublish all services. The optional {\ttfamily callback} will be called when the services have been unpublished.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6313}{}\doxysubsubsection{\texorpdfstring{{\ttfamily bonjour.\+destroy()}}{{\ttfamily bonjour.\+destroy()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6313}
+Destroy the mdns instance. Closes the udp socket.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6314}{}\doxysubsection{\texorpdfstring{Browser}{Browser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6314}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6315}{}\doxysubsubsection{\texorpdfstring{{\ttfamily var browser = bonjour.\+find(options\mbox{[}, onup\mbox{]})}}{{\ttfamily var browser = bonjour.\+find(options\mbox{[}, onup\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6315}
+Listen for services advertised on the network. An optional callback can be provided as the 2nd argument and will be added as an event listener for the {\ttfamily up} event.
+
+Options (all optional)\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily type} (string)
+\item {\ttfamily subtypes} (array of strings)
+\item {\ttfamily protocol} (string) -\/ defaults to {\ttfamily tcp}
+\item {\ttfamily txt} (object) -\/ passed into \href{https://github.com/watson/dns-txt}{\texttt{ dns-\/txt module}} contructor. Set to {\ttfamily \{ binary\+: true \}} if you want to keep the TXT records in binary
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6316}{}\doxysubsubsection{\texorpdfstring{{\ttfamily var browser = bonjour.\+find\+One(options\mbox{[}, callback\mbox{]})}}{{\ttfamily var browser = bonjour.\+find\+One(options\mbox{[}, callback\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6316}
+Listen for and call the {\ttfamily callback} with the first instance of a service matching the {\ttfamily options}. If no {\ttfamily callback} is given, it\textquotesingle{}s expected that you listen for the {\ttfamily up} event. The returned {\ttfamily browser} will automatically stop it self after the first matching service.
+
+Options are the same as given in the {\ttfamily browser.\+find} function.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6317}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Event\+: up}}{{\ttfamily Event\+: up}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6317}
+Emitted every time a new service is found that matches the browser.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6318}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Event\+: down}}{{\ttfamily Event\+: down}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6318}
+Emitted every time an existing service emmits a goodbye message.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6319}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Event\+: txt-\/update}}{{\ttfamily Event\+: txt-\/update}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6319}
+Emitted every time an existing service does a new announcement with an updated TXT record.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6320}{}\doxysubsubsection{\texorpdfstring{{\ttfamily browser.\+services()}}{{\ttfamily browser.\+services()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6320}
+An array of services known by the browser to be online.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6321}{}\doxysubsubsection{\texorpdfstring{{\ttfamily browser.\+start()}}{{\ttfamily browser.\+start()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6321}
+Start looking for matching services.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6322}{}\doxysubsubsection{\texorpdfstring{{\ttfamily browser.\+stop()}}{{\ttfamily browser.\+stop()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6322}
+Stop looking for matching services.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6323}{}\doxysubsubsection{\texorpdfstring{{\ttfamily browser.\+update()}}{{\ttfamily browser.\+update()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6323}
+Broadcast the query again.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6324}{}\doxysubsection{\texorpdfstring{Service}{Service}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6324}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6325}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Event\+: up}}{{\ttfamily Event\+: up}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6325}
+Emitted when the service is up.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6326}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Event\+: error}}{{\ttfamily Event\+: error}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6326}
+Emitted if an error occurrs while publishing the service.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6327}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+stop(\mbox{[}callback\mbox{]})}}{{\ttfamily service.\+stop(\mbox{[}callback\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6327}
+Unpublish the service. The optional {\ttfamily callback} will be called when the service have been unpublished.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6328}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+start()}}{{\ttfamily service.\+start()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6328}
+Publish the service.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6329}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+name}}{{\ttfamily service.\+name}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6329}
+The name of the service, e.\+g. {\ttfamily Apple TV}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6330}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+type}}{{\ttfamily service.\+type}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6330}
+The type of the service, e.\+g. {\ttfamily http}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6331}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+subtypes}}{{\ttfamily service.\+subtypes}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6331}
+An array of subtypes. Note that this property might be {\ttfamily null}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6332}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+protocol}}{{\ttfamily service.\+protocol}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6332}
+The protocol used by the service, e.\+g. {\ttfamily tcp}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6333}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+host}}{{\ttfamily service.\+host}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6333}
+The hostname or ip address where the service resides.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6334}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+port}}{{\ttfamily service.\+port}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6334}
+The port on which the service listens, e.\+g. {\ttfamily 5000}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6335}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+fqdn}}{{\ttfamily service.\+fqdn}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6335}
+The fully qualified domain name of the service. E.\+g. if given the name {\ttfamily Foo Bar}, the type {\ttfamily http} and the protocol {\ttfamily tcp}, the {\ttfamily service.\+fqdn} property will be {\ttfamily Foo Bar.\+\_\+http.\+\_\+tcp.\+local}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6336}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+txt}}{{\ttfamily service.\+txt}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6336}
+The TXT record advertised by the service (a key/value object). Note that this property might be {\ttfamily null}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6337}{}\doxysubsubsection{\texorpdfstring{{\ttfamily service.\+published}}{{\ttfamily service.\+published}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6337}
+A boolean indicating if the service is currently published.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6338}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2bonjour-service_2_r_e_a_d_m_e_autotoc_md6338}
+MIT 

@@ -1,0 +1,54 @@
+\chapter{import/no-\/named-\/as-\/default-\/member}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member}\index{import/no-\/named-\/as-\/default-\/member@{import/no-\/named-\/as-\/default-\/member}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member_autotoc_md9969}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member_autotoc_md9969}%
+ ⚠️ This rule {\itshape warns} in the following configs\+: ☑️ {\ttfamily recommended}, 🚸 {\ttfamily warnings}.
+
+Reports use of an exported name as a property on the default export.
+
+Rationale\+: Accessing a property that has a name that is shared by an exported name from the same module is likely to be a mistake.
+
+Named import syntax looks very similar to destructuring assignment. It\textquotesingle{}s easy to make the (incorrect) assumption that named exports are also accessible as properties of the default export.
+
+Furthermore, \href{https://kentcdodds.com/blog/misunderstanding-es6-modules-upgrading-babel-tears-and-a-solution}{\texttt{ in Babel 5 this is actually how things worked}}. This was fixed in Babel 6. Before upgrading an existing codebase to Babel 6, it can be useful to run this lint rule.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member_autotoc_md9970}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member_autotoc_md9970}
+Given\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ foo.js}
+\DoxyCodeLine{export\ default\ 'foo';}
+\DoxyCodeLine{export\ const\ bar\ =\ 'baz';}
+
+\end{DoxyCode}
+
+
+...this would be valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ foo,\ \{bar\}\ from\ './foo.js';}
+
+\end{DoxyCode}
+
+
+...and the following would be reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Caution:\ \`{}foo`\ also\ has\ a\ named\ export\ \`{}bar`.}
+\DoxyCodeLine{//\ Check\ if\ you\ meant\ to\ write\ \`{}import\ \{bar\}\ from\ './foo.js'`\ instead.}
+\DoxyCodeLine{import\ foo\ from\ './foo.js';}
+\DoxyCodeLine{const\ bar\ =\ foo.bar;}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Caution:\ \`{}foo`\ also\ has\ a\ named\ export\ \`{}bar`.}
+\DoxyCodeLine{//\ Check\ if\ you\ meant\ to\ write\ \`{}import\ \{bar\}\ from\ './foo.js'`\ instead.}
+\DoxyCodeLine{import\ foo\ from\ './foo.js';}
+\DoxyCodeLine{const\ \{bar\}\ =\ foo;}
+
+\end{DoxyCode}
+ 

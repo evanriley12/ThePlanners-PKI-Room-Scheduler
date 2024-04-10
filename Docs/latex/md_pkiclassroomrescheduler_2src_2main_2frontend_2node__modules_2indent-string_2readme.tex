@@ -1,0 +1,49 @@
+\chapter{indent-\/string \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/indent-\/string"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/indent-\/string.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme}\index{indent-\/string $<$a href="{}https://travis-\/ci.org/sindresorhus/indent-\/string"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/indent-\/string.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{indent-\/string $<$a href=""https://travis-\/ci.org/sindresorhus/indent-\/string"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/indent-\/string.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14284}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14284}%
+ \begin{quote}
+Indent each line in a string \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14285}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14285}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ indent-\/string}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14286}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14286}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ indentString\ =\ require('indent-\/string');}
+\DoxyCodeLine{}
+\DoxyCodeLine{indentString('Unicorns\(\backslash\)nRainbows',\ 4);}
+\DoxyCodeLine{//=>\ '\ \ \ \ Unicorns\(\backslash\)n\ \ \ \ Rainbows'}
+\DoxyCodeLine{}
+\DoxyCodeLine{indentString('Unicorns\(\backslash\)nRainbows',\ 4,\ \{indent:\ '♥'\});}
+\DoxyCodeLine{//=>\ '♥♥♥♥Unicorns\(\backslash\)n♥♥♥♥Rainbows'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14287}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14287}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14288}{}\doxysubsection{\texorpdfstring{indent\+String(string, \mbox{[}count\mbox{]}, \mbox{[}options\mbox{]})}{indent\+String(string, \mbox{[}count\mbox{]}, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14288}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14289}{}\doxysubsubsection{\texorpdfstring{string}{string}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14289}
+Type\+: {\ttfamily string}
+
+The string to indent.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14290}{}\doxysubsubsection{\texorpdfstring{count}{count}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14290}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily 1}
+
+How many times you want {\ttfamily options.\+indent} repeated.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14291}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14291}
+Type\+: {\ttfamily object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14292}{}\doxyparagraph{\texorpdfstring{indent}{indent}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14292}
+Type\+: {\ttfamily string}~\newline
+ Default\+: `' \textquotesingle{}\`{}
+
+The string to use for the indent.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14293}{}\doxyparagraph{\texorpdfstring{include\+Empty\+Lines}{include\+Empty\+Lines}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14293}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily false}
+
+Also indent empty lines.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14294}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14294}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/indent-string-cli}{\texttt{ indent-\/string-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/strip-indent}{\texttt{ strip-\/indent}} -\/ Strip leading whitespace from every line in a string
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14295}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2indent-string_2readme_autotoc_md14295}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

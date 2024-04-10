@@ -1,0 +1,24 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e}\index{README@{README}}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13761}{}\doxysection{\texorpdfstring{HTTP Parser}{HTTP Parser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13761}
+This library parses HTTP protocol for requests and responses. It was created to replace {\ttfamily http\+\_\+parser.\+c} since calling C++ functions from JS is really slow in V8. However, it is now primarily useful in having a more flexible/tolerant HTTP parser when dealing with legacy services that do not meet the strict HTTP parsing rules Node\textquotesingle{}s parser follows.
+
+This is packaged as a standalone npm module. To use in node, monkeypatch HTTPParser.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Monkey\ patch\ before\ you\ require\ http\ for\ the\ first\ time.}
+\DoxyCodeLine{process.binding('http\_parser').HTTPParser\ =\ require('http-\/parser-\/js').HTTPParser;}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ http\ =\ require('http');}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13762}{}\doxysubsection{\texorpdfstring{Testing}{Testing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13762}
+Simply run {\ttfamily npm test}. The tests are copied from node and mscedex/io.\+js, with some modifcations.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13763}{}\doxysubsection{\texorpdfstring{Status}{Status}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13763}
+This should now be usable in any node application, it now supports (nearly) everything {\ttfamily http\+\_\+parser.\+c} does while still being tolerant with corrupted headers, and other kinds of malformed data.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13764}{}\doxysubsubsection{\texorpdfstring{Node versions}{Node versions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13764}
+{\ttfamily http-\/parser-\/js} should work via monkey-\/patching on Node v6-\/v11, and v13-\/14.
+
+Node v12.\+x renamed the internal http parser, and did not expose it for monkey-\/patching, so to be able to monkey-\/patch on Node v12, you must run {\ttfamily node -\/-\/http-\/parser=legacy file.\+js} to opt in to the old, monkey-\/patchable http\+\_\+parser binding.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13765}{}\doxysubsection{\texorpdfstring{Standalone usage}{Standalone usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13765}
+While this module is intended to be used as a replacement for the internal Node.\+js parser, it can be used as a standalone parser. The \href{standalone-example.js}{\texttt{ {\ttfamily standalone-\/example.\+js}}} demonstrates how to use the somewhat awkward API (coming from compatibility with the Node.\+js internals) to parse HTTP from raw Buffers.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13766}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_r_e_a_d_m_e_autotoc_md13766}
+MIT. See \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2http-parser-js_2_l_i_c_e_n_s_e}{LICENSE.md}{0} 

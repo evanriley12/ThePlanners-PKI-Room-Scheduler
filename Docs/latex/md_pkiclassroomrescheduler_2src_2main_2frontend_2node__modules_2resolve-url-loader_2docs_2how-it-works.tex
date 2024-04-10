@@ -1,0 +1,169 @@
+\chapter{How it works}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works}\index{How it works@{How it works}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20653}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20653}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20654}{}\doxysection{\texorpdfstring{The problem}{The problem}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20654}
+The {\ttfamily resolve-\/url-\/loader} is typically used where SASS source files are transpiled to CSS. CSS being a format that webpack can readily ingest. So let\textquotesingle{}s look at a basic example where the structure is basically CSS but is composed using SASS features.
+
+Working backwards, this is the final CSS we are after. Just a single rule with a single declaration.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.cool\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ url(cool.png);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+When using SASS it\textquotesingle{}s common for rules to come from different \href{https://sass-lang.com/documentation/at-rules/import\#partials}{\texttt{ partials}}, and for declarations to be composed using mixins and functions. Consider this more complicated project with imported files.
+
+
+
+All the subdirectories here contributed something to the rule, so we could reasonably place the asset in any of them. And any of these locations might be the "{}correct"{} to our way of thinking.
+
+There could actually be a separate {\ttfamily cool.\+png} in each of the subdirectories! 🤯 In that case, which one gets used?
+
+The answer\+: none. 😞 Webpack expects asset paths to be relative to the root SASS file {\ttfamily src/styles.\+scss}. So for the CSS {\ttfamily url(cool.\+png)} it will look for {\ttfamily src/cool.\+png} which is not present. 💥
+
+All our assets are in subdirecties {\ttfamily src/foo/cool.\+png} or {\ttfamily src/foo/bar/cool.\+png} or {\ttfamily src/foo/bar/baz/cool.\+png}. We need to re-\/write the {\ttfamily url()} to point to the one we intend. But right now that\textquotesingle{}s pretty ambiguous.
+
+Worse still, Webpack doesn\textquotesingle{}t know any of these nested SCSS files were part of the SASS composition. Meaing it doesn\textquotesingle{}t know there {\itshape are} nested directories in the first place. How do we rewite to something we don\textquotesingle{}t know about?
+
+{\bfseries{The problem\+:}} How to identify contributing directectories and look for the asset in those directories in some well-\/defined priority order?
+
+{\bfseries{The crux\+:}} How to identify what contributed to the SASS compilation, internally and post factum, but from within Webpack? 😫\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20655}{}\doxysection{\texorpdfstring{The solution}{The solution}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20655}
+Sourcemaps! 😃
+
+Wait, don\textquotesingle{}t run away! Sourcemaps might sound scary, but they solve our problem reasonably well. 👍
+
+The SASS compiler source-\/map can tell us which original SCSS file contributed each character in the resulting CSS.
+
+The SASS source-\/map is also something we can access from within Webpack.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20656}{}\doxysubsection{\texorpdfstring{concept}{concept}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20656}
+Continuing with the example let\textquotesingle{}s compile SASS on the command line. You can do this several different ways but I prefer \href{https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner}{\texttt{ npx}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ npx\ node-\/sass\ src/styles.scss\ -\/-\/output\ .\ -\/-\/output-\/style\ expanded\ -\/-\/source-\/map\ true}
+
+\end{DoxyCode}
+
+
+Using the experimental {\ttfamily sourcemap-\/to-\/string} package (also in this repository) we can visualise the SASS source on the left vs the output CSS on the right.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{src/styles.scss\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{src/foo/\_partial.scss\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{3:01\ .cool░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ 1:01\ .cool░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{3:06\ ░░░░░\ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ 1:06\ ░░░░░\ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{3:07\ ░░░░░░\{⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1:07\ ░░░░░░\{⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ @include\ cool-\/background-\/image;⏎\ \ \ \ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{\ \ \ \ \ \}░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ \ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{-\/:-\/-\/\ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ 3:02\ ░⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ \ \ \ \ \ ⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ \ \ \ \ \ /*\#\ sourceMappingURL=styles.css.ma}
+\DoxyCodeLine{\ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ \ \ \ \ \ p\ */░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{src/foo/bar/\_mixins.scss\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{4:03\ ░░background-\/image░░░░░░░░░░░░░░░░\ 2:03\ ░░background-\/image░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{4:19\ ░░░░░░░░░░░░░░░░░░:\ get-\/url("{}cool"{}\ 2:19\ ░░░░░░░░░░░░░░░░░░:\ ░░░░░░░░░░░░░░}
+\DoxyCodeLine{\ \ \ \ \ );⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{\ \ \ \ \ \}⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{src/foo/bar/baz/\_functions.scss\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{2:11\ ░░░░░░░░░░url(\#░░░░░░░░░░░░░░░░░░░\ 2:21\ ░░░░░░░░░░░░░░░░░░░░url(cool.png)░}
+\DoxyCodeLine{2:16\ ░░░░░░░░░░░░░░░\{\$temp\}.png);⏎\ \ \ \ \ \ 2:34\ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░;}
+\DoxyCodeLine{\ \ \ \ \ \}░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ \ \ \ \ \ ⏎\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\ \ \ \ \ \ \}░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░}
+
+\end{DoxyCode}
+
+
+As expected, the pure CSS portions are essentially the same in the source and the output.
+
+Meanwhile the indirect {\ttfamily @mixin} and {\ttfamily funtion} substitutes values into the output. But we can still clearly see where in the source that final value originated from.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20657}{}\doxysubsection{\texorpdfstring{algorithm}{algorithm}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20657}
+Now we know the original SCSS sources we can use a CSS parser such as {\ttfamily postcss} to process all the declaration values that contain {\ttfamily url()} and rewrite any file paths we find there.
+
+
+\begin{DoxyEnumerate}
+\item Enumerate all declaration values
+\item Split the value into path substrings
+\item Evaluate the source-\/map at that location, find the original source file
+\item Rebase the path to that original source file.
+\end{DoxyEnumerate}
+
+For our example, this algorithm will always give us the asset located in the {\ttfamily baz} subdirectory. Clearly evaluating the source-\/map at just one location is not enough. Any of the directories that contributed source files to the rule-\/set might be considered the "{}correct"{} place to store the asset and all these files contributed different parts of the rule-\/set, not just the declaration value.
+
+We stop short of evaluating the source-\/map for {\itshape every characer} in the rule-\/set and instead we chose a small number of meaningful points.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ label   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sampling location   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ in the example   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ implies asset    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ label   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ sampling location   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ in the example   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ implies asset    }\\\cline{1-5}
+\endhead
+1   &sub\+String   &start of {\bfseries{argument}} to the {\ttfamily url()}   &{\ttfamily c} in {\ttfamily cool.\+png}   &{\ttfamily src/foo/bar/baz/cool.\+png}    \\\cline{1-5}
+2   &value   &start of {\bfseries{value}} in the declaration   &{\ttfamily u} in {\ttfamily url(...)}   &{\ttfamily src/foo/bar/baz/cool.\+png}    \\\cline{1-5}
+3   &property   &start of {\bfseries{property}} in the declaration   &{\ttfamily b} in {\ttfamily background-\/image}   &{\ttfamily src/foo/bar/cool.\+png}    \\\cline{1-5}
+4   &selector   &start of {\bfseries{selector}} in the rule-\/set   &{\ttfamily .} in {\ttfamily .selector}   &{\ttfamily src/foo/cool.\+png}   \\\cline{1-5}
+\end{longtabu}
+
+
+These locations are tested in order. If an asset of the correct filename is found then we break and use that result.
+
+Note it is a quirk of the example that the {\ttfamily value} and {\ttfamily sub\+String} locations imply the same file. In a more complex example this may not be true.
+
+If necessary the order can be customised or a custom file search (starting at each location) be implemented. Refer to the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2advanced-features}{advanced features}{0}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20658}{}\doxysubsection{\texorpdfstring{webpack}{webpack}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20658}
+To operate on the {\ttfamily sass-\/loader} output, both {\bfseries{CSS}} and {\bfseries{source-\/map}}, we introduce {\ttfamily resolve-\/url-\/loader} containing the algorithm above.
+
+The {\ttfamily resolve-\/url-\/loader} rewrites asset paths found in {\ttfamily url()} notation using the {\ttfamily postcss} parser.
+
+This webpack configuration outlines some important points.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rules:\ [}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ test:\ /\(\backslash\).scss\$/,}
+\DoxyCodeLine{\ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'css-\/loader'\ \ //\ <-\/-\/\ assets\ are\ identified\ here}
+\DoxyCodeLine{\ \ \ \ \ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'resolve-\/url-\/loader'\ \ //\ <-\/-\/\ receives\ CSS\ and\ source-\/map\ from\ SASS\ compile}
+\DoxyCodeLine{\ \ \ \ \ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'sass-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ sourceMap:\ true,\ \ //\ <-\/-\/\ IMPORTANT!}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ sourceMapContents:\ false}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ test:\ /\(\backslash\).png\$/,\ \ //\ <-\/-\/\ assets\ needs\ their\ own\ loader\ configuration}
+\DoxyCodeLine{\ \ \ \ use:\ [\ ...\ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+Its essential to explicitly configure the {\ttfamily sass-\/loader} for {\ttfamily source\+Map\+: true}. That way we definitely get a sourcemap from upstream SASS loader all the time, not just in developement mode or where {\ttfamily devtool} is used.
+
+Once the CSS reaches the {\ttfamily css-\/loader} webpack becomes aware of each of the asset files and will try to separately load and process them. You will need more Webpack configuration to make that work. Refer to the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2troubleshooting}{troubleshooting docs}{0} before raising an issue.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20659}{}\doxysubsection{\texorpdfstring{beyond...?}{beyond...?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works_autotoc_md20659}
+The implementation here is limited to the webpack loader but it\textquotesingle{}s plausible the algorithm could be realised as a {\ttfamily postcss} plugin in isolation using the \href{https://postcss.org/api/\#postcss-input}{\texttt{ root.\+input.\+map}} property to access the incomming source-\/map.
+
+As a separate plugin it could be combined with other plugins in a single {\ttfamily postcss-\/loader} step. Processing multiple plugins together in this way without reparsing would arguably be more efficient.
+
+However as a Webpack loader we have full access to the loader API and the virtual file-\/system. This means maximum compatibility with {\ttfamily webpack-\/dev-\/server} and the rest of the Webpack ecosystem. 

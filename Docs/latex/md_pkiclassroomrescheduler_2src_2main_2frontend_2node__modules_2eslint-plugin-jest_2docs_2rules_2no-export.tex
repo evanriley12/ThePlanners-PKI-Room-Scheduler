@@ -1,0 +1,43 @@
+\chapter{Disallow using \texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}exports\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>} in files containing tests (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/export\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export}\index{Disallow using $<$tt$>$exports$<$/tt$>$ in files containing tests ($<$tt$>$no-\/export$<$/tt$>$)@{Disallow using $<$tt$>$exports$<$/tt$>$ in files containing tests ($<$tt$>$no-\/export$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export_autotoc_md10400}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export_autotoc_md10400}%
+ Prevents using {\ttfamily exports} if a file has one or more tests in it.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export_autotoc_md10401}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export_autotoc_md10401}
+This rule aims to eliminate duplicate runs of tests by exporting things from test files. If you import from a test file, then all the tests in that file will be run in each imported instance, so bottom line, don\textquotesingle{}t export from a test, but instead move helper functions into a separate file when they need to be shared across tests.
+
+Examples of {\bfseries{incorrect}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ function\ myHelper()\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ function\ ()\ \{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ something:\ 'that\ should\ be\ moved\ to\ a\ non-\/test\ file',}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('a\ test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ expect(1).toBe(1);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ myHelper()\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ myThing\ =\ \{}
+\DoxyCodeLine{\ \ something:\ 'that\ can\ live\ here',}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('a\ test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ expect(1).toBe(1);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export_autotoc_md10402}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export_autotoc_md10402}
+Don\textquotesingle{}t use this rule on non-\/jest test files. 

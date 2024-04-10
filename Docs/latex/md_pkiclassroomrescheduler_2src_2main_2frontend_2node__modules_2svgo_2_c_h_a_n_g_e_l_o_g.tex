@@ -1,0 +1,601 @@
+\chapter{\mbox{[} \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/svg/svgo/tree/v1.\+3.\+2"{} \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \mbox{]} 1.3.2 / 30.10.2019}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g}\index{\mbox{[} $<$a href="{}https://github.com/svg/svgo/tree/v1.3.2"{} $>$$>$$<$/a$>$ \mbox{]} 1.3.2 / 30.10.2019@{[ $<$a href=""https://github.com/svg/svgo/tree/v1.3.2"" $>$$>$$<$/a$>$ ] 1.3.2 / 30.10.2019}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24241}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24241}%
+
+\begin{DoxyItemize}
+\item Fixed Type\+Error\+: Cannot set property \textquotesingle{}multipass\+Count\textquotesingle{} of undefined
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24242}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.3.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+3.\+1 / 29.\+10.\+2019}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.3.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+3.\+1 / 29.\+10.\+2019}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24242}
+
+\begin{DoxyItemize}
+\item Updated CSSO version to 4.\+0.\+2 fixing the issue with empty semicolons "{};;"{} in styles (thanks to @strarsis and @lahmatiy).
+\item {\ttfamily prefix\+Ids} plugin now runs only once with {\ttfamily -\/-\/multipass} option (by @strarsis).
+\item {\ttfamily cleanup\+IDs} plugin is prevented from producing a preserved ID, including one which matches a preserved prefix, when minifying (by @thomsj).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24243}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.3.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+3.\+0 / 14.\+07.\+2019}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.3.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+3.\+0 / 14.\+07.\+2019}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24243}
+
+\begin{DoxyItemize}
+\item Custom plugins now can be loaded from external js through {\ttfamily path} plugin param.
+\item New plugin {\ttfamily convert\+Ellipse\+To\+Circle} to convert ellipse with equal radius measures to circle (by @tigt).
+\item New plugin {\ttfamily sort\+Defs\+Children} for improved compression (by @davidleston).
+\item SVGO now removes unnecessary spaces after {\ttfamily arcto} path command flags.
+\item {\ttfamily remove\+Dimensions} plugin now adds {\ttfamily view\+Box} if it\textquotesingle{}s missing (by @adipascu).
+\item Fixed {\ttfamily remove\+Unused\+NS} not counting attributes in {\ttfamily \texorpdfstring{$<$}{<}svg\texorpdfstring{$>$}{>}} tag itself.
+\item Fixed an issue with incorrect processing multiple images (by @cyberalien).
+\item Fixed an error with incorrect converting multiple segmented curve to an arc.
+\item Fixed an error with matrix decomposition in {\ttfamily convert\+Transform} due to rounding error leading to illegal value.
+\item Added {\ttfamily force} option for {\ttfamily merge\+Paths} plugin (by @goyney).
+\item Added options to {\ttfamily prefix\+Ids} plugin for selectively prefixing IDs and/or classes (by @strarsis).
+\item Exported config function (by @1000ch).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24244}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.2.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+2.\+2 / 16.\+04.\+2019}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.2.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+2.\+2 / 16.\+04.\+2019}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24244}
+
+\begin{DoxyItemize}
+\item Update js-\/yaml for Code Injection warning (by @kaungst).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24245}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.2.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+2.\+1 / 04.\+04.\+2019}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.2.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+2.\+1 / 04.\+04.\+2019}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24245}
+Some goodness from pull-\/requests.
+\begin{DoxyItemize}
+\item Bump up js-\/yaml version to fix DoS vulnerability (by @eugestarr).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24246}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.2.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+2.\+0 / 24.\+02.\+2019}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.2.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+2.\+0 / 24.\+02.\+2019}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24246}
+Some goodness from pull-\/requests.
+\begin{DoxyItemize}
+\item Fixed extra blank lines when processing many files (by @panczarny).
+\item Added {\ttfamily -\/-\/recursive} option to process folders recursevely with option {\ttfamily -\/f} (by @dartess).
+\item Added {\ttfamily remove\+Attributes\+By\+Selector} plugin to remove elements matching a css selector (by @bmease).
+\item Added {\ttfamily remove\+Off\+Canvas\+Paths} plugin to remove elements outside of the viewbox (by @\+Joshy\+PHP).
+\item {\ttfamily remove\+Attrs} plugin\+: added {\ttfamily preserve\+Current\+Color} color (by @roblevintennis) and 3rd optional filter for a value (by @\+Herman-\/Freund).
+\item Added {\ttfamily reuse\+Paths} plugin to replace duplicated elements with link (by @jhowcrof).
+\item Added support of comma-\/separated plugins list in {\ttfamily -\/-\/disable} and {\ttfamily -\/-\/enable} options (by @jmwebservices).
+\item Added option to preserve IDs based on prefix in {\ttfamily cleanup\+IDs} plugin (by @bkotzz).
+\item Replaced {\ttfamily colors} dependency with {\ttfamily chalk} (by @x\+Paw).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24247}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.1.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+1.\+1 / 17.\+09.\+2018}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.1.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+1.\+1 / 17.\+09.\+2018}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24247}
+
+\begin{DoxyItemize}
+\item Fixed crash in {\ttfamily SVGO.\+optimize()} when ‘info’ is absent.
+\item Removed extra space after {\ttfamily cleanup\+List\+Of\+Values} plugin.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24248}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.1.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+1.\+0 / 16.\+09.\+2018}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.1.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+1.\+0 / 16.\+09.\+2018}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24248}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily collapse\+Groups} plugin removing property with a child having {\ttfamily inherit} value.
+\item {\ttfamily version} attribute value is not more being rounded.
+\item Fixed js\+API {\ttfamily clone} method with respect to the introduced CSS classes.
+\item Fixed scaling strokes with {\ttfamily vector-\/effect="{}non-\/scaling-\/stroke"{}} (by @alexjlockwood).
+\item Fixed passing properties from groups in {\ttfamily collapse\+Groups} plugin if child have a filter (by @stristr).
+\item Fixed arc path commands parsing without separators after flags, effectively producing a JS error.
+\item Fixed {\ttfamily view\+Box} separators parsing.
+\item Fixed {\ttfamily remove\+Non\+Inheritable\+Group\+Attrs} plugin to work as intended.
+\item Fixed removing path segments without length in presence of {\ttfamily stroke-\/linecap}.
+\item Fixed {\ttfamily remove\+Unknowns\+And\+Defaults} plugin removing attributes from elements with {\ttfamily id}.
+\item Fixed converting to large arcs from nearly straight lines curves.
+\item Fixed {\ttfamily collapse\+Groups} plugin affecting {\ttfamily \texorpdfstring{$<$}{<}switch\texorpdfstring{$>$}{>}} and its subgroups.
+\item Fixed {\ttfamily convert\+Transform} plugin converting to {\ttfamily rotate()} with wrong sign in some case.
+\item Fixed {\ttfamily cleanup\+List\+Of\+Values} plugin not preserving non-\/numeric values.
+\item Fixed {\ttfamily !important} being passed to attributes in {\ttfamily convert\+Style\+To\+Attrs} plugin.
+\item Added option {\ttfamily keep\+Important} to {\ttfamily convert\+Style\+To\+Attrs} plugin to preserve styles with {\ttfamily !important}.
+\item {\ttfamily remove\+Hidden\+Elems} plugin now also removes elements with {\ttfamily visibility="{}hidden"{}} attribute (by @mikolaj92).
+\item Added {\ttfamily force\+Absolute\+Path} option to {\ttfamily convert\+Path\+Data} plugin to always use absolute coordinates (by @cool).
+\item Added {\ttfamily keep\+Role\+Attr} for {\ttfamily remove\+Unknowns\+And\+Defaults} plugin to preserve {\ttfamily role-\/} attributes (by @himedlooff).
+\item Added {\ttfamily xmlns} order option in {\ttfamily sort\+Attrs} plugin (by @hellatan).
+\item Added an option to {\ttfamily prefix\+Ids} plugin to pass prefix as false or as a function that returns false (by @vzaidman).
+\item {\ttfamily prefix\+Ids} plugin now adds prefix to every class (by @vzaidman).
+\item Updated and improved docs a bit (multiple authors).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24249}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+5 / 26.\+02.\+2018}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+5 / 26.\+02.\+2018}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24249}
+
+\begin{DoxyItemize}
+\item Fixed issue with prefix\+IDs plugin not replacing url() values correctly (by @harrisjose).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24250}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+4 / 30.\+01.\+2018}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+4 / 30.\+01.\+2018}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24250}
+
+\begin{DoxyItemize}
+\item Fixed bug with removing groups that are direct child of "{}$<$switch$>$"{}.
+\item Fixed bug with shorthand path points counting (thanks @alexjlockwood for noticing).
+\item Fixed crash on parsing invalid transform, e.\+g. without close parenthesis.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24251}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+3 / 08.\+11.\+2017}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+3 / 08.\+11.\+2017}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24251}
+
+\begin{DoxyItemize}
+\item Fixed {\ttfamily remove\+View\+Box} plugin to check for zero start coordinates.
+\item Removed extra info from STDOUT when it set to output.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24252}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+2 / 03.\+11.\+2017}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+2 / 03.\+11.\+2017}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24252}
+
+\begin{DoxyItemize}
+\item Fixed a couple of errors related to {\ttfamily inline\+Styles} plugin.
+\item Updated some lost details in documentation to reflect v1.\+0 changes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24253}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+1 / 31.\+10.\+2017}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+1 / 31.\+10.\+2017}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24253}
+
+\begin{DoxyItemize}
+\item Fixed error “\+Object.\+define\+Property called on non-\/object” in images with {\ttfamily \texorpdfstring{$<$}{<}foreign\+Object/\texorpdfstring{$>$}{>}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24254}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+0 / 30.\+10.\+2017}{\mbox{[} \href{https://github.com/svg/svgo/tree/v1.0.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 1.\+0.\+0 / 30.\+10.\+2017}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24254}
+
+\begin{DoxyItemize}
+\item SVGO now requires Node 4 or higher.
+\item Changed CLI syntax to treat filenames as input, thus allowing {\ttfamily svgo \texorpdfstring{$\ast$}{*}.svg} syntax.
+\item {\ttfamily SVGO.\+optimize()} now returns {\ttfamily Promise}.
+\item Added {\ttfamily datauri} option to JS API.
+\item Added support for SVG 2 {\ttfamily href} attribute.
+\item {\ttfamily cleanup\+IDs} now don\textquotesingle{}t removes IDs if an image consists only of {\ttfamily defs}.
+\item New plugin {\ttfamily inline\+Styles} for converting styles from {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} element to attributes if possible (by @strarsis).
+\item {\ttfamily cleanup\+Numeric\+Values} now rounds values in {\ttfamily view\+Box} (by @caub).
+\item New plugin\+: {\ttfamily remove\+Script\+Element} (disabled by default) to align with {\ttfamily remove\+Style\+Element} (by @pklingem).
+\item {\ttfamily minify\+Styles} now removes styles based on usage with controlling options (by @lahmatiy).
+\item New option {\ttfamily except} in {\ttfamily cleanup\+IDs} to keep IDs (by @\+Velenir).
+\item New option {\ttfamily force} in {\ttfamily cleanup\+IDs} to work even if SVG contains {\ttfamily style} or {\ttfamily script} elements (by @\+Velenir).
+\item Fixed arcs transforming with different signed {\ttfamily scale} parameters (by @\+Joshy\+PHP).
+\item Fixed {\ttfamily remove\+Useless\+Stroke\+And\+Fill} to check for {\ttfamily style} or {\ttfamily script} elements per file (by @caub).
+\item New option {\ttfamily keep\+Aria\+Attrs} in {\ttfamily remove\+Unknowns\+And\+Defaults} (by @davidtheclark).
+\item Corrected parsing in {\ttfamily cleanup\+IDs} to account animation syntax (by @caub).
+\item {\ttfamily \#ff0000} now converts to {\ttfamily red} as well as {\ttfamily \#f00} (by @davidleston).
+\item Added “gray” variation to colors list per CSS Color Module Level 4 (by @ydaniv).
+\item Fixed error on empty files.
+\item A separator character in {\ttfamily remove\+Attrs} now can be changed per {\ttfamily elem\+Separator} option (by @mikestreety).
+\item {\ttfamily add\+Attributes\+To\+SVGElement} now can add values to attributes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24255}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.7.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+7.\+2 / 29.\+01.\+2017}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.7.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+7.\+2 / 29.\+01.\+2017}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24255}
+
+\begin{DoxyItemize}
+\item Extended {\ttfamily current\+Color} match conditions (string, rx, bool) (by @\+Alimov\+SV)
+\item Fixed removing {\ttfamily \texorpdfstring{$<$}{<}animate\texorpdfstring{$>$}{>}} in {\ttfamily \texorpdfstring{$<$}{<}stop\texorpdfstring{$>$}{>}}.
+\item Fixed removing same transform in inner element in {\ttfamily remove\+Unknowns\+And\+Defaults}.
+\item Fixed collapsing groups with same non-\/inheritable attribute.
+\item Corrected removing of leading zero in case of exponential notation.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24256}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.7.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+7.\+1 / 27.\+09.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.7.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+7.\+1 / 27.\+09.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24256}
+
+\begin{DoxyItemize}
+\item Reverted the requirement of Node.\+js to version 0.\+10.
+\item Added {\ttfamily add\+Attributes\+To\+SVGElement} to the default config to allow using it with {\ttfamily -\/-\/enable} option.
+\item Added korean translation of “\+How it works” doc (by @primeiros).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24257}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.7.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+7.\+0 / 25.\+08.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.7.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+7.\+0 / 25.\+08.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24257}
+
+\begin{DoxyItemize}
+\item Required Node.\+js version has increased to 0.\+12.
+\item New plugins\+: {\ttfamily remove\+Elements\+By\+Attr} (by IDs or classes) by @elidupuis, {\ttfamily add\+Attributes\+To\+SVGElement} by @gjjones, {\ttfamily remove\+XMLNS} (for SVG inlining) by @ricardobeat.
+\item Tests now correctly pass in Windows with CRLF line endings. Pretty print now accounts system line endings.
+\item Fixed bugs with collapsing groups with masks and transforms in {\ttfamily collapse\+Groups}.
+\item Fixed bugs with erroneous removing IDs in {\ttfamily cleanup\+IDs}.
+\item Improved attributes sorting in {\ttfamily sort\+Attrs} by @darktrojan.
+\item {\ttfamily add\+Classes\+To\+SVGElement} no more repeats classes (by @ricardobeat).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24258}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+6 / 25.\+04.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+6 / 25.\+04.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24258}
+
+\begin{DoxyItemize}
+\item Corrected CSSO API usage
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24259}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+5 / 25.\+04.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+5 / 25.\+04.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24259}
+
+\begin{DoxyItemize}
+\item Extra content inserted by editors are now being removed within {\ttfamily \texorpdfstring{$<$}{<}foreign\+Object\texorpdfstring{$>$}{>}} as well thus fixing bug “\+Namespace prefix … is not defined“ after applying SVGO.
+\item Doctype with entities declaration is now also being removed since svgo correctly parses them starting from the version \href{https://github.com/svg/svgo/tree/v0.6.2}{\texttt{ 0.\+6.\+2}}.
+\item Corrected {\ttfamily move\+Group\+Attrs\+To\+Elems} not to move attributes to {\ttfamily g} content if it\textquotesingle{}s referenced (has an {\ttfamily id}).
+\item {\ttfamily collapse\+Groups} now don\textquotesingle{}t collapse a group if it has an animated attribute (SMIL).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24260}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+4 / 05.\+04.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+4 / 05.\+04.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24260}
+
+\begin{DoxyItemize}
+\item Fixed bug in “\href{https://github.com/svg/svgo/blob/master/plugins/convertStyleToAttrs.js}{\texttt{ convert\+Style\+To\+Attrs}}” plugin with converting styling properties to non-\/existent attributes (which are normally removed later by {\ttfamily remove\+Unknowns\+And\+Defaults}).
+\item Added {\ttfamily -\/-\/indent} option to style pretty-\/printed SVG. (e.\+g. {\ttfamily -\/-\/indent 2}) (by @scurker).
+\item Added {\ttfamily current\+Color} param to {\ttfamily convert\+Colors} plugin for converting values like {\ttfamily fill} and {\ttfamily stroke} to {\ttfamily current\+Color} (by @scurker).
+\item Bumped CSSO to the current version and used \href{https://github.com/css/csso\#api}{\texttt{ its new shiny API}} (thanks to @lahmatiy).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24261}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+3 / 20.\+03.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+3 / 20.\+03.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24261}
+
+\begin{DoxyItemize}
+\item Smart rounding (introduced in 0.\+4.\+5) now applies only when rounding is needed, thus making subsequent passes more stable.
+\item Fixed regression in converting curves to arcs.
+\item {\ttfamily xlink\+:href} references are now being checked by local name {\ttfamily href}, thus correctly working with another namespace prefix.
+\item Fixed {\ttfamily id} removing with disabled {\ttfamily plugins/convert\+Style\+To\+Attrs.\+js}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24262}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+2 / 08.\+03.\+2016}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+2 / 08.\+03.\+2016}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24262}
+
+\begin{DoxyItemize}
+\item Better error handling and messaging improvements.
+\item SVG files with XML entities (e.\+g. from Adobe Illustrator) are now correctly being parsed.
+\item Fixed error on converting curves to arcs.
+\item Corrected rounding in subsequent passes with {\ttfamily -\/-\/multipass} option.
+\item Data URI option now handles charset (by @holymonson)
+\item Transformations are no longer moved to group if there is a mask ({\ttfamily plugins/move\+Elems\+Attrs\+To\+Group.\+js}).
+\item Fixed matrix decomposition losing sign in case like {\ttfamily \mbox{[}1, 0, 0, -\/1, 0, 0\mbox{]}} ({\ttfamily scale(1 -\/1)}).
+\item Fixed crash on uppercased color name.
+\item Paths with {\ttfamily id} and without {\ttfamily stroke-\/width} aren\textquotesingle{}t being transformed now since {\ttfamily stroke-\/width} may be applied later.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24263}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+1 / 21.\+11.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+1 / 21.\+11.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24263}
+
+\begin{DoxyItemize}
+\item Added option {\ttfamily -\/-\/quiet} to suppress output (by @phihag).
+\item Removed {\ttfamily lib-\/cov} folder from the package, which was erroneously included before.
+\item Fixed errors in “\href{https://github.com/svg/svgo/blob/master/plugins/minifyStyles.js}{\texttt{ minify\+Styles}}” when there are {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} elements with {\ttfamily CDATA} content or without content at all.
+\item Amended transform functions parsing to prevent errors when there are no separators between numbers (which isn\textquotesingle{}t allowed by syntax, but understood by browsers).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24264}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+0 / 08.\+11.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.6.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+6.\+0 / 08.\+11.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24264}
+
+\begin{DoxyItemize}
+\item New optimization\+: circular curves now being converted to arcs. A notable improvement for circles within paths.
+\item New plugin “\href{https://github.com/svg/svgo/blob/master/plugins/minifyStyles.js}{\texttt{ minify\+Styles}}” which minifies {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} elments content with CSSO by @strarsis (svgo still doesn\textquotesingle{}t understand its content)
+\item New plugin “\href{https://github.com/svg/svgo/blob/master/plugins/removeStyleElement.js}{\texttt{ remove\+Style\+Element}}” (disabled by default) by @betsydupuis.
+\item Fixed issues with parsing numbers with exponent fraction (could happen with high precision \texorpdfstring{$>$}{>}= 7).
+\item Fixed rounding error due to incorrect preserving of precision in transformations.
+\item Fixed shorthand curve distortion due to converted previous curve to not a curve.
+\item Fixed interoperability issue with {\ttfamily precision} cli-\/option and {\ttfamily full} config.
+\item Fixed an error produced by “\href{https://github.com/svg/svgo/blob/master/plugins/removeUnknownsAndDefaults.js}{\texttt{ remove\+Unknowns\+And\+Defaults}}” by @thiakil
+\item Another Inkscape prefix namespace is being removed.
+\item Fixed an issue in \href{https://github.com/svg/svgo/blob/master/plugins/moveElemsAttrsToGroup\%E2\%80\%9C.js}{\texttt{ move\+Elems\+Attrs\+To\+Group“}}” with transforms moved around {\ttfamily clip-\/path}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24265}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+6 / 13.\+08.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+6 / 13.\+08.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24265}
+
+\begin{DoxyItemize}
+\item Fixed paths removing.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24266}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+5 / 05.\+08.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+5 / 05.\+08.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24266}
+
+\begin{DoxyItemize}
+\item Reverted debugging changes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24267}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+4 / 05.\+08.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+4 / 05.\+08.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24267}
+
+\begin{DoxyItemize}
+\item New parameter {\ttfamily use\+Short\+Tags} by @bradbarrow. Now svgo can produce correct non-\/selfclosing tags (useful in HTML in old browsers).
+\item Fixed failing on empty transformation (which could be produced by two opposite).
+\item Fixed removing paths which have numbers with exponent notation.
+\item Fixed a bug with arc transformation.
+\item Some typo fixes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24268}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+3 / 21.\+06.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+3 / 21.\+06.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24268}
+
+\begin{DoxyItemize}
+\item Fixed breaking related to rounding functions in “\href{https://github.com/svg/svgo/blob/master/plugins/convertTransform.js}{\texttt{ convert\+Transform}}”.
+\item Fixed a bug with ID in animations not being worked on by “\href{https://github.com/svg/svgo/blob/master/plugins/cleanupIDs.js}{\texttt{ cleanup\+IDs}}”.
+\item Fixed a bug with quoted reference in {\ttfamily url()}.
+\item Now, if there are several same IDs in the document, then the first one is used and others are being removed.
+\item New command-\/line option {\ttfamily -\/-\/show-\/plugins} displaying list of plugins.
+\item Two new optional plugins\+: “\href{https://github.com/svg/svgo/blob/master/plugins/removeDimensions.js}{\texttt{ remove\+Dimensions}}” (removes {\ttfamily width} and {\ttfamily height} if there is {\ttfamily view\+Box}) and “\href{https://github.com/svg/svgo/blob/master/plugins/removeAttrs.js}{\texttt{ remove\+Attrs\+Plugin}}” (by @bennyschudel).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24269}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+2 / 24.\+05.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+2 / 24.\+05.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24269}
+
+\begin{DoxyItemize}
+\item Introduced new {\ttfamily transform\+Precision} option for better image quality (defaults to 5) in “\href{https://github.com/svg/svgo/blob/master/plugins/convertTransform.js}{\texttt{ convert\+Transform}}” and “\href{https://github.com/svg/svgo/blob/master/plugins/convertPathData.js}{\texttt{ convert\+Path\+Data}}” (for the purpose of applying transformations) plugins.
+\item Matrix transformations now can be decomposed into a combination of few simple transforms like {\ttfamily translate}, {\ttfamily rotate}, {\ttfamily scale}.
+\item Arcs (paths {\ttfamily arcto} command) are now correctly being transformed into another arcs without being converting to Bezier curves.
+\item Fixed an issue with “\href{https://github.com/svg/svgo/blob/master/plugins/mergePaths.js}{\texttt{ merge\+Paths}}” failing to detect paths intersection in some cases.
+\item Fixed a bug with “\href{https://github.com/svg/svgo/blob/master/plugins/removeUnknownsAndDefaults.js}{\texttt{ remove\+Unknowns\+And\+Defaults}}” removing some paths, which was introduced in \href{https://github.com/svg/svgo/tree/v0.5.1}{\texttt{ v0.\+5.\+1}}.
+\item Fixed a bug with transformation having {\ttfamily rotate()} with optional parameters.
+\item Patterns with inherited attributes are no longer being removed.
+\item Styles are no longer being removed from {\ttfamily \texorpdfstring{$<$}{<}desc\texorpdfstring{$>$}{>}} (by @dennari).
+\item SVGO no longer breaks during parsing.
+\item Added {\ttfamily clone()} method to JSAPI (by @jakearchibald)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24270}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+1 / 30.\+03.\+2015}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+1 / 30.\+03.\+2015}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24270}
+
+\begin{DoxyItemize}
+\item added new command-\/line option to set precision in floating point numbers.
+\item fixed all known image-\/disruptive bugs
+\item Notably \href{https://github.com/svg/svgo/blob/master/plugins/mergePaths.js}{\texttt{ merge\+Paths}} plugin now checks for possible intersections to avoid side-\/effects
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeUselessDefs.js}{\texttt{ remove\+Useless\+Defs}} to remove elements in {\ttfamily \texorpdfstring{$<$}{<}defs\texorpdfstring{$>$}{>}} and similar non-\/rendering elements without an {\ttfamily id} and thus cannot be used
+\item fix for {\ttfamily -\/-\/multipass} command line option (by @dfilatov)
+\item improved \href{https://github.com/svg/svgo/blob/master/plugins/cleanupEnableBackground.js}{\texttt{ cleanup\+Enable\+Background}} and \href{https://github.com/svg/svgo/blob/master/plugins/convertColors.js}{\texttt{ convert\+Colors}} plugins (by @\+Yeti\+Or)
+\item new plugin for image manipulation \href{https://github.com/svg/svgo/blob/master/plugins/cleanupListOfValues.js}{\texttt{ cleanup\+List\+Of\+Values}} (by @kiyopikko)
+\item fixed fail on comments after closing root {\ttfamily \texorpdfstring{$<$}{<}/svg\texorpdfstring{$>$}{>}} tag
+\item updated parsing to account meaningful spaces in {\ttfamily \texorpdfstring{$<$}{<}text\texorpdfstring{$>$}{>}}
+\item {\ttfamily data-\/\texorpdfstring{$\ast$}{*}} attributes are now preserved in \href{https://github.com/svg/svgo/blob/master/plugins/removeUnknownsAndDefaults.js}{\texttt{ remove\+Unknowns\+And\+Defaults}}
+\item prevented plugins from failing in {\ttfamily \texorpdfstring{$<$}{<}foreign\+Object\texorpdfstring{$>$}{>}}
+\item \href{https://github.com/svg/svgo/blob/master/plugins/cleanupNumericValues.js}{\texttt{ cleanup\+Numeric\+Values}} plugin now converts other units to pixels (if it\textquotesingle{}s better)
+\item \href{https://github.com/svg/svgo/blob/master/plugins/removeUselessStrokeAndFill.js}{\texttt{ remove\+Useless\+Stroke\+And\+Fill}} plugin is enabled again with correct work in case of inherited attributes
+\item fixed fail on images with incorrect paths like {\ttfamily \texorpdfstring{$<$}{<}path d="{}z"{}/\texorpdfstring{$>$}{>}}
+\item svgo now understands if an input is a folder (remember, you can set output to folder as well)
+\item added support for some properties from SVG 2 like {\ttfamily vector-\/effect="{}non-\/scaling-\/stroke"{}}
+\item removed option to remove an {\ttfamily id} on root {\ttfamily \texorpdfstring{$<$}{<}svg\texorpdfstring{$>$}{>}} tag in \href{https://github.com/svg/svgo/blob/master/plugins/removeUnknownsAndDefaults.js}{\texttt{ remove\+Unknowns\+And\+Defaults}} since it\textquotesingle{}s already being done in \href{https://github.com/svg/svgo/blob/master/plugins/cleanupIDs.js}{\texttt{ cleanup\+IDs}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24271}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+0 / 05.\+11.\+2014}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.5.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+5.\+0 / 05.\+11.\+2014}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24271}
+
+\begin{DoxyItemize}
+\item added {\ttfamily -\/-\/multipass} command line option which repeatedly applies optimizations like collapsing groups (by @dfilatov)
+\item exposed JSAPI as a factory method (by @mistakster)
+\item added remove\+Desc plugin (by @dwabyick), disabled by default
+\item \href{https://github.com/svg/svgo/blob/master/plugins/removeUselessStrokeAndFill.js}{\texttt{ remove\+Useless\+Stroke\+And\+Fill}} plugin is disabled by default since it\textquotesingle{}s unable to check inherited properties
+\item transformations now apply to paths with arcs in \href{https://github.com/svg/svgo/blob/master/plugins/convertPathData.js}{\texttt{ plugins/convert\+Path\+Data}}
+\item a lot of bug fixes mostly related to transformations
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24272}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+5 / 02.\+08.\+2014}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+5 / 02.\+08.\+2014}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24272}
+
+\begin{DoxyItemize}
+\item significally improved plugin \href{https://github.com/svg/svgo/blob/master/plugins/convertPathData.js}{\texttt{ plugins/convert\+Path\+Data}}\+:
+\begin{DoxyItemize}
+\item Now data is being written relative or absolute whichever is shorter. You can turn it off by setting {\ttfamily utilize\+Absolute} to {\ttfamily false}.
+\item Smarter rounding\+: values like 2.\+499 now rounds to 2.\+5. Rounding now takes in account accumulutive error meaning that points will not be misplaced due to rounding more than it neccessary.
+\item Fixed couple bugs.
+\end{DoxyItemize}
+\item {\ttfamily -\/-\/output} option now can be a folder along with {\ttfamily -\/-\/folder}, thanks to @mako-\/taco.
+\item \href{https://github.com/svg/svgo/blob/master/plugins/cleanupIDs.js}{\texttt{ plugins/cleanup\+IDs}} now have {\ttfamily prefix} option in case you want to combine multiple svg later (by @\+Daniel\+Mazurkiewicz).
+\item Quotes now being escaped in attributes (by @ditesh).
+\item Minor bugfixes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24273}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+4 / 14.\+01.\+2014}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+4 / 14.\+01.\+2014}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24273}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeTitle.js}{\texttt{ plugins/remove\+Title}} (disabled by default, close \href{https://github.com/svg/svgo/issues/159}{\texttt{ \#159}})
+\item plugins/convert\+Path\+Data\+: skip data concatenation for z instruction in collapse\+Repeated
+\item plugins/remove\+Unknowns\+And\+Defaults\+: do not remove overriden attributes with default values (fix \href{https://github.com/svg/svgo/issues/161}{\texttt{ \#161}} and \href{https://github.com/svg/svgo/issues/168}{\texttt{ \#168}})
+\item plugins/remove\+View\+Box\+: disable by default (fix \href{https://github.com/svg/svgo/issues/139}{\texttt{ \#139}})
+\item update README with \href{https://github.com/ben-eb/gulp-svgmin}{\texttt{ gulp task}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24274}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+3 / 02.\+01.\+2014}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+3 / 02.\+01.\+2014}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24274}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/convertShapeToPath.js}{\texttt{ plugins/convert\+Shape\+To\+Path}} (close \href{https://github.com/svg/svgo/issues/96}{\texttt{ \#96}})
+\item update sax version to fix \href{https://github.com/svg/svgo/issues/140}{\texttt{ \#140}}
+\item update deps
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24275}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+2 / 19.\+12.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+2 / 19.\+12.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24275}
+
+\begin{DoxyItemize}
+\item add {\ttfamily lcov.\+info} to npmignore
+\item fix {\ttfamily js-\/yaml} version to suppress deprecation warning in stdout
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24276}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+1 / 18.\+11.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+1 / 18.\+11.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24276}
+
+\begin{DoxyItemize}
+\item node \texorpdfstring{$>$}{>}=0.\+8.\+0
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24277}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+0 / 18.\+11.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.4.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+4.\+0 / 18.\+11.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24277}
+
+\begin{DoxyItemize}
+\item merge almost all pull-\/requests
+\item update dependencies
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24278}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.7}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+7 / 24.\+06.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.7}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+7 / 24.\+06.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24278}
+
+\begin{DoxyItemize}
+\item do not remove {\ttfamily result} attribute from filter primitives (fix \href{https://github.com/svg/svgo/issues/122}{\texttt{ \#122}})
+\item plugins/cleanup\+Attrs\+: replace newline with space when needed (fix \href{https://github.com/svg/svgo/issues/119}{\texttt{ \#119}})
+\item lib/coa\+: look for config file in current folder
+\item lib/coa\+: always traverse all files in the given folder
+\item deprecate svgo-\/grunt in favor of \href{https://github.com/sindresorhus/grunt-svgmin}{\texttt{ grunt-\/svgmin}}
+\item re-\/enable node-\/coveralls
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24279}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+6 / 06.\+06.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+6 / 06.\+06.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24279}
+
+\begin{DoxyItemize}
+\item plugins/remove\+Non\+Inheritable\+Group\+Attrs\+: more attrs groups to exclude (fix \href{https://github.com/svg/svgo/issues/116}{\texttt{ \#116}} \& \href{https://github.com/svg/svgo/issues/118}{\texttt{ \#118}})
+\item lib/coa\+: optimize folder file by file (temp fix \href{https://github.com/svg/svgo/issues/114}{\texttt{ \#114}})
+\item {\ttfamily .jshintrc}\+: JSHint 2.\+0
+\item temporarily disable node-\/coveralls
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24280}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+5 / 07.\+05.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+5 / 07.\+05.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24280}
+
+\begin{DoxyItemize}
+\item plugins/transforms\+With\+One\+Path\+: fix curves bounding box calculation
+\item plugins/transforms\+With\+One\+Path\+: fix possible c+t or q+s bug
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24281}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+4 / 06.\+05.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+4 / 06.\+05.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24281}
+
+\begin{DoxyItemize}
+\item plugins/convert\+Path\+Data\+: fix m-\/\texorpdfstring{$>$}{>}M bug in some cases
+\item plugins/transforms\+With\+One\+Path\+: fix last point calculation for C/\+S/\+Q/T
+\item plugins/merge\+Paths\+: add space delimiter between z and m
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24282}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+3 / 05.\+05.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+3 / 05.\+05.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24282}
+
+\begin{DoxyItemize}
+\item plugins/convert\+Path\+Data\+: convert very first m to M, fix apply\+Transforms with translate() (fix \href{https://github.com/svg/svgo/issues/112}{\texttt{ \#112}})
+\item plugins/transforms\+With\+One\+Path\+: fix real width/height rounding; fix scale transform origin; reorder transforms
+\item plugins/transforms\+With\+One\+Path\+: ability to set new width or height independently with auto rescaling
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24283}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+2 / 03.\+05.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+2 / 03.\+05.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24283}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/sortAttrs.js}{\texttt{ plugins/sort\+Attrs}}
+\item plugins/transforms\+With\+One\+Path\+: buggy hcrop (fix \href{https://github.com/svg/svgo/issues/111}{\texttt{ \#111}})
+\item Impossible to set output presision to 0 (no fractional part) (fix \href{https://github.com/svg/svgo/issues/110}{\texttt{ \#110}})
+\item Istanbul + coveralls.\+io
+\item update README with NPM version from badge.\+fury.\+io
+\item update README with dependency status from gemnasium.\+com
+\item npmignore unneeded files
+\item reoptimized project logo
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24284}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+1 / 15.\+04.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+1 / 15.\+04.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24284}
+
+\begin{DoxyItemize}
+\item plugins/transforms\+With\+One\+Path\+: resize SVG and automatically rescale inner Path
+\item better errors handling
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24285}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+0 / 12.\+04.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.3.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+3.\+0 / 12.\+04.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24285}
+
+\begin{DoxyItemize}
+\item global refactoring\+: getting rid of the many dependencies
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/mergePaths.js}{\texttt{ plugins/merge\+Paths}}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/transformsWithOnePath.js}{\texttt{ plugins/transforms\+With\+One\+Path}} (renamed and featured {\ttfamily crop\+And\+Center\+Along\+Path})
+\item config\+: replace default config with {\ttfamily full\+: true}
+\item coa\+: JSON string as value of {\ttfamily -\/-\/config}
+\item coa\+: different types of Data URI strings (close \href{https://github.com/svg/svgo/issues/105}{\texttt{ \#105}})
+\item plugins/\+\_\+transforms\+: allow spaces at the beginning of transform
+\item Travis CI\+: Nodejs 0.\+10 \& 0.\+11
+\item {\ttfamily node.\+extend} → {\ttfamily whet.\+extend}
+\item update {\ttfamily .gitignore}
+\item update docs
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24286}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+4 / 05.\+04.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+4 / 05.\+04.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24286}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/cropAndCenterAlongPath.js}{\texttt{ plugins/crop\+And\+Center\+Along\+Path}} for the \href{https://github.com/fontello}{\texttt{ Fontello}} project
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24287}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+3 / 22.\+02.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+3 / 22.\+02.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24287}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeNonInheritableGroupAttrs.js}{\texttt{ plugins/remove\+Non\+Inheritable\+Group\+Attrs}} (fix \href{https://github.com/svg/svgo/issues/101}{\texttt{ \#101}})
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeRasterImages.js}{\texttt{ plugins/remove\+Raster\+Images}} (close \href{https://github.com/svg/svgo/issues/98}{\texttt{ \#98}})
+\item plugins/convert\+Transform\+: bug with trailing spaces in transform value string (fix \href{https://github.com/svg/svgo/issues/103}{\texttt{ \#103}})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24288}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+2 / 09.\+02.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+2 / 09.\+02.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24288}
+
+\begin{DoxyItemize}
+\item plugins/convert\+Transforms\+: wrong translate() shorthand (fix \href{https://github.com/svg/svgo/issues/94}{\texttt{ \#94}})
+\item \href{https://github.com/jeremyfa/yaml.js}{\texttt{ yaml.\+js}} → \href{https://github.com/nodeca/js-yaml}{\texttt{ js-\/yaml}}
+\item update outdated deps
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24289}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+1 / 18.\+01.\+2013}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+1 / 18.\+01.\+2013}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24289}
+
+\begin{DoxyItemize}
+\item plugins/move\+Elems\+Attrs\+To\+Group + plugins/move\+Group\+Attrs\+To\+Elems\+: move or just leave transform attr from Group to the inner Path Elems (close \href{https://github.com/svg/svgo/issues/86}{\texttt{ \#86}})
+\item plugins/remove\+View\+Box\+: doesn\textquotesingle{}t catch floating-\/point numbers (fix \href{https://github.com/svg/svgo/issues/88}{\texttt{ \#88}})
+\item plugins/cleanup\+Enable\+Background\+: doesn\textquotesingle{}t catch floating-\/point numbers (fix \href{https://github.com/svg/svgo/issues/89}{\texttt{ \#89}})
+\item plugins/cleanup\+Numeric\+Values\+: wrong floating-\/point numbers regexp (fix \href{https://github.com/svg/svgo/issues/92}{\texttt{ \#92}})
+\item SVG file generated by fontcustom.\+com not properly compressed (fix \href{https://github.com/svg/svgo/issues/90}{\texttt{ \#90}})
+\item {\ttfamily README.\+ru.\+md}\+: стилизация русского языка, улучшение языковых конструкций, правка ошибок (close \href{https://github.com/svg/svgo/issues/91}{\texttt{ \#91}})
+\item minor JSHint warning fix
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24290}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+0 / 23.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.2.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+2.\+0 / 23.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24290}
+
+\begin{DoxyItemize}
+\item plugins/convert\+Path\+Data\+: apply transforms to Path pata (close \href{https://github.com/svg/svgo/issues/33}{\texttt{ \#33}})
+\item plugins/convert\+Path\+Data\+: {\ttfamily -\/1.\+816-\/9.\+278.\+682-\/13.\+604} parsing error (fix \href{https://github.com/svg/svgo/issues/85}{\texttt{ \#85}})
+\item plugins/convert\+Transform\+: {\ttfamily translate(10, 0)} eq {\ttfamily translate(10)}, but not {\ttfamily translate(10, 10)} eq {\ttfamily translate(10)} (fix \href{https://github.com/svg/svgo/issues/83}{\texttt{ \#83}})
+\item run plugins/cleanup\+IDs before plugins/collapse\+Groups (fix \href{https://github.com/svg/svgo/issues/84}{\texttt{ \#84}})
+\item update {\ttfamily .gitignore}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24291}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.9}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+9 / 17.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.9}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+9 / 17.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24291}
+
+\begin{DoxyItemize}
+\item plugins/cleanup\+IDs\+: renamed from remove\+Unused\+IDs; minify used IDs (fix \href{https://github.com/svg/svgo/issues/7}{\texttt{ \#7}})
+\item lib/svgo/js2svg\+: restore HTML entities back (fix \href{https://github.com/svg/svgo/issues/80}{\texttt{ \#80}} + \href{https://github.com/svg/svgo/issues/81}{\texttt{ \#81}})
+\item plugins/remove\+Doctype\+: do not remove if custom XML entities presents (fix \href{https://github.com/svg/svgo/issues/77}{\texttt{ \#77}})
+\item lib/svgo/coa\+: refactoring, colors and fix \href{https://github.com/svg/svgo/issues/70}{\texttt{ \#70}}
+\item lib/svgo\+: store elapsed time in result object
+\item usage examples with SVGZ (close \href{https://github.com/svg/svgo/issues/18}{\texttt{ \#18}})
+\item more optimized logo
+\item update {\ttfamily .gitignore}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24292}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.8}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+8 / 11.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.8}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+8 / 11.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24292}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeUselessStrokeAndFill.js}{\texttt{ plugins/remove\+Useless\+Stroke\+And\+Fill}} (close \href{https://github.com/svg/svgo/issues/75}{\texttt{ \#75}})
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeUnusedIDs.js}{\texttt{ plugins/remove\+Unused\+IDs}} (close \href{https://github.com/svg/svgo/issues/76}{\texttt{ \#76}})
+\item plugins/convert\+Path\+Data\+: wrong M interpretation in some cases (fix \href{https://github.com/svg/svgo/issues/73}{\texttt{ \#73}})
+\item plugins/cleanup\+Attrs\+: use {\ttfamily is\+Elem()} API
+\item {\ttfamily .travis.\+yml}\+: check all branches
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24293}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.7}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+7 / 08.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.7}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+7 / 08.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24293}
+
+\begin{DoxyItemize}
+\item plugins/convert\+Path\+Data\+: incorrect interpretation of {\ttfamily z + m} (fix \href{https://github.com/svg/svgo/issues/69}{\texttt{ \#69}})
+\item plugins/convert\+Transform\+: do a more accurate floating numbers rounding in {\ttfamily matrix\+To\+Transform()} (fix \href{https://github.com/svg/svgo/issues/68}{\texttt{ \#68}})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24294}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+6 / 07.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+6 / 07.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24294}
+
+\begin{DoxyItemize}
+\item plugins/convert\+Path\+Data\+: collapse repeated instructions only after curve\+Smooth\+Shorthands (fix \href{https://github.com/svg/svgo/issues/64}{\texttt{ \#64}})
+\item lib/svgo/coa\+: handle \textquotesingle{}there is nothing to optimize\textquotesingle{} case and display a message about it (fix \href{https://github.com/svg/svgo/issues/61}{\texttt{ \#61}})
+\item plugins/cleanup\+SVGElem\+: delete as useless artefact
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24295}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+5 / 06.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+5 / 06.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24295}
+
+\begin{DoxyItemize}
+\item E-\/notated numbers in paths not recognised (fix \href{https://github.com/svg/svgo/issues/63}{\texttt{ \#63}})
+\item update README with {\ttfamily svgo-\/grunt} and {\ttfamily svgo-\/osx-\/folder-\/action}
+\item fix {\ttfamily mocha-\/as-\/promised} plug in node 0.\+6
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24296}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+4 / 05.\+12.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+4 / 05.\+12.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24296}
+
+\begin{DoxyItemize}
+\item plugins/\+\_\+collections\+: more defaults
+\item {\ttfamily README.\+ru.\+md}
+\item {\ttfamily docs/how-\/it-\/works/ru.\+md}
+\item mocha + mocha-\/as-\/promised + chai + chai-\/as-\/promised + should + istanbul = \texorpdfstring{$<$}{<}3
+\item update dependencies semvers in {\ttfamily package.\+json}
+\item {\ttfamily v0.\+1.\+x} and {\ttfamily v0.\+2.\+x} milestones
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24297}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+3 / 30.\+11.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+3 / 30.\+11.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24297}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/cleanupNumericValues.js}{\texttt{ plugins/cleanup\+Numeric\+Values}} (close \href{https://github.com/svg/svgo/issues/8}{\texttt{ \#8}})
+\item plugins/remove\+Default\+Px functionality now included in plugins/remove\+Unknowns\+And\+Defaults
+\item plugins/remove\+Unknowns\+And\+Defaults\+: refactoring and picking up the complete elems+attrs collection (close \href{https://github.com/svg/svgo/issues/59}{\texttt{ \#59}})
+\item plugins/convert\+Transform\+: error in matrices multiplication (fix \href{https://github.com/svg/svgo/issues/58}{\texttt{ \#58}})
+\item plugins/convert\+Transform\+: mark translate() and scale() as useless only with one param (fix \href{https://github.com/svg/svgo/issues/57}{\texttt{ \#57}})
+\item plugins/convert\+Path\+Data\+: drastic speed improvement with huge Path data
+\item plugins/convert\+Path\+Data\+: fix the very first Mm with multiple points (fix \href{https://github.com/svg/svgo/issues/56}{\texttt{ \#56}})
+\item plugins/move\+Elems\+Attrs\+To\+Group\+: additional check for transform attr
+\item brand-\/new project {\ttfamily logo.\+svg}
+\item {\ttfamily .travis.\+yml}\+: build only master branch
+\item global `\textquotesingle{}use strict'{\ttfamily  \texorpdfstring{$\ast$}{*}}.jshintignore\`{}
+\item README and CHANGELOG\+: minor corrections
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24298}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+2 / 24.\+11.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+2 / 24.\+11.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24298}
+
+\begin{DoxyItemize}
+\item lib/svgo/svg2js\+: correct \textquotesingle{}onerror\textquotesingle{} failure (fix \href{https://github.com/svg/svgo/issues/51}{\texttt{ \#51}})
+\item config\+: disable sax-\/js position tracking by default (fix \href{https://github.com/svg/svgo/issues/52}{\texttt{ \#52}})
+\item lib/svgo\+: rename \textquotesingle{}start\+Bytes\textquotesingle{} to \textquotesingle{}in\+Bytes\textquotesingle{} and \textquotesingle{}end\+Bytes\textquotesingle{} to \textquotesingle{}out\+Bytes\textquotesingle{} (close \href{https://github.com/svg/svgo/issues/53}{\texttt{ \#53}})
+\item plugins/remove\+Unknowns\+And\+Defaults\+: remove SVG id attr (close \href{https://github.com/svg/svgo/issues/54}{\texttt{ \#54}})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24299}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+1 / 23.\+11.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+1 / 23.\+11.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24299}
+
+\begin{DoxyItemize}
+\item plugins/move\+Elems\+Attrs\+To\+Group\+: fix inheitable only attrs array (fix \href{https://github.com/svg/svgo/issues/47}{\texttt{ \#47}})
+\item plugins/remove\+Empty\+Containers\+: do not remove an empty \textquotesingle{}svg\textquotesingle{} element (fix \href{https://github.com/svg/svgo/issues/48}{\texttt{ \#48}})
+\item plugins/remove\+Default\+Px\+: should also understand a floating-\/numbers too (fix \href{https://github.com/svg/svgo/issues/49}{\texttt{ \#49}})
+\item plugins/remove\+Unknowns\+And\+Defaults\+: merge multiple group\+Defaults attrs (close \href{https://github.com/svg/svgo/issues/50}{\texttt{ \#50}})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24300}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+0 / 22.\+11.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.1.0}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+1.\+0 / 22.\+11.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24300}
+
+\begin{DoxyItemize}
+\item new plugin \href{https://github.com/svg/svgo/blob/master/plugins/removeUnknownsAndDefaults.js}{\texttt{ plugins/remove\+Unknowns\+And\+Defaults}} (close \href{https://github.com/svg/svgo/issues/6}{\texttt{ \#6}})
+\item plugins/convert\+Path\+Data\+: convert straight curves into lines segments (close \href{https://github.com/svg/svgo/issues/17}{\texttt{ \#17}}); remove an absolute coords conversions
+\item plugins/convert\+Path\+Data\+: convert quadratic Bézier curveto into smooth shorthand (close \href{https://github.com/svg/svgo/issues/31}{\texttt{ \#31}})
+\item plugins/convert\+Path\+Data\+: convert curveto into smooth shorthand (close \href{https://github.com/svg/svgo/issues/30}{\texttt{ \#30}})
+\item lib/svgo\+: global API refactoring (close \href{https://github.com/svg/svgo/issues/37}{\texttt{ \#37}})
+\item lib/svgo\+: fatal and stupid error in stream chunks concatenation (fix \href{https://github.com/svg/svgo/issues/40}{\texttt{ \#40}})
+\item lib/coa\+: batch folder optimization (close \href{https://github.com/svg/svgo/issues/29}{\texttt{ \#29}})
+\item lib/coa\+: support arguments as aliases to {\ttfamily -\/-\/input} and {\ttfamily -\/-\/output} (close \href{https://github.com/svg/svgo/issues/28}{\texttt{ \#28}})
+\item project logo by \href{http://xizzzy.ru/}{\texttt{ Egor Bolhshakov}}
+\item move modules to {\ttfamily ./lib/svgo/}
+\item rename and convert {\ttfamily config.\+json} to {\ttfamily .svgo.\+yml}
+\item add \href{https://github.com/svg/svgo/tree/master/docs}{\texttt{ ./docs/}}
+\item plugins/convert\+Path\+Data\+: don\textquotesingle{}t remove first {\ttfamily M} even if it\textquotesingle{}s {\ttfamily 0,0}
+\item plugins/convert\+Path\+Data\+: stronger defense from infinite loop
+\item plugins/move\+Elems\+Attrs\+To\+Group\+: should affect only inheritable attributes (fix \href{https://github.com/svg/svgo/issues/46}{\texttt{ \#46}})\texorpdfstring{$\ast$}{*}
+\item plugins/remove\+Comments\+: ignore comments which starts with \textquotesingle{}!\textquotesingle{} (close \href{https://github.com/svg/svgo/issues/43}{\texttt{ \#43}})
+\item config\+: {\ttfamily cleanup\+Attrs} should be before {\ttfamily convert\+Style\+To\+Attrs} (fix \href{https://github.com/svg/svgo/issues/44}{\texttt{ \#44}})\texorpdfstring{$\ast$}{*}
+\item lib/svgo/js\+API\+: add {\ttfamily each\+Attr()} optional context param
+\item temporarily remove Phantom\+JS and {\ttfamily -\/-\/test} (close \href{https://github.com/svg/svgo/issues/38}{\texttt{ \#38}})
+\item \href{mailto:q@0.8.10}{\texttt{ q@0.\+8.\+10}} compatibility\+: \textquotesingle{}end is deprecated, use done instead\textquotesingle{} fix
+\item add \href{https://github.com/gotwarlost/istanbul}{\texttt{ Istanbul}} code coverage
+\item update dependencies versions and gitignore
+\item README\+: add TODO section with versions milestones
+\item update README with License section
+\item update LICENSE with russian translation
+\item {\ttfamily .editorconfig}\+: 2 spaces for YAML
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24301}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.9}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+9 / 29.\+10.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.9}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+9 / 29.\+10.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24301}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/svg/svgo/tree/master/plugins\#readme}{\texttt{ plugins how-\/to}} (close \href{https://github.com/svg/svgo/issues/27}{\texttt{ \#27}})
+\item allow any plugin of any type to go in any order (close \href{https://github.com/svg/svgo/issues/14}{\texttt{ \#14}})
+\item allow to do a multiple optimizations with one init (close \href{https://github.com/svg/svgo/issues/25}{\texttt{ \#25}})
+\item plugins/convert\+Path\+Data\+: global refactoring
+\item plugins/convert\+Path\+Data\+: do all the tricks with absolute coords too (fix \href{https://github.com/svg/svgo/issues/22}{\texttt{ \#22}})
+\item plugins/convert\+Path\+Data\+: accumulation of rounding errors (fix \href{https://github.com/svg/svgo/issues/23}{\texttt{ \#23}})
+\item plugins/convert\+Path\+Data\+: prevent an infinity loop on invalid path data (fix \href{https://github.com/svg/svgo/issues/26}{\texttt{ \#26}})
+\item plugins/convert\+Path\+Data\+: do not remove very first M from the path data (fix \href{https://github.com/svg/svgo/issues/24}{\texttt{ \#24}})
+\item plugins/convert\+Path\+Data\+: optimize path data in \texorpdfstring{$<$}{<}glyph\texorpdfstring{$>$}{>} and \texorpdfstring{$<$}{<}missing-\/glyph\texorpdfstring{$>$}{>} (close \href{https://github.com/svg/svgo/issues/20}{\texttt{ \#20}})
+\item plugins/convert\+Transform\+: add pattern\+Transform attribute to the process (close \href{https://github.com/svg/svgo/issues/15}{\texttt{ \#15}})
+\item plugins/convert\+Transform\+: Firefox\+: removing extra space in front of negative number is alowed only in path data, but not in transform (fix \href{https://github.com/svg/svgo/issues/12}{\texttt{ \#12}})
+\item plugins/remove\+XMLProc\+Inst\+: remove only \textquotesingle{}xml\textquotesingle{} but not \textquotesingle{}xml-\/stylesheet\textquotesingle{} (fix \href{https://github.com/svg/svgo/issues/15}{\texttt{ \#21}})
+\item plugins/collapse\+Groups\+: merge split-\/level transforms (fix \href{https://github.com/svg/svgo/issues/13}{\texttt{ \#13}})
+\item jsdoc corrections
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24302}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.8}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+8 / 20.\+10.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.8}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+8 / 20.\+10.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24302}
+
+\begin{DoxyItemize}
+\item new plugin \href{plugins/convertTransform.js}{\texttt{ convert\+Transform}} (close \href{https://github.com/svg/svgo/issues/5}{\texttt{ \#5}})
+\item new plugin \href{plugins/removeUnusedNS.js}{\texttt{ remove\+Unused\+NS}}
+\item plugins/convert\+Path\+Data\+: remove useless segments
+\item plugins/convert\+Path\+Data\+: a lot of refactoring
+\item plugins/convert\+Path\+Data\+: round numbers before conditions because of exponential notation (fix \href{https://github.com/svg/svgo/issues/3}{\texttt{ \#3}})
+\item plugins/move\+Elems\+Attrs\+To\+Group\+: merge split-\/level transforms instead of replacing (fix \href{https://github.com/svg/svgo/issues/10}{\texttt{ \#10}})
+\item lib/svg2js\+: catch and output xml parser errors (fix \href{https://github.com/svg/svgo/issues/4}{\texttt{ \#4}})
+\item lib/coa\+: open file for writing only when we are ready (fix \href{https://github.com/svg/svgo/issues/2}{\texttt{ \#2}})
+\item lib/tools\+: node.\+extend module
+\item lib/plugins\+: refactoring
+\item lib/js2svg\+: refactoring
+\item lib/js\+API\+: simplification and refactoring
+\item absolute urls in README
+\item update .editorconfig
+\item update .travis.\+yml with nodejs 0.\+9
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24303}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.7}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+7 / 14.\+10.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.7}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+7 / 14.\+10.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24303}
+
+\begin{DoxyItemize}
+\item new plugin \href{plugins/convertPathData.js}{\texttt{ convert\+Path\+Data}}
+\item --input data now can be a Data URI base64 string
+\item --output data now can be a Data URI base64 string with --datauri flag
+\item Travis CI
+\item JSHint corrections + .jshintrc
+\item \href{http://editorconfig.org/}{\texttt{ .editorconfig}}
+\item display time spent on optimization
+\item .svgo → config.\+json
+\item lib/phantom\+\_\+wrapper.\+js → lib/phantom.\+js
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24304}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+6 / 04.\+10.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.6}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+6 / 04.\+10.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24304}
+
+\begin{DoxyItemize}
+\item add --test option to make a visual comparison of two files (Phantom\+JS pre-\/required)
+\item update README and CHANGELOG with the correct relative urls
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24305}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+5 / 03.\+10.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.5}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+5 / 03.\+10.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24305}
+
+\begin{DoxyItemize}
+\item every plugin now has \mbox{[}at least one test\mbox{]}(plugins)
+\item remove\+View\+Box, cleanup\+Enable\+Background, remove\+Editors\+NSData, convert\+Style\+To\+Attrs and collapse\+Groups plugins fixes
+\item new --pretty option for the pretty printed SVG
+\item lib/config refactoring
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24306}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+4 / 30.\+09.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.4}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+4 / 30.\+09.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24306}
+
+\begin{DoxyItemize}
+\item new plugin \href{plugins/removeViewBox.js}{\texttt{ remove\+View\+Box}}
+\item new plugin \href{plugins/cleanupEnableBackground.js}{\texttt{ cleanup\+Enable\+Background}}
+\item display useful info after successful optimization
+\item \textquotesingle{}npm test\textquotesingle{} with \textquotesingle{}spec\textquotesingle{} mocha output by default
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24307}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+3 / 29.\+09.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.3}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+3 / 29.\+09.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24307}
+
+\begin{DoxyItemize}
+\item plugins/collapse\+Groups bugfix
+\item plugins/move\+Elems\+Attrs\+To\+Group bugfix
+\item svgo now display --help if running w/o arguments
+\item massive jsdoc updates
+\item plugins engine main filter function optimization
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24308}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+2 / 28.\+09.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.2}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+2 / 28.\+09.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24308}
+
+\begin{DoxyItemize}
+\item add --disable and --enable command line options
+\item add an empty values rejecting to coa.\+js
+\item update README
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24309}{}\doxysubsection{\texorpdfstring{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+1 / 27.\+09.\+2012}{\mbox{[} \href{https://github.com/svg/svgo/tree/v0.0.1}{\texttt{ \texorpdfstring{$>$}{>}}} \mbox{]} 0.\+0.\+1 / 27.\+09.\+2012}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_c_h_a_n_g_e_l_o_g_autotoc_md24309}
+
+\begin{DoxyItemize}
+\item initial public version 
+\end{DoxyItemize}

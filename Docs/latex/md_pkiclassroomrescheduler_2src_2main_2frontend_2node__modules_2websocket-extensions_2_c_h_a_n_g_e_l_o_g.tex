@@ -1,0 +1,29 @@
+\chapter{0.1.4 / 2020-\/06-\/02}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g}\index{0.1.4 / 2020-\/06-\/02@{0.1.4 / 2020-\/06-\/02}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26845}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26845}%
+
+\begin{DoxyItemize}
+\item Remove a Re\+DoS vulnerability in the header parser (CVE-\/2020-\/7662, reported by Robert Mc\+Laughlin)
+\item Change license from MIT to Apache 2.\+0
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26846}{}\doxysubsection{\texorpdfstring{0.\+1.\+3 / 2017-\/11-\/11}{0.\+1.\+3 / 2017-\/11-\/11}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26846}
+
+\begin{DoxyItemize}
+\item Accept extension names and parameters including uppercase letters
+\item Handle extension names that clash with {\ttfamily Object.\+prototype} properties
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26847}{}\doxysubsection{\texorpdfstring{0.\+1.\+2 / 2017-\/09-\/10}{0.\+1.\+2 / 2017-\/09-\/10}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26847}
+
+\begin{DoxyItemize}
+\item Catch synchronous exceptions thrown when calling an extension
+\item Fix race condition caused when a message is pushed after a cell has stopped due to an error
+\item Fix failure of {\ttfamily close()} to return if a message that\textquotesingle{}s queued after one that produces an error never finishes being processed
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26848}{}\doxysubsection{\texorpdfstring{0.\+1.\+1 / 2015-\/02-\/19}{0.\+1.\+1 / 2015-\/02-\/19}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26848}
+
+\begin{DoxyItemize}
+\item Prevent sessions being closed before they have finished processing messages
+\item Add a callback to {\ttfamily Extensions.\+close()} so the caller can tell when it\textquotesingle{}s safe to close the socket
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26849}{}\doxysubsection{\texorpdfstring{0.\+1.\+0 / 2014-\/12-\/12}{0.\+1.\+0 / 2014-\/12-\/12}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_c_h_a_n_g_e_l_o_g_autotoc_md26849}
+
+\begin{DoxyItemize}
+\item Initial release 
+\end{DoxyItemize}

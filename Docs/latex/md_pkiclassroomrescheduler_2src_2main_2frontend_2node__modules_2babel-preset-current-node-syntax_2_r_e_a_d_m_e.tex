@@ -1,0 +1,30 @@
+\chapter{\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}babel-\/preset-\/current-\/node-\/syntax\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e}\index{$<$tt$>$babel-\/preset-\/current-\/node-\/syntax$<$/tt$>$@{$<$tt$>$babel-\/preset-\/current-\/node-\/syntax$<$/tt$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e_autotoc_md5927}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e_autotoc_md5927}%
+ \begin{quote}
+A Babel preset that enables parsing of proposals supported by the current Node.\+js version. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e_autotoc_md5928}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e_autotoc_md5928}
+If you are using yarn\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/-\/dev\ babel-\/preset-\/current-\/node-\/syntax}
+
+\end{DoxyCode}
+
+
+If you are using npm\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ babel-\/preset-\/current-\/node-\/syntax}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e_autotoc_md5929}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-current-node-syntax_2_r_e_a_d_m_e_autotoc_md5929}
+PRs are welcome! The codebase is so small that I didn\textquotesingle{}t setup a linter, but try to match the style of the existing code.
+
+You can run tests with the following command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ node\ test/index.js}
+
+\end{DoxyCode}
+
+
+The {\ttfamily test/fixtures.\+json} file contains a bunch of syntax tests, alongside with the minimum supported node version for each of them. Babel should throw on older versions, without support for that given syntax. All the tests are run using {\ttfamily @babel/parser@7.\+0.\+0}. 

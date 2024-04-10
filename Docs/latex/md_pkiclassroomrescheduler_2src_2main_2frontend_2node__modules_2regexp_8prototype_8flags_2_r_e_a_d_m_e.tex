@@ -1,0 +1,35 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexp_8prototype_8flags_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexp_8prototype_8flags_2_r_e_a_d_m_e}\index{README@{README}}
+Reg\+Exp.\+prototype.\+flags \textsuperscript{\href{https://npmjs.com/package/regexp.prototype.flags}{\texttt{ }}}
+
+\href{https://travis-ci.org/es-shims/RegExp.prototype.flags}{\texttt{ }} \href{https://david-dm.org/es-shims/RegExp.prototype.flags}{\texttt{ }} \href{https://david-dm.org/es-shims/RegExp.prototype.flags\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{http://npm-stat.com/charts.html?package=regexp.prototype.flags}{\texttt{ }}
+
+\href{https://npmjs.com/package/regexp.prototype.flags}{\texttt{ }}
+
+\href{https://ci.testling.com/es-shims/RegExp.prototype.flags}{\texttt{ }}
+
+An ES6 spec-\/compliant {\ttfamily Reg\+Exp.\+prototype.\+flags} shim. Invoke its "{}shim"{} method to shim Reg\+Exp.\+prototype.\+flags if it is unavailable. {\itshape Note}\+: {\ttfamily Reg\+Exp\#flags} requires a true ES5 environment -\/ specifically, one with ES5 getters.
+
+This package implements the \href{https://github.com/es-shims/api}{\texttt{ es-\/shim API}} interface. It works in an ES5-\/supported environment and complies with the \href{http://www.ecma-international.org/ecma-262/6.0/\#sec-get-regexp.prototype.flags}{\texttt{ spec}}.
+
+Most common usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ flags\ =\ require('regexp.prototype.flags');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(flags(/a/)\ ===\ '');}
+\DoxyCodeLine{assert(flags(new\ RegExp('a')\ ===\ '');}
+\DoxyCodeLine{assert(flags(/a/mig)\ ===\ 'gim');}
+\DoxyCodeLine{assert(flags(new\ RegExp('a',\ 'mig'))\ ===\ 'gim');}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (!RegExp.prototype.flags)\ \{}
+\DoxyCodeLine{\ \ \ \ flags.shim();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(flags(/a/)\ ===\ /a/.flags);}
+\DoxyCodeLine{assert(flags(new\ RegExp('a')\ ===\ new\ RegExp('a').flags);}
+\DoxyCodeLine{assert(flags(/a/mig)\ ===\ /a/mig.flags);}
+\DoxyCodeLine{assert(flags(new\ RegExp('a',\ 'mig'))\ ===\ new\ RegExp('a',\ 'mig').flags);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexp_8prototype_8flags_2_r_e_a_d_m_e_autotoc_md20519}{}\doxysubsection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexp_8prototype_8flags_2_r_e_a_d_m_e_autotoc_md20519}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

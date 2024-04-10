@@ -1,0 +1,75 @@
+\chapter{locate-\/path \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme}\index{locate-\/path $<$a href="{}https://travis-\/ci.org/sindresorhus/locate-\/path"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{locate-\/path $<$a href=""https://travis-\/ci.org/sindresorhus/locate-\/path"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18209}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18209}%
+ \begin{quote}
+Get the first path that exists on disk of multiple paths \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18210}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18210}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ locate-\/path}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18211}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18211}
+Here we find the first file that exists on disk, in array order.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ locatePath\ =\ require('locate-\/path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ files\ =\ [}
+\DoxyCodeLine{\ \ \ \ 'unicorn.png',}
+\DoxyCodeLine{\ \ \ \ 'rainbow.png',\ //\ Only\ this\ one\ actually\ exists\ on\ disk}
+\DoxyCodeLine{\ \ \ \ 'pony.png'}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console(await\ locatePath(files));}
+\DoxyCodeLine{\ \ \ \ //=>\ 'rainbow'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18212}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18212}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18213}{}\doxysubsection{\texorpdfstring{locate\+Path(paths, \mbox{[}options\mbox{]})}{locate\+Path(paths, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18213}
+Returns a {\ttfamily Promise\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}} for the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18214}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18214}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18215}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18215}
+Type\+: {\ttfamily Object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18216}{}\doxyparagraph{\texorpdfstring{concurrency}{concurrency}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18216}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily Infinity}~\newline
+ Minimum\+: {\ttfamily 1}
+
+Number of concurrently pending promises.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18217}{}\doxyparagraph{\texorpdfstring{preserve\+Order}{preserve\+Order}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18217}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Preserve {\ttfamily paths} order when searching.
+
+Disable this to improve performance if you don\textquotesingle{}t care about the order.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18218}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18218}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Current working directory.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18219}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18219}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily file}~\newline
+ Values\+: {\ttfamily file} {\ttfamily directory}
+
+The type of paths that can match.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18220}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18220}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Allow symbolic links to match if they point to the chosen path type.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18221}{}\doxysubsection{\texorpdfstring{locate\+Path.\+sync(paths, \mbox{[}options\mbox{]})}{locate\+Path.\+sync(paths, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18221}
+Returns the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18222}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18222}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18223}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18223}
+Type\+: {\ttfamily Object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18224}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18224}
+Same as above.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18225}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18225}
+Same as above.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18226}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18226}
+Same as above.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18227}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18227}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/path-exists}{\texttt{ path-\/exists}} -\/ Check if a path exists
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18228}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2locate-path_2readme_autotoc_md18228}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

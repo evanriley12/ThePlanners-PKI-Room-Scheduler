@@ -1,0 +1,26 @@
+\chapter{temp-\/dir \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/temp-\/dir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/temp-\/dir.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme}\index{temp-\/dir $<$a href="{}https://travis-\/ci.org/sindresorhus/temp-\/dir"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/temp-\/dir.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{temp-\/dir $<$a href=""https://travis-\/ci.org/sindresorhus/temp-\/dir"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/temp-\/dir.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25055}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25055}%
+ \begin{quote}
+Get the real path of the system temp directory \end{quote}
+\href{https://github.com/nodejs/node/issues/11422}{\texttt{ The {\ttfamily os.\+tmpdir()} built-\/in doesn\textquotesingle{}t return the real path.}} That can cause problems when the returned path is a symlink, which is the case on mac\+OS. Use this module to get the resolved path.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25056}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25056}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ temp-\/dir}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25057}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25057}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ tempDirectory\ =\ require('temp-\/dir');}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(tempDirectory);}
+\DoxyCodeLine{//=>\ '/private/var/folders/3x/jf5977fn79jbglr7rk0tq4d00000gn/T'}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(require('os').tmpdir());}
+\DoxyCodeLine{//=>\ '/var/folders/3x/jf5977fn79jbglr7rk0tq4d00000gn/T'\ //\ <=\ Symlink}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25058}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2temp-dir_2readme_autotoc_md25058}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

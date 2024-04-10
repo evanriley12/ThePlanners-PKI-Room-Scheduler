@@ -1,0 +1,99 @@
+\chapter{import/named}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named}\index{import/named@{import/named}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9886}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9886}%
+ 💼🚫 This rule is enabled in the following configs\+: ❗ {\ttfamily errors}, ☑️ {\ttfamily recommended}. This rule is {\itshape disabled} in the ⌨️ {\ttfamily typescript} config.
+
+Verifies that all named imports are part of the set of named exports in the referenced module.
+
+For {\ttfamily export}, verifies that all named exports exist in the referenced module.
+
+Note\+: for packages, the plugin will find exported names from \mbox{[}{\ttfamily jsnext\+:main}\mbox{]} (deprecated) or {\ttfamily module}, if present in {\ttfamily package.\+json}. Redux\textquotesingle{}s npm module includes this key, and thereby is lintable, for example.
+
+A module path that is \href{../../README.md\#importignore}{\texttt{ ignored}} or not \href{https://github.com/bmeck/UnambiguousJavaScriptGrammar}{\texttt{ unambiguously an ES module}} will not be reported when imported. Note that type imports and exports, as used by \href{https://flow.org/}{\texttt{ Flow}}, are always ignored.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9887}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9887}
+Given\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ./foo.js}
+\DoxyCodeLine{export\ const\ foo\ =\ "{}I'm\ so\ foo"{}}
+
+\end{DoxyCode}
+
+
+The following is considered valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ./bar.js}
+\DoxyCodeLine{import\ \{\ foo\ \}\ from\ './foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ES7\ proposal}
+\DoxyCodeLine{export\ \{\ foo\ as\ bar\ \}\ from\ './foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ node\_modules\ without\ jsnext:main\ are\ not\ analyzed\ by\ default}
+\DoxyCodeLine{//\ (import/ignore\ setting)}
+\DoxyCodeLine{import\ \{\ SomeNonsenseThatDoesntExist\ \}\ from\ 'react'}
+
+\end{DoxyCode}
+
+
+...and the following are reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ./baz.js}
+\DoxyCodeLine{import\ \{\ notFoo\ \}\ from\ './foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ES7\ proposal}
+\DoxyCodeLine{export\ \{\ notFoo\ as\ defNotBar\ \}\ from\ './foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ will\ follow\ 'jsnext:main',\ if\ available}
+\DoxyCodeLine{import\ \{\ dontCreateStore\ \}\ from\ 'redux'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9888}{}\doxysubsection{\texorpdfstring{Settings}{Settings}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9888}
+\href{../../README.md\#importignore}{\texttt{ {\ttfamily import/ignore}}} can be provided as a setting to ignore certain modules (node\+\_\+modules, Coffee\+Script, CSS if using Webpack, etc.).
+
+Given\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc\ (YAML)}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/ignore:}
+\DoxyCodeLine{\ \ \ \ -\/\ node\_modules\ \ \#\ included\ by\ default,\ but\ replaced\ if\ explicitly\ configured}
+\DoxyCodeLine{\ \ \ \ -\/\ *.coffee\$\ \ \ \ \ \#\ can't\ parse\ CoffeeScript\ (unless\ a\ custom\ polyglot\ parser\ was\ configured)}
+
+\end{DoxyCode}
+
+
+and
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ ./whatever.coffee}
+\DoxyCodeLine{exports.whatever\ =\ (foo)\ -\/>\ console.log\ foo}
+
+\end{DoxyCode}
+
+
+then the following is not reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ./foo.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ can't\ be\ analyzed,\ and\ ignored,\ so\ not\ reported}
+\DoxyCodeLine{import\ \{\ notWhatever\ \}\ from\ './whatever'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9889}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9889}
+If you are using Common\+JS and/or modifying the exported namespace of any module at runtime, you will likely see false positives with this rule.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9890}{}\doxysection{\texorpdfstring{Further Reading}{Further Reading}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named_autotoc_md9890}
+
+\begin{DoxyItemize}
+\item \href{../../README.md\#importignore}{\texttt{ {\ttfamily import/ignore}}} setting
+\item \href{https://github.com/jsforum/jsforum/issues/5}{\texttt{ {\ttfamily jsnext\+:main}}} deprecation
+\item \mbox{[}{\ttfamily pkg.\+module}\mbox{]} (Rollup) 
+\end{DoxyItemize}

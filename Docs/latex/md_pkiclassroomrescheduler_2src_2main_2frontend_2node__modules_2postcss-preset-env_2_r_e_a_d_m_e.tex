@@ -1,0 +1,472 @@
+\chapter{Post\+CSS Preset Env \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e}\index{PostCSS Preset Env $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS Preset Env $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19363}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19363}%
+ \href{https://www.npmjs.com/package/postcss-preset-env}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}npm version"{} src="{}https\+://img.\+shields.\+io/npm/v/postcss-\/preset-\/env.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}build status"{} src="{}https\+://github.\+com/csstools/postcss-\/plugins/workflows/test/badge.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://packagephobia.com/result?p=postcss-preset-env}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} lets you convert modern CSS into something most browsers can understand, determining the polyfills you need based on your targeted browsers or runtime environments.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19364}{}\doxysection{\texorpdfstring{Quick start}{Quick start}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19364}
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} is a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin.~\newline
+ If you are already using \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} to build your CSS, you can simply add \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} to your configuration.
+
+
+\begin{DoxyItemize}
+\item Install {\ttfamily postcss-\/preset-\/env} from npm.
+\item Add {\ttfamily postcss-\/preset-\/env} to your configuration\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcssPresetEnv\ =\ require('postcss-\/preset-\/env');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ yourConfig\ =\ \{}
+\DoxyCodeLine{\ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ postcssPresetEnv(/*\ pluginOptions\ */)}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\itshape \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2jest_2node__modules_2_0dsinclair_2typebox_2readme_usage}{Read more on how to use and install Post\+CSS Preset Env.}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19365}{}\doxysection{\texorpdfstring{How does it work?}{How does it work?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19365}
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} is a Plugin Pack for \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}}. It leverages the list of the features we keep an eye from \href{https://cssdb.org/}{\texttt{ CSSDB}} and applies plugins, so you can use those new features without having to worry about browser support.
+
+CSSDB exposes the browser support that each feature has which can come from \href{https://caniuse.com/css-all}{\texttt{ Can I Use}} or from \href{https://developer.mozilla.org/en-US/docs/Web/CSS/all}{\texttt{ MDN}} (through \href{https://github.com/mdn/browser-compat-data}{\texttt{ mdn/browser-\/compat-\/data}}).
+
+By providing a list of browser targets for your project, plugins that aren\textquotesingle{}t needed will be skipped. Over time your targets might change and by updating the settings your CSS bundle will only ever contain the needed fallbacks.
+
+What \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} does is to take the support data that comes from MDN and Can I Use and determine from a \href{https://github.com/browserslist/browserslist}{\texttt{ browserlist}} whether those transformations are needed. It also packs \href{https://github.com/postcss/autoprefixer}{\texttt{ Autoprefixer}} within and shares the list with it, so prefixes are only applied when you\textquotesingle{}re going to need them given your browser support list.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19366}{}\doxysubsection{\texorpdfstring{Glossary\+:}{Glossary\+:}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19366}
+
+\begin{DoxyItemize}
+\item {\bfseries{Browser list option}}\+: \href{https://github.com/browserslist/browserslist}{\texttt{ Browserlist}} is a package that gives you a list of browsers for a given query. For example, {\ttfamily chrome \texorpdfstring{$<$}{<} 42} will give you a list of every Chrome version that has been released up to, but not including, 42.
+\item {\bfseries{Browser support stats}}\+: Features get introduced on browsers at certain versions. They\textquotesingle{}re often visible on \href{https://developer.mozilla.org/en-US/}{\texttt{ MDN}} and \href{https://caniuse.com/}{\texttt{ Can I Use}}. Comparing these stats with the needed {\itshape support} for your project tells you if it\textquotesingle{}s safe to use a feature or not.
+\item {\bfseries{CSS Feature}}\+: A CSS feature is often part of some spec that enables a specific feature. For example, {\ttfamily hwb} functional notation lets you express a given color according to its hue, whiteness, and blackness. This is part of the CSS Color 4 Spec.
+\item {\bfseries{CSS Spec}}\+: A Spec is a document that collects new features, what problems are they trying to solve and how it\textquotesingle{}s intended to be solved (generally). This is usually an evolving document that goes over lengthy discussions between several people from different companies.
+\item {\bfseries{Plugin}}\+: A plugin is package that\textquotesingle{}s intended (usually) to enable a new CSS Feature by leveraging Post\+CSS. This doesn\textquotesingle{}t need to be part of any spec. An example of the latter is \href{https://github.com/postcss/postcss-mixins}{\texttt{ Post\+CSS Mixins}}, a concept that existed on Less or Sass, but it\textquotesingle{}s not part of any spec. This plugin plack {\bfseries{only}} packs plugins that enable features acknowledged by the World Wide Web Consortium (W3C) which will then be implemented by browsers later.
+\item {\bfseries{Polyfill}}\+: A polyfill is a piece of code (usually Java\+Script on the Web) used to provide modern functionality on older browsers that do not natively support it. A polyfill {\itshape should} be indistinguishable from the native behaviour.
+\end{DoxyItemize}
+
+Here\textquotesingle{}s a quick example of the syntax you can leverage by using \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@custom-\/media\ -\/-\/viewport-\/medium\ (width\ <=\ 50rem);}
+\DoxyCodeLine{@custom-\/selector\ :-\/-\/heading\ h1,\ h2,\ h3,\ h4,\ h5,\ h6;}
+\DoxyCodeLine{}
+\DoxyCodeLine{:root\ \{}
+\DoxyCodeLine{\ \ -\/-\/mainColor:\ \#12345678;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ color:\ var(-\/-\/mainColor);}
+\DoxyCodeLine{\ \ font-\/family:\ system-\/ui;}
+\DoxyCodeLine{\ \ overflow-\/wrap:\ break-\/word;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{:-\/-\/heading\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ image-\/set(url(img/heading.png)\ 1x,\ url(img/heading@2x.png)\ 2x);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ @media\ (-\/-\/viewport-\/medium)\ \{}
+\DoxyCodeLine{\ \ \ \ margin-\/block:\ 0;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{a\ \{}
+\DoxyCodeLine{\ \ color:\ rgb(0\ 0\ 100\%\ /\ 90\%);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \&:hover\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ rebeccapurple;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{:root\ \{}
+\DoxyCodeLine{\ \ -\/-\/mainColor:\ rgba(18,\ 52,\ 86,\ 0.47059);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ color:\ rgba(18,\ 52,\ 86,\ 0.47059);}
+\DoxyCodeLine{\ \ color:\ var(-\/-\/mainColor);}
+\DoxyCodeLine{\ \ font-\/family:\ system-\/ui,\ -\/apple-\/system,\ BlinkMacSystemFont,\ Segoe\ UI,\ Roboto,\ Oxygen,\ Ubuntu,\ Cantarell,\ Droid\ Sans,\ Helvetica\ Neue;}
+\DoxyCodeLine{\ \ word-\/wrap:\ break-\/word;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1,\ h2,\ h3,\ h4,\ h5,\ h6\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ url(img/heading.png);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/webkit-\/min-\/device-\/pixel-\/ratio:\ 2),\ (min-\/resolution:\ 192dpi)\ \{}
+\DoxyCodeLine{\ \ h1,\ h2,\ h3,\ h4,\ h5,\ h6\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/image:\ url(img/heading@2x.png)}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (max-\/width:\ 50rem)\ \{}
+\DoxyCodeLine{\ \ h1,\ h2,\ h3,\ h4,\ h5,\ h6\ \{}
+\DoxyCodeLine{\ \ \ \ margin-\/top:\ 0;}
+\DoxyCodeLine{\ \ \ \ margin-\/bottom:\ 0;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{a\ \{}
+\DoxyCodeLine{\ \ color:\ rgba(0,\ 0,\ 255,\ 0.9)}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{a:hover\ \{}
+\DoxyCodeLine{\ \ color:\ \#639;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Without any configuration options, \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} enables {\bfseries{Stage 2}} features and supports {\bfseries{all}} browsers.
+
+\href{https://csstools.github.io/postcss-preset-env/}{\texttt{ }} \href{https://codepen.io/pen?template=OZRovK}{\texttt{ }}
+
+⚠️ Please note that some features need a companion library that makes the feature work. While we try to avoid this requirement, there are instances in which this isn\textquotesingle{}t possible to polyfill a new behaviour with {\itshape just} CSS.
+
+See the list below.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19367}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19367}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/preset-\/env\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcss\ =\ require('postcss');}
+\DoxyCodeLine{const\ postcssPresetEnv\ =\ require('postcss-\/preset-\/env');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ postcssPresetEnv(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#postcss-cli}{\texttt{ Post\+CSS CLI}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#rollup}{\texttt{ Rollup}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19368}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19368}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19369}{}\doxysubsection{\texorpdfstring{stage}{stage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19369}
+The {\ttfamily stage} option determines which CSS features to polyfill, based upon their stability in the process of becoming implemented web standards.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{\ stage:\ 0\ \})}
+
+\end{DoxyCode}
+
+
+The {\ttfamily stage} can be {\ttfamily 0} (experimental) through {\ttfamily 4} (stable), or {\ttfamily false}. Setting {\ttfamily stage} to {\ttfamily false} will disable every polyfill. Doing this would only be useful if you intended to exclusively use the \`{}features\`{} option.
+
+Default\+: {\ttfamily 2}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19370}{}\doxysubsection{\texorpdfstring{minimum\+Vendor\+Implementations}{minimum\+Vendor\+Implementations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19370}
+The {\ttfamily minimum\+Vendor\+Implementations} option determines which CSS features to polyfill, based their implementation status. This can be used to enable plugins that are available in browsers regardless of the spec status.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{\ minimumVendorImplementations:\ 2\ \})}
+
+\end{DoxyCode}
+
+
+{\ttfamily minimum\+Vendor\+Implementations} can be {\ttfamily 0} (no vendor has implemented it) through {\ttfamily 3} (all major vendors).~\newline
+
+
+Default\+: {\ttfamily 0}
+
+{\bfseries{Note\+:}}
+
+When a feature has not yet been implemented by any vendor it can be considered experimental.~\newline
+ Even with a single implementation it might still change in the future.~\newline
+ Sometimes issues with a feature/specification are only discovered after it becomes available.
+
+A value of {\ttfamily 2} is recommended when you want to use only those features that should be stable.
+
+Having 2 independent implementations is \href{https://www.w3.org/2021/Process-20211102/\#implementation-experience}{\texttt{ a critical step in proposals becoming standards}} and a good indicator of a feature\textquotesingle{}s stability.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19371}{}\doxysubsection{\texorpdfstring{features}{features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19371}
+The {\ttfamily features} option enables or disables specific polyfills by ID. Passing {\ttfamily true} to a specific feature ID will enable its polyfill, while passing {\ttfamily false} will disable it. \href{https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md}{\texttt{ List of Features}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ /*\ use\ stage\ 3\ features\ +\ css\ nesting\ rules\ */}
+\DoxyCodeLine{\ \ stage:\ 3,}
+\DoxyCodeLine{\ \ features:\ \{}
+\DoxyCodeLine{\ \ \ \ 'nesting-\/rules':\ true}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Passing an object to a specific feature ID will both enable and configure it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ /*\ use\ stage\ 3\ features\ +\ css\ color-\/mod\ (warning\ on\ unresolved)\ */}
+\DoxyCodeLine{\ \ stage:\ 3,}
+\DoxyCodeLine{\ \ features:\ \{}
+\DoxyCodeLine{\ \ \ \ 'color-\/mod-\/function':\ \{\ unresolved:\ 'warn'\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Any polyfills not explicitly enabled or disabled through {\ttfamily features} are determined by the \`{}stage\`{} option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19372}{}\doxysubsection{\texorpdfstring{browsers}{browsers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19372}
+The {\ttfamily browsers} option determines which polyfills are required based upon the browsers you are supporting.
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} supports any standard \href{https://github.com/browserslist/browserslist\#readme}{\texttt{ browserslist}} configuration, which can be a {\ttfamily .browserslistrc} file, a {\ttfamily browserslist} key in {\ttfamily package.\+json}, or {\ttfamily browserslist} environment variables.
+
+The {\ttfamily browsers} option should only be used when a standard browserslist configuration is not available.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{\ browsers:\ 'last\ 2\ versions'\ \})}
+
+\end{DoxyCode}
+
+
+If no valid browserslist configuration is specified, the \href{https://github.com/browserslist/browserslist\#queries}{\texttt{ default browserslist query}} will be used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19373}{}\doxysubsection{\texorpdfstring{insert\+Before / insert\+After}{insert\+Before / insert\+After}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19373}
+The {\ttfamily insert\+Before} and {\ttfamily insert\+After} keys allow you to insert other Post\+CSS plugins into the chain. This is only useful if you are also using sugary Post\+CSS plugins that must execute before or after certain polyfills. Both {\ttfamily insert\+Before} and {\ttfamily insert\+After} support chaining one or multiple plugins.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ postcssSimpleVars\ from\ 'postcss-\/simple-\/vars';}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ insertBefore:\ \{}
+\DoxyCodeLine{\ \ \ \ 'all-\/property':\ postcssSimpleVars}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19374}{}\doxysubsection{\texorpdfstring{autoprefixer}{autoprefixer}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19374}
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} includes \href{https://github.com/postcss/autoprefixer}{\texttt{ autoprefixer}} and \`{}browsers\`{} option will be passed to it automatically.
+
+Specifying the {\ttfamily autoprefixer} option enables passing \href{https://github.com/postcss/autoprefixer\#options}{\texttt{ additional options}} into \href{https://github.com/postcss/autoprefixer}{\texttt{ autoprefixer}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ autoprefixer:\ \{\ grid:\ true\ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Passing {\ttfamily autoprefixer\+: false} disables autoprefixer.
+
+⚠️ \href{https://github.com/postcss/autoprefixer}{\texttt{ autoprefixer}} has \href{https://github.com/postcss/autoprefixer\#grid-autoplacement-support-in-ie}{\texttt{ complex logic to fix CSS Grid in IE and older Edge}}.
+
+This can have unexpected results with certain features and when \`{}preserve\+: true\`{} is used. (defaults to {\ttfamily true})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:root\ \{}
+\DoxyCodeLine{\ \ -\/-\/grid-\/gap:\ 15px;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.test-\/grid\ \{}
+\DoxyCodeLine{\ \ \ \ grid-\/gap:\ var(-\/-\/grid-\/gap);}
+\DoxyCodeLine{\ \ \ \ grid-\/template-\/columns:\ repeat(2,\ 1fr);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Becomes \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.test-\/grid\ \{}
+\DoxyCodeLine{\ \ \ \ grid-\/gap:\ 15px;}
+\DoxyCodeLine{\ \ \ \ grid-\/gap:\ var(-\/-\/grid-\/gap);}
+\DoxyCodeLine{\ \ \ \ -\/ms-\/grid-\/columns:\ 1fr\ var(-\/-\/grid-\/gap)\ 1fr;}
+\DoxyCodeLine{\ \ \ \ grid-\/template-\/columns:\ repeat(2,\ 1fr);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The prefixed {\ttfamily -\/ms-\/grid-\/columns} still has a custom property\+: {\ttfamily 1fr var(-\/-\/grid-\/gap) 1fr;} which won\textquotesingle{}t work.~\newline
+ This example shows issues with custom properties but other transforms might have similar issues.
+
+If you target IE or older Edge it is best to avoid using other modern features in grid property values.~\newline
+ As a last resort you can set \`{}preserve\+: false\`{}, we do not advice this as doing so purely to fix issues with CSS grid.
+
+{\itshape older Edge is any version before chromium (\texorpdfstring{$<$}{<}79)}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19375}{}\doxysubsection{\texorpdfstring{preserve}{preserve}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19375}
+The {\ttfamily preserve} option determines whether all plugins should receive a {\ttfamily preserve} option, which may preserve or remove otherwise-\/polyfilled CSS. By default, this option is not configured.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ preserve:\ false\ //\ instruct\ all\ plugins\ to\ omit\ pre-\/polyfilled\ CSS}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19376}{}\doxysubsection{\texorpdfstring{import\+From}{import\+From}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19376}
+The {\ttfamily import\+From} option specifies sources where variables like Custom Media, Custom Properties, Custom Selectors, and Environment Variables can be imported from, which might be CSS, JS, and JSON files, functions, and directly passed objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ /*}
+\DoxyCodeLine{\ \ \ \ @custom-\/media\ -\/-\/small-\/viewport\ (max-\/width:\ 30em);}
+\DoxyCodeLine{\ \ \ \ @custom-\/selector\ :-\/-\/heading\ h1,\ h2,\ h3;}
+\DoxyCodeLine{\ \ \ \ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\ \ */}
+\DoxyCodeLine{\ \ importFrom:\ 'path/to/file.css'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Multiple sources can be passed into this option, and they will be parsed in the order they are received. Java\+Script files, JSON files, functions, and objects will use different namespaces to import different kinds of variables.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ importFrom:\ [}
+\DoxyCodeLine{\ \ \ \ /*}
+\DoxyCodeLine{\ \ \ \ \ \ @custom-\/media\ -\/-\/small-\/viewport\ (max-\/width:\ 30em);}
+\DoxyCodeLine{\ \ \ \ \ \ @custom-\/selector\ :-\/-\/heading\ h1,\ h2,\ h3;}
+\DoxyCodeLine{\ \ \ \ \ \ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\ \ \ \ */}
+\DoxyCodeLine{\ \ \ \ 'path/to/file.css',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ module.exports\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ customMedia:\ \{\ '-\/-\/small-\/viewport':\ '(max-\/width:\ 30em)'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ customProperties:\ \{\ '-\/-\/color':\ 'red'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ customSelectors:\ \{\ ':-\/-\/heading':\ 'h1,\ h2,\ h3'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ environmentVariables:\ \{\ '-\/-\/branding-\/padding':\ '20px'\ \}}
+\DoxyCodeLine{\ \ \ \ \}\ */}
+\DoxyCodeLine{\ \ \ \ 'and/then/this.js',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}custom-\/media"{}:\ \{\ "{}-\/-\/small-\/viewport"{}:\ "{}(max-\/width:\ 30em)"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ "{}custom-\/properties"{}:\ \{\ "{}-\/-\/color"{}:\ "{}red"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}custom-\/selectors"{}:\ \{\ "{}:-\/-\/heading"{}:\ "{}h1,\ h2,\ h3"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}environment-\/variables"{}:\ \{\ "{}-\/-\/branding-\/padding"{}:\ "{}20px"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \}\ */}
+\DoxyCodeLine{\ \ \ \ 'and/then/that.json',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ customMedia:\ \{\ '-\/-\/small-\/viewport':\ '(max-\/width:\ 30em)'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ customProperties:\ \{\ '-\/-\/color':\ 'red'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ customSelectors:\ \{\ ':-\/-\/heading':\ 'h1,\ h2,\ h3'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ environmentVariables:\ \{\ '-\/-\/branding-\/padding':\ '20px'\ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ const\ customMedia\ =\ \{\ '-\/-\/small-\/viewport':\ '(max-\/width:\ 30em)'\ \};}
+\DoxyCodeLine{\ \ \ \ \ \ const\ customProperties\ =\ \{\ '-\/-\/color':\ 'red'\ \};}
+\DoxyCodeLine{\ \ \ \ \ \ const\ customSelectors\ =\ \{\ ':-\/-\/heading':\ 'h1,\ h2,\ h3'\ \};}
+\DoxyCodeLine{\ \ \ \ \ \ const\ environmentVariables\ =\ \{\ '-\/-\/branding-\/padding':\ '20px'\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{\ customMedia,\ customProperties,\ customSelectors,\ environmentVariables\ \};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19377}{}\doxysubsection{\texorpdfstring{export\+To}{export\+To}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19377}
+The {\ttfamily export\+To} option specifies destinations where variables like Custom Media, Custom Properties, Custom Selectors, and Environment Variables can be exported to, which might be CSS, JS, and JSON files, functions, and directly passed objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ /*}
+\DoxyCodeLine{\ \ \ \ @custom-\/media\ -\/-\/small-\/viewport\ (max-\/width:\ 30em);}
+\DoxyCodeLine{\ \ \ \ @custom-\/selector\ :-\/-\/heading\ h1,\ h2,\ h3;}
+\DoxyCodeLine{\ \ \ \ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\ \ */}
+\DoxyCodeLine{\ \ exportTo:\ 'path/to/file.css'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Multiple destinations can be passed into this option as well, and they will be parsed in the order they are received. Java\+Script files, JSON files, and objects will use different namespaces to import different kinds of variables.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ cachedObject\ =\ \{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcssPresetEnv(\{}
+\DoxyCodeLine{\ \ exportTo:\ [}
+\DoxyCodeLine{\ \ \ \ /*}
+\DoxyCodeLine{\ \ \ \ \ \ @custom-\/media\ -\/-\/small-\/viewport\ (max-\/width:\ 30em);}
+\DoxyCodeLine{\ \ \ \ \ \ @custom-\/selector\ :-\/-\/heading\ h1,\ h2,\ h3;}
+\DoxyCodeLine{\ \ \ \ \ \ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\ \ \ \ */}
+\DoxyCodeLine{\ \ \ \ 'path/to/file.css',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ module.exports\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ customMedia:\ \{\ '-\/-\/small-\/viewport':\ '(max-\/width:\ 30em)'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ customProperties:\ \{\ '-\/-\/color':\ 'red'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ customSelectors:\ \{\ ':-\/-\/heading':\ 'h1,\ h2,\ h3'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ environmentVariables:\ \{\ '-\/-\/branding-\/padding':\ '20px'\ \}}
+\DoxyCodeLine{\ \ \ \ \}\ */}
+\DoxyCodeLine{\ \ \ \ 'and/then/this.js',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}custom-\/media"{}:\ \{\ "{}-\/-\/small-\/viewport"{}:\ "{}(max-\/width:\ 30em)"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ "{}custom-\/properties"{}:\ \{\ "{}-\/-\/color"{}:\ "{}red"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}custom-\/selectors"{}:\ \{\ "{}:-\/-\/heading"{}:\ "{}h1,\ h2,\ h3"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}environment-\/variables"{}:\ \{\ "{}-\/-\/branding-\/padding"{}:\ "{}20px"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \}\ */}
+\DoxyCodeLine{\ \ \ \ 'and/then/that.json',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cachedObject,}
+\DoxyCodeLine{\ \ \ \ variables\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ ('customProperties'\ in\ variables)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ do\ something\ special\ with\ customProperties}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ Object.assign(cachedObject,\ variables);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19378}{}\doxysubsection{\texorpdfstring{debug}{debug}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19378}
+The {\ttfamily debug} option enables debugging messages to stdout which should be useful to help you debug which features have been enabled/disabled and why.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19379}{}\doxysubsection{\texorpdfstring{enable\+Client\+Side\+Polyfills}{enable\+Client\+Side\+Polyfills}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19379}
+The {\ttfamily enable\+Client\+Side\+Polyfills} enables any feature that would need an extra browser library to be loaded into the page for it to work. Defaults to {\ttfamily true}.
+
+Note that manually enabling/disabling features via the "{}feature"{} option overrides this flag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19380}{}\doxysection{\texorpdfstring{Stability and Portability}{Stability and Portability}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19380}
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} will often include very modern CSS features that are not fully ready yet. This gives users the chance to play around with these features and provide feedback.
+
+If the specification changes or is abandoned a new major version of the plugin will be released. This will require you to update your source code so that everything works as expected.
+
+To have more stability between updates of \href{https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env}{\texttt{ Post\+CSS Preset Env}} you may set {\ttfamily stage\+: 3} and/or {\ttfamily minimum\+Vendor\+Implementations\+: 2}.
+
+A side effect of staying close to the standard is that you can more easily migrate your project to other tooling all together.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19381}{}\doxysection{\texorpdfstring{Plugins list}{Plugins list}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19381}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19382}{}\doxysubsection{\texorpdfstring{Plugins that need client library}{Plugins that need client library}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19382}
+This is the current list of features that need a client library with a link to the polyfill\textquotesingle{}s library.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily blank-\/pseudo-\/class}\+: \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo}{\texttt{ Plugin}} / \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md}{\texttt{ Polyfill}}
+\item {\ttfamily focus-\/visible-\/pseudo-\/class}\+: \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-visible}{\texttt{ Plugin}} / \href{https://github.com/WICG/focus-visible}{\texttt{ Polyfill}}
+\item {\ttfamily focus-\/within-\/pseudo-\/class}\+: \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-focus-within}{\texttt{ Plugin}} / \href{https://github.com/jsxtools/focus-within}{\texttt{ Library}} / \href{https://github.com/jsxtools/focus-within/blob/master/README-BROWSER.md}{\texttt{ Polyfill}}
+\item {\ttfamily has-\/pseudo-\/class}\+: \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo}{\texttt{ Plugin}} / \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md}{\texttt{ Polyfill}}
+\item {\ttfamily prefers-\/color-\/scheme-\/query}\+: \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme}{\texttt{ Plugin}} / \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-prefers-color-scheme/README-BROWSER.md}{\texttt{ Polyfill}}
+\end{DoxyItemize}
+
+If you want to disable these types of features, please check the \`{}enable\+Client\+Side\+Polyfills\`{} option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19383}{}\doxysubsection{\texorpdfstring{Plugins not affected by Browser Support}{Plugins not affected by Browser Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-preset-env_2_r_e_a_d_m_e_autotoc_md19383}
+Given they have no support they will always be enabled if they match by Stage\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily blank-\/pseudo-\/class}\+: \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo}{\texttt{ Plugin}} / \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-blank-pseudo/README-BROWSER.md}{\texttt{ Polyfill}}
+\item {\ttfamily custom-\/media-\/queries}\+: \href{https://github.com/postcss/postcss-custom-media}{\texttt{ Plugin}}
+\item {\ttfamily has-\/pseudo-\/class}\+: \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo}{\texttt{ Plugin}} / \href{https://github.com/csstools/postcss-plugins/blob/main/plugins/css-has-pseudo/README-BROWSER.md}{\texttt{ Polyfill}}
+\item {\ttfamily image-\/set-\/function}\+: \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function}{\texttt{ Plugin}}
+\item {\ttfamily media-\/query-\/ranges}\+: \href{https://github.com/postcss/postcss-media-minmax}{\texttt{ Plugin}}
+\item {\ttfamily nesting-\/rules}\+: \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting}{\texttt{ Plugin}} 
+\end{DoxyItemize}

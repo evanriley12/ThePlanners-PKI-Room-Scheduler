@@ -1,0 +1,22 @@
+\chapter{get-\/symbol-\/description \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/get-\/symbol-\/description"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/get-\/symbol-\/description.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e}\index{get-\/symbol-\/description $<$sup$>$$<$a href="{}https://npmjs.org/package/get-\/symbol-\/description"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/get-\/symbol-\/description.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{get-\/symbol-\/description $<$sup$>$$<$a href=""https://npmjs.org/package/get-\/symbol-\/description"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/get-\/symbol-\/description.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e_autotoc_md13220}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e_autotoc_md13220}%
+ \href{https://github.com/inspect-js/get-symbol-description/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/get-symbol-description/}{\texttt{ }} \href{https://david-dm.org/inspect-js/get-symbol-description}{\texttt{ }} \href{https://david-dm.org/inspect-js/get-symbol-description\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=get-symbol-description}{\texttt{ }}
+
+\href{https://npmjs.org/package/get-symbol-description}{\texttt{ }}
+
+Gets the description of a Symbol. Handles {\ttfamily Symbol()} vs `Symbol('\textquotesingle{})\`{} properly when possible.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e_autotoc_md13221}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e_autotoc_md13221}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ getSymbolDescription\ =\ require('get-\/symbol-\/description');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(getSymbolDescription(Symbol())\ ===\ undefined);}
+\DoxyCodeLine{assert(getSymbolDescription(Symbol(''))\ ===\ '');\ //\ or\ \`{}undefined`,\ if\ in\ an\ engine\ that\ lacks\ name\ inference\ from\ concise\ method}
+\DoxyCodeLine{assert(getSymbolDescription(Symbol('foo'))\ ===\ 'foo');}
+\DoxyCodeLine{assert(getSymbolDescription(Symbol.iterator)\ ===\ 'Symbol.iterator');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e_autotoc_md13222}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2get-symbol-description_2_r_e_a_d_m_e_autotoc_md13222}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

@@ -1,0 +1,917 @@
+\chapter{3.21.0}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g}\index{3.21.0@{3.21.0}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25825}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25825}%
+ {\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily get\+Well\+Known\+Symbol\+Property\+Of\+Type} to reliably get symbol named properties due to changes in typescript@4.\+3
+\item {\ttfamily get\+Property\+Name\+Of\+Well\+Known\+Symbol} is now deprecated
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25826}{}\doxysection{\texorpdfstring{3.\+20.\+0}{3.\+20.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25826}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily find\+Imports} and {\ttfamily find\+Import\+Like\+Nodes} take an additional parameter {\ttfamily ignore\+File\+Name}. The default value for this paramter is {\ttfamily true} to remain backwards compatible. When set to {\ttfamily false}, it matches the behavior of Type\+Script, i.\+e. only looks for {\ttfamily require} in Java\+Script files.
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Js\+Doc} for {\ttfamily End\+Of\+File\+Token} now returns {\ttfamily JSDoc} comments whose contents are usable with the type checker
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25827}{}\doxysection{\texorpdfstring{3.\+19.\+1}{3.\+19.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25827}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Symbol\+Of\+Class\+Like\+Declaration} no longer crashes on anonymous mixin classes
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25828}{}\doxysection{\texorpdfstring{3.\+19.\+0}{3.\+19.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25828}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Symbol\+Of\+Class\+Like\+Declaration} to retrieve the symbol of class declarations and expressions regardless whether they have a name or not
+\item {\ttfamily get\+Base\+Of\+Class\+Like\+Declaration} to conventiently get the expression after {\ttfamily extends}
+\item {\ttfamily get\+Base\+Class\+Member\+Of\+Class\+Element} to look up the declaration of a class member in the base class
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Constructor\+Type\+Of\+Class\+Like\+Declaration} now really returns the constructor type (the static side of the class), previously it returned the instance type
+\item {\ttfamily has\+Exhaustive\+Case\+Clauses} allows additional case clauses with {\ttfamily null}, {\ttfamily undefined} and {\ttfamily never}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25829}{}\doxysection{\texorpdfstring{3.\+18.\+0}{3.\+18.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25829}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Source maps for easier debugging
+\item JSDoc is preserved in declaration files
+\item Comments are presered in transpiled code
+\item Everything you need to handle the control flow changes of Type\+Script@3.\+7
+\begin{DoxyItemize}
+\item {\ttfamily call\+Expression\+Affects\+Control\+Flow} to determine whether a Call\+Expression affects control flow by returning {\ttfamily never} or {\ttfamily asserts}
+\item {\ttfamily has\+Exhaustive\+Case\+Clauses} to determine whether a Switch\+Statement\textquotesingle{}s Case\+Clauses handle every possible value
+\item {\ttfamily ends\+Control\+Flow} and {\ttfamily get\+Control\+Flow\+End} take an optional {\ttfamily checker} parameter to recognize exhaustive Switch\+Statements and control flow effects of Call\+Expressions
+\end{DoxyItemize}
+\item {\ttfamily format\+Pseudo\+Big\+Int} converts Type\+Script\textquotesingle{}s representation of a Big\+Int to its literal representation as you would write it in your source code
+\item {\ttfamily get\+Ast\+Node\+At\+Position} similar to {\ttfamily get\+Token\+At\+Position}, but only operates on AST Nodes
+\item {\ttfamily remove\+Optional\+Chaining\+Undefined\+Marker\+Type} and {\ttfamily is\+Optional\+Chaining\+Undefined\+Marker\+Type} to handle types originating in an optional chain
+\item {\ttfamily find\+Imports} and {\ttfamily find\+Import\+Like\+Nodes}\+: prepare for import assertions
+\item {\ttfamily get\+Ts\+Check\+Directive} as new name for {\ttfamily get\+Check\+Js\+Directive}
+\item {\ttfamily get\+Check\+Js\+Directive} is now deprecated
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Usage\+Domain}\+: handles Namespace\+Export and Named\+Tuple\+Member
+\item {\ttfamily get\+Property\+Name}\+: handles parentheses and negative numeric literals, excludes Reg\+Exp literals and private identifiers
+\item {\ttfamily get\+Single\+Late\+Bound\+Property\+Name\+Of\+Property\+Name} and {\ttfamily get\+Late\+Bound\+Property\+Names\+Of\+Property\+Name}\+: handles private identifiers
+\item {\ttfamily has\+Access\+Modifier}\+: handles JSDoc access modifier
+\item {\ttfamily has\+Side\+Effects}\+: correctly determines side effects of (static) property initializers
+\item {\ttfamily is\+Expression\+Value\+Used}\+: handle nullish coalescing and conditional assignment operators
+\item {\ttfamily can\+Have\+Js\+Doc}\+: aligned with upstream changes in Type\+Script
+\item {\ttfamily is\+Compiler\+Option\+Enabled}\+:
+\begin{DoxyItemize}
+\item {\ttfamily no\+Unchecked\+Indexed\+Access} requires {\ttfamily strict\+Null\+Checks}
+\item {\ttfamily check\+Js} implies {\ttfamily allow\+Js}
+\item {\ttfamily emit\+Declaration\+Only} requires {\ttfamily declaration}
+\end{DoxyItemize}
+\item {\ttfamily is\+In\+Const\+Context}\+: handle template string interpolations
+\item excluded unnecessary files from npm package
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25830}{}\doxysection{\texorpdfstring{3.\+17.\+1}{3.\+17.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25830}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Valid\+Jsx\+Identifier}, {\ttfamily is\+Valid\+Property\+Access}, {\ttfamily is\+Valid\+Property\+Name}\+: fix unicode character width handling
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25831}{}\doxysection{\texorpdfstring{3.\+17.\+0}{3.\+17.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25831}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Valid\+Jsx\+Identifier} added an optional parameter to specify the target ECMAScript version
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Valid\+Jsx\+Identifier} now handles astral plane characters
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25832}{}\doxysection{\texorpdfstring{3.\+16.\+0}{3.\+16.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25832}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily get\+Iterator\+Yield\+Result\+From\+Iterator\+Result} to extract the {\ttfamily yield}ed type from {\ttfamily Iterator\+Result\texorpdfstring{$<$}{<}TYield, TReturn, TNext\texorpdfstring{$>$}{>}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25833}{}\doxysection{\texorpdfstring{3.\+15.\+0}{3.\+15.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25833}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Valid\+Identifier}, {\ttfamily is\+Valid\+Property\+Name}, {\ttfamily is\+Valid\+Property\+Access}, {\ttfamily is\+Valid\+Numeric\+Literal} added an optional parameter to specify the target ECMAScript version
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Valid\+Property\+Name}, {\ttfamily is\+Valid\+Property\+Access} now handle astral plane characters
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25834}{}\doxysection{\texorpdfstring{3.\+14.\+1}{3.\+14.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25834}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily find\+Imports}\+: fixed crash on nested namespaces
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25835}{}\doxysection{\texorpdfstring{3.\+14.\+0}{3.\+14.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25835}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily get\+Instance\+Type\+Of\+Class\+Like\+Declaration} and {\ttfamily get\+Constructor\+Type\+Of\+Class\+Like\+Declaration}
+\item added {\ttfamily Access\+Kind.\+Delete} to {\ttfamily get\+Access\+Kind}\+: {\ttfamily get\+Access\+Kind(node) \& Access\+Kind.\+Modification} can now be used to restore the old behavior of {\ttfamily is\+Reassignment\+Target(node)}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25836}{}\doxysection{\texorpdfstring{3.\+13.\+0}{3.\+13.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25836}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Access\+Kind} determines whether an expression is read from, written to or both
+\item optimized {\ttfamily get\+Property\+Of\+Type} for unambiguous property names to partially work around \href{https://github.com/microsoft/TypeScript/issues/31565}{\texttt{ https\+://github.\+com/microsoft/\+Type\+Script/issues/31565}}
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Reassignment\+Target} no longer returns {\ttfamily true} for {\ttfamily Delete\+Expression} as it doesn\textquotesingle{}t {\bfseries{assign}} a value to the operand
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25837}{}\doxysection{\texorpdfstring{3.\+12.\+0}{3.\+12.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25837}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Late\+Bound\+Property\+Names\+Of\+Property\+Name} returns all statically analyzable names of a property, method, ...
+\item {\ttfamily get\+Single\+Late\+Bound\+Property\+Name\+Of\+Property\+Name} returns the literal name of a property, method, ... if statically analyzable
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item fixed circular import
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25838}{}\doxysection{\texorpdfstring{3.\+11.\+0}{3.\+11.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25838}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item typeguards\+: {\ttfamily is\+Numeric\+Or\+String\+Like\+Literal}, {\ttfamily is\+Tuple\+Type\+Reference}
+\item {\ttfamily intersection\+Type\+Parts} as counterpart to {\ttfamily union\+Type\+Parts}
+\item {\ttfamily some\+Type\+Part} to execute a callback for each union or intersection constituent until the callback returns true
+\item {\ttfamily get\+Property\+Of\+Type} looks up a property by its escaped name
+\item {\ttfamily is\+Property\+Readonly\+In\+Type} determines whether a property in a given type cannot be written to
+\item {\ttfamily symbol\+Has\+Readonly\+Declaration} determines if a Symbol has any readonly or constant declaration
+\item {\ttfamily is\+Numeric\+Property\+Name} determines whether a property name would match an index signature
+\item {\ttfamily is\+Bindable\+Object\+Define\+Property\+Call} returns true for statically analyzable forms of `Object.\+define\+Property(o, \textquotesingle{}p', \{value, writable\}){\ttfamily  \texorpdfstring{$\ast$}{*}}is\+Readonly\+Assignment\+Declaration{\ttfamily determines whether an}Object.\+define\+Property{\ttfamily call is known to result in a readonly property \texorpdfstring{$\ast$}{*}}get\+Late\+Bound\+Property\+Names{\ttfamily returns all known property names of an expression \texorpdfstring{$\ast$}{*}}get\+Property\+Name\+From\+Type{\ttfamily extracts the property name of literal types \texorpdfstring{$\ast$}{*}}is\+Well\+Known\+Symbol\+Literally{\ttfamily to recognize expressions in the form of}Symbol.$<$name$>${\ttfamily  \texorpdfstring{$\ast$}{*}}get\+Property\+Name\+Of\+Well\+Known\+Symbol{\ttfamily returns the escaped name for a well known symbol literal \texorpdfstring{$\ast$}{*}}unwrap\+Parentheses{\ttfamily returns the first child expression that is not a}Parenthesized\+Expression\`{}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25839}{}\doxysection{\texorpdfstring{3.\+10.\+0}{3.\+10.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25839}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Compiler\+Option\+Enabled}\+: {\ttfamily incremental} is implicitly enabled by {\ttfamily composite}
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage}/{\ttfamily get\+Usage\+Domain}\+: no longer treat {\ttfamily as const} as type usage
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25840}{}\doxysection{\texorpdfstring{3.\+9.\+1}{3.\+9.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25840}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item reverted invalid deprecation of {\ttfamily can\+Have\+Jsdoc}
+\item fixed condition in {\ttfamily parse\+Jsdoc\+Of\+Node}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25841}{}\doxysection{\texorpdfstring{3.\+9.\+0}{3.\+9.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25841}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added typeguards\+: {\ttfamily is\+Null\+Literal} and {\ttfamily is\+Boolean\+Literal}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25842}{}\doxysection{\texorpdfstring{3.\+8.\+0}{3.\+8.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25842}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item exposes typeguards for typescript@3.\+2 by default
+\item added utilities\+: {\ttfamily is\+Const\+Assertion} and {\ttfamily is\+In\+Const\+Context}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25843}{}\doxysection{\texorpdfstring{3.\+7.\+0}{3.\+7.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25843}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily is\+Block\+Scoped\+Declaration\+Statement}
+\item added {\ttfamily is\+In\+Single\+Statement\+Context}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25844}{}\doxysection{\texorpdfstring{3.\+6.\+0}{3.\+6.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25844}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily get\+Check\+Js\+Directive} utility to parse {\ttfamily // @ts-\/check} and {\ttfamily // @ts-\/nocheck} pragmas
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25845}{}\doxysection{\texorpdfstring{3.\+5.\+2}{3.\+5.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25845}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item Published declaration files no longer contain {\ttfamily const enum}. They are now declared as regular enums instead.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25846}{}\doxysection{\texorpdfstring{3.\+5.\+1}{3.\+5.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25846}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Thenable\+Type} allows {\ttfamily Node} instead of {\ttfamily Expression} as parameter
+\item {\ttfamily is\+Block\+Scope\+Boundary} and {\ttfamily is\+Scope\+Boundary} consider {\ttfamily With\+Statement} as scope boundary
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25847}{}\doxysection{\texorpdfstring{3.\+5.\+0}{3.\+5.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25847}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item correctly handle Big\+Int literals
+\begin{DoxyItemize}
+\item added typeguard {\ttfamily is\+Big\+Int\+Literal}
+\item {\ttfamily is\+Literal\+Type} recognises Big\+Int
+\item {\ttfamily get\+Property\+Name} adds special handling for Big\+Int
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25848}{}\doxysection{\texorpdfstring{3.\+4.\+0}{3.\+4.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25848}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utility {\ttfamily comment\+Text} to get the actual text content of a comment excluding the characters needed to start and end the comment
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25849}{}\doxysection{\texorpdfstring{3.\+3.\+1}{3.\+3.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25849}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily find\+Imports}\+: fixed handling of Import\+Equals\+Declaration
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25850}{}\doxysection{\texorpdfstring{3.\+3.\+0}{3.\+3.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25850}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Compiler\+Option\+Enabled}\+: recognizes {\ttfamily strict\+Bind\+Call\+Apply}
+\item {\ttfamily get\+Token\+At\+Position}\+: optionally includes JSDoc during lookup
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Compiler\+Option\+Enabled}\+: correctly implements logic for {\ttfamily allow\+Synthetic\+Default\+Imports}
+\item {\ttfamily find\+Import\+Like\+Nodes}\+: correctly finds imports in namespaces
+\item {\ttfamily find\+Import\+Like\+Nodes} / {\ttfamily find\+Imports}\+: finds import types in JSDoc of JS files
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25851}{}\doxysection{\texorpdfstring{3.\+2.\+0}{3.\+2.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25851}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utility {\ttfamily find\+Import\+Like\+Nodes} that works similar to {\ttfamily find\+Imports} but returns the import statement or expression instead of the module specifier and doesn\textquotesingle{}t filter non-\/string module specifiers
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25852}{}\doxysection{\texorpdfstring{3.\+1.\+0}{3.\+1.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25852}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utilities\+: {\ttfamily is\+Keyword\+Kind} and {\ttfamily is\+Valid\+Jsx\+Identifier}
+\item exposes typeguards for typescript@3.\+0 by default
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25853}{}\doxysection{\texorpdfstring{3.\+0.\+0}{3.\+0.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25853}
+\+:warning\+: {\bfseries{Breaking Changes\+:}}
+
+
+\begin{DoxyItemize}
+\item Dropped support for {\ttfamily typescript@\texorpdfstring{$<$}{<}2.\+8.\+0}
+\item Dropped support for Node.\+js 4
+\item Removed deprecated APIs\+:
+\begin{DoxyItemize}
+\item {\ttfamily get\+Identifier\+Text}, {\ttfamily is\+Jsx\+Framgment}, {\ttfamily Import\+Options}
+\item deprected overloads of {\ttfamily is\+Modifier\+Flag\+Set}, {\ttfamily find\+Imports} and {\ttfamily get\+Control\+Flow\+End}
+\end{DoxyItemize}
+\item control flow related symbols can no longer be imported from `\textquotesingle{}tsutils/util/util'{\ttfamily , import directly from}\textquotesingle{}tsutils/util/control-\/flow\textquotesingle{}{\ttfamily or}\textquotesingle{}tsutils/util\textquotesingle{}{\ttfamily  \texorpdfstring{$\ast$}{*}}is\+Function\+Scope\+Boundary{\ttfamily and}is\+Block\+Scope\+Boundary{\ttfamily now return a enum member of}Scope\+Boundary{\ttfamily instead of a boolean \texorpdfstring{$\ast$}{*}}is\+Function\+Scope\+Boundary{\ttfamily no longer returns a truthy value for}Interface\+Declaration{\ttfamily ,}Type\+Alias\+Declaration\`{}
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utility {\ttfamily is\+Type\+Scope\+Boundary} returning {\ttfamily Scope\+Boundary.\+Type} or {\ttfamily Scope\+Boundary.\+Conditional\+Type}
+\item added enum {\ttfamily Scope\+Boundary\+Selector} whose members can be used to determine if a declaration belongs to a given {\ttfamily Scope\+Boundary} by using bitwise AND
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage} now correctly handles {\ttfamily infer T} nested inside function signatures or mapped types
+\item {\ttfamily is\+Compiler\+Option\+Enabled} correctly handles {\ttfamily skip\+Default\+Lib\+CHeck} and {\ttfamily suppress\+Implicit\+Any\+Index\+Errors}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25854}{}\doxysection{\texorpdfstring{2.\+29.\+0}{2.\+29.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25854}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utility {\ttfamily is\+Compiler\+Option\+Enabled}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25855}{}\doxysection{\texorpdfstring{2.\+28.\+0}{2.\+28.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25855}
+Typeguards are now split into multiple submodules for each version of Type\+Script (starting with 2.\+8.\+0). That means you can now import directly from {\ttfamily "{}tsutils/typeguard/2.\+8"{}} to get compatible declaraton files for Type\+Script@2.\+8. For more information please read the relevant section in \doxysectlink{md__r_e_a_d_m_e}{README.md}{0}.
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added typeguards\+: {\ttfamily is\+Tuple\+Type}, {\ttfamily is\+Optional\+Type\+Node}, {\ttfamily is\+Rest\+Type\+Node}, {\ttfamily is\+Synthetic\+Expression} (currently available from {\ttfamily "{}tsutils/typeguard/3.\+0"{}})
+\item added utility {\ttfamily is\+Strict\+Compiler\+Option\+Enabled}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25856}{}\doxysection{\texorpdfstring{2.\+27.\+2}{2.\+27.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25856}
+Avoid crash caused by removed function in {\ttfamily typescript@3.\+0.\+0}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25857}{}\doxysection{\texorpdfstring{2.\+27.\+1}{2.\+27.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25857}
+Added support for Type\+Script@3.\+0.\+0 nightly builds.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25858}{}\doxysection{\texorpdfstring{2.\+27.\+0}{2.\+27.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25858}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily get\+IIFE} utility
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25859}{}\doxysection{\texorpdfstring{2.\+26.\+2}{2.\+26.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25859}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily for\+Each\+Comment} and {\ttfamily for\+Each\+Token\+With\+Trivia} no longer duplicate comments around missing nodes
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25860}{}\doxysection{\texorpdfstring{2.\+26.\+1}{2.\+26.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25860}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item fixed crash in {\ttfamily has\+Side\+Effects} with tagged template literal without substitution\+: {\ttfamily tag\`{}template\`{}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25861}{}\doxysection{\texorpdfstring{2.\+26.\+0}{2.\+26.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25861}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added typeguard {\ttfamily is\+Literal\+Type\+Node}
+\item added support for type imports (`type T = import(\textquotesingle{}foo'){\ttfamily ) to}find\+Imports{\ttfamily via}Import\+Kind.\+Import\+Type\`{}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25862}{}\doxysection{\texorpdfstring{2.\+25.\+1}{2.\+25.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25862}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage}\+: fixed name lookup in function signatures to match runtime behavior. Note that this is not completely fixed in Type\+Script, yet. See\+: \href{https://github.com/Microsoft/TypeScript/issues/22825}{\texttt{ Microsoft/\+Type\+Script\#22825}} and \href{https://github.com/Microsoft/TypeScript/issues/22769}{\texttt{ Microsoft/\+Type\+Script\#22769}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25863}{}\doxysection{\texorpdfstring{2.\+25.\+0}{2.\+25.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25863}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utilities\+: {\ttfamily is\+Statement\+In\+Ambient\+Context} and {\ttfamily is\+Ambient\+Module\+Block}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25864}{}\doxysection{\texorpdfstring{2.\+24.\+0}{2.\+24.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25864}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added typeguards for typescript@2.\+8\+: {\ttfamily is\+Conditional\+Type\+Node}, {\ttfamily is\+Infer\+Type\+Node}, {\ttfamily is\+Conditional\+Type}, {\ttfamily is\+Instantiable\+Type}, {\ttfamily is\+Substitution\+Type}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25865}{}\doxysection{\texorpdfstring{2.\+23.\+0}{2.\+23.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25865}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added typeguard {\ttfamily is\+For\+In\+Or\+Of\+Statement}
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item correctly handle comments in generic JSX elements\+: {\ttfamily \texorpdfstring{$<$}{<}My\+Component\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}/\texorpdfstring{$\ast$}{*}comment\texorpdfstring{$\ast$}{*}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/\+My\+Component\texorpdfstring{$>$}{>}}
+\item fixed a bug with false positive trailing comments at the end of JSX self closing element\+: {\ttfamily \texorpdfstring{$<$}{<}div\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}br/\texorpdfstring{$>$}{>}/\texorpdfstring{$\ast$}{*}no comment\texorpdfstring{$\ast$}{*}/\texorpdfstring{$<$}{<}/div\texorpdfstring{$>$}{>}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25866}{}\doxysection{\texorpdfstring{2.\+22.\+2}{2.\+22.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25866}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage}\+: handle Conditional\+Types and {\ttfamily infer T}, which will be introduced in Type\+Script@2.\+8.\+0 and are already available in nightly builds
+\item {\ttfamily is\+Literal\+Type} no longer returns true for {\ttfamily ts.\+Type\+Flags.\+Boolean\+Literal} as this is not a {\ttfamily ts.\+Literal\+Type}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25867}{}\doxysection{\texorpdfstring{2.\+22.\+1}{2.\+22.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25867}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily ends\+Control\+Flow}\+:
+\begin{DoxyItemize}
+\item handle loops that might not even run a single iteration
+\item handle constant boolean conditions in loops and if
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25868}{}\doxysection{\texorpdfstring{2.\+22.\+0}{2.\+22.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25868}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily is\+Falsy\+Type} utility
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25869}{}\doxysection{\texorpdfstring{2.\+21.\+2}{2.\+21.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25869}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item fixed compile error with {\ttfamily typescript@2.\+8.\+0-\/dev}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25870}{}\doxysection{\texorpdfstring{2.\+21.\+1}{2.\+21.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25870}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Reassignment\+Target}\+: handle type assertions and non-\/null assertion
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25871}{}\doxysection{\texorpdfstring{2.\+21.\+0}{2.\+21.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25871}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily for\+Each\+Declared\+Variable} uses a more precise type for the callback parameter to make it useable again with typescript@2.\+7.\+1
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily is\+Unique\+ESSymbol\+Type} typeguard
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25872}{}\doxysection{\texorpdfstring{2.\+20.\+0}{2.\+20.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25872}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily is\+Thenable\+Type} utility
+\item added {\ttfamily union\+Type\+Parts} utility
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25873}{}\doxysection{\texorpdfstring{2.\+19.\+1}{2.\+19.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25873}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily for\+Each\+Comment}, {\ttfamily get\+Comment\+At\+Position} and {\ttfamily is\+Position\+In\+Comment}\+: skip shebang ({\ttfamily \#! something}) to not miss following comments at the start of the file
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25874}{}\doxysection{\texorpdfstring{2.\+19.\+0}{2.\+19.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25874}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily Wrapped\+Ast} interface that models the type of a wrapped Source\+File more accurate
+\item added {\ttfamily get\+Wrapped\+Node\+At\+Position} utiltiy that takes a {\ttfamily Node\+Wrap} and returns the most deeply nested Node\+Wrap that contains the given position
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25875}{}\doxysection{\texorpdfstring{2.\+18.\+0}{2.\+18.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25875}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Control\+Flow\+End} accepts Block\+Like as argument
+\end{DoxyItemize}
+
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Control\+Flow\+End} and {\ttfamily ends\+Control\+Flow}\+: correctly handle nested Labeled\+Statements
+\item {\ttfamily ends\+Control\+Flow} removed erroneous special case when an Iteration\+Statement is passed as argument whose parent is a Labeled\+Statement.
+\begin{DoxyItemize}
+\item if you want labels of an Iteration\+Statement (or Switch\+Statement) to be handled, you need to pass the Labeled\+Statement as argument.
+\item \+:warning\+: this fix may change the returned value if you relied on the buggy behavior
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries{Deprecations\+:}}
+
+
+\begin{DoxyItemize}
+\item deprecated overload of {\ttfamily get\+Control\+Flow\+End} that contains the {\ttfamily label} parameter. This parameter is no longer used and should no longer be passed to the function.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25876}{}\doxysection{\texorpdfstring{2.\+17.\+1}{2.\+17.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25876}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Control\+Flow\+End} and {\ttfamily ends\+Control\+Flow} (\#22)
+\begin{DoxyItemize}
+\item Throw\+Statements inside {\ttfamily try} are filtered out if there is a {\ttfamily catch} clause
+\item Try\+Statements with {\ttfamily catch} only end control flow if {\ttfamily try} AND {\ttfamily catch} definitely end control flow
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25877}{}\doxysection{\texorpdfstring{2.\+17.\+0}{2.\+17.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25877}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily kind} property to {\ttfamily Node\+Wrap}
+\item added {\ttfamily get\+Control\+Flow\+End} to public API
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25878}{}\doxysection{\texorpdfstring{2.\+16.\+0}{2.\+16.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25878}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily is\+Decorator} and {\ttfamily is\+Call\+Like\+Expression} typeguards
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25879}{}\doxysection{\texorpdfstring{2.\+15.\+0}{2.\+15.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25879}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily convert\+Ast} utility to produce a flattened and wrapped version of the AST
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25880}{}\doxysection{\texorpdfstring{2.\+14.\+0}{2.\+14.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25880}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added {\ttfamily is\+Delete\+Expression}
+\item added {\ttfamily get\+Line\+Break\+Style}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25881}{}\doxysection{\texorpdfstring{2.\+13.\+1}{2.\+13.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25881}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item fixed name of {\ttfamily is\+Jsx\+Fragment}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25882}{}\doxysection{\texorpdfstring{2.\+13.\+0}{2.\+13.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25882}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added support for {\ttfamily Jsx\+Fragment} introduced in typescript@2.\+6.\+2
+\item added corresponding typeguard functions
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25883}{}\doxysection{\texorpdfstring{2.\+12.\+2}{2.\+12.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25883}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily ends\+Control\+Flow}
+\begin{DoxyItemize}
+\item added missing logic for labeled statement, iteration statements and try-\/catch
+\item added missing logic for {\ttfamily break} and {\ttfamily continue} with labels
+\item take all jump statements into account, not only the last statement
+\end{DoxyItemize}
+\item {\ttfamily is\+Valid\+Identifier} and {\ttfamily is\+Valid\+Numeric\+Literal} handle irregular whitespace
+\item {\ttfamily find\+Imports} searches in ambient modules inside regular {\ttfamily .ts} files (not only {\ttfamily .d.\+ts})
+\item {\ttfamily can\+Have\+Js\+Doc} is now a typeguard
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25884}{}\doxysection{\texorpdfstring{2.\+12.\+1}{2.\+12.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25884}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily for\+Each\+Token\+With\+Trivia}
+\begin{DoxyItemize}
+\item handles irregular whitespace and no longer visits some tokens twice
+\item correctly calculates the range of Jsx\+Text
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25885}{}\doxysection{\texorpdfstring{2.\+12.\+0}{2.\+12.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25885}
+{\bfseries{API-\/\+Changes\+:}}
+
+
+\begin{DoxyItemize}
+\item deprecated {\ttfamily Import\+Options} if favor of the new {\ttfamily Import\+Kind} enum
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25886}{}\doxysection{\texorpdfstring{2.\+11.\+2}{2.\+11.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25886}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily parse\+Js\+Doc\+Of\+Node}\+: set correct {\ttfamily pos}, {\ttfamily end} and {\ttfamily parent} properties. Also affects {\ttfamily get\+Js\+Doc} of {\ttfamily End\+Of\+File\+Token}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25887}{}\doxysection{\texorpdfstring{2.\+11.\+1}{2.\+11.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25887}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage}\+: correctly consider catch binding as block scoped declaration inside catch block
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25888}{}\doxysection{\texorpdfstring{2.\+11.\+0}{2.\+11.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25888}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Js\+Doc} now correctly returns Js\+Doc for {\ttfamily End\+Of\+File\+Token}
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utility {\ttfamily parse\+Js\+Doc\+Of\+Node}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25889}{}\doxysection{\texorpdfstring{2.\+10.\+0}{2.\+10.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25889}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added utility {\ttfamily find\+Imports} to find all kinds of imports in a source file
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25890}{}\doxysection{\texorpdfstring{2.\+9.\+0}{2.\+9.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25890}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item added typeguard {\ttfamily is\+Mapped\+Type\+Node}
+\item added utilities {\ttfamily can\+Have\+Js\+Doc} and {\ttfamily get\+Js\+Doc}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25891}{}\doxysection{\texorpdfstring{2.\+8.\+2}{2.\+8.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25891}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage}\+: handle global augmentation like other module augmentations
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25892}{}\doxysection{\texorpdfstring{2.\+8.\+1}{2.\+8.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25892}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item Support {\ttfamily typescript@2.\+5.\+1} with optional catch binding
+\item {\ttfamily collect\+Variable\+Usage} fixed a bug where method decorator had method\textquotesingle{}s parameters in scope
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25893}{}\doxysection{\texorpdfstring{2.\+8.\+0}{2.\+8.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25893}
+
+\begin{DoxyItemize}
+\item Compatibility with the latest typescript nightly
+\item Added {\ttfamily get\+Identifier\+Text} to unescape identifiers across typescript versions
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25894}{}\doxysection{\texorpdfstring{2.\+7.\+1}{2.\+7.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25894}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Reassignment\+Target} don\textquotesingle{}t return {\ttfamily true} for right side of assignment
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25895}{}\doxysection{\texorpdfstring{2.\+7.\+0}{2.\+7.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25895}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added {\ttfamily is\+Reassignment\+Target} utility
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25896}{}\doxysection{\texorpdfstring{2.\+6.\+1}{2.\+6.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25896}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Declaration\+Domain} now returns {\ttfamily undefined} for Parameter in Index\+Signature
+\item {\ttfamily collect\+Variable\+Usage} ignores Parameter in Index\+Signature
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25897}{}\doxysection{\texorpdfstring{2.\+6.\+0}{2.\+6.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25897}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage}\+:
+\begin{DoxyItemize}
+\item don\textquotesingle{}t merge imports with global declarations
+\item treat everything in a declaration file as exported if there is no explicit {\ttfamily export \{\};}
+\end{DoxyItemize}
+\item {\ttfamily is\+Expression\+Value\+Used}\+: handle destructuring in {\ttfamily for...of}
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added {\ttfamily get\+Modifier} utility
+\item Added {\ttfamily Declaration\+Domain.\+Import} to distinguish imports from other declarations
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25898}{}\doxysection{\texorpdfstring{2.\+5.\+1}{2.\+5.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25898}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily collect\+Variable\+Usage} ignore jump labels as in {\ttfamily break label;}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25899}{}\doxysection{\texorpdfstring{2.\+5.\+0}{2.\+5.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25899}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Function\+With\+Body} handles constructor overload correctly.
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Implemented {\ttfamily is\+Expression\+Value\+Used} to check whether the result of an expression is actually used.
+\item Implemented {\ttfamily get\+Declaration\+Domain} to determine if a given declaration introduces a new symbol in the value or type domain.
+\end{DoxyItemize}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily collect\+Variable\+Uses} is now usable\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyItemize}
+\item no longer ignores signatures and its parameters
+\item don\textquotesingle{}t merge declarations and uses across domains
+\item no longer marks exceptions in catch clause or parameter properties as exported
+\item fixed exports of namespaces
+\item fixed scoping of Class\+Expression name
+\item correcly handle ambient namespaces and module augmentations
+\item fixed how {\ttfamily \+: typeof foo} is handled for parameters and function return type
+\item {\bfseries{still WIP}}\+: {\ttfamily export \{Foo as Bar\}} inside ambient namespaces and modules
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25900}{}\doxysection{\texorpdfstring{2.\+4.\+0}{2.\+4.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25900}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Line\+Ranges}\+: {\ttfamily content\+Length} now contains the correct line length when there are multiple consecutive line break characters
+\item {\ttfamily get\+Token\+At\+Position}\+: don\textquotesingle{}t match tokens that end at the specified position (because that\textquotesingle{}s already outside of their range)
+\item deprecated the misnamed {\ttfamily is\+Modfier\+Flag\+Set}, use the new {\ttfamily is\+Modifier\+Flag\+Set} instead
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added typeguard\+: {\ttfamily is\+Js\+Doc}
+\item Added experimental scope and usage analysis ({\ttfamily get\+Usage\+Domain} and {\ttfamily collect\+Variable\+Usage})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25901}{}\doxysection{\texorpdfstring{2.\+3.\+0}{2.\+3.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25901}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily for\+Each\+Comment} no longer omits some comments when callback returns a truthy value
+\item {\ttfamily is\+Position\+In\+Comment} fixed false positive inside JSXText
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added utility\+: {\ttfamily get\+Comment\+At\+Position}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25902}{}\doxysection{\texorpdfstring{2.\+2.\+0}{2.\+2.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25902}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item Fixed bit value of {\ttfamily Side\+Effect\+Options.\+Jsx\+Element} to be a power of 2
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added utilities\+: {\ttfamily get\+Token\+At\+Position} and {\ttfamily is\+Position\+In\+Comment}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25903}{}\doxysection{\texorpdfstring{2.\+1.\+0}{2.\+1.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25903}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added typeguard {\ttfamily is\+Expression}
+\item Added utilities\+: {\ttfamily has\+Side\+Effects}, {\ttfamily get\+Declaration\+Of\+Binding\+Element}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25904}{}\doxysection{\texorpdfstring{2.\+0.\+0}{2.\+0.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25904}
+{\bfseries{Breaking Changes\+:}}
+
+
+\begin{DoxyItemize}
+\item Dropped compatibility with {\ttfamily typescript@\texorpdfstring{$<$}{<}2.\+1.\+0}
+\item Removed misnamed {\ttfamily is\+Numericliteral}, use {\ttfamily is\+Numeric\+Literal} instead (notice the uppercase L)
+\item Removed {\ttfamily is\+Enum\+Literal\+Type} which will cause compile errors with typescript@2.\+4.\+0
+\item Refactored directory structure\+: all imports that referenced subdirectories (e.\+g. `require(\textquotesingle{}tsutils/src/typeguard')\`{} will be broken
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item New directory structure allows imports of typeguards or utils independently, e.\+g. (`require(\textquotesingle{}tsutils/typeguard')\`{})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25905}{}\doxysection{\texorpdfstring{1.\+9.\+1}{1.\+9.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25905}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Object\+Flag\+Set} now uses the correct {\ttfamily object\+Flags} property
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25906}{}\doxysection{\texorpdfstring{1.\+9.\+0}{1.\+9.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25906}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Next\+Token} no longer omits {\ttfamily End\+Of\+File\+Token} when there is no trivia before EOF. That means the only inputs where {\ttfamily get\+Next\+Token} returns {\ttfamily undefined} are {\ttfamily Source\+File} and {\ttfamily End\+Of\+File\+Token}
+\end{DoxyItemize}
+
+{\bfseries{Features}}\+:
+
+
+\begin{DoxyItemize}
+\item Added typeguards for types
+\item Added utilities for flag checking\+: {\ttfamily is\+Node\+Flag\+Set}, {\ttfamily is\+Type\+Flag\+Set}, {\ttfamily is\+Symbol\+Flag\+Set},{\ttfamily is\+Object\+Flag\+Set}, {\ttfamily is\+Modifier\+Flag\+Set}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25907}{}\doxysection{\texorpdfstring{1.\+8.\+0}{1.\+8.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25907}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Support peer dependency of typescript nightlies of 2.\+4.\+0
+\item Added typeguards\+: {\ttfamily is\+Jsx\+Attributes}, {\ttfamily is\+Intersection\+Type\+Node}, {\ttfamily is\+Type\+Operator\+Node}, {\ttfamily is\+Type\+Predicate\+Node}, {\ttfamily is\+Type\+Query\+Node}, {\ttfamily is\+Union\+Type\+Node}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25908}{}\doxysection{\texorpdfstring{1.\+7.\+0}{1.\+7.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25908}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily is\+Function\+Scope\+Boundary} now handles Interfaces, Type\+Aliases, Function\+Signatures, etc
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added utilities\+: {\ttfamily is\+This\+Parameter}, {\ttfamily is\+Same\+Line} and {\ttfamily is\+Function\+With\+Body}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25909}{}\doxysection{\texorpdfstring{1.\+6.\+0}{1.\+6.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25909}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Add {\ttfamily is\+Valid\+Property\+Access}, {\ttfamily is\+Valid\+Numeric\+Literal} and {\ttfamily is\+Valid\+Property\+Name}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25910}{}\doxysection{\texorpdfstring{1.\+5.\+0}{1.\+5.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25910}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Add {\ttfamily is\+Valid\+Identifier}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25911}{}\doxysection{\texorpdfstring{1.\+4.\+0}{1.\+4.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25911}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Add {\ttfamily content\+Length} property to the result of {\ttfamily get\+Line\+Ranges}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25912}{}\doxysection{\texorpdfstring{1.\+3.\+0}{1.\+3.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25912}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily can\+Have\+Leading\+Trivia}\+:
+\begin{DoxyItemize}
+\item Fix property access on undefined parent reference
+\item Fixes\+: \href{https://github.com/palantir/tslint/issues/2330}{\texttt{ palantir/tslint\#2330}}
+\end{DoxyItemize}
+\item {\ttfamily has\+Own\+This\+Reference}\+: now includes accessors on object literals
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Typeguards\+:
+\begin{DoxyItemize}
+\item is\+Type\+Parameter\+Declaration
+\item is\+Enitity\+Name
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25913}{}\doxysection{\texorpdfstring{1.\+2.\+2}{1.\+2.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25913}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily has\+Own\+This\+Reference}\+:
+\begin{DoxyItemize}
+\item exclude overload signatures of function declarations
+\item add method declarations on object literals
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25914}{}\doxysection{\texorpdfstring{1.\+2.\+1}{1.\+2.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25914}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item Fix name of {\ttfamily is\+Numeric\+Literal}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25915}{}\doxysection{\texorpdfstring{1.\+2.\+0}{1.\+2.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25915}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Typeguards\+:
+\begin{DoxyItemize}
+\item is\+Enum\+Member
+\item is\+Expression\+With\+Type\+Arguments
+\item is\+Import\+Specifier
+\end{DoxyItemize}
+\item Utilities\+:
+\begin{DoxyItemize}
+\item is\+Js\+Doc\+Kind, is\+Type\+Node\+Kind
+\end{DoxyItemize}
+\item Allow typescript@next in peer\+Dependencies
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25916}{}\doxysection{\texorpdfstring{1.\+1.\+0}{1.\+1.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25916}
+{\bfseries{Bugfixes\+:}}
+
+
+\begin{DoxyItemize}
+\item Fix is\+Block\+Scope\+Boundary\+: Remove With\+Statement, If\+Statment, Do\+Statement and While\+Statement because they are no scope boundary whitout a block.
+\end{DoxyItemize}
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Added more typeguards\+:
+\begin{DoxyItemize}
+\item is\+Assertion\+Expression
+\item is\+Empty\+Statement
+\item is\+Jsx\+Attribute\+Like
+\item is\+Jsx\+Opening\+Like\+Element
+\item is\+Non\+Null\+Expression
+\item is\+Syntax\+List
+\end{DoxyItemize}
+\item Utilities\+:
+\begin{DoxyItemize}
+\item get\+Next\+Token, get\+Previous\+Token
+\item has\+Own\+This\+Reference
+\item get\+Line\+Ranges
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25917}{}\doxysection{\texorpdfstring{1.\+0.\+0}{1.\+0.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_c_h_a_n_g_e_l_o_g_autotoc_md25917}
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Initial implementation of typeguards
+\item Utilities\+:
+\begin{DoxyItemize}
+\item get\+Child\+Of\+Kind
+\item is\+Node\+Kind, is\+Assignment\+Kind
+\item has\+Modifier, is\+Parameter\+Property, has\+Access\+Modifier
+\item get\+Previous\+Statement, get\+Next\+Statement
+\item get\+Property\+Name
+\item for\+Each\+Destructuring\+Identifier, for\+Each\+Declared\+Variable
+\item get\+Variable\+Declaration\+Kind, is\+Block\+Scoped\+Variable\+Declaration\+List, is\+Block\+Scoped\+Variable\+Declaration
+\item is\+Scope\+Boundary, is\+Function\+Scope\+Boundary, is\+Block\+Scope\+Boundary
+\item for\+Each\+Token, for\+Each\+Token\+With\+Trivia, for\+Each\+Comment
+\item ends\+Control\+Flow 
+\end{DoxyItemize}
+\end{DoxyItemize}

@@ -1,0 +1,91 @@
+\chapter{CSS Modules\+: Extract Imports}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e}\index{CSS Modules: Extract Imports@{CSS Modules: Extract Imports}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19084}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19084}%
+ \href{https://travis-ci.org/css-modules/postcss-modules-extract-imports}{\texttt{ }}
+
+Transforms\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:local(.continueButton)\ \{}
+\DoxyCodeLine{\ \ composes:\ button\ from\ "{}library/button.css"{};}
+\DoxyCodeLine{\ \ color:\ green;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+into\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:import("{}library/button.css"{})\ \{}
+\DoxyCodeLine{\ \ button:\ \_\_tmp\_487387465fczSDGHSABb;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{:local(.continueButton)\ \{}
+\DoxyCodeLine{\ \ composes:\ \_\_tmp\_487387465fczSDGHSABb;}
+\DoxyCodeLine{\ \ color:\ green;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19085}{}\doxysection{\texorpdfstring{Specification}{Specification}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19085}
+
+\begin{DoxyItemize}
+\item Only a certain whitelist of properties are inspected. Currently, that whitelist is `\mbox{[}\textquotesingle{}composes'\mbox{]}\`{} alone.
+\item An extend-\/import has the following format\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{composes:\ className\ [...\ className]\ from\ "{}path/to/file.css"{};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19086}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19086}
+
+\begin{DoxyItemize}
+\item {\ttfamily fail\+On\+Wrong\+Order} {\ttfamily bool} generates exception for unpredictable imports order.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.aa\ \{}
+\DoxyCodeLine{\ \ composes:\ b\ from\ "{}./b.css"{};}
+\DoxyCodeLine{\ \ composes:\ c\ from\ "{}./c.css"{};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.bb\ \{}
+\DoxyCodeLine{\ \ /*\ "{}b.css"{}\ should\ be\ before\ "{}c.css"{}\ in\ this\ case\ */}
+\DoxyCodeLine{\ \ composes:\ c\ from\ "{}./c.css"{};}
+\DoxyCodeLine{\ \ composes:\ b\ from\ "{}./b.css"{};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19087}{}\doxysection{\texorpdfstring{Building}{Building}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19087}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install}
+\DoxyCodeLine{npm\ test}
+
+\end{DoxyCode}
+
+
+\href{https://travis-ci.org/css-modules/postcss-modules-extract-imports}{\texttt{ }}
+
+
+\begin{DoxyItemize}
+\item Lines\+: \href{https://coveralls.io/r/css-modules/postcss-modules-extract-imports?branch=master}{\texttt{ }}
+\item Statements\+: \href{http://codecov.io/github/css-modules/postcss-modules-extract-imports?branch=master}{\texttt{ }}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19088}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19088}
+ISC\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19089}{}\doxysection{\texorpdfstring{With thanks}{With thanks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-extract-imports_2_r_e_a_d_m_e_autotoc_md19089}
+
+\begin{DoxyItemize}
+\item Mark Dalgleish
+\item Tobias Koppers
+\item Guy Bedford
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Glen Maddern, 2015. 

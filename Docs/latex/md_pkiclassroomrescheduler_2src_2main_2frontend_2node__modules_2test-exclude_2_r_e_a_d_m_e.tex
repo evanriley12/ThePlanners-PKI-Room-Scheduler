@@ -1,0 +1,52 @@
+\chapter{test-\/exclude}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e}\index{test-\/exclude@{test-\/exclude}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25462}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25462}%
+ The file include/exclude logic used by \href{https://github.com/istanbuljs/nyc}{\texttt{ nyc}} and \href{https://github.com/istanbuljs/babel-plugin-istanbul}{\texttt{ babel-\/plugin-\/istanbul}}.
+
+\href{https://travis-ci.org/istanbuljs/test-exclude}{\texttt{ }} \href{https://coveralls.io/github/istanbuljs/test-exclude?branch=master}{\texttt{ }} \href{https://github.com/conventional-changelog/standard-version}{\texttt{ }} \href{https://greenkeeper.io/}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25463}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25463}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ TestExclude\ =\ require('test-\/exclude');}
+\DoxyCodeLine{const\ exclude\ =\ new\ TestExclude();}
+\DoxyCodeLine{if\ (exclude().shouldInstrument('./foo.js'))\ \{}
+\DoxyCodeLine{\ \ \ \ //\ let's\ instrument\ this\ file\ for\ test\ coverage!}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25464}{}\doxysubsection{\texorpdfstring{Test\+Exclude(options)}{Test\+Exclude(options)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25464}
+The test-\/exclude constructor accepts an options object. The defaults are taken from \href{https://github.com/istanbuljs/schema}{\texttt{ @istanbuljs/schema}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25465}{}\doxysubsubsection{\texorpdfstring{options.\+cwd}{options.\+cwd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25465}
+This is the base directory by which all comparisons are performed. Files outside {\ttfamily cwd} are not included.
+
+Default\+: {\ttfamily process.\+cwd()}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25466}{}\doxysubsubsection{\texorpdfstring{options.\+exclude}{options.\+exclude}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25466}
+Array of path globs to be ignored. Note this list does not include {\ttfamily node\+\_\+modules} which is added separately. See \href{https://github.com/istanbuljs/schema/blob/master/default-exclude.js}{\texttt{ @istanbuljs/schema/default-\/excludes.js}} for default list.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25467}{}\doxysubsubsection{\texorpdfstring{options.\+exclude\+Node\+Modules}{options.\+exclude\+Node\+Modules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25467}
+By default {\ttfamily node\+\_\+modules} is excluded. Setting this option {\ttfamily true} allows {\ttfamily node\+\_\+modules} to be included.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25468}{}\doxysubsubsection{\texorpdfstring{options.\+include}{options.\+include}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25468}
+Array of path globs that can be included. By default this is unrestricted giving a result similar to `\mbox{[}'\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\textquotesingle{}\mbox{]}\`{} but more optimized.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25469}{}\doxysubsubsection{\texorpdfstring{options.\+extension}{options.\+extension}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25469}
+Array of extensions that can be included. This ensures that nyc only attempts to process files which it might understand. Note use of some formats may require adding parser plugins to your nyc or babel configuration.
+
+Default\+: `\mbox{[}'.js\textquotesingle{}, \textquotesingle{}.cjs\textquotesingle{}, \textquotesingle{}.mjs\textquotesingle{}, \textquotesingle{}.ts\textquotesingle{}, \textquotesingle{}.tsx\textquotesingle{}, \textquotesingle{}.jsx\textquotesingle{}\mbox{]}\`{}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25470}{}\doxysubsection{\texorpdfstring{Test\+Exclude\+::should\+Instrument(filename)\+: boolean}{Test\+Exclude\+::should\+Instrument(filename)\+: boolean}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25470}
+Test if {\ttfamily filename} matches the rules of this test-\/exclude instance.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ exclude\ =\ new\ TestExclude();}
+\DoxyCodeLine{exclude.shouldInstrument('index.js');\ //\ true}
+\DoxyCodeLine{exclude.shouldInstrument('test.js');\ //\ false}
+\DoxyCodeLine{exclude.shouldInstrument('README.md');\ //\ false}
+\DoxyCodeLine{exclude.shouldInstrument('node\_modules/test-\/exclude/index.js');\ //\ false}
+
+\end{DoxyCode}
+
+
+In this example code\+:
+\begin{DoxyItemize}
+\item {\ttfamily index.\+js} is true because it matches the default {\ttfamily options.\+extension} list and is not part of the default {\ttfamily options.\+exclude} list.
+\item {\ttfamily test.\+js} is excluded because it matches the default {\ttfamily options.\+exclude} list.
+\item {\ttfamily README.\+md} is not matched by the default {\ttfamily options.\+extension}
+\item {\ttfamily node\+\_\+modules/test-\/exclude/index.\+js} is excluded because {\ttfamily options.\+exclude\+Node\+Modules} is true by default.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25471}{}\doxysubsection{\texorpdfstring{Test\+Exculde\+::glob\+Sync(cwd = options.\+cwd)\+: Array\mbox{[}string\mbox{]}}{Test\+Exculde\+::glob\+Sync(cwd = options.\+cwd)\+: Array\mbox{[}string\mbox{]}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25471}
+This synchronously retrieves a list of files within {\ttfamily cwd} which should be instrumented. Note that setting {\ttfamily cwd} to a parent of {\ttfamily options.\+cwd} is ineffective, this argument can only be used to further restrict the result.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25472}{}\doxysubsection{\texorpdfstring{Test\+Exclude\+::glob(cwd = options.\+cwd)\+: Promise$<$\+Array\mbox{[}string\mbox{]}$>$}{Test\+Exclude\+::glob(cwd = options.\+cwd)\+: Promise$<$\+Array\mbox{[}string\mbox{]}$>$}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25472}
+This function does the same as {\ttfamily Test\+Exclude\#glob\+Sync} but does so asynchronously. The Promise resolves to an Array of strings.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25473}{}\doxysection{\texorpdfstring{{\ttfamily test-\/exclude} for enterprise}{{\ttfamily test-\/exclude} for enterprise}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2test-exclude_2_r_e_a_d_m_e_autotoc_md25473}
+Available as part of the Tidelift Subscription.
+
+The maintainers of {\ttfamily test-\/exclude} and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-test-exclude?utm_source=npm-test-exclude&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}} 

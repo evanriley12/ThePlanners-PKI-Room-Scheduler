@@ -1,0 +1,51 @@
+\chapter{entities \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/entities"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}http\+://img.\+shields.\+io/npm/v/entities.\+svg"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/entities"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dm/entities.\+svg"{} alt="{}\+Downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/fb55/entities"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}http\+://img.\+shields.\+io/travis/fb55/entities.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://coveralls.\+io/r/fb55/entities"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}http\+://img.\+shields.\+io/coveralls/fb55/entities.\+svg"{} alt="{}\+Coverage"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme}\index{entities $<$a href="{}https://npmjs.org/package/entities"{} $>$$<$img src="{}http://img.shields.io/npm/v/entities.svg"{} alt="{}NPM version"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/entities"{} $>$$<$img src="{}https://img.shields.io/npm/dm/entities.svg"{} alt="{}Downloads"{}/$>$$<$/a$>$ $<$a href="{}http://travis-\/ci.org/fb55/entities"{} $>$$<$img src="{}http://img.shields.io/travis/fb55/entities.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}https://coveralls.io/r/fb55/entities"{} $>$$<$img src="{}http://img.shields.io/coveralls/fb55/entities.svg"{} alt="{}Coverage"{}/$>$$<$/a$>$@{entities $<$a href=""https://npmjs.org/package/entities"" $>$$<$img src=""http://img.shields.io/npm/v/entities.svg"" alt=""NPM version""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/entities"" $>$$<$img src=""https://img.shields.io/npm/dm/entities.svg"" alt=""Downloads""/$>$$<$/a$>$ $<$a href=""http://travis-\/ci.org/fb55/entities"" $>$$<$img src=""http://img.shields.io/travis/fb55/entities.svg"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""https://coveralls.io/r/fb55/entities"" $>$$<$img src=""http://img.shields.io/coveralls/fb55/entities.svg"" alt=""Coverage""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8959}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8959}%
+ Encode \& decode HTML \& XML entities with ease \& speed.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8960}{}\doxysection{\texorpdfstring{How to…}{How to…}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8960}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8961}{}\doxysubsection{\texorpdfstring{…install {\ttfamily entities}}{…install {\ttfamily entities}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8961}
+\begin{DoxyVerb}npm install entities
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8962}{}\doxysubsection{\texorpdfstring{…use {\ttfamily entities}}{…use {\ttfamily entities}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8962}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ entities\ =\ require("{}entities"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//encoding}
+\DoxyCodeLine{entities.escape("{}\&\#38;"{});\ //\ "{}\&\#x26;\#38;"{}}
+\DoxyCodeLine{entities.encodeXML("{}\&\#38;"{});\ //\ "{}\&amp;\#38;"{}}
+\DoxyCodeLine{entities.encodeHTML("{}\&\#38;"{});\ //\ "{}\&amp;\&num;38\&semi;"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//decoding}
+\DoxyCodeLine{entities.decodeXML("{}asdf\ \&amp;\ \&\#xFF;\ \&\#xFC;\ \&apos;"{});\ //\ "{}asdf\ \&\ ÿ\ ü\ '"{}}
+\DoxyCodeLine{entities.decodeHTML("{}asdf\ \&amp;\ \&yuml;\ \&uuml;\ \&apos;"{});\ //\ "{}asdf\ \&\ ÿ\ ü\ '"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8963}{}\doxysection{\texorpdfstring{Performance}{Performance}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8963}
+This is how {\ttfamily entities} compares to other libraries on a very basic benchmark (see {\ttfamily scripts/benchmark.\+ts}, for 10,000,000 iterations)\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily decode} performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily encode} performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bundle size    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily decode} performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily encode} performance   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bundle size    }\\\cline{1-4}
+\endhead
+entities   &10.\+809s   &17.\+683s   &    \\\cline{1-4}
+html-\/entities   &14.\+029s   &22.\+670s   &    \\\cline{1-4}
+he   &16.\+163s   &44.\+010s   &    \\\cline{1-4}
+parse-\/entities   &28.\+507s   &N/A   &   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+
+
+License\+: BSD-\/2-\/\+Clause\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8965}{}\doxysection{\texorpdfstring{Security contact information}{Security contact information}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8965}
+To report a security vulnerability, please use the \href{https://tidelift.com/security}{\texttt{ Tidelift security contact}}. Tidelift will coordinate the fix and disclosure.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8966}{}\doxysection{\texorpdfstring{{\ttfamily entities} for enterprise}{{\ttfamily entities} for enterprise}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2entities_2readme_autotoc_md8966}
+Available as part of the Tidelift Subscription
+
+The maintainers of {\ttfamily entities} and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-entities?utm_source=npm-entities&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}} 

@@ -1,0 +1,265 @@
+\chapter{regexpu-\/core \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/mathiasbynens/regexpu-\/core/actions?query=workflow\%3\+Arun-\/checks"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://github.\+com/mathiasbynens/regexpu-\/core/workflows/run-\/checks/badge.\+svg"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/regexpu-\/core"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/regexpu-\/core"{} alt="{}regexpu-\/core on npm"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e}\index{regexpu-\/core $<$a href="{}https://github.com/mathiasbynens/regexpu-\/core/actions?query=workflow\%3Arun-\/checks"{} $>$$<$img src="{}https://github.com/mathiasbynens/regexpu-\/core/workflows/run-\/checks/badge.svg"{} alt="{}Build status"{}/$>$$<$/a$>$ $<$a href="{}https://www.npmjs.com/package/regexpu-\/core"{} $>$$<$img src="{}https://img.shields.io/npm/v/regexpu-\/core"{} alt="{}regexpu-\/core on npm"{}/$>$$<$/a$>$@{regexpu-\/core $<$a href=""https://github.com/mathiasbynens/regexpu-\/core/actions?query=workflow\%3Arun-\/checks"" $>$$<$img src=""https://github.com/mathiasbynens/regexpu-\/core/workflows/run-\/checks/badge.svg"" alt=""Build status""/$>$$<$/a$>$ $<$a href=""https://www.npmjs.com/package/regexpu-\/core"" $>$$<$img src=""https://img.shields.io/npm/v/regexpu-\/core"" alt=""regexpu-\/core on npm""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20520}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20520}%
+ {\itshape regexpu} is a source code transpiler that enables the use of ES2015 Unicode regular expressions in Java\+Script-\/of-\/today (ES5).
+
+{\itshape regexpu-\/core} contains \+\_\+regexpu\+\_\+’s core functionality, i.\+e. {\ttfamily rewrite\+Pattern(pattern, flag)}, which enables rewriting regular expressions that make use of \href{https://mathiasbynens.be/notes/es6-unicode-regex}{\texttt{ the ES2015 {\ttfamily u} flag}} into equivalent ES5-\/compatible regular expression patterns.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20521}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20521}
+To use {\itshape regexpu-\/core} programmatically, install it as a dependency via \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ regexpu-\/core\ -\/-\/save}
+
+\end{DoxyCode}
+
+
+Then, {\ttfamily require} it\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ rewritePattern\ =\ require('regexpu-\/core');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20522}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20522}
+This module exports a single function named {\ttfamily rewrite\+Pattern}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20523}{}\doxysubsection{\texorpdfstring{{\ttfamily rewrite\+Pattern(pattern, flags, options)}}{{\ttfamily rewrite\+Pattern(pattern, flags, options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20523}
+This function takes a string that represents a regular expression pattern as well as a string representing its flags, and returns an ES5-\/compatible version of the pattern.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('foo.bar',\ 'u');}
+\DoxyCodeLine{//\ →\ 'foo(?:[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)t\(\backslash\)\(\backslash\)x0B\(\backslash\)\(\backslash\)f\(\backslash\)\(\backslash\)x0E-\/\(\backslash\)\(\backslash\)u2027\(\backslash\)\(\backslash\)u202A-\/\(\backslash\)\(\backslash\)uD7FF\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uFFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF][\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF])bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{rewritePattern('[\(\backslash\)\(\backslash\)u\{1D306\}-\/\(\backslash\)\(\backslash\)u\{1D308\}a-\/z]',\ 'u');}
+\DoxyCodeLine{//\ →\ '(?:[a-\/z]|\(\backslash\)\(\backslash\)uD834[\(\backslash\)\(\backslash\)uDF06-\/\(\backslash\)\(\backslash\)uDF08])'}
+\DoxyCodeLine{}
+\DoxyCodeLine{rewritePattern('[\(\backslash\)\(\backslash\)u\{1D306\}-\/\(\backslash\)\(\backslash\)u\{1D308\}a-\/z]',\ 'ui');}
+\DoxyCodeLine{//\ →\ '(?:[a-\/z\(\backslash\)\(\backslash\)u017F\(\backslash\)\(\backslash\)u212A]|\(\backslash\)\(\backslash\)uD834[\(\backslash\)\(\backslash\)uDF06-\/\(\backslash\)\(\backslash\)uDF08])'}
+
+\end{DoxyCode}
+
+
+{\itshape regexpu-\/core} can rewrite non-\/\+ES6 regular expressions too, which is useful to demonstrate how their behavior changes once the {\ttfamily u} and {\ttfamily i} flags are added\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ In\ ES5,\ the\ dot\ operator\ only\ matches\ BMP\ symbols:}
+\DoxyCodeLine{rewritePattern('foo.bar');}
+\DoxyCodeLine{//\ →\ 'foo(?:[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)t\(\backslash\)\(\backslash\)x0B\(\backslash\)\(\backslash\)f\(\backslash\)\(\backslash\)x0E-\/\(\backslash\)\(\backslash\)u2027\(\backslash\)\(\backslash\)u202A-\/\(\backslash\)\(\backslash\)uFFFF])bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ But\ with\ the\ ES2015\ \`{}u`\ flag,\ it\ matches\ astral\ symbols\ too:}
+\DoxyCodeLine{rewritePattern('foo.bar',\ 'u');}
+\DoxyCodeLine{//\ →\ 'foo(?:[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)t\(\backslash\)\(\backslash\)x0B\(\backslash\)\(\backslash\)f\(\backslash\)\(\backslash\)x0E-\/\(\backslash\)\(\backslash\)u2027\(\backslash\)\(\backslash\)u202A-\/\(\backslash\)\(\backslash\)uD7FF\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uFFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF][\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF])bar'}
+
+\end{DoxyCode}
+
+
+The optional {\ttfamily options} argument recognizes the following properties\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20524}{}\doxysubsubsection{\texorpdfstring{Stable regular expression features}{Stable regular expression features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20524}
+These options can be set to {\ttfamily false} or `\textquotesingle{}transform'{\ttfamily . When using}\textquotesingle{}transform\textquotesingle{}{\ttfamily , the corresponding features are compiled to older syntax that can run in older browsers. When using}false\`{} (the default), they are not compiled and they can be relied upon to compile more modern features.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily unicode\+Flag} -\/ The {\ttfamily u} flag, enabling support for Unicode code point escapes in the form {\ttfamily \textbackslash{}u\{...\}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('\(\backslash\)\(\backslash\)u\{ab\}',\ '',\ \{}
+\DoxyCodeLine{\ \ unicodeFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '\(\backslash\)\(\backslash\)u\{ab\}'}
+\DoxyCodeLine{}
+\DoxyCodeLine{rewritePattern('\(\backslash\)\(\backslash\)u\{ab\}',\ 'u',\ \{}
+\DoxyCodeLine{\ \ unicodeFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '\(\backslash\)\(\backslash\)xAB'}
+
+\end{DoxyCode}
+
+\item {\ttfamily dot\+All\+Flag} -\/ The \href{https://github.com/mathiasbynens/es-regexp-dotall-flag}{\texttt{ {\ttfamily s} ({\ttfamily dot\+All}) flag}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('.',\ '',\ \{}
+\DoxyCodeLine{\ \ dotAllFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)t\(\backslash\)\(\backslash\)x0B\(\backslash\)\(\backslash\)f\(\backslash\)\(\backslash\)x0E-\/\(\backslash\)\(\backslash\)u2027\(\backslash\)\(\backslash\)u202A-\/\(\backslash\)\(\backslash\)uFFFF]'}
+\DoxyCodeLine{}
+\DoxyCodeLine{rewritePattern('.',\ 's',\ \{}
+\DoxyCodeLine{\ \ dotAllFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)uFFFF]'}
+\DoxyCodeLine{}
+\DoxyCodeLine{rewritePattern('.',\ 'su',\ \{}
+\DoxyCodeLine{\ \ dotAllFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '(?:[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)uD7FF\(\backslash\)\(\backslash\)uE000-\/\(\backslash\)\(\backslash\)uFFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF][\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF](?![\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF])|(?:[\string^\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF]|\string^)[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF])'}
+
+\end{DoxyCode}
+
+\item {\ttfamily unicode\+Property\+Escapes} -\/ Unicode property escapes.
+
+By default they are compiled to Unicode code point escapes of the form {\ttfamily \textbackslash{}u\{...\}}. If the {\ttfamily unicode\+Flag} option is set to `\textquotesingle{}transform'{\ttfamily they often result in larger output, although there are cases (such as}{\ttfamily }\{Lu\}\`{}) where it actually {\itshape decreases} the output size.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('\(\backslash\)\(\backslash\)p\{Script\_Extensions=Anatolian\_Hieroglyphs\}',\ 'u',\ \{}
+\DoxyCodeLine{\ \ unicodePropertyEscapes:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)u\{14400\}-\/\(\backslash\)\(\backslash\)u\{14646\}]'}
+\DoxyCodeLine{}
+\DoxyCodeLine{rewritePattern('\(\backslash\)\(\backslash\)p\{Script\_Extensions=Anatolian\_Hieroglyphs\}',\ 'u',\ \{}
+\DoxyCodeLine{\ \ unicodeFlag:\ 'transform',}
+\DoxyCodeLine{\ \ unicodePropertyEscapes:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '(?:\(\backslash\)\(\backslash\)uD811[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDE46])'}
+
+\end{DoxyCode}
+
+\item {\ttfamily named\+Groups} -\/ \href{https://github.com/tc39/proposal-regexp-named-groups}{\texttt{ Named capture groups}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('(?<name>.)\(\backslash\)\(\backslash\)k<name>',\ '',\ \{}
+\DoxyCodeLine{\ \ namedGroups:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '(.)\(\backslash\)1'}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20525}{}\doxysubsubsection{\texorpdfstring{Experimental regular expression features}{Experimental regular expression features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20525}
+These options can be set to {\ttfamily false}, `\textquotesingle{}parse'{\ttfamily and}\textquotesingle{}transform\textquotesingle{}{\ttfamily . When using}\textquotesingle{}transform\textquotesingle{}{\ttfamily , the corresponding features are compiled to older syntax that can run in older browsers. When using}\textquotesingle{}parse\textquotesingle{}{\ttfamily , they are parsed and left as-\/is in the output pattern. When using}false\`{} (the default), they result in a syntax error if used.
+
+Once these features become stable (when the proposals are accepted as part of ECMAScript), they will be parsed by default and thus `\textquotesingle{}parse'{\ttfamily will behave like}false\`{}.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily unicode\+Sets\+Flag} -\/ \href{https://github.com/tc39/proposal-regexp-set-notation}{\texttt{ The {\ttfamily v} ({\ttfamily unicode\+Sets}) flag}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('[\(\backslash\)\(\backslash\)p\{Emoji\}\&\&\(\backslash\)\(\backslash\)p\{ASCII\}]',\ 'u',\ \{}
+\DoxyCodeLine{\ \ unicodeSetsFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '[\#\(\backslash\)*0-\/9]'}
+
+\end{DoxyCode}
+
+
+By default, patterns with the {\ttfamily v} flag are transformed to patterns with the {\ttfamily u} flag. If you want to downlevel them more you can set the `unicode\+Flag\+: \textquotesingle{}transform'\`{} option.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('[\string^[a-\/h]\&\&[f-\/z]]',\ 'v',\ \{}
+\DoxyCodeLine{\ \ unicodeSetsFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '[\string^f-\/h]'\ (to\ be\ used\ with\ /u)}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('[\string^[a-\/h]\&\&[f-\/z]]',\ 'v',\ \{}
+\DoxyCodeLine{\ \ unicodeSetsFlag:\ 'transform',}
+\DoxyCodeLine{\ \ unicodeFlag:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '(?:(?![f-\/h])[\(\backslash\)s\(\backslash\)S])'\ (to\ be\ used\ without\ /u)}
+
+\end{DoxyCode}
+
+\item {\ttfamily modifiers} -\/ \href{https://github.com/tc39/proposal-regexp-modifiers}{\texttt{ Inline {\ttfamily m}/{\ttfamily s}/{\ttfamily i} modifiers}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('(?i:[a-\/z])[a-\/z]',\ '',\ \{}
+\DoxyCodeLine{\ \ modifiers:\ 'transform'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ '(?:[a-\/zA-\/Z])([a-\/z])'}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20526}{}\doxysubsubsection{\texorpdfstring{Miscellaneous options}{Miscellaneous options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20526}
+
+\begin{DoxyItemize}
+\item {\ttfamily on\+Named\+Group}
+
+This option is a function that gets called when a named capture group is found. It receives two parameters\+: the name of the group, and its index.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('(?<name>.)\(\backslash\)\(\backslash\)k<name>',\ '',\ \{}
+\DoxyCodeLine{\ \ onNamedGroup(name,\ index)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(name,\ index);}
+\DoxyCodeLine{\ \ \ \ //\ →\ 'name',\ 1}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+\item {\ttfamily on\+New\+Flags}
+
+This option is a function that gets called to pass the flags that the resulting pattern must be interpreted with.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rewritePattern('abc',\ 'um',\ '',\ \{}
+\DoxyCodeLine{\ \ unicodeFlag:\ 'transform',}
+\DoxyCodeLine{\ \ onNewFlags(flags)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(flags);}
+\DoxyCodeLine{\ \ \ \ //\ →\ 'm'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20527}{}\doxysubsection{\texorpdfstring{Caveats}{Caveats}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20527}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/tc39/proposal-regexp-lookbehind}{\texttt{ Lookbehind assertions}} cannot be transformed to older syntax.
+\item When using `named\+Groups\+: \textquotesingle{}transform'{\ttfamily , \+\_\+regexpu-\/core\+\_\+ only takes care of the \+\_\+syntax\+\_\+\+: you will still need a runtime wrapper around the regular expression to populate the}.groups{\ttfamily property of}Reg\+Exp.\+prototype.\+match()\`{}\textquotesingle{}s result. If you are using {\itshape regexpu-\/core} via Babel, it\textquotesingle{}s handled automatically.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20528}{}\doxysection{\texorpdfstring{For maintainers}{For maintainers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20528}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20529}{}\doxysubsection{\texorpdfstring{How to publish a new release}{How to publish a new release}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20529}
+
+\begin{DoxyEnumerate}
+\item On the {\ttfamily main} branch, bump the version number in {\ttfamily package.\+json}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ version\ patch\ -\/m\ 'Release\ v\%s'}
+
+\end{DoxyCode}
+
+
+Instead of {\ttfamily patch}, use {\ttfamily minor} or {\ttfamily major} \href{https://semver.org/}{\texttt{ as needed}}.
+
+Note that this produces a Git commit + tag.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Push the release commit and tag\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ push\ -\/-\/follow-\/tags}
+
+\end{DoxyCode}
+
+
+Our CI then automatically publishes the new release to npm.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Once the release has been published to npm, update \href{https://github.com/mathiasbynens/regexpu}{\texttt{ {\ttfamily regexpu}}} to make use of it, and \href{https://github.com/mathiasbynens/regexpu\#how-to-publish-a-new-release}{\texttt{ cut a new release of {\ttfamily regexpu} as well}}.
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20530}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20530}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endhead
+\href{https://mathiasbynens.be/}{\texttt{ Mathias Bynens}}   \\\cline{1-1}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20531}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regexpu-core_2_r_e_a_d_m_e_autotoc_md20531}
+{\itshape regexpu-\/core} is available under the \href{https://mths.be/mit}{\texttt{ MIT}} license. 

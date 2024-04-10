@@ -1,0 +1,75 @@
+\chapter{locate-\/path \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae}\index{locate-\/path $<$a href="{}https://travis-\/ci.org/sindresorhus/locate-\/path"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{locate-\/path $<$a href=""https://travis-\/ci.org/sindresorhus/locate-\/path"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1408}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1408}%
+ \begin{quote}
+Get the first path that exists on disk of multiple paths \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1409}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1409}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ locate-\/path}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1410}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1410}
+Here we find the first file that exists on disk, in array order.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ locatePath\ =\ require('locate-\/path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ files\ =\ [}
+\DoxyCodeLine{\ \ \ \ 'unicorn.png',}
+\DoxyCodeLine{\ \ \ \ 'rainbow.png',\ //\ Only\ this\ one\ actually\ exists\ on\ disk}
+\DoxyCodeLine{\ \ \ \ 'pony.png'}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console(await\ locatePath(files));}
+\DoxyCodeLine{\ \ \ \ //=>\ 'rainbow'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1411}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1411}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1412}{}\doxysubsection{\texorpdfstring{locate\+Path(paths, \mbox{[}options\mbox{]})}{locate\+Path(paths, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1412}
+Returns a {\ttfamily Promise\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}} for the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1413}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1413}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1414}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1414}
+Type\+: {\ttfamily Object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1415}{}\doxyparagraph{\texorpdfstring{concurrency}{concurrency}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1415}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily Infinity}~\newline
+ Minimum\+: {\ttfamily 1}
+
+Number of concurrently pending promises.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1416}{}\doxyparagraph{\texorpdfstring{preserve\+Order}{preserve\+Order}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1416}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Preserve {\ttfamily paths} order when searching.
+
+Disable this to improve performance if you don\textquotesingle{}t care about the order.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1417}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1417}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Current working directory.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1418}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1418}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily file}~\newline
+ Values\+: {\ttfamily file} {\ttfamily directory}
+
+The type of paths that can match.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1419}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1419}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Allow symbolic links to match if they point to the chosen path type.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1420}{}\doxysubsection{\texorpdfstring{locate\+Path.\+sync(paths, \mbox{[}options\mbox{]})}{locate\+Path.\+sync(paths, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1420}
+Returns the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1421}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1421}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1422}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1422}
+Type\+: {\ttfamily Object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1423}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1423}
+Same as above.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1424}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1424}
+Same as above.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1425}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1425}
+Same as above.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1426}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1426}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/path-exists}{\texttt{ path-\/exists}} -\/ Check if a path exists
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1427}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0distanbuljs_2load-nyc-config_2f5621aaa0ba0762dc1f9f88ac5ca73ae_autotoc_md1427}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

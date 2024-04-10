@@ -1,0 +1,324 @@
+\chapter{pretty-\/error}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e}\index{pretty-\/error@{pretty-\/error}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19754}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19754}%
+ \href{https://david-dm.org/AriaMinaei/pretty-error}{\texttt{ }} \href{https://travis-ci.org/AriaMinaei/pretty-error}{\texttt{ }} \href{https://npmjs.org/package/pretty-error}{\texttt{ }}
+
+A small tool to see node.\+js errors with less clutter\+:
+
+
+
+... which is more readable compared to node\textquotesingle{}s unformatted errors\+:
+
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19755}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19755}
+Install with npm\+: \begin{DoxyVerb}$ npm install pretty-error
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19756}{}\doxysection{\texorpdfstring{Usage and Examples}{Usage and Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19756}
+To see an error rendered with colors, you can do this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ PrettyError\ =\ require('pretty-\/error');}
+\DoxyCodeLine{var\ pe\ =\ new\ PrettyError();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ renderedError\ =\ pe.render(new\ Error('Some\ error\ message'));}
+\DoxyCodeLine{console.log(renderedError);}
+
+\end{DoxyCode}
+
+
+Of course, you can render caught exceptions too\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ \ doSomethingThatThrowsAnError();}
+\DoxyCodeLine{\}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ \ console.log(pe.render(error));}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+But if you want pretty-\/error to render all errors, there is a shortcut for it\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('pretty-\/error').start();}
+
+\end{DoxyCode}
+
+
+... which is essentially equal to\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ PrettyError\ =\ require('pretty-\/error');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ instantiate\ PrettyError,\ which\ can\ then\ be\ used\ to\ render\ error\ objects}
+\DoxyCodeLine{var\ pe\ =\ new\ PrettyError();}
+\DoxyCodeLine{pe.start();}
+
+\end{DoxyCode}
+
+
+You can also preload pretty-\/error into your code using node\textquotesingle{}s \href{https://nodejs.org/api/cli.html\#cli_r_require_module}{\texttt{ {\ttfamily -\/-\/require}}} argument\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ -\/-\/require\ pretty-\/error/start\ your-\/module.js}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19757}{}\doxysection{\texorpdfstring{How it Works}{How it Works}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19757}
+Pretty\+Error turns error objects into something similar to an html document, and then uses \href{https://github.com/AriaMinaei/renderkid}{\texttt{ Render\+Kid}} to render the document using simple html/css-\/like commands. This allows Pretty\+Error to be themed using simple css-\/like declarations.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19758}{}\doxysection{\texorpdfstring{Theming}{Theming}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19758}
+Pretty\+Error\textquotesingle{}s default theme is a bunch of simple css-\/like rules. \href{https://github.com/AriaMinaei/pretty-error/blob/master/src/defaultStyle.coffee}{\texttt{ Here}} is the source of the default theme.
+
+Since the default theme is all css, you can customize it to fit your taste. Let\textquotesingle{}s do a minimal one\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ the\ start()\ shortcut\ returns\ an\ instance\ of\ PrettyError\ ...}
+\DoxyCodeLine{pe\ =\ require('pretty-\/error').start();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...\ which\ we\ can\ then\ use\ to\ customize\ like\ this:}
+\DoxyCodeLine{pe.appendStyle(\{}
+\DoxyCodeLine{\ \ \ //\ this\ is\ a\ simple\ selector\ to\ the\ element\ that\ says\ 'Error'}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ header\ >\ title\ >\ kind':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ which\ we\ can\ hide:}
+\DoxyCodeLine{\ \ \ \ \ \ display:\ 'none'}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ //\ the\ 'colon'\ after\ 'Error':}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ header\ >\ colon':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ we\ hide\ that\ too:}
+\DoxyCodeLine{\ \ \ \ \ \ display:\ 'none'}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ //\ our\ error\ message}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ header\ >\ message':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ let's\ change\ its\ color:}
+\DoxyCodeLine{\ \ \ \ \ \ color:\ 'bright-\/white',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ we\ can\ use\ black,\ red,\ green,\ yellow,\ blue,\ magenta,\ cyan,\ white,}
+\DoxyCodeLine{\ \ \ \ \ \ //\ grey,\ bright-\/red,\ bright-\/green,\ bright-\/yellow,\ bright-\/blue,}
+\DoxyCodeLine{\ \ \ \ \ \ //\ bright-\/magenta,\ bright-\/cyan,\ and\ bright-\/white}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ we\ can\ also\ change\ the\ background\ color:}
+\DoxyCodeLine{\ \ \ \ \ \ background:\ 'cyan',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ it\ understands\ paddings\ too!}
+\DoxyCodeLine{\ \ \ \ \ \ padding:\ '0\ 1'\ //\ top/bottom\ left/right}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ //\ each\ trace\ item\ ...}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ trace\ >\ item':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ ...\ can\ have\ a\ margin\ ...}
+\DoxyCodeLine{\ \ \ \ \ \ marginLeft:\ 2,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ ...\ and\ a\ bullet\ character!}
+\DoxyCodeLine{\ \ \ \ \ \ bullet:\ '"{}<grey>o</grey>"{}'}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Notes\ on\ bullets:}
+\DoxyCodeLine{\ \ \ \ \ \ //}
+\DoxyCodeLine{\ \ \ \ \ \ //\ The\ string\ inside\ the\ quotation\ mark\ gets\ used\ as\ the\ character}
+\DoxyCodeLine{\ \ \ \ \ \ //\ to\ show\ for\ the\ bullet\ point.}
+\DoxyCodeLine{\ \ \ \ \ \ //}
+\DoxyCodeLine{\ \ \ \ \ \ //\ You\ can\ set\ its\ color/background\ color\ using\ tags.}
+\DoxyCodeLine{\ \ \ \ \ \ //}
+\DoxyCodeLine{\ \ \ \ \ \ //\ This\ example\ sets\ the\ background\ color\ to\ white,\ and\ the\ text\ color}
+\DoxyCodeLine{\ \ \ \ \ \ //\ to\ cyan,\ the\ character\ will\ be\ a\ hyphen\ with\ a\ space\ character}
+\DoxyCodeLine{\ \ \ \ \ \ //\ on\ each\ side:}
+\DoxyCodeLine{\ \ \ \ \ \ //\ example:\ '"{}<bg-\/white><cyan>\ -\/\ </cyan></bg-\/white>"{}'}
+\DoxyCodeLine{\ \ \ \ \ \ //}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Note\ that\ we\ should\ use\ a\ margin\ of\ 3,\ since\ the\ bullet\ will\ be}
+\DoxyCodeLine{\ \ \ \ \ \ //\ 3\ characters\ long.}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ trace\ >\ item\ >\ header\ >\ pointer\ >\ file':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ color:\ 'bright-\/cyan'}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ trace\ >\ item\ >\ header\ >\ pointer\ >\ colon':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ color:\ 'cyan'}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ trace\ >\ item\ >\ header\ >\ pointer\ >\ line':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ color:\ 'bright-\/cyan'}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ trace\ >\ item\ >\ header\ >\ what':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ color:\ 'bright-\/white'}
+\DoxyCodeLine{\ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ 'pretty-\/error\ >\ trace\ >\ item\ >\ footer\ >\ addr':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ display:\ 'none'}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+This is how our minimal theme will look like\+: 
+
+Read \href{https://github.com/AriaMinaei/renderkid}{\texttt{ Render\+Kid}}\textquotesingle{}s docs to learn about all the css rules that are supported.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19759}{}\doxysection{\texorpdfstring{Customization}{Customization}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19759}
+There are a few methods to help you customize the contents of your error logs.
+
+Let\textquotesingle{}s instantiate first\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PrettyError\ =\ require('pretty-\/error');}
+\DoxyCodeLine{pe\ =\ new\ PrettyError();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or:}
+\DoxyCodeLine{pe\ =\ require('pretty-\/error').start();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19760}{}\doxysubsubsection{\texorpdfstring{Shortening paths}{Shortening paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19760}
+You might want to substitute long paths with shorter, more readable aliases\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pe.alias('E:/open-\/source/theatrejs/lib',\ '(Theatre.js)');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19761}{}\doxysubsubsection{\texorpdfstring{Skipping packages}{Skipping packages}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19761}
+You might want to skip trace lines that belong to specific packages (chai, when, socket.\+io)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pe.skipPackage('chai',\ 'when',\ 'socket.io');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19762}{}\doxysubsubsection{\texorpdfstring{Skipping node files}{Skipping node files}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19762}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ this\ will\ skip\ node.js,\ path.js,\ event.js,\ etc.}
+\DoxyCodeLine{pe.skipNodeFiles();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19763}{}\doxysubsubsection{\texorpdfstring{Skipping paths}{Skipping paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19763}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pe.skipPath('/home/dir/someFile.js');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19764}{}\doxysubsubsection{\texorpdfstring{Skipping by callback}{Skipping by callback}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19764}
+You can customize which trace lines get logged and which won\textquotesingle{}t\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pe.skip(function(traceLine,\ lineNumber)\{}
+\DoxyCodeLine{\ \ \ //\ if\ we\ know\ which\ package\ this\ trace\ line\ comes\ from,\ and\ it\ isn't}
+\DoxyCodeLine{\ \ \ //\ our\ 'demo'\ package\ ...}
+\DoxyCodeLine{\ \ \ if\ (typeof\ traceLine.packageName\ !==\ 'undefined'\ \&\&\ traceLine.packageName\ !==\ 'demo')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ then\ skip\ this\ line}
+\DoxyCodeLine{\ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ //\ You\ can\ console.log(traceLine)\ to\ see\ all\ of\ it's\ properties.}
+\DoxyCodeLine{\ \ \ //\ Don't\ expect\ all\ these\ properties\ to\ be\ present,\ and\ don't\ assume}
+\DoxyCodeLine{\ \ \ //\ that\ our\ traceLine\ is\ always\ an\ object.}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19765}{}\doxysubsubsection{\texorpdfstring{Modifying each trace line\textquotesingle{}s contents}{Modifying each trace line\textquotesingle{}s contents}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19765}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pe.filter(function(traceLine,\ lineNumber)\{}
+\DoxyCodeLine{\ \ \ //\ the\ 'what'\ clause\ is\ something\ like:}
+\DoxyCodeLine{\ \ \ //\ 'DynamicTimeline.module.exports.DynamicTimeline.\_verifyProp'}
+\DoxyCodeLine{\ \ \ if\ (typeof\ traceLine.what\ !==\ 'undefined')\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ we\ can\ shorten\ it\ with\ a\ regex:}
+\DoxyCodeLine{\ \ \ \ \ \ traceLine.what\ =\ traceLine.what.replace(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ /(.*\(\backslash\).module\(\backslash\).exports\(\backslash\).)(.*)/,\ '\$2'}
+\DoxyCodeLine{\ \ \ \ \ \ );}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19766}{}\doxysection{\texorpdfstring{Disabling colors}{Disabling colors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19766}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pe.withoutColors();\ //\ Errors\ will\ be\ rendered\ without\ coloring}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19767}{}\doxysection{\texorpdfstring{Integrating with frameworks}{Integrating with frameworks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19767}
+Pretty\+Error is very simple to set up, so it should be easy to use within other frameworks.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19768}{}\doxysubsection{\texorpdfstring{Integrating with \href{https://github.com/visionmedia/express}{\texttt{ express}}}{Integrating with \href{https://github.com/visionmedia/express}{\texttt{ express}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19768}
+Most frameworks such as express, catch errors automatically and provide a mechanism to handle those errors. Here is an example of how you can use Pretty\+Error to log unhandled errors in express\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ this\ is\ app.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ express\ =\ require('express');}
+\DoxyCodeLine{var\ PrettyError\ =\ require('pretty-\/error');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ app\ =\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.get('/',\ function(req,\ res)\ \{}
+\DoxyCodeLine{\ \ \ //\ this\ will\ throw\ an\ error:}
+\DoxyCodeLine{\ \ \ var\ a\ =\ b;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ app.listen(3000,\ function()\{}
+\DoxyCodeLine{\ \ \ console.log('Server\ started\ \(\backslash\)n');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ we\ can\ now\ instantiaite\ Prettyerror:}
+\DoxyCodeLine{pe\ =\ new\ PrettyError();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ and\ use\ it\ for\ our\ app's\ error\ handler:}
+\DoxyCodeLine{app.use(function(err,\ req,\ res,\ next)\{}
+\DoxyCodeLine{\ \ \ console.log(pe.render(err));}
+\DoxyCodeLine{\ \ \ next();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ we\ can\ optionally\ configure\ prettyError\ to\ simplify\ the\ stack\ trace:}
+\DoxyCodeLine{}
+\DoxyCodeLine{pe.skipNodeFiles();\ //\ this\ will\ skip\ events.js\ and\ http.js\ and\ similar\ core\ node\ files}
+\DoxyCodeLine{pe.skipPackage('express');\ //\ this\ will\ skip\ all\ the\ trace\ lines\ about\ express`\ core\ and\ sub-\/modules}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19769}{}\doxysection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19769}
+{\ttfamily Pretty\+Error.\+start()} modifies the stack traces of all errors thrown anywhere in your code, so it could potentially break packages that rely on node\textquotesingle{}s original stack traces. I\textquotesingle{}ve only encountered this problem once, and it was with Blue\+Bird when {\ttfamily Promise.\+long\+Stack\+Traces()} was on.
+
+In order to avoid this problem, it\textquotesingle{}s better to not use {\ttfamily Pretty\+Error.\+start()} and instead, manually catch errors and render them with Pretty\+Error\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ PrettyError\ =\ require('pretty-\/error');}
+\DoxyCodeLine{var\ pe\ =\ new\ PrettyError();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ To\ render\ exceptions\ thrown\ in\ non-\/promies\ code:}
+\DoxyCodeLine{process.on('uncaughtException',\ function(error)\{}
+\DoxyCodeLine{\ \ \ console.log(pe.render(error));}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ To\ render\ unhandled\ rejections\ created\ in\ BlueBird:}
+\DoxyCodeLine{process.on('unhandledRejection',\ function(reason)\{}
+\DoxyCodeLine{\ \ \ console.log("{}Unhandled\ rejection"{});}
+\DoxyCodeLine{\ \ \ console.log(pe.render(reason));}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ While\ PrettyError.start()\ works\ out\ of\ the\ box\ with\ when.js`\ unhandled\ rejections,}
+\DoxyCodeLine{//\ now\ that\ wer'e\ manually\ rendering\ errors,\ we\ have\ to\ instead\ use\ npmjs.org/packages/pretty-\/monitor}
+\DoxyCodeLine{//\ to\ handle\ when.js\ rejections.}
+
+\end{DoxyCode}
+
+
+The only drawback with this approach is that exceptions thrown in the first tick are not prettified. To fix that, you can delay your application\textquotesingle{}s startup for one tick\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ (continued\ form\ above)}
+\DoxyCodeLine{}
+\DoxyCodeLine{throw\ new\ Error();\ //\ not\ prettified}
+\DoxyCodeLine{process.nextTick(function()\{}
+\DoxyCodeLine{\ \ \ throw\ new\ Error();\ //\ prettified}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19770}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pretty-error_2_r_e_a_d_m_e_autotoc_md19770}
+MIT 

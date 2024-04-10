@@ -1,0 +1,161 @@
+\chapter{caniuse-\/api \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/\+Nyalab/caniuse-\/api"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/\+Nyalab/caniuse-\/api.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://ci.\+appveyor.\+com/project/\+Mo\+Ox/caniuse-\/api/branch/master"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://ci.\+appveyor.\+com/api/projects/status/6j3na522bv3bxfa5/branch/master?svg=true"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e}\index{caniuse-\/api $<$a href="{}https://travis-\/ci.org/Nyalab/caniuse-\/api"{} $>$$<$img src="{}https://travis-\/ci.org/Nyalab/caniuse-\/api.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}https://ci.appveyor.com/project/MoOx/caniuse-\/api/branch/master"{} $>$$<$img src="{}https://ci.appveyor.com/api/projects/status/6j3na522bv3bxfa5/branch/master?svg=true"{} alt="{}Build status"{}/$>$$<$/a$>$@{caniuse-\/api $<$a href=""https://travis-\/ci.org/Nyalab/caniuse-\/api"" $>$$<$img src=""https://travis-\/ci.org/Nyalab/caniuse-\/api.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""https://ci.appveyor.com/project/MoOx/caniuse-\/api/branch/master"" $>$$<$img src=""https://ci.appveyor.com/api/projects/status/6j3na522bv3bxfa5/branch/master?svg=true"" alt=""Build status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6525}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6525}%
+ request the caniuse data to check browsers compatibilities\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6526}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6526}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ yarn\ add\ caniuse-\/api}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6527}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6527}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ caniuse\ =\ require('caniuse-\/api')}
+\DoxyCodeLine{}
+\DoxyCodeLine{caniuse.getSupport('border-\/radius')}
+\DoxyCodeLine{caniuse.isSupported('border-\/radius',\ 'ie\ 8,\ ie\ 9')}
+\DoxyCodeLine{caniuse.setBrowserScope('>\ 5\%,\ last\ 1\ version')}
+\DoxyCodeLine{caniuse.getSupport('border-\/radius')}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6528}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6528}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6529}{}\doxysubsubsection{\texorpdfstring{{\ttfamily caniuse.\+get\+Support(feature)}}{{\ttfamily caniuse.\+get\+Support(feature)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6529}
+{\itshape ask since which browsers versions a feature is available}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily y}\+: Since which browser version the feature is available
+\item {\ttfamily n}\+: Up to which browser version the feature is unavailable
+\item {\ttfamily a}\+: Up to which browser version the feature is partially supported
+\item {\ttfamily x}\+: Up to which browser version the feature is prefixed
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{caniuse.getSupport('border-\/radius',\ true)}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{\ and\_chr:\ \{\ y:\ 67\ \},}
+\DoxyCodeLine{\ \ and\_ff:\ \{\ y:\ 60\ \},}
+\DoxyCodeLine{\ \ and\_qq:\ \{\ y:\ 1.2\ \},}
+\DoxyCodeLine{\ \ and\_uc:\ \{\ y:\ 11.8\ \},}
+\DoxyCodeLine{\ \ android:\ \{\ y:\ 2.1,\ x:\ 2.1\ \},}
+\DoxyCodeLine{\ \ baidu:\ \{\ y:\ 7.12\ \},}
+\DoxyCodeLine{\ \ chrome:\ \{\ y:\ 4,\ x:\ 4\ \},}
+\DoxyCodeLine{\ \ edge:\ \{\ y:\ 12\ \},}
+\DoxyCodeLine{\ \ firefox:\ \{\ a:\ 2,\ x:\ 3.6,\ y:\ 3\ \},}
+\DoxyCodeLine{\ \ ie:\ \{\ n:\ 8,\ y:\ 9\ \},}
+\DoxyCodeLine{\ \ ie\_mob:\ \{\ y:\ 10\ \},}
+\DoxyCodeLine{\ \ ios\_saf:\ \{\ y:\ 3.2,\ x:\ 3.2\ \},}
+\DoxyCodeLine{\ \ op\_mini:\ \{\},}
+\DoxyCodeLine{\ \ op\_mob:\ \{\ n:\ 10,\ y:\ 11\ \},}
+\DoxyCodeLine{\ \ opera:\ \{\ n:\ 10,\ y:\ 10.5\ \},}
+\DoxyCodeLine{\ \ safari:\ \{\ y:\ 3.1,\ x:\ 4\ \},}
+\DoxyCodeLine{\ \ samsung:\ \{\ y:\ 4\ \}\ \}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6530}{}\doxysubsubsection{\texorpdfstring{{\ttfamily caniuse.\+is\+Supported(feature, browsers)}}{{\ttfamily caniuse.\+is\+Supported(feature, browsers)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6530}
+{\itshape ask if a feature is supported by some browsers}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{caniuse.isSupported('border-\/radius',\ 'ie\ 8,\ ie\ 9')\ //\ false}
+\DoxyCodeLine{caniuse.isSupported('border-\/radius',\ 'ie\ 9')\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6531}{}\doxysubsubsection{\texorpdfstring{{\ttfamily caniuse.\+find(query)}}{{\ttfamily caniuse.\+find(query)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6531}
+{\itshape search for a caniuse feature name}
+
+Ex\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{caniuse.find('radius')\ //\ ['border-\/radius']}
+\DoxyCodeLine{caniuse.find('nothingness')\ //\ []}
+\DoxyCodeLine{caniuse.find('css3')}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{[\ 'css3-\/attr',}
+\DoxyCodeLine{\ \ 'css3-\/boxsizing',}
+\DoxyCodeLine{\ \ 'css3-\/colors',}
+\DoxyCodeLine{\ \ 'css3-\/cursors-\/grab',}
+\DoxyCodeLine{\ \ 'css3-\/cursors-\/newer',}
+\DoxyCodeLine{\ \ 'css3-\/cursors',}
+\DoxyCodeLine{\ \ 'css3-\/tabsize'\ ]}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6532}{}\doxysubsubsection{\texorpdfstring{{\ttfamily caniuse.\+get\+Latest\+Stable\+Browsers()}}{{\ttfamily caniuse.\+get\+Latest\+Stable\+Browsers()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6532}
+{\itshape get the current version for each browser}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{caniuse.getLatestStableBrowsers()}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{[\ 'and\_chr\ 67',}
+\DoxyCodeLine{\ \ 'and\_ff\ 60',}
+\DoxyCodeLine{\ \ 'and\_qq\ 1.2',}
+\DoxyCodeLine{\ \ 'and\_uc\ 11.8',}
+\DoxyCodeLine{\ \ 'android\ 67',}
+\DoxyCodeLine{\ \ 'baidu\ 7.12',}
+\DoxyCodeLine{\ \ 'bb\ 10',}
+\DoxyCodeLine{\ \ 'chrome\ 67',}
+\DoxyCodeLine{\ \ 'edge\ 17',}
+\DoxyCodeLine{\ \ 'firefox\ 61',}
+\DoxyCodeLine{\ \ 'ie\ 11',}
+\DoxyCodeLine{\ \ 'ie\_mob\ 11',}
+\DoxyCodeLine{\ \ 'ios\_saf\ 11.3-\/11.4',}
+\DoxyCodeLine{\ \ 'op\_mini\ all',}
+\DoxyCodeLine{\ \ 'op\_mob\ 46',}
+\DoxyCodeLine{\ \ 'opera\ 53',}
+\DoxyCodeLine{\ \ 'safari\ 11.1',}
+\DoxyCodeLine{\ \ 'samsung\ 7.2'\ ]}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6533}{}\doxysubsubsection{\texorpdfstring{{\ttfamily caniuse.\+get\+Browser\+Scope()}}{{\ttfamily caniuse.\+get\+Browser\+Scope()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6533}
+{\itshape returns a list of browsers currently used for the scope of operations}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{caniuse.getBrowserScope()}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{[\ 'and\_chr',}
+\DoxyCodeLine{\ \ 'and\_ff',}
+\DoxyCodeLine{\ \ 'and\_qq',}
+\DoxyCodeLine{\ \ 'and\_uc',}
+\DoxyCodeLine{\ \ 'android',}
+\DoxyCodeLine{\ \ 'baidu',}
+\DoxyCodeLine{\ \ 'chrome',}
+\DoxyCodeLine{\ \ 'edge',}
+\DoxyCodeLine{\ \ 'firefox',}
+\DoxyCodeLine{\ \ 'ie',}
+\DoxyCodeLine{\ \ 'ie\_mob',}
+\DoxyCodeLine{\ \ 'ios\_saf',}
+\DoxyCodeLine{\ \ 'op\_mini',}
+\DoxyCodeLine{\ \ 'op\_mob',}
+\DoxyCodeLine{\ \ 'opera',}
+\DoxyCodeLine{\ \ 'safari',}
+\DoxyCodeLine{\ \ 'samsung'\ ]}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6534}{}\doxysubsubsection{\texorpdfstring{{\ttfamily caniuse.\+set\+Browser\+Scope(browserscope)}}{{\ttfamily caniuse.\+set\+Browser\+Scope(browserscope)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6534}
+{\itshape if you do not like the default browser scope, you can set it globally by using this method}
+
+
+\begin{DoxyItemize}
+\item browserscope should be a \textquotesingle{}autoprefixer\textquotesingle{} formatted string
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{caniuse.setBrowserScope('>\ 5\%,\ last\ 2\ versions,\ Firefox\ ESR,\ Opera\ 12.1')}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6536}{}\doxysection{\texorpdfstring{\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_c_h_a_n_g_e_l_o_g}{Changelog}{0}}{\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_c_h_a_n_g_e_l_o_g}{Changelog}{0}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6536}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6537}{}\doxysection{\texorpdfstring{\mbox{[}License\mbox{]}(LICENSE)}{\mbox{[}License\mbox{]}(LICENSE)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2caniuse-api_2_r_e_a_d_m_e_autotoc_md6537}

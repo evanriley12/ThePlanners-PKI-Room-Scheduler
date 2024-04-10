@@ -1,0 +1,70 @@
+\chapter{Installation}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e}\index{Installation@{Installation}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3100}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3100}%
+\begin{quote}
+{\ttfamily npm install -\/-\/save @types/sockjs} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3101}{}\doxysection{\texorpdfstring{Summary}{Summary}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3101}
+This package contains type definitions for sockjs (\href{https://github.com/sockjs/sockjs-node}{\texttt{ https\+://github.\+com/sockjs/sockjs-\/node}}).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3102}{}\doxysection{\texorpdfstring{Details}{Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3102}
+Files were exported from \href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/sockjs}{\texttt{ https\+://github.\+com/\+Definitely\+Typed/\+Definitely\+Typed/tree/master/types/sockjs}}. \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3103}{}\doxysubsection{\texorpdfstring{\href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/sockjs/index.d.ts}{\texttt{ index.\+d.\+ts}}}{\href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/sockjs/index.d.ts}{\texttt{ index.\+d.\+ts}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3103}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{///\ <reference\ types="{}node"{}\ />}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ http\ =\ require("{}http"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ interface\ ServerOptions\ \{}
+\DoxyCodeLine{\ \ \ \ sockjs\_url?:\ string\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ prefix?:\ string\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ response\_limit?:\ number\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ websocket?:\ boolean\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ jsessionid?:\ any;}
+\DoxyCodeLine{\ \ \ \ log?(severity:\ string,\ message:\ string):\ void;}
+\DoxyCodeLine{\ \ \ \ heartbeat\_delay?:\ number\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ disconnect\_delay?:\ number\ |\ undefined;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ function\ createServer(options?:\ ServerOptions):\ Server;}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ interface\ Server\ extends\ NodeJS.EventEmitter\ \{}
+\DoxyCodeLine{\ \ \ \ installHandlers(server:\ http.Server,\ options?:\ ServerOptions):\ any;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ on(event:\ "{}connection"{},\ listener:\ (conn:\ Connection)\ =>\ any):\ this;}
+\DoxyCodeLine{\ \ \ \ on(event:\ string,\ listener:\ Function):\ this;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ interface\ Connection\ extends\ NodeJS.ReadWriteStream\ \{}
+\DoxyCodeLine{\ \ \ \ remoteAddress:\ string;}
+\DoxyCodeLine{\ \ \ \ remotePort:\ number;}
+\DoxyCodeLine{\ \ \ \ address:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ [key:\ string]:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ address:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ port:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ [key:\ string]:\ string;}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ url:\ string;}
+\DoxyCodeLine{\ \ \ \ pathname:\ string;}
+\DoxyCodeLine{\ \ \ \ prefix:\ string;}
+\DoxyCodeLine{\ \ \ \ protocol:\ string;}
+\DoxyCodeLine{\ \ \ \ readyState:\ number;}
+\DoxyCodeLine{\ \ \ \ id:\ string;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ close(code?:\ string,\ reason?:\ string):\ boolean;}
+\DoxyCodeLine{\ \ \ \ destroy():\ void;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ on(event:\ "{}data"{},\ listener:\ (message:\ string)\ =>\ any):\ this;}
+\DoxyCodeLine{\ \ \ \ on(event:\ "{}close"{},\ listener:\ ()\ =>\ void):\ this;}
+\DoxyCodeLine{\ \ \ \ on(event:\ string,\ listener:\ Function):\ this;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3104}{}\doxysubsubsection{\texorpdfstring{Additional Details}{Additional Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3104}
+
+\begin{DoxyItemize}
+\item Last updated\+: Tue, 07 Nov 2023 15\+:11\+:36 GMT
+\item Dependencies\+: \href{https://npmjs.com/package/@types/node}{\texttt{ @types/node}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3105}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2sockjs_2_r_e_a_d_m_e_autotoc_md3105}
+These definitions were written by \href{https://github.com/pmccloghrylaing}{\texttt{ Phil Mc\+Cloghry-\/\+Laing}}. 

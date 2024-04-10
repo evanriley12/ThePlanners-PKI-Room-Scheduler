@@ -1,0 +1,103 @@
+\chapter{serve-\/index}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e}\index{serve-\/index@{serve-\/index}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23022}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23022}%
+ \href{https://npmjs.org/package/serve-index}{\texttt{ }} \href{https://npmjs.org/package/serve-index}{\texttt{ }} \href{https://travis-ci.org/expressjs/serve-index}{\texttt{ }} \href{https://ci.appveyor.com/project/dougwilson/serve-index}{\texttt{ }} \href{https://coveralls.io/r/expressjs/serve-index?branch=master}{\texttt{ }} \href{https://www.gratipay.com/dougwilson/}{\texttt{ }}
+
+Serves pages that contain directory listings for a given path.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23023}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23023}
+This is a \href{https://nodejs.org/en/}{\texttt{ Node.\+js}} module available through the \href{https://www.npmjs.com/}{\texttt{ npm registry}}. Installation is done using the \href{https://docs.npmjs.com/getting-started/installing-npm-packages-locally}{\texttt{ {\ttfamily npm install} command}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ serve-\/index}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23024}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23024}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ serveIndex\ =\ require('serve-\/index')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23025}{}\doxysubsection{\texorpdfstring{serve\+Index(path, options)}{serve\+Index(path, options)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23025}
+Returns middlware that serves an index of the directory in the given {\ttfamily path}.
+
+The {\ttfamily path} is based off the {\ttfamily req.\+url} value, so a {\ttfamily req.\+url} of `'/some/dir{\ttfamily  with a}path{\ttfamily of}\textquotesingle{}public\textquotesingle{}{\ttfamily will look at}\textquotesingle{}public/some/dir\textquotesingle{}{\ttfamily . If you are using something like}express{\ttfamily , you can change the URL "{}base"{} with}app.\+use\`{} (see the express example).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23026}{}\doxysubsubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23026}
+Serve index accepts these properties in the options object.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23027}{}\doxyparagraph{\texorpdfstring{filter}{filter}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23027}
+Apply this filter function to files. Defaults to {\ttfamily false}. The {\ttfamily filter} function is called for each file, with the signature {\ttfamily filter(filename, index, files, dir)} where {\ttfamily filename} is the name of the file, {\ttfamily index} is the array index, {\ttfamily files} is the array of files and {\ttfamily dir} is the absolute path the file is located (and thus, the directory the listing is for).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23028}{}\doxyparagraph{\texorpdfstring{hidden}{hidden}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23028}
+Display hidden (dot) files. Defaults to {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23029}{}\doxyparagraph{\texorpdfstring{icons}{icons}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23029}
+Display icons. Defaults to {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23030}{}\doxyparagraph{\texorpdfstring{stylesheet}{stylesheet}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23030}
+Optional path to a CSS stylesheet. Defaults to a built-\/in stylesheet.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23031}{}\doxyparagraph{\texorpdfstring{template}{template}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23031}
+Optional path to an HTML template or a function that will render a HTML string. Defaults to a built-\/in template.
+
+When given a string, the string is used as a file path to load and then the following tokens are replaced in templates\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \{directory\}} with the name of the directory.
+\item {\ttfamily \{files\}} with the HTML of an unordered list of file links.
+\item {\ttfamily \{linked-\/path\}} with the HTML of a link to the directory.
+\item {\ttfamily \{style\}} with the specified stylesheet and embedded images.
+\end{DoxyItemize}
+
+When given as a function, the function is called as {\ttfamily template(locals, callback)} and it needs to invoke {\ttfamily callback(error, html\+String)}. The following are the provided locals\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily directory} is the directory being displayed (where {\ttfamily /} is the root).
+\item {\ttfamily display\+Icons} is a Boolean for if icons should be rendered or not.
+\item {\ttfamily file\+List} is a sorted array of files in the directory. The array contains objects with the following properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily name} is the relative name for the file.
+\item {\ttfamily stat} is a {\ttfamily fs.\+Stats} object for the file.
+\end{DoxyItemize}
+\item {\ttfamily path} is the full filesystem path to {\ttfamily directory}.
+\item {\ttfamily style} is the default stylesheet or the contents of the {\ttfamily stylesheet} option.
+\item {\ttfamily view\+Name} is the view name provided by the {\ttfamily view} option.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23032}{}\doxyparagraph{\texorpdfstring{view}{view}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23032}
+Display mode. {\ttfamily tiles} and {\ttfamily details} are available. Defaults to {\ttfamily tiles}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23033}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23033}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23034}{}\doxysubsection{\texorpdfstring{Serve directory indexes with vanilla node.\+js http server}{Serve directory indexes with vanilla node.\+js http server}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23034}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ finalhandler\ =\ require('finalhandler')}
+\DoxyCodeLine{var\ http\ =\ require('http')}
+\DoxyCodeLine{var\ serveIndex\ =\ require('serve-\/index')}
+\DoxyCodeLine{var\ serveStatic\ =\ require('serve-\/static')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Serve\ directory\ indexes\ for\ public/ftp\ folder\ (with\ icons)}
+\DoxyCodeLine{var\ index\ =\ serveIndex('public/ftp',\ \{'icons':\ true\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Serve\ up\ public/ftp\ folder\ files}
+\DoxyCodeLine{var\ serve\ =\ serveStatic('public/ftp')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Create\ server}
+\DoxyCodeLine{var\ server\ =\ http.createServer(function\ onRequest(req,\ res)\{}
+\DoxyCodeLine{\ \ var\ done\ =\ finalhandler(req,\ res)}
+\DoxyCodeLine{\ \ serve(req,\ res,\ function\ onNext(err)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ return\ done(err)}
+\DoxyCodeLine{\ \ \ \ index(req,\ res,\ done)}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Listen}
+\DoxyCodeLine{server.listen(3000)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23035}{}\doxysubsection{\texorpdfstring{Serve directory indexes with express}{Serve directory indexes with express}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23035}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ express\ \ \ \ =\ require('express')}
+\DoxyCodeLine{var\ serveIndex\ =\ require('serve-\/index')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ app\ =\ express()}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Serve\ URLs\ like\ /ftp/thing\ as\ public/ftp/thing}
+\DoxyCodeLine{//\ The\ express.static\ serves\ the\ file\ contents}
+\DoxyCodeLine{//\ The\ serveIndex\ is\ this\ module\ serving\ the\ directory}
+\DoxyCodeLine{app.use('/ftp',\ express.static('public/ftp'),\ serveIndex('public/ftp',\ \{'icons':\ true\}))}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Listen}
+\DoxyCodeLine{app.listen(3000)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23036}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2_r_e_a_d_m_e_autotoc_md23036}
+\mbox{[}MIT\mbox{]}(LICENSE). The \href{http://www.famfamfam.com/lab/icons/silk/}{\texttt{ Silk}} icons are created by/copyright of \href{http://www.famfamfam.com/}{\texttt{ FAMFAMFAM}}. 

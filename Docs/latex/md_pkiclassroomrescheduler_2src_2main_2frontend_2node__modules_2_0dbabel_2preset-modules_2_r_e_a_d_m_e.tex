@@ -1,0 +1,182 @@
+\chapter{\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}\textbackslash{}@babel/preset-\/modules\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e}\index{$<$tt$>$\textbackslash{}"@babel/preset-\/modules$<$/tt$>$@{$<$tt$>$\textbackslash{}"@babel/preset-\/modules$<$/tt$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md645}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md645}%
+ \begin{quote}
+ℹ️ Starting from {\ttfamily @babel/preset-\/env} 7.\+9.\+0, you can enable the \href{https://babeljs.io/docs/en/babel-preset-env\#bugfixes}{\texttt{ {\ttfamily bugfixes\+: true} option}} to get the same behavior as using {\ttfamily @babel/preset-\/modules}, but with support for custom {\ttfamily targets}. If you need to target browsers with native modules support (like this preset does), you can use {\ttfamily targets\+: \{ esmodules\+: true \}}. \end{quote}
+A Babel preset that enables async/await, Tagged Templates, arrow functions, destructured and rest parameters, and more {\bfseries{in all modern browsers}} (\href{https://caniuse.com/\#feat=es6-module}{\texttt{ 88\% of traffic}}).
+
+It works around bugs and inconsistencies in modern Java\+Script engines by converting broken syntax to the {\itshape closest non-\/broken modern syntax}. Use this in place of {\ttfamily @babel/preset-\/env}\textquotesingle{}s \href{https://babeljs.io/docs/en/babel-preset-env\#targetsesmodules}{\texttt{ target.\+esmodules}} option for smaller bundle size and improved performance.
+
+This preset is only useful for browsers. You can serve the output to modern browsers while still supporting older browsers using the \href{https://philipwalton.com/articles/deploying-es2015-code-in-production-today/}{\texttt{ module/nomodule pattern}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!-\/-\/\ transpiled\ with\ preset-\/modules:\ -\/-\/>}
+\DoxyCodeLine{<script\ type="{}module"{}\ src="{}modern.js"{}></script>}
+\DoxyCodeLine{<!-\/-\/\ transpiled\ with\ preset-\/env:\ -\/-\/>}
+\DoxyCodeLine{<script\ nomodule\ src="{}legacy.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md646}{}\doxysubsection{\texorpdfstring{Features Supported}{Features Supported}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md646}
+
+\begin{DoxyItemize}
+\item JSX spread attributes are compiled to Object.\+assign() instead of a helper.
+\item Default, destructured and optional parameters are all natively supported.
+\item Tagged Templates are fully supported, patched for Safari 10+ and Edge 16+.
+\item async/await is supported without being transpiled to generators.
+\item Function name inference works as expected, including Arrow Functions.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md647}{}\doxysubsection{\texorpdfstring{Installation \& Usage}{Installation \& Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md647}
+Install the preset from \href{https://www.npmjs.com/package/@babel/preset-modules}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @babel/preset-\/modules\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+To use the preset, add it to your \href{https://babeljs.io/docs/en/configuration}{\texttt{ Babel Configuration}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}presets"{}:\ [}
+\DoxyCodeLine{\ \ \ \ "{}@babel/preset-\/modules"{}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+If you\textquotesingle{}re implementing the module/nomodule pattern, your configuration might look something like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}env"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}modern"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}presets"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}@babel/preset-\/modules"{}}
+\DoxyCodeLine{\ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}legacy"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}presets"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}@babel/preset-\/env"{}}
+\DoxyCodeLine{\ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md648}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md648}
+There\textquotesingle{}s a single Boolean {\ttfamily loose} option, which defaults to {\ttfamily false}. Passing {\ttfamily true} further reduces output size.
+
+The {\ttfamily loose} setting turns off a rarely-\/needed function name workaround for older versions of Edge. If you\textquotesingle{}re not relying on {\ttfamily Function.\+prototype.\+name}, it\textquotesingle{}s worth enabling loose mode.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md649}{}\doxysubsection{\texorpdfstring{How does it work?}{How does it work?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md649}
+Babel’s {\ttfamily preset-\/env} is great, since it lets you define which Babel features are needed based on a browser support target. In order to make that plumbing work automatically, the preset has configuration that groups all of the new Java\+Script syntax features into collections of related syntax transforms. These groups are fairly large, for example "{}function arguments"{} includes destructured, default and rest parameters. The groupings come from the fact that Babel’s transforms often rely on other transforms, so they can’t always be applied in isolation.
+
+From this grouping information, Babel enables or disables each group based on the browser support target you specify to preset-\/env’s \href{https://babeljs.io/docs/en/babel-preset-env\#targets}{\texttt{ targets}} option. For modern output, the \href{https://babeljs.io/docs/en/babel-preset-env\#targetsesmodules}{\texttt{ targets.\+esmodules}} option is effectively an alias for the set of browsers that support ES Modules\+: Edge 16+, Safari 10.\+1+, Firefox 60+ and Chrome 61+.
+
+Here\textquotesingle{}s the problem\+: if any version of any browser in that list contains a bug triggered by modern syntax, the only solution we have is to enable the corresponding transform group that fixes that bug. This means that fundamentally, preset-\/env converts code to ES5 in order to get around syntax bugs in ES2017. Since that\textquotesingle{}s the only solution at our disposal, eventually it becomes overused.
+
+For example, all of the new syntax features relating to function parameters are grouped into the same Babel plugin ({\ttfamily @babel/plugin-\/transform-\/function-\/parameters}). That means because Edge 16 \& 17 support ES Modules but have a bug related to parsing shorthand destructured parameters with default values within arrow functions, all functions get compiled from the new compact argument syntaxes down to ES5\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ this\ breaks\ in\ Edge\ 16:}
+\DoxyCodeLine{const\ foo\ =\ (\{\ a\ =\ 1\ \})\ =>\ \{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ..\ but\ this\ doesn't:}
+\DoxyCodeLine{function\ foo(\{\ a\ =\ 1,\ b\ \},\ ...args)\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...\ and\ neither\ does\ this:}
+\DoxyCodeLine{const\ foo\ =\ (\{\ a:\ a\ =\ 1\ \})\ =>\ \{\};}
+
+\end{DoxyCode}
+
+
+In fact, there are 23 syntax improvements for function parameters in ES2017, and only one of them is broken in ES Modules-\/supporting browsers. It seems unfortunate to transpile all those great features down to ES5 just for one browser!
+
+This plugin takes a different approach than we\textquotesingle{}ve historically taken with Java\+Script\+: it transpiles the broken syntax to the closest {\itshape non-\/broken modern syntax}. In the above case, here\textquotesingle{}s what is generated to fix all ES Modules-\/supporting browsers\+:
+
+{\bfseries{input\+:}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ foo\ =\ (\{\ a\ =\ 1\ \},\ b\ =\ 2,\ ...args)\ =>\ [a,b,args];}
+
+\end{DoxyCode}
+
+
+{\bfseries{output\+:}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ foo\ =\ (\{\ a:\ a\ =\ 1\ \},\ b\ =\ 2,\ ...args)\ =>\ [a,b,args];}
+
+\end{DoxyCode}
+
+
+That output works in all ES Modules-\/supporting browsers, and is only {\bfseries{59 bytes}} minified \& gzipped.
+
+\begin{quote}
+Compare this to {\ttfamily @babel/preset-\/env}\textquotesingle{}s {\ttfamily targets.\+esmodules} output ({\bfseries{147 bytes}} minified \& gzipped)\+:
+
+\`{}\`{}\`{}js \end{quote}
+\texorpdfstring{$>$}{>}const foo = function foo(\+\_\+ref, b) \{ \begin{quote}
+ let \{ a = 1 \} = \+\_\+ref;
+
+if (b === void 0) \{ b = 2; \}
+
+for ( var \+\_\+len = arguments.\+length, args = new Array(\+\_\+len \texorpdfstring{$>$}{>} 2 ? \+\_\+len -\/ 2 \+: 0), \+\_\+key = 2; \+\_\+key \texorpdfstring{$<$}{<} \+\_\+len; \+\_\+key++ ) \{ args\mbox{[}\+\_\+key -\/ 2\mbox{]} = arguments\mbox{[}\+\_\+key\mbox{]}; \}
+
+return \mbox{[}a, b, args\mbox{]}; \end{quote}
+\texorpdfstring{$>$}{>}\}; \texorpdfstring{$>$}{>}\`{}\`{}\`{}\`{}
+
+The result is improved bundle size and performance, while supporting the same browsers.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md650}{}\doxysubsection{\texorpdfstring{Important\+: Minification}{Important\+: Minification}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2preset-modules_2_r_e_a_d_m_e_autotoc_md650}
+The output generated by this preset includes workarounds for Safari 10, however minifiers like Terser sometimes remove these workarounds. In order to avoid shipping broken code, it\textquotesingle{}s important to tell Terser to preserve the workarounds, which can be done via the {\ttfamily safari10} option.
+
+It\textquotesingle{}s also generally the case that minifiers are configured to output ES5 by default, so you\textquotesingle{}ll want to change the output syntax to ES2017.
+
+With \href{https://github.com/terser/terser\#minify-options}{\texttt{ Terser\textquotesingle{}s Node API}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{terser.minify(\{}
+\DoxyCodeLine{\ \ ecma:\ 2017,}
+\DoxyCodeLine{\ \ safari10:\ true}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+With \href{https://npm.im/terser}{\texttt{ Terser CLI}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{terser\ -\/-\/ecma\ 2017\ -\/-\/safari10\ ...}
+
+\end{DoxyCode}
+
+
+With \href{https://webpack.js.org/plugins/terser-webpack-plugin/}{\texttt{ terser-\/webpack-\/plugin}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ecma:\ 2017,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ safari10:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \})}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+All of the above configurations also apply to \href{https://github.com/mishoo/UglifyJS2/tree/harmony}{\texttt{ uglify-\/es}}. Uglify\+JS (2.\+x and prior) does not support modern Java\+Script, so it cannot be used in conjunction with this preset. 

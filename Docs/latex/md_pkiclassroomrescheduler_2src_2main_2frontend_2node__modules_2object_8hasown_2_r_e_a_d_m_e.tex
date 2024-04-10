@@ -1,0 +1,32 @@
+\chapter{object.\+hasown \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+com/package/object.\+hasown"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/es-\/shims/\+Object.\+has\+Own.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2object_8hasown_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2object_8hasown_2_r_e_a_d_m_e}\index{object.hasown $<$sup$>$$<$a href="{}https://npmjs.com/package/object.hasown"{} $>$$<$img src="{}https://versionbadg.es/es-\/shims/Object.hasOwn.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{object.hasown $<$sup$>$$<$a href=""https://npmjs.com/package/object.hasown"" $>$$<$img src=""https://versionbadg.es/es-\/shims/Object.hasOwn.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2object_8hasown_2_r_e_a_d_m_e_autotoc_md17624}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2object_8hasown_2_r_e_a_d_m_e_autotoc_md17624}%
+ \href{https://github.com/es-shims/Object.hasOwn/actions}{\texttt{ }} \href{https://app.codecov.io/gh/es-shims/Object.hasOwn/}{\texttt{ }} \href{https://david-dm.org/es-shims/Object.hasOwn}{\texttt{ }} \href{https://david-dm.org/es-shims/Object.hasOwn\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=object.hasown}{\texttt{ }}
+
+\href{https://npmjs.com/package/object.hasown}{\texttt{ }}
+
+An ES spec-\/compliant {\ttfamily Object.\+has\+Own} shim. Invoke its "{}shim"{} method to shim {\ttfamily Object.\+has\+Own} if it is unavailable or noncompliant.
+
+This package implements the \href{https://github.com/es-shims/api}{\texttt{ es-\/shim API}} interface. It works in an ES3-\/supported environment and complies with the \href{https://tc39.es/proposal-accessible-object-hasownproperty/}{\texttt{ spec}}.
+
+Most common usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{var\ hasOwn\ =\ require('object.hasown');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ obj\ =\ \{\ a:\ 1,\ b:\ 2\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(hasOwn(obj,\ 'a'));}
+\DoxyCodeLine{assert(hasOwn(obj,\ 'b'));}
+\DoxyCodeLine{assert('toString'\ in\ obj\ \&\&\ !hasOwn(obj,\ 'toString'));}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (!Object.hasOwn)\ \{}
+\DoxyCodeLine{\ \ \ \ hasOwn.shim();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.deepEqual(Object.hasOwn(obj,\ 'a'),\ hasOwn(obj,\ 'a'));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2object_8hasown_2_r_e_a_d_m_e_autotoc_md17625}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2object_8hasown_2_r_e_a_d_m_e_autotoc_md17625}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

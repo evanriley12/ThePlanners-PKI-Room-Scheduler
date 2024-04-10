@@ -1,0 +1,58 @@
+\chapter{loader-\/runner}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2loader-runner_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2loader-runner_2_r_e_a_d_m_e}\index{loader-\/runner@{loader-\/runner}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2loader-runner_2_r_e_a_d_m_e_autotoc_md16349}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2loader-runner_2_r_e_a_d_m_e_autotoc_md16349}%
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{import\ \{\ runLoaders\ \}\ from\ "{}loader-\/runner"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{runLoaders(\{}
+\DoxyCodeLine{\ \ \ \ resource:\ "{}/abs/path/to/file.txt?query"{},}
+\DoxyCodeLine{\ \ \ \ //\ String:\ Absolute\ path\ to\ the\ resource\ (optionally\ including\ query\ string)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ loaders:\ ["{}/abs/path/to/loader.js?query"{}],}
+\DoxyCodeLine{\ \ \ \ //\ String[]:\ Absolute\ paths\ to\ the\ loaders\ (optionally\ including\ query\ string)}
+\DoxyCodeLine{\ \ \ \ //\ \{loader,\ options\}[]:\ Absolute\ paths\ to\ the\ loaders\ with\ options\ object}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ context:\ \{\ minimize:\ true\ \},}
+\DoxyCodeLine{\ \ \ \ //\ Additional\ loader\ context\ which\ is\ used\ as\ base\ context}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ processResource:\ (loaderContext,\ resourcePath,\ callback)\ =>\ \{\ ...\ \},}
+\DoxyCodeLine{\ \ \ \ //\ Optional:\ A\ function\ to\ process\ the\ resource}
+\DoxyCodeLine{\ \ \ \ //\ Must\ have\ signature\ function(context,\ path,\ function(err,\ buffer))}
+\DoxyCodeLine{\ \ \ \ //\ By\ default\ readResource\ is\ used\ and\ the\ resource\ is\ added\ a\ fileDependency}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ readResource:\ fs.readFile.bind(fs)}
+\DoxyCodeLine{\ \ \ \ //\ Optional:\ A\ function\ to\ read\ the\ resource}
+\DoxyCodeLine{\ \ \ \ //\ Only\ used\ when\ 'processResource'\ is\ not\ provided}
+\DoxyCodeLine{\ \ \ \ //\ Must\ have\ signature\ function(path,\ function(err,\ buffer))}
+\DoxyCodeLine{\ \ \ \ //\ By\ default\ fs.readFile\ is\ used}
+\DoxyCodeLine{\},\ function(err,\ result)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ err:\ Error?}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ result.result:\ Buffer\ |\ String}
+\DoxyCodeLine{\ \ \ \ //\ The\ result}
+\DoxyCodeLine{\ \ \ \ //\ only\ available\ when\ no\ error\ occured}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ result.resourceBuffer:\ Buffer}
+\DoxyCodeLine{\ \ \ \ //\ The\ raw\ resource\ as\ Buffer\ (useful\ for\ SourceMaps)}
+\DoxyCodeLine{\ \ \ \ //\ only\ available\ when\ no\ error\ occured}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ result.cacheable:\ Bool}
+\DoxyCodeLine{\ \ \ \ //\ Is\ the\ result\ cacheable\ or\ do\ it\ require\ reexecution?}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ result.fileDependencies:\ String[]}
+\DoxyCodeLine{\ \ \ \ //\ An\ array\ of\ paths\ (existing\ files)\ on\ which\ the\ result\ depends\ on}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ result.missingDependencies:\ String[]}
+\DoxyCodeLine{\ \ \ \ //\ An\ array\ of\ paths\ (not\ existing\ files)\ on\ which\ the\ result\ depends\ on}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ result.contextDependencies:\ String[]}
+\DoxyCodeLine{\ \ \ \ //\ An\ array\ of\ paths\ (directories)\ on\ which\ the\ result\ depends\ on}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+More documentation following... 

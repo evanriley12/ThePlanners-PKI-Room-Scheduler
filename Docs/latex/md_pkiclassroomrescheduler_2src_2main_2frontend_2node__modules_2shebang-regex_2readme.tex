@@ -1,0 +1,31 @@
+\chapter{shebang-\/regex \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/shebang-\/regex"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/shebang-\/regex.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme}\index{shebang-\/regex $<$a href="{}https://travis-\/ci.org/sindresorhus/shebang-\/regex"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/shebang-\/regex.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{shebang-\/regex $<$a href=""https://travis-\/ci.org/sindresorhus/shebang-\/regex"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/shebang-\/regex.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23155}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23155}%
+ \begin{quote}
+Regular expression for matching a \href{https://en.wikipedia.org/wiki/Shebang_(Unix)}{\texttt{ shebang}} line \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23156}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23156}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ shebang-\/regex}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23157}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23157}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ shebangRegex\ =\ require('shebang-\/regex');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ string\ =\ '\#!/usr/bin/env\ node\(\backslash\)nconsole.log("{}unicorns"{});';}
+\DoxyCodeLine{}
+\DoxyCodeLine{shebangRegex.test(string);}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{shebangRegex.exec(string)[0];}
+\DoxyCodeLine{//=>\ '\#!/usr/bin/env\ node'}
+\DoxyCodeLine{}
+\DoxyCodeLine{shebangRegex.exec(string)[1];}
+\DoxyCodeLine{//=>\ '/usr/bin/env\ node'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23158}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shebang-regex_2readme_autotoc_md23158}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

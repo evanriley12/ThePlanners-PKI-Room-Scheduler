@@ -1,0 +1,80 @@
+\chapter{Disallow duplicate setup and teardown hooks (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/duplicate-\/hooks\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks}\index{Disallow duplicate setup and teardown hooks ($<$tt$>$no-\/duplicate-\/hooks$<$/tt$>$)@{Disallow duplicate setup and teardown hooks ($<$tt$>$no-\/duplicate-\/hooks$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks_autotoc_md10398}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks_autotoc_md10398}%
+ A {\ttfamily describe} block should not contain duplicate hooks.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks_autotoc_md10399}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks_autotoc_md10399}
+Examples of {\bfseries{incorrect}} code for this rule
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ jest/no-\/duplicate-\/hooks:\ "{}error"{}\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ beforeEach(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ setup}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ beforeEach(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ setup}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ test('foo\_test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ test}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Nested\ describe\ scenario}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ beforeEach(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ setup}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ test('foo\_test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ test}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ describe('bar',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ test('bar\_test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ afterAll(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ some\ teardown}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ afterAll(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ some\ teardown}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ jest/no-\/duplicate-\/hooks:\ "{}error"{}\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ beforeEach(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ setup}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ test('foo\_test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ test}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Nested\ describe\ scenario}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ beforeEach(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ setup}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ test('foo\_test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ some\ test}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ describe('bar',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ test('bar\_test',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ beforeEach(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ some\ setup}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

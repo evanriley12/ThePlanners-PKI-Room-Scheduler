@@ -1,0 +1,263 @@
+\chapter{normalize-\/url \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/gh/sindresorhus/normalize-\/url"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://codecov.\+io/gh/sindresorhus/normalize-\/url/branch/main/graph/badge.\+svg"{} alt="{}\+Coverage Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme}\index{normalize-\/url $<$a href="{}https://codecov.io/gh/sindresorhus/normalize-\/url"{} $>$$<$img src="{}https://codecov.io/gh/sindresorhus/normalize-\/url/branch/main/graph/badge.svg"{} alt="{}Coverage Status"{}/$>$$<$/a$>$@{normalize-\/url $<$a href=""https://codecov.io/gh/sindresorhus/normalize-\/url"" $>$$<$img src=""https://codecov.io/gh/sindresorhus/normalize-\/url/branch/main/graph/badge.svg"" alt=""Coverage Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17262}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17262}%
+ \begin{quote}
+\href{https://en.wikipedia.org/wiki/URL_normalization}{\texttt{ Normalize}} a URL \end{quote}
+Useful when you need to display, store, deduplicate, sort, compare, etc, URLs.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17263}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17263}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ normalize-\/url}
+
+\end{DoxyCode}
+
+
+{\itshape If you need to use this in the browser, use version 4\+: {\ttfamily npm i normalize-\/url@4}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17264}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17264}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ normalizeUrl\ =\ require('normalize-\/url');}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('sindresorhus.com');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('//www.sindresorhus.com:80/../baz?b=bar\&a=foo');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/baz?a=foo\&b=bar'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17265}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17265}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17266}{}\doxysubsection{\texorpdfstring{normalize\+Url(url, options?)}{normalize\+Url(url, options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17266}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17267}{}\doxysubsubsection{\texorpdfstring{url}{url}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17267}
+Type\+: {\ttfamily string}
+
+URL to normalize, including \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs}{\texttt{ data URL}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17268}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17268}
+Type\+: {\ttfamily object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17269}{}\doxyparagraph{\texorpdfstring{default\+Protocol}{default\+Protocol}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17269}
+Type\+: {\ttfamily string}\textbackslash{} Default\+: {\ttfamily http\+:}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17270}{}\doxyparagraph{\texorpdfstring{normalize\+Protocol}{normalize\+Protocol}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17270}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Prepend {\ttfamily default\+Protocol} to the URL if it\textquotesingle{}s protocol-\/relative.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('//sindresorhus.com:80/');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('//sindresorhus.com:80/',\ \{normalizeProtocol:\ false\});}
+\DoxyCodeLine{//=>\ '//sindresorhus.com'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17271}{}\doxyparagraph{\texorpdfstring{force\+Http}{force\+Http}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17271}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Normalize {\ttfamily https\+:} to {\ttfamily http\+:}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com:80/');}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com:80/',\ \{forceHttp:\ true\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17272}{}\doxyparagraph{\texorpdfstring{force\+Https}{force\+Https}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17272}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Normalize {\ttfamily http\+:} to {\ttfamily https\+:}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com:80/');}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com:80/',\ \{forceHttps:\ true\});}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com'}
+
+\end{DoxyCode}
+
+
+This option can\textquotesingle{}t be used with the {\ttfamily force\+Http} option at the same time.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17273}{}\doxyparagraph{\texorpdfstring{strip\+Authentication}{strip\+Authentication}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17273}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Strip the \href{https://en.wikipedia.org/wiki/Basic_access_authentication}{\texttt{ authentication}} part of the URL.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('user:password@sindresorhus.com');}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('user:password@sindresorhus.com',\ \{stripAuthentication:\ false\});}
+\DoxyCodeLine{//=>\ 'https://user:password@sindresorhus.com'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17274}{}\doxyparagraph{\texorpdfstring{strip\+Hash}{strip\+Hash}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17274}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Strip the hash part of the URL.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('sindresorhus.com/about.html\#contact');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/about.html\#contact'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('sindresorhus.com/about.html\#contact',\ \{stripHash:\ true\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/about.html'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17275}{}\doxyparagraph{\texorpdfstring{strip\+Protocol}{strip\+Protocol}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17275}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Remove HTTP(\+S) protocol from the URL\+: {\ttfamily \href{http://sindresorhus.com}{\texttt{ http\+://sindresorhus.\+com}}} → {\ttfamily sindresorhus.\+com}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com');}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com',\ \{stripProtocol:\ true\});}
+\DoxyCodeLine{//=>\ 'sindresorhus.com'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17276}{}\doxyparagraph{\texorpdfstring{strip\+Text\+Fragment}{strip\+Text\+Fragment}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17276}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Strip the \href{https://web.dev/text-fragments/}{\texttt{ text fragment}} part of the URL.
+
+{\bfseries{Note\+:}} The text fragment will always be removed if the {\ttfamily strip\+Hash} option is set to {\ttfamily true}, as the hash contains the text fragment.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/about.html\#:\string~:text=hello');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/about.html\#'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/about.html\#section:\string~:text=hello');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/about.html\#section'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/about.html\#:\string~:text=hello',\ \{stripTextFragment:\ false\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/about.html\#:\string~:text=hello'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/about.html\#section:\string~:text=hello',\ \{stripTextFragment:\ false\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/about.html\#section:\string~:text=hello'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17277}{}\doxyparagraph{\texorpdfstring{strip\+WWW}{strip\+WWW}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17277}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Remove {\ttfamily www.} from the URL.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('http://www.sindresorhus.com');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://www.sindresorhus.com',\ \{stripWWW:\ false\});}
+\DoxyCodeLine{//=>\ 'http://www.sindresorhus.com'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17278}{}\doxyparagraph{\texorpdfstring{remove\+Query\+Parameters}{remove\+Query\+Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17278}
+Type\+: {\ttfamily Array\texorpdfstring{$<$}{<}Reg\+Exp \texorpdfstring{$\vert$}{|} string\texorpdfstring{$>$}{>} \texorpdfstring{$\vert$}{|} boolean}\textbackslash{} Default\+: {\ttfamily \mbox{[}/\texorpdfstring{$^\wedge$}{\string^}utm\+\_\+\textbackslash{}w+/i\mbox{]}}
+
+Remove query parameters that matches any of the provided strings or regexes.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('www.sindresorhus.com?foo=bar\&ref=test\_ref',\ \{}
+\DoxyCodeLine{\ \ \ \ removeQueryParameters:\ ['ref']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/?foo=bar'}
+
+\end{DoxyCode}
+
+
+If a boolean is provided, {\ttfamily true} will remove all the query parameters.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('www.sindresorhus.com?foo=bar',\ \{}
+\DoxyCodeLine{\ \ \ \ removeQueryParameters:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com'}
+
+\end{DoxyCode}
+
+
+{\ttfamily false} will not remove any query parameter.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('www.sindresorhus.com?foo=bar\&utm\_medium=test\&ref=test\_ref',\ \{}
+\DoxyCodeLine{\ \ \ \ removeQueryParameters:\ false}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ 'http://www.sindresorhus.com/?foo=bar\&ref=test\_ref\&utm\_medium=test'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17279}{}\doxyparagraph{\texorpdfstring{remove\+Trailing\+Slash}{remove\+Trailing\+Slash}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17279}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Remove trailing slash.
+
+{\bfseries{Note\+:}} Trailing slash is always removed if the URL doesn\textquotesingle{}t have a pathname unless the {\ttfamily remove\+Single\+Slash} option is set to {\ttfamily false}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/redirect/');}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/redirect'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/redirect/',\ \{removeTrailingSlash:\ false\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/redirect/'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('http://sindresorhus.com/',\ \{removeTrailingSlash:\ false\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17280}{}\doxyparagraph{\texorpdfstring{remove\+Single\+Slash}{remove\+Single\+Slash}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17280}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Remove a sole {\ttfamily /} pathname in the output. This option is independant of {\ttfamily remove\+Trailing\+Slash}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com/');}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com'}
+\DoxyCodeLine{}
+\DoxyCodeLine{normalizeUrl('https://sindresorhus.com/',\ \{removeSingleSlash:\ false\});}
+\DoxyCodeLine{//=>\ 'https://sindresorhus.com/'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17281}{}\doxyparagraph{\texorpdfstring{remove\+Directory\+Index}{remove\+Directory\+Index}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17281}
+Type\+: {\ttfamily boolean \texorpdfstring{$\vert$}{|} Array\texorpdfstring{$<$}{<}Reg\+Exp \texorpdfstring{$\vert$}{|} string\texorpdfstring{$>$}{>}}\textbackslash{} Default\+: {\ttfamily false}
+
+Removes the default directory index file from path that matches any of the provided strings or regexes. When {\ttfamily true}, the regex {\ttfamily /\texorpdfstring{$^\wedge$}{\string^}index\textbackslash{}.\mbox{[}a-\/z\mbox{]}+\$/} is used.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('www.sindresorhus.com/foo/default.php',\ \{}
+\DoxyCodeLine{\ \ \ \ removeDirectoryIndex:\ [/\string^default\(\backslash\).[a-\/z]+\$/]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/foo'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17282}{}\doxyparagraph{\texorpdfstring{sort\+Query\+Parameters}{sort\+Query\+Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17282}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Sorts the query parameters alphabetically by key.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{normalizeUrl('www.sindresorhus.com?b=two\&a=one\&c=three',\ \{}
+\DoxyCodeLine{\ \ \ \ sortQueryParameters:\ false}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ 'http://sindresorhus.com/?b=two\&a=one\&c=three'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17283}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2normalize-url_2readme_autotoc_md17283}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/compare-urls}{\texttt{ compare-\/urls}} -\/ Compare URLs by first normalizing them
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-normalize-url?utm_source=npm-normalize-url&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for this package with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

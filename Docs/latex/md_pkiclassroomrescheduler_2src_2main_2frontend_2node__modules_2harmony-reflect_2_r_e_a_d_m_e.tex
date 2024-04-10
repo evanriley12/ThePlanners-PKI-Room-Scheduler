@@ -1,0 +1,133 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e}\index{README@{README}}
+\href{http://badge.fury.io/js/harmony-reflect}{\texttt{ }} \href{https://david-dm.org/tvcutsem/harmony-reflect}{\texttt{ }}
+
+This is a shim for the ECMAScript 6 \href{http://www.ecma-international.org/ecma-262/6.0/\#sec-reflect-object}{\texttt{ Reflect}} and \href{http://www.ecma-international.org/ecma-262/6.0/\#sec-proxy-objects}{\texttt{ Proxy}} objects.
+
+This library does two things\+:
+
+
+\begin{DoxyItemize}
+\item It defines an ES6-\/compliant {\ttfamily Reflect} global object that exports the ECMAScript 6 reflection API.
+\item If harmony-\/era (pre-\/\+ES6) {\ttfamily Proxy} support is available, it patches {\ttfamily Proxy} to be up-\/to-\/date with the \href{http://www.ecma-international.org/ecma-262/6.0/}{\texttt{ ES6 spec}}.
+\end{DoxyItemize}
+
+{\bfseries{July 2016 update}}\+: the most recent version of all major browsers and node.\+js now \href{http://kangax.github.io/compat-table/es6/\#test-Proxy}{\texttt{ support fully ES6-\/compliant}} {\ttfamily Reflect} and {\ttfamily Proxy} objects. This shim is primarily useful if you want ES6 {\ttfamily Reflect} support on older browsers or versions of node.\+js \texorpdfstring{$<$}{<} v6.\+0.\+0, or if you want ES6 {\ttfamily Proxy} support on versions of node.\+js \texorpdfstring{$<$}{<} v6.\+0.\+0.
+
+{\bfseries{May 2016 update}}\+: the recently released \href{http://v8project.blogspot.com.au/2016/01/v8-release-49.html}{\texttt{ V8 v4.\+9}} includes native support for ES2015 Proxies and Reflect, making this library obsolete for environments that embed V8 4.\+9 or newer (like Chrome 49 and Node v6.\+0). Node v5.\+10.\+x or lower still requires this polyfill for proper ES6 Proxy support.
+
+Read \href{https://github.com/tvcutsem/harmony-reflect/wiki}{\texttt{ Why should I use this library?}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13428}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13428}
+For node.\+js, install via \href{http://npmjs.org}{\texttt{ npm}}\+: \begin{DoxyVerb}npm install harmony-reflect
+\end{DoxyVerb}
+ Then\+: \begin{DoxyVerb}node --harmony-proxies
+> var Reflect = require('harmony-reflect');
+\end{DoxyVerb}
+ See \href{https://github.com/tvcutsem/harmony-reflect/blob/master/RELNOTES.md}{\texttt{ release notes}} for changes to the npm releases.
+
+To use in a browser, just download the single reflect.\+js file. After loading \begin{DoxyVerb}<script src="reflect.js"></script>
+\end{DoxyVerb}
+ a global object {\ttfamily Reflect} is defined that contains reflection methods as defined in the \href{http://www.ecma-international.org/ecma-262/6.0/\#sec-reflect-object}{\texttt{ ES6 spec}}.
+
+This library also updates the "{}harmony-\/era"{} {\ttfamily Proxy} object in the V8 engine (also used in node.\+js) to follow the latest \href{http://www.ecma-international.org/ecma-262/6.0/}{\texttt{ ECMAScript 2015}} spec. To create such a proxy, call\+: \begin{DoxyVerb}var proxy = new Proxy(target, handler);
+\end{DoxyVerb}
+ See below for a list of spec incompatibilities and other gotcha\textquotesingle{}s.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13429}{}\doxysection{\texorpdfstring{API Docs}{API Docs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13429}
+This module exports an object named {\ttfamily Reflect} and updates the global {\ttfamily Proxy} object (if it exists) to be compatible with the latest ECMAScript 6 spec.
+
+The ECMAScript 6 Proxy API allows one to intercept various operations on Javascript objects.
+
+
+\begin{DoxyItemize}
+\item Overview of all \href{https://github.com/tvcutsem/harmony-reflect/tree/master/doc/traps.md}{\texttt{ supported traps}} on proxies
+\item The \href{https://github.com/tvcutsem/harmony-reflect/tree/master/doc/api.md}{\texttt{ Reflect API}}
+\item The Proxy \href{https://github.com/tvcutsem/harmony-reflect/tree/master/doc/handler_api.md}{\texttt{ Handler API}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13430}{}\doxysection{\texorpdfstring{Compatibility}{Compatibility}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13430}
+The {\ttfamily Reflect} API, with support for proxies, was tested on\+:
+
+
+\begin{DoxyItemize}
+\item Firefox (\texorpdfstring{$>$}{>}= v4.\+0)
+\item {\ttfamily node -\/-\/harmony\+\_\+proxies} (\texorpdfstring{$>$}{>}= v0.\+7.\+8)
+\item {\ttfamily iojs -\/-\/harmony\+\_\+proxies} (\texorpdfstring{$>$}{>}= 2.\+3.\+0)
+\item {\ttfamily v8 -\/-\/harmony\+\_\+proxies} (\texorpdfstring{$>$}{>}= v3.\+6)
+\item Any recent {\ttfamily js} spidermonkey shell
+\end{DoxyItemize}
+
+If you need only {\ttfamily Reflect} and not an up-\/to-\/date {\ttfamily Proxy} object, this library should work on any modern ES5 engine (including all browsers).
+
+Compatibility notes\+:
+
+
+\begin{DoxyItemize}
+\item Chrome (\texorpdfstring{$>$}{>}= v19 \&\& \texorpdfstring{$<$}{<}= v37) used to support proxies behind a flag ({\ttfamily chrome\+://flags/\#enable-\/javascript-\/harmony}) but Chrome v38 \href{https://code.google.com/p/v8/issues/detail?id=1543\#c44}{\texttt{ removed}} the {\ttfamily Proxy} constructor. As a result, this library cannot patch the harmony-\/era {\ttfamily Proxy} object on Chrome v38 or above. If you\textquotesingle{}re working with Chromium directly, it\textquotesingle{}s still possible to enable proxies using {\ttfamily chromium-\/browser -\/-\/js-\/flags="{}-\/-\/harmony\+\_\+proxies"{}}.
+\item In older versions of V8, the {\ttfamily Proxy} constructor was enabled by default when starting V8 with {\ttfamily -\/-\/harmony}. For recent versions of V8, {\ttfamily Proxy} must be explicitly enabled with {\ttfamily -\/-\/harmony\+\_\+proxies}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13431}{}\doxysection{\texorpdfstring{Dependencies}{Dependencies}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13431}
+
+\begin{DoxyItemize}
+\item ECMAScript 5/strict
+\item To emulate direct proxies\+:
+\begin{DoxyItemize}
+\item old Harmony \href{http://wiki.ecmascript.org/doku.php?id=harmony:proxies}{\texttt{ Proxies}}
+\item Harmony \href{http://wiki.ecmascript.org/doku.php?id=harmony:weak_maps}{\texttt{ Weak\+Maps}}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+After loading {\ttfamily reflect.\+js} into your page or other JS environment, be aware that the following globals are patched to be able to recognize emulated direct proxies\+: \begin{DoxyVerb}Object.getOwnPropertyDescriptor
+Object.defineProperty
+Object.defineProperties
+Object.getOwnPropertyNames
+Object.getOwnPropertySymbols
+Object.keys
+Object.{get,set}PrototypeOf
+Object.assign
+Object.{freeze,seal,preventExtensions}
+Object.{isFrozen,isSealed,isExtensible}
+Object.prototype.valueOf
+Object.prototype.isPrototypeOf
+Object.prototype.toString
+Object.prototype.hasOwnProperty
+Function.prototype.toString
+Date.prototype.toString
+Array.isArray
+Array.prototype.concat
+Proxy
+Reflect
+\end{DoxyVerb}
+ \+:warning\+: In node.\+js, when you `require(\textquotesingle{}harmony-\/reflect'){\ttfamily , only the current module\textquotesingle{}s globals are patched. If you pass an emulated direct proxy to an external module, and that module uses the unpatched globals, the module may not interact with the proxy according to the latest ES6 Proxy API, instead falling back on the old pre-\/\+ES6 Proxy API. This can cause bugs, e.\+g. the built-\/in}Array.\+is\+Array{\ttfamily will return}false{\ttfamily when passed a proxy-\/for-\/array, while the patched}Array.\+is\+Array\`{} will return true. I know of no good fix to reliably patch the globals for all node modules. If you do, let me know.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13432}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13432}
+The \href{https://github.com/tvcutsem/harmony-reflect/tree/master/examples}{\texttt{ examples}} directory contains a number of examples demonstrating the use of proxies\+:
+
+
+\begin{DoxyItemize}
+\item membranes\+: wrappers that transitively isolate two object-\/graphs.
+\item observer\+: a self-\/hosted implementation of the ES7 {\ttfamily Object.\+observe} notification mechanism.
+\item profiler\+: a simple profiler to collect usage statistics of an object.
+\end{DoxyItemize}
+
+Other example uses of proxies (not done by me, but using this library)\+:
+
+
+\begin{DoxyItemize}
+\item supporting \href{https://github.com/sindresorhus/negative-array}{\texttt{ negative array indices}} a la Python
+\item \href{https://github.com/mathiasbynens/tpyo}{\texttt{ tpyo}}\+: using proxies to correct typo\textquotesingle{}s in JS property names
+\item \href{http://tagtree.tv/es6-proxies}{\texttt{ persistent objects}}\+: shows how one might go about using proxies to save updates to objects in a database incrementally
+\item \href{https://github.com/greenify/defaultdict2}{\texttt{ defaultdict}}\+: default values for new keys in objects (as known from Python)
+\end{DoxyItemize}
+
+For more examples of proxies, and a good overview of their design rationale, I recommend reading \href{http://www.2ality.com/2014/12/es6-proxies.html}{\texttt{ Axel Rauschmayer\textquotesingle{}s blog post on proxies}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13433}{}\doxysection{\texorpdfstring{Proxy Handler API}{Proxy Handler API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13433}
+The sister project \href{https://github.com/tvcutsem/proxy-handlers}{\texttt{ proxy-\/handlers}} defines a number of predefined Proxy handlers as "{}abstract classes"{} that your code can "{}subclass"{} The goal is to minimize the number of traps that your proxy handlers must implement.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13434}{}\doxysection{\texorpdfstring{Spec Incompatibilities and other gotcha\textquotesingle{}s}{Spec Incompatibilities and other gotcha\textquotesingle{}s}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2harmony-reflect_2_r_e_a_d_m_e_autotoc_md13434}
+This library differs from the \href{http://www.ecma-international.org/ecma-262/7.0/index.html}{\texttt{ ECMAScript 2016 spec}} as follows\+:
+
+
+\begin{DoxyItemize}
+\item In ES7, the {\ttfamily enumerate()} trap, and the corresponding {\ttfamily Reflect.\+enumerate()} method, have been \href{https://github.com/tc39/ecma262/issues/161}{\texttt{ removed}}. This shim still supports the trap.
+\item The ES7 (and ES6) spec contains a \href{https://github.com/tc39/ecma262/pull/666}{\texttt{ bug}} that leads to missing invariant checks in the get\+Own\+Property\+Descriptor, define\+Property and delete\+Property traps. This library already contains the patch referred to in \href{https://github.com/tc39/ecma262/pull/666}{\texttt{ this issue}}.
+\end{DoxyItemize}
+
+This library differs from the \href{http://www.ecma-international.org/ecma-262/6.0/}{\texttt{ ECMAScript 2015 spec}} as follows\+:
+
+
+\begin{DoxyItemize}
+\item In ES6, {\ttfamily Proxy} is a constructor function that {\itshape requires} the use of {\ttfamily new}. That is, you must write {\ttfamily new Proxy(target, handler)}. This library exports {\ttfamily Proxy} as an ordinary function which may be called with or without using the {\ttfamily new} operator.
+\item In ES6, {\ttfamily Function.\+prototype.\+to\+String} and {\ttfamily Date.\+prototype.\+to\+String} do not operate transparently on Proxies. This shim patches those functions so that stringifying a Proxy-\/for-\/a-\/function or a Proxy-\/for-\/a-\/date "{}unwraps"{} the proxy and instead stringifies the target of the Proxy. This behavior may change in the future to be more spec-\/compatible.
+\item This library does not shim \href{http://www.ecma-international.org/ecma-262/6.0/\#sec-symbol-objects}{\texttt{ Symbol objects}}. On modern V8 or io.\+js which supports Symbol objects natively, due to a bug in V8, Symbols and Proxies don\textquotesingle{}t play well together. \href{https://github.com/tvcutsem/harmony-reflect/issues/57}{\texttt{ Read more}}.
+\item Proxies-\/for-\/arrays are serialized as JSON objects rather than as JSON arrays. That is, {\ttfamily JSON.\+stringify(new Proxy(\mbox{[}\mbox{]}, \{\}))} returns "{}\{\}"{} rather than "{}\mbox{[}$\,$\mbox{]}"{}. \href{https://github.com/tvcutsem/harmony-reflect/issues/13\#issuecomment-17249465}{\texttt{ Read more}}. 
+\end{DoxyItemize}

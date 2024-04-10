@@ -1,0 +1,26 @@
+\chapter{import/no-\/dynamic-\/require}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require}\index{import/no-\/dynamic-\/require@{import/no-\/dynamic-\/require}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9941}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9941}%
+
+
+The {\ttfamily require} method from Common\+JS is used to import modules from different files. Unlike the ES6 {\ttfamily import} syntax, it can be given expressions that will be resolved at runtime. While this is sometimes necessary and useful, in most cases it isn\textquotesingle{}t. Using expressions (for instance, concatenating a path and variable) as the argument makes it harder for tools to do static code analysis, or to find where in the codebase a module is used.
+
+This rule forbids every call to {\ttfamily require()} that uses expressions for the module name argument.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9942}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9942}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9943}{}\doxysubsection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9943}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require(name);}
+\DoxyCodeLine{require('../'\ +\ name);}
+\DoxyCodeLine{require(`../\$\{name\}`);}
+\DoxyCodeLine{require(name());}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9944}{}\doxysubsection{\texorpdfstring{Pass}{Pass}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require_autotoc_md9944}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('../name');}
+\DoxyCodeLine{require(`../name`);}
+
+\end{DoxyCode}
+ 

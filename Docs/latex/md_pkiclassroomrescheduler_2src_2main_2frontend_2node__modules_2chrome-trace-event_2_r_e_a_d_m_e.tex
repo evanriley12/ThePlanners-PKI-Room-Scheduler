@@ -1,0 +1,25 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e}\index{README@{README}}
+\href{https://travis-ci.org/samccone/chrome-trace-event}{\texttt{ }}
+
+chrome-\/trace-\/event\+: A node library for creating trace event logs of program execution according to \href{https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU}{\texttt{ Google\textquotesingle{}s Trace Event format}}. These logs can then be visualized with \href{https://github.com/google/trace-viewer}{\texttt{ trace-\/viewer}} or chrome devtools to grok one\textquotesingle{}s programs.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6631}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6631}
+\begin{DoxyVerb}npm install chrome-trace-event
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6632}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6632}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Trace\ =\ require("{}chrome-\/trace-\/event"{}).Tracer;}
+\DoxyCodeLine{const\ trace\ =\ new\ Trace(\{}
+\DoxyCodeLine{\ \ \ \ noStream:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{trace.pipe(fs.createWriteStream(outPath));}
+\DoxyCodeLine{trace.flush();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6633}{}\doxysection{\texorpdfstring{Links}{Links}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6633}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/google/trace-viewer/wiki}{\texttt{ https\+://github.\+com/google/trace-\/viewer/wiki}}
+\item \href{https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU}{\texttt{ https\+://docs.\+google.\+com/document/d/1\+Cv\+AClv\+Ffy\+A5\+R-\/\+Ph\+YUmn5\+OOQt\+YMH4h6\+I0n\+Ss\+Kch\+NAy\+SU}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6634}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2chrome-trace-event_2_r_e_a_d_m_e_autotoc_md6634}
+MIT. See LICENSE.\+txt. 

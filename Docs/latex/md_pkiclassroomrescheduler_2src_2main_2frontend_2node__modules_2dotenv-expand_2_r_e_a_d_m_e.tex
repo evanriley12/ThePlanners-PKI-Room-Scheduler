@@ -1,0 +1,30 @@
+\chapter{dotenv-\/expand}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e}\index{dotenv-\/expand@{dotenv-\/expand}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e_autotoc_md8743}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e_autotoc_md8743}%
+ 
+
+Dotenv-\/expand adds variable expansion on top of \href{http://github.com/motdotla/dotenv}{\texttt{ dotenv}}. If you find yourself needing to expand environment variables already existing on your machine, then dotenv-\/expand is your tool.
+
+\href{https://travis-ci.org/motdotla/dotenv-expand}{\texttt{ }} \href{https://www.npmjs.com/package/dotenv-expand}{\texttt{ }} \href{https://github.com/feross/standard}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e_autotoc_md8744}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e_autotoc_md8744}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ dotenv\ -\/-\/save}
+\DoxyCodeLine{npm\ install\ dotenv-\/expand\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e_autotoc_md8745}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv-expand_2_r_e_a_d_m_e_autotoc_md8745}
+As early as possible in your application, require dotenv and dotenv-\/expand, and wrap dotenv-\/expand around dotenv.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{var\ dotenvExpand\ =\ require('dotenv-\/expand')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ myEnv\ =\ dotenv.config()}
+\DoxyCodeLine{dotenvExpand(myEnv)}
+
+\end{DoxyCode}
+
+
+See \href{./test/.env}{\texttt{ test/.env}} for examples of variable expansion in your {\ttfamily .env} file. 

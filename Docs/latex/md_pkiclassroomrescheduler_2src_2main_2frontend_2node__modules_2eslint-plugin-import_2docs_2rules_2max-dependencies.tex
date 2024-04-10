@@ -1,0 +1,61 @@
+\chapter{import/max-\/dependencies}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies}\index{import/max-\/dependencies@{import/max-\/dependencies}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9877}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9877}%
+
+
+Forbid modules to have too many dependencies ({\ttfamily import} or {\ttfamily require} statements).
+
+This is a useful rule because a module with too many dependencies is a code smell, and usually indicates the module is doing too much and/or should be broken up into smaller modules.
+
+Importing multiple named exports from a single module will only count once (e.\+g. `import \{x, y, z\} from './foo\textquotesingle{}\`{} will only count as a single dependency).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9878}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9878}
+This rule has the following options, with these defaults\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}import/max-\/dependencies"{}:\ ["{}error"{},\ \{}
+\DoxyCodeLine{\ \ "{}max"{}:\ 10,}
+\DoxyCodeLine{\ \ "{}ignoreTypeImports"{}:\ false,}
+\DoxyCodeLine{\}]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9879}{}\doxysubsection{\texorpdfstring{{\ttfamily max}}{{\ttfamily max}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9879}
+This option sets the maximum number of dependencies allowed. Anything over will trigger the rule. {\bfseries{Default is 10}} if the rule is enabled and no {\ttfamily max} is specified.
+
+Given a max value of {\ttfamily \{"{}max"{}\+: 2\}}\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9880}{}\doxysubsection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9880}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ a\ from\ './a';\ //\ 1}
+\DoxyCodeLine{const\ b\ =\ require('./b');\ //\ 2}
+\DoxyCodeLine{import\ c\ from\ './c';\ //\ 3\ -\/\ exceeds\ max!}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9881}{}\doxysubsection{\texorpdfstring{Pass}{Pass}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9881}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ a\ from\ './a';\ //\ 1}
+\DoxyCodeLine{const\ anotherA\ =\ require('./a');\ //\ still\ 1}
+\DoxyCodeLine{import\ \{x,\ y,\ z\}\ from\ './foo';\ //\ 2}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9882}{}\doxysubsection{\texorpdfstring{{\ttfamily ignore\+Type\+Imports}}{{\ttfamily ignore\+Type\+Imports}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9882}
+Ignores {\ttfamily type} imports. Type imports are a feature released in Type\+Script 3.\+8, you can \href{https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html\#type-only-imports-and-export}{\texttt{ read more here}}. Defaults to {\ttfamily false}.
+
+Given {\ttfamily \{"{}max"{}\+: 2, "{}ignore\+Type\+Imports"{}\+: true\}}\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9883}{}\doxysubsection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9883}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ a\ from\ './a';}
+\DoxyCodeLine{import\ b\ from\ './b';}
+\DoxyCodeLine{import\ c\ from\ './c';}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9884}{}\doxysubsection{\texorpdfstring{Pass}{Pass}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9884}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ a\ from\ './a';}
+\DoxyCodeLine{import\ b\ from\ './b';}
+\DoxyCodeLine{import\ type\ c\ from\ './c';\ //\ Doesn't\ count\ against\ max}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9885}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies_autotoc_md9885}
+If you don\textquotesingle{}t care how many dependencies a module has. 

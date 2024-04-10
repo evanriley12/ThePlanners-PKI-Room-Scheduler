@@ -1,0 +1,52 @@
+\chapter{\texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}postcss\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}-\/ordered-\/values}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e}\index{$<$a href="{}https://github.com/postcss/postcss"{} $>$postcss$<$/a$>$-\/ordered-\/values@{$<$a href=""https://github.com/postcss/postcss"" $>$postcss$<$/a$>$-\/ordered-\/values}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19236}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19236}%
+ \begin{quote}
+Ensure values are ordered consistently in your CSS. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19237}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19237}
+With \href{https://npmjs.org/package/postcss-ordered-values}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/ordered-\/values\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19238}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19238}
+Some CSS properties accept their values in an arbitrary order; for this reason, it is entirely possible that different developers will write their values in different orders. This module normalizes the order, making it easier for other modules to understand which declarations are duplicates.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19239}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19239}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ border:\ solid\ 1px\ red;}
+\DoxyCodeLine{\ \ \ \ border:\ red\ solid\ .5em;}
+\DoxyCodeLine{\ \ \ \ border:\ rgba(0,\ 30,\ 105,\ 0.8)\ solid\ 1px;}
+\DoxyCodeLine{\ \ \ \ border:\ 1px\ solid\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19240}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19240}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ border:\ 1px\ solid\ red;}
+\DoxyCodeLine{\ \ \ \ border:\ .5em\ solid\ red;}
+\DoxyCodeLine{\ \ \ \ border:\ 1px\ solid\ rgba(0,\ 30,\ 105,\ 0.8);}
+\DoxyCodeLine{\ \ \ \ border:\ 1px\ solid\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19241}{}\doxysection{\texorpdfstring{Support List}{Support List}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19241}
+For more examples, see the \href{src/__tests__/index.js}{\texttt{ tests}}.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily animation}, {\ttfamily -\/webkit-\/animation}
+\item {\ttfamily border(border-\/left\texorpdfstring{$\vert$}{|}right\texorpdfstring{$\vert$}{|}top\texorpdfstring{$\vert$}{|}bottom)}
+\item {\ttfamily box-\/shadow}
+\item {\ttfamily outline}
+\item {\ttfamily flex-\/flow}
+\item {\ttfamily transition}, {\ttfamily -\/webkit-\/transition}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19242}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19242}
+See the \href{https://github.com/postcss/postcss\#usage}{\texttt{ Post\+CSS documentation}} for examples for your environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19243}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19243}
+See \href{https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md}{\texttt{ CONTRIBUTORS.\+md}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19244}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-ordered-values_2_r_e_a_d_m_e_autotoc_md19244}
+MIT © \href{http://beneb.info}{\texttt{ Ben Briggs}} 

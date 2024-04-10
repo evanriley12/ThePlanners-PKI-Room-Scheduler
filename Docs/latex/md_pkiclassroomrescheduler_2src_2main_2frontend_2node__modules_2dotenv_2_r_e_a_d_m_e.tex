@@ -1,0 +1,265 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e}\index{README@{README}}
+
+
+{\bfseries{Announcement 📣}}~\newline
+From the makers that brought you Dotenv, introducing \href{https://sync.dotenv.org}{\texttt{ Dotenv Sync}}.~\newline
+Sync your .env files between machines, environments, and team members.~\newline
+\href{https://sync.dotenv.org}{\texttt{ Join the early access list. 🕶}} \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8804}{}\doxysection{\texorpdfstring{dotenv}{dotenv}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8804}
+
+
+Dotenv is a zero-\/dependency module that loads environment variables from a {\ttfamily .env} file into \href{https://nodejs.org/docs/latest/api/process.html\#process_process_env}{\texttt{ {\ttfamily process.\+env}}}. Storing configuration in the environment separate from code is based on \href{http://12factor.net/config}{\texttt{ The Twelve-\/\+Factor App}} methodology.
+
+\href{https://travis-ci.org/motdotla/dotenv}{\texttt{ }} \href{https://ci.appveyor.com/project/motdotla/dotenv/branch/master}{\texttt{ }} \href{https://www.npmjs.com/package/dotenv}{\texttt{ }} \href{https://github.com/feross/standard}{\texttt{ }} \href{https://coveralls.io/github/motdotla/dotenv?branch=coverall-intergration}{\texttt{ }} \mbox{[}\mbox{]}(LICENSE) \href{https://conventionalcommits.org}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8805}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8805}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ with\ npm}
+\DoxyCodeLine{npm\ install\ dotenv}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ or\ with\ Yarn}
+\DoxyCodeLine{yarn\ add\ dotenv}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8806}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8806}
+As early as possible in your application, require and configure dotenv.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('dotenv').config()}
+
+\end{DoxyCode}
+
+
+Create a {\ttfamily .env} file in the root directory of your project. Add environment-\/specific variables on new lines in the form of {\ttfamily NAME=VALUE}. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{DB\_HOST=localhost}
+\DoxyCodeLine{DB\_USER=root}
+\DoxyCodeLine{DB\_PASS=s1mpl3}
+
+\end{DoxyCode}
+
+
+{\ttfamily process.\+env} now has the keys and values you defined in your {\ttfamily .env} file.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ db\ =\ require('db')}
+\DoxyCodeLine{db.connect(\{}
+\DoxyCodeLine{\ \ host:\ process.env.DB\_HOST,}
+\DoxyCodeLine{\ \ username:\ process.env.DB\_USER,}
+\DoxyCodeLine{\ \ password:\ process.env.DB\_PASS}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8807}{}\doxysubsubsection{\texorpdfstring{Preload}{Preload}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8807}
+You can use the {\ttfamily -\/-\/require} ({\ttfamily -\/r}) \href{https://nodejs.org/api/cli.html\#cli_r_require_module}{\texttt{ command line option}} to preload dotenv. By doing this, you do not need to require and load dotenv in your application code. This is the preferred approach when using {\ttfamily import} instead of {\ttfamily require}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ -\/r\ dotenv/config\ your\_script.js}
+
+\end{DoxyCode}
+
+
+The configuration options below are supported as command line arguments in the format {\ttfamily dotenv\+\_\+config\+\_\+\texorpdfstring{$<$}{<}option\texorpdfstring{$>$}{>}=value}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ -\/r\ dotenv/config\ your\_script.js\ dotenv\_config\_path=/custom/path/to/.env}
+
+\end{DoxyCode}
+
+
+Additionally, you can use environment variables to set configuration options. Command line arguments will precede these.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ DOTENV\_CONFIG\_<OPTION>=value\ node\ -\/r\ dotenv/config\ your\_script.js}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ DOTENV\_CONFIG\_ENCODING=latin1\ node\ -\/r\ dotenv/config\ your\_script.js\ dotenv\_config\_path=/custom/path/to/.env}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8808}{}\doxysubsection{\texorpdfstring{Config}{Config}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8808}
+{\ttfamily config} will read your {\ttfamily .env} file, parse the contents, assign it to \href{https://nodejs.org/docs/latest/api/process.html\#process_process_env}{\texttt{ {\ttfamily process.\+env}}}, and return an Object with a {\ttfamily parsed} key containing the loaded content or an {\ttfamily error} key if it failed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ result\ =\ dotenv.config()}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (result.error)\ \{}
+\DoxyCodeLine{\ \ throw\ result.error}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(result.parsed)}
+
+\end{DoxyCode}
+
+
+You can additionally, pass options to {\ttfamily config}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8809}{}\doxysubsubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8809}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8810}{}\doxyparagraph{\texorpdfstring{Path}{Path}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8810}
+Default\+: `path.\+resolve(process.\+cwd(), '.env\textquotesingle{})\`{}
+
+You may specify a custom path if your file containing environment variables is located elsewhere.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('dotenv').config(\{\ path:\ '/custom/path/to/.env'\ \})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8811}{}\doxyparagraph{\texorpdfstring{Encoding}{Encoding}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8811}
+Default\+: {\ttfamily utf8}
+
+You may specify the encoding of your file containing environment variables.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('dotenv').config(\{\ encoding:\ 'latin1'\ \})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8812}{}\doxyparagraph{\texorpdfstring{Debug}{Debug}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8812}
+Default\+: {\ttfamily false}
+
+You may turn on logging to help debug why certain keys or values are not being set as you expect.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('dotenv').config(\{\ debug:\ process.env.DEBUG\ \})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8813}{}\doxysubsection{\texorpdfstring{Parse}{Parse}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8813}
+The engine which parses the contents of your file containing environment variables is available to use. It accepts a String or Buffer and will return an Object with the parsed keys and values.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{const\ buf\ =\ Buffer.from('BASIC=basic')}
+\DoxyCodeLine{const\ config\ =\ dotenv.parse(buf)\ //\ will\ return\ an\ object}
+\DoxyCodeLine{console.log(typeof\ config,\ config)\ //\ object\ \{\ BASIC\ :\ 'basic'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8814}{}\doxysubsubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8814}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8815}{}\doxyparagraph{\texorpdfstring{Debug}{Debug}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8815}
+Default\+: {\ttfamily false}
+
+You may turn on logging to help debug why certain keys or values are not being set as you expect.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{const\ buf\ =\ Buffer.from('hello\ world')}
+\DoxyCodeLine{const\ opt\ =\ \{\ debug:\ true\ \}}
+\DoxyCodeLine{const\ config\ =\ dotenv.parse(buf,\ opt)}
+\DoxyCodeLine{//\ expect\ a\ debug\ message\ because\ the\ buffer\ is\ not\ in\ KEY=VAL\ form}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8816}{}\doxysubsubsection{\texorpdfstring{Rules}{Rules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8816}
+The parsing engine currently supports the following rules\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily BASIC=basic} becomes `\{BASIC\+: \textquotesingle{}basic'\}{\ttfamily }
+\item {\ttfamily empty lines are skipped}
+\item {\ttfamily lines beginning with}\#{\ttfamily are treated as comments}
+\item {\ttfamily empty values become empty strings (}EMPTY={\ttfamily becomes}\{EMPTY\+: \textquotesingle{}\textquotesingle{}\}{\ttfamily )}
+\item {\ttfamily inner quotes are maintained (think JSON) (}JSON=\{"{}foo"{}\+: "{}bar"{}\}{\ttfamily becomes}\{JSON\+:"{}\{\textbackslash{}"{}foo\textbackslash{}"{}\+: \textbackslash{}"{}bar\textbackslash{}"{}\}"{}{\ttfamily )}
+\item {\ttfamily whitespace is removed from both ends of unquoted values (see more on \mbox{[}}trim{\ttfamily \mbox{]}(\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/\+Trim}})) (}FOO= some value {\ttfamily becomes}\{FOO\+: \textquotesingle{}some value\textquotesingle{}\}{\ttfamily )}
+\item {\ttfamily single and double quoted values are escaped (}SINGLE\+\_\+\+QUOTE=\textquotesingle{}quoted\textquotesingle{}{\ttfamily becomes}\{SINGLE\+\_\+\+QUOTE\+: "{}quoted"{}\}{\ttfamily )}
+\item {\ttfamily single and double quoted values maintain whitespace from both ends (}FOO="{}  some value  "{}{\ttfamily becomes}\{FOO\+: \textquotesingle{} some value \textquotesingle{}\}{\ttfamily )}
+\item {\ttfamily double quoted values expand new lines (}MULTILINE="{}new\textbackslash{}nline"{}\`{} becomes
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{MULTILINE:\ 'new}
+\DoxyCodeLine{line'\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8817}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8817}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8818}{}\doxysubsubsection{\texorpdfstring{Should I commit my {\ttfamily .env} file?}{Should I commit my {\ttfamily .env} file?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8818}
+No. We {\bfseries{strongly}} recommend against committing your {\ttfamily .env} file to version control. It should only include environment-\/specific values such as database passwords or API keys. Your production database should have a different password than your development database.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8819}{}\doxysubsubsection{\texorpdfstring{Should I have multiple {\ttfamily .env} files?}{Should I have multiple {\ttfamily .env} files?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8819}
+No. We {\bfseries{strongly}} recommend against having a "{}main"{} {\ttfamily .env} file and an "{}environment"{} {\ttfamily .env} file like {\ttfamily .env.\+test}. Your config should vary between deploys, and you should not be sharing values between environments.
+
+\begin{quote}
+In a twelve-\/factor app, env vars are granular controls, each fully orthogonal to other env vars. They are never grouped together as “environments”, but instead are independently managed for each deploy. This is a model that scales up smoothly as the app naturally expands into more deploys over its lifetime.
+
+– \href{http://12factor.net/config}{\texttt{ The Twelve-\/\+Factor App}} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8820}{}\doxysubsubsection{\texorpdfstring{What happens to environment variables that were already set?}{What happens to environment variables that were already set?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8820}
+We will never modify any environment variables that have already been set. In particular, if there is a variable in your {\ttfamily .env} file which collides with one that already exists in your environment, then that variable will be skipped. This behavior allows you to override all {\ttfamily .env} configurations with a machine-\/specific environment, although it is not recommended.
+
+If you want to override {\ttfamily process.\+env} you can do something like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fs\ =\ require('fs')}
+\DoxyCodeLine{const\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{const\ envConfig\ =\ dotenv.parse(fs.readFileSync('.env.override'))}
+\DoxyCodeLine{for\ (const\ k\ in\ envConfig)\ \{}
+\DoxyCodeLine{\ \ process.env[k]\ =\ envConfig[k]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8821}{}\doxysubsubsection{\texorpdfstring{Can I customize/write plugins for dotenv?}{Can I customize/write plugins for dotenv?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8821}
+For {\ttfamily dotenv@2.\+x.\+x}\+: Yes. {\ttfamily dotenv.\+config()} now returns an object representing the parsed {\ttfamily .env} file. This gives you everything you need to continue setting values on {\ttfamily process.\+env}. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{const\ variableExpansion\ =\ require('dotenv-\/expand')}
+\DoxyCodeLine{const\ myEnv\ =\ dotenv.config()}
+\DoxyCodeLine{variableExpansion(myEnv)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8822}{}\doxysubsubsection{\texorpdfstring{What about variable expansion?}{What about variable expansion?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8822}
+Try \href{https://github.com/motdotla/dotenv-expand}{\texttt{ dotenv-\/expand}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8823}{}\doxysubsubsection{\texorpdfstring{How do I use dotenv with {\ttfamily import}?}{How do I use dotenv with {\ttfamily import}?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8823}
+ES2015 and beyond offers modules that allow you to {\ttfamily export} any top-\/level {\ttfamily function}, {\ttfamily class}, {\ttfamily var}, {\ttfamily let}, or {\ttfamily const}.
+
+\begin{quote}
+When you run a module containing an {\ttfamily import} declaration, the modules it imports are loaded first, then each module body is executed in a depth-\/first traversal of the dependency graph, avoiding cycles by skipping anything already executed.
+
+– \href{https://hacks.mozilla.org/2015/08/es6-in-depth-modules/}{\texttt{ ES6 In Depth\+: Modules}} \end{quote}
+You must run {\ttfamily dotenv.\+config()} before referencing any environment variables. Here\textquotesingle{}s an example of problematic code\+:
+
+{\ttfamily error\+Reporter.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ Client\ \}\ from\ 'best-\/error-\/reporting-\/service'}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ const\ client\ =\ new\ Client(process.env.BEST\_API\_KEY)}
+
+\end{DoxyCode}
+
+
+{\ttfamily index.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ dotenv\ from\ 'dotenv'}
+\DoxyCodeLine{import\ errorReporter\ from\ './errorReporter'}
+\DoxyCodeLine{}
+\DoxyCodeLine{dotenv.config()}
+\DoxyCodeLine{errorReporter.client.report(new\ Error('faq\ example'))}
+
+\end{DoxyCode}
+
+
+{\ttfamily client} will not be configured correctly because it was constructed before {\ttfamily dotenv.\+config()} was executed. There are (at least) 3 ways to make this work.
+
+
+\begin{DoxyEnumerate}
+\item Preload dotenv\+: {\ttfamily node -\/-\/require dotenv/config index.\+js} ({\itshape Note\+: you do not need to {\ttfamily import} dotenv with this approach})
+\item Import {\ttfamily dotenv/config} instead of {\ttfamily dotenv} ({\itshape Note\+: you do not need to call {\ttfamily dotenv.\+config()} and must pass options via the command line or environment variables with this approach})
+\item Create a separate file that will execute {\ttfamily config} first as outlined in \href{https://github.com/motdotla/dotenv/issues/133\#issuecomment-255298822}{\texttt{ this comment on \#133}}
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8824}{}\doxysubsection{\texorpdfstring{Contributing Guide}{Contributing Guide}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8824}
+See CONTRIBUTING.md\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8825}{}\doxysubsection{\texorpdfstring{Change Log}{Change Log}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8825}
+See \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_c_h_a_n_g_e_l_o_g}{CHANGELOG.md}{0}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8826}{}\doxysubsection{\texorpdfstring{Who\textquotesingle{}s using dotenv?}{Who\textquotesingle{}s using dotenv?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2dotenv_2_r_e_a_d_m_e_autotoc_md8826}
+\href{https://www.npmjs.com/browse/depended/dotenv}{\texttt{ These npm modules depend on it.}}
+
+Projects that expand it often use the \href{https://www.npmjs.com/search?q=keywords:dotenv}{\texttt{ keyword "{}dotenv"{} on npm}}. 

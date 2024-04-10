@@ -1,0 +1,170 @@
+\chapter{JSON5 – JSON for Humans}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e}\index{JSON5 – JSON for Humans@{JSON5 – JSON for Humans}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25757}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25757}%
+ \href{https://travis-ci.org/json5/json5}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}Coverage Status\mbox{]}
+
+The JSON5 Data Interchange Format (JSON5) is a superset of \href{https://tools.ietf.org/html/rfc7159}{\texttt{ JSON}} that aims to alleviate some of the limitations of JSON by expanding its syntax to include some productions from \href{https://www.ecma-international.org/ecma-262/5.1/}{\texttt{ ECMAScript 5.\+1}}.
+
+This Java\+Script library is the official reference implementation for JSON5 parsing and serialization libraries.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25758}{}\doxysection{\texorpdfstring{Summary of Features}{Summary of Features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25758}
+The following ECMAScript 5.\+1 features, which are not supported in JSON, have been extended to JSON5.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25759}{}\doxysubsection{\texorpdfstring{Objects}{Objects}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25759}
+
+\begin{DoxyItemize}
+\item Object keys may be an ECMAScript 5.\+1 {\itshape \mbox{[}Identifier\+Name\mbox{]}}.
+\item Objects may have a single trailing comma.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25760}{}\doxysubsection{\texorpdfstring{Arrays}{Arrays}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25760}
+
+\begin{DoxyItemize}
+\item Arrays may have a single trailing comma.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25761}{}\doxysubsection{\texorpdfstring{Strings}{Strings}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25761}
+
+\begin{DoxyItemize}
+\item Strings may be single quoted.
+\item Strings may span multiple lines by escaping new line characters.
+\item Strings may include character escapes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25762}{}\doxysubsection{\texorpdfstring{Numbers}{Numbers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25762}
+
+\begin{DoxyItemize}
+\item Numbers may be hexadecimal.
+\item Numbers may have a leading or trailing decimal point.
+\item Numbers may be \href{http://ieeexplore.ieee.org/servlet/opac?punumber=4610933}{\texttt{ IEEE 754}} positive infinity, negative infinity, and NaN.
+\item Numbers may begin with an explicit plus sign.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25763}{}\doxysubsection{\texorpdfstring{Comments}{Comments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25763}
+
+\begin{DoxyItemize}
+\item Single and multi-\/line comments are allowed.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25764}{}\doxysubsection{\texorpdfstring{White Space}{White Space}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25764}
+
+\begin{DoxyItemize}
+\item Additional white space characters are allowed.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25765}{}\doxysection{\texorpdfstring{Short Example}{Short Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25765}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ //\ comments}
+\DoxyCodeLine{\ \ unquoted:\ 'and\ you\ can\ quote\ me\ on\ that',}
+\DoxyCodeLine{\ \ singleQuotes:\ 'I\ can\ use\ "{}double\ quotes"{}\ here',}
+\DoxyCodeLine{\ \ lineBreaks:\ "{}Look,\ Mom!\ \(\backslash\)}
+\DoxyCodeLine{No\ \(\backslash\)\(\backslash\)n's!"{},}
+\DoxyCodeLine{\ \ hexadecimal:\ 0xdecaf,}
+\DoxyCodeLine{\ \ leadingDecimalPoint:\ .8675309,\ andTrailing:\ 8675309.,}
+\DoxyCodeLine{\ \ positiveSign:\ +1,}
+\DoxyCodeLine{\ \ trailingComma:\ 'in\ objects',\ andIn:\ ['arrays',],}
+\DoxyCodeLine{\ \ "{}backwardsCompatible"{}:\ "{}with\ JSON"{},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25766}{}\doxysection{\texorpdfstring{Specification}{Specification}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25766}
+For a detailed explanation of the JSON5 format, please read the \href{https://json5.github.io/json5-spec/}{\texttt{ official specification}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25767}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25767}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25768}{}\doxysubsection{\texorpdfstring{Node.\+js}{Node.\+js}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25768}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ json5}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ JSON5\ =\ require('json5')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25769}{}\doxysubsection{\texorpdfstring{Browsers}{Browsers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25769}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}https://unpkg.com/json5@\string^1.0.0"{}></script>}
+
+\end{DoxyCode}
+
+
+This will create a global {\ttfamily JSON5} variable.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25770}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25770}
+The JSON5 API is compatible with the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}{\texttt{ JSON API}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25771}{}\doxysubsection{\texorpdfstring{JSON5.\+parse()}{JSON5.\+parse()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25771}
+Parses a JSON5 string, constructing the Java\+Script value or object described by the string. An optional reviver function can be provided to perform a transformation on the resulting object before it is returned.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25772}{}\doxysubsubsection{\texorpdfstring{Syntax}{Syntax}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25772}
+JSON5.\+parse(text\mbox{[}, reviver\mbox{]})\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25773}{}\doxysubsubsection{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25773}
+
+\begin{DoxyItemize}
+\item {\ttfamily text}\+: The string to parse as JSON5.
+\item {\ttfamily reviver}\+: If a function, this prescribes how the value originally produced by parsing is transformed, before being returned.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25774}{}\doxysubsubsection{\texorpdfstring{Return value}{Return value}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25774}
+The object corresponding to the given JSON5 text.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25775}{}\doxysubsection{\texorpdfstring{JSON5.\+stringify()}{JSON5.\+stringify()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25775}
+Converts a Java\+Script value to a JSON5 string, optionally replacing values if a replacer function is specified, or optionally including only the specified properties if a replacer array is specified.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25776}{}\doxysubsubsection{\texorpdfstring{Syntax}{Syntax}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25776}
+JSON5.\+stringify(value\mbox{[}, replacer\mbox{[}, space\mbox{]}\mbox{]}) JSON5.\+stringify(value\mbox{[}, options\mbox{]})\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25777}{}\doxysubsubsection{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25777}
+
+\begin{DoxyItemize}
+\item {\ttfamily value}\+: The value to convert to a JSON5 string.
+\item {\ttfamily replacer}\+: A function that alters the behavior of the stringification process, or an array of String and Number objects that serve as a whitelist for selecting/filtering the properties of the value object to be included in the JSON5 string. If this value is null or not provided, all properties of the object are included in the resulting JSON5 string.
+\item {\ttfamily space}\+: A String or Number object that\textquotesingle{}s used to insert white space into the output JSON5 string for readability purposes. If this is a Number, it indicates the number of space characters to use as white space; this number is capped at 10 (if it is greater, the value is just 10). Values less than 1 indicate that no space should be used. If this is a String, the string (or the first 10 characters of the string, if it\textquotesingle{}s longer than that) is used as white space. If this parameter is not provided (or is null), no white space is used. If white space is used, trailing commas will be used in objects and arrays.
+\item {\ttfamily options}\+: An object with the following properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily replacer}\+: Same as the {\ttfamily replacer} parameter.
+\item {\ttfamily space}\+: Same as the {\ttfamily space} parameter.
+\item {\ttfamily quote}\+: A String representing the quote character to use when serializing strings.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25778}{}\doxysubsubsection{\texorpdfstring{Return value}{Return value}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25778}
+A JSON5 string representing the value.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25779}{}\doxysubsection{\texorpdfstring{Node.\+js {\ttfamily require()} JSON5 files}{Node.\+js {\ttfamily require()} JSON5 files}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25779}
+When using Node.\+js, you can {\ttfamily require()} JSON5 files by adding the following statement.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('json5/lib/register')}
+
+\end{DoxyCode}
+
+
+Then you can load a JSON5 file with a Node.\+js {\ttfamily require()} statement. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ config\ =\ require('./config.json5')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25780}{}\doxysection{\texorpdfstring{CLI}{CLI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25780}
+Since JSON is more widely used than JSON5, this package includes a CLI for converting JSON5 to JSON and for validating the syntax of JSON5 documents.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25781}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25781}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/global\ json5}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25782}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25782}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{json5\ [options]\ <file>}
+
+\end{DoxyCode}
+
+
+If {\ttfamily \texorpdfstring{$<$}{<}file\texorpdfstring{$>$}{>}} is not provided, then STDIN is used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25783}{}\doxysubsubsection{\texorpdfstring{Options\+:}{Options\+:}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25783}
+
+\begin{DoxyItemize}
+\item {\ttfamily -\/s}, {\ttfamily -\/-\/space}\+: The number of spaces to indent or {\ttfamily t} for tabs
+\item {\ttfamily -\/o}, {\ttfamily -\/-\/out-\/file \mbox{[}file\mbox{]}}\+: Output to the specified file, otherwise STDOUT
+\item {\ttfamily -\/v}, {\ttfamily -\/-\/validate}\+: Validate JSON5 but do not output JSON
+\item {\ttfamily -\/V}, {\ttfamily -\/-\/version}\+: Output the version number
+\item {\ttfamily -\/h}, {\ttfamily -\/-\/help}\+: Output usage information
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25784}{}\doxysection{\texorpdfstring{Contibuting}{Contibuting}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25784}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25785}{}\doxysubsection{\texorpdfstring{Development}{Development}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25785}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/json5/json5}
+\DoxyCodeLine{cd\ json5}
+\DoxyCodeLine{npm\ install}
+
+\end{DoxyCode}
+
+
+When contributing code, please write relevant tests and run {\ttfamily npm test} and {\ttfamily npm run lint} before submitting pull requests. Please use an editor that supports \href{http://editorconfig.org/}{\texttt{ Editor\+Config}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25786}{}\doxysubsection{\texorpdfstring{Issues}{Issues}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25786}
+To report bugs or request features regarding the JSON5 data format, please submit an issue to the \href{https://github.com/json5/json5-spec}{\texttt{ official specification repository}}.
+
+To report bugs or request features regarding the Java\+Script implentation of JSON5, please submit an issue to this repository.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25787}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25787}
+MIT. See \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_l_i_c_e_n_s_e}{LICENSE.md}{0} for details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25788}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsconfig-paths_2node__modules_2json5_2_r_e_a_d_m_e_autotoc_md25788}
+\href{https://github.com/aseemk}{\texttt{ Assem Kishore}} founded this project.
+
+\href{http://bolinfest.com/}{\texttt{ Michael Bolin}} independently arrived at and published some of these same ideas with awesome explanations and detail. Recommended reading\+: \href{http://bolinfest.com/essays/json.html}{\texttt{ Suggested Improvements to JSON}}
+
+\href{http://www.crockford.com/}{\texttt{ Douglas Crockford}} of course designed and built JSON, but his state machine diagrams on the \href{http://json.org/}{\texttt{ JSON website}}, as cheesy as it may sound, gave us motivation and confidence that building a new parser to implement these ideas was within reach! The original implementation of JSON5 was also modeled directly off of Doug’s open-\/source \href{https://github.com/douglascrockford/JSON-js/blob/master/json_parse.js}{\texttt{ json\+\_\+parse.\+js}} parser. We’re grateful for that clean and well-\/documented code.
+
+\href{https://github.com/MaxNanasy}{\texttt{ Max Nanasy}} has been an early and prolific supporter, contributing multiple patches and ideas.
+
+\href{https://github.com/aeisenberg}{\texttt{ Andrew Eisenberg}} contributed the original {\ttfamily stringify} method.
+
+\href{https://github.com/jordanbtucker}{\texttt{ Jordan Tucker}} has aligned JSON5 more closely with ES5, wrote the official JSON5 specification, completely rewrote the codebase from the ground up, and is actively maintaining this project. 

@@ -1,0 +1,42 @@
+\chapter{p-\/try \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/p-\/try"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/p-\/try.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme}\index{p-\/try $<$a href="{}https://travis-\/ci.org/sindresorhus/p-\/try"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/p-\/try.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{p-\/try $<$a href=""https://travis-\/ci.org/sindresorhus/p-\/try"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/p-\/try.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17868}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17868}%
+ \begin{quote}
+Start a promise chain \end{quote}
+\href{http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/}{\texttt{ How is it useful?}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17869}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17869}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ p-\/try}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17870}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17870}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pTry\ =\ require('p-\/try');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ const\ value\ =\ await\ pTry(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ synchronousFunctionThatMightThrow();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(value);}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(error);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17871}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17871}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17872}{}\doxysubsection{\texorpdfstring{p\+Try(fn, ...\+arguments)}{p\+Try(fn, ...\+arguments)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17872}
+Returns a {\ttfamily Promise} resolved with the value of calling {\ttfamily fn(...\+arguments)}. If the function throws an error, the returned {\ttfamily Promise} will be rejected with that error.
+
+Support for passing arguments on to the {\ttfamily fn} is provided in order to be able to avoid creating unnecessary closures. You probably don\textquotesingle{}t need this optimization unless you\textquotesingle{}re pushing a {\itshape lot} of functions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17873}{}\doxysubsubsection{\texorpdfstring{fn}{fn}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17873}
+The function to run to start the promise chain.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17874}{}\doxysubsubsection{\texorpdfstring{arguments}{arguments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17874}
+Arguments to pass to {\ttfamily fn}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17875}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17875}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/p-finally}{\texttt{ p-\/finally}} -\/ {\ttfamily Promise\#finally()} ponyfill -\/ Invoked when the promise is settled regardless of outcome
+\item \href{https://github.com/sindresorhus/promise-fun}{\texttt{ More…}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17876}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2p-try_2readme_autotoc_md17876}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

@@ -1,0 +1,46 @@
+\chapter{import/exports-\/last}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last}\index{import/exports-\/last@{import/exports-\/last}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9855}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9855}%
+
+
+This rule enforces that all exports are declared at the bottom of the file. This rule will report any export declarations that comes before any non-\/export statements.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9856}{}\doxysection{\texorpdfstring{This will be reported}{This will be reported}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9856}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ bool\ =\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ bool}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ str\ =\ 'foo'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ const\ bool\ =\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ str\ =\ 'foo'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9857}{}\doxysection{\texorpdfstring{This will not be reported}{This will not be reported}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9857}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ arr\ =\ ['bar']}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ const\ bool\ =\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ bool}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ function\ func()\ \{}
+\DoxyCodeLine{\ \ console.log('Hello\ World\ 🌍')}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ const\ str\ =\ 'foo'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9858}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9858}
+If you don\textquotesingle{}t mind exports being sprinkled throughout a file, you may not want to enable this rule.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9859}{}\doxysubsection{\texorpdfstring{ES6 exports only}{ES6 exports only}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last_autotoc_md9859}
+The exports-\/last rule is currently only working on ES6 exports. You may not want to enable this rule if you\textquotesingle{}re using Common\+JS exports.
+
+If you need Common\+JS support feel free to open an issue or create a PR. 

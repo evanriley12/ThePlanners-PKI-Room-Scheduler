@@ -1,0 +1,24 @@
+\chapter{is-\/arguments \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/is-\/arguments"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/is-\/arguments.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e}\index{is-\/arguments $<$sup$>$$<$a href="{}https://npmjs.org/package/is-\/arguments"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/is-\/arguments.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{is-\/arguments $<$sup$>$$<$a href=""https://npmjs.org/package/is-\/arguments"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/is-\/arguments.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14353}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14353}%
+ \href{https://github.com/inspect-js/is-arguments/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/is-arguments/}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-arguments}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-arguments\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=is-arguments}{\texttt{ }}
+
+\href{https://npmjs.org/package/is-arguments}{\texttt{ }}
+
+Is this an arguments object? It\textquotesingle{}s a harder question than you think.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14354}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14354}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isArguments\ =\ require('is-\/arguments');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.equal(isArguments(\{\}),\ false);}
+\DoxyCodeLine{assert.equal(isArguments([]),\ false);}
+\DoxyCodeLine{(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ assert.equal(isArguments(arguments),\ true);}
+\DoxyCodeLine{\}())}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14355}{}\doxysection{\texorpdfstring{Caveats}{Caveats}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14355}
+If you have modified an actual {\ttfamily arguments} object by giving it a {\ttfamily Symbol.\+to\+String\+Tag} property, then this package will return {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14356}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-arguments_2_r_e_a_d_m_e_autotoc_md14356}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

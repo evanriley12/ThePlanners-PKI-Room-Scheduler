@@ -1,0 +1,20 @@
+\chapter{collect-\/v8-\/coverage}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2collect-v8-coverage_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2collect-v8-coverage_2_r_e_a_d_m_e}\index{collect-\/v8-\/coverage@{collect-\/v8-\/coverage}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2collect-v8-coverage_2_r_e_a_d_m_e_autotoc_md7191}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2collect-v8-coverage_2_r_e_a_d_m_e_autotoc_md7191}%
+ Use this module to start and stop the V8 inspector manually and collect precise coverage.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{CoverageInstrumenter\}\ =\ require('collect-\/v8-\/coverage');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ instrumenter\ =\ new\ CoverageInstrumenter();}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ instrumenter.startInstrumenting();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ require\ some\ modules,\ run\ some\ code}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ coverage\ =\ await\ instrumenter.stopInstrumenting();}
+
+\end{DoxyCode}
+ 

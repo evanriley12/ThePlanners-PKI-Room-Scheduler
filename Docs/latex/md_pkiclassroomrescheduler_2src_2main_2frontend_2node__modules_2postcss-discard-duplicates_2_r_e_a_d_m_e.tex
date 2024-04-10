@@ -1,0 +1,55 @@
+\chapter{\texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}postcss\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}-\/discard-\/duplicates}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e}\index{$<$a href="{}https://github.com/postcss/postcss"{} $>$postcss$<$/a$>$-\/discard-\/duplicates@{$<$a href=""https://github.com/postcss/postcss"" $>$postcss$<$/a$>$-\/discard-\/duplicates}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18628}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18628}%
+ \begin{quote}
+Discard duplicate rules in your CSS files with Post\+CSS. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18629}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18629}
+With \href{https://npmjs.org/package/postcss-discard-duplicates}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/discard-\/duplicates\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18630}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18630}
+This module will remove all duplicate rules from your stylesheets. It works on at rules, normal rules and declarations. Note that this module does not have any responsibility for normalising declarations, selectors or whitespace, so that it considers these two rules to be different\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1,\ h2\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h2,\ h1\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+It has to assume that your rules have already been transformed by another processor, otherwise it would be responsible for too many things.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18631}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18631}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 0\ auto;}
+\DoxyCodeLine{\ \ \ \ margin:\ 0\ auto}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 0\ auto}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18632}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18632}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 0\ auto}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18633}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18633}
+See the \href{https://github.com/postcss/postcss\#usage}{\texttt{ Post\+CSS documentation}} for examples for your environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18634}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18634}
+See \href{https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md}{\texttt{ CONTRIBUTORS.\+md}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18635}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-duplicates_2_r_e_a_d_m_e_autotoc_md18635}
+MIT © \href{http://beneb.info}{\texttt{ Ben Briggs}} 

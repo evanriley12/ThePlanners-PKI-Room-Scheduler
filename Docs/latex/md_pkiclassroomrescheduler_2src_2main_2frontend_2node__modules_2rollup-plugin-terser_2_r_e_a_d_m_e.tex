@@ -1,0 +1,109 @@
+\chapter{rollup-\/plugin-\/terser \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/\+Try\+Sound/rollup-\/plugin-\/terser"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/\+Try\+Sound/rollup-\/plugin-\/terser.\+svg"{} alt="{}\+Travis Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e}\index{rollup-\/plugin-\/terser $<$a href="{}https://travis-\/ci.org/TrySound/rollup-\/plugin-\/terser"{} $>$$<$img src="{}https://travis-\/ci.org/TrySound/rollup-\/plugin-\/terser.svg"{} alt="{}Travis Build Status"{}/$>$$<$/a$>$@{rollup-\/plugin-\/terser $<$a href=""https://travis-\/ci.org/TrySound/rollup-\/plugin-\/terser"" $>$$<$img src=""https://travis-\/ci.org/TrySound/rollup-\/plugin-\/terser.svg"" alt=""Travis Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20786}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20786}%
+
+
+\href{https://github.com/rollup/rollup}{\texttt{ Rollup}} plugin to minify generated es bundle. Uses \href{https://github.com/fabiosantoscode/terser}{\texttt{ terser}} under the hood.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20787}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20787}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ rollup-\/plugin-\/terser\ -\/-\/dev}
+\DoxyCodeLine{\#\ Or\ with\ npm:}
+\DoxyCodeLine{npm\ i\ rollup-\/plugin-\/terser\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+\+\_\+\+Note\+: this package requires \href{mailto:rollup@0.66}{\texttt{ rollup@0.\+66}} and higher (including rollup@2.\+0.\+0)\+\_\+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20788}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20788}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ rollup\ \}\ from\ "{}rollup"{};}
+\DoxyCodeLine{import\ \{\ terser\ \}\ from\ "{}rollup-\/plugin-\/terser"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{rollup(\{}
+\DoxyCodeLine{\ \ input:\ "{}main.js"{},}
+\DoxyCodeLine{\ \ plugins:\ [terser()],}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20789}{}\doxysection{\texorpdfstring{Why named export?}{Why named export?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20789}
+
+\begin{DoxyEnumerate}
+\item Module is a namespace. Default export often leads to function/component per file dogma and makes code less maintainable.
+\item Interop with commonjs is broken in many cases or hard to maintain.
+\item Show me any good language with default exports. It\textquotesingle{}s historical javascriptism.
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20790}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20790}
+\begin{quote}
+⚠️ {\bfseries{Caveat\+:}} any function used in options object cannot rely on its surrounding scope, since it is executed in an isolated context. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{terser(options);}
+
+\end{DoxyCode}
+
+
+{\ttfamily options} -\/ \href{https://github.com/fabiosantoscode/terser\#minify-options}{\texttt{ terser API options}}
+
+Note\+: some terser options are set by the plugin automatically\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily module\+: true} is set when {\ttfamily format} is {\ttfamily esm} or {\ttfamily es}
+\item {\ttfamily toplevel\+: true} is set when {\ttfamily format} is {\ttfamily cjs}
+\end{DoxyItemize}
+
+{\ttfamily options.\+num\+Workers\+: number}
+
+Amount of workers to spawn. Defaults to the number of CPUs minus 1.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20791}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20791}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20792}{}\doxysubsection{\texorpdfstring{Using as output plugin}{Using as output plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20792}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ rollup.config.js}
+\DoxyCodeLine{import\ \{\ terser\ \}\ from\ "{}rollup-\/plugin-\/terser"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ \{}
+\DoxyCodeLine{\ \ input:\ "{}index.js"{},}
+\DoxyCodeLine{\ \ output:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ file:\ "{}lib.js"{},\ format:\ "{}cjs"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ file:\ "{}lib.min.js"{},\ format:\ "{}cjs"{},\ plugins:\ [terser()]\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ file:\ "{}lib.esm.js"{},\ format:\ "{}esm"{}\ \},}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20793}{}\doxysubsection{\texorpdfstring{Comments}{Comments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20793}
+If you\textquotesingle{}d like to preserve comments (for licensing for example), then you can specify a function to do this like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{terser(\{}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ comments:\ function\ (node,\ comment)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ text\ =\ comment.value;}
+\DoxyCodeLine{\ \ \ \ \ \ var\ type\ =\ comment.type;}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (type\ ==\ "{}comment2"{})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ multiline\ comment}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ /@preserve|@license|@cc\_on/i.test(text);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Alternatively, you can also choose to keep all comments (e.\+g. if a licensing header has already been prepended by a previous rollup plugin)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{terser(\{}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ comments:\ "{}all"{},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+See \href{https://github.com/fabiosantoscode/terser\#terser}{\texttt{ Terser documentation}} for further reference.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20794}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2rollup-plugin-terser_2_r_e_a_d_m_e_autotoc_md20794}
+MIT © \href{mailto:trysound@yandex.ru}{\texttt{ Bogdan Chadkin}} 

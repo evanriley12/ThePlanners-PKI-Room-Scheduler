@@ -1,0 +1,57 @@
+\chapter{Disallow focused tests (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/focused-\/tests\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests}\index{Disallow focused tests ($<$tt$>$no-\/focused-\/tests$<$/tt$>$)@{Disallow focused tests ($<$tt$>$no-\/focused-\/tests$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests_autotoc_md10403}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests_autotoc_md10403}%
+ Jest has a feature that allows you to focus tests by appending {\ttfamily .only} or prepending {\ttfamily f} to a test-\/suite or a test-\/case. This feature is really helpful to debug a failing test, so you don’t have to execute all of your tests. After you have fixed your test and before committing the changes you have to remove {\ttfamily .only} to ensure all tests are executed on your build system.
+
+This rule reminds you to remove {\ttfamily .only} from your tests by raising a warning whenever you are using the exclusivity feature.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests_autotoc_md10404}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests_autotoc_md10404}
+This rule looks for every {\ttfamily describe.\+only}, {\ttfamily it.\+only}, {\ttfamily test.\+only}, {\ttfamily fdescribe}, and {\ttfamily fit} occurrences within the source code. Of course there are some edge-\/cases which can’t be detected by this rule e.\+g.\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ describeOnly\ =\ describe.only;}
+\DoxyCodeLine{describeOnly.apply(describe);}
+
+\end{DoxyCode}
+
+
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe.only('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it.only('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe['only']('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it['only']('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test.only('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test['only']('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fdescribe('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fit('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fit.each`}
+\DoxyCodeLine{\ \ table}
+\DoxyCodeLine{\`{}();}
+
+\end{DoxyCode}
+
+
+These patterns would not be considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe.skip('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it.skip('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test.skip('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it.each()();}
+\DoxyCodeLine{it.each`}
+\DoxyCodeLine{\ \ table}
+\DoxyCodeLine{\`{}();}
+\DoxyCodeLine{test.each()();}
+\DoxyCodeLine{test.each`}
+\DoxyCodeLine{\ \ table}
+\DoxyCodeLine{\`{}();}
+
+\end{DoxyCode}
+ 

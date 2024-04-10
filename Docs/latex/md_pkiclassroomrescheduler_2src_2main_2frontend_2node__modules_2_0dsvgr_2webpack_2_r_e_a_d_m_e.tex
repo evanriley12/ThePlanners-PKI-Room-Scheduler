@@ -1,0 +1,131 @@
+\chapter{@svgr/webpack}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e}\index{"@svgr/webpack@{"@svgr/webpack}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2582}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2582}%
+ \href{https://travis-ci.org/gregberge/svgr}{\texttt{ }} \href{https://www.npmjs.com/package/@svgr/webpack}{\texttt{ }} \href{https://github.com/gregberge/svgr/blob/master/LICENSE}{\texttt{ }}
+
+Webpack loader for SVGR.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @svgr/webpack\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2583}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2583}
+In your {\ttfamily webpack.\+config.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ test:\ /\(\backslash\).svg\$/,}
+\DoxyCodeLine{\ \ use:\ ['@svgr/webpack'],}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+In your code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ Star\ from\ './star.svg'}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ App\ =\ ()\ =>\ (}
+\DoxyCodeLine{\ \ <div>}
+\DoxyCodeLine{\ \ \ \ <Star\ />}
+\DoxyCodeLine{\ \ </div>}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2584}{}\doxysubsection{\texorpdfstring{Passing options}{Passing options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2584}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ test:\ /\(\backslash\).svg\$/,}
+\DoxyCodeLine{\ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ loader:\ '@svgr/webpack',}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ native:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2585}{}\doxysubsection{\texorpdfstring{Using with {\ttfamily url-\/loader} or {\ttfamily file-\/loader}}{Using with {\ttfamily url-\/loader} or {\ttfamily file-\/loader}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2585}
+It is possible to use it with \href{https://github.com/webpack-contrib/url-loader}{\texttt{ {\ttfamily url-\/loader}}} or \href{https://github.com/webpack-contrib/file-loader}{\texttt{ {\ttfamily file-\/loader}}}.
+
+In your {\ttfamily webpack.\+config.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ test:\ /\(\backslash\).svg\$/,}
+\DoxyCodeLine{\ \ use:\ ['@svgr/webpack',\ 'url-\/loader'],}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+In your code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ starUrl,\ \{\ ReactComponent\ as\ Star\ \}\ from\ './star.svg'}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ App\ =\ ()\ =>\ (}
+\DoxyCodeLine{\ \ <div>}
+\DoxyCodeLine{\ \ \ \ <img\ src=\{starUrl\}\ alt="{}star"{}\ />}
+\DoxyCodeLine{\ \ \ \ <Star\ />}
+\DoxyCodeLine{\ \ </div>}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+The named export defaults to {\ttfamily React\+Component}, but can be customized with the {\ttfamily named\+Export} option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2586}{}\doxysubsection{\texorpdfstring{Use your own Babel configuration}{Use your own Babel configuration}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2586}
+By default, {\ttfamily @svgr/webpack} includes a {\ttfamily babel-\/loader} with \href{https://github.com/gregberge/svgr/blob/master/packages/webpack/src/index.js}{\texttt{ an optimized configuration}}. In some case you may want to apply a custom one (if you are using Preact for an example). You can turn off Babel transformation by specifying {\ttfamily babel\+: false} in options.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Example\ using\ preact}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ test:\ /\(\backslash\).svg\$/,}
+\DoxyCodeLine{\ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ loader:\ 'babel-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ presets:\ ['preact',\ 'env'],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ loader:\ '@svgr/webpack',}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{\ babel:\ false\ \},}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2587}{}\doxysubsection{\texorpdfstring{Handle SVG in CSS, Sass or Less}{Handle SVG in CSS, Sass or Less}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2587}
+It is possible to detect the module that requires your SVG using \href{https://webpack.js.org/configuration/module/\#rule-issuer}{\texttt{ {\ttfamily Rule.\+issuer}}} in Webpack. Using it you can specify two different configurations for Java\+Script and the rest of your files.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ test:\ /\(\backslash\).svg(\(\backslash\)?v=\(\backslash\)d+\(\backslash\).\(\backslash\)d+\(\backslash\).\(\backslash\)d+)?\$/,}
+\DoxyCodeLine{\ \ \ \ issuer:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ test:\ /\(\backslash\).jsx?\$/}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ use:\ ['babel-\/loader',\ '@svgr/webpack',\ 'url-\/loader']}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ test:\ /\(\backslash\).svg(\(\backslash\)?v=\(\backslash\)d+\(\backslash\).\(\backslash\)d+\(\backslash\).\(\backslash\)d+)?\$/,}
+\DoxyCodeLine{\ \ \ \ loader:\ 'url-\/loader'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2588}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2webpack_2_r_e_a_d_m_e_autotoc_md2588}
+MIT 

@@ -1,0 +1,52 @@
+\chapter{Disallow identical titles (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/identical-\/title\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title}\index{Disallow identical titles ($<$tt$>$no-\/identical-\/title$<$/tt$>$)@{Disallow identical titles ($<$tt$>$no-\/identical-\/title$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title_autotoc_md10411}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title_autotoc_md10411}%
+ Having identical titles for two different tests or test suites may create confusion. For example, when a test with the same title as another test in the same test suite fails, it is harder to know which one failed and thus harder to fix.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title_autotoc_md10412}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title_autotoc_md10412}
+This rule looks at the title of every test and test suites. It will report when two test suites or two test cases at the same level of a test suite have the same title.
+
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ it('should\ do\ bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\ \ it('should\ do\ bar',\ ()\ =>\ \{\});\ //\ Has\ the\ same\ title\ as\ the\ previous\ test}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ describe('baz',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ describe('baz',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Has\ the\ same\ title\ as\ a\ previous\ test\ suite}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+These patterns would not be considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ it('should\ do\ foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\ \ it('should\ do\ bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Has\ the\ same\ name\ as\ a\ parent\ test\ suite,\ which\ is\ fine}
+\DoxyCodeLine{\ \ describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Has\ the\ same\ name\ as\ a\ test\ in\ a\ parent\ test\ suite,\ which\ is\ fine}
+\DoxyCodeLine{\ \ \ \ it('should\ do\ foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\ \ \ \ it('should\ work',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ describe('baz',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Has\ the\ same\ title\ as\ a\ previous\ test\ suite}
+\DoxyCodeLine{\ \ \ \ //\ Has\ the\ same\ name\ as\ a\ test\ in\ a\ sibling\ test\ suite,\ which\ is\ fine}
+\DoxyCodeLine{\ \ \ \ it('should\ work',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

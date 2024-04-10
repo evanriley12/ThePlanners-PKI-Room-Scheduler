@@ -1,0 +1,169 @@
+\chapter{@webassemblyjs/ast}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e}\index{"@webassemblyjs/ast@{"@webassemblyjs/ast}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4361}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4361}%
+ \begin{quote}
+AST utils for webassemblyjs \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4362}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4362}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ @webassemblyjs/ast}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4363}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4363}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4364}{}\doxysubsection{\texorpdfstring{Traverse}{Traverse}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4364}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ traverse\ \}\ from\ "{}@webassemblyjs/ast"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{traverse(ast,\ \{}
+\DoxyCodeLine{\ \ Module(path)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(path.node);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4365}{}\doxysubsection{\texorpdfstring{Instruction signatures}{Instruction signatures}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4365}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ signatures\ \}\ from\ "{}@webassemblyjs/ast"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(signatures);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4366}{}\doxysubsection{\texorpdfstring{Path methods}{Path methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4366}
+
+\begin{DoxyItemize}
+\item {\ttfamily find\+Parent\+: Node\+Locator}
+\item {\ttfamily replace\+With\+: Node =\texorpdfstring{$>$}{>} void}
+\item {\ttfamily remove\+: () =\texorpdfstring{$>$}{>} void}
+\item {\ttfamily insert\+Before\+: Node =\texorpdfstring{$>$}{>} void}
+\item {\ttfamily insert\+After\+: Node =\texorpdfstring{$>$}{>} void}
+\item {\ttfamily stop\+: () =\texorpdfstring{$>$}{>} void}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4367}{}\doxysubsection{\texorpdfstring{AST utils}{AST utils}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2ast_2_r_e_a_d_m_e_autotoc_md4367}
+
+\begin{DoxyItemize}
+\item function {\ttfamily module(id, fields, metadata)}
+\item function {\ttfamily module\+Metadata(sections, function\+Names, local\+Names)}
+\item function {\ttfamily module\+Name\+Metadata(value)}
+\item function {\ttfamily function\+Name\+Metadata(value, index)}
+\item function {\ttfamily local\+Name\+Metadata(value, local\+Index, function\+Index)}
+\item function {\ttfamily binary\+Module(id, blob)}
+\item function {\ttfamily quote\+Module(id, string)}
+\item function {\ttfamily section\+Metadata(section, start\+Offset, size, vector\+Of\+Size)}
+\item function {\ttfamily loop\+Instruction(label, resulttype, instr)}
+\item function {\ttfamily instruction(id, args, named\+Args)}
+\item function {\ttfamily object\+Instruction(id, object, args, named\+Args)}
+\item function {\ttfamily if\+Instruction(test\+Label, test, result, consequent, alternate)}
+\item function {\ttfamily string\+Literal(value)}
+\item function {\ttfamily number\+Literal\+From\+Raw(value, raw)}
+\item function {\ttfamily long\+Number\+Literal(value, raw)}
+\item function {\ttfamily float\+Literal(value, nan, inf, raw)}
+\item function {\ttfamily elem(table, offset, funcs)}
+\item function {\ttfamily index\+In\+Func\+Section(index)}
+\item function {\ttfamily valtype\+Literal(name)}
+\item function {\ttfamily type\+Instruction(id, functype)}
+\item function {\ttfamily start(index)}
+\item function {\ttfamily global\+Type(valtype, mutability)}
+\item function {\ttfamily leading\+Comment(value)}
+\item function {\ttfamily block\+Comment(value)}
+\item function {\ttfamily data(memory\+Index, offset, init)}
+\item function {\ttfamily global(global\+Type, init, name)}
+\item function {\ttfamily table(element\+Type, limits, name, elements)}
+\item function {\ttfamily memory(limits, id)}
+\item function {\ttfamily func\+Import\+Descr(id, signature)}
+\item function {\ttfamily module\+Import(module, name, descr)}
+\item function {\ttfamily module\+Export\+Descr(export\+Type, id)}
+\item function {\ttfamily module\+Export(name, descr)}
+\item function {\ttfamily limit(min, max)}
+\item function {\ttfamily signature(params, results)}
+\item function {\ttfamily program(body)}
+\item function {\ttfamily identifier(value, raw)}
+\item function {\ttfamily block\+Instruction(label, instr, result)}
+\item function {\ttfamily call\+Instruction(index, instr\+Args)}
+\item function {\ttfamily call\+Indirect\+Instruction(signature, intrs)}
+\item function {\ttfamily byte\+Array(values)}
+\item function {\ttfamily func(name, signature, body, is\+External, metadata)}
+\item Constant{\ttfamily is\+Module}
+\item Constant{\ttfamily is\+Module\+Metadata}
+\item Constant{\ttfamily is\+Module\+Name\+Metadata}
+\item Constant{\ttfamily is\+Function\+Name\+Metadata}
+\item Constant{\ttfamily is\+Local\+Name\+Metadata}
+\item Constant{\ttfamily is\+Binary\+Module}
+\item Constant{\ttfamily is\+Quote\+Module}
+\item Constant{\ttfamily is\+Section\+Metadata}
+\item Constant{\ttfamily is\+Loop\+Instruction}
+\item Constant{\ttfamily is\+Instruction}
+\item Constant{\ttfamily is\+Object\+Instruction}
+\item Constant{\ttfamily is\+If\+Instruction}
+\item Constant{\ttfamily is\+String\+Literal}
+\item Constant{\ttfamily is\+Number\+Literal}
+\item Constant{\ttfamily is\+Long\+Number\+Literal}
+\item Constant{\ttfamily is\+Float\+Literal}
+\item Constant{\ttfamily is\+Elem}
+\item Constant{\ttfamily is\+Index\+In\+Func\+Section}
+\item Constant{\ttfamily is\+Valtype\+Literal}
+\item Constant{\ttfamily is\+Type\+Instruction}
+\item Constant{\ttfamily is\+Start}
+\item Constant{\ttfamily is\+Global\+Type}
+\item Constant{\ttfamily is\+Leading\+Comment}
+\item Constant{\ttfamily is\+Block\+Comment}
+\item Constant{\ttfamily is\+Data}
+\item Constant{\ttfamily is\+Global}
+\item Constant{\ttfamily is\+Table}
+\item Constant{\ttfamily is\+Memory}
+\item Constant{\ttfamily is\+Func\+Import\+Descr}
+\item Constant{\ttfamily is\+Module\+Import}
+\item Constant{\ttfamily is\+Module\+Export\+Descr}
+\item Constant{\ttfamily is\+Module\+Export}
+\item Constant{\ttfamily is\+Limit}
+\item Constant{\ttfamily is\+Signature}
+\item Constant{\ttfamily is\+Program}
+\item Constant{\ttfamily is\+Identifier}
+\item Constant{\ttfamily is\+Block\+Instruction}
+\item Constant{\ttfamily is\+Call\+Instruction}
+\item Constant{\ttfamily is\+Call\+Indirect\+Instruction}
+\item Constant{\ttfamily is\+Byte\+Array}
+\item Constant{\ttfamily is\+Func}
+\item Constant{\ttfamily assert\+Module}
+\item Constant{\ttfamily assert\+Module\+Metadata}
+\item Constant{\ttfamily assert\+Module\+Name\+Metadata}
+\item Constant{\ttfamily assert\+Function\+Name\+Metadata}
+\item Constant{\ttfamily assert\+Local\+Name\+Metadata}
+\item Constant{\ttfamily assert\+Binary\+Module}
+\item Constant{\ttfamily assert\+Quote\+Module}
+\item Constant{\ttfamily assert\+Section\+Metadata}
+\item Constant{\ttfamily assert\+Loop\+Instruction}
+\item Constant{\ttfamily assert\+Instruction}
+\item Constant{\ttfamily assert\+Object\+Instruction}
+\item Constant{\ttfamily assert\+If\+Instruction}
+\item Constant{\ttfamily assert\+String\+Literal}
+\item Constant{\ttfamily assert\+Number\+Literal}
+\item Constant{\ttfamily assert\+Long\+Number\+Literal}
+\item Constant{\ttfamily assert\+Float\+Literal}
+\item Constant{\ttfamily assert\+Elem}
+\item Constant{\ttfamily assert\+Index\+In\+Func\+Section}
+\item Constant{\ttfamily assert\+Valtype\+Literal}
+\item Constant{\ttfamily assert\+Type\+Instruction}
+\item Constant{\ttfamily assert\+Start}
+\item Constant{\ttfamily assert\+Global\+Type}
+\item Constant{\ttfamily assert\+Leading\+Comment}
+\item Constant{\ttfamily assert\+Block\+Comment}
+\item Constant{\ttfamily assert\+Data}
+\item Constant{\ttfamily assert\+Global}
+\item Constant{\ttfamily assert\+Table}
+\item Constant{\ttfamily assert\+Memory}
+\item Constant{\ttfamily assert\+Func\+Import\+Descr}
+\item Constant{\ttfamily assert\+Module\+Import}
+\item Constant{\ttfamily assert\+Module\+Export\+Descr}
+\item Constant{\ttfamily assert\+Module\+Export}
+\item Constant{\ttfamily assert\+Limit}
+\item Constant{\ttfamily assert\+Signature}
+\item Constant{\ttfamily assert\+Program}
+\item Constant{\ttfamily assert\+Identifier}
+\item Constant{\ttfamily assert\+Block\+Instruction}
+\item Constant{\ttfamily assert\+Call\+Instruction}
+\item Constant{\ttfamily assert\+Call\+Indirect\+Instruction}
+\item Constant{\ttfamily assert\+Byte\+Array}
+\item Constant{\ttfamily assert\+Func} 
+\end{DoxyItemize}

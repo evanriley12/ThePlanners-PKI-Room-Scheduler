@@ -1,0 +1,34 @@
+\chapter{available-\/typed-\/arrays \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/available-\/typed-\/arrays"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/available-\/typed-\/arrays.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e}\index{available-\/typed-\/arrays $<$sup$>$$<$a href="{}https://npmjs.org/package/available-\/typed-\/arrays"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/available-\/typed-\/arrays.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{available-\/typed-\/arrays $<$sup$>$$<$a href=""https://npmjs.org/package/available-\/typed-\/arrays"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/available-\/typed-\/arrays.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e_autotoc_md5453}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e_autotoc_md5453}%
+ \href{https://github.com/inspect-js/available-typed-arrays/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/available-typed-arrays/}{\texttt{ }} \href{https://david-dm.org/inspect-js/available-typed-arrays}{\texttt{ }} \href{https://david-dm.org/inspect-js/available-typed-arrays\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=available-typed-arrays}{\texttt{ }}
+
+\href{https://npmjs.org/package/available-typed-arrays}{\texttt{ }}
+
+Returns an array of Typed Array names that are available in the current environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e_autotoc_md5454}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e_autotoc_md5454}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ availableTypedArrays\ =\ require('available-\/typed-\/arrays');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.deepStrictEqual(}
+\DoxyCodeLine{\ \ \ \ availableTypedArrays().sort(),}
+\DoxyCodeLine{\ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Int8Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Uint8Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Uint8ClampedArray',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Int16Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Uint16Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Int32Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Uint32Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Float32Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Float64Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'BigInt64Array',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'BigUint64Array'}
+\DoxyCodeLine{\ \ \ \ ].sort()}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e_autotoc_md5455}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2available-typed-arrays_2_r_e_a_d_m_e_autotoc_md5455}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

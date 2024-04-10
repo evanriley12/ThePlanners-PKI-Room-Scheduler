@@ -1,0 +1,68 @@
+\chapter{babel-\/preset-\/react-\/app}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e}\index{babel-\/preset-\/react-\/app@{babel-\/preset-\/react-\/app}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5936}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5936}%
+ This package includes the Babel preset used by \href{https://github.com/facebook/create-react-app}{\texttt{ Create React App}}.~\newline
+ Please refer to its documentation\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://facebook.github.io/create-react-app/docs/getting-started}{\texttt{ Getting Started}} – How to create a new app.
+\item \href{https://facebook.github.io/create-react-app/}{\texttt{ User Guide}} – How to develop apps bootstrapped with Create React App.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5937}{}\doxysection{\texorpdfstring{Usage in Create React App Projects}{Usage in Create React App Projects}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5937}
+The easiest way to use this configuration is with \href{https://github.com/facebook/create-react-app}{\texttt{ Create React App}}, which includes it by default. {\bfseries{You don’t need to install it separately in Create React App projects.}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5938}{}\doxysection{\texorpdfstring{Usage Outside of Create React App}{Usage Outside of Create React App}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5938}
+If you want to use this Babel preset in a project not built with Create React App, you can install it with the following steps.
+
+First, \href{https://babeljs.io/docs/setup/}{\texttt{ install Babel}}.
+
+Then install babel-\/preset-\/react-\/app.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ babel-\/preset-\/react-\/app\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Then create a file named {\ttfamily .babelrc} with following contents in the root folder of your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}presets"{}:\ ["{}react-\/app"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This preset uses the {\ttfamily use\+Built\+Ins} option with \href{https://babeljs.io/docs/plugins/transform-object-rest-spread/}{\texttt{ transform-\/object-\/rest-\/spread}} and \href{https://babeljs.io/docs/plugins/transform-react-jsx/}{\texttt{ transform-\/react-\/jsx}}, which assumes that {\ttfamily Object.\+assign} is available or polyfilled.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5939}{}\doxysection{\texorpdfstring{Usage with Flow}{Usage with Flow}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5939}
+Make sure you have a {\ttfamily .flowconfig} file at the root directory. You can also use the {\ttfamily flow} option on {\ttfamily .babelrc}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}presets"{}:\ [["{}react-\/app"{},\ \{\ "{}flow"{}:\ true,\ "{}typescript"{}:\ false\ \}]]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5940}{}\doxysection{\texorpdfstring{Usage with Type\+Script}{Usage with Type\+Script}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5940}
+Make sure you have a {\ttfamily tsconfig.\+json} file at the root directory. You can also use the {\ttfamily typescript} option on {\ttfamily .babelrc}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}presets"{}:\ [["{}react-\/app"{},\ \{\ "{}flow"{}:\ false,\ "{}typescript"{}:\ true\ \}]]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5941}{}\doxysection{\texorpdfstring{Absolute Runtime Paths}{Absolute Runtime Paths}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-react-app_2_r_e_a_d_m_e_autotoc_md5941}
+Absolute paths are enabled by default for imports. To use relative paths instead, set the {\ttfamily absolute\+Runtime} option in {\ttfamily .babelrc} to {\ttfamily false}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}presets"{}:\ [["{}react-\/app"{},\ \{\ "{}absoluteRuntime"{}:\ false\ \}]]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

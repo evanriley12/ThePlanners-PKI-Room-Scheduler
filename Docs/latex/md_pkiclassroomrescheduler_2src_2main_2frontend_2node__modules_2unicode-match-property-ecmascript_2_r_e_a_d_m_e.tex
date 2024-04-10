@@ -1,0 +1,81 @@
+\chapter{unicode-\/match-\/property-\/ecmascript \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/mathiasbynens/unicode-\/match-\/property-\/ecmascript"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/mathiasbynens/unicode-\/match-\/property-\/ecmascript.\+svg?branch=main"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/unicode-\/match-\/property-\/ecmascript"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/unicode-\/match-\/property-\/ecmascript"{} alt="{}unicode-\/match-\/property-\/ecmascript on npm"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e}\index{unicode-\/match-\/property-\/ecmascript $<$a href="{}https://travis-\/ci.org/mathiasbynens/unicode-\/match-\/property-\/ecmascript"{} $>$$<$img src="{}https://travis-\/ci.org/mathiasbynens/unicode-\/match-\/property-\/ecmascript.svg?branch=main"{} alt="{}Build status"{}/$>$$<$/a$>$ $<$a href="{}https://www.npmjs.com/package/unicode-\/match-\/property-\/ecmascript"{} $>$$<$img src="{}https://img.shields.io/npm/v/unicode-\/match-\/property-\/ecmascript"{} alt="{}unicode-\/match-\/property-\/ecmascript on npm"{}/$>$$<$/a$>$@{unicode-\/match-\/property-\/ecmascript $<$a href=""https://travis-\/ci.org/mathiasbynens/unicode-\/match-\/property-\/ecmascript"" $>$$<$img src=""https://travis-\/ci.org/mathiasbynens/unicode-\/match-\/property-\/ecmascript.svg?branch=main"" alt=""Build status""/$>$$<$/a$>$ $<$a href=""https://www.npmjs.com/package/unicode-\/match-\/property-\/ecmascript"" $>$$<$img src=""https://img.shields.io/npm/v/unicode-\/match-\/property-\/ecmascript"" alt=""unicode-\/match-\/property-\/ecmascript on npm""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26094}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26094}%
+ {\itshape unicode-\/match-\/property-\/ecmascript} matches a given Unicode property or \href{https://github.com/mathiasbynens/unicode-property-aliases-ecmascript}{\texttt{ property alias}} to its canonical property name without applying \href{https://github.com/mathiasbynens/unicode-loose-match}{\texttt{ loose matching}} per the algorithm used for \href{https://github.com/tc39/proposal-regexp-unicode-property-escapes}{\texttt{ Reg\+Exp Unicode property escapes in ECMAScript}}. Consider it a strict alternative to loose matching.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26095}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26095}
+To use {\itshape unicode-\/match-\/property-\/ecmascript} programmatically, install it as a dependency via \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ unicode-\/match-\/property-\/ecmascript}
+
+\end{DoxyCode}
+
+
+Then, {\ttfamily require} it\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ matchProperty\ =\ require('unicode-\/match-\/property-\/ecmascript');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26096}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26096}
+This module exports a single function named {\ttfamily match\+Property}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26097}{}\doxysubsection{\texorpdfstring{{\ttfamily match\+Property(value)}}{{\ttfamily match\+Property(value)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26097}
+This function takes a string {\ttfamily value} and attempts to match it to a canonical Unicode property name. If there’s a match, it returns the canonical property name. Otherwise, it throws an exception.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Find\ the\ canonical\ property\ name:}
+\DoxyCodeLine{matchProperty('sc')}
+\DoxyCodeLine{//\ →\ 'Script'}
+\DoxyCodeLine{}
+\DoxyCodeLine{matchProperty('Script')}
+\DoxyCodeLine{//\ →\ 'Script'}
+\DoxyCodeLine{}
+\DoxyCodeLine{matchProperty('script')\ //\ Note:\ incorrect\ casing.}
+\DoxyCodeLine{//\ →\ throws}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26098}{}\doxysection{\texorpdfstring{For maintainers}{For maintainers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26098}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26099}{}\doxysubsection{\texorpdfstring{How to publish a new release}{How to publish a new release}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26099}
+
+\begin{DoxyEnumerate}
+\item On the {\ttfamily main} branch, bump the version number in {\ttfamily package.\+json}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ version\ patch\ -\/m\ 'Release\ v\%s'}
+
+\end{DoxyCode}
+
+
+Instead of {\ttfamily patch}, use {\ttfamily minor} or {\ttfamily major} \href{https://semver.org/}{\texttt{ as needed}}.
+
+Note that this produces a Git commit + tag.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Push the release commit and tag\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ push\ \&\&\ git\ push\ -\/-\/tags}
+
+\end{DoxyCode}
+
+
+Our CI then automatically publishes the new release to npm.
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26100}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26100}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endhead
+\href{https://mathiasbynens.be/}{\texttt{ Mathias Bynens}}   \\\cline{1-1}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26101}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-match-property-ecmascript_2_r_e_a_d_m_e_autotoc_md26101}
+{\itshape unicode-\/match-\/property-\/ecmascript} is available under the \href{https://mths.be/mit}{\texttt{ MIT}} license. 

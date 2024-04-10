@@ -1,0 +1,1948 @@
+\chapter{Forge}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e}\index{Forge@{Forge}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17164}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17164}%
+ \href{https://nodei.co/npm/node-forge/}{\texttt{ }}
+
+\href{https://github.com/digitalbazaar/forge/actions?query=workflow\%3A\%22Main+Checks\%22}{\texttt{ }}
+
+A native implementation of \href{https://en.wikipedia.org/wiki/Transport_Layer_Security}{\texttt{ TLS}} (and various other cryptographic tools) in \href{https://en.wikipedia.org/wiki/JavaScript}{\texttt{ Java\+Script}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17165}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17165}
+The Forge software is a fully native implementation of the \href{https://en.wikipedia.org/wiki/Transport_Layer_Security}{\texttt{ TLS}} protocol in Java\+Script, a set of cryptography utilities, and a set of tools for developing Web Apps that utilize many network resources.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17166}{}\doxysection{\texorpdfstring{Performance}{Performance}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17166}
+Forge is fast. Benchmarks against other popular Java\+Script cryptography libraries can be found here\+:
+
+
+\begin{DoxyItemize}
+\item \href{http://dominictarr.github.io/crypto-bench/}{\texttt{ http\+://dominictarr.\+github.\+io/crypto-\/bench/}}
+\item \href{http://cryptojs.altervista.org/test/simulate-threading-speed_test.html}{\texttt{ http\+://cryptojs.\+altervista.\+org/test/simulate-\/threading-\/speed\+\_\+test.\+html}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17167}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17167}
+
+\begin{DoxyItemize}
+\item Introduction
+\item Performance
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2web-vitals_2_r_e_a_d_m_e_installation}{Installation}
+\item Testing
+\item Contributing
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17168}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17168}
+
+\begin{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_options}{Options}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17169}{}\doxysubsection{\texorpdfstring{Transports}{Transports}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17169}
+
+\begin{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_tls}{TLS}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_http}{HTTP}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_ssh}{SSH}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_xhr}{XHR}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_socket}{Sockets}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17170}{}\doxysubsection{\texorpdfstring{Ciphers}{Ciphers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17170}
+
+\begin{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_cipher}{CIPHER}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_aes}{AES}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_des}{DES}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rc2}{RC2}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17171}{}\doxysubsection{\texorpdfstring{PKI}{PKI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17171}
+
+\begin{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_ed25519}{ED25519}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rsa}{RSA}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rsakem}{RSA-\/\+KEM}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_x509}{X.509}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs5}{PKCS\#5}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs7}{PKCS\#7}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs8}{PKCS\#8}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs10}{PKCS\#10}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs12}{PKCS\#12}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_asn}{ASN.1}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17172}{}\doxysubsection{\texorpdfstring{Message Digests}{Message Digests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17172}
+
+\begin{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha1}{SHA1}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha256}{SHA256}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha384}{SHA384}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha512}{SHA512}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_md5}{MD5}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_hmac}{HMAC}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17173}{}\doxysubsection{\texorpdfstring{Utilities}{Utilities}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17173}
+
+\begin{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_prime}{Prime}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_prng}{PRNG}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_task}{Tasks}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_util}{Utilities}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_log}{Logging}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_flash}{Flash Networking Support}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17174}{}\doxysubsection{\texorpdfstring{Other}{Other}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17174}
+
+\begin{DoxyItemize}
+\item Security Considerations
+\item Library Background
+\item Contact
+\item Donations
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17176}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17176}
+{\bfseries{Note}}\+: Please see the Security Considerations section before using packaging systems and pre-\/built files.
+
+Forge uses a \href{https://en.wikipedia.org/wiki/CommonJS}{\texttt{ Common\+JS}} module structure with a build process for browser bundles. The older \href{https://github.com/digitalbazaar/forge/tree/0.6.x}{\texttt{ 0.\+6.\+x}} branch with standalone files is available but will not be regularly updated.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17177}{}\doxysubsection{\texorpdfstring{Node.\+js}{Node.\+js}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17177}
+If you want to use forge with \href{https://nodejs.org/}{\texttt{ Node.\+js}}, it is available through {\ttfamily npm}\+:
+
+\href{https://www.npmjs.com/package/node-forge}{\texttt{ https\+://www.\+npmjs.\+com/package/node-\/forge}}
+
+Installation\+: \begin{DoxyVerb}npm install node-forge
+\end{DoxyVerb}
+ You can then use forge as a regular module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ forge\ =\ require('node-\/forge');}
+
+\end{DoxyCode}
+
+
+The npm package includes pre-\/built {\ttfamily forge.\+min.\+js}, {\ttfamily forge.\+all.\+min.\+js}, and {\ttfamily prime.\+worker.\+min.\+js} using the \href{https://github.com/umdjs/umd}{\texttt{ UMD}} format.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17178}{}\doxysubsection{\texorpdfstring{js\+Delivr CDN}{js\+Delivr CDN}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17178}
+To use it via \href{https://www.jsdelivr.com/package/npm/node-forge}{\texttt{ js\+Delivr}} include this in your html\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}https://cdn.jsdelivr.net/npm/node-\/forge@1.0.0/dist/forge.min.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17179}{}\doxysubsection{\texorpdfstring{unpkg CDN}{unpkg CDN}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17179}
+To use it via \href{https://unpkg.com/\#/}{\texttt{ unpkg}} include this in your html\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}https://unpkg.com/node-\/forge@1.0.0/dist/forge.min.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17180}{}\doxysubsection{\texorpdfstring{Development Requirements}{Development Requirements}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17180}
+The core Java\+Script has the following requirements to build and test\+:
+
+
+\begin{DoxyItemize}
+\item Building a browser bundle\+:
+\begin{DoxyItemize}
+\item Node.\+js
+\item npm
+\end{DoxyItemize}
+\item Testing
+\begin{DoxyItemize}
+\item Node.\+js
+\item npm
+\item Chrome, Firefox, Safari (optional)
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Some special networking features can optionally use a Flash component. See the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2flash_2_r_e_a_d_m_e}{Flash README}{0} for details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17181}{}\doxysubsection{\texorpdfstring{Building for a web browser}{Building for a web browser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17181}
+To create single file bundles for use with browsers run the following\+: \begin{DoxyVerb}npm install
+npm run build
+\end{DoxyVerb}
+ This will create single non-\/minimized and minimized files that can be included in the browser\+: \begin{DoxyVerb}dist/forge.js
+dist/forge.min.js
+\end{DoxyVerb}
+ A bundle that adds some utilities and networking support is also available\+: \begin{DoxyVerb}dist/forge.all.js
+dist/forge.all.min.js
+\end{DoxyVerb}
+ Include the file via\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}YOUR\_SCRIPT\_PATH/forge.js"{}></script>}
+
+\end{DoxyCode}
+ or 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}YOUR\_SCRIPT\_PATH/forge.min.js"{}></script>}
+
+\end{DoxyCode}
+
+
+The above bundles will synchronously create a global \textquotesingle{}forge\textquotesingle{} object.
+
+{\bfseries{Note}}\+: These bundles will not include any Web\+Worker scripts (eg\+: {\ttfamily dist/prime.\+worker.\+js}), so these will need to be accessible from the browser if any Web\+Workers are used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17182}{}\doxysubsection{\texorpdfstring{Building a custom browser bundle}{Building a custom browser bundle}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17182}
+The build process uses \href{https://webpack.github.io/}{\texttt{ webpack}} and the \href{./webpack.config.js}{\texttt{ config}} file can be modified to generate a file or files that only contain the parts of forge you need.
+
+\href{http://browserify.org/}{\texttt{ Browserify}} override support is also present in {\ttfamily package.\+json}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17183}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17183}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17184}{}\doxysubsection{\texorpdfstring{Prepare to run tests}{Prepare to run tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17184}
+\begin{DoxyVerb}npm install
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17185}{}\doxysubsection{\texorpdfstring{Running automated tests with Node.\+js}{Running automated tests with Node.\+js}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17185}
+Forge natively runs in a \href{https://nodejs.org/}{\texttt{ Node.\+js}} environment\+: \begin{DoxyVerb}npm test
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17186}{}\doxysubsection{\texorpdfstring{Running automated tests with Headless Chrome}{Running automated tests with Headless Chrome}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17186}
+Automated testing is done via \href{https://karma-runner.github.io/}{\texttt{ Karma}}. By default it will run the tests with Headless Chrome. \begin{DoxyVerb}npm run test-karma
+\end{DoxyVerb}
+ Is \textquotesingle{}mocha\textquotesingle{} reporter output too verbose? Other reporters are available. Try \textquotesingle{}dots\textquotesingle{}, \textquotesingle{}progress\textquotesingle{}, or \textquotesingle{}tap\textquotesingle{}. \begin{DoxyVerb}npm run test-karma -- --reporters progress
+\end{DoxyVerb}
+ By default \href{https://webpack.github.io/}{\texttt{ webpack}} is used. \href{http://browserify.org/}{\texttt{ Browserify}} can also be used. \begin{DoxyVerb}BUNDLER=browserify npm run test-karma
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17187}{}\doxysubsection{\texorpdfstring{Running automated tests with one or more browsers}{Running automated tests with one or more browsers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17187}
+You can also specify one or more browsers to use. \begin{DoxyVerb}npm run test-karma -- --browsers Chrome,Firefox,Safari,ChromeHeadless
+\end{DoxyVerb}
+ The reporter option and {\ttfamily BUNDLER} environment variable can also be used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17188}{}\doxysubsection{\texorpdfstring{Running manual tests in a browser}{Running manual tests in a browser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17188}
+Testing in a browser uses \href{https://webpack.github.io/}{\texttt{ webpack}} to combine forge and all tests and then loading the result in a browser. A simple web server is provided that will output the HTTP or HTTPS URLs to load. It also will start a simple Flash Policy Server. Unit tests and older legacy tests are provided. Custom ports can be used by running {\ttfamily node tests/server.\+js} manually.
+
+To run the unit tests in a browser a special forge build is required\+: \begin{DoxyVerb}npm run test-build
+\end{DoxyVerb}
+ To run legacy browser based tests the main forge build is required\+: \begin{DoxyVerb}npm run build
+\end{DoxyVerb}
+ The tests are run with a custom server that prints out the URLs to use\+: \begin{DoxyVerb}npm run test-server
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17189}{}\doxysubsection{\texorpdfstring{Running other tests}{Running other tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17189}
+There are some other random tests and benchmarks available in the tests directory.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17190}{}\doxysubsection{\texorpdfstring{Coverage testing}{Coverage testing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17190}
+To perform coverage testing of the unit tests, run the following. The results will be put in the {\ttfamily coverage/} directory. Note that coverage testing can slow down some tests considerably. \begin{DoxyVerb}npm install
+npm run coverage
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17191}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17191}
+Any contributions (eg\+: PRs) that are accepted will be brought under the same license used by the rest of the Forge project. This license allows Forge to be used under the terms of either the BSD License or the GNU General Public License (GPL) Version 2.
+
+See\+: \href{https://github.com/digitalbazaar/forge/blob/cbebca3780658703d925b61b2caffb1d263a6c1d/LICENSE}{\texttt{ LICENSE}}
+
+If a contribution contains 3rd party source code with its own license, it may retain it, so long as that license is compatible with the Forge license.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17192}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17192}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_options}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_options}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17193}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17193}
+If at any time you wish to disable the use of native code, where available, for particular forge features like its secure random number generator, you may set the {\ttfamily forge.\+options.\+use\+Pure\+Java\+Script} flag to {\ttfamily true}. It is not recommended that you set this flag as native code is typically more performant and may have stronger security properties. It may be useful to set this flag to test certain features that you plan to run in environments that are different from your testing environment.
+
+To disable native code when including forge in the browser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ run\ this\ *after*\ including\ the\ forge\ script}
+\DoxyCodeLine{forge.options.usePureJavaScript\ =\ true;}
+
+\end{DoxyCode}
+
+
+To disable native code when using Node.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ forge\ =\ require('node-\/forge');}
+\DoxyCodeLine{forge.options.usePureJavaScript\ =\ true;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17194}{}\doxysection{\texorpdfstring{Transports}{Transports}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17194}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_tls}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_tls}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17195}{}\doxysubsection{\texorpdfstring{TLS}{TLS}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17195}
+Provides a native javascript client and server-\/side \href{https://en.wikipedia.org/wiki/Transport_Layer_Security}{\texttt{ TLS}} implementation.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ create\ TLS\ client}
+\DoxyCodeLine{var\ client\ =\ forge.tls.createConnection(\{}
+\DoxyCodeLine{\ \ server:\ false,}
+\DoxyCodeLine{\ \ caStore:\ /*\ Array\ of\ PEM-\/formatted\ certs\ or\ a\ CA\ store\ object\ */,}
+\DoxyCodeLine{\ \ sessionCache:\ \{\},}
+\DoxyCodeLine{\ \ //\ supported\ cipher\ suites\ in\ order\ of\ preference}
+\DoxyCodeLine{\ \ cipherSuites:\ [}
+\DoxyCodeLine{\ \ \ \ forge.tls.CipherSuites.TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA,}
+\DoxyCodeLine{\ \ \ \ forge.tls.CipherSuites.TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA],}
+\DoxyCodeLine{\ \ virtualHost:\ 'example.com',}
+\DoxyCodeLine{\ \ verify:\ function(connection,\ verified,\ depth,\ certs)\ \{}
+\DoxyCodeLine{\ \ \ \ if(depth\ ===\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ cn\ =\ certs[0].subject.getField('CN').value;}
+\DoxyCodeLine{\ \ \ \ \ \ if(cn\ !==\ 'example.com')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ verified\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ alert:\ forge.tls.Alert.Description.bad\_certificate,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ message:\ 'Certificate\ common\ name\ does\ not\ match\ hostname.'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ return\ verified;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ connected:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('connected');}
+\DoxyCodeLine{\ \ \ \ //\ send\ message\ to\ server}
+\DoxyCodeLine{\ \ \ \ connection.prepare(forge.util.encodeUtf8('Hi\ server!'));}
+\DoxyCodeLine{\ \ \ \ /*\ NOTE:\ experimental,\ start\ heartbeat\ retransmission\ timer}
+\DoxyCodeLine{\ \ \ \ myHeartbeatTimer\ =\ setInterval(function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ connection.prepareHeartbeatRequest(forge.util.createBuffer('1234'));}
+\DoxyCodeLine{\ \ \ \ \},\ 5*60*1000);*/}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ /*\ provide\ a\ client-\/side\ cert\ if\ you\ want}
+\DoxyCodeLine{\ \ getCertificate:\ function(connection,\ hint)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ myClientCertificate;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ /*\ the\ private\ key\ for\ the\ client-\/side\ cert\ if\ provided\ */}
+\DoxyCodeLine{\ \ getPrivateKey:\ function(connection,\ cert)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ myClientPrivateKey;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ tlsDataReady:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ TLS\ data\ (encrypted)\ is\ ready\ to\ be\ sent\ to\ the\ server}
+\DoxyCodeLine{\ \ \ \ sendToServerSomehow(connection.tlsData.getBytes());}
+\DoxyCodeLine{\ \ \ \ //\ if\ you\ were\ communicating\ with\ the\ server\ below,\ you'd\ do:}
+\DoxyCodeLine{\ \ \ \ //\ server.process(connection.tlsData.getBytes());}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ dataReady:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ clear\ data\ from\ the\ server\ is\ ready}
+\DoxyCodeLine{\ \ \ \ console.log('the\ server\ sent:\ '\ +}
+\DoxyCodeLine{\ \ \ \ \ \ forge.util.decodeUtf8(connection.data.getBytes()));}
+\DoxyCodeLine{\ \ \ \ //\ close\ connection}
+\DoxyCodeLine{\ \ \ \ connection.close();}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ /*\ NOTE:\ experimental}
+\DoxyCodeLine{\ \ heartbeatReceived:\ function(connection,\ payload)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ restart\ retransmission\ timer,\ look\ at\ payload}
+\DoxyCodeLine{\ \ \ \ clearInterval(myHeartbeatTimer);}
+\DoxyCodeLine{\ \ \ \ myHeartbeatTimer\ =\ setInterval(function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ connection.prepareHeartbeatRequest(forge.util.createBuffer('1234'));}
+\DoxyCodeLine{\ \ \ \ \},\ 5*60*1000);}
+\DoxyCodeLine{\ \ \ \ payload.getBytes();}
+\DoxyCodeLine{\ \ \},*/}
+\DoxyCodeLine{\ \ closed:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('disconnected');}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ error:\ function(connection,\ error)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('uh\ oh',\ error);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ start\ the\ handshake\ process}
+\DoxyCodeLine{client.handshake();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ when\ encrypted\ TLS\ data\ is\ received\ from\ the\ server,\ process\ it}
+\DoxyCodeLine{client.process(encryptedBytesFromServer);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ TLS\ server}
+\DoxyCodeLine{var\ server\ =\ forge.tls.createConnection(\{}
+\DoxyCodeLine{\ \ server:\ true,}
+\DoxyCodeLine{\ \ caStore:\ /*\ Array\ of\ PEM-\/formatted\ certs\ or\ a\ CA\ store\ object\ */,}
+\DoxyCodeLine{\ \ sessionCache:\ \{\},}
+\DoxyCodeLine{\ \ //\ supported\ cipher\ suites\ in\ order\ of\ preference}
+\DoxyCodeLine{\ \ cipherSuites:\ [}
+\DoxyCodeLine{\ \ \ \ forge.tls.CipherSuites.TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA,}
+\DoxyCodeLine{\ \ \ \ forge.tls.CipherSuites.TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA],}
+\DoxyCodeLine{\ \ //\ require\ a\ client-\/side\ certificate\ if\ you\ want}
+\DoxyCodeLine{\ \ verifyClient:\ true,}
+\DoxyCodeLine{\ \ verify:\ function(connection,\ verified,\ depth,\ certs)\ \{}
+\DoxyCodeLine{\ \ \ \ if(depth\ ===\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ cn\ =\ certs[0].subject.getField('CN').value;}
+\DoxyCodeLine{\ \ \ \ \ \ if(cn\ !==\ 'the-\/client')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ verified\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ alert:\ forge.tls.Alert.Description.bad\_certificate,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ message:\ 'Certificate\ common\ name\ does\ not\ match\ expected\ client.'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ return\ verified;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ connected:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('connected');}
+\DoxyCodeLine{\ \ \ \ //\ send\ message\ to\ client}
+\DoxyCodeLine{\ \ \ \ connection.prepare(forge.util.encodeUtf8('Hi\ client!'));}
+\DoxyCodeLine{\ \ \ \ /*\ NOTE:\ experimental,\ start\ heartbeat\ retransmission\ timer}
+\DoxyCodeLine{\ \ \ \ myHeartbeatTimer\ =\ setInterval(function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ connection.prepareHeartbeatRequest(forge.util.createBuffer('1234'));}
+\DoxyCodeLine{\ \ \ \ \},\ 5*60*1000);*/}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ getCertificate:\ function(connection,\ hint)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ myServerCertificate;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ getPrivateKey:\ function(connection,\ cert)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ myServerPrivateKey;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ tlsDataReady:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ TLS\ data\ (encrypted)\ is\ ready\ to\ be\ sent\ to\ the\ client}
+\DoxyCodeLine{\ \ \ \ sendToClientSomehow(connection.tlsData.getBytes());}
+\DoxyCodeLine{\ \ \ \ //\ if\ you\ were\ communicating\ with\ the\ client\ above\ you'd\ do:}
+\DoxyCodeLine{\ \ \ \ //\ client.process(connection.tlsData.getBytes());}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ dataReady:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ clear\ data\ from\ the\ client\ is\ ready}
+\DoxyCodeLine{\ \ \ \ console.log('the\ client\ sent:\ '\ +}
+\DoxyCodeLine{\ \ \ \ \ \ forge.util.decodeUtf8(connection.data.getBytes()));}
+\DoxyCodeLine{\ \ \ \ //\ close\ connection}
+\DoxyCodeLine{\ \ \ \ connection.close();}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ /*\ NOTE:\ experimental}
+\DoxyCodeLine{\ \ heartbeatReceived:\ function(connection,\ payload)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ restart\ retransmission\ timer,\ look\ at\ payload}
+\DoxyCodeLine{\ \ \ \ clearInterval(myHeartbeatTimer);}
+\DoxyCodeLine{\ \ \ \ myHeartbeatTimer\ =\ setInterval(function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ connection.prepareHeartbeatRequest(forge.util.createBuffer('1234'));}
+\DoxyCodeLine{\ \ \ \ \},\ 5*60*1000);}
+\DoxyCodeLine{\ \ \ \ payload.getBytes();}
+\DoxyCodeLine{\ \ \},*/}
+\DoxyCodeLine{\ \ closed:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('disconnected');}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ error:\ function(connection,\ error)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('uh\ oh',\ error);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ when\ encrypted\ TLS\ data\ is\ received\ from\ the\ client,\ process\ it}
+\DoxyCodeLine{server.process(encryptedBytesFromClient);}
+
+\end{DoxyCode}
+
+
+Connect to a TLS server using node\textquotesingle{}s net.\+Socket\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ socket\ =\ new\ net.Socket();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ client\ =\ forge.tls.createConnection(\{}
+\DoxyCodeLine{\ \ server:\ false,}
+\DoxyCodeLine{\ \ verify:\ function(connection,\ verified,\ depth,\ certs)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ skip\ verification\ for\ testing}
+\DoxyCodeLine{\ \ \ \ console.log('[tls]\ server\ certificate\ verified');}
+\DoxyCodeLine{\ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ connected:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('[tls]\ connected');}
+\DoxyCodeLine{\ \ \ \ //\ prepare\ some\ data\ to\ send\ (note\ that\ the\ string\ is\ interpreted\ as}
+\DoxyCodeLine{\ \ \ \ //\ 'binary'\ encoded,\ which\ works\ for\ HTTP\ which\ only\ uses\ ASCII,\ use}
+\DoxyCodeLine{\ \ \ \ //\ forge.util.encodeUtf8(str)\ otherwise}
+\DoxyCodeLine{\ \ \ \ client.prepare('GET\ /\ HTTP/1.0\(\backslash\)r\(\backslash\)n\(\backslash\)r\(\backslash\)n');}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ tlsDataReady:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ encrypted\ data\ is\ ready\ to\ be\ sent\ to\ the\ server}
+\DoxyCodeLine{\ \ \ \ var\ data\ =\ connection.tlsData.getBytes();}
+\DoxyCodeLine{\ \ \ \ socket.write(data,\ 'binary');\ //\ encoding\ should\ be\ 'binary'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ dataReady:\ function(connection)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ clear\ data\ from\ the\ server\ is\ ready}
+\DoxyCodeLine{\ \ \ \ var\ data\ =\ connection.data.getBytes();}
+\DoxyCodeLine{\ \ \ \ console.log('[tls]\ data\ received\ from\ the\ server:\ '\ +\ data);}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ closed:\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('[tls]\ disconnected');}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ error:\ function(connection,\ error)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('[tls]\ error',\ error);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{socket.on('connect',\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('[socket]\ connected');}
+\DoxyCodeLine{\ \ client.handshake();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{socket.on('data',\ function(data)\ \{}
+\DoxyCodeLine{\ \ client.process(data.toString('binary'));\ //\ encoding\ should\ be\ 'binary'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{socket.on('end',\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('[socket]\ disconnected');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ connect\ to\ google.com}
+\DoxyCodeLine{socket.connect(443,\ 'google.com');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or\ connect\ to\ gmail's\ imap\ server\ (but\ don't\ send\ the\ HTTP\ header\ above)}
+\DoxyCodeLine{//socket.connect(993,\ 'imap.gmail.com');}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_http}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_http}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17196}{}\doxysubsection{\texorpdfstring{HTTP}{HTTP}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17196}
+Provides a native \href{https://en.wikipedia.org/wiki/JavaScript}{\texttt{ Java\+Script}} mini-\/implementation of an http client that uses pooled sockets.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ create\ an\ HTTP\ GET\ request}
+\DoxyCodeLine{var\ request\ =\ forge.http.createRequest(\{method:\ 'GET',\ path:\ url.path\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ send\ the\ request\ somewhere}
+\DoxyCodeLine{sendSomehow(request.toString());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ receive\ response}
+\DoxyCodeLine{var\ buffer\ =\ forge.util.createBuffer();}
+\DoxyCodeLine{var\ response\ =\ forge.http.createResponse();}
+\DoxyCodeLine{var\ someAsyncDataHandler\ =\ function(bytes)\ \{}
+\DoxyCodeLine{\ \ if(!response.bodyReceived)\ \{}
+\DoxyCodeLine{\ \ \ \ buffer.putBytes(bytes);}
+\DoxyCodeLine{\ \ \ \ if(!response.headerReceived)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if(response.readHeader(buffer))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log('HTTP\ response\ header:\ '\ +\ response.toString());}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ if(response.headerReceived\ \&\&\ !response.bodyReceived)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if(response.readBody(buffer))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log('HTTP\ response\ body:\ '\ +\ response.body);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_ssh}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_ssh}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17197}{}\doxysubsection{\texorpdfstring{SSH}{SSH}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17197}
+Provides some SSH utility functions.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ encodes\ (and\ optionally\ encrypts)\ a\ private\ RSA\ key\ as\ a\ Putty\ PPK\ file}
+\DoxyCodeLine{forge.ssh.privateKeyToPutty(privateKey,\ passphrase,\ comment);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encodes\ a\ public\ RSA\ key\ as\ an\ OpenSSH\ file}
+\DoxyCodeLine{forge.ssh.publicKeyToOpenSSH(key,\ comment);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encodes\ a\ private\ RSA\ key\ as\ an\ OpenSSH\ file}
+\DoxyCodeLine{forge.ssh.privateKeyToOpenSSH(privateKey,\ passphrase);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ the\ SSH\ public\ key\ fingerprint\ in\ a\ byte\ buffer}
+\DoxyCodeLine{forge.ssh.getPublicKeyFingerprint(key);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ a\ hex-\/encoded,\ colon-\/delimited\ SSH\ public\ key\ fingerprint}
+\DoxyCodeLine{forge.ssh.getPublicKeyFingerprint(key,\ \{encoding:\ 'hex',\ delimiter:\ ':'\});}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_xhr}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_xhr}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17198}{}\doxysubsection{\texorpdfstring{XHR}{XHR}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17198}
+Provides an Xml\+Http\+Request implementation using forge.\+http as a backend.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ TODO}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_socket}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_socket}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17199}{}\doxysubsection{\texorpdfstring{Sockets}{Sockets}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17199}
+Provides an interface to create and use raw sockets provided via Flash.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ TODO}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17200}{}\doxysection{\texorpdfstring{Ciphers}{Ciphers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17200}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_cipher}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_cipher}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17201}{}\doxysubsection{\texorpdfstring{CIPHER}{CIPHER}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17201}
+Provides a basic API for block encryption and decryption. There is built-\/in support for the ciphers\+: \href{https://en.wikipedia.org/wiki/Advanced_Encryption_Standard}{\texttt{ AES}}, \href{https://en.wikipedia.org/wiki/Triple_DES}{\texttt{ 3DES}}, and \href{https://en.wikipedia.org/wiki/Data_Encryption_Standard}{\texttt{ DES}}, and for the modes of operation\+: \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ ECB}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CBC}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CFB}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ OFB}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CTR}}, and \href{https://en.wikipedia.org/wiki/GCM_mode}{\texttt{ GCM}}.
+
+These algorithms are currently supported\+:
+
+
+\begin{DoxyItemize}
+\item AES-\/\+ECB
+\item AES-\/\+CBC
+\item AES-\/\+CFB
+\item AES-\/\+OFB
+\item AES-\/\+CTR
+\item AES-\/\+GCM
+\item 3DES-\/\+ECB
+\item 3DES-\/\+CBC
+\item DES-\/\+ECB
+\item DES-\/\+CBC
+\end{DoxyItemize}
+
+When using an \href{https://en.wikipedia.org/wiki/Advanced_Encryption_Standard}{\texttt{ AES}} algorithm, the key size will determine whether AES-\/128, AES-\/192, or AES-\/256 is used (all are supported). When a \href{https://en.wikipedia.org/wiki/Data_Encryption_Standard}{\texttt{ DES}} algorithm is used, the key size will determine whether \href{https://en.wikipedia.org/wiki/Triple_DES}{\texttt{ 3DES}} or regular \href{https://en.wikipedia.org/wiki/Data_Encryption_Standard}{\texttt{ DES}} is used. Use a \href{https://en.wikipedia.org/wiki/Triple_DES}{\texttt{ 3DES}} algorithm to enforce Triple-\/\+DES.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ generate\ a\ random\ key\ and\ IV}
+\DoxyCodeLine{//\ Note:\ a\ key\ size\ of\ 16\ bytes\ will\ use\ AES-\/128,\ 24\ =>\ AES-\/192,\ 32\ =>\ AES-\/256}
+\DoxyCodeLine{var\ key\ =\ forge.random.getBytesSync(16);}
+\DoxyCodeLine{var\ iv\ =\ forge.random.getBytesSync(16);}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ alternatively,\ generate\ a\ password-\/based\ 16-\/byte\ key}
+\DoxyCodeLine{var\ salt\ =\ forge.random.getBytesSync(128);}
+\DoxyCodeLine{var\ key\ =\ forge.pkcs5.pbkdf2('password',\ salt,\ numIterations,\ 16);}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ some\ bytes\ using\ CBC\ mode}
+\DoxyCodeLine{//\ (other\ modes\ include:\ ECB,\ CFB,\ OFB,\ CTR,\ and\ GCM)}
+\DoxyCodeLine{//\ Note:\ CBC\ and\ ECB\ modes\ use\ PKCS\#7\ padding\ as\ default}
+\DoxyCodeLine{var\ cipher\ =\ forge.cipher.createCipher('AES-\/CBC',\ key);}
+\DoxyCodeLine{cipher.start(\{iv:\ iv\});}
+\DoxyCodeLine{cipher.update(forge.util.createBuffer(someBytes));}
+\DoxyCodeLine{cipher.finish();}
+\DoxyCodeLine{var\ encrypted\ =\ cipher.output;}
+\DoxyCodeLine{//\ outputs\ encrypted\ hex}
+\DoxyCodeLine{console.log(encrypted.toHex());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ some\ bytes\ using\ CBC\ mode}
+\DoxyCodeLine{//\ (other\ modes\ include:\ CFB,\ OFB,\ CTR,\ and\ GCM)}
+\DoxyCodeLine{var\ decipher\ =\ forge.cipher.createDecipher('AES-\/CBC',\ key);}
+\DoxyCodeLine{decipher.start(\{iv:\ iv\});}
+\DoxyCodeLine{decipher.update(encrypted);}
+\DoxyCodeLine{var\ result\ =\ decipher.finish();\ //\ check\ 'result'\ for\ true/false}
+\DoxyCodeLine{//\ outputs\ decrypted\ hex}
+\DoxyCodeLine{console.log(decipher.output.toHex());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ bytes\ using\ CBC\ mode\ and\ streaming}
+\DoxyCodeLine{//\ Performance\ can\ suffer\ for\ large\ multi-\/MB\ inputs\ due\ to\ buffer}
+\DoxyCodeLine{//\ manipulations.\ Stream\ processing\ in\ chunks\ can\ offer\ significant}
+\DoxyCodeLine{//\ improvement.\ CPU\ intensive\ update()\ calls\ could\ also\ be\ performed\ with}
+\DoxyCodeLine{//\ setImmediate/setTimeout\ to\ avoid\ blocking\ the\ main\ browser\ UI\ thread\ (not}
+\DoxyCodeLine{//\ shown\ here).\ Optimal\ block\ size\ depends\ on\ the\ JavaScript\ VM\ and\ other}
+\DoxyCodeLine{//\ factors.\ Encryption\ can\ use\ a\ simple\ technique\ for\ increased\ performance.}
+\DoxyCodeLine{var\ encryptedBytes\ =\ encrypted.bytes();}
+\DoxyCodeLine{var\ decipher\ =\ forge.cipher.createDecipher('AES-\/CBC',\ key);}
+\DoxyCodeLine{decipher.start(\{iv:\ iv\});}
+\DoxyCodeLine{var\ length\ =\ encryptedBytes.length;}
+\DoxyCodeLine{var\ chunkSize\ =\ 1024\ *\ 64;}
+\DoxyCodeLine{var\ index\ =\ 0;}
+\DoxyCodeLine{var\ decrypted\ =\ '';}
+\DoxyCodeLine{do\ \{}
+\DoxyCodeLine{\ \ decrypted\ +=\ decipher.output.getBytes();}
+\DoxyCodeLine{\ \ var\ buf\ =\ forge.util.createBuffer(encryptedBytes.substr(index,\ chunkSize));}
+\DoxyCodeLine{\ \ decipher.update(buf);}
+\DoxyCodeLine{\ \ index\ +=\ chunkSize;}
+\DoxyCodeLine{\}\ while(index\ <\ length);}
+\DoxyCodeLine{var\ result\ =\ decipher.finish();}
+\DoxyCodeLine{assert(result);}
+\DoxyCodeLine{decrypted\ +=\ decipher.output.getBytes();}
+\DoxyCodeLine{console.log(forge.util.bytesToHex(decrypted));}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ some\ bytes\ using\ GCM\ mode}
+\DoxyCodeLine{var\ cipher\ =\ forge.cipher.createCipher('AES-\/GCM',\ key);}
+\DoxyCodeLine{cipher.start(\{}
+\DoxyCodeLine{\ \ iv:\ iv,\ //\ should\ be\ a\ 12-\/byte\ binary-\/encoded\ string\ or\ byte\ buffer}
+\DoxyCodeLine{\ \ additionalData:\ 'binary-\/encoded\ string',\ //\ optional}
+\DoxyCodeLine{\ \ tagLength:\ 128\ //\ optional,\ defaults\ to\ 128\ bits}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{cipher.update(forge.util.createBuffer(someBytes));}
+\DoxyCodeLine{cipher.finish();}
+\DoxyCodeLine{var\ encrypted\ =\ cipher.output;}
+\DoxyCodeLine{var\ tag\ =\ cipher.mode.tag;}
+\DoxyCodeLine{//\ outputs\ encrypted\ hex}
+\DoxyCodeLine{console.log(encrypted.toHex());}
+\DoxyCodeLine{//\ outputs\ authentication\ tag}
+\DoxyCodeLine{console.log(tag.toHex());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ some\ bytes\ using\ GCM\ mode}
+\DoxyCodeLine{var\ decipher\ =\ forge.cipher.createDecipher('AES-\/GCM',\ key);}
+\DoxyCodeLine{decipher.start(\{}
+\DoxyCodeLine{\ \ iv:\ iv,}
+\DoxyCodeLine{\ \ additionalData:\ 'binary-\/encoded\ string',\ //\ optional}
+\DoxyCodeLine{\ \ tagLength:\ 128,\ //\ optional,\ defaults\ to\ 128\ bits}
+\DoxyCodeLine{\ \ tag:\ tag\ //\ authentication\ tag\ from\ encryption}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{decipher.update(encrypted);}
+\DoxyCodeLine{var\ pass\ =\ decipher.finish();}
+\DoxyCodeLine{//\ pass\ is\ false\ if\ there\ was\ a\ failure\ (eg:\ authentication\ tag\ didn't\ match)}
+\DoxyCodeLine{if(pass)\ \{}
+\DoxyCodeLine{\ \ //\ outputs\ decrypted\ hex}
+\DoxyCodeLine{\ \ console.log(decipher.output.toHex());}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Using forge in Node.\+js to match openssl\textquotesingle{}s "{}enc"{} command line tool ({\bfseries{Note}}\+: Open\+SSL "{}enc"{} uses a non-\/standard file format with a custom key derivation function and a fixed iteration count of 1, which some consider less secure than alternatives such as \href{https://tools.ietf.org/html/rfc4880}{\texttt{ Open\+PGP}}/\href{https://www.gnupg.org/}{\texttt{ Gnu\+PG}})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ forge\ =\ require('node-\/forge');}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ openssl\ enc\ -\/des3\ -\/in\ input.txt\ -\/out\ input.enc}
+\DoxyCodeLine{function\ encrypt(password)\ \{}
+\DoxyCodeLine{\ \ var\ input\ =\ fs.readFileSync('input.txt',\ \{encoding:\ 'binary'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ 3DES\ key\ and\ IV\ sizes}
+\DoxyCodeLine{\ \ var\ keySize\ =\ 24;}
+\DoxyCodeLine{\ \ var\ ivSize\ =\ 8;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ get\ derived\ bytes}
+\DoxyCodeLine{\ \ //\ Notes:}
+\DoxyCodeLine{\ \ //\ 1.\ If\ using\ an\ alternative\ hash\ (eg:\ "{}-\/md\ sha1"{})\ pass}
+\DoxyCodeLine{\ \ //\ \ \ "{}forge.md.sha1.create()"{}\ as\ the\ final\ parameter.}
+\DoxyCodeLine{\ \ //\ 2.\ If\ using\ "{}-\/nosalt"{},\ set\ salt\ to\ null.}
+\DoxyCodeLine{\ \ var\ salt\ =\ forge.random.getBytesSync(8);}
+\DoxyCodeLine{\ \ //\ var\ md\ =\ forge.md.sha1.create();\ //\ "{}-\/md\ sha1"{}}
+\DoxyCodeLine{\ \ var\ derivedBytes\ =\ forge.pbe.opensslDeriveBytes(}
+\DoxyCodeLine{\ \ \ \ password,\ salt,\ keySize\ +\ ivSize/*,\ md*/);}
+\DoxyCodeLine{\ \ var\ buffer\ =\ forge.util.createBuffer(derivedBytes);}
+\DoxyCodeLine{\ \ var\ key\ =\ buffer.getBytes(keySize);}
+\DoxyCodeLine{\ \ var\ iv\ =\ buffer.getBytes(ivSize);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ cipher\ =\ forge.cipher.createCipher('3DES-\/CBC',\ key);}
+\DoxyCodeLine{\ \ cipher.start(\{iv:\ iv\});}
+\DoxyCodeLine{\ \ cipher.update(forge.util.createBuffer(input,\ 'binary'));}
+\DoxyCodeLine{\ \ cipher.finish();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ output\ =\ forge.util.createBuffer();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ if\ using\ a\ salt,\ prepend\ this\ to\ the\ output:}
+\DoxyCodeLine{\ \ if(salt\ !==\ null)\ \{}
+\DoxyCodeLine{\ \ \ \ output.putBytes('Salted\_\_');\ //\ (add\ to\ match\ openssl\ tool\ output)}
+\DoxyCodeLine{\ \ \ \ output.putBytes(salt);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ output.putBuffer(cipher.output);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ fs.writeFileSync('input.enc',\ output.getBytes(),\ \{encoding:\ 'binary'\});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ openssl\ enc\ -\/d\ -\/des3\ -\/in\ input.enc\ -\/out\ input.dec.txt}
+\DoxyCodeLine{function\ decrypt(password)\ \{}
+\DoxyCodeLine{\ \ var\ input\ =\ fs.readFileSync('input.enc',\ \{encoding:\ 'binary'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ parse\ salt\ from\ input}
+\DoxyCodeLine{\ \ input\ =\ forge.util.createBuffer(input,\ 'binary');}
+\DoxyCodeLine{\ \ //\ skip\ "{}Salted\_\_"{}\ (if\ known\ to\ be\ present)}
+\DoxyCodeLine{\ \ input.getBytes('Salted\_\_'.length);}
+\DoxyCodeLine{\ \ //\ read\ 8-\/byte\ salt}
+\DoxyCodeLine{\ \ var\ salt\ =\ input.getBytes(8);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Note:\ if\ using\ "{}-\/nosalt"{},\ skip\ above\ parsing\ and\ use}
+\DoxyCodeLine{\ \ //\ var\ salt\ =\ null;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ 3DES\ key\ and\ IV\ sizes}
+\DoxyCodeLine{\ \ var\ keySize\ =\ 24;}
+\DoxyCodeLine{\ \ var\ ivSize\ =\ 8;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ derivedBytes\ =\ forge.pbe.opensslDeriveBytes(}
+\DoxyCodeLine{\ \ \ \ password,\ salt,\ keySize\ +\ ivSize);}
+\DoxyCodeLine{\ \ var\ buffer\ =\ forge.util.createBuffer(derivedBytes);}
+\DoxyCodeLine{\ \ var\ key\ =\ buffer.getBytes(keySize);}
+\DoxyCodeLine{\ \ var\ iv\ =\ buffer.getBytes(ivSize);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ decipher\ =\ forge.cipher.createDecipher('3DES-\/CBC',\ key);}
+\DoxyCodeLine{\ \ decipher.start(\{iv:\ iv\});}
+\DoxyCodeLine{\ \ decipher.update(input);}
+\DoxyCodeLine{\ \ var\ result\ =\ decipher.finish();\ //\ check\ 'result'\ for\ true/false}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ fs.writeFileSync(}
+\DoxyCodeLine{\ \ \ \ 'input.dec.txt',\ decipher.output.getBytes(),\ \{encoding:\ 'binary'\});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_aes}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_aes}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17202}{}\doxysubsection{\texorpdfstring{AES}{AES}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17202}
+Provides \href{https://en.wikipedia.org/wiki/Advanced_Encryption_Standard}{\texttt{ AES}} encryption and decryption in \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CBC}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CFB}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ OFB}}, \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CTR}}, and \href{https://en.wikipedia.org/wiki/GCM_mode}{\texttt{ GCM}} modes. See \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_cipher}{CIPHER} for examples.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_des}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_des}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17203}{}\doxysubsection{\texorpdfstring{DES}{DES}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17203}
+Provides \href{https://en.wikipedia.org/wiki/Triple_DES}{\texttt{ 3DES}} and \href{https://en.wikipedia.org/wiki/Data_Encryption_Standard}{\texttt{ DES}} encryption and decryption in \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ ECB}} and \href{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}{\texttt{ CBC}} modes. See \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_cipher}{CIPHER} for examples.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rc2}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rc2}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17204}{}\doxysubsection{\texorpdfstring{RC2}{RC2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17204}
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ generate\ a\ random\ key\ and\ IV}
+\DoxyCodeLine{var\ key\ =\ forge.random.getBytesSync(16);}
+\DoxyCodeLine{var\ iv\ =\ forge.random.getBytesSync(8);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ some\ bytes}
+\DoxyCodeLine{var\ cipher\ =\ forge.rc2.createEncryptionCipher(key);}
+\DoxyCodeLine{cipher.start(iv);}
+\DoxyCodeLine{cipher.update(forge.util.createBuffer(someBytes));}
+\DoxyCodeLine{cipher.finish();}
+\DoxyCodeLine{var\ encrypted\ =\ cipher.output;}
+\DoxyCodeLine{//\ outputs\ encrypted\ hex}
+\DoxyCodeLine{console.log(encrypted.toHex());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ some\ bytes}
+\DoxyCodeLine{var\ cipher\ =\ forge.rc2.createDecryptionCipher(key);}
+\DoxyCodeLine{cipher.start(iv);}
+\DoxyCodeLine{cipher.update(encrypted);}
+\DoxyCodeLine{cipher.finish();}
+\DoxyCodeLine{//\ outputs\ decrypted\ hex}
+\DoxyCodeLine{console.log(cipher.output.toHex());}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17205}{}\doxysection{\texorpdfstring{PKI}{PKI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17205}
+Provides \href{https://en.wikipedia.org/wiki/X.509}{\texttt{ X.\+509}} certificate support, ED25519 key generation and signing/verifying, and RSA public and private key encoding, decoding, encryption/decryption, and signing/verifying.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_ed25519}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_ed25519}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17206}{}\doxysubsection{\texorpdfstring{ED25519}{ED25519}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17206}
+Special thanks to \href{https://github.com/dchest/tweetnacl-js}{\texttt{ Tweet\+Na\+Cl.\+js}} for providing the bulk of the implementation.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ed25519\ =\ forge.pki.ed25519;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ random\ ED25519\ keypair}
+\DoxyCodeLine{var\ keypair\ =\ ed25519.generateKeyPair();}
+\DoxyCodeLine{//\ \`{}keypair.publicKey`\ is\ a\ node.js\ Buffer\ or\ Uint8Array}
+\DoxyCodeLine{//\ \`{}keypair.privateKey`\ is\ a\ node.js\ Buffer\ or\ Uint8Array}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ random\ ED25519\ keypair\ based\ on\ a\ random\ 32-\/byte\ seed}
+\DoxyCodeLine{var\ seed\ =\ forge.random.getBytesSync(32);}
+\DoxyCodeLine{var\ keypair\ =\ ed25519.generateKeyPair(\{seed:\ seed\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ random\ ED25519\ keypair\ based\ on\ a\ "{}password"{}\ 32-\/byte\ seed}
+\DoxyCodeLine{var\ password\ =\ 'Mai9ohgh6ahxee0jutheew0pungoozil';}
+\DoxyCodeLine{var\ seed\ =\ new\ forge.util.ByteBuffer(password,\ 'utf8');}
+\DoxyCodeLine{var\ keypair\ =\ ed25519.generateKeyPair(\{seed:\ seed\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ a\ UTF-\/8\ message}
+\DoxyCodeLine{var\ signature\ =\ ED25519.sign(\{}
+\DoxyCodeLine{\ \ message:\ 'test',}
+\DoxyCodeLine{\ \ //\ also\ accepts\ \`{}binary`\ if\ you\ want\ to\ pass\ a\ binary\ string}
+\DoxyCodeLine{\ \ encoding:\ 'utf8',}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ binary\ string}
+\DoxyCodeLine{\ \ privateKey:\ privateKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ \`{}signature`\ is\ a\ node.js\ Buffer\ or\ Uint8Array}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ a\ message\ passed\ as\ a\ buffer}
+\DoxyCodeLine{var\ signature\ =\ ED25519.sign(\{}
+\DoxyCodeLine{\ \ //\ also\ accepts\ a\ forge\ ByteBuffer\ or\ Uint8Array}
+\DoxyCodeLine{\ \ message:\ Buffer.from('test',\ 'utf8'),}
+\DoxyCodeLine{\ \ privateKey:\ privateKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ a\ message\ digest\ (shorter\ "{}message"{}\ ==\ better\ performance)}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha256.create();}
+\DoxyCodeLine{md.update('test',\ 'utf8');}
+\DoxyCodeLine{var\ signature\ =\ ED25519.sign(\{}
+\DoxyCodeLine{\ \ md:\ md,}
+\DoxyCodeLine{\ \ privateKey:\ privateKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ a\ signature\ on\ a\ UTF-\/8\ message}
+\DoxyCodeLine{var\ verified\ =\ ED25519.verify(\{}
+\DoxyCodeLine{\ \ message:\ 'test',}
+\DoxyCodeLine{\ \ encoding:\ 'utf8',}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ or\ binary\ string}
+\DoxyCodeLine{\ \ signature:\ signature,}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ or\ binary\ string}
+\DoxyCodeLine{\ \ publicKey:\ publicKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ \`{}verified`\ is\ true/false}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ a\ message\ passed\ as\ a\ buffer}
+\DoxyCodeLine{var\ verified\ =\ ED25519.verify(\{}
+\DoxyCodeLine{\ \ //\ also\ accepts\ a\ forge\ ByteBuffer\ or\ Uint8Array}
+\DoxyCodeLine{\ \ message:\ Buffer.from('test',\ 'utf8'),}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ or\ binary\ string}
+\DoxyCodeLine{\ \ signature:\ signature,}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ or\ binary\ string}
+\DoxyCodeLine{\ \ publicKey:\ publicKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ a\ signature\ on\ a\ message\ digest}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha256.create();}
+\DoxyCodeLine{md.update('test',\ 'utf8');}
+\DoxyCodeLine{var\ verified\ =\ ED25519.verify(\{}
+\DoxyCodeLine{\ \ md:\ md,}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ or\ binary\ string}
+\DoxyCodeLine{\ \ signature:\ signature,}
+\DoxyCodeLine{\ \ //\ node.js\ Buffer,\ Uint8Array,\ forge\ ByteBuffer,\ or\ binary\ string}
+\DoxyCodeLine{\ \ publicKey:\ publicKey}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rsa}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rsa}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17207}{}\doxysubsection{\texorpdfstring{RSA}{RSA}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17207}
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ rsa\ =\ forge.pki.rsa;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ an\ RSA\ key\ pair\ synchronously}
+\DoxyCodeLine{//\ *NOT\ RECOMMENDED*:\ Can\ be\ significantly\ slower\ than\ async\ and\ may\ block}
+\DoxyCodeLine{//\ JavaScript\ execution.\ Will\ use\ native\ Node.js\ 10.12.0+\ API\ if\ possible.}
+\DoxyCodeLine{var\ keypair\ =\ rsa.generateKeyPair(\{bits:\ 2048,\ e:\ 0x10001\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ an\ RSA\ key\ pair\ asynchronously\ (uses\ web\ workers\ if\ available)}
+\DoxyCodeLine{//\ use\ workers:\ -\/1\ to\ run\ a\ fast\ core\ estimator\ to\ optimize\ \#\ of\ workers}
+\DoxyCodeLine{//\ *RECOMMENDED*:\ Can\ be\ significantly\ faster\ than\ sync.\ Will\ use\ native}
+\DoxyCodeLine{//\ Node.js\ 10.12.0+\ or\ WebCrypto\ API\ if\ possible.}
+\DoxyCodeLine{rsa.generateKeyPair(\{bits:\ 2048,\ workers:\ 2\},\ function(err,\ keypair)\ \{}
+\DoxyCodeLine{\ \ //\ keypair.privateKey,\ keypair.publicKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ an\ RSA\ key\ pair\ in\ steps\ that\ attempt\ to\ run\ for\ a\ specified\ period}
+\DoxyCodeLine{//\ of\ time\ on\ the\ main\ JS\ thread}
+\DoxyCodeLine{var\ state\ =\ rsa.createKeyPairGenerationState(2048,\ 0x10001);}
+\DoxyCodeLine{var\ step\ =\ function()\ \{}
+\DoxyCodeLine{\ \ //\ run\ for\ 100\ ms}
+\DoxyCodeLine{\ \ if(!rsa.stepKeyPairGenerationState(state,\ 100))\ \{}
+\DoxyCodeLine{\ \ \ \ setTimeout(step,\ 1);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ else\ \{}
+\DoxyCodeLine{\ \ \ \ //\ done,\ turn\ off\ progress\ indicator,\ use\ state.keys}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{//\ turn\ on\ progress\ indicator,\ schedule\ generation\ to\ run}
+\DoxyCodeLine{setTimeout(step);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ data\ with\ a\ private\ key\ and\ output\ DigestInfo\ DER-\/encoded\ bytes}
+\DoxyCodeLine{//\ (defaults\ to\ RSASSA\ PKCS\#1\ v1.5)}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha1.create();}
+\DoxyCodeLine{md.update('sign\ this',\ 'utf8');}
+\DoxyCodeLine{var\ signature\ =\ privateKey.sign(md);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ data\ with\ a\ public\ key}
+\DoxyCodeLine{//\ (defaults\ to\ RSASSA\ PKCS\#1\ v1.5)}
+\DoxyCodeLine{var\ verified\ =\ publicKey.verify(md.digest().bytes(),\ signature);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ data\ using\ RSASSA-\/PSS\ where\ PSS\ uses\ a\ SHA-\/1\ hash,\ a\ SHA-\/1\ based}
+\DoxyCodeLine{//\ masking\ function\ MGF1,\ and\ a\ 20\ byte\ salt}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha1.create();}
+\DoxyCodeLine{md.update('sign\ this',\ 'utf8');}
+\DoxyCodeLine{var\ pss\ =\ forge.pss.create(\{}
+\DoxyCodeLine{\ \ md:\ forge.md.sha1.create(),}
+\DoxyCodeLine{\ \ mgf:\ forge.mgf.mgf1.create(forge.md.sha1.create()),}
+\DoxyCodeLine{\ \ saltLength:\ 20}
+\DoxyCodeLine{\ \ //\ optionally\ pass\ 'prng'\ with\ a\ custom\ PRNG\ implementation}
+\DoxyCodeLine{\ \ //\ optionalls\ pass\ 'salt'\ with\ a\ forge.util.ByteBuffer\ w/custom\ salt}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{var\ signature\ =\ privateKey.sign(md,\ pss);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ RSASSA-\/PSS\ signature}
+\DoxyCodeLine{var\ pss\ =\ forge.pss.create(\{}
+\DoxyCodeLine{\ \ md:\ forge.md.sha1.create(),}
+\DoxyCodeLine{\ \ mgf:\ forge.mgf.mgf1.create(forge.md.sha1.create()),}
+\DoxyCodeLine{\ \ saltLength:\ 20}
+\DoxyCodeLine{\ \ //\ optionally\ pass\ 'prng'\ with\ a\ custom\ PRNG\ implementation}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha1.create();}
+\DoxyCodeLine{md.update('sign\ this',\ 'utf8');}
+\DoxyCodeLine{publicKey.verify(md.digest().getBytes(),\ signature,\ pss);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ data\ with\ a\ public\ key\ (defaults\ to\ RSAES\ PKCS\#1\ v1.5)}
+\DoxyCodeLine{var\ encrypted\ =\ publicKey.encrypt(bytes);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ data\ with\ a\ private\ key\ (defaults\ to\ RSAES\ PKCS\#1\ v1.5)}
+\DoxyCodeLine{var\ decrypted\ =\ privateKey.decrypt(encrypted);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ data\ with\ a\ public\ key\ using\ RSAES\ PKCS\#1\ v1.5}
+\DoxyCodeLine{var\ encrypted\ =\ publicKey.encrypt(bytes,\ 'RSAES-\/PKCS1-\/V1\_5');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ data\ with\ a\ private\ key\ using\ RSAES\ PKCS\#1\ v1.5}
+\DoxyCodeLine{var\ decrypted\ =\ privateKey.decrypt(encrypted,\ 'RSAES-\/PKCS1-\/V1\_5');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ data\ with\ a\ public\ key\ using\ RSAES-\/OAEP}
+\DoxyCodeLine{var\ encrypted\ =\ publicKey.encrypt(bytes,\ 'RSA-\/OAEP');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ data\ with\ a\ private\ key\ using\ RSAES-\/OAEP}
+\DoxyCodeLine{var\ decrypted\ =\ privateKey.decrypt(encrypted,\ 'RSA-\/OAEP');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ data\ with\ a\ public\ key\ using\ RSAES-\/OAEP/SHA-\/256}
+\DoxyCodeLine{var\ encrypted\ =\ publicKey.encrypt(bytes,\ 'RSA-\/OAEP',\ \{}
+\DoxyCodeLine{\ \ md:\ forge.md.sha256.create()}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ data\ with\ a\ private\ key\ using\ RSAES-\/OAEP/SHA-\/256}
+\DoxyCodeLine{var\ decrypted\ =\ privateKey.decrypt(encrypted,\ 'RSA-\/OAEP',\ \{}
+\DoxyCodeLine{\ \ md:\ forge.md.sha256.create()}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ data\ with\ a\ public\ key\ using\ RSAES-\/OAEP/SHA-\/256/MGF1-\/SHA-\/1}
+\DoxyCodeLine{//\ compatible\ with\ Java's\ RSA/ECB/OAEPWithSHA-\/256AndMGF1Padding}
+\DoxyCodeLine{var\ encrypted\ =\ publicKey.encrypt(bytes,\ 'RSA-\/OAEP',\ \{}
+\DoxyCodeLine{\ \ md:\ forge.md.sha256.create(),}
+\DoxyCodeLine{\ \ mgf1:\ \{}
+\DoxyCodeLine{\ \ \ \ md:\ forge.md.sha1.create()}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ data\ with\ a\ private\ key\ using\ RSAES-\/OAEP/SHA-\/256/MGF1-\/SHA-\/1}
+\DoxyCodeLine{//\ compatible\ with\ Java's\ RSA/ECB/OAEPWithSHA-\/256AndMGF1Padding}
+\DoxyCodeLine{var\ decrypted\ =\ privateKey.decrypt(encrypted,\ 'RSA-\/OAEP',\ \{}
+\DoxyCodeLine{\ \ md:\ forge.md.sha256.create(),}
+\DoxyCodeLine{\ \ mgf1:\ \{}
+\DoxyCodeLine{\ \ \ \ md:\ forge.md.sha1.create()}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rsakem}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_rsakem}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17208}{}\doxysubsection{\texorpdfstring{RSA-\/\+KEM}{RSA-\/\+KEM}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17208}
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ generate\ an\ RSA\ key\ pair\ asynchronously\ (uses\ web\ workers\ if\ available)}
+\DoxyCodeLine{//\ use\ workers:\ -\/1\ to\ run\ a\ fast\ core\ estimator\ to\ optimize\ \#\ of\ workers}
+\DoxyCodeLine{forge.rsa.generateKeyPair(\{bits:\ 2048,\ workers:\ -\/1\},\ function(err,\ keypair)\ \{}
+\DoxyCodeLine{\ \ //\ keypair.privateKey,\ keypair.publicKey}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ and\ encapsulate\ a\ 16-\/byte\ secret\ key}
+\DoxyCodeLine{var\ kdf1\ =\ new\ forge.kem.kdf1(forge.md.sha1.create());}
+\DoxyCodeLine{var\ kem\ =\ forge.kem.rsa.create(kdf1);}
+\DoxyCodeLine{var\ result\ =\ kem.encrypt(keypair.publicKey,\ 16);}
+\DoxyCodeLine{//\ result\ has\ 'encapsulation'\ and\ 'key'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt\ some\ bytes}
+\DoxyCodeLine{var\ iv\ =\ forge.random.getBytesSync(12);}
+\DoxyCodeLine{var\ someBytes\ =\ 'hello\ world!';}
+\DoxyCodeLine{var\ cipher\ =\ forge.cipher.createCipher('AES-\/GCM',\ result.key);}
+\DoxyCodeLine{cipher.start(\{iv:\ iv\});}
+\DoxyCodeLine{cipher.update(forge.util.createBuffer(someBytes));}
+\DoxyCodeLine{cipher.finish();}
+\DoxyCodeLine{var\ encrypted\ =\ cipher.output.getBytes();}
+\DoxyCodeLine{var\ tag\ =\ cipher.mode.tag.getBytes();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ send\ 'encrypted',\ 'iv',\ 'tag',\ and\ result.encapsulation\ to\ recipient}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ encapsulated\ 16-\/byte\ secret\ key}
+\DoxyCodeLine{var\ kdf1\ =\ new\ forge.kem.kdf1(forge.md.sha1.create());}
+\DoxyCodeLine{var\ kem\ =\ forge.kem.rsa.create(kdf1);}
+\DoxyCodeLine{var\ key\ =\ kem.decrypt(keypair.privateKey,\ result.encapsulation,\ 16);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt\ some\ bytes}
+\DoxyCodeLine{var\ decipher\ =\ forge.cipher.createDecipher('AES-\/GCM',\ key);}
+\DoxyCodeLine{decipher.start(\{iv:\ iv,\ tag:\ tag\});}
+\DoxyCodeLine{decipher.update(forge.util.createBuffer(encrypted));}
+\DoxyCodeLine{var\ pass\ =\ decipher.finish();}
+\DoxyCodeLine{//\ pass\ is\ false\ if\ there\ was\ a\ failure\ (eg:\ authentication\ tag\ didn't\ match)}
+\DoxyCodeLine{if(pass)\ \{}
+\DoxyCodeLine{\ \ //\ outputs\ 'hello\ world!'}
+\DoxyCodeLine{\ \ console.log(decipher.output.getBytes());}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_x509}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_x509}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17209}{}\doxysubsection{\texorpdfstring{X.\+509}{X.\+509}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17209}
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pki\ =\ forge.pki;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ PEM-\/formatted\ public\ key\ to\ a\ Forge\ public\ key}
+\DoxyCodeLine{var\ publicKey\ =\ pki.publicKeyFromPem(pem);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ public\ key\ to\ PEM-\/format}
+\DoxyCodeLine{var\ pem\ =\ pki.publicKeyToPem(publicKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ an\ ASN.1\ SubjectPublicKeyInfo\ to\ a\ Forge\ public\ key}
+\DoxyCodeLine{var\ publicKey\ =\ pki.publicKeyFromAsn1(subjectPublicKeyInfo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ public\ key\ to\ an\ ASN.1\ SubjectPublicKeyInfo}
+\DoxyCodeLine{var\ subjectPublicKeyInfo\ =\ pki.publicKeyToAsn1(publicKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ a\ SHA-\/1\ RSAPublicKey\ fingerprint\ a\ byte\ buffer}
+\DoxyCodeLine{pki.getPublicKeyFingerprint(key);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ a\ SHA-\/1\ SubjectPublicKeyInfo\ fingerprint\ a\ byte\ buffer}
+\DoxyCodeLine{pki.getPublicKeyFingerprint(key,\ \{type:\ 'SubjectPublicKeyInfo'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ a\ hex-\/encoded,\ colon-\/delimited\ SHA-\/1\ RSAPublicKey\ public\ key\ fingerprint}
+\DoxyCodeLine{pki.getPublicKeyFingerprint(key,\ \{encoding:\ 'hex',\ delimiter:\ ':'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ a\ hex-\/encoded,\ colon-\/delimited\ SHA-\/1\ SubjectPublicKeyInfo\ public\ key\ fingerprint}
+\DoxyCodeLine{pki.getPublicKeyFingerprint(key,\ \{}
+\DoxyCodeLine{\ \ type:\ 'SubjectPublicKeyInfo',}
+\DoxyCodeLine{\ \ encoding:\ 'hex',}
+\DoxyCodeLine{\ \ delimiter:\ ':'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ a\ hex-\/encoded,\ colon-\/delimited\ MD5\ RSAPublicKey\ public\ key\ fingerprint}
+\DoxyCodeLine{pki.getPublicKeyFingerprint(key,\ \{}
+\DoxyCodeLine{\ \ md:\ forge.md.md5.create(),}
+\DoxyCodeLine{\ \ encoding:\ 'hex',}
+\DoxyCodeLine{\ \ delimiter:\ ':'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ creates\ a\ CA\ store}
+\DoxyCodeLine{var\ caStore\ =\ pki.createCaStore([/*\ PEM-\/encoded\ cert\ */,\ ...]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ add\ a\ certificate\ to\ the\ CA\ store}
+\DoxyCodeLine{caStore.addCertificate(certObjectOrPemString);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ gets\ the\ issuer\ (its\ certificate)\ for\ the\ given\ certificate}
+\DoxyCodeLine{var\ issuerCert\ =\ caStore.getIssuer(subjectCert);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verifies\ a\ certificate\ chain\ against\ a\ CA\ store}
+\DoxyCodeLine{pki.verifyCertificateChain(caStore,\ chain,\ customVerifyCallback);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ signs\ a\ certificate\ using\ the\ given\ private\ key}
+\DoxyCodeLine{cert.sign(privateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ signs\ a\ certificate\ using\ SHA-\/256\ instead\ of\ SHA-\/1}
+\DoxyCodeLine{cert.sign(privateKey,\ forge.md.sha256.create());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verifies\ an\ issued\ certificate\ using\ the\ certificates\ public\ key}
+\DoxyCodeLine{var\ verified\ =\ issuer.verify(issued);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ keypair\ and\ create\ an\ X.509v3\ certificate}
+\DoxyCodeLine{var\ keys\ =\ pki.rsa.generateKeyPair(2048);}
+\DoxyCodeLine{var\ cert\ =\ pki.createCertificate();}
+\DoxyCodeLine{cert.publicKey\ =\ keys.publicKey;}
+\DoxyCodeLine{//\ alternatively\ set\ public\ key\ from\ a\ csr}
+\DoxyCodeLine{//cert.publicKey\ =\ csr.publicKey;}
+\DoxyCodeLine{//\ NOTE:\ serialNumber\ is\ the\ hex\ encoded\ value\ of\ an\ ASN.1\ INTEGER.}
+\DoxyCodeLine{//\ Conforming\ CAs\ should\ ensure\ serialNumber\ is:}
+\DoxyCodeLine{//\ -\/\ no\ more\ than\ 20\ octets}
+\DoxyCodeLine{//\ -\/\ non-\/negative\ (prefix\ a\ '00'\ if\ your\ value\ starts\ with\ a\ '1'\ bit)}
+\DoxyCodeLine{cert.serialNumber\ =\ '01';}
+\DoxyCodeLine{cert.validity.notBefore\ =\ new\ Date();}
+\DoxyCodeLine{cert.validity.notAfter\ =\ new\ Date();}
+\DoxyCodeLine{cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear()\ +\ 1);}
+\DoxyCodeLine{var\ attrs\ =\ [\{}
+\DoxyCodeLine{\ \ name:\ 'commonName',}
+\DoxyCodeLine{\ \ value:\ 'example.org'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'countryName',}
+\DoxyCodeLine{\ \ value:\ 'US'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ shortName:\ 'ST',}
+\DoxyCodeLine{\ \ value:\ 'Virginia'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'localityName',}
+\DoxyCodeLine{\ \ value:\ 'Blacksburg'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'organizationName',}
+\DoxyCodeLine{\ \ value:\ 'Test'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ shortName:\ 'OU',}
+\DoxyCodeLine{\ \ value:\ 'Test'}
+\DoxyCodeLine{\}];}
+\DoxyCodeLine{cert.setSubject(attrs);}
+\DoxyCodeLine{//\ alternatively\ set\ subject\ from\ a\ csr}
+\DoxyCodeLine{//cert.setSubject(csr.subject.attributes);}
+\DoxyCodeLine{cert.setIssuer(attrs);}
+\DoxyCodeLine{cert.setExtensions([\{}
+\DoxyCodeLine{\ \ name:\ 'basicConstraints',}
+\DoxyCodeLine{\ \ cA:\ true}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'keyUsage',}
+\DoxyCodeLine{\ \ keyCertSign:\ true,}
+\DoxyCodeLine{\ \ digitalSignature:\ true,}
+\DoxyCodeLine{\ \ nonRepudiation:\ true,}
+\DoxyCodeLine{\ \ keyEncipherment:\ true,}
+\DoxyCodeLine{\ \ dataEncipherment:\ true}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'extKeyUsage',}
+\DoxyCodeLine{\ \ serverAuth:\ true,}
+\DoxyCodeLine{\ \ clientAuth:\ true,}
+\DoxyCodeLine{\ \ codeSigning:\ true,}
+\DoxyCodeLine{\ \ emailProtection:\ true,}
+\DoxyCodeLine{\ \ timeStamping:\ true}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'nsCertType',}
+\DoxyCodeLine{\ \ client:\ true,}
+\DoxyCodeLine{\ \ server:\ true,}
+\DoxyCodeLine{\ \ email:\ true,}
+\DoxyCodeLine{\ \ objsign:\ true,}
+\DoxyCodeLine{\ \ sslCA:\ true,}
+\DoxyCodeLine{\ \ emailCA:\ true,}
+\DoxyCodeLine{\ \ objCA:\ true}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'subjectAltName',}
+\DoxyCodeLine{\ \ altNames:\ [\{}
+\DoxyCodeLine{\ \ \ \ type:\ 6,\ //\ URI}
+\DoxyCodeLine{\ \ \ \ value:\ 'http://example.org/webid\#me'}
+\DoxyCodeLine{\ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ type:\ 7,\ //\ IP}
+\DoxyCodeLine{\ \ \ \ ip:\ '127.0.0.1'}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'subjectKeyIdentifier'}
+\DoxyCodeLine{\}]);}
+\DoxyCodeLine{/*\ alternatively\ set\ extensions\ from\ a\ csr}
+\DoxyCodeLine{var\ extensions\ =\ csr.getAttribute(\{name:\ 'extensionRequest'\}).extensions;}
+\DoxyCodeLine{//\ optionally\ add\ more\ extensions}
+\DoxyCodeLine{extensions.push.apply(extensions,\ [\{}
+\DoxyCodeLine{\ \ name:\ 'basicConstraints',}
+\DoxyCodeLine{\ \ cA:\ true}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'keyUsage',}
+\DoxyCodeLine{\ \ keyCertSign:\ true,}
+\DoxyCodeLine{\ \ digitalSignature:\ true,}
+\DoxyCodeLine{\ \ nonRepudiation:\ true,}
+\DoxyCodeLine{\ \ keyEncipherment:\ true,}
+\DoxyCodeLine{\ \ dataEncipherment:\ true}
+\DoxyCodeLine{\}]);}
+\DoxyCodeLine{cert.setExtensions(extensions);}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{//\ self-\/sign\ certificate}
+\DoxyCodeLine{cert.sign(keys.privateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ certificate\ to\ PEM}
+\DoxyCodeLine{var\ pem\ =\ pki.certificateToPem(cert);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ certificate\ from\ PEM}
+\DoxyCodeLine{var\ cert\ =\ pki.certificateFromPem(pem);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ an\ ASN.1\ X.509x3\ object\ to\ a\ Forge\ certificate}
+\DoxyCodeLine{var\ cert\ =\ pki.certificateFromAsn1(obj);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ certificate\ to\ an\ ASN.1\ X.509v3\ object}
+\DoxyCodeLine{var\ asn1Cert\ =\ pki.certificateToAsn1(cert);}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs5}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs5}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17210}{}\doxysubsection{\texorpdfstring{PKCS\#5}{PKCS\#5}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17210}
+Provides the password-\/based key-\/derivation function from \href{https://en.wikipedia.org/wiki/PKCS}{\texttt{ PKCS\#5}}.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ generate\ a\ password-\/based\ 16-\/byte\ key}
+\DoxyCodeLine{//\ note\ an\ optional\ message\ digest\ can\ be\ passed\ as\ the\ final\ parameter}
+\DoxyCodeLine{var\ salt\ =\ forge.random.getBytesSync(128);}
+\DoxyCodeLine{var\ derivedKey\ =\ forge.pkcs5.pbkdf2('password',\ salt,\ numIterations,\ 16);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ key\ asynchronously}
+\DoxyCodeLine{//\ note\ an\ optional\ message\ digest\ can\ be\ passed\ before\ the\ callback}
+\DoxyCodeLine{forge.pkcs5.pbkdf2('password',\ salt,\ numIterations,\ 16,\ function(err,\ derivedKey)\ \{}
+\DoxyCodeLine{\ \ //\ do\ something\ w/derivedKey}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs7}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs7}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17211}{}\doxysubsection{\texorpdfstring{PKCS\#7}{PKCS\#7}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17211}
+Provides cryptographically protected messages from \href{https://en.wikipedia.org/wiki/Cryptographic_Message_Syntax}{\texttt{ PKCS\#7}}.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ convert\ a\ message\ from\ PEM}
+\DoxyCodeLine{var\ p7\ =\ forge.pkcs7.messageFromPem(pem);}
+\DoxyCodeLine{//\ look\ at\ p7.recipients}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ find\ a\ recipient\ by\ the\ issuer\ of\ a\ certificate}
+\DoxyCodeLine{var\ recipient\ =\ p7.findRecipient(cert);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypt}
+\DoxyCodeLine{p7.decrypt(p7.recipients[0],\ privateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ p7\ enveloped\ message}
+\DoxyCodeLine{var\ p7\ =\ forge.pkcs7.createEnvelopedData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ add\ a\ recipient}
+\DoxyCodeLine{var\ cert\ =\ forge.pki.certificateFromPem(certPem);}
+\DoxyCodeLine{p7.addRecipient(cert);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ set\ content}
+\DoxyCodeLine{p7.content\ =\ forge.util.createBuffer('Hello');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypt}
+\DoxyCodeLine{p7.encrypt();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ message\ to\ PEM}
+\DoxyCodeLine{var\ pem\ =\ forge.pkcs7.messageToPem(p7);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ degenerate\ PKCS\#7\ certificate\ container}
+\DoxyCodeLine{//\ (CRLs\ not\ currently\ supported,\ only\ certificates)}
+\DoxyCodeLine{var\ p7\ =\ forge.pkcs7.createSignedData();}
+\DoxyCodeLine{p7.addCertificate(certOrCertPem1);}
+\DoxyCodeLine{p7.addCertificate(certOrCertPem2);}
+\DoxyCodeLine{var\ pem\ =\ forge.pkcs7.messageToPem(p7);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ PKCS\#7\ signed\ data\ with\ authenticatedAttributes}
+\DoxyCodeLine{//\ attributes\ include:\ PKCS\#9\ content-\/type,\ message-\/digest,\ and\ signing-\/time}
+\DoxyCodeLine{var\ p7\ =\ forge.pkcs7.createSignedData();}
+\DoxyCodeLine{p7.content\ =\ forge.util.createBuffer('Some\ content\ to\ be\ signed.',\ 'utf8');}
+\DoxyCodeLine{p7.addCertificate(certOrCertPem);}
+\DoxyCodeLine{p7.addSigner(\{}
+\DoxyCodeLine{\ \ key:\ privateKeyAssociatedWithCert,}
+\DoxyCodeLine{\ \ certificate:\ certOrCertPem,}
+\DoxyCodeLine{\ \ digestAlgorithm:\ forge.pki.oids.sha256,}
+\DoxyCodeLine{\ \ authenticatedAttributes:\ [\{}
+\DoxyCodeLine{\ \ \ \ type:\ forge.pki.oids.contentType,}
+\DoxyCodeLine{\ \ \ \ value:\ forge.pki.oids.data}
+\DoxyCodeLine{\ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ type:\ forge.pki.oids.messageDigest}
+\DoxyCodeLine{\ \ \ \ //\ value\ will\ be\ auto-\/populated\ at\ signing\ time}
+\DoxyCodeLine{\ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ type:\ forge.pki.oids.signingTime,}
+\DoxyCodeLine{\ \ \ \ //\ value\ can\ also\ be\ auto-\/populated\ at\ signing\ time}
+\DoxyCodeLine{\ \ \ \ value:\ new\ Date()}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{p7.sign();}
+\DoxyCodeLine{var\ pem\ =\ forge.pkcs7.messageToPem(p7);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ PKCS\#7\ Sign\ in\ detached\ mode.}
+\DoxyCodeLine{//\ Includes\ the\ signature\ and\ certificate\ without\ the\ signed\ data.}
+\DoxyCodeLine{p7.sign(\{detached:\ true\});}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs8}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs8}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17212}{}\doxysubsection{\texorpdfstring{PKCS\#8}{PKCS\#8}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17212}
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pki\ =\ forge.pki;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ PEM-\/formatted\ private\ key\ to\ a\ Forge\ private\ key}
+\DoxyCodeLine{var\ privateKey\ =\ pki.privateKeyFromPem(pem);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ private\ key\ to\ PEM-\/format}
+\DoxyCodeLine{var\ pem\ =\ pki.privateKeyToPem(privateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ an\ ASN.1\ PrivateKeyInfo\ or\ RSAPrivateKey\ to\ a\ Forge\ private\ key}
+\DoxyCodeLine{var\ privateKey\ =\ pki.privateKeyFromAsn1(rsaPrivateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ private\ key\ to\ an\ ASN.1\ RSAPrivateKey}
+\DoxyCodeLine{var\ rsaPrivateKey\ =\ pki.privateKeyToAsn1(privateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ wrap\ an\ RSAPrivateKey\ ASN.1\ object\ in\ a\ PKCS\#8\ ASN.1\ PrivateKeyInfo}
+\DoxyCodeLine{var\ privateKeyInfo\ =\ pki.wrapRsaPrivateKey(rsaPrivateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ PKCS\#8\ ASN.1\ PrivateKeyInfo\ to\ PEM}
+\DoxyCodeLine{var\ pem\ =\ pki.privateKeyInfoToPem(privateKeyInfo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypts\ a\ PrivateKeyInfo\ using\ a\ custom\ password\ and}
+\DoxyCodeLine{//\ outputs\ an\ EncryptedPrivateKeyInfo}
+\DoxyCodeLine{var\ encryptedPrivateKeyInfo\ =\ pki.encryptPrivateKeyInfo(}
+\DoxyCodeLine{\ \ privateKeyInfo,\ 'myCustomPasswordHere',\ \{}
+\DoxyCodeLine{\ \ \ \ algorithm:\ 'aes256',\ //\ 'aes128',\ 'aes192',\ 'aes256',\ '3des'}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypts\ an\ ASN.1\ EncryptedPrivateKeyInfo\ that\ was\ encrypted}
+\DoxyCodeLine{//\ with\ a\ custom\ password}
+\DoxyCodeLine{var\ privateKeyInfo\ =\ pki.decryptPrivateKeyInfo(}
+\DoxyCodeLine{\ \ encryptedPrivateKeyInfo,\ 'myCustomPasswordHere');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ converts\ an\ EncryptedPrivateKeyInfo\ to\ PEM}
+\DoxyCodeLine{var\ pem\ =\ pki.encryptedPrivateKeyToPem(encryptedPrivateKeyInfo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ converts\ a\ PEM-\/encoded\ EncryptedPrivateKeyInfo\ to\ ASN.1\ format}
+\DoxyCodeLine{var\ encryptedPrivateKeyInfo\ =\ pki.encryptedPrivateKeyFromPem(pem);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ wraps\ and\ encrypts\ a\ Forge\ private\ key\ and\ outputs\ it\ in\ PEM\ format}
+\DoxyCodeLine{var\ pem\ =\ pki.encryptRsaPrivateKey(privateKey,\ 'password');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encrypts\ a\ Forge\ private\ key\ and\ outputs\ it\ in\ PEM\ format\ using\ OpenSSL's}
+\DoxyCodeLine{//\ proprietary\ legacy\ format\ +\ encapsulated\ PEM\ headers\ (DEK-\/Info)}
+\DoxyCodeLine{var\ pem\ =\ pki.encryptRsaPrivateKey(privateKey,\ 'password',\ \{legacy:\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decrypts\ a\ PEM-\/formatted,\ encrypted\ private\ key}
+\DoxyCodeLine{var\ privateKey\ =\ pki.decryptRsaPrivateKey(pem,\ 'password');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sets\ an\ RSA\ public\ key\ from\ a\ private\ key}
+\DoxyCodeLine{var\ publicKey\ =\ pki.setRsaPublicKey(privateKey.n,\ privateKey.e);}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs10}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs10}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17213}{}\doxysubsection{\texorpdfstring{PKCS\#10}{PKCS\#10}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17213}
+Provides certification requests or certificate signing requests (CSR) from \href{https://en.wikipedia.org/wiki/Certificate_signing_request}{\texttt{ PKCS\#10}}.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ generate\ a\ key\ pair}
+\DoxyCodeLine{var\ keys\ =\ forge.pki.rsa.generateKeyPair(2048);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ certification\ request\ (CSR)}
+\DoxyCodeLine{var\ csr\ =\ forge.pki.createCertificationRequest();}
+\DoxyCodeLine{csr.publicKey\ =\ keys.publicKey;}
+\DoxyCodeLine{csr.setSubject([\{}
+\DoxyCodeLine{\ \ name:\ 'commonName',}
+\DoxyCodeLine{\ \ value:\ 'example.org'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'countryName',}
+\DoxyCodeLine{\ \ value:\ 'US'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ shortName:\ 'ST',}
+\DoxyCodeLine{\ \ value:\ 'Virginia'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'localityName',}
+\DoxyCodeLine{\ \ value:\ 'Blacksburg'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'organizationName',}
+\DoxyCodeLine{\ \ value:\ 'Test'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ shortName:\ 'OU',}
+\DoxyCodeLine{\ \ value:\ 'Test'}
+\DoxyCodeLine{\}]);}
+\DoxyCodeLine{//\ set\ (optional)\ attributes}
+\DoxyCodeLine{csr.setAttributes([\{}
+\DoxyCodeLine{\ \ name:\ 'challengePassword',}
+\DoxyCodeLine{\ \ value:\ 'password'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'unstructuredName',}
+\DoxyCodeLine{\ \ value:\ 'My\ Company,\ Inc.'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ name:\ 'extensionRequest',}
+\DoxyCodeLine{\ \ extensions:\ [\{}
+\DoxyCodeLine{\ \ \ \ name:\ 'subjectAltName',}
+\DoxyCodeLine{\ \ \ \ altNames:\ [\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ 2\ is\ DNS\ type}
+\DoxyCodeLine{\ \ \ \ \ \ type:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ 'test.domain.com'}
+\DoxyCodeLine{\ \ \ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ type:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ 'other.domain.com',}
+\DoxyCodeLine{\ \ \ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ type:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ 'www.domain.net'}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\}]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ sign\ certification\ request}
+\DoxyCodeLine{csr.sign(keys.privateKey);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ verify\ certification\ request}
+\DoxyCodeLine{var\ verified\ =\ csr.verify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ certification\ request\ to\ PEM-\/format}
+\DoxyCodeLine{var\ pem\ =\ forge.pki.certificationRequestToPem(csr);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Forge\ certification\ request\ from\ PEM-\/format}
+\DoxyCodeLine{var\ csr\ =\ forge.pki.certificationRequestFromPem(pem);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ an\ attribute}
+\DoxyCodeLine{csr.getAttribute(\{name:\ 'challengePassword'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ extensions\ array}
+\DoxyCodeLine{csr.getAttribute(\{name:\ 'extensionRequest'\}).extensions;}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs12}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_pkcs12}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17214}{}\doxysubsection{\texorpdfstring{PKCS\#12}{PKCS\#12}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17214}
+Provides the cryptographic archive file format from \href{https://en.wikipedia.org/wiki/PKCS_\%E2\%99\%AF12}{\texttt{ PKCS\#12}}.
+
+{\bfseries{Note for Chrome/\+Firefox/i\+OS/similar users}}\+: If you have trouble importing a PKCS\#12 container, try using the Triple\+DES algorithm. It can be passed to {\ttfamily forge.\+pkcs12.\+to\+Pkcs12\+Asn1} using the `\{algorithm\+: \textquotesingle{}3des'\}\`{} option.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ decode\ p12\ from\ base64}
+\DoxyCodeLine{var\ p12Der\ =\ forge.util.decode64(p12b64);}
+\DoxyCodeLine{//\ get\ p12\ as\ ASN.1\ object}
+\DoxyCodeLine{var\ p12Asn1\ =\ forge.asn1.fromDer(p12Der);}
+\DoxyCodeLine{//\ decrypt\ p12\ using\ the\ password\ 'password'}
+\DoxyCodeLine{var\ p12\ =\ forge.pkcs12.pkcs12FromAsn1(p12Asn1,\ 'password');}
+\DoxyCodeLine{//\ decrypt\ p12\ using\ non-\/strict\ parsing\ mode\ (resolves\ some\ ASN.1\ parse\ errors)}
+\DoxyCodeLine{var\ p12\ =\ forge.pkcs12.pkcs12FromAsn1(p12Asn1,\ false,\ 'password');}
+\DoxyCodeLine{//\ decrypt\ p12\ using\ literally\ no\ password\ (eg:\ Mac\ OS\ X/apple\ push)}
+\DoxyCodeLine{var\ p12\ =\ forge.pkcs12.pkcs12FromAsn1(p12Asn1);}
+\DoxyCodeLine{//\ decrypt\ p12\ using\ an\ "{}empty"{}\ password\ (eg:\ OpenSSL\ with\ no\ password\ input)}
+\DoxyCodeLine{var\ p12\ =\ forge.pkcs12.pkcs12FromAsn1(p12Asn1,\ '');}
+\DoxyCodeLine{//\ p12.safeContents\ is\ an\ array\ of\ safe\ contents,\ each\ of}
+\DoxyCodeLine{//\ which\ contains\ an\ array\ of\ safeBags}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ bags\ by\ friendlyName}
+\DoxyCodeLine{var\ bags\ =\ p12.getBags(\{friendlyName:\ 'test'\});}
+\DoxyCodeLine{//\ bags\ are\ key'd\ by\ attribute\ type\ (here\ "{}friendlyName"{})}
+\DoxyCodeLine{//\ and\ the\ key\ values\ are\ an\ array\ of\ matching\ objects}
+\DoxyCodeLine{var\ cert\ =\ bags.friendlyName[0];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ bags\ by\ localKeyId}
+\DoxyCodeLine{var\ bags\ =\ p12.getBags(\{localKeyId:\ buffer\});}
+\DoxyCodeLine{//\ bags\ are\ key'd\ by\ attribute\ type\ (here\ "{}localKeyId"{})}
+\DoxyCodeLine{//\ and\ the\ key\ values\ are\ an\ array\ of\ matching\ objects}
+\DoxyCodeLine{var\ cert\ =\ bags.localKeyId[0];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ bags\ by\ localKeyId\ (input\ in\ hex)}
+\DoxyCodeLine{var\ bags\ =\ p12.getBags(\{localKeyIdHex:\ '7b59377ff142d0be4565e9ac3d396c01401cd879'\});}
+\DoxyCodeLine{//\ bags\ are\ key'd\ by\ attribute\ type\ (here\ "{}localKeyId"{},\ *not*\ "{}localKeyIdHex"{})}
+\DoxyCodeLine{//\ and\ the\ key\ values\ are\ an\ array\ of\ matching\ objects}
+\DoxyCodeLine{var\ cert\ =\ bags.localKeyId[0];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ bags\ by\ type}
+\DoxyCodeLine{var\ bags\ =\ p12.getBags(\{bagType:\ forge.pki.oids.certBag\});}
+\DoxyCodeLine{//\ bags\ are\ key'd\ by\ bagType\ and\ each\ bagType\ key's\ value}
+\DoxyCodeLine{//\ is\ an\ array\ of\ matches\ (in\ this\ case,\ certificate\ objects)}
+\DoxyCodeLine{var\ cert\ =\ bags[forge.pki.oids.certBag][0];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ bags\ by\ friendlyName\ and\ filter\ on\ bag\ type}
+\DoxyCodeLine{var\ bags\ =\ p12.getBags(\{}
+\DoxyCodeLine{\ \ friendlyName:\ 'test',}
+\DoxyCodeLine{\ \ bagType:\ forge.pki.oids.certBag}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ key\ bags}
+\DoxyCodeLine{var\ bags\ =\ p12.getBags(\{bagType:\ forge.pki.oids.keyBag\});}
+\DoxyCodeLine{//\ get\ key}
+\DoxyCodeLine{var\ bag\ =\ bags[forge.pki.oids.keyBag][0];}
+\DoxyCodeLine{var\ key\ =\ bag.key;}
+\DoxyCodeLine{//\ if\ the\ key\ is\ in\ a\ format\ unrecognized\ by\ forge\ then}
+\DoxyCodeLine{//\ bag.key\ will\ be\ \`{}null`,\ use\ bag.asn1\ to\ get\ the\ ASN.1}
+\DoxyCodeLine{//\ representation\ of\ the\ key}
+\DoxyCodeLine{if(bag.key\ ===\ null)\ \{}
+\DoxyCodeLine{\ \ var\ keyAsn1\ =\ bag.asn1;}
+\DoxyCodeLine{\ \ //\ can\ now\ convert\ back\ to\ DER/PEM/etc\ for\ export}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ p12\ using\ AES\ (default)}
+\DoxyCodeLine{var\ p12Asn1\ =\ forge.pkcs12.toPkcs12Asn1(}
+\DoxyCodeLine{\ \ privateKey,\ certificateChain,\ 'password');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ p12\ that\ can\ be\ imported\ by\ Chrome/Firefox/iOS}
+\DoxyCodeLine{//\ (requires\ the\ use\ of\ Triple\ DES\ instead\ of\ AES)}
+\DoxyCodeLine{var\ p12Asn1\ =\ forge.pkcs12.toPkcs12Asn1(}
+\DoxyCodeLine{\ \ privateKey,\ certificateChain,\ 'password',}
+\DoxyCodeLine{\ \ \{algorithm:\ '3des'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ base64-\/encode\ p12}
+\DoxyCodeLine{var\ p12Der\ =\ forge.asn1.toDer(p12Asn1).getBytes();}
+\DoxyCodeLine{var\ p12b64\ =\ forge.util.encode64(p12Der);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ download\ link\ for\ p12}
+\DoxyCodeLine{var\ a\ =\ document.createElement('a');}
+\DoxyCodeLine{a.download\ =\ 'example.p12';}
+\DoxyCodeLine{a.setAttribute('href',\ 'data:application/x-\/pkcs12;base64,'\ +\ p12b64);}
+\DoxyCodeLine{a.appendChild(document.createTextNode('Download'));}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_asn}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_asn}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17215}{}\doxysubsection{\texorpdfstring{ASN.\+1}{ASN.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17215}
+Provides \href{https://en.wikipedia.org/wiki/ASN.1}{\texttt{ ASN.\+1}} DER encoding and decoding.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ asn1\ =\ forge.asn1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ SubjectPublicKeyInfo}
+\DoxyCodeLine{var\ subjectPublicKeyInfo\ =}
+\DoxyCodeLine{\ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.SEQUENCE,\ true,\ [}
+\DoxyCodeLine{\ \ \ \ //\ AlgorithmIdentifier}
+\DoxyCodeLine{\ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.SEQUENCE,\ true,\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ algorithm}
+\DoxyCodeLine{\ \ \ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.OID,\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ asn1.oidToDer(pki.oids['rsaEncryption']).getBytes()),}
+\DoxyCodeLine{\ \ \ \ \ \ //\ parameters\ (null)}
+\DoxyCodeLine{\ \ \ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.NULL,\ false,\ '')}
+\DoxyCodeLine{\ \ \ \ ]),}
+\DoxyCodeLine{\ \ \ \ //\ subjectPublicKey}
+\DoxyCodeLine{\ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.BITSTRING,\ false,\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ RSAPublicKey}
+\DoxyCodeLine{\ \ \ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.SEQUENCE,\ true,\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ modulus\ (n)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.INTEGER,\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \_bnToBytes(key.n)),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ publicExponent\ (e)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ asn1.create(asn1.Class.UNIVERSAL,\ asn1.Type.INTEGER,\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \_bnToBytes(key.e))}
+\DoxyCodeLine{\ \ \ \ \ \ ])}
+\DoxyCodeLine{\ \ \ \ ])}
+\DoxyCodeLine{\ \ ]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ serialize\ an\ ASN.1\ object\ to\ DER\ format}
+\DoxyCodeLine{var\ derBuffer\ =\ asn1.toDer(subjectPublicKeyInfo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ deserialize\ to\ an\ ASN.1\ object\ from\ a\ byte\ buffer\ filled\ with\ DER\ data}
+\DoxyCodeLine{var\ object\ =\ asn1.fromDer(derBuffer);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ an\ OID\ dot-\/separated\ string\ to\ a\ byte\ buffer}
+\DoxyCodeLine{var\ derOidBuffer\ =\ asn1.oidToDer('1.2.840.113549.1.1.5');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ byte\ buffer\ with\ a\ DER-\/encoded\ OID\ to\ a\ dot-\/separated\ string}
+\DoxyCodeLine{console.log(asn1.derToOid(derOidBuffer));}
+\DoxyCodeLine{//\ output:\ 1.2.840.113549.1.1.5}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ validates\ that\ an\ ASN.1\ object\ matches\ a\ particular\ ASN.1\ structure\ and}
+\DoxyCodeLine{//\ captures\ data\ of\ interest\ from\ that\ structure\ for\ easy\ access}
+\DoxyCodeLine{var\ publicKeyValidator\ =\ \{}
+\DoxyCodeLine{\ \ name:\ 'SubjectPublicKeyInfo',}
+\DoxyCodeLine{\ \ tagClass:\ asn1.Class.UNIVERSAL,}
+\DoxyCodeLine{\ \ type:\ asn1.Type.SEQUENCE,}
+\DoxyCodeLine{\ \ constructed:\ true,}
+\DoxyCodeLine{\ \ captureAsn1:\ 'subjectPublicKeyInfo',}
+\DoxyCodeLine{\ \ value:\ [\{}
+\DoxyCodeLine{\ \ \ \ name:\ 'SubjectPublicKeyInfo.AlgorithmIdentifier',}
+\DoxyCodeLine{\ \ \ \ tagClass:\ asn1.Class.UNIVERSAL,}
+\DoxyCodeLine{\ \ \ \ type:\ asn1.Type.SEQUENCE,}
+\DoxyCodeLine{\ \ \ \ constructed:\ true,}
+\DoxyCodeLine{\ \ \ \ value:\ [\{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'AlgorithmIdentifier.algorithm',}
+\DoxyCodeLine{\ \ \ \ \ \ tagClass:\ asn1.Class.UNIVERSAL,}
+\DoxyCodeLine{\ \ \ \ \ \ type:\ asn1.Type.OID,}
+\DoxyCodeLine{\ \ \ \ \ \ constructed:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ capture:\ 'publicKeyOid'}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ //\ subjectPublicKey}
+\DoxyCodeLine{\ \ \ \ name:\ 'SubjectPublicKeyInfo.subjectPublicKey',}
+\DoxyCodeLine{\ \ \ \ tagClass:\ asn1.Class.UNIVERSAL,}
+\DoxyCodeLine{\ \ \ \ type:\ asn1.Type.BITSTRING,}
+\DoxyCodeLine{\ \ \ \ constructed:\ false,}
+\DoxyCodeLine{\ \ \ \ value:\ [\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ RSAPublicKey}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'SubjectPublicKeyInfo.subjectPublicKey.RSAPublicKey',}
+\DoxyCodeLine{\ \ \ \ \ \ tagClass:\ asn1.Class.UNIVERSAL,}
+\DoxyCodeLine{\ \ \ \ \ \ type:\ asn1.Type.SEQUENCE,}
+\DoxyCodeLine{\ \ \ \ \ \ constructed:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ optional:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ captureAsn1:\ 'rsaPublicKey'}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ capture\ =\ \{\};}
+\DoxyCodeLine{var\ errors\ =\ [];}
+\DoxyCodeLine{if(!asn1.validate(}
+\DoxyCodeLine{\ \ publicKeyValidator,\ subjectPublicKeyInfo,\ validator,\ capture,\ errors))\ \{}
+\DoxyCodeLine{\ \ throw\ 'ASN.1\ object\ is\ not\ a\ SubjectPublicKeyInfo.';}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{//\ capture.subjectPublicKeyInfo\ contains\ the\ full\ ASN.1\ object}
+\DoxyCodeLine{//\ capture.rsaPublicKey\ contains\ the\ full\ ASN.1\ object\ for\ the\ RSA\ public\ key}
+\DoxyCodeLine{//\ capture.publicKeyOid\ only\ contains\ the\ value\ for\ the\ OID}
+\DoxyCodeLine{var\ oid\ =\ asn1.derToOid(capture.publicKeyOid);}
+\DoxyCodeLine{if(oid\ !==\ pki.oids['rsaEncryption'])\ \{}
+\DoxyCodeLine{\ \ throw\ 'Unsupported\ OID.';}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ pretty\ print\ an\ ASN.1\ object\ to\ a\ string\ for\ debugging\ purposes}
+\DoxyCodeLine{asn1.prettyPrint(object);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17216}{}\doxysection{\texorpdfstring{Message Digests}{Message Digests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17216}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha1}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha1}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17217}{}\doxysubsection{\texorpdfstring{SHA1}{SHA1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17217}
+Provides \href{https://en.wikipedia.org/wiki/SHA-1}{\texttt{ SHA-\/1}} message digests.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha1.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ 2fd4e1c67a2d28fced849ee1bb76e7391b93eb12}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha256}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha256}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17218}{}\doxysubsection{\texorpdfstring{SHA256}{SHA256}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17218}
+Provides \href{https://en.wikipedia.org/wiki/SHA-256}{\texttt{ SHA-\/256}} message digests.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha256.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha384}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha384}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17219}{}\doxysubsection{\texorpdfstring{SHA384}{SHA384}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17219}
+Provides \href{https://en.wikipedia.org/wiki/SHA-384}{\texttt{ SHA-\/384}} message digests.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha384.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ ca737f1014a48f4c0b6dd43cb177b0afd9e5169367544c494011e3317dbf9a509cb1e5dc1e85a941bbee3d7f2afbc9b1}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha512}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_sha512}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17220}{}\doxysubsection{\texorpdfstring{SHA512}{SHA512}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17220}
+Provides \href{https://en.wikipedia.org/wiki/SHA-512}{\texttt{ SHA-\/512}} message digests.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ SHA-\/512}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha512.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ 07e547d9586f6a73f73fbac0435ed76951218fb7d0c8d788a309d785436bbb642e93a252a954f23912547d1e8a3b5ed6e1bfd7097821233fa0538f3db854fee6}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ SHA-\/512/224}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha512.sha224.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ 944cd2847fb54558d4775db0485a50003111c8e5daa63fe722c6aa37}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ SHA-\/512/256}
+\DoxyCodeLine{var\ md\ =\ forge.md.sha512.sha256.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ dd9d67b371519c339ed8dbd25af90e976a1eeefd4ad3d889005e532fc5bef04d}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_md5}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_md5}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17221}{}\doxysubsection{\texorpdfstring{MD5}{MD5}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17221}
+Provides \href{https://en.wikipedia.org/wiki/MD5}{\texttt{ MD5}} message digests.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ md\ =\ forge.md.md5.create();}
+\DoxyCodeLine{md.update('The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog');}
+\DoxyCodeLine{console.log(md.digest().toHex());}
+\DoxyCodeLine{//\ output:\ 9e107d9d372bb6826bd81d3542a419d6}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_hmac}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_hmac}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17222}{}\doxysubsection{\texorpdfstring{HMAC}{HMAC}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17222}
+Provides \href{https://en.wikipedia.org/wiki/HMAC}{\texttt{ HMAC}} w/any supported message digest algorithm.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hmac\ =\ forge.hmac.create();}
+\DoxyCodeLine{hmac.start('sha1',\ 'Jefe');}
+\DoxyCodeLine{hmac.update('what\ do\ ya\ want\ for\ nothing?');}
+\DoxyCodeLine{console.log(hmac.digest().toHex());}
+\DoxyCodeLine{//\ output:\ effcdf6ae5eb2fa2d27416d5f184df9c259a7c79}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17223}{}\doxysection{\texorpdfstring{Utilities}{Utilities}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17223}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_prime}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_prime}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17224}{}\doxysubsection{\texorpdfstring{Prime}{Prime}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17224}
+Provides an API for generating large, random, probable primes.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ generate\ a\ random\ prime\ on\ the\ main\ JS\ thread}
+\DoxyCodeLine{var\ bits\ =\ 1024;}
+\DoxyCodeLine{forge.prime.generateProbablePrime(bits,\ function(err,\ num)\ \{}
+\DoxyCodeLine{\ \ console.log('random\ prime',\ num.toString(16));}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ random\ prime\ using\ Web\ Workers\ (if\ available,\ otherwise}
+\DoxyCodeLine{//\ falls\ back\ to\ the\ main\ thread)}
+\DoxyCodeLine{var\ bits\ =\ 1024;}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ algorithm:\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ 'PRIMEINC',}
+\DoxyCodeLine{\ \ \ \ workers:\ -\/1\ //\ auto-\/optimize\ \#\ of\ workers}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{forge.prime.generateProbablePrime(bits,\ options,\ function(err,\ num)\ \{}
+\DoxyCodeLine{\ \ console.log('random\ prime',\ num.toString(16));}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_prng}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_prng}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17225}{}\doxysubsection{\texorpdfstring{PRNG}{PRNG}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17225}
+Provides a \href{https://en.wikipedia.org/wiki/Fortuna_(PRNG)}{\texttt{ Fortuna}}-\/based cryptographically-\/secure pseudo-\/random number generator, to be used with a cryptographic function backend, e.\+g. \href{https://en.wikipedia.org/wiki/Advanced_Encryption_Standard}{\texttt{ AES}}. An implementation using \href{https://en.wikipedia.org/wiki/Advanced_Encryption_Standard}{\texttt{ AES}} as a backend is provided. An API for collecting entropy is given, though if window.\+crypto.\+get\+Random\+Values is available, it will be used automatically.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ get\ some\ random\ bytes\ synchronously}
+\DoxyCodeLine{var\ bytes\ =\ forge.random.getBytesSync(32);}
+\DoxyCodeLine{console.log(forge.util.bytesToHex(bytes));}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ some\ random\ bytes\ asynchronously}
+\DoxyCodeLine{forge.random.getBytes(32,\ function(err,\ bytes)\ \{}
+\DoxyCodeLine{\ \ console.log(forge.util.bytesToHex(bytes));}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ collect\ some\ entropy\ if\ you'd\ like}
+\DoxyCodeLine{forge.random.collect(someRandomBytes);}
+\DoxyCodeLine{jQuery().mousemove(function(e)\ \{}
+\DoxyCodeLine{\ \ forge.random.collectInt(e.clientX,\ 16);}
+\DoxyCodeLine{\ \ forge.random.collectInt(e.clientY,\ 16);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ specify\ a\ seed\ file\ for\ use\ with\ the\ synchronous\ API\ if\ you'd\ like}
+\DoxyCodeLine{forge.random.seedFileSync\ =\ function(needed)\ \{}
+\DoxyCodeLine{\ \ //\ get\ 'needed'\ number\ of\ random\ bytes\ from\ somewhere}
+\DoxyCodeLine{\ \ return\ fetchedRandomBytes;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ specify\ a\ seed\ file\ for\ use\ with\ the\ asynchronous\ API\ if\ you'd\ like}
+\DoxyCodeLine{forge.random.seedFile\ =\ function(needed,\ callback)\ \{}
+\DoxyCodeLine{\ \ //\ get\ the\ 'needed'\ number\ of\ random\ bytes\ from\ somewhere}
+\DoxyCodeLine{\ \ callback(null,\ fetchedRandomBytes);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ register\ the\ main\ thread\ to\ send\ entropy\ or\ a\ Web\ Worker\ to\ receive}
+\DoxyCodeLine{//\ entropy\ on\ demand\ from\ the\ main\ thread}
+\DoxyCodeLine{forge.random.registerWorker(self);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ a\ new\ instance\ of\ a\ PRNG\ with\ no\ collected\ entropy}
+\DoxyCodeLine{var\ myPrng\ =\ forge.random.createInstance();}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_task}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_task}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17226}{}\doxysubsection{\texorpdfstring{Tasks}{Tasks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17226}
+Provides queuing and synchronizing tasks in a web application.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ TODO}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_util}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_util}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17227}{}\doxysubsection{\texorpdfstring{Utilities}{Utilities}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17227}
+Provides utility functions, including byte buffer support, base64, bytes to/from hex, zlib inflate/deflate, etc.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ encode/decode\ base64}
+\DoxyCodeLine{var\ encoded\ =\ forge.util.encode64(str);}
+\DoxyCodeLine{var\ str\ =\ forge.util.decode64(encoded);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ encode/decode\ UTF-\/8}
+\DoxyCodeLine{var\ encoded\ =\ forge.util.encodeUtf8(str);}
+\DoxyCodeLine{var\ str\ =\ forge.util.decodeUtf8(encoded);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ bytes\ to/from\ hex}
+\DoxyCodeLine{var\ bytes\ =\ forge.util.hexToBytes(hex);}
+\DoxyCodeLine{var\ hex\ =\ forge.util.bytesToHex(bytes);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ an\ empty\ byte\ buffer}
+\DoxyCodeLine{var\ buffer\ =\ forge.util.createBuffer();}
+\DoxyCodeLine{//\ create\ a\ byte\ buffer\ from\ raw\ binary\ bytes}
+\DoxyCodeLine{var\ buffer\ =\ forge.util.createBuffer(input,\ 'raw');}
+\DoxyCodeLine{//\ create\ a\ byte\ buffer\ from\ utf8\ bytes}
+\DoxyCodeLine{var\ buffer\ =\ forge.util.createBuffer(input,\ 'utf8');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ the\ length\ of\ the\ buffer\ in\ bytes}
+\DoxyCodeLine{buffer.length();}
+\DoxyCodeLine{//\ put\ bytes\ into\ the\ buffer}
+\DoxyCodeLine{buffer.putBytes(bytes);}
+\DoxyCodeLine{//\ put\ a\ 32-\/bit\ integer\ into\ the\ buffer}
+\DoxyCodeLine{buffer.putInt32(10);}
+\DoxyCodeLine{//\ buffer\ to\ hex}
+\DoxyCodeLine{buffer.toHex();}
+\DoxyCodeLine{//\ get\ a\ copy\ of\ the\ bytes\ in\ the\ buffer}
+\DoxyCodeLine{bytes.bytes(/*\ count\ */);}
+\DoxyCodeLine{//\ empty\ this\ buffer\ and\ get\ its\ contents}
+\DoxyCodeLine{bytes.getBytes(/*\ count\ */);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ forge\ buffer\ into\ a\ Node.js\ Buffer}
+\DoxyCodeLine{//\ make\ sure\ you\ specify\ the\ encoding\ as\ 'binary'}
+\DoxyCodeLine{var\ forgeBuffer\ =\ forge.util.createBuffer();}
+\DoxyCodeLine{var\ nodeBuffer\ =\ Buffer.from(forgeBuffer.getBytes(),\ 'binary');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ convert\ a\ Node.js\ Buffer\ into\ a\ forge\ buffer}
+\DoxyCodeLine{//\ make\ sure\ you\ specify\ the\ encoding\ as\ 'binary'}
+\DoxyCodeLine{var\ nodeBuffer\ =\ Buffer.from('CAFE',\ 'hex');}
+\DoxyCodeLine{var\ forgeBuffer\ =\ forge.util.createBuffer(nodeBuffer.toString('binary'));}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_log}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_log}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17228}{}\doxysubsection{\texorpdfstring{Logging}{Logging}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17228}
+Provides logging to a javascript console using various categories and levels of verbosity.
+
+{\bfseries{Examples}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ TODO}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_flash}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_flash}%
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17229}{}\doxysubsection{\texorpdfstring{Flash Networking Support}{Flash Networking Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17229}
+The \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2flash_2_r_e_a_d_m_e}{flash README}{0} provides details on rebuilding the optional Flash component used for networking. It also provides details on Policy Server support.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17230}{}\doxysection{\texorpdfstring{Security Considerations}{Security Considerations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17230}
+When using this code please keep the following in mind\+:
+
+
+\begin{DoxyItemize}
+\item Cryptography is hard. Please review and test this code before depending on it for critical functionality.
+\item The nature of Java\+Script is that execution of this code depends on trusting a very large set of Java\+Script tools and systems. Consider runtime variations, runtime characteristics, runtime optimization, code optimization, code minimization, code obfuscation, bundling tools, possible bugs, the Forge code itself, and so on.
+\item If using pre-\/built bundles from \href{https://www.npmjs.com/}{\texttt{ NPM}}, another CDN, or similar, be aware someone else ran the tools to create those files.
+\item Use a secure transport channel such as \href{https://en.wikipedia.org/wiki/Transport_Layer_Security}{\texttt{ TLS}} to load scripts and consider using additional security mechanisms such as \href{https://www.w3.org/TR/SRI/}{\texttt{ Subresource Integrity}} script attributes.
+\item Use "{}native"{} functionality where possible. This can be critical when dealing with performance and random number generation. Note that the Java\+Script random number algorithms should perform well if given suitable entropy.
+\item Understand possible attacks against cryptographic systems. For instance side channel and timing attacks may be possible due to the difficulty in implementing constant time algorithms in pure Java\+Script.
+\item Certain features in this library are less susceptible to attacks depending on usage. This primarily includes features that deal with data format manipulation or those that are not involved in communication.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17231}{}\doxysection{\texorpdfstring{Library Background}{Library Background}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17231}
+
+\begin{DoxyItemize}
+\item \href{https://digitalbazaar.com/2010/07/20/javascript-tls-1/}{\texttt{ https\+://digitalbazaar.\+com/2010/07/20/javascript-\/tls-\/1/}}
+\item \href{https://digitalbazaar.com/2010/07/20/javascript-tls-2/}{\texttt{ https\+://digitalbazaar.\+com/2010/07/20/javascript-\/tls-\/2/}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17232}{}\doxysection{\texorpdfstring{Contact}{Contact}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17232}
+
+\begin{DoxyItemize}
+\item Code\+: \href{https://github.com/digitalbazaar/forge}{\texttt{ https\+://github.\+com/digitalbazaar/forge}}
+\item Bugs\+: \href{https://github.com/digitalbazaar/forge/issues}{\texttt{ https\+://github.\+com/digitalbazaar/forge/issues}}
+\item Email\+: \href{mailto:support@digitalbazaar.com}{\texttt{ support@digitalbazaar.\+com}}
+\item IRC\+: \href{https://webchat.freenode.net/?channels=\#forgejs}{\texttt{ \#forgejs}} on \href{https://libera.chat/}{\texttt{ Libera.\+Chat}} (people may also be on \href{https://freenode.net/}{\texttt{ freenode}} for historical reasons).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17233}{}\doxysection{\texorpdfstring{Donations}{Donations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_autotoc_md17233}
+Financial support is welcome and helps contribute to futher development\+:
+
+
+\begin{DoxyItemize}
+\item For \href{https://www.paypal.com/}{\texttt{ Pay\+Pal}} please send to \href{mailto:paypal@digitalbazaar.com}{\texttt{ paypal@digitalbazaar.\+com}}.
+\item Something else? Please contact \href{mailto:support@digitalbazaar.com}{\texttt{ support@digitalbazaar.\+com}}. 
+\end{DoxyItemize}

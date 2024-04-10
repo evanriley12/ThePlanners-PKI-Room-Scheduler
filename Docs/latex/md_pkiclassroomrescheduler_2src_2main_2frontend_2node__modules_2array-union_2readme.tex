@@ -1,0 +1,32 @@
+\chapter{array-\/union \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/array-\/union"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/array-\/union.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme}\index{array-\/union $<$a href="{}https://travis-\/ci.org/sindresorhus/array-\/union"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/array-\/union.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{array-\/union $<$a href=""https://travis-\/ci.org/sindresorhus/array-\/union"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/array-\/union.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5230}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5230}%
+ \begin{quote}
+Create an array of unique values, in order, from the input arrays \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5231}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5231}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ array-\/union}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5232}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5232}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ arrayUnion\ =\ require('array-\/union');}
+\DoxyCodeLine{}
+\DoxyCodeLine{arrayUnion([1,\ 1,\ 2,\ 3],\ [2,\ 3]);}
+\DoxyCodeLine{//=>\ [1,\ 2,\ 3]}
+\DoxyCodeLine{}
+\DoxyCodeLine{arrayUnion(['foo',\ 'foo',\ 'bar']);}
+\DoxyCodeLine{//=>\ ['foo',\ 'bar']}
+\DoxyCodeLine{}
+\DoxyCodeLine{arrayUnion(['🐱',\ '🦄',\ '🐻'],\ ['🦄',\ '🌈']);}
+\DoxyCodeLine{//=>\ ['🐱',\ '🦄',\ '🐻',\ '🌈']}
+\DoxyCodeLine{}
+\DoxyCodeLine{arrayUnion(['🐱',\ '🦄'],\ ['🐻',\ '🦄'],\ ['🐶',\ '🌈',\ '🌈']);}
+\DoxyCodeLine{//=>\ ['🐱',\ '🦄',\ '🐻',\ '🐶',\ '🌈']}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5233}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array-union_2readme_autotoc_md5233}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

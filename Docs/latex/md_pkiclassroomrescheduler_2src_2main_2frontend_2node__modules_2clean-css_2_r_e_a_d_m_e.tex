@@ -1,0 +1,124 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e}\index{README@{README}}
+\doxysection*{~\newline
+  ~\newline
+ ~\newline
+ }
+
+\href{https://www.npmjs.com/package/clean-css}{\texttt{ }} \href{https://github.com/clean-css/clean-css/actions?query=workflow\%3ATests+branch\%3Amaster}{\texttt{ }} \href{https://travis-ci.org/clean-css/clean-css}{\texttt{ }} \href{https://david-dm.org/clean-css/clean-css}{\texttt{ }} \href{https://npmcharts.com/compare/clean-css?minimal=true}{\texttt{ }}
+
+clean-\/css is a fast and efficient CSS optimizer for \href{http://nodejs.org/}{\texttt{ Node.\+js}} platform and \href{https://clean-css.github.io/}{\texttt{ any modern browser}}.
+
+According to \href{http://goalsmashers.github.io/css-minification-benchmark/}{\texttt{ tests}} it is one of the best available.
+
+{\bfseries{Table of Contents}}
+
+
+\begin{DoxyItemize}
+\item Node.js version support
+\item Install
+\item Use
+\begin{DoxyItemize}
+\item What\textquotesingle{}s new in version 5.3
+\item What\textquotesingle{}s new in version 5.0
+\item What\textquotesingle{}s new in version 4.2
+\item What\textquotesingle{}s new in version 4.1
+\item Important\+: 4.0 breaking changes
+\item Constructor options
+\item Compatibility modes
+\item Fetch option
+\item Formatting options
+\item Inlining options
+\item Optimization levels
+\begin{DoxyItemize}
+\item Level 0 optimizations
+\item Level 1 optimizations
+\item Level 2 optimizations
+\end{DoxyItemize}
+\item Plugins
+\item Minify method
+\item Promise interface
+\item CLI utility
+\end{DoxyItemize}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2safer-buffer_2_porting-_buffer_faq}{FAQ}
+\begin{DoxyItemize}
+\item How to optimize multiple files?
+\item How to process multiple files without concatenating them into one output file?
+\item How to process remote \`{}@import\`{}s correctly?
+\item How to apply arbitrary transformations to CSS properties?
+\item How to specify a custom rounding precision?
+\item How to keep a CSS fragment intact?
+\item How to preserve a comment block?
+\item How to rebase relative image URLs?
+\item How to work with source maps?
+\item How to apply level 1 \& 2 optimizations at the same time?
+\item What level 2 optimizations do?
+\item What errors and warnings are?
+\item How to use clean-\/css with build tools?
+\item How to use clean-\/css from web browser?
+\end{DoxyItemize}
+\item Contributing
+\begin{DoxyItemize}
+\item How to get started?
+\end{DoxyItemize}
+\item Acknowledgments
+\item License
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6898}{}\doxysection{\texorpdfstring{Node.\+js version support}{Node.\+js version support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6898}
+clean-\/css requires Node.\+js 10.\+0+ (tested on Linux, OS X, and Windows)\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6899}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6899}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ clean-\/css}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6900}{}\doxysection{\texorpdfstring{Use}{Use}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6900}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ CleanCSS\ =\ require('clean-\/css');}
+\DoxyCodeLine{var\ input\ =\ 'a\{font-\/weight:bold;\}';}
+\DoxyCodeLine{var\ options\ =\ \{\ /*\ options\ */\ \};}
+\DoxyCodeLine{var\ output\ =\ new\ CleanCSS(options).minify(input);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6901}{}\doxysubsection{\texorpdfstring{What\textquotesingle{}s new in version 5.\+3}{What\textquotesingle{}s new in version 5.\+3}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6901}
+clean-\/css 5.\+3 introduces one new feature\+:
+
+
+\begin{DoxyItemize}
+\item variables can be optimized using level 1\textquotesingle{}s {\ttfamily variable\+Value\+Optimizers} option, which accepts a list of \href{https://github.com/clean-css/clean-css/blob/master/lib/optimizer/level-1/value-optimizers.js}{\texttt{ value optimizers}} or a list of their names, e.\+g. `variable\+Value\+Optimizers\+: \mbox{[}\textquotesingle{}color', \textquotesingle{}fraction\textquotesingle{}\mbox{]}\`{}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6902}{}\doxysubsection{\texorpdfstring{What\textquotesingle{}s new in version 5.\+0}{What\textquotesingle{}s new in version 5.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6902}
+clean-\/css 5.\+0 introduced some breaking changes\+:
+
+
+\begin{DoxyItemize}
+\item Node.\+js 6.\+x and 8.\+x are officially no longer supported;
+\item {\ttfamily transform} callback in level-\/1 optimizations is removed in favor of new plugins interface;
+\item changes default Internet Explorer compatibility from 10+ to \texorpdfstring{$>$}{>}11, to revert the old default use `\{ compatibility\+: \textquotesingle{}ie10' \}{\ttfamily flag;}
+\item {\ttfamily changes default}rebase{\ttfamily option from}true{\ttfamily to}false{\ttfamily so URLs are not rebased by default. Please note that if you set}rebase\+To{\ttfamily option it still counts as setting}rebase\+: true\`{} to preserve some of the backward compatibility.
+\end{DoxyItemize}
+
+And on the new features side of things\+:
+
+
+\begin{DoxyItemize}
+\item format options now accepts numerical values for all breaks, which will allow you to have more control over output formatting, e.\+g. {\ttfamily format\+: \{breaks\+: \{after\+Comment\+: 2\}\}} means clean-\/css will add two line breaks after each comment
+\item a new {\ttfamily batch} option (defaults to {\ttfamily false}) is added, when set to {\ttfamily true} it will process all inputs, given either as an array or a hash, without concatenating them.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6903}{}\doxysubsection{\texorpdfstring{What\textquotesingle{}s new in version 4.\+2}{What\textquotesingle{}s new in version 4.\+2}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6903}
+clean-\/css 4.\+2 introduces the following changes / features\+:
+
+
+\begin{DoxyItemize}
+\item Adds {\ttfamily process} method for compatibility with optimize-\/css-\/assets-\/webpack-\/plugin;
+\item new {\ttfamily transition} property optimizer;
+\item preserves any CSS content between {\ttfamily /\texorpdfstring{$\ast$}{*} clean-\/css ignore\+:start \texorpdfstring{$\ast$}{*}/} and {\ttfamily /\texorpdfstring{$\ast$}{*} clean-\/css ignore\+:end \texorpdfstring{$\ast$}{*}/} comments;
+\item allows filtering based on selector in {\ttfamily transform} callback, see example;
+\item adds configurable line breaks via `format\+: \{ break\+With\+: \textquotesingle{}lf' \}\`{} option.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6904}{}\doxysubsection{\texorpdfstring{What\textquotesingle{}s new in version 4.\+1}{What\textquotesingle{}s new in version 4.\+1}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2clean-css_2_r_e_a_d_m_e_autotoc_md6904}
+clean-\/css 4.\+1 introduces the following changes / features\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily inline\+: false} as an alias to `inline\+: \mbox{[}\textquotesingle{}none'\mbox{]}{\ttfamily ; \texorpdfstring{$\ast$}{*}}multiple\+Pseudo\+Merging{\ttfamily compatibility flag controlling merging of rules with multiple pseudo classes / elements; \texorpdfstring{$\ast$}{*}}remove\+Empty{\ttfamily flag in level 1 optimizations controlling removal of rules and nested blocks; \texorpdfstring{$\ast$}{*}}remove\+Empty{\ttfamily flag in level 2 optimizations controlling removal of rules and nested blocks; \texorpdfstring{$\ast$}{*}}compatibility\+: \{ selectors\+: \{ merge\+Limit\+: $<$number$>$ \} \}{\ttfamily flag in compatibility settings controlling maximum number of selectors in a single rule; \texorpdfstring{$\ast$}{*}}minify{\ttfamily method improved signature accepting a list of hashes for a predictable traversal; \texorpdfstring{$\ast$}{*}}selectors\+Sorting\+Method{\ttfamily level 1 optimization allows}false{\ttfamily or}\textquotesingle{}none\textquotesingle{}{\ttfamily for disabling selector sorting; \texorpdfstring{$\ast$}{*}}fetch{\ttfamily option controlling a function for handling remote requests;}
+\item {\ttfamily new}font{\ttfamily shorthand and}font-\/\texorpdfstring{$\ast$}{*}{\ttfamily longhand optimizers;}
+\item {\ttfamily removal of}optimize\+Font{\ttfamily flag in level 1 optimizations due to new}font{\ttfamily shorthand optimizer; \texorpdfstring{$\ast$}{*}}skip\+Properties{\ttfamily flag in level 2 optimizations controlling which properties won\textquotesingle{}t be optimized;}
+\item {\ttfamily new}animation{\ttfamily shorthand and}animation-\/\texorpdfstring{$\ast$}{*}{\ttfamily longhand optimizers; \texorpdfstring{$\ast$}{*}}remove\+Unused\+At\+Rules{\ttfamily level 2 optimization controlling removal of unused}@counter-\/style{\ttfamily ,}@font-\/face{\ttfamily ,}@keyframes{\ttfamily , and} 
+\end{DoxyItemize}

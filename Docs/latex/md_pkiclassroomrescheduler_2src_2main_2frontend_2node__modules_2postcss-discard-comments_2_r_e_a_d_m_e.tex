@@ -1,0 +1,87 @@
+\chapter{\texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}postcss\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}-\/discard-\/comments}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e}\index{$<$a href="{}https://github.com/postcss/postcss"{} $>$postcss$<$/a$>$-\/discard-\/comments@{$<$a href=""https://github.com/postcss/postcss"" $>$postcss$<$/a$>$-\/discard-\/comments}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18614}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18614}%
+ \begin{quote}
+Discard comments in your CSS files with Post\+CSS. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18615}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18615}
+With \href{https://npmjs.org/package/postcss-discard-comments}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/discard-\/comments\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18616}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18616}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18617}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18617}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1/*\ heading\ */\{}
+\DoxyCodeLine{\ \ \ \ margin:\ 0\ auto}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18618}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18618}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 0\ auto}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This module discards comments from your CSS files; by default, it will remove all regular comments ({\ttfamily /\texorpdfstring{$\ast$}{*} comment \texorpdfstring{$\ast$}{*}/}) and preserve comments marked as important ({\ttfamily /\texorpdfstring{$\ast$}{*}! important \texorpdfstring{$\ast$}{*}/}).
+
+Note that this module does not handle source map comments because they are not available to it; Post\+CSS handles this internally, so if they are removed then you will have to \href{https://github.com/postcss/postcss/blob/master/docs/source-maps.md}{\texttt{ configure source maps in Post\+CSS}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18619}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18619}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18620}{}\doxysubsection{\texorpdfstring{comments(\mbox{[}options\mbox{]})}{comments(\mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18620}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18621}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18621}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18622}{}\doxyparagraph{\texorpdfstring{remove(function)}{remove(function)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18622}
+Type\+: {\ttfamily function} Return\+: {\ttfamily boolean} Variable\+: {\ttfamily comment} contains a comment without {\ttfamily /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/}
+
+For each comment, return true to remove, or false to keep the comment.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function(comment)\ \{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ css\ =\ '/*\ headings\ *//*@\ h1\ */h1\{margin:0\ auto\}/*@\ h2\ */h2\{color:red\}';}
+\DoxyCodeLine{console.log(postcss(comments(\{}
+\DoxyCodeLine{\ \ \ \ remove:\ function(comment)\ \{\ return\ comment[0]\ ==\ "{}@"{};\ \}}
+\DoxyCodeLine{\})).process(css).css);}
+\DoxyCodeLine{//=>\ /*\ headings\ */h1\{margin:0\ auto\}h2\{color:red\}}
+
+\end{DoxyCode}
+ {\bfseries{NOTE\+:}} If you use the {\ttfamily remove} function other options will not be available.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18623}{}\doxyparagraph{\texorpdfstring{remove\+All}{remove\+All}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18623}
+Type\+: {\ttfamily boolean} Default\+: {\ttfamily false}
+
+Remove all comments marked as important.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ css\ =\ '/*!\ heading\ */h1\{margin:0\ auto\}/*!\ heading\ 2\ */h2\{color:red\}';}
+\DoxyCodeLine{console.log(postcss(comments(\{removeAll:\ true\})).process(css).css);}
+\DoxyCodeLine{//=>\ h1\{margin:0\ auto\}h2\{color:red\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18624}{}\doxyparagraph{\texorpdfstring{remove\+All\+But\+First}{remove\+All\+But\+First}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18624}
+Type\+: {\ttfamily boolean} Default\+: {\ttfamily false}
+
+Remove all comments marked as important, but the first one.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ css\ =\ '/*!\ heading\ */h1\{margin:0\ auto\}/*!\ heading\ 2\ */h2\{color:red\}';}
+\DoxyCodeLine{console.log(postcss(comments(\{removeAllButFirst:\ true\})).process(css).css);}
+\DoxyCodeLine{//=>\ /*!\ heading\ */h1\{margin:0\ auto\}h2\{color:red\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18625}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18625}
+See the \href{https://github.com/postcss/postcss\#usage}{\texttt{ Post\+CSS documentation}} for examples for your environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18626}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18626}
+See \href{https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md}{\texttt{ CONTRIBUTORS.\+md}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18627}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-discard-comments_2_r_e_a_d_m_e_autotoc_md18627}
+MIT © \href{http://beneb.info}{\texttt{ Ben Briggs}} 

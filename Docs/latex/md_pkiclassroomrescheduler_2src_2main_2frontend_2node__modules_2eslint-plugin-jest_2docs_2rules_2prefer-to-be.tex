@@ -1,0 +1,57 @@
+\chapter{Suggest using \texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}to\+Be()\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>} for primitive literals (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}prefer-\/to-\/be\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be}\index{Suggest using $<$tt$>$toBe()$<$/tt$>$ for primitive literals ($<$tt$>$prefer-\/to-\/be$<$/tt$>$)@{Suggest using $<$tt$>$toBe()$<$/tt$>$ for primitive literals ($<$tt$>$prefer-\/to-\/be$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be_autotoc_md10471}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be_autotoc_md10471}%
+ When asserting against primitive literals such as numbers and strings, the equality matchers all operate the same, but read slightly differently in code.
+
+This rule recommends using the {\ttfamily to\+Be} matcher in these situations, as it forms the most grammatically natural sentence. For {\ttfamily null}, {\ttfamily undefined}, and {\ttfamily NaN} this rule recommends using their specific {\ttfamily to\+Be} matchers, as they give better error messages as well.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be_autotoc_md10472}{}\doxysection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be_autotoc_md10472}
+This rule triggers a warning if {\ttfamily to\+Equal()} or {\ttfamily to\+Strict\+Equal()} are used to assert a primitive literal value such as numbers, strings, and booleans.
+
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{expect(value).not.toEqual(5);}
+\DoxyCodeLine{expect(getMessage()).toStrictEqual('hello\ world');}
+\DoxyCodeLine{expect(loadMessage()).resolves.toEqual('hello\ world');}
+
+\end{DoxyCode}
+
+
+The following pattern is not warning\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{expect(value).not.toBe(5);}
+\DoxyCodeLine{expect(getMessage()).toBe('hello\ world');}
+\DoxyCodeLine{expect(loadMessage()).resolves.toBe('hello\ world');}
+\DoxyCodeLine{expect(didError).not.toBe(true);}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(catchError()).toStrictEqual(\{\ message:\ 'oh\ noes!'\ \});}
+
+\end{DoxyCode}
+
+
+For {\ttfamily null}, {\ttfamily undefined}, and {\ttfamily NaN}, this rule triggers a warning if {\ttfamily to\+Be} is used to assert against those literal values instead of their more specific {\ttfamily to\+Be} counterparts\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{expect(value).not.toBe(undefined);}
+\DoxyCodeLine{expect(getMessage()).toBe(null);}
+\DoxyCodeLine{expect(countMessages()).resolves.not.toBe(NaN);}
+
+\end{DoxyCode}
+
+
+The following pattern is not warning\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{expect(value).toBeDefined();}
+\DoxyCodeLine{expect(getMessage()).toBeNull();}
+\DoxyCodeLine{expect(countMessages()).resolves.not.toBeNaN();}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(catchError()).toStrictEqual(\{\ message:\ undefined\ \});}
+
+\end{DoxyCode}
+ 

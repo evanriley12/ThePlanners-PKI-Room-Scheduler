@@ -1,0 +1,101 @@
+\chapter{react-\/app-\/polyfill}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e}\index{react-\/app-\/polyfill@{react-\/app-\/polyfill}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20287}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20287}%
+ This package includes polyfills for various browsers. It includes minimum requirements and commonly used language features used by \href{https://github.com/facebook/create-react-app}{\texttt{ Create React App}} projects.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20288}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20288}
+First, install the package using Yarn or npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ react-\/app-\/polyfill}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ react-\/app-\/polyfill}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20289}{}\doxysection{\texorpdfstring{Supporting Internet Explorer}{Supporting Internet Explorer}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20289}
+You can import the entry point for the minimal version you intend to support to ensure that the minimum language features are present that are required to use Create React App. For example, if you import the IE9 entry point, this will include IE10 and IE11 support.
+
+These modules ensure the following language features are present\+:
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily Promise} (for {\ttfamily async} / {\ttfamily await} support)
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item {\ttfamily window.\+fetch} (a Promise-\/based way to make web requests in the browser)
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item {\ttfamily Object.\+assign} (a helper required for Object Spread, i.\+e. {\ttfamily \{ ...a, ...b \}})
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item {\ttfamily Symbol} (a built-\/in object used by {\ttfamily for...of} syntax and friends)
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item {\ttfamily Array.\+from} (a built-\/in static method used by array spread, i.\+e. {\ttfamily \mbox{[}...arr\mbox{]}})
+\end{DoxyEnumerate}
+
+{\itshape If you need more features, see the Polyfilling other language features section below.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20290}{}\doxysubsubsection{\texorpdfstring{Internet Explorer 9}{Internet Explorer 9}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20290}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ This\ must\ be\ the\ first\ line\ in\ src/index.js}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/ie9';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20291}{}\doxysubsubsection{\texorpdfstring{Internet Explorer 11}{Internet Explorer 11}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20291}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ This\ must\ be\ the\ first\ line\ in\ src/index.js}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/ie11';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20292}{}\doxysection{\texorpdfstring{Polyfilling other language features}{Polyfilling other language features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-app-polyfill_2_r_e_a_d_m_e_autotoc_md20292}
+You can also polyfill stable language features not available in your target browsers. If you\textquotesingle{}re using this in Create React App, it will automatically use the {\ttfamily browserslist} you\textquotesingle{}ve defined to only include polyfills needed by your target browsers when importing the {\ttfamily stable} polyfill. {\bfseries{Make sure to follow the Internet Explorer steps above if you need to support Internet Explorer in your application}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ This\ must\ be\ the\ first\ line\ in\ src/index.js}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/stable';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+
+
+If you are supporting Internet Explorer 9 or Internet Explorer 11 you should include both the {\ttfamily ie9} or {\ttfamily ie11} and {\ttfamily stable} modules\+:
+
+For IE9\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ These\ must\ be\ the\ first\ lines\ in\ src/index.js}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/ie9';}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/stable';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+
+
+For IE11\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ These\ must\ be\ the\ first\ lines\ in\ src/index.js}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/ie11';}
+\DoxyCodeLine{import\ 'react-\/app-\/polyfill/stable';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+ 

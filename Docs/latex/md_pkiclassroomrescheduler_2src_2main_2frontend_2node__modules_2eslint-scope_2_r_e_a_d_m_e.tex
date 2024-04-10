@@ -1,0 +1,53 @@
+\chapter{ESLint Scope}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e}\index{ESLint Scope@{ESLint Scope}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10964}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10964}%
+ ESLint Scope is the \href{http://www.ecma-international.org/publications/standards/Ecma-262.htm}{\texttt{ ECMAScript}} scope analyzer used in ESLint. It is a fork of \href{http://github.com/estools/escope}{\texttt{ escope}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10965}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10965}
+Install\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ eslint-\/scope\ -\/-\/save}
+
+\end{DoxyCode}
+
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ eslintScope\ =\ require('eslint-\/scope');}
+\DoxyCodeLine{var\ espree\ =\ require('espree');}
+\DoxyCodeLine{var\ estraverse\ =\ require('estraverse');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ ast\ =\ espree.parse(code);}
+\DoxyCodeLine{var\ scopeManager\ =\ eslintScope.analyze(ast);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ currentScope\ =\ scopeManager.acquire(ast);\ \ \ //\ global\ scope}
+\DoxyCodeLine{}
+\DoxyCodeLine{estraverse.traverse(ast,\ \{}
+\DoxyCodeLine{\ \ \ \ enter:\ function(node,\ parent)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ do\ stuff}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (/Function/.test(node.type))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ currentScope\ =\ scopeManager.acquire(node);\ \ //\ get\ current\ function\ scope}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ leave:\ function(node,\ parent)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (/Function/.test(node.type))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ currentScope\ =\ currentScope.upper;\ \ //\ set\ to\ parent\ scope}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ do\ stuff}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10966}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10966}
+Issues and pull requests will be triaged and responded to as quickly as possible. We operate under the \href{http://eslint.org/docs/developer-guide/contributing}{\texttt{ ESLint Contributor Guidelines}}, so please be sure to read them before contributing. If you\textquotesingle{}re not sure where to dig in, check out the \href{https://github.com/eslint/eslint-scope/issues}{\texttt{ issues}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10967}{}\doxysection{\texorpdfstring{Build Commands}{Build Commands}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10967}
+
+\begin{DoxyItemize}
+\item {\ttfamily npm test} -\/ run all linting and tests
+\item {\ttfamily npm run lint} -\/ run all linting
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10968}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-scope_2_r_e_a_d_m_e_autotoc_md10968}
+ESLint Scope is licensed under a permissive BSD 2-\/clause license. 

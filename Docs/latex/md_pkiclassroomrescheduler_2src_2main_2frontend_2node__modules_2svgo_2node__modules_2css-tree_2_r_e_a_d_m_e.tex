@@ -1,0 +1,107 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e}\index{README@{README}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24401}{}\doxysection{\texorpdfstring{CSSTree}{CSSTree}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24401}
+\href{https://www.npmjs.com/package/css-tree}{\texttt{ }} \href{https://travis-ci.org/csstree/csstree}{\texttt{ }} \href{https://coveralls.io/github/csstree/csstree?branch=master}{\texttt{ }} \href{https://www.npmjs.com/package/css-tree}{\texttt{ }} \href{https://twitter.com/csstree}{\texttt{ }}
+
+CSSTree is a tool set to work with CSS, including \href{https://github.com/postcss/benchmark}{\texttt{ fast}} detailed parser (string-\/\texorpdfstring{$>$}{>}AST), walker (AST traversal), generator (AST-\/\texorpdfstring{$>$}{>}string) and lexer (validation and matching) based on knowledge of spec and browser implementations. The main goal is to be efficient and W3C spec compliant, with focus on CSS analyzing and source-\/to-\/source transforming tasks.
+
+\begin{quote}
+NOTE\+: The project is in alpha stage since some parts need further improvements, AST format and API are subjects to change. However it\textquotesingle{}s stable enough and used by packages like \href{https://github.com/css/csso}{\texttt{ CSSO}} (CSS minifier) and \href{https://github.com/svg/svgo}{\texttt{ SVGO}} (SVG optimizer) in production. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24402}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24402}
+
+\begin{DoxyItemize}
+\item {\bfseries{Detailed parsing with an adjustable level of detail}}
+
+By default CSSTree parses CSS as detailed as possible, i.\+e. each single logical part is representing with its own AST node (see AST format for all possible node types). The parsing detail level can be changed through \href{docs/parsing.md\#parsesource-options}{\texttt{ parser options}}, for example, you can disable parsing of selectors or declaration values for component parts.
+\item {\bfseries{Tolerant to errors by design}}
+
+Parser behaves as \href{https://www.w3.org/TR/css-syntax-3/\#error-handling}{\texttt{ spec says}}\+: "{}\+When errors occur in CSS, the parser attempts to recover gracefully, throwing away only the minimum amount of content before returning to parsing as normal"{}. The only thing the parser departs from the specification is that it doesn\textquotesingle{}t throw away bad content, but wraps it in a special node type ({\ttfamily Raw}) that allows processing it later.
+\item {\bfseries{Fast and efficient}}
+
+CSSTree is created with focus on performance and effective memory consumption. Therefore it\textquotesingle{}s \href{https://github.com/postcss/benchmark}{\texttt{ one of the fastest CSS parsers}} at the moment.
+\item {\bfseries{Syntax validation}}
+
+The build-\/in lexer can test CSS against syntaxes defined by W3C. CSSTree uses \href{https://github.com/mdn/data/}{\texttt{ mdn/data}} as a basis for lexer\textquotesingle{}s dictionaries and extends it with vendor specific and legacy syntaxes. Lexer can only check the declaration values currently, but this feature will be extended to other parts of the CSS in the future.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24403}{}\doxysubsection{\texorpdfstring{Docs}{Docs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24403}
+
+\begin{DoxyItemize}
+\item AST format
+\item Parsing CSS into AST
+\item Generate CSS from AST
+\item AST traversal
+\item Utils for AST
+\item Working with definition syntax
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24404}{}\doxysubsection{\texorpdfstring{Tools}{Tools}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24404}
+
+\begin{DoxyItemize}
+\item \href{https://astexplorer.net/\#/gist/244e2fb4da940df52bf0f4b94277db44/e79aff44611020b22cfd9708f3a99ce09b7d67a8}{\texttt{ AST Explorer}} – explore CSSTree AST format with zero setup
+\item \href{https://csstree.github.io/docs/syntax.html}{\texttt{ CSS syntax reference}}
+\item \href{https://csstree.github.io/docs/validator.html}{\texttt{ CSS syntax validator}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24405}{}\doxysubsection{\texorpdfstring{Related projects}{Related projects}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24405}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/csstree/validator}{\texttt{ csstree-\/validator}} – \+NPM package to validate CSS
+\item \href{https://github.com/csstree/stylelint-validator}{\texttt{ stylelint-\/csstree-\/validator}} – plugin for stylelint to validate CSS
+\item \href{https://github.com/sergejmueller/grunt-csstree-validator}{\texttt{ Grunt plugin}}
+\item \href{https://github.com/csstree/gulp-csstree}{\texttt{ Gulp plugin}}
+\item \href{https://github.com/csstree/SublimeLinter-contrib-csstree}{\texttt{ Sublime plugin}}
+\item \href{https://github.com/csstree/vscode-plugin}{\texttt{ VS Code plugin}}
+\item \href{https://github.com/csstree/atom-plugin}{\texttt{ Atom plugin}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24406}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24406}
+Install with npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ npm\ install\ css-\/tree}
+
+\end{DoxyCode}
+
+
+Basic usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ csstree\ =\ require('css-\/tree');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ parse\ CSS\ to\ AST}
+\DoxyCodeLine{var\ ast\ =\ csstree.parse('.example\ \{\ world:\ "{}!"{}\ \}');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ traverse\ AST\ and\ modify\ it}
+\DoxyCodeLine{csstree.walk(ast,\ function(node)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (node.type\ ===\ 'ClassSelector'\ \&\&\ node.name\ ===\ 'example')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ node.name\ =\ 'hello';}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ generate\ CSS\ from\ AST}
+\DoxyCodeLine{console.log(csstree.generate(ast));}
+\DoxyCodeLine{//\ .hello\{world:"{}!"{}\}}
+
+\end{DoxyCode}
+
+
+Syntax matching\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ parse\ CSS\ to\ AST\ as\ a\ declaration\ value}
+\DoxyCodeLine{var\ ast\ =\ csstree.parse('red\ 1px\ solid',\ \{\ context:\ 'value'\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ march\ to\ syntax\ of\ \`{}border`\ property}
+\DoxyCodeLine{var\ matchResult\ =\ csstree.lexer.matchProperty('border',\ ast);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ check\ first\ value\ node\ is\ a\ <color>}
+\DoxyCodeLine{console.log(matchResult.isType(ast.children.first(),\ 'color'));}
+\DoxyCodeLine{//\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ a\ type\ list\ matched\ to\ a\ node}
+\DoxyCodeLine{console.log(matchResult.getTrace(ast.children.first()));}
+\DoxyCodeLine{//\ [\ \{\ type:\ 'Property',\ name:\ 'border'\ \},}
+\DoxyCodeLine{//\ \ \ \{\ type:\ 'Type',\ name:\ 'color'\ \},}
+\DoxyCodeLine{//\ \ \ \{\ type:\ 'Type',\ name:\ 'named-\/color'\ \},}
+\DoxyCodeLine{//\ \ \ \{\ type:\ 'Keyword',\ name:\ 'red'\ \}\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24407}{}\doxysubsection{\texorpdfstring{Top level API}{Top level API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24407}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24408}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-tree_2_r_e_a_d_m_e_autotoc_md24408}
+MIT 

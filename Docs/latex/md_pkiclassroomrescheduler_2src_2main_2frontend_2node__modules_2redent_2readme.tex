@@ -1,0 +1,41 @@
+\chapter{redent \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/redent"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/redent.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme}\index{redent $<$a href="{}https://travis-\/ci.org/sindresorhus/redent"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/redent.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{redent $<$a href=""https://travis-\/ci.org/sindresorhus/redent"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/redent.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20413}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20413}%
+ \begin{quote}
+\href{https://github.com/sindresorhus/strip-indent}{\texttt{ Strip redundant indentation}} and \href{https://github.com/sindresorhus/indent-string}{\texttt{ indent the string}} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20414}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20414}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ redent}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20415}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20415}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ redent\ =\ require('redent');}
+\DoxyCodeLine{}
+\DoxyCodeLine{redent('\(\backslash\)n\ \ foo\(\backslash\)n\ \ \ \ bar\(\backslash\)n',\ 1);}
+\DoxyCodeLine{//=>\ '\(\backslash\)n\ foo\(\backslash\)n\ \ \ bar\(\backslash\)n'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20416}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20416}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20417}{}\doxysubsection{\texorpdfstring{redent(string, \mbox{[}count\mbox{]}, \mbox{[}options\mbox{]})}{redent(string, \mbox{[}count\mbox{]}, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20417}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20418}{}\doxysubsubsection{\texorpdfstring{string}{string}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20418}
+Type\+: {\ttfamily string}
+
+The string to normalize indentation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20419}{}\doxysubsubsection{\texorpdfstring{count}{count}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20419}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily 0}
+
+How many times you want {\ttfamily options.\+indent} repeated.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20420}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20420}
+Type\+: {\ttfamily object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20421}{}\doxyparagraph{\texorpdfstring{indent}{indent}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20421}
+Type\+: {\ttfamily string}~\newline
+ Default\+: `' \textquotesingle{}\`{}
+
+The string to use for the indent.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20422}{}\doxyparagraph{\texorpdfstring{include\+Empty\+Lines}{include\+Empty\+Lines}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20422}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily false}
+
+Also indent empty lines.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20423}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2redent_2readme_autotoc_md20423}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

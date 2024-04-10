@@ -1,0 +1,109 @@
+\chapter{Changes to CSS Blank Pseudo}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g}\index{Changes to CSS Blank Pseudo@{Changes to CSS Blank Pseudo}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7845}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7845}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7846}{}\doxysubsection{\texorpdfstring{3.\+0.\+3 (February 5, 2022)}{3.\+0.\+3 (February 5, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7846}
+
+\begin{DoxyItemize}
+\item Rebuild of browser polyfills
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7847}{}\doxysubsection{\texorpdfstring{3.\+0.\+2 (January 2, 2022)}{3.\+0.\+2 (January 2, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7847}
+
+\begin{DoxyItemize}
+\item Removed Sourcemaps from package tarball.
+\item Moved CLI to CLI Package. See \href{https://github.com/csstools/postcss-plugins/discussions/121}{\texttt{ announcement}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7848}{}\doxysubsection{\texorpdfstring{3.\+0.\+1 (December 27, 2021)}{3.\+0.\+1 (December 27, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7848}
+
+\begin{DoxyItemize}
+\item Fixed\+: require/import paths for browser script
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7849}{}\doxysubsection{\texorpdfstring{3.\+0.\+0 (December 13, 2021)}{3.\+0.\+0 (December 13, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7849}
+
+\begin{DoxyItemize}
+\item Breaking\+: require/import paths have changed
+\item Changed\+: new polyfill CDN urls.
+\item Changed\+: Supports Node 12+ (major).
+\item Updated\+: documentation
+\end{DoxyItemize}
+
+{\bfseries{Migrating to 3.\+0.\+0}}
+
+Post\+CSS plugin \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ postcssBlankPseudo\ =\ require('css-\/blank-\/pseudo/postcss');}
+\DoxyCodeLine{+\ const\ postcssBlankPseudo\ =\ require('css-\/blank-\/pseudo');}
+
+\end{DoxyCode}
+
+
+Browser Polyfill \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ cssBlankPseudo\ =\ require('css-\/blank-\/pseudo');}
+\DoxyCodeLine{+\ const\ cssBlankPseudo\ =\ require('css-\/blank-\/pseudo/browser');}
+
+\end{DoxyCode}
+
+
+{\itshape The old CND url is now deprecated and will be removed in a next major release.} {\itshape It will continue to work for now.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ <script\ src="{}https://unpkg.com/css-\/blank-\/pseudo/browser"{}></script>}
+\DoxyCodeLine{+\ <script\ src="{}https://unpkg.com/css-\/blank-\/pseudo/dist/browser-\/global.js"{}></script>}
+
+\end{DoxyCode}
+
+
+Browser Polyfill IE \+:
+
+{\itshape The polyfill for IE is now the same as the general polyfill}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ cssBlankPseudo\ =\ require('css-\/blank-\/pseudo');}
+\DoxyCodeLine{+\ const\ cssBlankPseudo\ =\ require('css-\/blank-\/pseudo/browser');}
+
+\end{DoxyCode}
+
+
+{\itshape The old CND url is now deprecated and will be removed in a next major release.} {\itshape It will continue to work for now.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ <script\ src="{}https://unpkg.com/css-\/blank-\/pseudo/browser-\/legacy"{}></script>}
+\DoxyCodeLine{+\ <script\ src="{}https://unpkg.com/css-\/blank-\/pseudo/dist/browser-\/global.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7850}{}\doxysubsection{\texorpdfstring{2.\+0.\+0 (September 16, 2021)}{2.\+0.\+0 (September 16, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7850}
+
+\begin{DoxyItemize}
+\item Changed\+: Supports Post\+CSS 8.\+3+ (major).
+\item Changed\+: Supports Node 10+ (major).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7851}{}\doxysubsection{\texorpdfstring{1.\+0.\+0 (June 10, 2019)}{1.\+0.\+0 (June 10, 2019)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7851}
+
+\begin{DoxyItemize}
+\item Updated\+: {\ttfamily postcss} to 7.\+0.\+16 (patch)
+\item Updated\+: Node 8+ compatibility (major)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7852}{}\doxysubsection{\texorpdfstring{0.\+1.\+4 (November 17, 2018)}{0.\+1.\+4 (November 17, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7852}
+
+\begin{DoxyItemize}
+\item Update documentation
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7853}{}\doxysubsection{\texorpdfstring{0.\+1.\+3 (November 17, 2018)}{0.\+1.\+3 (November 17, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7853}
+
+\begin{DoxyItemize}
+\item Improve CLI usage
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7854}{}\doxysubsection{\texorpdfstring{0.\+1.\+2 (November 17, 2018)}{0.\+1.\+2 (November 17, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7854}
+
+\begin{DoxyItemize}
+\item Provide a version specifically for Internet Explorer 11
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7855}{}\doxysubsection{\texorpdfstring{0.\+1.\+1 (November 17, 2018)}{0.\+1.\+1 (November 17, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7855}
+
+\begin{DoxyItemize}
+\item Update documentation
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7856}{}\doxysubsection{\texorpdfstring{0.\+1.\+0 (November 17, 2018)}{0.\+1.\+0 (November 17, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7856}
+
+\begin{DoxyItemize}
+\item Initial version 
+\end{DoxyItemize}

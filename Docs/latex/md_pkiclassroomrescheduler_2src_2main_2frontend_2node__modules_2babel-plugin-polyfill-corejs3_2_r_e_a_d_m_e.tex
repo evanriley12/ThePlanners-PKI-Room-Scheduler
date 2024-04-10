@@ -1,0 +1,82 @@
+\chapter{babel-\/plugin-\/polyfill-\/corejs3}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e}\index{babel-\/plugin-\/polyfill-\/corejs3@{babel-\/plugin-\/polyfill-\/corejs3}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5899}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5899}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5900}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5900}
+Using npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ babel-\/plugin-\/polyfill-\/corejs3}
+
+\end{DoxyCode}
+
+
+or using yarn\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ babel-\/plugin-\/polyfill-\/corejs3\ -\/-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5901}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5901}
+Add this plugin to your Babel configuration\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ [["{}polyfill-\/corejs3"{},\ \{\ "{}method"{}:\ "{}usage-\/global"{},\ "{}version"{}:\ "{}3.20"{}\ \}]]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This package supports the {\ttfamily usage-\/pure}, {\ttfamily usage-\/global}, and {\ttfamily entry-\/global} methods. When {\ttfamily entry-\/global} is used, it replaces imports to {\ttfamily core-\/js}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5902}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5902}
+See \href{../../docs/usage.md\#options}{\texttt{ here}} for a list of options supported by every polyfill provider.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5903}{}\doxysubsection{\texorpdfstring{{\ttfamily version}}{{\ttfamily version}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5903}
+{\ttfamily string}, defaults to {\ttfamily "{}3.\+0"{}}.
+
+This option only has an effect when used alongside {\ttfamily "{}method"{}\+: "{}usage-\/global"{}} or {\ttfamily "{}method"{}\+: "{}usage-\/pure"{}}. It is recommended to specify the minor version you are using as {\ttfamily core-\/js@3.\+0} may not include polyfills for the latest features. If you are bundling an app, you can provide the version directly from your node modules\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ ["{}polyfill-\/corejs3"{},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}method"{}:\ "{}usage-\/pure"{},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ use\ \`{}core-\/js/package.json`\ if\ you\ are\ using\ \`{}usage-\/global`}
+\DoxyCodeLine{\ \ \ \ \ \ "{}version"{}:\ require("{}core-\/js-\/pure/package.json"{}).version}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+If you are a library author, specify a reasonably modern {\ttfamily core-\/js} version in your {\ttfamily package.\+json} and provide the plugin the minimal supported version.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}dependencies"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}core-\/js"{}:\ "{}\string^3.20.0"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ ["{}polyfill-\/corejs3"{},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}method"{}:\ "{}usage-\/global"{},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ improvise\ if\ you\ have\ more\ complicated\ version\ spec,\ e.g.\ >\ 3.1.4}
+\DoxyCodeLine{\ \ \ \ \ \ "{}version"{}:\ require("{}./package.json"{}).dependencies["{}core-\/js"{}]}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5904}{}\doxysubsection{\texorpdfstring{{\ttfamily proposals}}{{\ttfamily proposals}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-corejs3_2_r_e_a_d_m_e_autotoc_md5904}
+{\ttfamily boolean}, defaults to {\ttfamily false}.
+
+This option only has an effect when used alongside {\ttfamily "{}method"{}\+: "{}usage-\/global"{}} or {\ttfamily "{}method"{}\+: "{}usage-\/pure"{}}. When {\ttfamily proposals} are {\ttfamily true}, any ES proposal supported by core-\/js will be polyfilled as well. 

@@ -1,0 +1,90 @@
+\chapter{Statuses}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e}\index{Statuses@{Statuses}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23011}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23011}%
+ \href{https://npmjs.org/package/statuses}{\texttt{ }} \href{https://npmjs.org/package/statuses}{\texttt{ }} \href{https://nodejs.org/en/download}{\texttt{ }} \href{https://travis-ci.org/jshttp/statuses}{\texttt{ }} \href{https://coveralls.io/r/jshttp/statuses?branch=master}{\texttt{ }}
+
+HTTP status utility for node.
+
+This module provides a list of status codes and messages sourced from a few different projects\+:
+
+
+\begin{DoxyItemize}
+\item The \href{https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml}{\texttt{ IANA Status Code Registry}}
+\item The \href{https://nodejs.org/}{\texttt{ Node.\+js project}}
+\item The \href{https://www.nginx.com/}{\texttt{ NGINX project}}
+\item The \href{https://httpd.apache.org/}{\texttt{ Apache HTTP Server project}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23012}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23012}
+This is a \href{https://nodejs.org/en/}{\texttt{ Node.\+js}} module available through the \href{https://www.npmjs.com/}{\texttt{ npm registry}}. Installation is done using the \href{https://docs.npmjs.com/getting-started/installing-npm-packages-locally}{\texttt{ {\ttfamily npm install} command}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ statuses}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23013}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23013}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ status\ =\ require('statuses')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23014}{}\doxysubsection{\texorpdfstring{var code = status(Integer \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} String)}{var code = status(Integer \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} String)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23014}
+If {\ttfamily Integer} or {\ttfamily String} is a valid HTTP code or status message, then the appropriate {\ttfamily code} will be returned. Otherwise, an error will be thrown.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{status(403)\ //\ =>\ 403}
+\DoxyCodeLine{status('403')\ //\ =>\ 403}
+\DoxyCodeLine{status('forbidden')\ //\ =>\ 403}
+\DoxyCodeLine{status('Forbidden')\ //\ =>\ 403}
+\DoxyCodeLine{status(306)\ //\ throws,\ as\ it's\ not\ supported\ by\ node.js}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23015}{}\doxysubsection{\texorpdfstring{status.\+STATUS\+\_\+\+CODES}{status.\+STATUS\+\_\+\+CODES}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23015}
+Returns an object which maps status codes to status messages, in the same format as the \href{https://nodejs.org/dist/latest/docs/api/http.html\#http_http_status_codes}{\texttt{ Node.\+js http module}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23016}{}\doxysubsection{\texorpdfstring{status.\+codes}{status.\+codes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23016}
+Returns an array of all the status codes as {\ttfamily Integer}s.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23017}{}\doxysubsection{\texorpdfstring{var msg = status\mbox{[}code\mbox{]}}{var msg = status\mbox{[}code\mbox{]}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23017}
+Map of {\ttfamily code} to {\ttfamily status message}. {\ttfamily undefined} for invalid {\ttfamily code}s.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{status[404]\ //\ =>\ 'Not\ Found'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23018}{}\doxysubsection{\texorpdfstring{var code = status\mbox{[}msg\mbox{]}}{var code = status\mbox{[}msg\mbox{]}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23018}
+Map of {\ttfamily status message} to {\ttfamily code}. {\ttfamily msg} can either be title-\/cased or lower-\/cased. {\ttfamily undefined} for invalid {\ttfamily status message}s.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{status['not\ found']\ //\ =>\ 404}
+\DoxyCodeLine{status['Not\ Found']\ //\ =>\ 404}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23019}{}\doxysubsection{\texorpdfstring{status.\+redirect\mbox{[}code\mbox{]}}{status.\+redirect\mbox{[}code\mbox{]}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23019}
+Returns {\ttfamily true} if a status code is a valid redirect status.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{status.redirect[200]\ //\ =>\ undefined}
+\DoxyCodeLine{status.redirect[301]\ //\ =>\ true}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23020}{}\doxysubsection{\texorpdfstring{status.\+empty\mbox{[}code\mbox{]}}{status.\+empty\mbox{[}code\mbox{]}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23020}
+Returns {\ttfamily true} if a status code expects an empty body.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{status.empty[200]\ //\ =>\ undefined}
+\DoxyCodeLine{status.empty[204]\ //\ =>\ true}
+\DoxyCodeLine{status.empty[304]\ //\ =>\ true}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23021}{}\doxysubsection{\texorpdfstring{status.\+retry\mbox{[}code\mbox{]}}{status.\+retry\mbox{[}code\mbox{]}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serve-index_2node__modules_2statuses_2_r_e_a_d_m_e_autotoc_md23021}
+Returns {\ttfamily true} if you should retry the rest.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{status.retry[501]\ //\ =>\ undefined}
+\DoxyCodeLine{status.retry[503]\ //\ =>\ true}
+
+\end{DoxyCode}
+ 

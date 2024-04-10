@@ -1,0 +1,248 @@
+\chapter{Command-\/\+Option-\/\+Argument}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e}\index{Command-\/Option-\/Argument@{Command-\/Option-\/Argument}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7088}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7088}%
+ Yet another parser for command line options.
+
+\href{https://www.npmjs.org/package/coa}{\texttt{ }} \href{https://travis-ci.org/veged/coa}{\texttt{ }} \href{https://ci.appveyor.com/project/zxqfox/coa}{\texttt{ }} \href{https://coveralls.io/r/veged/coa}{\texttt{ }} \href{https://david-dm.org/veged/coa}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7089}{}\doxysection{\texorpdfstring{What is it?}{What is it?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7089}
+COA is a parser for command line options that aim to get maximum profit from formalization your program API. Once you write definition in terms of commands, options and arguments you automaticaly get\+:
+
+
+\begin{DoxyItemize}
+\item Command line help text
+\item Program API for use COA-\/based programs as modules
+\item Shell completion
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7090}{}\doxysubsection{\texorpdfstring{Other features}{Other features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7090}
+
+\begin{DoxyItemize}
+\item Rich types for options and arguments, such as arrays, boolean flags and required
+\item Commands can be async throught using promising (powered by \href{https://github.com/kriskowal/q}{\texttt{ Q}})
+\item Easy submoduling some existing commands to new top-\/level one
+\item Combined validation and complex parsing of values
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7091}{}\doxysubsection{\texorpdfstring{TODO}{TODO}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7091}
+
+\begin{DoxyItemize}
+\item Localization
+\item Shell-\/mode
+\item Configs
+\begin{DoxyItemize}
+\item Aliases
+\item Defaults
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7092}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7092}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('coa').Cmd()\ //\ main\ (top\ level)\ command\ declaration}
+\DoxyCodeLine{\ \ \ \ .name(process.argv[1])\ //\ set\ top\ level\ command\ name\ from\ program\ name}
+\DoxyCodeLine{\ \ \ \ .title('My\ awesome\ command\ line\ util')\ //\ title\ for\ use\ in\ text\ messages}
+\DoxyCodeLine{\ \ \ \ .helpful()\ //\ make\ command\ "{}helpful"{},\ i.e.\ options\ -\/h\ -\/-\/help\ with\ usage\ message}
+\DoxyCodeLine{\ \ \ \ .opt()\ //\ add\ some\ option}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .name('version')\ //\ name\ for\ use\ in\ API}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .title('Version')\ //\ title\ for\ use\ in\ text\ messages}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .short('v')\ //\ short\ key:\ -\/v}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .long('version')\ //\ long\ key:\ -\/-\/version}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .flag()\ //\ for\ options\ without\ value}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .act(function(opts)\ \{\ //\ add\ action\ for\ option}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ return\ message\ as\ result\ of\ action}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ JSON.parse(require('fs').readFileSync(\_\_dirname\ +\ '/package.json'))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .version;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .end()\ //\ end\ option\ chain\ and\ return\ to\ main\ command}
+\DoxyCodeLine{\ \ \ \ .cmd().name('subcommand').apply(require('./subcommand').COA).end()\ //\ load\ subcommand\ from\ module}
+\DoxyCodeLine{\ \ \ \ .cmd()\ //\ inplace\ subcommand\ declaration}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .name('othercommand').title('Awesome\ other\ subcommand').helpful()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .opt()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .name('input').title('input\ file,\ required')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .short('i').long('input')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .val(function(v)\ \{\ //\ validator\ function,\ also\ for\ translate\ simple\ values}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ require('fs').createReadStream(v)\ \})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .req()\ //\ make\ option\ required}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .end()\ //\ end\ option\ chain\ and\ return\ to\ command}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .end()\ //\ end\ subcommand\ chain\ and\ return\ to\ parent\ command}
+\DoxyCodeLine{\ \ \ \ .run(process.argv.slice(2));\ //\ parse\ and\ run\ on\ process.argv}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ subcommand.js}
+\DoxyCodeLine{exports.COA\ =\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ this}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .title('Awesome\ subcommand').helpful()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .opt()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .name('output').title('output\ file')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .short('o').long('output')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .output()\ //\ use\ default\ preset\ for\ "{}output"{}\ option\ declaration}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .end()}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7093}{}\doxysection{\texorpdfstring{API reference}{API reference}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7093}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7094}{}\doxysubsection{\texorpdfstring{Cmd}{Cmd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7094}
+Command is a top level entity. Commands may have options and arguments.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7095}{}\doxysubsubsection{\texorpdfstring{Cmd.\+api}{Cmd.\+api}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7095}
+Returns object containing all its subcommands as methods to use from other programs.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+\texorpdfstring{$\ast$}{*}\{Object\}\texorpdfstring{$\ast$}{*}
+\end{DoxyReturn}
+}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7096}{}\doxysubsubsection{\texorpdfstring{{\bfseries{Cmd.\+name}}}{{\bfseries{Cmd.\+name}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7096}
+{\bfseries{ Set a canonical command identifier to be used anywhere in the API.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape String} {\ttfamily \+\_\+name} command name~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)
+\end{DoxyReturn}
+}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7097}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{Cmd.\+title}}}}}{{\bfseries{{\bfseries{Cmd.\+title}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7097}
+{\bfseries{{\bfseries{ Set a long description for command to be used anywhere in text messages.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape String} {\ttfamily \+\_\+title} command title~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)
+\end{DoxyReturn}
+}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7098}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{Cmd.\+cmd}}}}}}}{{\bfseries{{\bfseries{{\bfseries{Cmd.\+cmd}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7098}
+{\bfseries{{\bfseries{{\bfseries{ Create new or add existing subcommand for current command.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape COA.\+Cmd} {\ttfamily \mbox{[}cmd\mbox{]}} existing command instance~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} new or added subcommand instance
+\end{DoxyReturn}
+}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7099}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+opt}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+opt}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7099}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Create option for current command.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Opt} {\ttfamily new} option instance
+\end{DoxyReturn}
+}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7100}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+arg}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+arg}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7100}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Create argument for current command.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Opt} {\ttfamily new} argument instance
+\end{DoxyReturn}
+}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7101}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+act}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+act}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7101}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Add (or set) action for current command.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Function} {\ttfamily act} action function, invoked in the context of command instance and has the parameters\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Object} {\ttfamily opts} parsed options~\newline
+
+\item {\itshape Array} {\ttfamily args} parsed arguments~\newline
+
+\item {\itshape Object} {\ttfamily res} actions result accumulator~\newline
+ It can return rejected promise by Cmd.\+reject (in case of error) or any other value treated as result.~\newline
+ {\bfseries{}}
+\end{DoxyItemize}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{\texorpdfstring{$\ast$}{*}\{Boolean\}\texorpdfstring{$\ast$}{*} \mbox{[}force=false\mbox{]} flag for set action instead add to existings~\newline
+ {\bfseries{}}}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)}}
+\end{DoxyReturn}
+}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7102}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+apply}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+apply}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7102}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Apply function with arguments in context of command instance.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Function} {\ttfamily fn}~\newline
+ {\bfseries{}}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{{\itshape Array} {\ttfamily args}~\newline
+ {\bfseries{}}}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)}}
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7103}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+comp}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+comp}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7103}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Set custom additional completion for current command.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Function} {\ttfamily fn} completion generation function, invoked in the context of command instance. Accepts parameters\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Object} {\ttfamily opts} completion options~\newline
+ It can return promise or any other value treated as result.~\newline
+ {\bfseries{}}
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7104}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+helpful}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+helpful}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7104}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Make command "{}helpful"{}, i.\+e. add -\/h --help flags for print usage.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7105}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+completable}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+completable}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7105}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Adds shell completion to command, adds "{}completion"{} subcommand, that makes all the magic.~\newline
+ Must be called only on root command.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7106}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+usage}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+usage}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7106}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Build full usage text for current command instance.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape String} {\ttfamily usage} text
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7107}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+run}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+run}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7107}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Parse arguments from simple format like Node\+JS process.\+argv and run ahead current program, i.\+e. call process.\+exit when all actions done.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Array} {\ttfamily argv}~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} instance (for chainability)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7108}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+invoke}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+invoke}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7108}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Invoke specified (or current) command using provided options and arguments.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape String\texorpdfstring{$\vert$}{|}\+Array} {\ttfamily cmds} subcommand to invoke (optional)~\newline
+ {\bfseries{}}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{{\itshape Object} {\ttfamily opts} command options (optional)~\newline
+ {\bfseries{}}}}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{{\bfseries{{\itshape Object} {\ttfamily args} command arguments (optional)~\newline
+ {\bfseries{}}}}}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{{\bfseries{{\bfseries{}} {\itshape Q.\+Promise}}}}}
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7109}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+reject}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+reject}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7109}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Return reject of actions results promise.~\newline
+ Use in .act() for return with error.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Object} {\ttfamily reason} reject reason~\newline
+ You can customize to\+String() method and exit\+Code property of reason object.~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape Q.\+promise} rejected promise
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7110}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+end}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+end}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7110}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Finish chain for current subcommand and return parent command instance.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Cmd} {\ttfamily parent} command
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7111}{}\doxysubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Opt}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Opt}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_autotoc_md7111}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Option is a named entity. Options may have short and long keys for use from command line.~\newline
+ {\bfseries{ }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}

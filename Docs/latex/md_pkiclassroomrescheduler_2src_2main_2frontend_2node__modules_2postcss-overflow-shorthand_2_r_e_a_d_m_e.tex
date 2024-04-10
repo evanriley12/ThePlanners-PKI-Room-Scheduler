@@ -1,0 +1,77 @@
+\chapter{Post\+CSS Overflow Shorthand \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e}\index{PostCSS Overflow Shorthand $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS Overflow Shorthand $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS Logo\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19256}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19256}%
+ \href{https://www.npmjs.com/package/postcss-overflow-shorthand}{\texttt{ }} \href{https://cssdb.org/\#overflow-property}{\texttt{ }} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand}{\texttt{ Post\+CSS Overflow Shorthand}} lets you use the {\ttfamily overflow} shorthand in CSS, following the \href{https://drafts.csswg.org/css-overflow/\#propdef-overflow}{\texttt{ CSS Overflow}} specification.
+
+\href{https://caniuse.com/\#feat=css-overflow}{\texttt{ }}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{html\ \{}
+\DoxyCodeLine{\ \ overflow:\ hidden\ auto;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{html\ \{}
+\DoxyCodeLine{\ \ overflow-\/x:\ hidden;}
+\DoxyCodeLine{\ \ overflow-\/y:\ auto;}
+\DoxyCodeLine{\ \ overflow:\ hidden\ auto;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19257}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19257}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand}{\texttt{ Post\+CSS Overflow Shorthand}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss\ postcss-\/overflow-\/shorthand\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use it as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcss\ =\ require('postcss');}
+\DoxyCodeLine{const\ postcssOverflowShorthand\ =\ require('postcss-\/overflow-\/shorthand');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ postcssOverflowShorthand(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-overflow-shorthand}{\texttt{ Post\+CSS Overflow Shorthand}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#postcss-cli}{\texttt{ Post\+CSS CLI}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19258}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19258}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19259}{}\doxysubsection{\texorpdfstring{preserve}{preserve}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-overflow-shorthand_2_r_e_a_d_m_e_autotoc_md19259}
+The {\ttfamily preserve} option determines whether the original {\ttfamily overflow} declaration is preserved. By default, it is preserved.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssOverflowShorthand(\{\ preserve:\ false\ \})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{html\ \{}
+\DoxyCodeLine{\ \ overflow:\ hidden\ auto;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{html\ \{}
+\DoxyCodeLine{\ \ overflow-\/x:\ hidden;}
+\DoxyCodeLine{\ \ overflow-\/y:\ auto;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

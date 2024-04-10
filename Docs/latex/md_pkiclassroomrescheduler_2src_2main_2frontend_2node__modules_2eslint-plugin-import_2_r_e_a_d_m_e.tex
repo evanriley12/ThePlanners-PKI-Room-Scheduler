@@ -1,0 +1,471 @@
+\chapter{eslint-\/plugin-\/import}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e}\index{eslint-\/plugin-\/import@{eslint-\/plugin-\/import}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10132}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10132}%
+ \href{https://github.com/import-js/eslint-plugin-import}{\texttt{ }} \href{https://travis-ci.org/import-js/eslint-plugin-import}{\texttt{ }} \href{https://app.codecov.io/gh/import-js/eslint-plugin-import/}{\texttt{ }} \href{https://ci.appveyor.com/project/import-js/eslint-plugin-import/branch/main}{\texttt{ }} \href{https://www.npmjs.com/package/eslint-plugin-import}{\texttt{ }} \href{https://www.npmtrends.com/eslint-plugin-import}{\texttt{ }}
+
+This plugin intends to support linting of ES2015+ (ES6+) import/export syntax, and prevent issues with misspelling of file paths and import names. All the goodness that the ES2015+ static module syntax intends to provide, marked up in your editor.
+
+{\bfseries{IF YOU ARE USING THIS WITH SUBLIME}}\+: see the bottom section for important info.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10133}{}\doxysection{\texorpdfstring{Rules}{Rules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10133}
+💼 Configurations enabled in.\textbackslash{} ⚠️ Configurations set to warn in.\textbackslash{} 🚫 Configurations disabled in.\textbackslash{} ❗ Set in the {\ttfamily errors} configuration.\textbackslash{} ☑️ Set in the {\ttfamily recommended} configuration.\textbackslash{} ⌨️ Set in the {\ttfamily typescript} configuration.\textbackslash{} 🚸 Set in the {\ttfamily warnings} configuration.\textbackslash{} 🔧 Automatically fixable by the \href{https://eslint.org/docs/user-guide/command-line-interface\#--fix}{\texttt{ {\ttfamily -\/-\/fix} CLI option}}.\textbackslash{} 💡 Manually fixable by \href{https://eslint.org/docs/developer-guide/working-with-rules\#providing-suggestions}{\texttt{ editor suggestions}}.\textbackslash{} ❌ Deprecated.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10134}{}\doxysubsection{\texorpdfstring{Helpful warnings}{Helpful warnings}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10134}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                         }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                         }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export}{export}{0}   &Forbid any invalid exports, i.\+e. re-\/export of the same name.   &❗ ☑️   &&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated}{no-\/deprecated}{0}   &Forbid imported names marked with {\ttfamily @deprecated} documentation tag.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks}{no-\/empty-\/named-\/blocks}{0}   &Forbid empty named import blocks.   &&&&🔧   &💡   &\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-extraneous-dependencies}{no-\/extraneous-\/dependencies}{0}   &Forbid the use of extraneous packages.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-mutable-exports}{no-\/mutable-\/exports}{0}   &Forbid the use of mutable exports with {\ttfamily var} or {\ttfamily let}.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default}{no-\/named-\/as-\/default}{0}   &Forbid use of exported name as identifier of default export.   &&☑️ 🚸   &&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default-member}{no-\/named-\/as-\/default-\/member}{0}   &Forbid use of exported name as property of default export.   &&☑️ 🚸   &&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-unused-modules}{no-\/unused-\/modules}{0}   &Forbid modules without exports, or exports without matching import in another module.   &&&&&&\\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10135}{}\doxysubsection{\texorpdfstring{Module systems}{Module systems}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10135}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                       }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                       }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-amd}{no-\/amd}{0}   &Forbid AMD {\ttfamily require} and {\ttfamily define} calls.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs}{no-\/commonjs}{0}   &Forbid Common\+JS {\ttfamily require} calls and {\ttfamily module.\+exports} or {\ttfamily exports.\texorpdfstring{$\ast$}{*}}.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports}{no-\/import-\/module-\/exports}{0}   &Forbid import statements with Common\+JS module.\+exports.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-nodejs-modules}{no-\/nodejs-\/modules}{0}   &Forbid Node.\+js builtin modules.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2unambiguous}{unambiguous}{0}   &Forbid potentially ambiguous parse goal ({\ttfamily script} vs. {\ttfamily module}).   &&&&&&\\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10136}{}\doxysubsection{\texorpdfstring{Static analysis}{Static analysis}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10136}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                         }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                         }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2default}{default}{0}   &Ensure a default export is present, given a default import.   &❗ ☑️   &&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2named}{named}{0}   &Ensure named imports correspond to a named export in the remote file.   &❗ ☑️   &&⌨️   &&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2namespace}{namespace}{0}   &Ensure imported namespaces contain dereferenced properties as they are dereferenced.   &❗ ☑️   &&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-absolute-path}{no-\/absolute-\/path}{0}   &Forbid import of modules using absolute paths.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-cycle}{no-\/cycle}{0}   &Forbid a module from importing a module with a dependency path back to itself.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-dynamic-require}{no-\/dynamic-\/require}{0}   &Forbid {\ttfamily require()} calls with expressions.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-internal-modules}{no-\/internal-\/modules}{0}   &Forbid importing the submodules of other modules.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-packages}{no-\/relative-\/packages}{0}   &Forbid importing packages through relative paths.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-relative-parent-imports}{no-\/relative-\/parent-\/imports}{0}   &Forbid importing modules from parent directories.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-restricted-paths}{no-\/restricted-\/paths}{0}   &Enforce which files can be imported in a given folder.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-self-import}{no-\/self-\/import}{0}   &Forbid a module from importing itself.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-unresolved}{no-\/unresolved}{0}   &Ensure imports point to a file/module that can be resolved.   &❗ ☑️   &&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments}{no-\/useless-\/path-\/segments}{0}   &Forbid unnecessary path segments in import and require statements.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-webpack-loader-syntax}{no-\/webpack-\/loader-\/syntax}{0}   &Forbid webpack loader syntax in imports.   &&&&&&\\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10137}{}\doxysubsection{\texorpdfstring{Style guide}{Style guide}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10137}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{8}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                              }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                              }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ ⚠️   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ 🔧   }&\cellcolor{\tableheadbgcolor}\textbf{ 💡   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-8}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rule0b0e66025033bd6121214b03abeb53ee}{consistent-\/type-\/specifier-\/style}{0}   &Enforce or ban the use of inline type-\/only markers for named imports.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2dynamic-import-chunkname}{dynamic-\/import-\/chunkname}{0}   &Enforce a leading comment with the webpack\+Chunk\+Name for dynamic imports.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2exports-last}{exports-\/last}{0}   &Ensure all exports appear after other statements.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2extensions}{extensions}{0}   &Ensure consistent use of file extension within the import path.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2first}{first}{0}   &Ensure all imports appear before other statements.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports}{group-\/exports}{0}   &Prefer named exports to be grouped together in a single export declaration   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2imports-first}{imports-\/first}{0}   &Replaced by {\ttfamily import/first}.   &&&&🔧   &&❌    \\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2max-dependencies}{max-\/dependencies}{0}   &Enforce the maximum number of dependencies a module can have.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2newline-after-import}{newline-\/after-\/import}{0}   &Enforce a newline after import statements.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-anonymous-default-export}{no-\/anonymous-\/default-\/export}{0}   &Forbid anonymous values as default exports.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export}{no-\/default-\/export}{0}   &Forbid default exports.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-duplicates}{no-\/duplicates}{0}   &Forbid repeated import of the same module in multiple places.   &&☑️ 🚸   &&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default}{no-\/named-\/default}{0}   &Forbid named default exports.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-export}{no-\/named-\/export}{0}   &Forbid named exports.   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace}{no-\/namespace}{0}   &Forbid namespace (a.\+k.\+a. "{}wildcard"{} {\ttfamily \texorpdfstring{$\ast$}{*}}) imports.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-unassigned-import}{no-\/unassigned-\/import}{0}   &Forbid unassigned imports   &&&&&&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order}{order}{0}   &Enforce a convention in module import order.   &&&&🔧   &&\\\cline{1-8}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2prefer-default-export}{prefer-\/default-\/export}{0}   &Prefer a default export if module exports a single name or multiple names.   &&&&&&\\\cline{1-8}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10138}{}\doxysection{\texorpdfstring{{\ttfamily eslint-\/plugin-\/import} for enterprise}{{\ttfamily eslint-\/plugin-\/import} for enterprise}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10138}
+Available as part of the Tidelift Subscription.
+
+The maintainers of {\ttfamily eslint-\/plugin-\/import} and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-eslint-plugin-import?utm_source=npm-eslint-plugin-import&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10139}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10139}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ inside\ your\ project's\ working\ tree}
+\DoxyCodeLine{npm\ install\ eslint-\/plugin-\/import\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+All rules are off by default. However, you may configure them manually in your {\ttfamily .eslintrc.(yml\texorpdfstring{$\vert$}{|}json\texorpdfstring{$\vert$}{|}js)}, or extend one of the canned configs\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{extends:}
+\DoxyCodeLine{\ \ -\/\ eslint:recommended}
+\DoxyCodeLine{\ \ -\/\ plugin:import/recommended}
+\DoxyCodeLine{\ \ \#\ alternatively,\ 'recommended'\ is\ the\ combination\ of\ these\ two\ rule\ sets:}
+\DoxyCodeLine{\ \ -\/\ plugin:import/errors}
+\DoxyCodeLine{\ \ -\/\ plugin:import/warnings}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ or\ configure\ manually:}
+\DoxyCodeLine{plugins:}
+\DoxyCodeLine{\ \ -\/\ import}
+\DoxyCodeLine{}
+\DoxyCodeLine{rules:}
+\DoxyCodeLine{\ \ import/no-\/unresolved:\ [2,\ \{commonjs:\ true,\ amd:\ true\}]}
+\DoxyCodeLine{\ \ import/named:\ 2}
+\DoxyCodeLine{\ \ import/namespace:\ 2}
+\DoxyCodeLine{\ \ import/default:\ 2}
+\DoxyCodeLine{\ \ import/export:\ 2}
+\DoxyCodeLine{\ \ \#\ etc...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10140}{}\doxysection{\texorpdfstring{Type\+Script}{Type\+Script}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10140}
+You may use the following snippet or assemble your own config using the granular settings described below it.
+
+Make sure you have installed \href{https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser}{\texttt{ {\ttfamily @typescript-\/eslint/parser}}} and \href{https://github.com/import-js/eslint-import-resolver-typescript}{\texttt{ {\ttfamily eslint-\/import-\/resolver-\/typescript}}} which are used in the following configuration.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{extends:}
+\DoxyCodeLine{\ \ -\/\ eslint:recommended}
+\DoxyCodeLine{\ \ -\/\ plugin:import/recommended}
+\DoxyCodeLine{\#\ the\ following\ lines\ do\ the\ trick}
+\DoxyCodeLine{\ \ -\/\ plugin:import/typescript}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/resolver:}
+\DoxyCodeLine{\ \ \ \ \#\ You\ will\ also\ need\ to\ install\ and\ configure\ the\ TypeScript\ resolver}
+\DoxyCodeLine{\ \ \ \ \#\ See\ also\ https://github.com/import-\/js/eslint-\/import-\/resolver-\/typescript\#configuration}
+\DoxyCodeLine{\ \ \ \ typescript:\ true}
+\DoxyCodeLine{\ \ \ \ node:\ true}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10141}{}\doxysection{\texorpdfstring{Resolvers}{Resolvers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10141}
+With the advent of module bundlers and the current state of modules and module syntax specs, it\textquotesingle{}s not always obvious where `import x from \textquotesingle{}module'{\ttfamily should look to find the file behind}module\`{}.
+
+Up through v0.\+10ish, this plugin has directly used substack\textquotesingle{}s \href{https://www.npmjs.com/package/resolve}{\texttt{ {\ttfamily resolve}}} plugin, which implements Node\textquotesingle{}s import behavior. This works pretty well in most cases.
+
+However, webpack allows a number of things in import module source strings that Node does not, such as loaders (`import \textquotesingle{}file!./whatever'{\ttfamily ) and a number of aliasing schemes, such as \mbox{[}}externals\`{}\mbox{]}\+: mapping a module id to a global name at runtime (allowing some modules to be included more traditionally via script tags).
+
+In the interest of supporting both of these, v0.\+11 introduces resolvers.
+
+Currently \href{https://www.npmjs.com/package/eslint-import-resolver-node}{\texttt{ Node}} and \href{https://www.npmjs.com/package/eslint-import-resolver-webpack}{\texttt{ webpack}} resolution have been implemented, but the resolvers are just npm packages, so \href{https://github.com/import-js/eslint-plugin-import/wiki/Resolvers}{\texttt{ third party packages are supported}} (and encouraged!).
+
+You can reference resolvers in several ways (in order of precedence)\+:
+
+
+\begin{DoxyItemize}
+\item as a conventional {\ttfamily eslint-\/import-\/resolver} name, like {\ttfamily eslint-\/import-\/resolver-\/foo}\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ \#\ uses\ 'eslint-\/import-\/resolver-\/foo':}
+\DoxyCodeLine{\ \ import/resolver:\ foo}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ .eslintrc.js}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ settings:\ \{}
+\DoxyCodeLine{\ \ \ \ 'import/resolver':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ foo:\ \{\ someConfig:\ value\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item with a full npm module name, like {\ttfamily my-\/awesome-\/npm-\/module}\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/resolver:\ 'my-\/awesome-\/npm-\/module'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ .eslintrc.js}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ settings:\ \{}
+\DoxyCodeLine{\ \ \ \ 'import/resolver':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'my-\/awesome-\/npm-\/module':\ \{\ someConfig:\ value\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item with a filesystem path to resolver, defined in this example as a {\ttfamily computed property} name\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ .eslintrc.js}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ settings:\ \{}
+\DoxyCodeLine{\ \ \ \ 'import/resolver':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ [path.resolve('../../../my-\/resolver')]:\ \{\ someConfig:\ value\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Relative paths will be resolved relative to the source\textquotesingle{}s nearest {\ttfamily package.\+json} or the process\textquotesingle{}s current working directory if no {\ttfamily package.\+json} is found.
+
+If you are interesting in writing a resolver, see the spec for more details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10142}{}\doxysection{\texorpdfstring{Settings}{Settings}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10142}
+You may set the following settings in your {\ttfamily .eslintrc}\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10143}{}\doxysubsection{\texorpdfstring{{\ttfamily import/extensions}}{{\ttfamily import/extensions}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10143}
+A list of file extensions that will be parsed as modules and inspected for {\ttfamily export}s.
+
+This defaults to `\mbox{[}'.js\textquotesingle{}\mbox{]}{\ttfamily , unless you are using the}react{\ttfamily shared config, in which case it is specified as}\mbox{[}\textquotesingle{}.js\textquotesingle{}, \textquotesingle{}.jsx\textquotesingle{}\mbox{]}{\ttfamily . Despite the default, if you are using Type\+Script (without the}plugin\+:import/typescript{\ttfamily config described above) you must specify the new extensions (}.ts{\ttfamily , and also}.tsx\`{} if using React).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}settings"{}:\ \{}
+\DoxyCodeLine{\ \ "{}import/extensions"{}:\ [}
+\DoxyCodeLine{\ \ \ \ "{}.js"{},}
+\DoxyCodeLine{\ \ \ \ "{}.jsx"{}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+If you require more granular extension definitions, you can use\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}settings"{}:\ \{}
+\DoxyCodeLine{\ \ "{}import/resolver"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}node"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}extensions"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}.js"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}.jsx"{}}
+\DoxyCodeLine{\ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Note that this is different from (and likely a subset of) any {\ttfamily import/resolver} extensions settings, which may include {\ttfamily .json}, {\ttfamily .coffee}, etc. which will still factor into the {\ttfamily no-\/unresolved} rule.
+
+Also, the following {\ttfamily import/ignore} patterns will overrule this list.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10144}{}\doxysubsection{\texorpdfstring{{\ttfamily import/ignore}}{{\ttfamily import/ignore}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10144}
+A list of regex strings that, if matched by a path, will not report the matching module if no {\ttfamily export}s are found. In practice, this means rules other than \href{./docs/rules/no-unresolved.md\#ignore}{\texttt{ {\ttfamily no-\/unresolved}}} will not report on any {\ttfamily import}s with (absolute filesystem) paths matching this pattern.
+
+{\ttfamily no-\/unresolved} has its own \href{./docs/rules/no-unresolved.md\#ignore}{\texttt{ {\ttfamily ignore}}} setting.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/ignore:}
+\DoxyCodeLine{\ \ \ \ -\/\ \(\backslash\).coffee\$\ \ \ \ \ \ \ \ \ \ \#\ fraught\ with\ parse\ errors}
+\DoxyCodeLine{\ \ \ \ -\/\ \(\backslash\).(scss|less|css)\$\ \#\ can't\ parse\ unprocessed\ CSS\ modules,\ either}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10145}{}\doxysubsection{\texorpdfstring{{\ttfamily import/core-\/modules}}{{\ttfamily import/core-\/modules}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10145}
+An array of additional modules to consider as "{}core"{} modules--modules that should be considered resolved but have no path on the filesystem. Your resolver may already define some of these (for example, the Node resolver knows about {\ttfamily fs} and {\ttfamily path}), so you need not redefine those.
+
+For example, Electron exposes an {\ttfamily electron} module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ 'electron'\ \ //\ without\ extra\ config,\ will\ be\ flagged\ as\ unresolved!}
+
+\end{DoxyCode}
+
+
+that would otherwise be unresolved. To avoid this, you may provide {\ttfamily electron} as a core module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/core-\/modules:\ [\ electron\ ]}
+
+\end{DoxyCode}
+
+
+In Electron\textquotesingle{}s specific case, there is a shared config named {\ttfamily electron} that specifies this for you.
+
+Contribution of more such shared configs for other platforms are welcome!\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10146}{}\doxysubsection{\texorpdfstring{{\ttfamily import/external-\/module-\/folders}}{{\ttfamily import/external-\/module-\/folders}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10146}
+An array of folders. Resolved modules only from those folders will be considered as "{}external"{}. By default -\/ {\ttfamily \mbox{[}"{}node\+\_\+modules"{}\mbox{]}}. Makes sense if you have configured your path or webpack to handle your internal paths differently and want to consider modules from some folders, for example {\ttfamily bower\+\_\+components} or {\ttfamily jspm\+\_\+modules}, as "{}external"{}.
+
+This option is also useful in a monorepo setup\+: list here all directories that contain monorepo\textquotesingle{}s packages and they will be treated as external ones no matter which resolver is used.
+
+If you are using {\ttfamily yarn} PnP as your package manager, add the {\ttfamily .yarn} folder and all your installed dependencies will be considered as {\ttfamily external}, instead of {\ttfamily internal}.
+
+Each item in this array is either a folder\textquotesingle{}s name, its subpath, or its absolute prefix path\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily jspm\+\_\+modules} will match any file or folder named {\ttfamily jspm\+\_\+modules} or which has a direct or non-\/direct parent named {\ttfamily jspm\+\_\+modules}, e.\+g. {\ttfamily /home/me/project/jspm\+\_\+modules} or {\ttfamily /home/me/project/jspm\+\_\+modules/some-\/pkg/index.js}.
+\item {\ttfamily packages/core} will match any path that contains these two segments, for example {\ttfamily /home/me/project/packages/core/src/utils.js}.
+\item {\ttfamily /home/me/project/packages} will only match files and directories inside this directory, and the directory itself.
+\end{DoxyItemize}
+
+Please note that incomplete names are not allowed here so {\ttfamily components} won\textquotesingle{}t match {\ttfamily bower\+\_\+components} and {\ttfamily packages/ui} won\textquotesingle{}t match {\ttfamily packages/ui-\/utils} (but will match {\ttfamily packages/ui/utils}).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10147}{}\doxysubsection{\texorpdfstring{{\ttfamily import/parsers}}{{\ttfamily import/parsers}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10147}
+A map from parsers to file extension arrays. If a file extension is matched, the dependency parser will require and use the map key as the parser instead of the configured ESLint parser. This is useful if you\textquotesingle{}re inter-\/op-\/ing with Type\+Script directly using webpack, for example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/parsers:}
+\DoxyCodeLine{\ \ \ \ "{}@typescript-\/eslint/parser"{}:\ [\ .ts,\ .tsx\ ]}
+
+\end{DoxyCode}
+
+
+In this case, \href{https://www.npmjs.com/package/@typescript-eslint/parser}{\texttt{ {\ttfamily @typescript-\/eslint/parser}}} must be installed and require-\/able from the running {\ttfamily eslint} module\textquotesingle{}s location (i.\+e., install it as a peer of ESLint).
+
+This is currently only tested with {\ttfamily @typescript-\/eslint/parser} (and its predecessor, {\ttfamily typescript-\/eslint-\/parser}) but should theoretically work with any moderately ESTree-\/compliant parser.
+
+It\textquotesingle{}s difficult to say how well various plugin features will be supported, too, depending on how far down the rabbit hole goes. Submit an issue if you find strange behavior beyond here, but steel your heart against the likely outcome of closing with {\ttfamily wontfix}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10148}{}\doxysubsection{\texorpdfstring{{\ttfamily import/resolver}}{{\ttfamily import/resolver}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10148}
+See resolvers.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10149}{}\doxysubsection{\texorpdfstring{{\ttfamily import/cache}}{{\ttfamily import/cache}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10149}
+Settings for cache behavior. Memoization is used at various levels to avoid the copious amount of {\ttfamily fs.\+stat\+Sync}/module parse calls required to correctly report errors.
+
+For normal {\ttfamily eslint} console runs, the cache lifetime is irrelevant, as we can strongly assume that files should not be changing during the lifetime of the linter process (and thus, the cache in memory)
+
+For long-\/lasting processes, like \href{https://www.npmjs.com/package/eslint_d}{\texttt{ {\ttfamily eslint\+\_\+d}}} or \href{https://www.npmjs.com/package/eslint-loader}{\texttt{ {\ttfamily eslint-\/loader}}}, however, it\textquotesingle{}s important that there be some notion of staleness.
+
+If you never use \href{https://www.npmjs.com/package/eslint_d}{\texttt{ {\ttfamily eslint\+\_\+d}}} or \href{https://www.npmjs.com/package/eslint-loader}{\texttt{ {\ttfamily eslint-\/loader}}}, you may set the cache lifetime to {\ttfamily Infinity} and everything should be fine\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/cache:}
+\DoxyCodeLine{\ \ \ \ lifetime:\ ∞\ \ \#\ or\ Infinity}
+
+\end{DoxyCode}
+
+
+Otherwise, set some integer, and cache entries will be evicted after that many seconds have elapsed\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/cache:}
+\DoxyCodeLine{\ \ \ \ lifetime:\ 5\ \ \#\ 30\ is\ the\ default}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10150}{}\doxysubsection{\texorpdfstring{{\ttfamily import/internal-\/regex}}{{\ttfamily import/internal-\/regex}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10150}
+A regex for packages should be treated as internal. Useful when you are utilizing a monorepo setup or developing a set of packages that depend on each other.
+
+By default, any package referenced from \`{}import/external-\/module-\/folders\`{} will be considered as "{}external"{}, including packages in a monorepo like yarn workspace or lerna environment. If you want to mark these packages as "{}internal"{} this will be useful.
+
+For example, if your packages in a monorepo are all in {\ttfamily @scope}, you can configure {\ttfamily import/internal-\/regex} like this
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/internal-\/regex:\ \string^@scope/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10151}{}\doxysection{\texorpdfstring{Sublime\+Linter-\/eslint}{Sublime\+Linter-\/eslint}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_a_d_m_e_autotoc_md10151}
+Sublime\+Linter-\/eslint introduced a change to support {\ttfamily .eslintignore} files which altered the way file paths are passed to ESLint when linting during editing. This change sends a relative path instead of the absolute path to the file (as ESLint normally provides), which can make it impossible for this plugin to resolve dependencies on the filesystem.
+
+This workaround should no longer be necessary with the release of ESLint 2.\+0, when {\ttfamily .eslintignore} will be updated to work more like a {\ttfamily .gitignore}, which should support proper ignoring of absolute paths via {\ttfamily -\/-\/stdin-\/filename}.
+
+In the meantime, see \href{https://github.com/roadhump/SublimeLinter-eslint/issues/58}{\texttt{ roadhump/\+Sublime\+Linter-\/eslint\#58}} for more details and discussion, but essentially, you may find you need to add the following {\ttfamily Sublime\+Linter} config to your Sublime project file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}folders"{}:}
+\DoxyCodeLine{\ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}path"{}:\ "{}code"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ "{}SublimeLinter"{}:}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}linters"{}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}eslint"{}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}chdir"{}:\ "{}\$\{project\}/code"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Note that {\ttfamily \$\{project\}/code} matches the {\ttfamily code} provided at {\ttfamily folders\mbox{[}0\mbox{]}.path}.
+
+The purpose of the {\ttfamily chdir} setting, in this case, is to set the working directory from which ESLint is executed to be the same as the directory on which Sublime\+Linter-\/eslint bases the relative path it provides.
+
+See the Sublime\+Linter docs on \href{https://www.sublimelinter.com/en/latest/linter_settings.html\#chdir}{\texttt{ {\ttfamily chdir}}} for more information, in case this does not work with your project.
+
+If you are not using {\ttfamily .eslintignore}, or don\textquotesingle{}t have a Sublime project file, you can also do the following via a {\ttfamily .sublimelinterrc} file in some ancestor directory of your code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}linters"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}eslint"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}args"{}:\ ["{}-\/-\/stdin-\/filename"{},\ "{}@"{}]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+I also found that I needed to set {\ttfamily rc\+\_\+search\+\_\+limit} to {\ttfamily null}, which removes the file hierarchy search limit when looking up the directory tree for {\ttfamily .sublimelinterrc}\+:
+
+In Package Settings / Sublime\+Linter / User Settings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}user"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}rc\_search\_limit"{}:\ null}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+I believe this defaults to {\ttfamily 3}, so you may not need to alter it depending on your project folder max depth. 

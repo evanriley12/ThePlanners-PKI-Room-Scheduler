@@ -1,0 +1,223 @@
+\chapter{SPDY Server for node.\+js}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e}\index{SPDY Server for node.js@{SPDY Server for node.js}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23579}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23579}%
+ \href{http://travis-ci.org/spdy-http2/node-spdy}{\texttt{ }} \href{http://badge.fury.io/js/spdy}{\texttt{ }} \href{https://david-dm.org/spdy-http2/node-spdy}{\texttt{ }} \href{http://standardjs.com/}{\texttt{ }} \href{https://waffle.io/spdy-http2/node-spdy}{\texttt{ }}
+
+With this module you can create \href{https://http2.github.io/}{\texttt{ HTTP2}} / \href{http://www.chromium.org/spdy}{\texttt{ SPDY}} servers in node.\+js with natural http module interface and fallback to regular https (for browsers that don\textquotesingle{}t support neither HTTP2, nor SPDY yet).
+
+This module named {\ttfamily spdy} but it \href{https://github.com/indutny/node-spdy/issues/269\#issuecomment-239014184}{\texttt{ provides}} support for both http/2 (h2) and spdy (2,3,3.\+1). Also, {\ttfamily spdy} is compatible with Express.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23580}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23580}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23581}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23581}
+Server\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ spdy\ =\ require('spdy'),}
+\DoxyCodeLine{\ \ \ \ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ //\ Private\ key}
+\DoxyCodeLine{\ \ key:\ fs.readFileSync(\_\_dirname\ +\ '/keys/spdy-\/key.pem'),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Fullchain\ file\ or\ cert\ file\ (prefer\ the\ former)}
+\DoxyCodeLine{\ \ cert:\ fs.readFileSync(\_\_dirname\ +\ '/keys/spdy-\/fullchain.pem'),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ **optional**\ SPDY-\/specific\ options}
+\DoxyCodeLine{\ \ spdy:\ \{}
+\DoxyCodeLine{\ \ \ \ protocols:\ [\ 'h2',\ 'spdy/3.1',\ ...,\ 'http/1.1'\ ],}
+\DoxyCodeLine{\ \ \ \ plain:\ false,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ **optional**}
+\DoxyCodeLine{\ \ \ \ //\ Parse\ first\ incoming\ X\_FORWARDED\_FOR\ frame\ and\ put\ it\ to\ the}
+\DoxyCodeLine{\ \ \ \ //\ headers\ of\ every\ request.}
+\DoxyCodeLine{\ \ \ \ //\ NOTE:\ Use\ with\ care!\ This\ should\ not\ be\ used\ without\ some\ proxy\ that}
+\DoxyCodeLine{\ \ \ \ //\ will\ *always*\ send\ X\_FORWARDED\_FOR}
+\DoxyCodeLine{\ \ \ \ 'x-\/forwarded-\/for':\ true,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ connection:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ windowSize:\ 1024\ *\ 1024,\ //\ Server's\ window\ size}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ **optional**\ if\ true\ -\/\ server\ will\ send\ 3.1\ frames\ on\ 3.0\ *plain*\ spdy}
+\DoxyCodeLine{\ \ \ \ \ \ autoSpdy31:\ false}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ spdy.createServer(options,\ function(req,\ res)\ \{}
+\DoxyCodeLine{\ \ res.writeHead(200);}
+\DoxyCodeLine{\ \ res.end('hello\ world!');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(3000);}
+
+\end{DoxyCode}
+
+
+Client\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ spdy\ =\ require('spdy');}
+\DoxyCodeLine{var\ https\ =\ require('https');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ agent\ =\ spdy.createAgent(\{}
+\DoxyCodeLine{\ \ host:\ 'www.google.com',}
+\DoxyCodeLine{\ \ port:\ 443,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Optional\ SPDY\ options}
+\DoxyCodeLine{\ \ spdy:\ \{}
+\DoxyCodeLine{\ \ \ \ plain:\ false,}
+\DoxyCodeLine{\ \ \ \ ssl:\ true,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ **optional**\ send\ X\_FORWARDED\_FOR}
+\DoxyCodeLine{\ \ \ \ 'x-\/forwarded-\/for':\ '127.0.0.1'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{https.get(\{}
+\DoxyCodeLine{\ \ host:\ 'www.google.com',}
+\DoxyCodeLine{\ \ agent:\ agent}
+\DoxyCodeLine{\},\ function(response)\ \{}
+\DoxyCodeLine{\ \ console.log('yikes');}
+\DoxyCodeLine{\ \ //\ Here\ it\ goes\ like\ with\ any\ other\ node.js\ HTTP\ request}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\ \ //\ And\ once\ we're\ done\ -\/\ we\ may\ close\ TCP\ connection\ to\ server}
+\DoxyCodeLine{\ \ //\ NOTE:\ All\ non-\/closed\ requests\ will\ die!}
+\DoxyCodeLine{\ \ agent.close();}
+\DoxyCodeLine{\}).end();}
+
+\end{DoxyCode}
+
+
+Please note that if you use a custom agent, by default all connection-\/level errors will result in an uncaught exception. To handle these errors subscribe to the {\ttfamily error} event and re-\/emit the captured error\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ agent\ =\ spdy.createAgent(\{}
+\DoxyCodeLine{\ \ host:\ 'www.google.com',}
+\DoxyCodeLine{\ \ port:\ 443}
+\DoxyCodeLine{\}).once('error',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ this.emit(err);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23582}{}\doxysubsubsection{\texorpdfstring{Push streams}{Push streams}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23582}
+It is possible to initiate \href{https://httpwg.github.io/specs/rfc7540.html\#PUSH_PROMISE}{\texttt{ PUSH\+\_\+\+PROMISE}} to send content to clients {\itshape before} the client requests it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{spdy.createServer(options,\ function(req,\ res)\ \{}
+\DoxyCodeLine{\ \ var\ stream\ =\ res.push('/main.js',\ \{}
+\DoxyCodeLine{\ \ \ \ status:\ 200,\ //\ optional}
+\DoxyCodeLine{\ \ \ \ method:\ 'GET',\ //\ optional}
+\DoxyCodeLine{\ \ \ \ request:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ accept:\ '*/*'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ response:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'content-\/type':\ 'application/javascript'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ stream.on('error',\ function()\ \{}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ stream.end('alert("{}hello\ from\ push\ stream!"{});');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ res.end('<script\ src="{}/main.js"{}></script>');}
+\DoxyCodeLine{\}).listen(3000);}
+
+\end{DoxyCode}
+
+
+\href{https://httpwg.github.io/specs/rfc7540.html\#PUSH_PROMISE}{\texttt{ PUSH\+\_\+\+PROMISE}} may be sent using the {\ttfamily push()} method on the current response object. The signature of the {\ttfamily push()} method is\+:
+
+`.push('/some/relative/url\textquotesingle{}, \{ request\+: \{...\}, response\+: \{...\} \}, callback)\`{}
+
+Second argument contains headers for both PUSH\+\_\+\+PROMISE and emulated response. {\ttfamily callback} will receive two arguments\+: {\ttfamily err} (if any error is happened) and a \href{https://iojs.org/api/stream.html\#stream_class_stream_duplex}{\texttt{ Duplex}} stream as the second argument.
+
+Client usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ agent\ =\ spdy.createAgent(\{\ /*\ ...\ */\ \});}
+\DoxyCodeLine{var\ req\ =\ http.get(\{}
+\DoxyCodeLine{\ \ host:\ 'www.google.com',}
+\DoxyCodeLine{\ \ agent:\ agent}
+\DoxyCodeLine{\},\ function(response)\ \{}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{req.on('push',\ function(stream)\ \{}
+\DoxyCodeLine{\ \ stream.on('error',\ function(err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Handle\ error}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ //\ Read\ data\ from\ stream}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+NOTE\+: You\textquotesingle{}re responsible for the {\ttfamily stream} object once given it in {\ttfamily .push()} callback or {\ttfamily push} event. Hence ignoring {\ttfamily error} event on it will result in uncaught exception and crash your program.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23583}{}\doxysubsubsection{\texorpdfstring{Trailing headers}{Trailing headers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23583}
+Server usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ (req,\ res)\ \{}
+\DoxyCodeLine{\ \ //\ Send\ trailing\ headers\ to\ client}
+\DoxyCodeLine{\ \ res.addTrailers(\{\ header1:\ 'value1',\ header2:\ 'value2'\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ On\ client's\ trailing\ headers}
+\DoxyCodeLine{\ \ req.on('trailers',\ function(headers)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Client usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ req\ =\ http.request(\{\ agent:\ spdyAgent,\ /*\ ...\ */\ \}).function\ (res)\ \{}
+\DoxyCodeLine{\ \ //\ On\ server's\ trailing\ headers}
+\DoxyCodeLine{\ \ res.on('trailers',\ function(headers)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{req.write('stuff');}
+\DoxyCodeLine{req.addTrailers(\{\ /*\ ...\ */\ \});}
+\DoxyCodeLine{req.end();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23584}{}\doxysubsubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23584}
+All options supported by \href{http://nodejs.org/docs/latest/api/tls.html\#tls.createServer}{\texttt{ tls}} work with node-\/spdy.
+
+Additional options may be passed via {\ttfamily spdy} sub-\/object\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily plain} -\/ if defined, server will ignore NPN and ALPN data and choose whether to use spdy or plain http by looking at first data packet.
+\item {\ttfamily ssl} -\/ if {\ttfamily false} and {\ttfamily options.\+plain} is {\ttfamily true}, {\ttfamily http.\+Server} will be used as a {\ttfamily base} class for created server.
+\item {\ttfamily max\+Chunk} -\/ if set and non-\/falsy, limits number of bytes sent in one DATA chunk. Setting it to non-\/zero value is recommended if you care about interleaving of outgoing data from multiple different streams. (defaults to 8192)
+\item {\ttfamily protocols} -\/ list of NPN/\+ALPN protocols to use (default is\+: `\mbox{[}\textquotesingle{}h2',\textquotesingle{}spdy/3.\+1\textquotesingle{}, \textquotesingle{}spdy/3\textquotesingle{}, \textquotesingle{}spdy/2\textquotesingle{},\textquotesingle{}http/1.\+1\textquotesingle{}, \textquotesingle{}http/1.\+0\textquotesingle{}\mbox{]}{\ttfamily ) \texorpdfstring{$\ast$}{*}}protocol{\ttfamily -\/ use specific protocol if no NPN/\+ALPN ex In addition, \texorpdfstring{$\ast$}{*}}max\+Streams\`{} -\/ set "{}\mbox{[}maximum concurrent streams\mbox{]}\mbox{[}3\mbox{]}"{} protocol option
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23585}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23585}
+API is compatible with {\ttfamily http} and {\ttfamily https} module, but you can use another function as base class for SPDYServer.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{spdy.createServer(}
+\DoxyCodeLine{\ \ [base\ class\ constructor,\ i.e.\ https.Server],}
+\DoxyCodeLine{\ \ \{\ /*\ keys\ and\ options\ */\ \},\ //\ <-\/\ the\ only\ one\ required\ argument}
+\DoxyCodeLine{\ \ [request\ listener]}
+\DoxyCodeLine{).listen([port],\ [host],\ [callback]);}
+
+\end{DoxyCode}
+
+
+Request listener will receive two arguments\+: {\ttfamily request} and {\ttfamily response}. They\textquotesingle{}re both instances of {\ttfamily http}\textquotesingle{}s {\ttfamily Incoming\+Message} and {\ttfamily Outgoing\+Message}. But three custom properties are added to both of them\+: {\ttfamily is\+Spdy}, {\ttfamily spdy\+Version}. {\ttfamily is\+Spdy} is {\ttfamily true} when the request was processed using HTTP2/\+SPDY protocols, it is {\ttfamily false} in case of HTTP/1.\+1 fallback. {\ttfamily spdy\+Version} is either of\+: {\ttfamily 2}, {\ttfamily 3}, {\ttfamily 3.\+1}, or {\ttfamily 4} (for HTTP2).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23586}{}\doxysubsubsection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23586}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/indutny}{\texttt{ Fedor Indutny}}
+\item \href{https://github.com/eee-c}{\texttt{ Chris Strom}}
+\item \href{https://github.com/francois2metz}{\texttt{ François de Metz}}
+\item \href{https://github.com/igrigorik}{\texttt{ Ilya Grigorik}}
+\item \href{https://github.com/grmocg}{\texttt{ Roberto Peon}}
+\item \href{https://github.com/tatsuhiro-t}{\texttt{ Tatsuhiro Tsujikawa}}
+\item \href{https://github.com/jessecravens}{\texttt{ Jesse Cravens}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23587}{}\doxysubsubsection{\texorpdfstring{LICENSE}{LICENSE}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2spdy_2_r_e_a_d_m_e_autotoc_md23587}
+This software is licensed under the MIT License.
+
+Copyright Fedor Indutny, 2015.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "{}\+Software"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "{}\+AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

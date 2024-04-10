@@ -1,0 +1,37 @@
+\chapter{regjsgen \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/bnjmnt4n/regjsgen/actions"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://github.\+com/bnjmnt4n/regjsgen/workflows/\+Node.\+js\%20\+CI/badge.\+svg"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/gh/bnjmnt4n/regjsgen"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://codecov.\+io/gh/bnjmnt4n/regjsgen/branch/master/graph/badge.\+svg"{} alt="{}\+Code coverage status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e}\index{regjsgen $<$a href="{}https://github.com/bnjmnt4n/regjsgen/actions"{} $>$$<$img src="{}https://github.com/bnjmnt4n/regjsgen/workflows/Node.js\%20CI/badge.svg"{} alt="{}Build status"{}/$>$$<$/a$>$ $<$a href="{}https://codecov.io/gh/bnjmnt4n/regjsgen"{} $>$$<$img src="{}https://codecov.io/gh/bnjmnt4n/regjsgen/branch/master/graph/badge.svg"{} alt="{}Code coverage status"{}/$>$$<$/a$>$@{regjsgen $<$a href=""https://github.com/bnjmnt4n/regjsgen/actions"" $>$$<$img src=""https://github.com/bnjmnt4n/regjsgen/workflows/Node.js\%20CI/badge.svg"" alt=""Build status""/$>$$<$/a$>$ $<$a href=""https://codecov.io/gh/bnjmnt4n/regjsgen"" $>$$<$img src=""https://codecov.io/gh/bnjmnt4n/regjsgen/branch/master/graph/badge.svg"" alt=""Code coverage status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md655}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md655}%
+ \begin{quote}
+This is a fork of \href{https://github.com/bnjmnt4n/regjsgen}{\texttt{ bnjmnt4n/regjsgen}} with some additional patches. The end goal is to merge these patches upstream.
+\begin{DoxyItemize}
+\item \href{https://github.com/babel/regjsgen/commit/be86643508658c70ccb5bec8bc4e3dc2479cac62}{\texttt{ be866435}} {\itshape feat\+: support modifiers proposal} (\href{https://github.com/bnjmnt4n/regjsgen/pull/28}{\texttt{ bnjmnt4n/regjsgen\#28}}) 
+\end{DoxyItemize}\end{quote}
+Generate regular expressions from \href{https://github.com/jviereck/regjsparser}{\texttt{ regjsparser}}’s AST.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md656}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md656}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ regjsgen}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md657}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md657}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md658}{}\doxysubsection{\texorpdfstring{{\ttfamily regjsgen.\+generate(ast)}}{{\ttfamily regjsgen.\+generate(ast)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md658}
+This function accepts an abstract syntax tree representing a regular expression (see \href{https://github.com/jviereck/regjsparser}{\texttt{ regjsparser}}), and returns the generated regular expression string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ regjsparser\ =\ require('regjsparser');}
+\DoxyCodeLine{const\ regjsgen\ =\ require('regjsgen');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Generate\ an\ AST\ with\ \`{}regjsparser`.}
+\DoxyCodeLine{let\ ast\ =\ regjsparser.parse(regex);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Modify\ AST}
+\DoxyCodeLine{//\ …}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Generate\ \`{}RegExp`\ string\ with\ \`{}regjsgen`.}
+\DoxyCodeLine{let\ regex\ =\ regjsgen.generate(ast);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md659}{}\doxysection{\texorpdfstring{Support}{Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dbabel_2regjsgen_2_r_e_a_d_m_e_autotoc_md659}
+Tested in Node.\+js 10, 12, 14, and 16.~\newline
+ Compatible with regjsparser v0.\+7.\+0’s AST. 

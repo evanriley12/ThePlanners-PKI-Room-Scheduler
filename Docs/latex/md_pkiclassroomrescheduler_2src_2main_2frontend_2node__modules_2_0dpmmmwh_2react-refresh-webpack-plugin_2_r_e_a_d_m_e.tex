@@ -1,0 +1,370 @@
+\chapter{React Refresh Webpack Plugin}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e}\index{React Refresh Webpack Plugin@{React Refresh Webpack Plugin}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1761}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1761}%
+
+
+\href{https://app.circleci.com/pipelines/github/pmmmwh/react-refresh-webpack-plugin}{\texttt{ }} \href{./LICENSE}{\texttt{ }} \href{https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin/v/latest}{\texttt{ }} \href{https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin/v/next}{\texttt{ }}
+
+An {\bfseries{EXPERIMENTAL}} Webpack plugin to enable "{}\+Fast Refresh"{} (also known as {\itshape Hot Reloading}) for React components.
+
+\begin{quote}
+This plugin is not 100\% stable. We\textquotesingle{}re hoping to land a v1 release soon -\/ please help us by reporting any issues you\textquotesingle{}ve encountered! \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1762}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1762}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1763}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1763}
+Ensure that you are using at least the minimum supported versions of this plugin\textquotesingle{}s peer dependencies -\/ older versions unfortunately do not contain code to orchestrate "{}\+Fast Refresh"{}, and thus cannot be made compatible.
+
+We recommend using the following versions\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dependency   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dependency   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version    }\\\cline{1-2}
+\endhead
+{\ttfamily react}   &{\ttfamily 16.\+13.\+0}+, {\ttfamily 17.\+x} or {\ttfamily 18.\+x}    \\\cline{1-2}
+{\ttfamily react-\/dom}   &{\ttfamily 16.\+13.\+0}+, {\ttfamily 17.\+x} or {\ttfamily 18.\+x}    \\\cline{1-2}
+{\ttfamily react-\/refresh}   &{\ttfamily 0.\+10.\+0}+    \\\cline{1-2}
+{\ttfamily webpack}   &{\ttfamily 4.\+46.\+0}+ or {\ttfamily 5.\+2.\+0}+   \\\cline{1-2}
+\end{longtabu}
+
+
+
+
+{\bfseries{Minimum requirements}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dependency   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dependency   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version    }\\\cline{1-2}
+\endhead
+{\ttfamily react}   &{\ttfamily 16.\+9.\+0}    \\\cline{1-2}
+{\ttfamily react-\/dom}   &{\ttfamily 16.\+9.\+0}    \\\cline{1-2}
+{\ttfamily react-\/refresh}   &{\ttfamily 0.\+10.\+0}    \\\cline{1-2}
+{\ttfamily webpack}   &{\ttfamily 4.\+43.\+0}   \\\cline{1-2}
+\end{longtabu}
+
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{Using custom renderers (e.g. {\ttfamily react-\/three-\/fiber}, {\ttfamily react-\/pdf}, {\ttfamily ink})}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+To ensure full support of "{}\+Fast Refresh"{} with components rendered by custom renderers, you should ensure the renderer you\textquotesingle{}re using depends on a recent version of {\ttfamily react-\/reconciler}.
+
+We recommend version {\ttfamily 0.\+25.\+0} or above, but any versions above {\ttfamily 0.\+22.\+0} should work.
+
+If the renderer is not compatible, please file them an issue instead.
+
+\end{adjustwidth}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1764}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1764}
+With all prerequisites met, you can install this plugin using your package manager of choice\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ if\ you\ prefer\ npm}
+\DoxyCodeLine{npm\ install\ -\/D\ @pmmmwh/react-\/refresh-\/webpack-\/plugin\ react-\/refresh}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ if\ you\ prefer\ yarn}
+\DoxyCodeLine{yarn\ add\ -\/D\ @pmmmwh/react-\/refresh-\/webpack-\/plugin\ react-\/refresh}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ if\ you\ prefer\ pnpm}
+\DoxyCodeLine{pnpm\ add\ -\/D\ @pmmmwh/react-\/refresh-\/webpack-\/plugin\ react-\/refresh}
+
+\end{DoxyCode}
+
+
+The {\ttfamily react-\/refresh} package (from the React team) is a required peer dependency of this plugin. We recommend using version {\ttfamily 0.\+10.\+0} or above.
+
+
+
+{\bfseries{Support for Type\+Script}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+Type\+Script support is available out-\/of-\/the-\/box for those who use {\ttfamily webpack.\+config.\+ts}.
+
+Our exported types however depends on {\ttfamily type-\/fest}, so you\textquotesingle{}ll have to add it as a {\ttfamily dev\+Dependency}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ if\ you\ prefer\ npm}
+\DoxyCodeLine{npm\ install\ -\/D\ type-\/fest}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ if\ you\ prefer\ yarn}
+\DoxyCodeLine{yarn\ add\ -\/D\ type-\/fest}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ if\ you\ prefer\ pnpm}
+\DoxyCodeLine{pnpm\ add\ -\/D\ type-\/fest}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:memo\+: Note\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:
+
+{\ttfamily type-\/fest@2.\+x} only supports Node.\+js v12.\+20 or above. If you\textquotesingle{}re using an older version of Node.\+js, please install {\ttfamily type-\/fest@1.\+x}. \end{quote}
+\end{adjustwidth}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1765}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1765}
+For most setups, we recommend integrating with {\ttfamily babel-\/loader}. It covers the most use cases and is officially supported by the React team.
+
+The example below will assume you\textquotesingle{}re using {\ttfamily webpack-\/dev-\/server}.
+
+If you haven\textquotesingle{}t done so, set up your development Webpack configuration for Hot Module Replacement (HMR).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ isDevelopment\ =\ process.env.NODE\_ENV\ !==\ 'production';}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isDevelopment\ ?\ 'development'\ :\ 'production',}
+\DoxyCodeLine{\ \ devServer:\ \{}
+\DoxyCodeLine{\ \ \ \ hot:\ true,}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+
+{\bfseries{Using {\ttfamily webpack-\/hot-\/middleware}}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ webpack\ =\ require('webpack');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ isDevelopment\ =\ process.env.NODE\_ENV\ !==\ 'production';}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isDevelopment\ ?\ 'development'\ :\ 'production',}
+\DoxyCodeLine{\ \ plugins:\ [isDevelopment\ \&\&\ new\ webpack.HotModuleReplacementPlugin()].filter(Boolean),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{Using {\ttfamily webpack-\/plugin-\/serve}}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ WebpackPluginServe\ \}\ =\ require('webpack-\/plugin-\/serve');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ isDevelopment\ =\ process.env.NODE\_ENV\ !==\ 'production';}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isDevelopment\ ?\ 'development'\ :\ 'production',}
+\DoxyCodeLine{\ \ plugins:\ [isDevelopment\ \&\&\ new\ WebpackPluginServe()].filter(Boolean),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\end{adjustwidth}
+
+
+Then, add the {\ttfamily react-\/refresh/babel} plugin to your Babel configuration and this plugin to your Webpack configuration.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ ReactRefreshWebpackPlugin\ =\ require('@pmmmwh/react-\/refresh-\/webpack-\/plugin');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ isDevelopment\ =\ process.env.NODE\_ENV\ !==\ 'production';}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isDevelopment\ ?\ 'development'\ :\ 'production',}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).[jt]sx?\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /node\_modules/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ require.resolve('babel-\/loader'),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [isDevelopment\ \&\&\ require.resolve('react-\/refresh/babel')].filter(Boolean),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [isDevelopment\ \&\&\ new\ ReactRefreshWebpackPlugin()].filter(Boolean),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:memo\+: Note\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:
+
+Ensure both the Babel transform ({\ttfamily react-\/refresh/babel}) and this plugin are enabled only in {\ttfamily development} mode! \end{quote}
+
+
+{\bfseries{Using {\ttfamily ts-\/loader}}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+\begin{quote}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:warning\+: Warning\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: This is an un-\/official integration maintained by the community. \end{quote}
+Install \href{https://github.com/Jack-Works/react-refresh-transformer/tree/main/typescript}{\texttt{ {\ttfamily react-\/refresh-\/typescript}}}. Ensure your Type\+Script version is at least 4.\+0.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ if\ you\ prefer\ npm}
+\DoxyCodeLine{npm\ install\ -\/D\ react-\/refresh-\/typescript}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ if\ you\ prefer\ yarn}
+\DoxyCodeLine{yarn\ add\ -\/D\ react-\/refresh-\/typescript}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ if\ you\ prefer\ pnpm}
+\DoxyCodeLine{pnpm\ add\ -\/D\ react-\/refresh-\/typescript}
+
+\end{DoxyCode}
+
+
+Then, instead of wiring up {\ttfamily react-\/refresh/babel} via {\ttfamily babel-\/loader}, you can wire-\/up {\ttfamily react-\/refresh-\/typescript} with {\ttfamily ts-\/loader}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ ReactRefreshWebpackPlugin\ =\ require('@pmmmwh/react-\/refresh-\/webpack-\/plugin');}
+\DoxyCodeLine{const\ ReactRefreshTypeScript\ =\ require('react-\/refresh-\/typescript');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ isDevelopment\ =\ process.env.NODE\_ENV\ !==\ 'production';}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isDevelopment\ ?\ 'development'\ :\ 'production',}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).[jt]sx?\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /node\_modules/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ require.resolve('ts-\/loader'),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ getCustomTransformers:\ ()\ =>\ (\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ before:\ [isDevelopment\ \&\&\ ReactRefreshTypeScript()].filter(Boolean),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ transpileOnly:\ isDevelopment,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [isDevelopment\ \&\&\ new\ ReactRefreshWebpackPlugin()].filter(Boolean),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\ttfamily ts-\/loader} won\textquotesingle{}t work with HMR unless {\ttfamily transpile\+Only} is set to {\ttfamily true}. You should use {\ttfamily Fork\+Ts\+Checker\+Webpack\+Plugin} if you need typechecking during development. \end{quote}
+\end{adjustwidth}
+
+
+
+
+{\bfseries{Using {\ttfamily swc-\/loader}}}\begin{adjustwidth}{1em}{0em}
+~\newline
+
+
+\begin{quote}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:warning\+: Warning\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: This is an un-\/official integration maintained by the community. \end{quote}
+Ensure your {\ttfamily @swc/core} version is at least {\ttfamily 1.\+2.\+86}. It is also recommended to use {\ttfamily swc-\/loader} version {\ttfamily 0.\+1.\+13} or above.
+
+Then, instead of wiring up {\ttfamily react-\/refresh/babel} via {\ttfamily babel-\/loader}, you can wire-\/up {\ttfamily swc-\/loader} and use the {\ttfamily refresh} transform\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ ReactRefreshWebpackPlugin\ =\ require('@pmmmwh/react-\/refresh-\/webpack-\/plugin');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ isDevelopment\ =\ process.env.NODE\_ENV\ !==\ 'production';}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isDevelopment\ ?\ 'development'\ :\ 'production',}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).[jt]sx?\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /node\_modules/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ require.resolve('swc-\/loader'),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ jsc:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ transform:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ react:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ development:\ isDevelopment,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ refresh:\ isDevelopment,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [isDevelopment\ \&\&\ new\ ReactRefreshWebpackPlugin()].filter(Boolean),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+Starting from version {\ttfamily 0.\+1.\+13}, {\ttfamily swc-\/loader} will set the {\ttfamily development} option based on Webpack\textquotesingle{}s {\ttfamily mode} option. {\ttfamily swc} won\textquotesingle{}t enable fast refresh when {\ttfamily development} is {\ttfamily false}. \end{quote}
+\end{adjustwidth}
+
+
+For more information on how to set up "{}\+Fast Refresh"{} with different integrations, please check out \mbox{[}our examples\mbox{]}(examples).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1766}{}\doxysubsection{\texorpdfstring{Overlay Integration}{Overlay Integration}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1766}
+This plugin integrates with the most common Webpack HMR solutions to surface errors during development -\/ in the form of an error overlay.
+
+By default, {\ttfamily webpack-\/dev-\/server} is used, but you can set the \href{docs/API.md\#sockintegration}{\texttt{ {\ttfamily overlay.\+sock\+Integration}}} option to match what you\textquotesingle{}re using.
+
+The supported versions are as follows\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dependency   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dependency   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Version    }\\\cline{1-2}
+\endhead
+{\ttfamily webpack-\/dev-\/server}   &{\ttfamily 3.\+6.\+0}+ or {\ttfamily 4.\+x}    \\\cline{1-2}
+{\ttfamily webpack-\/hot-\/middleware}   &{\ttfamily 2.\+x}    \\\cline{1-2}
+{\ttfamily webpack-\/plugin-\/serve}   &{\ttfamily 0.\+x} or {\ttfamily 1.\+x}   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1767}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1767}
+Please refer to the API docs for all available options.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1768}{}\doxysection{\texorpdfstring{FAQs and Troubleshooting}{FAQs and Troubleshooting}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1768}
+Please refer to the Troubleshooting guide for FAQs and resolutions to common issues.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1769}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1769}
+This project is licensed under the terms of the \href{/LICENSE}{\texttt{ MIT License}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1770}{}\doxysection{\texorpdfstring{Special Thanks}{Special Thanks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dpmmmwh_2react-refresh-webpack-plugin_2_r_e_a_d_m_e_autotoc_md1770}
+\href{https://jb.gg/OpenSource?from=ReactRefreshWebpackPlugin}{\texttt{  }} 

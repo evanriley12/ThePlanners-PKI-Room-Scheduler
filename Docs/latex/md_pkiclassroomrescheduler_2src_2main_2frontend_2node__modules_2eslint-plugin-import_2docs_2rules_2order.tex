@@ -1,0 +1,403 @@
+\chapter{import/order}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order}\index{import/order@{import/order}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10035}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10035}%
+ 🔧 This rule is automatically fixable by the \href{https://eslint.org/docs/latest/user-guide/command-line-interface\#--fix}{\texttt{ {\ttfamily -\/-\/fix} CLI option}}.
+
+Enforce a convention in the order of {\ttfamily require()} / {\ttfamily import} statements.
+
+With the \`{}groups\`{} option set to {\ttfamily \mbox{[}"{}builtin"{}, "{}external"{}, "{}internal"{}, "{}parent"{}, "{}sibling"{}, "{}index"{}, "{}object"{}, "{}type"{}\mbox{]}} the order is as shown in the following example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ 1.\ node\ "{}builtin"{}\ modules}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{//\ 2.\ "{}external"{}\ modules}
+\DoxyCodeLine{import\ \_\ from\ 'lodash';}
+\DoxyCodeLine{import\ chalk\ from\ 'chalk';}
+\DoxyCodeLine{//\ 3.\ "{}internal"{}\ modules}
+\DoxyCodeLine{//\ (if\ you\ have\ configured\ your\ path\ or\ webpack\ to\ handle\ your\ internal\ paths\ differently)}
+\DoxyCodeLine{import\ foo\ from\ 'src/foo';}
+\DoxyCodeLine{//\ 4.\ modules\ from\ a\ "{}parent"{}\ directory}
+\DoxyCodeLine{import\ foo\ from\ '../foo';}
+\DoxyCodeLine{import\ qux\ from\ '../../foo/qux';}
+\DoxyCodeLine{//\ 5.\ "{}sibling"{}\ modules\ from\ the\ same\ or\ a\ sibling's\ directory}
+\DoxyCodeLine{import\ bar\ from\ './bar';}
+\DoxyCodeLine{import\ baz\ from\ './bar/baz';}
+\DoxyCodeLine{//\ 6.\ "{}index"{}\ of\ the\ current\ directory}
+\DoxyCodeLine{import\ main\ from\ './';}
+\DoxyCodeLine{//\ 7.\ "{}object"{}-\/imports\ (only\ available\ in\ TypeScript)}
+\DoxyCodeLine{import\ log\ =\ console.log;}
+\DoxyCodeLine{//\ 8.\ "{}type"{}\ imports\ (only\ available\ in\ Flow\ and\ TypeScript)}
+\DoxyCodeLine{import\ type\ \{\ Foo\ \}\ from\ 'foo';}
+
+\end{DoxyCode}
+
+
+Unassigned imports are ignored, as the order they are imported in may be important.
+
+Statements using the ES6 {\ttfamily import} syntax must appear before any {\ttfamily require()} statements.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10036}{}\doxysection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10036}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \_\ from\ 'lodash';}
+\DoxyCodeLine{import\ path\ from\ 'path';\ //\ \`{}path`\ import\ should\ occur\ before\ import\ of\ \`{}lodash`}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ \_\ =\ require('lodash');}
+\DoxyCodeLine{var\ path\ =\ require('path');\ //\ \`{}path`\ import\ should\ occur\ before\ import\ of\ \`{}lodash`}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ path\ =\ require('path');}
+\DoxyCodeLine{import\ foo\ from\ './foo';\ //\ \`{}import`\ statements\ must\ be\ before\ \`{}require`\ statement}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10037}{}\doxysection{\texorpdfstring{Pass}{Pass}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10037}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{import\ \_\ from\ 'lodash';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ path\ =\ require('path');}
+\DoxyCodeLine{var\ \_\ =\ require('lodash');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Allowed\ as\ ̀`babel-\/register`\ is\ not\ assigned.}
+\DoxyCodeLine{require('babel-\/register');}
+\DoxyCodeLine{var\ path\ =\ require('path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Allowed\ as\ \`{}import`\ must\ be\ before\ \`{}require`}
+\DoxyCodeLine{import\ foo\ from\ './foo';}
+\DoxyCodeLine{var\ path\ =\ require('path');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10038}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10038}
+This rule supports the following options\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10039}{}\doxysubsection{\texorpdfstring{{\ttfamily groups\+: \mbox{[}array\mbox{]}}}{{\ttfamily groups\+: \mbox{[}array\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10039}
+How groups are defined, and the order to respect. {\ttfamily groups} must be an array of {\ttfamily string} or \mbox{[}{\ttfamily string}\mbox{]}. The only allowed {\ttfamily string}s are\+: {\ttfamily "{}builtin"{}}, {\ttfamily "{}external"{}}, {\ttfamily "{}internal"{}}, {\ttfamily "{}unknown"{}}, {\ttfamily "{}parent"{}}, {\ttfamily "{}sibling"{}}, {\ttfamily "{}index"{}}, {\ttfamily "{}object"{}}, {\ttfamily "{}type"{}}. The enforced order is the same as the order of each element in a group. Omitted types are implicitly grouped together as the last element. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[}
+\DoxyCodeLine{\ \ 'builtin',\ //\ Built-\/in\ types\ are\ first}
+\DoxyCodeLine{\ \ ['sibling',\ 'parent'],\ //\ Then\ sibling\ and\ parent\ types.\ They\ can\ be\ mingled\ together}
+\DoxyCodeLine{\ \ 'index',\ //\ Then\ the\ index\ file}
+\DoxyCodeLine{\ \ 'object',}
+\DoxyCodeLine{\ \ //\ Then\ the\ rest:\ internal\ and\ external\ type}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+The default value is {\ttfamily \mbox{[}"{}builtin"{}, "{}external"{}, "{}parent"{}, "{}sibling"{}, "{}index"{}\mbox{]}}.
+
+You can set the options like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}import/order"{}:\ [}
+\DoxyCodeLine{\ \ "{}error"{},}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ "{}groups"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ "{}index"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}sibling"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}parent"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}internal"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}external"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}builtin"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}object"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10040}{}\doxysubsection{\texorpdfstring{{\ttfamily path\+Groups\+: \mbox{[}array of objects\mbox{]}}}{{\ttfamily path\+Groups\+: \mbox{[}array of objects\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10040}
+To be able to group by paths mostly needed with aliases path\+Groups can be defined.
+
+Properties of the objects
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ required   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ required   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-4}
+\endhead
+pattern   &\PBS\centering x   &string   &minimatch pattern for the paths to be in this group (will not be used for builtins or externals)    \\\cline{1-4}
+pattern\+Options   &\PBS\centering &object   &options for minimatch, default\+: \{ nocomment\+: true \}    \\\cline{1-4}
+group   &\PBS\centering x   &string   &one of the allowed groups, the path\+Group will be positioned relative to this group    \\\cline{1-4}
+position   &\PBS\centering &string   &defines where around the group the path\+Group will be positioned, can be \textquotesingle{}after\textquotesingle{} or \textquotesingle{}before\textquotesingle{}, if not provided path\+Group will be positioned like the group   \\\cline{1-4}
+\end{longtabu}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}import/order"{}:\ ["{}error"{},\ \{}
+\DoxyCodeLine{\ \ \ \ "{}pathGroups"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}pattern"{}:\ "{}\string~/**"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}group"{}:\ "{}external"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10041}{}\doxysubsection{\texorpdfstring{{\ttfamily distinct\+Group\+: \mbox{[}boolean\mbox{]}}}{{\ttfamily distinct\+Group\+: \mbox{[}boolean\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10041}
+This changes how {\ttfamily path\+Groups\mbox{[}\mbox{]}.position} affects grouping. The property is most useful when {\ttfamily newlines-\/between} is set to {\ttfamily always} and at least 1 {\ttfamily path\+Groups} entry has a {\ttfamily position} property set.
+
+By default, in the context of a particular {\ttfamily path\+Group} entry, when setting {\ttfamily position}, a new "{}group"{} will silently be created. That is, even if the {\ttfamily group} is specified, a newline will still separate imports that match that {\ttfamily pattern} with the rest of the group (assuming {\ttfamily newlines-\/between} is {\ttfamily always}). This is undesirable if your intentions are to use {\ttfamily position} to position {\itshape within} the group (and not create a new one). Override this behavior by setting {\ttfamily distinct\+Group} to {\ttfamily false}; this will keep imports within the same group as intended.
+
+Note that currently, {\ttfamily distinct\+Group} defaults to {\ttfamily true}. However, in a later update, the default will change to {\ttfamily false}
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}import/order"{}:\ ["{}error"{},\ \{}
+\DoxyCodeLine{\ \ \ \ "{}newlines-\/between"{}:\ "{}always"{},}
+\DoxyCodeLine{\ \ \ \ "{}pathGroups"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}pattern"{}:\ "{}@app/**"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}group"{}:\ "{}external"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}position"{}:\ "{}after"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ "{}distinctGroup"{}:\ false}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10042}{}\doxysubsection{\texorpdfstring{{\ttfamily path\+Groups\+Excluded\+Import\+Types\+: \mbox{[}array\mbox{]}}}{{\ttfamily path\+Groups\+Excluded\+Import\+Types\+: \mbox{[}array\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10042}
+This defines import types that are not handled by configured path\+Groups. This is mostly needed when you want to handle path groups that look like external imports.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}import/order"{}:\ ["{}error"{},\ \{}
+\DoxyCodeLine{\ \ \ \ "{}pathGroups"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}pattern"{}:\ "{}@app/**"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}group"{}:\ "{}external"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}position"{}:\ "{}after"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ "{}pathGroupsExcludedImportTypes"{}:\ ["{}builtin"{}]}
+\DoxyCodeLine{\ \ \}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You can also use {\ttfamily patterns}(e.\+g., {\ttfamily react}, {\ttfamily react-\/router-\/dom}, etc).
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}import/order"{}:\ [}
+\DoxyCodeLine{\ \ \ \ "{}error"{},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}pathGroups"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}pattern"{}:\ "{}react"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}group"{}:\ "{}builtin"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}position"{}:\ "{}before"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ "{}pathGroupsExcludedImportTypes"{}:\ ["{}react"{}]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The default value is {\ttfamily \mbox{[}"{}builtin"{}, "{}external"{}, "{}object"{}\mbox{]}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10043}{}\doxysubsection{\texorpdfstring{{\ttfamily newlines-\/between\+: \mbox{[}ignore\texorpdfstring{$\vert$}{|}always\texorpdfstring{$\vert$}{|}always-\/and-\/inside-\/groups\texorpdfstring{$\vert$}{|}never\mbox{]}}}{{\ttfamily newlines-\/between\+: \mbox{[}ignore\texorpdfstring{$\vert$}{|}always\texorpdfstring{$\vert$}{|}always-\/and-\/inside-\/groups\texorpdfstring{$\vert$}{|}never\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10043}
+Enforces or forbids new lines between import groups\+:
+
+
+\begin{DoxyItemize}
+\item If set to {\ttfamily ignore}, no errors related to new lines between import groups will be reported.
+\item If set to {\ttfamily always}, at least one new line between each group will be enforced, and new lines inside a group will be forbidden. To prevent multiple lines between imports, core {\ttfamily no-\/multiple-\/empty-\/lines} rule can be used.
+\item If set to {\ttfamily always-\/and-\/inside-\/groups}, it will act like {\ttfamily always} except newlines are allowed inside import groups.
+\item If set to {\ttfamily never}, no new lines are allowed in the entire import section.
+\end{DoxyItemize}
+
+The default value is {\ttfamily "{}ignore"{}}.
+
+With the default group setting, the following will be invalid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}newlines-\/between"{}:\ "{}always"{}\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{import\ index\ from\ './';}
+\DoxyCodeLine{import\ sibling\ from\ './foo';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}newlines-\/between"{}:\ "{}always-\/and-\/inside-\/groups"{}\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{import\ index\ from\ './';}
+\DoxyCodeLine{import\ sibling\ from\ './foo';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}newlines-\/between"{}:\ "{}never"{}\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ index\ from\ './';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ sibling\ from\ './foo';}
+
+\end{DoxyCode}
+
+
+while those will be valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}newlines-\/between"{}:\ "{}always"{}\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ index\ from\ './';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ sibling\ from\ './foo';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}newlines-\/between"{}:\ "{}always-\/and-\/inside-\/groups"{}\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ index\ from\ './';}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ sibling\ from\ './foo';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}newlines-\/between"{}:\ "{}never"{}\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{import\ index\ from\ './';}
+\DoxyCodeLine{import\ sibling\ from\ './foo';}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10044}{}\doxysubsection{\texorpdfstring{{\ttfamily alphabetize\+: \{order\+: asc\texorpdfstring{$\vert$}{|}desc\texorpdfstring{$\vert$}{|}ignore, order\+Import\+Kind\+: asc\texorpdfstring{$\vert$}{|}desc\texorpdfstring{$\vert$}{|}ignore, case\+Insensitive\+: true\texorpdfstring{$\vert$}{|}false\}}}{{\ttfamily alphabetize\+: \{order\+: asc\texorpdfstring{$\vert$}{|}desc\texorpdfstring{$\vert$}{|}ignore, order\+Import\+Kind\+: asc\texorpdfstring{$\vert$}{|}desc\texorpdfstring{$\vert$}{|}ignore, case\+Insensitive\+: true\texorpdfstring{$\vert$}{|}false\}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10044}
+Sort the order within each group in alphabetical manner based on {\bfseries{import path}}\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily order}\+: use {\ttfamily asc} to sort in ascending order, and {\ttfamily desc} to sort in descending order (default\+: {\ttfamily ignore}).
+\item {\ttfamily order\+Import\+Kind}\+: use {\ttfamily asc} to sort in ascending order various import kinds, e.\+g. imports prefixed with {\ttfamily type} or {\ttfamily typeof}, with same import path. Use {\ttfamily desc} to sort in descending order (default\+: {\ttfamily ignore}).
+\item {\ttfamily case\+Insensitive}\+: use {\ttfamily true} to ignore case, and {\ttfamily false} to consider case (default\+: {\ttfamily false}).
+\end{DoxyItemize}
+
+Example setting\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{alphabetize:\ \{}
+\DoxyCodeLine{\ \ order:\ 'asc',\ /*\ sort\ in\ ascending\ order.\ Options:\ ['ignore',\ 'asc',\ 'desc']\ */}
+\DoxyCodeLine{\ \ caseInsensitive:\ true\ /*\ ignore\ case.\ Options:\ [true,\ false]\ */}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This will fail the rule check\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}alphabetize"{}:\ \{"{}order"{}:\ "{}asc"{},\ "{}caseInsensitive"{}:\ true\}\}]\ */}
+\DoxyCodeLine{import\ React,\ \{\ PureComponent\ \}\ from\ 'react';}
+\DoxyCodeLine{import\ aTypes\ from\ 'prop-\/types';}
+\DoxyCodeLine{import\ \{\ compose,\ apply\ \}\ from\ 'xcompose';}
+\DoxyCodeLine{import\ *\ as\ classnames\ from\ 'classnames';}
+\DoxyCodeLine{import\ blist\ from\ 'BList';}
+
+\end{DoxyCode}
+
+
+While this will pass\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}alphabetize"{}:\ \{"{}order"{}:\ "{}asc"{},\ "{}caseInsensitive"{}:\ true\}\}]\ */}
+\DoxyCodeLine{import\ blist\ from\ 'BList';}
+\DoxyCodeLine{import\ *\ as\ classnames\ from\ 'classnames';}
+\DoxyCodeLine{import\ aTypes\ from\ 'prop-\/types';}
+\DoxyCodeLine{import\ React,\ \{\ PureComponent\ \}\ from\ 'react';}
+\DoxyCodeLine{import\ \{\ compose,\ apply\ \}\ from\ 'xcompose';}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10045}{}\doxysubsection{\texorpdfstring{{\ttfamily warn\+On\+Unassigned\+Imports\+: true\texorpdfstring{$\vert$}{|}false}}{{\ttfamily warn\+On\+Unassigned\+Imports\+: true\texorpdfstring{$\vert$}{|}false}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10045}
+
+\begin{DoxyItemize}
+\item default\+: {\ttfamily false}
+\end{DoxyItemize}
+
+Warns when unassigned imports are out of order. These warning will not be fixed with {\ttfamily -\/-\/fix} because unassigned imports are used for side-\/effects and changing the import of order of modules with side effects can not be done automatically in a way that is safe.
+
+This will fail the rule check\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}warnOnUnassignedImports"{}:\ true\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ './styles.css';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+
+\end{DoxyCode}
+
+
+While this will pass\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/order:\ ["{}error"{},\ \{"{}warnOnUnassignedImports"{}:\ true\}]\ */}
+\DoxyCodeLine{import\ fs\ from\ 'fs';}
+\DoxyCodeLine{import\ path\ from\ 'path';}
+\DoxyCodeLine{import\ './styles.css';}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10046}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2order_autotoc_md10046}
+
+\begin{DoxyItemize}
+\item \href{../../README.md\#importexternal-module-folders}{\texttt{ {\ttfamily import/external-\/module-\/folders}}} setting
+\item \href{../../README.md\#importinternal-regex}{\texttt{ {\ttfamily import/internal-\/regex}}} setting 
+\end{DoxyItemize}

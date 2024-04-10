@@ -1,0 +1,37 @@
+\chapter{is-\/array-\/buffer \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/is-\/array-\/buffer"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/is-\/array-\/buffer.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e}\index{is-\/array-\/buffer $<$sup$>$$<$a href="{}https://npmjs.org/package/is-\/array-\/buffer"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/is-\/array-\/buffer.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{is-\/array-\/buffer $<$sup$>$$<$a href=""https://npmjs.org/package/is-\/array-\/buffer"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/is-\/array-\/buffer.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e_autotoc_md14373}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e_autotoc_md14373}%
+ \href{https://github.com/inspect-js/is-array-buffer/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/is-array-buffer/}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=is-array-buffer}{\texttt{ }}
+
+\href{https://npmjs.org/package/is-array-buffer}{\texttt{ }}
+
+Is this value a JS Array\+Buffer? This module works cross-\/realm/iframe, does not depend on {\ttfamily instanceof} or mutable properties, and despite ES6 Symbol.\+to\+String\+Tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e_autotoc_md14374}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e_autotoc_md14374}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{var\ isArrayBuffer\ =\ require('is-\/array-\/buffer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(!isArrayBuffer(function\ ()\ \{\}));}
+\DoxyCodeLine{assert(!isArrayBuffer(null));}
+\DoxyCodeLine{assert(!isArrayBuffer(function*\ ()\ \{\ yield\ 42;\ return\ Infinity;\ \});}
+\DoxyCodeLine{assert(!isArrayBuffer(Symbol('foo')));}
+\DoxyCodeLine{assert(!isArrayBuffer(1n));}
+\DoxyCodeLine{assert(!isArrayBuffer(Object(1n)));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ Set()));}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ WeakSet()));}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ Map()));}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ WeakMap()));}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ WeakRef(\{\})));}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ FinalizationRegistry(()\ =>\ \{\})));}
+\DoxyCodeLine{assert(!isArrayBuffer(new\ SharedArrayBuffer()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(isArrayBuffer(new\ ArrayBuffer()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ MyArrayBuffer\ extends\ ArrayBuffer\ \{\}}
+\DoxyCodeLine{assert(isArrayBuffer(new\ MyArrayBuffer()));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e_autotoc_md14375}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-array-buffer_2_r_e_a_d_m_e_autotoc_md14375}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

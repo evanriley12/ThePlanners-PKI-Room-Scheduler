@@ -1,0 +1,33 @@
+\chapter{to-\/fast-\/properties \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/to-\/fast-\/properties"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/to-\/fast-\/properties.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme}\index{to-\/fast-\/properties $<$a href="{}https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{to-\/fast-\/properties $<$a href=""https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25509}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25509}%
+ \begin{quote}
+Force V8 to use fast properties for an object \end{quote}
+\href{http://stackoverflow.com/questions/24987896/}{\texttt{ Read more.}}
+
+Use {\ttfamily Has\+Fast\+Properties(object)} and {\ttfamily -\/-\/allow-\/natives-\/syntax} to check whether an object already has fast properties.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25510}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25510}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ to-\/fast-\/properties}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25511}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25511}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ toFastProperties\ =\ require('to-\/fast-\/properties');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ true,}
+\DoxyCodeLine{\ \ \ \ bar:\ true}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{delete\ obj.foo;}
+\DoxyCodeLine{//\ \`{}obj`\ now\ has\ slow\ properties}
+\DoxyCodeLine{}
+\DoxyCodeLine{toFastProperties(obj);}
+\DoxyCodeLine{//\ \`{}obj`\ now\ has\ fast\ properties}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25512}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2to-fast-properties_2readme_autotoc_md25512}
+MIT © Petka Antonov, John-\/\+David Dalton, Sindre Sorhus 

@@ -1,0 +1,237 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e}\index{README@{README}}
+{\bfseries{english}} \texorpdfstring{$\vert$}{|} \href{https://github.com/svg/svgo/blob/master/README.ru.md}{\texttt{ русский}} \DoxyHorRuler{0}
+
+
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24452}{}\doxysubsection{\texorpdfstring{SVGO \href{https://npmjs.org/package/svgo}{\texttt{ }} \href{https://travis-ci.org/svg/svgo}{\texttt{ }} \href{https://coveralls.io/r/svg/svgo?branch=master}{\texttt{ }}}{SVGO \href{https://npmjs.org/package/svgo}{\texttt{ }} \href{https://travis-ci.org/svg/svgo}{\texttt{ }} \href{https://coveralls.io/r/svg/svgo?branch=master}{\texttt{ }}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24452}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+SVG O\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptimizer is a Nodejs-\/based tool for optimizing SVG vector graphics files. \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24453}{}\doxysubsection{\texorpdfstring{Why?}{Why?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24453}
+SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-\/optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24454}{}\doxysubsection{\texorpdfstring{What it can do}{What it can do}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24454}
+SVGO has a plugin-\/based architecture, so almost every optimization is a separate plugin.
+
+Today we have\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Plugin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Plugin   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default    }\\\cline{1-3}
+\endhead
+\href{https://github.com/svg/svgo/blob/master/plugins/cleanupAttrs.js}{\texttt{ cleanup\+Attrs}}   &cleanup attributes from newlines, trailing, and repeating spaces   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/inlineStyles.js}{\texttt{ inline\+Styles}}   &move and merge styles from {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} elements to element {\ttfamily style} attributes   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeDoctype.js}{\texttt{ remove\+Doctype}}   &remove doctype declaration   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeXMLProcInst.js}{\texttt{ remove\+XMLProc\+Inst}}   &remove XML processing instructions   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeComments.js}{\texttt{ remove\+Comments}}   &remove comments   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeMetadata.js}{\texttt{ remove\+Metadata}}   &remove {\ttfamily \texorpdfstring{$<$}{<}metadata\texorpdfstring{$>$}{>}}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeTitle.js}{\texttt{ remove\+Title}}   &remove {\ttfamily \texorpdfstring{$<$}{<}title\texorpdfstring{$>$}{>}}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeDesc.js}{\texttt{ remove\+Desc}}   &remove {\ttfamily \texorpdfstring{$<$}{<}desc\texorpdfstring{$>$}{>}}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeUselessDefs.js}{\texttt{ remove\+Useless\+Defs}}   &remove elements of {\ttfamily \texorpdfstring{$<$}{<}defs\texorpdfstring{$>$}{>}} without {\ttfamily id}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeXMLNS.js}{\texttt{ remove\+XMLNS}}   &removes {\ttfamily xmlns} attribute (for inline svg)   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeEditorsNSData.js}{\texttt{ remove\+Editors\+NSData}}   &remove editors namespaces, elements, and attributes   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeEmptyAttrs.js}{\texttt{ remove\+Empty\+Attrs}}   &remove empty attributes   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeHiddenElems.js}{\texttt{ remove\+Hidden\+Elems}}   &remove hidden elements   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeEmptyText.js}{\texttt{ remove\+Empty\+Text}}   &remove empty Text elements   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeEmptyContainers.js}{\texttt{ remove\+Empty\+Containers}}   &remove empty Container elements   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeViewBox.js}{\texttt{ remove\+View\+Box}}   &remove {\ttfamily view\+Box} attribute when possible   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/cleanupEnableBackground.js}{\texttt{ cleanup\+Enable\+Background}}   &remove or cleanup {\ttfamily enable-\/background} attribute when possible   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/minifyStyles.js}{\texttt{ minify\+Styles}}   &minify {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} elements content with \href{https://github.com/css/csso}{\texttt{ CSSO}}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/convertStyleToAttrs.js}{\texttt{ convert\+Style\+To\+Attrs}}   &convert styles into attributes   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/convertColors.js}{\texttt{ convert\+Colors}}   &convert colors (from {\ttfamily rgb()} to {\ttfamily \#rrggbb}, from {\ttfamily \#rrggbb} to {\ttfamily \#rgb})   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/convertPathData.js}{\texttt{ convert\+Path\+Data}}   &convert Path data to relative or absolute (whichever is shorter), convert one segment to another, trim useless delimiters, smart rounding, and much more   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/convertTransform.js}{\texttt{ convert\+Transform}}   &collapse multiple transforms into one, convert matrices to the short aliases, and much more   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeUnknownsAndDefaults.js}{\texttt{ remove\+Unknowns\+And\+Defaults}}   &remove unknown elements content and attributes, remove attrs with default values   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeNonInheritableGroupAttrs.js}{\texttt{ remove\+Non\+Inheritable\+Group\+Attrs}}   &remove non-\/inheritable group\textquotesingle{}s "{}presentation"{} attributes   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeUselessStrokeAndFill.js}{\texttt{ remove\+Useless\+Stroke\+And\+Fill}}   &remove useless {\ttfamily stroke} and {\ttfamily fill} attrs   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeUnusedNS.js}{\texttt{ remove\+Unused\+NS}}   &remove unused namespaces declaration   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/prefixIds.js}{\texttt{ prefix\+Ids}}   &prefix IDs and classes with the SVG filename or an arbitrary string   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/cleanupIDs.js}{\texttt{ cleanup\+IDs}}   &remove unused and minify used IDs   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/cleanupNumericValues.js}{\texttt{ cleanup\+Numeric\+Values}}   &round numeric values to the fixed precision, remove default {\ttfamily px} units   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/cleanupListOfValues.js}{\texttt{ cleanup\+List\+Of\+Values}}   &round numeric values in attributes that take a list of numbers (like {\ttfamily view\+Box} or {\ttfamily enable-\/background})   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/moveElemsAttrsToGroup.js}{\texttt{ move\+Elems\+Attrs\+To\+Group}}   &move elements\textquotesingle{} attributes to their enclosing group   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/moveGroupAttrsToElems.js}{\texttt{ move\+Group\+Attrs\+To\+Elems}}   &move some group attributes to the contained elements   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/collapseGroups.js}{\texttt{ collapse\+Groups}}   &collapse useless groups   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeRasterImages.js}{\texttt{ remove\+Raster\+Images}}   &remove raster images   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/mergePaths.js}{\texttt{ merge\+Paths}}   &merge multiple Paths into one   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/convertShapeToPath.js}{\texttt{ convert\+Shape\+To\+Path}}   &convert some basic shapes to {\ttfamily \texorpdfstring{$<$}{<}path\texorpdfstring{$>$}{>}}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/convertEllipseToCircle.js}{\texttt{ convert\+Ellipse\+To\+Circle}}   &convert non-\/eccentric {\ttfamily \texorpdfstring{$<$}{<}ellipse\texorpdfstring{$>$}{>}} to {\ttfamily \texorpdfstring{$<$}{<}circle\texorpdfstring{$>$}{>}}   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/sortAttrs.js}{\texttt{ sort\+Attrs}}   &sort element attributes for epic readability   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/sortDefsChildren.js}{\texttt{ sort\+Defs\+Children}}   &sort children of {\ttfamily \texorpdfstring{$<$}{<}defs\texorpdfstring{$>$}{>}} in order to improve compression   &{\ttfamily enabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeDimensions.js}{\texttt{ remove\+Dimensions}}   &remove {\ttfamily width}/{\ttfamily height} and add {\ttfamily view\+Box} if it\textquotesingle{}s missing (opposite to remove\+View\+Box, disable it first)   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeAttrs.js}{\texttt{ remove\+Attrs}}   &remove attributes by pattern   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeAttributesBySelector.js}{\texttt{ remove\+Attributes\+By\+Selector}}   &removes attributes of elements that match a css selector   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeElementsByAttr.js}{\texttt{ remove\+Elements\+By\+Attr}}   &remove arbitrary elements by ID or class\+Name   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/addClassesToSVGElement.js}{\texttt{ add\+Classes\+To\+SVGElement}}   &add classnames to an outer {\ttfamily \texorpdfstring{$<$}{<}svg\texorpdfstring{$>$}{>}} element   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/addAttributesToSVGElement.js}{\texttt{ add\+Attributes\+To\+SVGElement}}   &adds attributes to an outer {\ttfamily \texorpdfstring{$<$}{<}svg\texorpdfstring{$>$}{>}} element   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeOffCanvasPaths.js}{\texttt{ remove\+Off\+Canvas\+Paths}}   &removes elements that are drawn outside of the viewbox   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeStyleElement.js}{\texttt{ remove\+Style\+Element}}   &remove {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} elements   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/removeScriptElement.js}{\texttt{ remove\+Script\+Element}}   &remove {\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}} elements   &{\ttfamily disabled}    \\\cline{1-3}
+\href{https://github.com/svg/svgo/blob/master/plugins/reusePaths.js}{\texttt{ reuse\+Paths}}   &Find duplicated $<$path$>$ elements and replace them with $<$use$>$ links   &{\ttfamily disabled}   \\\cline{1-3}
+\end{longtabu}
+
+
+Want to know how it works and how to write your own plugin? \href{https://github.com/svg/svgo/blob/master/docs/how-it-works/en.md}{\texttt{ Of course you want to}}. (\href{https://github.com/svg/svgo/blob/master/docs/how-it-works/ko.md}{\texttt{ 동작방법}})\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24455}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24455}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ [sudo]\ npm\ install\ -\/g\ svgo}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24456}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24456}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24457}{}\doxysubsubsection{\texorpdfstring{$<$abbr title="{}\+Command Line Interface"{}$>$CLI$<$/abbr$>$}{$<$abbr title="{}\+Command Line Interface"{}$>$CLI$<$/abbr$>$}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24457}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Usage:}
+\DoxyCodeLine{\ \ svgo\ [OPTIONS]\ [ARGS]}
+\DoxyCodeLine{}
+\DoxyCodeLine{Options:}
+\DoxyCodeLine{\ \ -\/h,\ -\/-\/help\ :\ Help}
+\DoxyCodeLine{\ \ -\/v,\ -\/-\/version\ :\ Version}
+\DoxyCodeLine{\ \ -\/i\ INPUT,\ -\/-\/input=INPUT\ :\ Input\ file,\ "{}-\/"{}\ for\ STDIN}
+\DoxyCodeLine{\ \ -\/s\ STRING,\ -\/-\/string=STRING\ :\ Input\ SVG\ data\ string}
+\DoxyCodeLine{\ \ -\/f\ FOLDER,\ -\/-\/folder=FOLDER\ :\ Input\ folder,\ optimize\ and\ rewrite\ all\ *.svg\ files}
+\DoxyCodeLine{\ \ -\/o\ OUTPUT,\ -\/-\/output=OUTPUT\ :\ Output\ file\ or\ folder\ (by\ default\ the\ same\ as\ the\ input),\ "{}-\/"{}\ for\ STDOUT}
+\DoxyCodeLine{\ \ -\/p\ PRECISION,\ -\/-\/precision=PRECISION\ :\ Set\ number\ of\ digits\ in\ the\ fractional\ part,\ overrides\ plugins\ params}
+\DoxyCodeLine{\ \ -\/-\/config=CONFIG\ :\ Config\ file\ or\ JSON\ string\ to\ extend\ or\ replace\ default}
+\DoxyCodeLine{\ \ -\/-\/disable=PLUGIN\ :\ Disable\ plugin\ by\ name,\ "{}-\/-\/disable=PLUGIN1,PLUGIN2"{}\ for\ multiple\ plugins}
+\DoxyCodeLine{\ \ -\/-\/enable=PLUGIN\ :\ Enable\ plugin\ by\ name,\ "{}-\/-\/enable=PLUGIN3,PLUGIN4"{}\ for\ multiple\ plugins}
+\DoxyCodeLine{\ \ -\/-\/datauri=DATAURI\ :\ Output\ as\ Data\ URI\ string\ (base64,\ URI\ encoded\ or\ unencoded)}
+\DoxyCodeLine{\ \ -\/-\/multipass\ :\ Pass\ over\ SVGs\ multiple\ times\ to\ ensure\ all\ optimizations\ are\ applied}
+\DoxyCodeLine{\ \ -\/-\/pretty\ :\ Make\ SVG\ pretty\ printed}
+\DoxyCodeLine{\ \ -\/-\/indent=INDENT\ :\ Indent\ number\ when\ pretty\ printing\ SVGs}
+\DoxyCodeLine{\ \ -\/r,\ -\/-\/recursive\ :\ Use\ with\ '-\/f'.\ Optimizes\ *.svg\ files\ in\ folders\ recursively.}
+\DoxyCodeLine{\ \ -\/q,\ -\/-\/quiet\ :\ Only\ output\ error\ messages,\ not\ regular\ status\ messages}
+\DoxyCodeLine{\ \ -\/-\/show-\/plugins\ :\ Show\ available\ plugins\ and\ exit}
+\DoxyCodeLine{}
+\DoxyCodeLine{Arguments:}
+\DoxyCodeLine{\ \ INPUT\ :\ Alias\ to\ -\/-\/input}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item with files\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ test.svg}
+
+\end{DoxyCode}
+
+
+or\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ *.svg}
+
+\end{DoxyCode}
+
+
+{\ttfamily sh \$ svgo test.\+svg -\/o test.\+min.\+svg }
+
+{\ttfamily sh \$ svgo test.\+svg other.\+svg third.\+svg }
+
+{\ttfamily sh \$ svgo test.\+svg other.\+svg third.\+svg -\/o test.\+min.\+svg -\/o other.\+min.\+svg -\/o third.\+min.\+svg }
+\item with STDIN / STDOUT\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ cat\ test.svg\ |\ svgo\ -\/i\ -\/\ -\/o\ -\/\ >\ test.min.svg}
+
+\end{DoxyCode}
+
+\item with folder
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ -\/f\ ../path/to/folder/with/svg/files}
+
+\end{DoxyCode}
+
+
+or\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ -\/f\ ../path/to/folder/with/svg/files\ -\/o\ ../path/to/folder/with/svg/output}
+
+\end{DoxyCode}
+
+
+{\ttfamily sh \$ svgo \texorpdfstring{$\ast$}{*}.svg -\/o ../path/to/folder/with/svg/output }
+\item with strings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ -\/s\ '<svg\ version="{}1.1"{}>test</svg>'\ -\/o\ test.min.svg}
+
+\end{DoxyCode}
+
+
+or even with Data URI base64\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ -\/s\ 'data:image/svg+xml;base64,...'\ -\/o\ test.min.svg}
+
+\end{DoxyCode}
+
+\item with SVGZ\+:
+
+from {\ttfamily .svgz} to {\ttfamily .svg}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ gunzip\ -\/c\ test.svgz\ |\ svgo\ -\/i\ -\/\ -\/o\ test.min.svg}
+
+\end{DoxyCode}
+
+
+from {\ttfamily .svg} to {\ttfamily .svgz}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ svgo\ test.svg\ -\/o\ -\/\ |\ gzip\ -\/cfq9\ >\ test.svgz}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24458}{}\doxysubsubsection{\texorpdfstring{Other Ways to Use SVGO}{Other Ways to Use SVGO}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24458}
+
+\begin{DoxyItemize}
+\item as a web app – \href{https://jakearchibald.github.io/svgomg/}{\texttt{ SVGOMG}}
+\item as a Nodejs module – \href{https://github.com/svg/svgo/tree/master/examples}{\texttt{ examples}}
+\item as a Grunt task – \href{https://github.com/sindresorhus/grunt-svgmin}{\texttt{ grunt-\/svgmin}}
+\item as a Gulp task – \href{https://github.com/ben-eb/gulp-svgmin}{\texttt{ gulp-\/svgmin}}
+\item as a Mimosa module – \href{https://github.com/dbashford/mimosa-minify-svg}{\texttt{ mimosa-\/minify-\/svg}}
+\item as an OSX Folder Action – \href{https://github.com/svg/svgo-osx-folder-action}{\texttt{ svgo-\/osx-\/folder-\/action}}
+\item as a webpack loader – \href{https://github.com/tcoopman/image-webpack-loader}{\texttt{ image-\/webpack-\/loader}}
+\item as a Telegram Bot – \href{https://github.com/maksugr/svgo_bot}{\texttt{ svgo\+\_\+bot}}
+\item as a Post\+CSS plugin – \href{https://github.com/ben-eb/postcss-svgo}{\texttt{ postcss-\/svgo}}
+\item as an Inkscape plugin – \href{https://github.com/konsumer/inkscape-svgo}{\texttt{ inkscape-\/svgo}}
+\item as a Sketch plugin -\/ \href{https://github.com/BohemianCoding/svgo-compressor}{\texttt{ svgo-\/compressor}}
+\item as mac\+OS app -\/ \href{https://image-shrinker.com}{\texttt{ Image Shrinker}}
+\item as a Rollup plugin -\/ \href{https://github.com/porsager/rollup-plugin-svgo}{\texttt{ rollup-\/plugin-\/svgo}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24459}{}\doxysubsection{\texorpdfstring{Backers}{Backers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24459}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://sheetjs.com/}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://sheetjs.\+com/sketch128.\+png"{} width="{}80"{}\texorpdfstring{$>$}{>}}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{http://fontello.com/}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://rawgithub.\+com/fontello/fontello/master/fontello-\/image.\+svg"{} width="{}80"{}\texorpdfstring{$>$}{>}}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://sheetjs.com/}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://sheetjs.\+com/sketch128.\+png"{} width="{}80"{}\texorpdfstring{$>$}{>}}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{http://fontello.com/}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://rawgithub.\+com/fontello/fontello/master/fontello-\/image.\+svg"{} width="{}80"{}\texorpdfstring{$>$}{>}}}    }\\\cline{1-2}
+\endhead
+\PBS\centering \href{https://sheetjs.com/}{\texttt{ Sheet\+JS LLC}}   &\PBS\centering \href{http://fontello.com/}{\texttt{ Fontello}}   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24460}{}\doxysubsection{\texorpdfstring{Donations}{Donations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24460}
+
+\begin{DoxyItemize}
+\item Pay\+Pal\+: \href{https://www.paypal.me/deepsweet}{\texttt{ https\+://www.\+paypal.\+me/deepsweet}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24461}{}\doxysubsection{\texorpdfstring{License and Copyright}{License and Copyright}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2_r_e_a_d_m_e_autotoc_md24461}
+This software is released under the terms of the \href{https://github.com/svg/svgo/blob/master/LICENSE}{\texttt{ MIT license}}.
+
+Logo by \href{http://xizzzy.ru/}{\texttt{ Yegor Bolshakov}}. 

@@ -1,0 +1,191 @@
+\chapter{he \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/mathiasbynens/he"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/mathiasbynens/he.\+svg?branch=master"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/github/mathiasbynens/he?branch=master"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://codecov.\+io/github/mathiasbynens/he/coverage.\+svg?branch=master"{} alt="{}\+Code coverage status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://gemnasium.\+com/mathiasbynens/he"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://gemnasium.\+com/mathiasbynens/he.\+svg"{} alt="{}\+Dependency status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e}\index{he $<$a href="{}https://travis-\/ci.org/mathiasbynens/he"{} $>$$<$img src="{}https://travis-\/ci.org/mathiasbynens/he.svg?branch=master"{} alt="{}Build status"{}/$>$$<$/a$>$ $<$a href="{}https://codecov.io/github/mathiasbynens/he?branch=master"{} $>$$<$img src="{}https://codecov.io/github/mathiasbynens/he/coverage.svg?branch=master"{} alt="{}Code coverage status"{}/$>$$<$/a$>$ $<$a href="{}https://gemnasium.com/mathiasbynens/he"{} $>$$<$img src="{}https://gemnasium.com/mathiasbynens/he.svg"{} alt="{}Dependency status"{}/$>$$<$/a$>$@{he $<$a href=""https://travis-\/ci.org/mathiasbynens/he"" $>$$<$img src=""https://travis-\/ci.org/mathiasbynens/he.svg?branch=master"" alt=""Build status""/$>$$<$/a$>$ $<$a href=""https://codecov.io/github/mathiasbynens/he?branch=master"" $>$$<$img src=""https://codecov.io/github/mathiasbynens/he/coverage.svg?branch=master"" alt=""Code coverage status""/$>$$<$/a$>$ $<$a href=""https://gemnasium.com/mathiasbynens/he"" $>$$<$img src=""https://gemnasium.com/mathiasbynens/he.svg"" alt=""Dependency status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13513}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13513}%
+ {\itshape he} (for “\+HTML entities”) is a robust HTML entity encoder/decoder written in Java\+Script. It supports \href{https://html.spec.whatwg.org/multipage/syntax.html\#named-character-references}{\texttt{ all standardized named character references as per HTML}}, handles \href{https://mathiasbynens.be/notes/ambiguous-ampersands}{\texttt{ ambiguous ampersands}} and other edge cases \href{https://html.spec.whatwg.org/multipage/syntax.html\#tokenizing-character-references}{\texttt{ just like a browser would}}, has an extensive test suite, and — contrary to many other Java\+Script solutions — {\itshape he} handles astral Unicode symbols just fine. \href{https://mothereff.in/html-entities}{\texttt{ An online demo is available.}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13514}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13514}
+Via \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ he}
+
+\end{DoxyCode}
+
+
+Via \href{http://bower.io/}{\texttt{ Bower}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bower\ install\ he}
+
+\end{DoxyCode}
+
+
+Via \href{https://github.com/component/component}{\texttt{ Component}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{component\ install\ mathiasbynens/he}
+
+\end{DoxyCode}
+
+
+In a browser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}he.js"{}></script>}
+
+\end{DoxyCode}
+
+
+In \href{https://nodejs.org/}{\texttt{ Node.\+js}}, \href{https://iojs.org/}{\texttt{ io.\+js}}, \href{http://narwhaljs.org/}{\texttt{ Narwhal}}, and \href{http://ringojs.org/}{\texttt{ Ringo\+JS}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ he\ =\ require('he');}
+
+\end{DoxyCode}
+
+
+In \href{http://www.mozilla.org/rhino/}{\texttt{ Rhino}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{load('he.js');}
+
+\end{DoxyCode}
+
+
+Using an AMD loader like \href{http://requirejs.org/}{\texttt{ Require\+JS}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require(}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ 'paths':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'he':\ 'path/to/he'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ ['he'],}
+\DoxyCodeLine{\ \ function(he)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(he);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13515}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13515}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13516}{}\doxysubsection{\texorpdfstring{{\ttfamily he.\+version}}{{\ttfamily he.\+version}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13516}
+A string representing the semantic version number.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13517}{}\doxysubsection{\texorpdfstring{{\ttfamily he.\+encode(text, options)}}{{\ttfamily he.\+encode(text, options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13517}
+This function takes a string of text and encodes (by default) any symbols that aren’t printable ASCII symbols and {\ttfamily \&}, {\ttfamily \texorpdfstring{$<$}{<}}, {\ttfamily \texorpdfstring{$>$}{>}}, {\ttfamily "{}$<$/tt$>$, `'$<$tt$>$, and$<$/tt$>$ \`{}\`{}, replacing them with character references.  @icode\{js\}  he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}); // → \textquotesingle{}foo \&\#x\+A9; bar \&\#x2260; baz \&\#x1\+D306; qux\textquotesingle{} @endicode   \+As long as the input string contains $<$a href="{}\href{https://html.spec.whatwg.org/multipage/parsing.html\#preprocessing-the-input-stream}{\texttt{ https\+://html.\+spec.\+whatwg.\+org/multipage/parsing.\+html\#preprocessing-\/the-\/input-\/stream}}"{} $>$allowed code points$<$/a$>$ only, the return value of this function is always valid HTML. Any $<$a href="{}\href{https://html.spec.whatwg.org/multipage/syntax.html\#table-charref-overrides}{\texttt{ https\+://html.\+spec.\+whatwg.\+org/multipage/syntax.\+html\#table-\/charref-\/overrides}}"{} $>$(invalid) code points that cannot be represented using a character reference$<$/a$>$ in the input are not encoded\+:  @icode\{js\}  he.\+encode(\textquotesingle{}foo \textbackslash{}0 bar\textquotesingle{}); // → \textquotesingle{}foo \textbackslash{}0 bar\textquotesingle{} @endicode   \+However, enabling $<$a href="{}\href{https://github.com/mathiasbynens/he\#strict}{\texttt{ https\+://github.\+com/mathiasbynens/he\#strict}}"{} $>$the $<$tt$>$strict$<$/tt$>$ option$<$/a$>$ causes invalid code points to throw an exception. With $<$tt$>$strict$<$/tt$>$ enabled, $<$tt$>$he.\+encode$<$/tt$>$ either throws (if the input contains invalid code points) or returns a string of valid HTML.  \+The $<$tt$>$options$<$/tt$>$ object is optional. It recognizes the following properties\+:  @subsubsection autotoc\+\_\+md13518 $<$tt$>$use\+Named\+References$<$/tt$>$  \+The default value for the $<$tt$>$use\+Named\+References$<$/tt$>$ option is $<$tt$>$false$<$/tt$>$. This means that $<$tt$>$encode()$<$/tt$>$ will not use any named character references (e.\+g. $<$tt$>$\textbackslash{}\copyright{}$<$/tt$>$) in the output — hexadecimal escapes (e.\+g. $<$tt$>$\textbackslash{}\&\textbackslash{}\#x\+A9;$<$/tt$>$) will be used instead. Set it to $<$tt$>$true$<$/tt$>$ to enable the use of named references.  $<$strong$>$\+Note that if compatibility with older browsers is a concern, this option should remain disabled.$<$/strong$>$  @icode\{js\}  // Using the global default setting (defaults to \`{}false\`{})\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}); // → \textquotesingle{}foo \&\#x\+A9; bar \&\#x2260; baz \&\#x1\+D306; qux\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly disallow named references\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}use\+Named\+References\textquotesingle{}\+: false \}); // → \textquotesingle{}foo \&\#x\+A9; bar \&\#x2260; baz \&\#x1\+D306; qux\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly allow named references\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}use\+Named\+References\textquotesingle{}\+: true \}); // → \textquotesingle{}foo \copyright{} bar {$\ne$} baz \&\#x1\+D306; qux\textquotesingle{} @endicode   @subsubsection autotoc\+\_\+md13519 $<$tt$>$decimal$<$/tt$>$  \+The default value for the $<$tt$>$decimal$<$/tt$>$ option is $<$tt$>$false$<$/tt$>$. If the option is enabled, $<$tt$>$encode$<$/tt$>$ will generally use decimal escapes (e.\+g. $<$tt$>$\textbackslash{}\&\textbackslash{}\#169;$<$/tt$>$) rather than hexadecimal escapes (e.\+g. $<$tt$>$\textbackslash{}\&\textbackslash{}\#x\+A9;$<$/tt$>$). Beside of this replacement, the basic behavior remains the same when combined with other options. For example\+: if both options $<$tt$>$use\+Named\+References$<$/tt$>$ and $<$tt$>$decimal$<$/tt$>$ are enabled, named references (e.\+g. $<$tt$>$\textbackslash{}\copyright{}$<$/tt$>$) are used over decimal escapes. HTML entities without a named reference are encoded using decimal escapes.  @icode\{js\}  // Using the global default setting (defaults to \`{}false\`{})\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}); // → \textquotesingle{}foo \&\#x\+A9; bar \&\#x2260; baz \&\#x1\+D306; qux\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly disable decimal escapes\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}decimal\textquotesingle{}\+: false \}); // → \textquotesingle{}foo \&\#x\+A9; bar \&\#x2260; baz \&\#x1\+D306; qux\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly enable decimal escapes\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}decimal\textquotesingle{}\+: true \}); // → \textquotesingle{}foo \&\#169; bar \&\#8800; baz \&\#119558; qux\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly allow named references and decimal escapes\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}use\+Named\+References\textquotesingle{}\+: true,   \textquotesingle{}decimal\textquotesingle{}\+: true \}); // → \textquotesingle{}foo \copyright{} bar {$\ne$} baz \&\#119558; qux\textquotesingle{} @endicode   @subsubsection autotoc\+\_\+md13520 $<$tt$>$encode\+Everything$<$/tt$>$  \+The default value for the $<$tt$>$encode\+Everything$<$/tt$>$ option is $<$tt$>$false$<$/tt$>$. This means that $<$tt$>$encode()$<$/tt$>$ will not use any character references for printable ASCII symbols that don’t need escaping. Set it to $<$tt$>$true$<$/tt$>$ to encode every symbol in the input string. When set to $<$tt$>$true$<$/tt$>$, this option takes precedence over $<$tt$>$allow\+Unsafe\+Symbols$<$/tt$>$ (i.\+e. setting the latter to $<$tt$>$true$<$/tt$>$ in such a case has no effect).  @icode\{js\}  // Using the global default setting (defaults to \`{}false\`{})\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}); // → \textquotesingle{}foo \&\#x\+A9; bar \&\#x2260; baz \&\#x1\+D306; qux\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly encode all symbols\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}encode\+Everything\textquotesingle{}\+: true \}); // → \textquotesingle{}\&\#x66;\&\#x6\+F;\&\#x6\+F;\&\#x20;\&\#x\+A9;\&\#x20;\&\#x62;\&\#x61;\&\#x72;\&\#x20;\&\#x2260;\&\#x20;\&\#x62;\&\#x61;\&\#x7\+A;\&\#x20;\&\#x1\+D306;\&\#x20;\&\#x71;\&\#x75;\&\#x78;\textquotesingle{}  // This setting can be combined with the \`{}use\+Named\+References\`{} option\+: he.\+encode(\textquotesingle{}foo © bar ≠ baz 𝌆 qux\textquotesingle{}, \{   \textquotesingle{}encode\+Everything\textquotesingle{}\+: true,   \textquotesingle{}use\+Named\+References\textquotesingle{}\+: true \}); // → \textquotesingle{}\&\#x66;\&\#x6\+F;\&\#x6\+F;\&\#x20;\copyright{}\&\#x20;\&\#x62;\&\#x61;\&\#x72;\&\#x20;{$\ne$}\&\#x20;\&\#x62;\&\#x61;\&\#x7\+A;\&\#x20;\&\#x1\+D306;\&\#x20;\&\#x71;\&\#x75;\&\#x78;\textquotesingle{} @endicode   @subsubsection autotoc\+\_\+md13521 $<$tt$>$strict$<$/tt$>$  \+The default value for the $<$tt$>$strict$<$/tt$>$ option is $<$tt$>$false$<$/tt$>$. This means that $<$tt$>$encode()$<$/tt$>$ will encode any HTML text content you feed it, even if it contains any symbols that cause $<$a href="{}\href{https://html.spec.whatwg.org/multipage/parsing.html\#preprocessing-the-input-stream}{\texttt{ https\+://html.\+spec.\+whatwg.\+org/multipage/parsing.\+html\#preprocessing-\/the-\/input-\/stream}}"{} $>$parse errors$<$/a$>$. To throw an error when such invalid HTML is encountered, set the $<$tt$>$strict$<$/tt$>$ option to $<$tt$>$true$<$/tt$>$. This option makes it possible to use $<$em$>$he$<$/em$>$ as part of HTML parsers and HTML validators.  @icode\{js\}  // Using the global default setting (defaults to \`{}false\`{}, i.\+e. error-\/tolerant mode)\+: he.\+encode(\textquotesingle{}\textbackslash{}x01\textquotesingle{}); // → \textquotesingle{}\&\#x1;\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly enable error-\/tolerant mode\+: he.\+encode(\textquotesingle{}\textbackslash{}x01\textquotesingle{}, \{   \textquotesingle{}strict\textquotesingle{}\+: false \}); // → \textquotesingle{}\&\#x1;\textquotesingle{}  // Passing an \`{}options\`{} object to \`{}encode\`{}, to explicitly enable strict mode\+: he.\+encode(\textquotesingle{}\textbackslash{}x01\textquotesingle{}, \{   \textquotesingle{}strict\textquotesingle{}\+: true \}); // → Parse error @endicode   @subsubsection autotoc\+\_\+md13522 $<$tt$>$allow\+Unsafe\+Symbols$<$/tt$>$  \+The default value for the $<$tt$>$allow\+Unsafe\+Symbols$<$/tt$>$ option is $<$tt$>$false$<$/tt$>$. This means that characters that are unsafe for use in HTML content ($<$tt$>$\textbackslash{}\&$<$/tt$>$, $<$tt$>$\textbackslash{}$<$$<$/tt$>$, $<$tt$>$\textbackslash{}$>$$<$/tt$>$, $<$tt$>$"{}}, `'{\ttfamily , and} \`{}{\ttfamily ) will be encoded. When set to}true{\ttfamily , only non-\/\+ASCII characters will be encoded. If the}encode\+Everything{\ttfamily option is set to}true\`{}, this option will be ignored.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{he.encode('foo\ ©\ and\ \&\ ampersand',\ \{}
+\DoxyCodeLine{\ \ 'allowUnsafeSymbols':\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ 'foo\ \&\#xA9;\ and\ \&\ ampersand'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13523}{}\doxysubsubsection{\texorpdfstring{Overriding default {\ttfamily encode} options globally}{Overriding default {\ttfamily encode} options globally}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13523}
+The global default setting can be overridden by modifying the {\ttfamily he.\+encode.\+options} object. This saves you from passing in an {\ttfamily options} object for every call to {\ttfamily encode} if you want to use the non-\/default setting.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Read\ the\ global\ default\ setting:}
+\DoxyCodeLine{he.encode.options.useNamedReferences;}
+\DoxyCodeLine{//\ →\ \`{}false`\ by\ default}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Override\ the\ global\ default\ setting:}
+\DoxyCodeLine{he.encode.options.useNamedReferences\ =\ true;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Using\ the\ global\ default\ setting,\ which\ is\ now\ \`{}true`:}
+\DoxyCodeLine{he.encode('foo\ ©\ bar\ ≠\ baz\ 𝌆\ qux');}
+\DoxyCodeLine{//\ →\ 'foo\ \&copy;\ bar\ \&ne;\ baz\ \&\#x1D306;\ qux'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13524}{}\doxysubsection{\texorpdfstring{{\ttfamily he.\+decode(html, options)}}{{\ttfamily he.\+decode(html, options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13524}
+This function takes a string of HTML and decodes any named and numerical character references in it using \href{https://html.spec.whatwg.org/multipage/syntax.html\#tokenizing-character-references}{\texttt{ the algorithm described in section 12.\+2.\+4.\+69 of the HTML spec}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{he.decode('foo\ \&copy;\ bar\ \&ne;\ baz\ \&\#x1D306;\ qux');}
+\DoxyCodeLine{//\ →\ 'foo\ ©\ bar\ ≠\ baz\ 𝌆\ qux'}
+
+\end{DoxyCode}
+
+
+The {\ttfamily options} object is optional. It recognizes the following properties\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13525}{}\doxysubsubsection{\texorpdfstring{{\ttfamily is\+Attribute\+Value}}{{\ttfamily is\+Attribute\+Value}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13525}
+The default value for the {\ttfamily is\+Attribute\+Value} option is {\ttfamily false}. This means that {\ttfamily decode()} will decode the string as if it were used in \href{https://html.spec.whatwg.org/multipage/syntax.html\#data-state}{\texttt{ a text context in an HTML document}}. HTML has different rules for \href{https://html.spec.whatwg.org/multipage/syntax.html\#character-reference-in-attribute-value-state}{\texttt{ parsing character references in attribute values}} — set this option to {\ttfamily true} to treat the input string as if it were used as an attribute value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Using\ the\ global\ default\ setting\ (defaults\ to\ \`{}false`,\ i.e.\ HTML\ text\ context):}
+\DoxyCodeLine{he.decode('foo\&ampbar');}
+\DoxyCodeLine{//\ →\ 'foo\&bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Passing\ an\ \`{}options`\ object\ to\ \`{}decode`,\ to\ explicitly\ assume\ an\ HTML\ text\ context:}
+\DoxyCodeLine{he.decode('foo\&ampbar',\ \{}
+\DoxyCodeLine{\ \ 'isAttributeValue':\ false}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ 'foo\&bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Passing\ an\ \`{}options`\ object\ to\ \`{}decode`,\ to\ explicitly\ assume\ an\ HTML\ attribute\ value\ context:}
+\DoxyCodeLine{he.decode('foo\&ampbar',\ \{}
+\DoxyCodeLine{\ \ 'isAttributeValue':\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ 'foo\&ampbar'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13526}{}\doxysubsubsection{\texorpdfstring{{\ttfamily strict}}{{\ttfamily strict}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13526}
+The default value for the {\ttfamily strict} option is {\ttfamily false}. This means that {\ttfamily decode()} will decode any HTML text content you feed it, even if it contains any entities that cause \href{https://html.spec.whatwg.org/multipage/syntax.html\#tokenizing-character-references}{\texttt{ parse errors}}. To throw an error when such invalid HTML is encountered, set the {\ttfamily strict} option to {\ttfamily true}. This option makes it possible to use {\itshape he} as part of HTML parsers and HTML validators.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Using\ the\ global\ default\ setting\ (defaults\ to\ \`{}false`,\ i.e.\ error-\/tolerant\ mode):}
+\DoxyCodeLine{he.decode('foo\&ampbar');}
+\DoxyCodeLine{//\ →\ 'foo\&bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Passing\ an\ \`{}options`\ object\ to\ \`{}decode`,\ to\ explicitly\ enable\ error-\/tolerant\ mode:}
+\DoxyCodeLine{he.decode('foo\&ampbar',\ \{}
+\DoxyCodeLine{\ \ 'strict':\ false}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ 'foo\&bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Passing\ an\ \`{}options`\ object\ to\ \`{}decode`,\ to\ explicitly\ enable\ strict\ mode:}
+\DoxyCodeLine{he.decode('foo\&ampbar',\ \{}
+\DoxyCodeLine{\ \ 'strict':\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ →\ Parse\ error}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13527}{}\doxysubsubsection{\texorpdfstring{Overriding default {\ttfamily decode} options globally}{Overriding default {\ttfamily decode} options globally}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13527}
+The global default settings for the {\ttfamily decode} function can be overridden by modifying the {\ttfamily he.\+decode.\+options} object. This saves you from passing in an {\ttfamily options} object for every call to {\ttfamily decode} if you want to use a non-\/default setting.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Read\ the\ global\ default\ setting:}
+\DoxyCodeLine{he.decode.options.isAttributeValue;}
+\DoxyCodeLine{//\ →\ \`{}false`\ by\ default}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Override\ the\ global\ default\ setting:}
+\DoxyCodeLine{he.decode.options.isAttributeValue\ =\ true;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Using\ the\ global\ default\ setting,\ which\ is\ now\ \`{}true`:}
+\DoxyCodeLine{he.decode('foo\&ampbar');}
+\DoxyCodeLine{//\ →\ 'foo\&ampbar'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13528}{}\doxysubsection{\texorpdfstring{{\ttfamily he.\+escape(text)}}{{\ttfamily he.\+escape(text)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13528}
+This function takes a string of text and escapes it for use in text contexts in XML or HTML documents. Only the following characters are escaped\+: {\ttfamily \&}, {\ttfamily \texorpdfstring{$<$}{<}}, {\ttfamily \texorpdfstring{$>$}{>}}, {\ttfamily "{}$<$/tt$>$, `'$<$tt$>$, and$<$/tt$>$ \`{}\`{}.  @icode\{js\}  he.\+escape(\textquotesingle{}$<$img src=\textbackslash{}\textquotesingle{}x\textbackslash{}\textquotesingle{} onerror="{}prompt(1)"{}$>$\textquotesingle{}); // → \textquotesingle{}<img src=\&\#x27;x\&\#x27; onerror="{}prompt(1)"{}>\textquotesingle{} @endicode   @subsection autotoc\+\_\+md13529 $<$tt$>$he.\+unescape(html, options)$<$/tt$>$  $<$tt$>$he.\+unescape$<$/tt$>$ is an alias for $<$tt$>$he.\+decode$<$/tt$>$. It takes a string of HTML and decodes any named and numerical character references in it.  @subsection autotoc\+\_\+md13530 Using the $<$tt$>$he$<$/tt$>$ binary  \+To use the $<$tt$>$he$<$/tt$>$ binary in your shell, simply install $<$em$>$he$<$/em$>$ globally using npm\+:  @icode\{bash\}  npm install -\/g he @endicode   \+After that you will be able to encode/decode HTML entities from the command line\+:  @icode\{bash\}  \$ he -\/-\/encode \textquotesingle{}föo ♥ bår 𝌆 baz\textquotesingle{} f\&\#x\+F6;o \&\#x2665; b\&\#x\+E5;r \&\#x1\+D306; baz  \$ he -\/-\/encode -\/-\/use-\/named-\/refs \textquotesingle{}föo ♥ bår 𝌆 baz\textquotesingle{} f\"{o}o {$\heartsuit$} b\aar \&\#x1\+D306; baz  \$ he -\/-\/decode \textquotesingle{}f\"{o}o {$\heartsuit$} b\aar \&\#x1\+D306; baz\textquotesingle{} föo ♥ bår 𝌆 baz @endicode   \+Read a local text file, encode it for use in an HTML text context, and save the result to a new file\+:  @icode\{bash\}  \$ he -\/-\/encode $<$ foo.\+txt $>$ foo-\/escaped.\+html @endicode   \+Or do the same with an online text file\+:  @icode\{bash\}  \$ curl -\/s\+L "{}\href{http://git.io/HnfEaw}{\texttt{ http\+://git.\+io/\+Hnf\+Eaw}}"{} \texorpdfstring{$\vert$}{|} he -\/-\/encode $>$ escaped.\+html @endicode   \+Or, the opposite — read a local file containing a snippet of HTML in a text context, decode it back to plain text, and save the result to a new file\+:  @icode\{bash\}  \$ he -\/-\/decode $<$ foo-\/escaped.\+html $>$ foo.\+txt @endicode   \+Or do the same with an online HTML snippet\+:  @icode\{bash\}  \$ curl -\/s\+L "{}\href{http://git.io/HnfEaw}{\texttt{ http\+://git.\+io/\+Hnf\+Eaw}}"{} \texorpdfstring{$\vert$}{|} he -\/-\/decode $>$ decoded.\+txt @endicode   \+See $<$tt$>$he -\/-\/help$<$/tt$>$ for the full list of options.  @section autotoc\+\_\+md13531 Support  $<$em$>$he$<$/em$>$ has been tested in at least\+:  \texorpdfstring{$\ast$}{*} Chrome 27-\/50 \texorpdfstring{$\ast$}{*} Firefox 3-\/45 \texorpdfstring{$\ast$}{*} Safari 4-\/9 \texorpdfstring{$\ast$}{*} Opera 10-\/12, 15–37 \texorpdfstring{$\ast$}{*} IE 6–11 \texorpdfstring{$\ast$}{*} Edge \texorpdfstring{$\ast$}{*} Narwhal 0.\+3.\+2 \texorpdfstring{$\ast$}{*} Node.\+js v0.\+10, v0.\+12, v4, v5 \texorpdfstring{$\ast$}{*} Phantom\+JS 1.\+9.\+0 \texorpdfstring{$\ast$}{*} Rhino 1.\+7\+RC4 \texorpdfstring{$\ast$}{*} Ringo\+JS 0.\+8-\/0.\+11  @section autotoc\+\_\+md13532 Unit tests \& code coverage  \+After cloning this repository, run $<$tt$>$npm install$<$/tt$>$ to install the dependencies needed for he development and testing. You may want to install Istanbul $<$em$>$globally$<$/em$>$ using $<$tt$>$npm install istanbul -\/g$<$/tt$>$.  \+Once that’s done, you can run the unit tests in Node using $<$tt$>$npm test$<$/tt$>$ or $<$tt$>$node tests/tests.\+js$<$/tt$>$. To run the tests in Rhino, Ringo, Narwhal, and web browsers as well, use $<$tt$>$grunt test$<$/tt$>$.  \+To generate the code coverage report, use $<$tt$>$grunt cover$<$/tt$>$.  @section autotoc\+\_\+md13533 Acknowledgements  \+Thanks to $<$a href="{}\href{https://simon.html5.org/}{\texttt{ https\+://simon.\+html5.\+org/}}"{} $>$\+Simon Pieters$<$/a$>$ ($<$a href="{}\href{https://twitter.com/zcorpan}{\texttt{ https\+://twitter.\+com/zcorpan}}"{} $>$@zcorpan$<$/a$>$) for the many suggestions.  @section autotoc\+\_\+md13534 Author  $<$table class="{}markdown\+Table"{}$>$   $<$tr class="{}markdown\+Table\+Head"{}$>$    $<$th class="{}markdown\+Table\+Head\+None"{}$>$ $<$a href="{}\href{https://twitter.com/mathias}{\texttt{ https\+://twitter.\+com/mathias}}"{} title="{}Follow @mathias on Twitter"{} $>$$<$img src="{}\href{https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70}{\texttt{ https\+://gravatar.\+com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70}}"{} alt="{}twitter/mathias"{}/\texorpdfstring{$>$}{>}    }
+
+{\ttfamily  }
+
+{\ttfamily  \href{https://mathiasbynens.be/}{\texttt{ Mathias Bynens}}   }
+
+{\ttfamily }
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13535}{}\doxysection{\texorpdfstring{{\ttfamily License}}{{\ttfamily License}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2he_2_r_e_a_d_m_e_autotoc_md13535}
+{\ttfamily }
+
+{\ttfamily {\itshape he} is available under the \href{https://mths.be/mit}{\texttt{ MIT}} license. }

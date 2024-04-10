@@ -1,0 +1,162 @@
+\chapter{Resolve URL Loader}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e}\index{Resolve URL Loader@{Resolve URL Loader}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20669}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20669}%
+ \href{https://www.npmjs.com/package/resolve-url-loader}{\texttt{ }}
+
+This {\bfseries{webpack loader}} allows you to have a distributed set SCSS files and assets co-\/located with those SCSS files.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20670}{}\doxysection{\texorpdfstring{Do you organise your SCSS and assets by feature?}{Do you organise your SCSS and assets by feature?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20670}
+Where are your assets?
+
+
+\begin{DoxyItemize}
+\item ✅ I want my assets all over the place, next to my SCSS files.
+\item ❌ My assets are in a single directory.
+\end{DoxyItemize}
+
+How complicated is your SASS?
+
+
+\begin{DoxyItemize}
+\item ✅ I have a deep SASS composition with partials importing other partials.
+\item ✅ My asset paths are constructed by functions or {\ttfamily @mixin}s.
+\item ❌ I have a single SCSS file. The asset paths are just explicit in that.
+\end{DoxyItemize}
+
+What asset paths are you using?
+
+
+\begin{DoxyItemize}
+\item ✅ Fully relative {\ttfamily url(./foo.png)} or {\ttfamily url(foo.\+png)}
+\item ❌ Root relative {\ttfamily url(/foo.png)}
+\item ❌ Relative to some package or webpack root {\ttfamily url(\texorpdfstring{$\sim$}{\string~}stuff/foo.png})
+\item ❌ Relative to some variable which is your single asset directory {\ttfamily url(\$variable/foo.\+png)}
+\end{DoxyItemize}
+
+What webpack errors are you getting?
+
+
+\begin{DoxyItemize}
+\item ✅ Webpack can\textquotesingle{}t find the relative asset {\ttfamily foo.\+png} 😞
+\item ❌ Webpack says it doesn\textquotesingle{}t have a loader for {\ttfamily fully/resolved/path/foo.\+png} 😕
+\end{DoxyItemize}
+
+If you can tick at least 1 item in {\bfseries{all of these questions}} then use this loader. It will allow webpack to find assets with {\bfseries{fully relative paths}}.
+
+If for any question you can\textquotesingle{}t tick {\itshape any} items then webpack should be able to already find your assets. You don\textquotesingle{}t need this loader. 🤷
+
+Once webpack resolves your assets (even if it complains about loading them) then this loading is working correctly. 👍\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20671}{}\doxysection{\texorpdfstring{What\textquotesingle{}s the problem with SASS?}{What\textquotesingle{}s the problem with SASS?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20671}
+When you use {\bfseries{fully relative paths}} in {\ttfamily url()} statements then Webpack expects to find those assets next to the root SCSS file, regardless of where you specify the {\ttfamily url()}.
+
+To illustrate here are 3 simple examples of SASS and Webpack {\itshape without} {\ttfamily resolve-\/url-\/loader}.
+
+\href{docs/basic-problem.svg}{\texttt{ }}
+
+The first 2 cases are trivial and work fine. The asset is specified in the root SCSS file and Webpack finds it.
+
+But any practical SASS composition will have nested SCSS files, as in the 3rd case. Here Webpack cannot find the asset.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Module\ not\ found:\ Can't\ resolve\ './cool.png'\ in\ '/absolute/path/.../my-\/project/src/styles.scss'}
+
+\end{DoxyCode}
+
+
+The path we present to Webpack really needs to be {\ttfamily ./subdir/cool.png} but we don\textquotesingle{}t want to write that in our SCSS. 😒
+
+Luckily we can use {\ttfamily resolve-\/url-\/loader} to do the {\bfseries{url re-\/writing}} and make it work. 😊🎉
+
+With functions and mixins and multiple nesting it gets more complicated. Read more detail in \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2how-it-works}{how the loader works}{0}. 🤓\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20672}{}\doxysection{\texorpdfstring{Getting started}{Getting started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20672}
+\begin{quote}
+{\bfseries{Upgrading?}} the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_c_h_a_n_g_e_l_o_g}{changelog}{0} shows how to migrate your webpack config. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20673}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20673}
+via npm
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ resolve-\/url-\/loader\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+via yarn
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ resolve-\/url-\/loader\ -\/-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20674}{}\doxysubsection{\texorpdfstring{Configure Webpack}{Configure Webpack}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20674}
+The typical use case is {\ttfamily resolve-\/url-\/loader} between {\ttfamily sass-\/loader} and {\ttfamily css-\/loader}.
+
+{\bfseries{⚠️ IMPORTANT}}
+\begin{DoxyItemize}
+\item {\bfseries{source-\/maps required}} for loaders preceding {\ttfamily resolve-\/url-\/loader} (regardless of {\ttfamily devtool}).
+\item Always use {\bfseries{full loader package name}} (don\textquotesingle{}t omit {\ttfamily -\/loader}) otherwise you can get errors that are hard to debug.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{rules:\ [}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ test:\ /\(\backslash\).scss\$/,}
+\DoxyCodeLine{\ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ ...}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'css-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{...\}}
+\DoxyCodeLine{\ \ \ \ \ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'resolve-\/url-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{...\}}
+\DoxyCodeLine{\ \ \ \ \ \ \},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'sass-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ sourceMap:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ sourceMapContents:\ false}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20675}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20675}
+The loader should work without options but use these as required.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-5}
+\endhead
+{\ttfamily source\+Map}   &boolean   &{\ttfamily false}   &&Generate an outgoing source-\/map.    \\\cline{1-5}
+{\ttfamily remove\+CR}   &boolean   &{\ttfamily true} Windows OS~\newline
+{\ttfamily false} otherwise   &&Convert orphan CR to whitespace.~\newline
+See known issues below.    \\\cline{1-5}
+{\ttfamily debug}   &boolean   &{\ttfamily false}   &&Display debug information.    \\\cline{1-5}
+{\ttfamily silent}   &boolean   &{\ttfamily false}   &&Do {\bfseries{not}} display warnings or deprecation messages.    \\\cline{1-5}
+{\ttfamily root}   &string   &{\itshape unset}   &&Similar to the (now defunct) option in {\ttfamily css-\/loader}.~\newline
+This string, possibly empty, is prepended to absolute URIs.~\newline
+Absolute URIs are only processed if this option is set.    \\\cline{1-5}
+{\ttfamily join}   &function   &{\itshape inbuilt}   &advanced   &Custom join function.~\newline
+Use custom javascript to fix asset paths on a per-\/case basis.~\newline
+Refer to the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2advanced-features}{advanced features}{0} docs.    \\\cline{1-5}
+{\ttfamily engine}   &`\textquotesingle{}rework'{\ttfamily \texorpdfstring{$<$}{<}br/\texorpdfstring{$>$}{>}}\textquotesingle{}postcss\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}postcss\textquotesingle{}\`{}   &deprecated   &The css parser engine.~\newline
+Using this option produces a deprecation warning.   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20676}{}\doxysection{\texorpdfstring{Limitations}{Limitations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20676}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20677}{}\doxysubsection{\texorpdfstring{Compatiblity}{Compatiblity}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20677}
+Tested {\ttfamily mac\+OS} and {\ttfamily Windows}.
+
+All {\ttfamily webpack2}-\/{\ttfamily webpack4} with contemporaneous loaders/plugins using {\ttfamily node 8.\+9}. And {\ttfamily webpack5} with latest loaders/plugins using {\ttfamily node 10.\+0}.
+
+Refer to {\ttfamily test} directory for full webpack configurations as used in automated tests.
+
+Some edge cases with {\ttfamily libsass} on {\ttfamily Windows} (see \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2troubleshooting}{troubleshooting}{0} docs).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20678}{}\doxysubsection{\texorpdfstring{Known issues}{Known issues}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2_r_e_a_d_m_e_autotoc_md20678}
+Read the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve-url-loader_2docs_2troubleshooting}{troubleshooting}{0} docs before raising an issue. 

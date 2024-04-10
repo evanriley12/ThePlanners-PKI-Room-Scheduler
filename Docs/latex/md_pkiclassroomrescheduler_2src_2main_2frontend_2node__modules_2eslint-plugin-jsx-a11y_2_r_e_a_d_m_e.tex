@@ -1,0 +1,290 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e}\index{README@{README}}
+
+
+\href{https://travis-ci.com/github/jsx-eslint/eslint-plugin-jsx-a11y}{\texttt{  }} \href{https://npmjs.org/package/eslint-plugin-jsx-a11y}{\texttt{  }} \href{https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/LICENSE.md}{\texttt{  }} \href{https://coveralls.io/github/jsx-eslint/eslint-plugin-jsx-a11y?branch=master}{\texttt{  }} \href{https://npmjs.org/package/eslint-plugin-jsx-a11y}{\texttt{  }} 
+
+\href{https://tidelift.com/subscription/pkg/npm-eslint-plugin-jsx-a11y?utm_source=npm-eslint-plugin-jsx-a11y&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for eslint-\/plugin-\/jsx-\/a11y on Tidelift}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10885}{}\doxysection{\texorpdfstring{eslint-\/plugin-\/jsx-\/a11y}{eslint-\/plugin-\/jsx-\/a11y}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10885}
+Static AST checker for accessibility rules on JSX elements.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10886}{}\doxyparagraph{\texorpdfstring{{\itshape Read this in \href{https://github.com/ari-os310/eslint-plugin-jsx-a11y/blob/HEAD/translations/Translations.md}{\texttt{ other languages}}.}}{{\itshape Read this in \href{https://github.com/ari-os310/eslint-plugin-jsx-a11y/blob/HEAD/translations/Translations.md}{\texttt{ other languages}}.}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10886}
+\href{https://github.com/ari-os310/eslint-plugin-jsx-a11y/blob/HEAD/translations/README.mx.md}{\texttt{ Mexican Spanish🇲🇽}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10887}{}\doxysubsection{\texorpdfstring{Why?}{Why?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10887}
+This plugin does a static evaluation of the JSX to spot accessibility issues in React apps. Because it only catches errors in static code, use it in combination with \href{https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react}{\texttt{ @axe-\/core/react}} to test the accessibility of the rendered DOM. Consider these tools just as one step of a larger a11y testing process and always test your apps with assistive technology.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10888}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10888}
+{\bfseries{If you are installing this plugin via {\ttfamily eslint-\/config-\/airbnb}, please follow \href{https://github.com/airbnb/javascript/tree/HEAD/packages/eslint-config-airbnb\#eslint-config-airbnb-1}{\texttt{ these instructions}}.}}
+
+You\textquotesingle{}ll first need to install \href{https://eslint.org/docs/latest/user-guide/getting-started}{\texttt{ ESLint}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ npm}
+\DoxyCodeLine{npm\ install\ eslint\ -\/-\/save-\/dev}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ yarn}
+\DoxyCodeLine{yarn\ add\ eslint\ -\/-\/dev}
+
+\end{DoxyCode}
+
+
+Next, install {\ttfamily eslint-\/plugin-\/jsx-\/a11y}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ npm}
+\DoxyCodeLine{npm\ install\ eslint-\/plugin-\/jsx-\/a11y\ -\/-\/save-\/dev}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ yarn}
+\DoxyCodeLine{yarn\ add\ eslint-\/plugin-\/jsx-\/a11y\ -\/-\/dev}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} If you installed ESLint globally (using the {\ttfamily -\/g} flag in npm, or the {\ttfamily global} prefix in yarn) then you must also install {\ttfamily eslint-\/plugin-\/jsx-\/a11y} globally.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10889}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10889}
+Add {\ttfamily jsx-\/a11y} to the plugins section of your {\ttfamily .eslintrc} configuration file. You can omit the {\ttfamily eslint-\/plugin-\/} prefix\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ ["{}jsx-\/a11y"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Then configure the rules you want to use under the rules section.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}rules"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}jsx-\/a11y/rule-\/name"{}:\ 2}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You can also enable all the recommended or strict rules at once. Add {\ttfamily plugin\+:jsx-\/a11y/recommended} or {\ttfamily plugin\+:jsx-\/a11y/strict} in {\ttfamily extends}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}extends"{}:\ ["{}plugin:jsx-\/a11y/recommended"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10890}{}\doxysubsubsection{\texorpdfstring{Configurations}{Configurations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10890}
+\begin{quote}
+As you are extending our configuration, you can omit {\ttfamily "{}plugins"{}\+: \mbox{[}"{}jsx-\/a11y"{}\mbox{]}} from your {\ttfamily .eslintrc} configuration file. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}settings"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}jsx-\/a11y"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}polymorphicPropName"{}:\ "{}as"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}components"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}CityInput"{}:\ "{}input"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}CustomButton"{}:\ "{}button"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}MyButton"{}:\ "{}button"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}RoundButton"{}:\ "{}button"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10891}{}\doxyparagraph{\texorpdfstring{Component Mapping}{Component Mapping}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10891}
+To enable your custom components to be checked as DOM elements, you can set global settings in your configuration file by mapping each custom component name to a DOM element type.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10892}{}\doxyparagraph{\texorpdfstring{Polymorphic Components}{Polymorphic Components}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10892}
+You can optionally use the {\ttfamily polymorphic\+Prop\+Name} setting to define the prop your code uses to create polymorphic components. This setting will be used determine the element type in rules that require semantic context.
+
+For example, if you set the {\ttfamily polymorphic\+Prop\+Name} setting to {\ttfamily as} then this element\+:
+
+{\ttfamily \texorpdfstring{$<$}{<}Box as="{}h3"{}\texorpdfstring{$>$}{>}Configurations \texorpdfstring{$<$}{<}/\+Box\texorpdfstring{$>$}{>}}
+
+will be evaluated as an {\ttfamily h3}. If no {\ttfamily polymorphic\+Prop\+Name} is set, then the component will be evaluated as {\ttfamily Box}.
+
+⚠️ Polymorphic components can make code harder to maintain; please use this feature with caution.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10893}{}\doxysubsection{\texorpdfstring{Supported Rules}{Supported Rules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10893}
+💼 Configurations enabled in.\textbackslash{} 🚫 Configurations disabled in.\textbackslash{} ☑️ Set in the {\ttfamily recommended} configuration.\textbackslash{} 🔒 Set in the {\ttfamily strict} configuration.\textbackslash{} ❌ Deprecated.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                                            }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Name                                            }&\cellcolor{\tableheadbgcolor}\textbf{ Description   }&\cellcolor{\tableheadbgcolor}\textbf{ 💼   }&\cellcolor{\tableheadbgcolor}\textbf{ 🚫   }&\cellcolor{\tableheadbgcolor}\textbf{ ❌    }\\\cline{1-5}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2accessible-emoji}{accessible-\/emoji}{0}   &Enforce emojis are wrapped in {\ttfamily \texorpdfstring{$<$}{<}span\texorpdfstring{$>$}{>}} and provide screenreader access.   &&&❌    \\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2alt-text}{alt-\/text}{0}   &Enforce all elements that require alternative text have meaningful information to relay back to end user.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2anchor-ambiguous-text}{anchor-\/ambiguous-\/text}{0}   &Enforce {\ttfamily \texorpdfstring{$<$}{<}a\texorpdfstring{$>$}{>}} text to not exactly match "{}click here"{}, "{}here"{}, "{}link"{}, or "{}a link"{}.   &&☑️   &\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2anchor-has-content}{anchor-\/has-\/content}{0}   &Enforce all anchors to contain accessible content.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2anchor-is-valid}{anchor-\/is-\/valid}{0}   &Enforce all anchors are valid, navigable elements.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rucfb4203339a2e9210312db4a4aa37b76}{aria-\/activedescendant-\/has-\/tabindex}{0}   &Enforce elements with aria-\/activedescendant are tabbable.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2aria-props}{aria-\/props}{0}   &Enforce all {\ttfamily aria-\/\texorpdfstring{$\ast$}{*}} props are valid.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2aria-proptypes}{aria-\/proptypes}{0}   &Enforce ARIA state and property values are valid.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2aria-role}{aria-\/role}{0}   &Enforce that elements with ARIA roles must use a valid, non-\/abstract ARIA role.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2aria-unsupported-elements}{aria-\/unsupported-\/elements}{0}   &Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2autocomplete-valid}{autocomplete-\/valid}{0}   &Enforce that autocomplete attributes are used correctly.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2ruf73f6a309e7d1fd48ae98943d0439cb7}{click-\/events-\/have-\/key-\/events}{0}   &Enforce a clickable non-\/interactive element has at least one keyboard event listener.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2ru487fbb722f50e6db4650a36cce942122}{control-\/has-\/associated-\/label}{0}   &Enforce that a control (an interactive element) has a text label.   &&☑️ 🔒   &\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2heading-has-content}{heading-\/has-\/content}{0}   &Enforce heading ({\ttfamily h1}, {\ttfamily h2}, etc) elements contain accessible content.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2html-has-lang}{html-\/has-\/lang}{0}   &Enforce {\ttfamily \texorpdfstring{$<$}{<}html\texorpdfstring{$>$}{>}} element has {\ttfamily lang} prop.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2iframe-has-title}{iframe-\/has-\/title}{0}   &Enforce iframe elements have a title attribute.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2img-redundant-alt}{img-\/redundant-\/alt}{0}   &Enforce {\ttfamily \texorpdfstring{$<$}{<}img\texorpdfstring{$>$}{>}} alt prop does not contain the word "{}image"{}, "{}picture"{}, or "{}photo"{}.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2interactive-supports-focus}{interactive-\/supports-\/focus}{0}   &Enforce that elements with interactive handlers like {\ttfamily on\+Click} must be focusable.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2ru169699417c2135b21ab0358b2137b4dd}{label-\/has-\/associated-\/control}{0}   &Enforce that a {\ttfamily label} tag has a text label and an associated control.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2label-has-for}{label-\/has-\/for}{0}   &Enforce that {\ttfamily \texorpdfstring{$<$}{<}label\texorpdfstring{$>$}{>}} elements have the {\ttfamily html\+For} prop.   &&☑️ 🔒   &❌    \\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2lang}{lang}{0}   &Enforce lang attribute has a valid value.   &&&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2media-has-caption}{media-\/has-\/caption}{0}   &Enforces that {\ttfamily \texorpdfstring{$<$}{<}audio\texorpdfstring{$>$}{>}} and {\ttfamily \texorpdfstring{$<$}{<}video\texorpdfstring{$>$}{>}} elements must have a {\ttfamily \texorpdfstring{$<$}{<}track\texorpdfstring{$>$}{>}} for captions.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rua2cd506f5cff9593f81e6b1502a82ea4}{mouse-\/events-\/have-\/key-\/events}{0}   &Enforce that {\ttfamily on\+Mouse\+Over}/{\ttfamily on\+Mouse\+Out} are accompanied by {\ttfamily on\+Focus}/{\ttfamily on\+Blur} for keyboard-\/only users.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key}{no-\/access-\/key}{0}   &Enforce that the {\ttfamily access\+Key} prop is not used on any element to avoid complications with keyboard commands used by a screenreader.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2ru49ef638b87614f3f820c777d79ced96f}{no-\/aria-\/hidden-\/on-\/focusable}{0}   &Disallow {\ttfamily aria-\/hidden="{}true"{}} from being set on focusable elements.   &&&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-autofocus}{no-\/autofocus}{0}   &Enforce auto\+Focus prop is not used.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-distracting-elements}{no-\/distracting-\/elements}{0}   &Enforce distracting elements are not used.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rud69f3222cc1f1394572f8ec303eb1b73}{no-\/interactive-\/element-\/to-\/noninteractive-\/role}{0}   &Interactive elements should not be assigned non-\/interactive roles.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2ru3e8aa1178ce08f951e8176e3751026fb}{no-\/noninteractive-\/element-\/interactions}{0}   &Non-\/interactive elements should not be assigned mouse or keyboard event listeners.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2ruae055eec5a9c3656d63094a1ed20aef5}{no-\/noninteractive-\/element-\/to-\/interactive-\/role}{0}   &Non-\/interactive elements should not be assigned interactive roles.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-noninteractive-tabindex}{no-\/noninteractive-\/tabindex}{0}   &{\ttfamily tab\+Index} should only be declared on interactive elements.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-onchange}{no-\/onchange}{0}   &Enforce usage of {\ttfamily on\+Blur} over {\ttfamily on\+Change} on select menus for accessibility.   &&&❌    \\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-redundant-roles}{no-\/redundant-\/roles}{0}   &Enforce explicit role property is not the same as implicit/default role property on element.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rub1c261a725f26a5d446a5724421101b1}{no-\/static-\/element-\/interactions}{0}   &Enforce that non-\/interactive, visible elements (such as {\ttfamily \texorpdfstring{$<$}{<}div\texorpdfstring{$>$}{>}}) that have click handlers use the role attribute.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2prefer-tag-over-role}{prefer-\/tag-\/over-\/role}{0}   &Enforces using semantic DOM elements over the ARIA {\ttfamily role} property.   &&&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98}{role-\/has-\/required-\/aria-\/props}{0}   &Enforce that elements with ARIA roles must have all required attributes for that role.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2role-supports-aria-props}{role-\/supports-\/aria-\/props}{0}   &Enforce that elements with explicit or implicit roles defined contain only {\ttfamily aria-\/\texorpdfstring{$\ast$}{*}} properties supported by that {\ttfamily role}.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2scope}{scope}{0}   &Enforce {\ttfamily scope} prop is only used on {\ttfamily \texorpdfstring{$<$}{<}th\texorpdfstring{$>$}{>}} elements.   &☑️ 🔒   &&\\\cline{1-5}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2tabindex-no-positive}{tabindex-\/no-\/positive}{0}   &Enforce {\ttfamily tab\+Index} value is not greater than zero.   &☑️ 🔒   &&\\\cline{1-5}
+\end{longtabu}
+
+
+The following rules have extra options when in {\itshape recommended} mode\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10894}{}\doxysubsubsection{\texorpdfstring{no-\/interactive-\/element-\/to-\/noninteractive-\/role}{no-\/interactive-\/element-\/to-\/noninteractive-\/role}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10894}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'jsx-\/a11y/no-\/interactive-\/element-\/to-\/noninteractive-\/role':\ [}
+\DoxyCodeLine{\ \ 'error',}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ tr:\ ['none',\ 'presentation'],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10895}{}\doxysubsubsection{\texorpdfstring{no-\/noninteractive-\/element-\/interactions}{no-\/noninteractive-\/element-\/interactions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10895}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'jsx-\/a11y/no-\/noninteractive-\/element-\/interactions':\ [}
+\DoxyCodeLine{\ \ 'error',}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ handlers:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'onClick',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onMouseDown',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onMouseUp',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onKeyPress',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onKeyDown',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onKeyUp',}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10896}{}\doxysubsubsection{\texorpdfstring{no-\/noninteractive-\/element-\/to-\/interactive-\/role}{no-\/noninteractive-\/element-\/to-\/interactive-\/role}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10896}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'jsx-\/a11y/no-\/noninteractive-\/element-\/to-\/interactive-\/role':\ [}
+\DoxyCodeLine{\ \ 'error',}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ ul:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'listbox',}
+\DoxyCodeLine{\ \ \ \ \ \ 'menu',}
+\DoxyCodeLine{\ \ \ \ \ \ 'menubar',}
+\DoxyCodeLine{\ \ \ \ \ \ 'radiogroup',}
+\DoxyCodeLine{\ \ \ \ \ \ 'tablist',}
+\DoxyCodeLine{\ \ \ \ \ \ 'tree',}
+\DoxyCodeLine{\ \ \ \ \ \ 'treegrid',}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ ol:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'listbox',}
+\DoxyCodeLine{\ \ \ \ \ \ 'menu',}
+\DoxyCodeLine{\ \ \ \ \ \ 'menubar',}
+\DoxyCodeLine{\ \ \ \ \ \ 'radiogroup',}
+\DoxyCodeLine{\ \ \ \ \ \ 'tablist',}
+\DoxyCodeLine{\ \ \ \ \ \ 'tree',}
+\DoxyCodeLine{\ \ \ \ \ \ 'treegrid',}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ li:\ ['menuitem',\ 'option',\ 'row',\ 'tab',\ 'treeitem'],}
+\DoxyCodeLine{\ \ \ \ table:\ ['grid'],}
+\DoxyCodeLine{\ \ \ \ td:\ ['gridcell'],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10897}{}\doxysubsubsection{\texorpdfstring{no-\/noninteractive-\/tabindex}{no-\/noninteractive-\/tabindex}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10897}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'jsx-\/a11y/no-\/noninteractive-\/tabindex':\ [}
+\DoxyCodeLine{\ \ 'error',}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ tags:\ [],}
+\DoxyCodeLine{\ \ \ \ roles:\ ['tabpanel'],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10898}{}\doxysubsubsection{\texorpdfstring{no-\/static-\/element-\/interactions}{no-\/static-\/element-\/interactions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10898}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'jsx-\/a11y/no-\/noninteractive-\/element-\/interactions':\ [}
+\DoxyCodeLine{\ \ 'error',}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ handlers:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'onClick',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onMouseDown',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onMouseUp',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onKeyPress',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onKeyDown',}
+\DoxyCodeLine{\ \ \ \ \ \ 'onKeyUp',}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10899}{}\doxysubsection{\texorpdfstring{Creating a new rule}{Creating a new rule}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10899}
+If you are developing new rules for this project, you can use the {\ttfamily create-\/rule} script to scaffold the new files.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./scripts/create-\/rule.js\ my-\/new-\/rule}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10900}{}\doxysubsection{\texorpdfstring{Some background on WAI-\/\+ARIA, the AX Tree and Browsers}{Some background on WAI-\/\+ARIA, the AX Tree and Browsers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10900}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10901}{}\doxysubsubsection{\texorpdfstring{Accessibility API}{Accessibility API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10901}
+An operating system will provide an accessibility API that maps application state and content onto input/output controllers such as a screen reader, braille device, keyboard, etc.
+
+These APIs were developed as computer interfaces shifted from buffers (which are text-\/based and inherently quite accessible) to graphical user interfaces (GUIs). The first attempts to make GUIs accessible involved raster image parsing to recognize characters, words, etc. This information was stored in a parallel buffer and made accessible to assistive technology (AT) devices.
+
+As GUIs became more complex, the raster parsing approach became untenable. Accessibility APIs were developed to replace them. Check out \href{https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Protocols/NSAccessibility_Protocol/index.html}{\texttt{ NSAccessibility (AXAPI)}} for an example. See \href{https://www.w3.org/TR/core-aam-1.1/}{\texttt{ Core Accessibility API Mappings 1.\+1}} for more details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10902}{}\doxysubsubsection{\texorpdfstring{Browsers}{Browsers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10902}
+Browsers support an Accessibility API on a per operating system basis. For instance, Firefox implements the MSAA accessibility API on Windows, but does not implement the AXAPI on OSX.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10903}{}\doxysubsubsection{\texorpdfstring{The Accessibility (AX) Tree \& DOM}{The Accessibility (AX) Tree \& DOM}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10903}
+From the \href{https://www.w3.org/TR/core-aam-1.1/\#intro_treetypes}{\texttt{ W3 Core Accessibility API Mappings 1.\+1}}
+
+\begin{quote}
+The accessibility tree and the DOM tree are parallel structures. Roughly speaking the accessibility tree is a subset of the DOM tree. It includes the user interface objects of the user agent and the objects of the document. Accessible objects are created in the accessibility tree for every DOM element that should be exposed to assistive technology, either because it may fire an accessibility event or because it has a property, relationship or feature which needs to be exposed. Generally, if something can be trimmed out it will be, for reasons of performance and simplicity. For example, a {\ttfamily \texorpdfstring{$<$}{<}span\texorpdfstring{$>$}{>}} with just a style change and no semantics may not get its own accessible object, but the style change will be exposed by other means. \end{quote}
+Browser vendors are beginning to expose the AX Tree through inspection tools. Chrome has an experiment available to enable their inspection tool.
+
+You can also see a text-\/based version of the AX Tree in Chrome in the stable release version.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10904}{}\doxyparagraph{\texorpdfstring{Viewing the AX Tree in Chrome}{Viewing the AX Tree in Chrome}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10904}
+
+\begin{DoxyEnumerate}
+\item Navigate to {\ttfamily chrome\+://accessibility/} in Chrome.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Toggle the {\ttfamily accessibility off} link for any tab that you want to inspect.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item A link labeled {\ttfamily show accessibility tree} will appear; click this link.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Balk at the wall of text that gets displayed, but then regain your conviction.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Use the browser\textquotesingle{}s find command to locate strings and values in the wall of text.
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10905}{}\doxysubsubsection{\texorpdfstring{Pulling it all together}{Pulling it all together}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10905}
+A browser constructs an AX Tree as a subset of the DOM. ARIA heavily informs the properties of this AX Tree. This AX Tree is exposed to the system level Accessibility API which mediates assistive technology agents.
+
+We model ARIA in the \href{https://github.com/a11yance/aria-query}{\texttt{ aria-\/query}} project. We model AXObjects (that comprise the AX Tree) in the \href{https://github.com/A11yance/axobject-query}{\texttt{ axobject-\/query}} project. The goal of the WAI-\/\+ARIA specification is to be a complete declarative interface to the AXObject model. The \href{https://github.com/w3c/aria/issues?q=is\%3Aissue+is\%3Aopen+label\%3A\%22ARIA+1.2\%22}{\texttt{ in-\/draft 1.\+2 version}} is moving towards this goal. But until then, we must consider the semantics constructs afforded by ARIA as well as those afforded by the AXObject model (AXAPI) in order to determine how HTML can be used to express user interface affordances to assistive technology users.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10906}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_r_e_a_d_m_e_autotoc_md10906}
+eslint-\/plugin-\/jsx-\/a11y is licensed under the \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2_l_i_c_e_n_s_e}{MIT License}{0}. 

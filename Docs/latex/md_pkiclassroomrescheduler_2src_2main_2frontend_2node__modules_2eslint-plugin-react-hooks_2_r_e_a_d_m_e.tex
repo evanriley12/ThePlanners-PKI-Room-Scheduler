@@ -1,0 +1,72 @@
+\chapter{\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}eslint-\/plugin-\/react-\/hooks\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e}\index{$<$tt$>$eslint-\/plugin-\/react-\/hooks$<$/tt$>$@{$<$tt$>$eslint-\/plugin-\/react-\/hooks$<$/tt$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10907}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10907}%
+ This ESLint plugin enforces the \href{https://reactjs.org/docs/hooks-rules.html}{\texttt{ Rules of Hooks}}.
+
+It is a part of the \href{https://reactjs.org/docs/hooks-intro.html}{\texttt{ Hooks API}} for React.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10908}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10908}
+{\bfseries{Note\+: If you\textquotesingle{}re using Create React App, please use {\ttfamily react-\/scripts} \texorpdfstring{$>$}{>}= 3 instead of adding it directly.}}
+
+Assuming you already have ESLint installed, run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ npm}
+\DoxyCodeLine{npm\ install\ eslint-\/plugin-\/react-\/hooks\ -\/-\/save-\/dev}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ yarn}
+\DoxyCodeLine{yarn\ add\ eslint-\/plugin-\/react-\/hooks\ -\/-\/dev}
+
+\end{DoxyCode}
+
+
+Then extend the recommended eslint config\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}extends"{}:\ [}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ "{}plugin:react-\/hooks/recommended"{}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10909}{}\doxysubsection{\texorpdfstring{Custom Configuration}{Custom Configuration}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10909}
+If you want more fine-\/grained configuration, you can instead add a snippet like this to your ESLint configuration file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ [}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ "{}react-\/hooks"{}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ "{}rules"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ "{}react-\/hooks/rules-\/of-\/hooks"{}:\ "{}error"{},}
+\DoxyCodeLine{\ \ \ \ "{}react-\/hooks/exhaustive-\/deps"{}:\ "{}warn"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10910}{}\doxysection{\texorpdfstring{Advanced Configuration}{Advanced Configuration}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10910}
+{\ttfamily exhaustive-\/deps} can be configured to validate dependencies of custom Hooks with the {\ttfamily additional\+Hooks} option. This option accepts a regex to match the names of custom Hooks that have dependencies.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}rules"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ "{}react-\/hooks/exhaustive-\/deps"{}:\ ["{}warn"{},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}additionalHooks"{}:\ "{}(useMyCustomHook|useMyOtherCustomHook)"{}}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+We suggest to use this option {\bfseries{very sparingly, if at all}}. Generally saying, we recommend most custom Hooks to not use the dependencies argument, and instead provide a higher-\/level API that is more focused around a specific use case.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10911}{}\doxysection{\texorpdfstring{Valid and Invalid Examples}{Valid and Invalid Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10911}
+Please refer to the \href{https://reactjs.org/docs/hooks-rules.html}{\texttt{ Rules of Hooks}} documentation and the \href{https://reactjs.org/docs/hooks-faq.html\#what-exactly-do-the-lint-rules-enforce}{\texttt{ Hooks FAQ}} to learn more about this rule.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10912}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-react-hooks_2_r_e_a_d_m_e_autotoc_md10912}
+MIT 

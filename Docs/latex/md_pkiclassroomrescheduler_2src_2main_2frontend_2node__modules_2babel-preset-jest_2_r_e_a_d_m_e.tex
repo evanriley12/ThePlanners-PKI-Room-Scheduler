@@ -1,0 +1,36 @@
+\chapter{babel-\/preset-\/jest}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e}\index{babel-\/preset-\/jest@{babel-\/preset-\/jest}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5930}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5930}%
+ \begin{quote}
+Babel preset for all Jest plugins. This preset is automatically included when using \href{https://github.com/facebook/jest/tree/main/packages/babel-jest}{\texttt{ babel-\/jest}}. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5931}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5931}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save-\/dev\ babel-\/preset-\/jest}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5932}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5932}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5933}{}\doxysubsection{\texorpdfstring{Via {\ttfamily babel.\+config.\+js} (Recommended)}{Via {\ttfamily babel.\+config.\+js} (Recommended)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5933}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ presets:\ ['jest'],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5934}{}\doxysubsection{\texorpdfstring{Via CLI}{Via CLI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5934}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ babel\ script.js\ -\/-\/presets\ jest}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5935}{}\doxysubsection{\texorpdfstring{Via Node API}{Via Node API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-preset-jest_2_r_e_a_d_m_e_autotoc_md5935}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('@babel/core').transform('code',\ \{}
+\DoxyCodeLine{\ \ presets:\ ['jest'],}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

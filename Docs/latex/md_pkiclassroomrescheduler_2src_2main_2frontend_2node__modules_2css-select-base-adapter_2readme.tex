@@ -1,0 +1,54 @@
+\chapter{css-\/select-\/base-\/adapter}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme}\index{css-\/select-\/base-\/adapter@{css-\/select-\/base-\/adapter}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md7998}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md7998}%
+ Provides some base functions needed by a \href{https://github.com/fb55/css-select}{\texttt{ {\ttfamily css-\/select}}} adapter so that you don\textquotesingle{}t have to implement the whole thing.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md7999}{}\doxysection{\texorpdfstring{usage}{usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md7999}
+{\ttfamily npm install css-\/select-\/base-\/adapter -\/-\/save}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ baseAdapter\ =\ require('css-\/select-\/base-\/adapter');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ myAdapter\ =\ \{}
+\DoxyCodeLine{\ \ //\ your\ partial\ implementation\ here}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ an\ adapter\ with\ everything\ needed\ by\ css-\/select}
+\DoxyCodeLine{var\ adapter\ =\ baseAdapter(myAdapter);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ use\ adapter\ with\ css-\/select...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md8000}{}\doxysection{\texorpdfstring{how it works}{how it works}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md8000}
+An adapter for {\ttfamily css-\/select} requires the following functions to be implemented\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isTag,\ existsOne,\ getAttributeValue,\ getChildren,\ getName,\ getParent,}
+\DoxyCodeLine{getSiblings,\ getText,\ hasAttrib,\ removeSubsets,\ findAll,\ findOne}
+
+\end{DoxyCode}
+
+
+You can pass this module a more minimal implementation and it will return a full adapter that fills in any missing functions, provided that you implement at least\+: ~\newline
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isTag,\ getAttributeValue,\ getChildren,\ getName,\ getParent,\ getText}
+
+\end{DoxyCode}
+
+
+If you provide any of the other methods required of an adapter, the base adapter will use your implementation instead of its own.
+
+See the \href{https://github.com/fb55/css-select/blob/master/README.md}{\texttt{ {\ttfamily css-\/select} readme}} for more information on the required function signatures.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md8001}{}\doxysection{\texorpdfstring{license}{license}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-select-base-adapter_2readme_autotoc_md8001}
+MIT License
+
+Copyright (c) 2018 Nik Coughlin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "{}\+Software"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "{}\+AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

@@ -1,0 +1,26 @@
+\chapter{possible-\/typed-\/array-\/names \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/possible-\/typed-\/array-\/names"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/ljharb/possible-\/typed-\/array-\/names.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e}\index{possible-\/typed-\/array-\/names $<$sup$>$$<$a href="{}https://npmjs.org/package/possible-\/typed-\/array-\/names"{} $>$$<$img src="{}https://versionbadg.es/ljharb/possible-\/typed-\/array-\/names.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{possible-\/typed-\/array-\/names $<$sup$>$$<$a href=""https://npmjs.org/package/possible-\/typed-\/array-\/names"" $>$$<$img src=""https://versionbadg.es/ljharb/possible-\/typed-\/array-\/names.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18312}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18312}%
+ \href{https://github.com/ljharb/possible-typed-array-names/actions}{\texttt{ }} \href{https://app.codecov.io/gh/ljharb/possible-typed-array-names/}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=possible-typed-array-names}{\texttt{ }}
+
+\href{https://npmjs.org/package/possible-typed-array-names}{\texttt{ }}
+
+A simple list of possible Typed Array names.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18313}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18313}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ names\ =\ require('possible-\/typed-\/array-\/names');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(Array.isArray(names));}
+\DoxyCodeLine{assert(names.every(name\ =>\ (}
+\DoxyCodeLine{\ \ \ \ typeof\ name\ ===\ 'string'}
+\DoxyCodeLine{\ \ \ \ \&\&\ typeof\ globalThis[name]\ ===\ 'function'}
+\DoxyCodeLine{\ \ \ \ \&\&\ globalThis[name].name\ ===\ name}
+\DoxyCodeLine{)));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18314}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18314}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18315}{}\doxysection{\texorpdfstring{Security}{Security}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2possible-typed-array-names_2_r_e_a_d_m_e_autotoc_md18315}
+Please email \href{https://github.com/ljharb}{\texttt{ @ljharb}} or see \href{https://tidelift.com/security}{\texttt{ https\+://tidelift.\+com/security}} if you have a potential security vulnerability to report. 

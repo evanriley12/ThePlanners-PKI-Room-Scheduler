@@ -1,0 +1,129 @@
+\chapter{Prevent calling \texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}expect\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>} conditionally (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/conditional-\/expect\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect}\index{Prevent calling $<$tt$>$expect$<$/tt$>$ conditionally ($<$tt$>$no-\/conditional-\/expect$<$/tt$>$)@{Prevent calling $<$tt$>$expect$<$/tt$>$ conditionally ($<$tt$>$no-\/conditional-\/expect$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect_autotoc_md10383}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect_autotoc_md10383}%
+ This rule prevents the use of {\ttfamily expect} in conditional blocks, such as {\ttfamily if}s \& {\ttfamily catch}s.
+
+This includes using {\ttfamily expect} in callbacks to functions named {\ttfamily catch}, which are assumed to be promises.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect_autotoc_md10384}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect_autotoc_md10384}
+Jest only considers a test to have failed if it throws an error, meaning if calls to assertion functions like {\ttfamily expect} occur in conditional code such as a {\ttfamily catch} statement, tests can end up passing but not actually test anything.
+
+Additionally, conditionals tend to make tests more brittle and complex, as they increase the amount of mental thinking needed to understand what is actually being tested.
+
+While {\ttfamily expect.\+assertions} \& {\ttfamily expect.\+has\+Assertions} can help prevent tests from silently being skipped, when combined with conditionals they typically result in even more complexity being introduced.
+
+The following patterns are warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ doTest\ \&\&\ expect(1).toBe(2);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('bar',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ if\ (!skipTest)\ \{}
+\DoxyCodeLine{\ \ \ \ expect(1).toEqual(2);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('baz',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ await\ foo();}
+\DoxyCodeLine{\ \ \}\ catch\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ expect(err).toMatchObject(\{\ code:\ 'MODULE\_NOT\_FOUND'\ \});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('throws\ an\ error',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ await\ foo().catch(error\ =>\ expect(error).toBeInstanceOf(error));}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The following patterns are not warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ expect(!value).toBe(false);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ getValue()\ \{}
+\DoxyCodeLine{\ \ if\ (process.env.FAIL)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ 1;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ 2;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ expect(getValue()).toBe(2);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('validates\ the\ request',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ processRequest(request);}
+\DoxyCodeLine{\ \ \}\ catch\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ignore\ errors}
+\DoxyCodeLine{\ \ \}\ finally\ \{}
+\DoxyCodeLine{\ \ \ \ expect(validRequest).toHaveBeenCalledWith(request);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('throws\ an\ error',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ await\ expect(foo).rejects.toThrow(Error);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect_autotoc_md10385}{}\doxysubsection{\texorpdfstring{How to catch a thrown error for testing without violating this rule}{How to catch a thrown error for testing without violating this rule}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect_autotoc_md10385}
+A common situation that comes up with this rule is when wanting to test properties on a thrown error, as Jest\textquotesingle{}s {\ttfamily to\+Throw} matcher only checks the {\ttfamily message} property.
+
+Most people write something like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('when\ the\ http\ request\ fails',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ it('includes\ the\ status\ code\ in\ the\ error',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ await\ makeRequest(url);}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(error).toHaveProperty('statusCode',\ 404);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+As stated above, the problem with this is that if {\ttfamily make\+Request()} doesn\textquotesingle{}t throw the test will still pass as if the {\ttfamily expect} had been called.
+
+While you can use {\ttfamily expect.\+assertions} \& {\ttfamily expect.\+has\+Assertions} for these situations, they only work with {\ttfamily expect}.
+
+A better way to handle this situation is to introduce a wrapper to handle the catching, and otherwise returns a specific "{}no error thrown"{} error if nothing is thrown by the wrapped function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{class\ NoErrorThrownError\ extends\ Error\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ getError\ =\ async\ <TError>(call:\ ()\ =>\ unknown):\ Promise<TError>\ =>\ \{}
+\DoxyCodeLine{\ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ await\ call();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ throw\ new\ NoErrorThrownError();}
+\DoxyCodeLine{\ \ \}\ catch\ (error:\ unknown)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ error\ as\ TError;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('when\ the\ http\ request\ fails',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ it('includes\ the\ status\ code\ in\ the\ error',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ const\ error\ =\ await\ getError(async\ ()\ =>\ makeRequest(url));}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ check\ that\ the\ returned\ error\ wasn't\ that\ no\ error\ was\ thrown}
+\DoxyCodeLine{\ \ \ \ expect(error).not.toBeInstanceOf(NoErrorThrownError);}
+\DoxyCodeLine{\ \ \ \ expect(error).toHaveProperty('statusCode',\ 404);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

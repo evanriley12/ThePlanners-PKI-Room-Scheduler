@@ -1,0 +1,145 @@
+\chapter{big.\+js}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e}\index{big.js@{big.js}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6093}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6093}%
+ {\bfseries{A small, fast Java\+Script library for arbitrary-\/precision decimal arithmetic.}}
+
+The little sister to \href{https://github.com/MikeMcl/bignumber.js/}{\texttt{ bignumber.\+js}} and \href{https://github.com/MikeMcl/decimal.js/}{\texttt{ decimal.\+js}}. See \href{https://github.com/MikeMcl/big.js/wiki}{\texttt{ here}} for some notes on the difference between them.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6094}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6094}
+
+\begin{DoxyItemize}
+\item Faster, smaller and easier-\/to-\/use than Java\+Script versions of Java\textquotesingle{}s Big\+Decimal
+\item Only 5.\+9 KB minified and 2.\+7 KB gzipped
+\item Simple API
+\item Replicates the {\ttfamily to\+Exponential}, {\ttfamily to\+Fixed} and {\ttfamily to\+Precision} methods of Java\+Script\textquotesingle{}s Number type
+\item Includes a {\ttfamily sqrt} method
+\item Stores values in an accessible decimal floating point format
+\item No dependencies
+\item Comprehensive \href{http://mikemcl.github.io/big.js/}{\texttt{ documentation}} and test set
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6095}{}\doxysection{\texorpdfstring{Set up}{Set up}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6095}
+The library is the single Java\+Script file {\itshape big.\+js} (or {\itshape big.\+min.\+js}, which is {\itshape big.\+js} minified).
+
+Browser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src='path/to/big.js'></script>}
+
+\end{DoxyCode}
+
+
+\href{http://nodejs.org}{\texttt{ Node.\+js}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ big.js}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Big\ =\ require('big.js');}
+
+\end{DoxyCode}
+
+
+ES6 module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ Big\ from\ 'big.mjs';}
+
+\end{DoxyCode}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6096}{}\doxysection{\texorpdfstring{Use}{Use}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6096}
+{\itshape In all examples below, {\ttfamily var}, semicolons and {\ttfamily to\+String} calls are not shown. If a commented-\/out value is in quotes it means {\ttfamily to\+String} has been called on the preceding expression.}
+
+The library exports a single function, {\ttfamily Big}, the constructor of Big number instances. It accepts a value of type number, string or Big number object. \begin{DoxyVerb}x = new Big(123.4567)
+y = Big('123456.7e-3')             // 'new' is optional
+z = new Big(x)
+x.eq(y) && x.eq(z) && y.eq(z)      // true
+\end{DoxyVerb}
+ A Big number is immutable in the sense that it is not changed by its methods. \begin{DoxyVerb}0.3 - 0.1                          // 0.19999999999999998
+x = new Big(0.3)
+x.minus(0.1)                       // "0.2"
+x                                  // "0.3"
+\end{DoxyVerb}
+ The methods that return a Big number can be chained. \begin{DoxyVerb}x.div(y).plus(z).times(9).minus('1.234567801234567e+8').plus(976.54321).div('2598.11772')
+x.sqrt().div(y).pow(3).gt(y.mod(z))    // true
+\end{DoxyVerb}
+ Like Java\+Script\textquotesingle{}s Number type, there are {\ttfamily to\+Exponential}, {\ttfamily to\+Fixed} and {\ttfamily to\+Precision} methods. \begin{DoxyVerb}x = new Big(255.5)
+x.toExponential(5)                 // "2.55500e+2"
+x.toFixed(5)                       // "255.50000"
+x.toPrecision(5)                   // "255.50"
+\end{DoxyVerb}
+ The arithmetic methods always return the exact result except {\ttfamily div}, {\ttfamily sqrt} and {\ttfamily pow} (with negative exponent), as these methods involve division.
+
+The maximum number of decimal places and the rounding mode used to round the results of these methods is determined by the value of the {\ttfamily DP} and {\ttfamily RM} properties of the {\ttfamily Big} number constructor. \begin{DoxyVerb}Big.DP = 10
+Big.RM = 1
+
+x = new Big(2);
+y = new Big(3);
+z = x.div(y)                       // "0.6666666667"
+z.sqrt()                           // "0.8164965809"
+z.pow(-3)                          // "3.3749999995"
+z.times(z)                         // "0.44444444448888888889"
+z.times(z).round(10)               // "0.4444444445"
+\end{DoxyVerb}
+ Multiple Big number constructors can be created, each with an independent configuration.
+
+The value of a Big number is stored in a decimal floating point format in terms of a coefficient, exponent and sign. \begin{DoxyVerb}x = new Big(-123.456);
+x.c                                // [1,2,3,4,5,6]    coefficient (i.e. significand)
+x.e                                // 2                exponent
+x.s                                // -1               sign
+\end{DoxyVerb}
+ For further information see the \href{http://mikemcl.github.io/big.js/}{\texttt{ API}} reference from the {\itshape doc} folder.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6097}{}\doxysection{\texorpdfstring{Test}{Test}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6097}
+The {\itshape test} directory contains the test scripts for each Big number method.
+
+The tests can be run with Node.\+js or a browser.
+
+To run all the tests \begin{DoxyVerb}$ npm test
+\end{DoxyVerb}
+ To test a single method \begin{DoxyVerb}$ node test/toFixed
+\end{DoxyVerb}
+ For the browser, see {\itshape single-\/test.\+html} and {\itshape every-\/test.\+html} in the {\itshape test/browser} directory.
+
+{\itshape big-\/vs-\/number.\+html} is a simple application that enables some of the methods of big.\+js to be compared with those of Java\+Script\textquotesingle{}s Number type.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6098}{}\doxysection{\texorpdfstring{Performance}{Performance}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6098}
+The {\itshape perf} directory contains two legacy applications and a {\itshape lib} directory containing the Big\+Decimal libraries used by both.
+
+{\itshape big-\/vs-\/bigdecimal.\+html} tests the performance of big.\+js against the Java\+Script translations of two versions of Big\+Decimal, its use should be more or less self-\/explanatory.
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/iriscouch/bigdecimal.js}{\texttt{ GWT\+: java.\+math.\+Big\+Decimal}}
+\item \href{https://github.com/dtrebbien/BigDecimal.js}{\texttt{ ICU4\+J\+: com.\+ibm.\+icu.\+math.\+Big\+Decimal}}
+\end{DoxyItemize}
+
+The Big\+Decimal in the npm registry is the GWT version. It has some bugs, see the Node.\+js script {\itshape perf/lib/bigdecimal\+\_\+\+GWT/bugs.\+js} for examples of flaws in its {\itshape remainder}, {\itshape divide} and {\itshape compare\+To} methods.
+
+{\itshape bigtime.\+js} is a Node.\+js command-\/line application which tests the performance of big.\+js against the GWT version of Big\+Decimal from the npm registry.
+
+For example, to compare the time taken by the big.\+js {\ttfamily plus} method and the Big\+Decimal {\ttfamily add} method \begin{DoxyVerb}$ node bigtime plus 10000 40
+\end{DoxyVerb}
+ This will time 10000 calls to each, using operands of up to 40 random digits and will check that the results match.
+
+For help \begin{DoxyVerb}$ node bigtime -h
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6099}{}\doxysection{\texorpdfstring{Build}{Build}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6099}
+If \href{https://github.com/mishoo/UglifyJS2}{\texttt{ uglify-\/js}} is installed globally \begin{DoxyVerb}$ npm install uglify-js -g
+\end{DoxyVerb}
+ then \begin{DoxyVerb}$ npm run build
+\end{DoxyVerb}
+ will create {\itshape big.\+min.\+js}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6100}{}\doxysection{\texorpdfstring{Type\+Script}{Type\+Script}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6100}
+The \href{https://github.com/borisyankov/DefinitelyTyped}{\texttt{ Definitely\+Typed}} project has a Typescript type definitions file for big.\+js. \begin{DoxyVerb}$ npm install @types/big.js
+\end{DoxyVerb}
+ Any questions about the Type\+Script type definitions file should be addressed to the Definitely\+Typed project.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6101}{}\doxysection{\texorpdfstring{Feedback}{Feedback}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6101}
+Bugs/comments/questions?
+
+Open an issue, or email \href{mailto:M8ch88l@gmail.com}{\texttt{ Michael}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6102}{}\doxysection{\texorpdfstring{Licence}{Licence}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6102}
+\mbox{[}MIT\mbox{]}(LICENCE)\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6103}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6103}
+This project exists thanks to all the people who contribute. \mbox{[}Contribute\mbox{]}. \href{graphs/contributors}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6104}{}\doxysection{\texorpdfstring{Backers}{Backers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6104}
+Thank you to all our backers! 🙏 \mbox{[}\href{https://opencollective.com/bigjs\#backer}{\texttt{ Become a backer}}\mbox{]}
+
+\href{https://opencollective.com/bigjs\#backers}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6105}{}\doxysection{\texorpdfstring{Sponsors}{Sponsors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2big_8js_2_r_e_a_d_m_e_autotoc_md6105}
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. \mbox{[}\href{https://opencollective.com/bigjs\#sponsor}{\texttt{ Become a sponsor}}\mbox{]}
+
+\href{https://opencollective.com/bigjs/sponsor/0/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/1/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/2/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/3/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/4/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/5/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/6/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/7/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/8/website}{\texttt{ }} \href{https://opencollective.com/bigjs/sponsor/9/website}{\texttt{ }} 

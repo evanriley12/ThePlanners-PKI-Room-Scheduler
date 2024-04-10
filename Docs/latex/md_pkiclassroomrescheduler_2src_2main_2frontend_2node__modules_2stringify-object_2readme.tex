@@ -1,0 +1,132 @@
+\chapter{stringify-\/object \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/yeoman/stringify-\/object"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/yeoman/stringify-\/object.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme}\index{stringify-\/object $<$a href="{}http://travis-\/ci.org/yeoman/stringify-\/object"{} $>$$<$img src="{}https://secure.travis-\/ci.org/yeoman/stringify-\/object.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{stringify-\/object $<$a href=""http://travis-\/ci.org/yeoman/stringify-\/object"" $>$$<$img src=""https://secure.travis-\/ci.org/yeoman/stringify-\/object.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23795}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23795}%
+ \begin{quote}
+Stringify an object/array like JSON.\+stringify just without all the double-\/quotes \end{quote}
+Useful for when you want to get the string representation of an object in a formatted way.
+
+It also handles circular references and lets you specify quote type.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23796}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23796}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ stringify-\/object}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23797}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23797}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ stringifyObject\ =\ require('stringify-\/object');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ 'bar',}
+\DoxyCodeLine{\ \ \ \ 'arr':\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ nested:\ \{\ hello:\ "{}world"{}\ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ pretty\ =\ stringifyObject(obj,\ \{}
+\DoxyCodeLine{\ \ \ \ indent:\ '\ \ ',}
+\DoxyCodeLine{\ \ \ \ singleQuotes:\ false}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(pretty);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ foo:\ "{}bar"{},}
+\DoxyCodeLine{\ \ \ \ arr:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 3}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ nested:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ hello:\ "{}world"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23798}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23798}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23799}{}\doxysubsection{\texorpdfstring{stringify\+Object(input, \mbox{[}options\mbox{]})}{stringify\+Object(input, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23799}
+Circular references will be replaced with {\ttfamily "{}\mbox{[}\+Circular\mbox{]}"{}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23800}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23800}
+Type\+: {\ttfamily Object} {\ttfamily Array}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23801}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23801}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23802}{}\doxyparagraph{\texorpdfstring{indent}{indent}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23802}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily \textbackslash{}t}
+
+Preferred indentation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23803}{}\doxyparagraph{\texorpdfstring{single\+Quotes}{single\+Quotes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23803}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Set to false to get double-\/quoted strings.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23804}{}\doxyparagraph{\texorpdfstring{filter(obj, prop)}{filter(obj, prop)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23804}
+Type\+: {\ttfamily Function}
+
+Expected to return a {\ttfamily boolean} of whether to include the property {\ttfamily prop} of the object {\ttfamily obj} in the output.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23805}{}\doxyparagraph{\texorpdfstring{transform(obj, prop, original\+Result)}{transform(obj, prop, original\+Result)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23805}
+Type\+: {\ttfamily Function}~\newline
+ Default\+: {\ttfamily undefined}
+
+Expected to return a {\ttfamily string} that transforms the string that resulted from stringifying {\ttfamily obj\mbox{[}prop\mbox{]}}. This can be used to detect special types of objects that need to be stringified in a particular way. The {\ttfamily transform} function might return an alternate string in this case, otherwise returning the {\ttfamily original\+Result}.
+
+Here\textquotesingle{}s an example that uses the {\ttfamily transform} option to mask fields named "{}password"{}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ user:\ 'becky',}
+\DoxyCodeLine{\ \ \ \ password:\ 'secret'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ pretty\ =\ stringifyObject(obj,\ \{}
+\DoxyCodeLine{\ \ \ \ transform:\ (obj,\ prop,\ originalResult)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (prop\ ===\ 'password')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ originalResult.replace(/\(\backslash\)w/g,\ '*');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ originalResult;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(pretty);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ user:\ 'becky',}
+\DoxyCodeLine{\ \ \ \ password:\ '******'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23806}{}\doxyparagraph{\texorpdfstring{inline\+Character\+Limit}{inline\+Character\+Limit}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23806}
+Type\+: {\ttfamily number}
+
+When set, will inline values up to {\ttfamily inline\+Character\+Limit} length for the sake of more terse output.
+
+For example, given the example at the top of the README\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ 'bar',}
+\DoxyCodeLine{\ \ \ \ 'arr':\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ nested:\ \{\ hello:\ "{}world"{}\ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ pretty\ =\ stringifyObject(obj,\ \{}
+\DoxyCodeLine{\ \ \ \ indent:\ '\ \ ',}
+\DoxyCodeLine{\ \ \ \ singleQuotes:\ false,}
+\DoxyCodeLine{\ \ \ \ inlineCharacterLimit:\ 12}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(pretty);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ foo:\ "{}bar"{},}
+\DoxyCodeLine{\ \ \ \ arr:\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ nested:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ hello:\ "{}world"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+
+
+As you can see, {\ttfamily arr} was printed as a one-\/liner because its string was shorter than 12 characters.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23807}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2stringify-object_2readme_autotoc_md23807}
+BSD-\/2-\/\+Clause © Yeoman team 

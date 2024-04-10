@@ -1,0 +1,203 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e}\index{README@{README}}
+ ~\newline
+~\newline
+ 
+
+\href{https://circleci.com/gh/shellscape/webpack-manifest-plugin}{\texttt{ }} \href{https://codecov.io/gh/shellscape/webpack-manifest-plugin}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=webpack-manifest-plugin}{\texttt{ }} \href{https://liberamanifesto.com}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26599}{}\doxysection{\texorpdfstring{webpack-\/manifest-\/plugin}{webpack-\/manifest-\/plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26599}
+A Webpack plugin for generating an asset manifest.
+
+\+:heart\+: Please consider \href{https://github.com/sponsors/shellscape}{\texttt{ Sponsoring my work}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26600}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26600}
+{\ttfamily webpack-\/manifest-\/plugin} is an \href{./.github/FAQ.md\#what-does-evergreen-mean}{\texttt{ evergreen 🌲}} module.
+
+This module requires an \href{https://github.com/nodejs/Release}{\texttt{ Active LTS}} Node version (v10.\+0.\+0+) and Webpack v4.\+44.\+0+.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26601}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26601}
+This repository leverages \href{https://pnpm.js.org/}{\texttt{ pnpm}} for dependency management.
+
+To begin, please install {\ttfamily pnpm}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ pnpm\ -\/g}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26602}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26602}
+Using npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ webpack-\/nano\ webpack-\/manifest-\/plugin\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+{\itshape Note\+: We recommend using \href{https://github.com/shellscape/webpack-nano}{\texttt{ webpack-\/nano}}, a very tiny, very clean webpack CLI.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26603}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26603}
+Create a {\ttfamily webpack.\+config.\+js} file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ WebpackManifestPlugin\ \}\ =\ require('webpack-\/manifest-\/plugin');}
+\DoxyCodeLine{const\ options\ =\ \{\ ...\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ \ \ //\ an\ example\ entry\ definition}
+\DoxyCodeLine{\ \ \ \ entry:\ [\ 'app.js'\ \ \ ],}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ WebpackManifestPlugin(options)}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+And run {\ttfamily webpack}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npx\ wp}
+
+\end{DoxyCode}
+
+
+With the default options, the example above will create a {\ttfamily manifest.\+json} file in the output directory for the build. The manifest file will contain a map of source filenames to the corresponding build output file. e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}dist/batman.js"{}:\ "{}dist/batman.1234567890.js"{},}
+\DoxyCodeLine{\ \ "{}dist/joker.js"{}:\ "{}dist/joker.0987654321.js"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26604}{}\doxysubsubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26604}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26605}{}\doxysubsubsection{\texorpdfstring{{\ttfamily base\+Path}}{{\ttfamily base\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26605}
+Type\+: {\ttfamily String}~\newline
+ Default\+: `'\textquotesingle{}\`{}
+
+Specifies a path prefix for all keys in the manifest. Useful for including your output path in the manifest.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26606}{}\doxysubsubsection{\texorpdfstring{{\ttfamily file\+Name}}{{\ttfamily file\+Name}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26606}
+Type\+: {\ttfamily String}~\newline
+ Default\+: {\ttfamily manifest.\+json}
+
+Specifies the file name to use for the resulting manifest. By default the plugin will emit {\ttfamily manifest.\+json} to your output directory. Passing an absolute path to the {\ttfamily file\+Name} option will override both the file name and path.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26607}{}\doxysubsubsection{\texorpdfstring{{\ttfamily filter}}{{\ttfamily filter}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26607}
+Type\+: {\ttfamily Function}~\newline
+ Default\+: {\ttfamily undefined}
+
+Allows filtering the files which make up the manifest. The passed function should match the signature of {\ttfamily (file\+: File\+Descriptor) =\texorpdfstring{$>$}{>} Boolean}. Return {\ttfamily true} to keep the file, {\ttfamily false} to remove the file.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26608}{}\doxysubsubsection{\texorpdfstring{{\ttfamily generate}}{{\ttfamily generate}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26608}
+Type\+: {\ttfamily Function}~\newline
+ Default\+: {\ttfamily undefined}
+
+A custom {\ttfamily Function} to create the manifest. The passed function should match the signature of {\ttfamily (seed\+: Object, files\+: File\+Descriptor\mbox{[}\mbox{]}, entries\+: string\mbox{[}\mbox{]}) =\texorpdfstring{$>$}{>} Object} and can return anything as long as it\textquotesingle{}s serialisable by {\ttfamily JSON.\+stringify}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26609}{}\doxysubsubsection{\texorpdfstring{{\ttfamily map}}{{\ttfamily map}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26609}
+Type\+: {\ttfamily Function}~\newline
+ Default\+: {\ttfamily undefined}
+
+Allows modifying the files which make up the manifest. The passed function should match the signature of {\ttfamily (file\+: File\+Descriptor) =\texorpdfstring{$>$}{>} File\+Descriptor} where an object matching {\ttfamily File\+Descriptor} is returned.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26610}{}\doxysubsubsection{\texorpdfstring{{\ttfamily public\+Path}}{{\ttfamily public\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26610}
+Type\+: {\ttfamily String}~\newline
+ Default\+: {\ttfamily \texorpdfstring{$<$}{<}webpack-\/config\texorpdfstring{$>$}{>}.output.\+public\+Path}
+
+A path prefix that will be added to values of the manifest.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26611}{}\doxysubsubsection{\texorpdfstring{{\ttfamily remove\+Key\+Hash}}{{\ttfamily remove\+Key\+Hash}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26611}
+Type\+: {\ttfamily Reg\+Exp \texorpdfstring{$\vert$}{|} false}~\newline
+ Default\+: {\ttfamily /(\mbox{[}a-\/f0-\/9\mbox{]}\{32\}\textbackslash{}.?)/gi}
+
+If set to a valid {\ttfamily Reg\+Exp}, removes hashes from manifest keys. e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}index.c5a9bff71fdfed9b6046.html"{}:\ "{}index.c5a9bff71fdfed9b6046.html"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}index.html"{}:\ "{}index.c5a9bff71fdfed9b6046.html"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The default value for this option is a regular expression targeting Webpack\textquotesingle{}s \href{https://webpack.js.org/configuration/output/\#outputhashfunction}{\texttt{ default md5 hash}}. To target other hashing functions / algorithms, set this option to an appropriate {\ttfamily Reg\+Exp}. To disable replacing the hashes in key names, set this option to {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26612}{}\doxysubsubsection{\texorpdfstring{{\ttfamily seed}}{{\ttfamily seed}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26612}
+Type\+: {\ttfamily Object}~\newline
+ Default\+: {\ttfamily \{\}}
+
+A cache of key/value pairs used to seed the manifest. This may include a set of \href{https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json}{\texttt{ custom key/value}} pairs to include in your manifest, or may be used to combine manifests across compilations in \href{https://github.com/webpack/webpack/tree/master/examples/multi-compiler}{\texttt{ multi-\/compiler mode}}. To combine manifests, pass a shared seed object to each compiler\textquotesingle{}s {\ttfamily Webpack\+Manifest\+Plugin} instance.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26613}{}\doxysubsubsection{\texorpdfstring{{\ttfamily serialize}}{{\ttfamily serialize}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26613}
+Type\+: {\ttfamily Function(\+Object) =\texorpdfstring{$>$}{>} string}~\newline
+ Default\+: {\ttfamily undefined}
+
+A {\ttfamily Function} which can be leveraged to serialize the manifest in a different format than json. e.\+g. {\ttfamily yaml}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26614}{}\doxysubsubsection{\texorpdfstring{{\ttfamily sort}}{{\ttfamily sort}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26614}
+Type\+: {\ttfamily Function}~\newline
+ Default\+: {\ttfamily undefined}
+
+Allows sorting the files which make up the manifest. The passed function should match the signature of {\ttfamily (fileA\+: File\+Descriptor, fileB\+: File\+Descriptor) =\texorpdfstring{$>$}{>} Number}. Return {\ttfamily 0} to indicate no change, {\ttfamily -\/1} to indicate the file should be moved to a lower index, and {\ttfamily 1} to indicate the file shoud be moved to a higher index.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26615}{}\doxysubsubsection{\texorpdfstring{{\ttfamily use\+Entry\+Keys}}{{\ttfamily use\+Entry\+Keys}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26615}
+Type\+: {\ttfamily Boolean}~\newline
+ Default\+: {\ttfamily false}
+
+If {\ttfamily true}, the keys specified in the {\ttfamily entry} property will be used as keys in the manifest. No file extension will be added (unless specified as part of an {\ttfamily entry} property key).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26616}{}\doxysubsubsection{\texorpdfstring{{\ttfamily use\+Legacy\+Emit}}{{\ttfamily use\+Legacy\+Emit}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26616}
+Type\+: {\ttfamily Boolean}~\newline
+ Default\+: {\ttfamily false}
+
+If {\ttfamily true}, the manifest will be written on the deprecated webpack {\ttfamily emit} hook to be compatible with not yet updated webpack plugins.
+
+A lot of webpack plugins are not yet updated to match the new webpack 5 API. This is a problem when other plugins use the deprecated {\ttfamily emit} hook. The manifest will be written before these other plugins and thus files are missing on the manifest.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26617}{}\doxysubsubsection{\texorpdfstring{{\ttfamily write\+To\+File\+Emit}}{{\ttfamily write\+To\+File\+Emit}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26617}
+Type\+: {\ttfamily Boolean}~\newline
+ Default\+: {\ttfamily false}
+
+If {\ttfamily true}, will emit the manifest to the build directory {\itshape and} in memory for compatibility with {\ttfamily webpack-\/dev-\/server}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26618}{}\doxysubsection{\texorpdfstring{Manifest File Descriptor}{Manifest File Descriptor}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26618}
+This plugin utilizes the following object structure to work with files. Many options for this plugin utilize the structure below.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ chunk?:\ Chunk;}
+\DoxyCodeLine{\ \ isAsset:\ boolean;}
+\DoxyCodeLine{\ \ isChunk:\ boolean;}
+\DoxyCodeLine{\ \ isInitial:\ boolean;}
+\DoxyCodeLine{\ \ isModuleAsset:\ boolean;}
+\DoxyCodeLine{\ \ name:\ string\ |\ null;}
+\DoxyCodeLine{\ \ path:\ string;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26619}{}\doxysubsubsection{\texorpdfstring{{\ttfamily chunk}}{{\ttfamily chunk}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26619}
+Type\+: \href{https://github.com/webpack/webpack/blob/master/lib/Chunk.js}{\texttt{ {\ttfamily Chunk}}}
+
+Only available if {\ttfamily is\+Chunk} is {\ttfamily true}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26620}{}\doxysubsubsection{\texorpdfstring{{\ttfamily is\+Initial}}{{\ttfamily is\+Initial}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26620}
+Type\+: {\ttfamily Boolean}
+
+Is required to run you app. Cannot be {\ttfamily true} if {\ttfamily is\+Chunk} is {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26621}{}\doxysubsubsection{\texorpdfstring{{\ttfamily is\+Module\+Asset}}{{\ttfamily is\+Module\+Asset}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26621}
+Type\+: {\ttfamily Boolean}
+
+Is required by a module. Cannot be {\ttfamily true} if {\ttfamily is\+Asset} is {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26622}{}\doxysubsection{\texorpdfstring{Compiler Hooks}{Compiler Hooks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26622}
+This plugin supports the following hooks via the {\ttfamily get\+Compiler\+Hooks} export; {\ttfamily after\+Emit}, {\ttfamily before\+Emit}. These hooks can be useful, e.\+g. changing manifest contents before emitting to disk.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26623}{}\doxysubsubsection{\texorpdfstring{{\ttfamily get\+Compiler\+Hooks}}{{\ttfamily get\+Compiler\+Hooks}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26623}
+Returns\+: {\ttfamily \{ after\+Emit\+: Sync\+Waterfall\+Hook, before\+Emit\+: Sync\+Waterfall\+Hook \}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26624}{}\doxysubsubsection{\texorpdfstring{{\ttfamily asset\+Hook\+Stage}}{{\ttfamily asset\+Hook\+Stage}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26624}
+Type\+: {\ttfamily Number} Default\+: {\ttfamily Infinity}
+
+If you need to consume the output of this plugin in another plugin, it can be useful to adjust the stage at which the manifest is generated. Pass a new stage to {\ttfamily asset\+Hook\+Stage} to change when the manifest is generated. See the \href{https://webpack.js.org/api/compilation-hooks/\#list-of-asset-processing-stages}{\texttt{ docs on {\ttfamily process\+Assets}}} for more detail.
+
+Note\+: any files added to the compilation after the stage specified will not be included in the manifest.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26625}{}\doxyparagraph{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26625}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ getCompilerHooks\ \}\ =\ require('webpack-\/manifest-\/plugin');}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ BatmanPlugin\ \{}
+\DoxyCodeLine{\ \ apply(compiler)\ \{}
+\DoxyCodeLine{\ \ \ \ const\ \{\ beforeEmit\ \}\ =\ getCompilerHooks(compiler);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ beforeEmit.tap('BatmanPlugin',\ (manifest)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{\ ...manifest,\ name:\ 'hello'\ \};}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26626}{}\doxysubsection{\texorpdfstring{Notes}{Notes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26626}
+
+\begin{DoxyItemize}
+\item If using this plugin with {\ttfamily webpack-\/clean} and {\ttfamily webpack-\/dev-\/server}, please review \href{https://github.com/shellscape/webpack-manifest-plugin/issues/267}{\texttt{ this issue}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26627}{}\doxysubsection{\texorpdfstring{Attiribution}{Attiribution}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26627}
+Special thanks to \href{https://github.com/danethurber}{\texttt{ Dane Thurber}}, the original author of this plugin, without whom this plugin would not exist.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26628}{}\doxysubsection{\texorpdfstring{Meta}{Meta}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-manifest-plugin_2_r_e_a_d_m_e_autotoc_md26628}
+CONTRIBUTING
+
+\href{./LICENSE}{\texttt{ LICENSE (MIT)}} 

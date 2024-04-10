@@ -1,0 +1,109 @@
+\chapter{w3c-\/hr-\/time}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e}\index{w3c-\/hr-\/time@{w3c-\/hr-\/time}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26455}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26455}%
+ This module implements the W3C \href{https://w3c.github.io/hr-time/}{\texttt{ High Resolution Time Level 2}} specification. It provides exactly three exports\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Performance} class
+\item {\ttfamily get\+Global\+Monotonic\+Clock\+MS()\+: number}
+\item {\ttfamily clock\+Is\+Accurate\+: boolean}
+\end{DoxyItemize}
+
+In all APIs, a "{}high-\/resolution timestamp"{} means a number in milliseconds that may have a fractional part, if the system clock is accurate enough (see "{}\+Clock accuracy"{} section below). It is identical to the \href{https://w3c.github.io/hr-time/\#dom-domhighrestimestamp}{\texttt{ {\ttfamily DOMHigh\+Res\+Time\+Stamp}}} type in the High Resolution Time spec.
+
+Portability is paramount to this module. It uses only APIs exposed from Node.\+js core like {\ttfamily Date.\+now()} and {\ttfamily process.\+hrtime()} and does not use or require any native modules. It also employs the \href{https://www.npmjs.com/package/browser-process-hrtime}{\texttt{ browser-\/process-\/hrtime}} module for graceful degrades for platforms that do not have {\ttfamily process.\+hrtime()} (such as browsers).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26456}{}\doxysection{\texorpdfstring{{\ttfamily Performance} class}{{\ttfamily Performance} class}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26456}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Performance\ \}\ =\ require("{}w3c-\/hr-\/time"{});}
+\DoxyCodeLine{const\ performance\ =\ new\ Performance();}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(performance.timeOrigin);}
+\DoxyCodeLine{//\ Prints\ a\ number\ close\ to\ Date.now()\ but\ that\ may\ have\ fractional\ parts,\ like}
+\DoxyCodeLine{//\ 1514888563819.351.}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(new\ Date(performance.timeOrigin));}
+\DoxyCodeLine{//\ Prints\ a\ date\ close\ to\ new\ Date(),\ like\ 2018-\/01-\/02T10:22:43.819Z.}
+\DoxyCodeLine{}
+\DoxyCodeLine{setTimeout(()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log(performance.now());}
+\DoxyCodeLine{\ \ //\ Prints\ a\ number\ close\ to\ 5000,\ like\ 5008.023059.}
+\DoxyCodeLine{\},\ 5000);}
+
+\end{DoxyCode}
+
+
+Perhaps the most interesting export is the \href{https://w3c.github.io/hr-time/\#dfn-performance}{\texttt{ {\ttfamily Performance}}} class. By constructing the class, you can get an instance quite similar to the {\ttfamily window.\+performance} object in browsers. Specifically, the following APIs are implemented\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://w3c.github.io/hr-time/\#dom-performance-now}{\texttt{ {\ttfamily performance.\+now()\+: number}}} returns the high-\/resolution duration since the construction of the {\ttfamily Performance} object.
+\item \href{https://w3c.github.io/hr-time/\#dom-performance-timeorigin}{\texttt{ {\ttfamily performance.\+time\+Origin\+: number}}} is a high-\/resolution timestamp of the {\ttfamily Performance} object\textquotesingle{}s construction, expressed in \href{https://en.wikipedia.org/wiki/Unix_time}{\texttt{ Unix time}}.
+\item \href{https://w3c.github.io/hr-time/\#dom-performance-tojson}{\texttt{ {\ttfamily performance.\+to\+JSON()\+: object}}} returns an object with {\ttfamily time\+Origin} property set to the corresponding value of this object. This allows serializing the {\ttfamily Performance} object with {\ttfamily JSON.\+stringify()}. In browsers, the returned object may contain additional properties such as {\ttfamily navigation} and {\ttfamily timing}. However, those properties are specific to browser navigation and are unsuitable for a Node.\+js implementation. Furthermore, they are specified not in the High Resolution Time spec but in \href{https://w3c.github.io/navigation-timing/}{\texttt{ Navigation Timing}}, and are thereby outside the scope of this module.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26457}{}\doxysubsection{\texorpdfstring{Limitations}{Limitations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26457}
+This module does not aim for full \href{https://heycam.github.io/webidl/}{\texttt{ Web IDL}} conformance, so things like {\ttfamily performance.\+to\+JSON.\+call(\{\})} will not throw {\ttfamily Type\+Error}s like it does in browsers. If you need full Web IDL conformance, you may be interested in the \href{https://github.com/jsdom/webidl2js}{\texttt{ webidl2js}} module.
+
+The {\ttfamily Performance} class provided also does not have {\ttfamily mark()}, {\ttfamily measure()}, {\ttfamily get\+Entries()}, and such functions. They are specified in other specs than High Resolution Timing, such as \href{https://w3c.github.io/user-timing/}{\texttt{ User Timing}} (marks and measures) and \href{https://w3c.github.io/performance-timeline/}{\texttt{ Performance Timeline}} (entries management). Those specs extend the definition of the {\ttfamily Performance} class defined in High Resolution Timing, and to implement those specs you can extend the {\ttfamily Performance} class exported by this module.
+
+Due to the limitations of the APIs exposed through Node.\+js, the construction of a {\ttfamily Performance} object may take up to 1 millisecond to gather information for high-\/resolution {\ttfamily time\+Origin}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26458}{}\doxysection{\texorpdfstring{Global monotonic clock}{Global monotonic clock}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26458}
+The High Resolution Time spec defines a \href{https://w3c.github.io/hr-time/\#dfn-global-monotonic-clock}{\texttt{ global monotonic clock}} that is "{}shared by time origin\textquotesingle{}s \texorpdfstring{$\ast$}{*}\mbox{[}sic\mbox{]}\texorpdfstring{$\ast$}{*}, is monotonically increasing and not subject to system clock adjustments or system clock skew, and whose reference point is the Unix time."{}
+
+This module exports a function {\ttfamily get\+Global\+Monotonic\+Clock\+MS()} that is the basis of all timing functions used my this module when a monotonic time is required. It returns a high-\/resolution timestamp whose zero value is at some arbitrary point in the past. (For the current high-\/resolution timestamp based on the Unix epoch, use {\ttfamily new Performance().time\+Origin} instead.)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ getGlobalMonotonicClockMS\ \}\ =\ require("{}w3c-\/hr-\/time"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ start\ =\ getGlobalMonotonicClockMS();}
+\DoxyCodeLine{console.log(start);}
+\DoxyCodeLine{//\ Prints\ a\ millisecond\ timestamp\ based\ on\ an\ arbitrary\ point\ in\ the\ past,\ like}
+\DoxyCodeLine{//\ 280249733.012151.}
+\DoxyCodeLine{}
+\DoxyCodeLine{setTimeout(()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log(getGlobalMonotonicClockMS()\ -\/\ a);}
+\DoxyCodeLine{\ \ //\ Prints\ a\ number\ close\ to\ 5000,\ like\ 5006.156536.}
+\DoxyCodeLine{\},\ 5000);}
+
+\end{DoxyCode}
+
+
+Unlike other functions that return only integer timestamps if the system clock does not provide enough resolution, this function may still return timestamps with fractional parts on those systems with less accurate clocks. See "{}\+Clock accuracy"{} section below for more information.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26459}{}\doxysection{\texorpdfstring{Clock accuracy}{Clock accuracy}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26459}
+The High Resolution Time spec \href{https://w3c.github.io/hr-time/\#dom-domhighrestimestamp}{\texttt{ states}} that
+
+\begin{quote}
+A \href{https://w3c.github.io/hr-time/\#dom-domhighrestimestamp}{\texttt{ {\ttfamily DOMHigh\+Res\+Time\+Stamp}}} {\itshape SHOULD} represent a time in milliseconds accurate to 5 microseconds -\/ see \href{https://w3c.github.io/hr-time/\#privacy-security}{\texttt{ 8. Privacy and Security}}.
+
+If the User Agent is unable to provide a time value accurate to 5 microseconds due to hardware or software constraints, the User Agent can represent a \href{https://w3c.github.io/hr-time/\#dom-domhighrestimestamp}{\texttt{ {\ttfamily DOMHigh\+Res\+Time\+Stamp}}} as a time in milliseconds accurate to a millisecond. \end{quote}
+This module implements this suggestion faithfully. It executes a test at {\ttfamily require()}-\/time to determine if the system clock (both {\ttfamily Date.\+now()} and {\ttfamily process.\+hrtime()}) is accurate enough to 5 microseconds. The result of this test can be accessed through the exported {\ttfamily clock\+Is\+Accurate} boolean value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Performance,\ clockIsAccurate\ \}\ =\ require("{}w3c-\/hr-\/time"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ performance\ =\ new\ Performance();}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (!clockIsAccurate)\ \{}
+\DoxyCodeLine{\ \ console.assert(Number.isInteger(performance.timeOrigin));}
+\DoxyCodeLine{\ \ console.assert(Number.isInteger(performance.now()));}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+If {\ttfamily clock\+Is\+Accurate} is false, {\ttfamily performance.\+time\+Origin} and {\ttfamily performance.\+now()} are always rounded to millisecond accuracy. {\ttfamily get\+Global\+Monotonic\+Clock\+MS()} however is exempt from this requirement due to its best-\/effort nature, and the fact that it is not an API exposed by the High Resolution Time spec.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26460}{}\doxysection{\texorpdfstring{Clock drift}{Clock drift}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26460}
+\href{https://en.wikipedia.org/wiki/Clock_drift}{\texttt{ Clock drift}} can be observed through system or user clock adjustments -- that is, the speed at which {\ttfamily Date.\+now()} changes may be faster or slower than real time if there is a pending adjustment to the system clock, for example through NTP synchronizing.
+
+In the spec, the \href{https://w3c.github.io/hr-time/\#dfn-global-monotonic-clock}{\texttt{ global monotonic clock}} is defined to be immune to such drifts. Correspondingly, the APIs exposed through this module that are defined using the global monotonic clock such as {\ttfamily performance.\+now()} and {\ttfamily get\+Global\+Monotonic\+Clock\+MS()} are also guaranteed to reflect real time.
+
+For example, if {\ttfamily performance.\+now()} returns 1000, it is guaranteed that the time of this call is exactly one second since the construction of the {\ttfamily Performance} object. But the difference in {\ttfamily Date.\+now()}\textquotesingle{}s value from the construction of the {\ttfamily Performance} object to when {\ttfamily performance.\+now()} returns 1000 may not be exactly 1000. You may also see {\ttfamily performance.\+now() -\/ Date.\+now()} diverge over time as a result of clock drifts.
+
+On the other hand, {\ttfamily performance.\+time\+Origin} returns the {\itshape \href{https://en.wikipedia.org/wiki/Unix_time}{\texttt{ Unix time}}} at which the {\ttfamily Performance} object is constructed and relies on the current time exposed through {\ttfamily Date.\+now()}. That means that it is susceptible to clock drifts that has occurred before the {\ttfamily Performance} object was constructed.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26461}{}\doxysection{\texorpdfstring{Supporting w3c-\/hr-\/time}{Supporting w3c-\/hr-\/time}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26461}
+The jsdom project (including w3c-\/hr-\/time) is a community-\/driven project maintained by a team of \href{https://github.com/orgs/jsdom/people}{\texttt{ volunteers}}. You could support us by\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://tidelift.com/subscription/pkg/npm-w3c-hr-time?utm_source=npm-w3c-hr-time&utm_medium=referral&utm_campaign=readme}{\texttt{ Getting professional support for w3c-\/hr-\/time}} as part of a Tidelift subscription. Tidelift helps making open source sustainable for us while giving teams assurances for maintenance, licensing, and security.
+\item Contributing directly to the project.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26462}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2w3c-hr-time_2_r_e_a_d_m_e_autotoc_md26462}
+This software is licensed under the MIT license. See LICENSE.\+md file for more detail. 

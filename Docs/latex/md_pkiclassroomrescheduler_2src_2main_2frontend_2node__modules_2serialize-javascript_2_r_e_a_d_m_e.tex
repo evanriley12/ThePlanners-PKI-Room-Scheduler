@@ -1,0 +1,128 @@
+\chapter{Serialize Java\+Script}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e}\index{Serialize JavaScript@{Serialize JavaScript}}
+Serialize Java\+Script to a {\itshape superset} of JSON that includes regular expressions, dates and functions.
+
+\href{https://www.npmjs.org/package/serialize-javascript}{\texttt{ }} \href{https://david-dm.org/yahoo/serialize-javascript}{\texttt{ }} \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22824}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22824}
+The code in this package began its life as an internal module to \href{https://github.com/yahoo/express-state}{\texttt{ express-\/state}}. To expand its usefulness, it now lives as {\ttfamily serialize-\/javascript} — an independent package on npm.
+
+You\textquotesingle{}re probably wondering\+: {\bfseries{What about {\ttfamily JSON.\+stringify()}!?}} We\textquotesingle{}ve found that sometimes we need to serialize Java\+Script {\bfseries{functions}}, {\bfseries{regexps}}, {\bfseries{dates}}, {\bfseries{sets}} or {\bfseries{maps}}. A great example is a web app that uses client-\/side URL routing where the route definitions are regexps that need to be shared from the server to the client. But this module is also great for communicating between node processes.
+
+The string returned from this package\textquotesingle{}s single export function is literal Java\+Script which can be saved to a {\ttfamily .js} file, or be embedded into an HTML document by making the content of a {\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}} element.
+
+\begin{quote}
+{\bfseries{HTML characters and Java\+Script line terminators are escaped automatically.}} \end{quote}
+Please note that serialization for ES6 Sets \& Maps requires support for {\ttfamily Array.\+from} (not available in IE or Node \texorpdfstring{$<$}{<} 0.\+12), or an {\ttfamily Array.\+from} polyfill.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22825}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22825}
+Install using npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ serialize-\/javascript}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22826}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22826}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ serialize\ =\ require('serialize-\/javascript');}
+\DoxyCodeLine{}
+\DoxyCodeLine{serialize(\{}
+\DoxyCodeLine{\ \ \ \ str\ \ :\ 'string',}
+\DoxyCodeLine{\ \ \ \ num\ \ :\ 0,}
+\DoxyCodeLine{\ \ \ \ obj\ \ :\ \{foo:\ 'foo'\},}
+\DoxyCodeLine{\ \ \ \ arr\ \ :\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ bool\ :\ true,}
+\DoxyCodeLine{\ \ \ \ nil\ \ :\ null,}
+\DoxyCodeLine{\ \ \ \ undef:\ undefined,}
+\DoxyCodeLine{\ \ \ \ inf\ \ :\ Infinity,}
+\DoxyCodeLine{\ \ \ \ date\ :\ new\ Date("{}Thu,\ 28\ Apr\ 2016\ 22:02:17\ GMT"{}),}
+\DoxyCodeLine{\ \ \ \ map\ \ :\ new\ Map([['hello',\ 'world']]),}
+\DoxyCodeLine{\ \ \ \ set\ \ :\ new\ Set([123,\ 456]),}
+\DoxyCodeLine{\ \ \ \ fn\ \ \ :\ function\ echo(arg)\ \{\ return\ arg;\ \},}
+\DoxyCodeLine{\ \ \ \ re\ \ \ :\ /([\string^\(\backslash\)s]+)/g,}
+\DoxyCodeLine{\ \ \ \ big\ \ :\ BigInt(10),}
+\DoxyCodeLine{\ \ \ \ url\ \ :\ new\ URL('https://example.com/'),}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The above will produce the following string output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'\{"{}str"{}:"{}string"{},"{}num"{}:0,"{}obj"{}:\{"{}foo"{}:"{}foo"{}\},"{}arr"{}:[1,2,3],"{}bool"{}:true,"{}nil"{}:null,"{}undef"{}:undefined,"{}inf"{}:Infinity,"{}date"{}:new\ Date("{}2016-\/04-\/28T22:02:17.000Z"{}),"{}map"{}:new\ Map([["{}hello"{},"{}world"{}]]),"{}set"{}:new\ Set([123,456]),"{}fn"{}:function\ echo(arg)\ \{\ return\ arg;\ \},"{}re"{}:new\ RegExp("{}([\string^\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)s]+)"{},\ "{}g"{}),"{}big"{}:BigInt("{}10"{}),"{}url"{}:new\ URL("{}https://example.com/"{})\}'}
+
+\end{DoxyCode}
+
+
+Note\+: to produce a beautified string, you can pass an optional second argument to {\ttfamily serialize()} to define the number of spaces to be used for the indentation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22827}{}\doxysubsection{\texorpdfstring{Automatic Escaping of HTML Characters}{Automatic Escaping of HTML Characters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22827}
+A primary feature of this package is to serialize code to a string of literal Java\+Script which can be embedded in an HTML document by adding it as the contents of the {\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}} element. In order to make this safe, HTML characters and Java\+Script line terminators are escaped automatically.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serialize(\{}
+\DoxyCodeLine{\ \ \ \ haxorXSS:\ '</script>'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The above will produce the following string, HTML-\/escaped output which is safe to put into an HTML document as it will not cause the inline script element to terminate\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'\{"{}haxorXSS"{}:"{}\(\backslash\)\(\backslash\)u003C\(\backslash\)\(\backslash\)u002Fscript\(\backslash\)\(\backslash\)u003E"{}\}'}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+You can pass an optional {\ttfamily unsafe} argument to {\ttfamily serialize()} for straight serialization. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22828}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22828}
+The {\ttfamily serialize()} function accepts an {\ttfamily options} object as its second argument. All options are being defaulted to {\ttfamily undefined}\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22829}{}\doxysubsubsection{\texorpdfstring{{\ttfamily options.\+space}}{{\ttfamily options.\+space}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22829}
+This option is the same as the {\ttfamily space} argument that can be passed to \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify}{\texttt{ {\ttfamily JSON.\+stringify}}}. It can be used to add whitespace and indentation to the serialized output to make it more readable.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serialize(obj,\ \{space:\ 2\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22830}{}\doxysubsubsection{\texorpdfstring{{\ttfamily options.\+is\+JSON}}{{\ttfamily options.\+is\+JSON}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22830}
+This option is a signal to {\ttfamily serialize()} that the object being serialized does not contain any function or regexps values. This enables a hot-\/path that allows serialization to be over 3x faster. If you\textquotesingle{}re serializing a lot of data, and know its pure JSON, then you can enable this option for a speed-\/up.
+
+{\bfseries{Note\+:}} That when using this option, the output will still be escaped to protect against XSS.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serialize(obj,\ \{isJSON:\ true\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22831}{}\doxysubsubsection{\texorpdfstring{{\ttfamily options.\+unsafe}}{{\ttfamily options.\+unsafe}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22831}
+This option is to signal {\ttfamily serialize()} that we want to do a straight conversion, without the XSS protection. This options needs to be explicitly set to {\ttfamily true}. HTML characters and Java\+Script line terminators will not be escaped. You will have to roll your own.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serialize(obj,\ \{unsafe:\ true\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22832}{}\doxysubsubsection{\texorpdfstring{{\ttfamily options.\+ignore\+Function}}{{\ttfamily options.\+ignore\+Function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22832}
+This option is to signal {\ttfamily serialize()} that we do not want serialize Java\+Script function. Just treat function like {\ttfamily JSON.\+stringify} do, but other features will work as expected.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serialize(obj,\ \{ignoreFunction:\ true\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22833}{}\doxysection{\texorpdfstring{Deserializing}{Deserializing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22833}
+For some use cases you might also need to deserialize the string. This is explicitly not part of this module. However, you can easily write it yourself\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ deserialize(serializedJavascript)\{}
+\DoxyCodeLine{\ \ return\ eval('('\ +\ serializedJavascript\ +\ ')');}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} Don\textquotesingle{}t forget the parentheses around the serialized javascript, as the opening bracket {\ttfamily \{} will be considered to be the start of a body.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22834}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2serialize-javascript_2_r_e_a_d_m_e_autotoc_md22834}
+This software is free to use under the Yahoo! Inc. BSD license. See the \href{https://github.com/yahoo/serialize-javascript/blob/main/LICENSE}{\texttt{ LICENSE file}} for license text and copyright information. 

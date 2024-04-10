@@ -1,0 +1,158 @@
+\chapter{disallow large snapshots (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/large-\/snapshots\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots}\index{disallow large snapshots ($<$tt$>$no-\/large-\/snapshots$<$/tt$>$)@{disallow large snapshots ($<$tt$>$no-\/large-\/snapshots$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10425}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10425}%
+ When using Jest\textquotesingle{}s snapshot capability one should be mindful of the size of created snapshots. As a general best practice snapshots should be limited in size in order to be more manageable and reviewable. A stored snapshot is only as good as its review and as such keeping it short, sweet, and readable is important to allow for thorough reviews.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10426}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10426}
+Because Jest snapshots are written with back-\/ticks (\`{} \`{}) which are only valid with \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals}{\texttt{ ES2015 onwards}} you should set {\ttfamily parser\+Options} in your config to at least allow ES2015 in order to use this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ parserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ ecmaVersion:\ 2015,}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10427}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10427}
+This rule looks at all Jest inline and external snapshots (files with {\ttfamily .snap} extension) and validates that each stored snapshot within those files does not exceed 50 lines (by default, this is configurable as explained in {\ttfamily Options} section below).
+
+Example of {\bfseries{incorrect}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exports[`a\ large\ snapshot\ 1`]\ =\ \`{}}
+\DoxyCodeLine{line\ 1}
+\DoxyCodeLine{line\ 2}
+\DoxyCodeLine{line\ 3}
+\DoxyCodeLine{line\ 4}
+\DoxyCodeLine{line\ 5}
+\DoxyCodeLine{line\ 6}
+\DoxyCodeLine{line\ 7}
+\DoxyCodeLine{line\ 8}
+\DoxyCodeLine{line\ 9}
+\DoxyCodeLine{line\ 10}
+\DoxyCodeLine{line\ 11}
+\DoxyCodeLine{line\ 12}
+\DoxyCodeLine{line\ 13}
+\DoxyCodeLine{line\ 14}
+\DoxyCodeLine{line\ 15}
+\DoxyCodeLine{line\ 16}
+\DoxyCodeLine{line\ 17}
+\DoxyCodeLine{line\ 18}
+\DoxyCodeLine{line\ 19}
+\DoxyCodeLine{line\ 20}
+\DoxyCodeLine{line\ 21}
+\DoxyCodeLine{line\ 22}
+\DoxyCodeLine{line\ 23}
+\DoxyCodeLine{line\ 24}
+\DoxyCodeLine{line\ 25}
+\DoxyCodeLine{line\ 26}
+\DoxyCodeLine{line\ 27}
+\DoxyCodeLine{line\ 28}
+\DoxyCodeLine{line\ 29}
+\DoxyCodeLine{line\ 30}
+\DoxyCodeLine{line\ 31}
+\DoxyCodeLine{line\ 32}
+\DoxyCodeLine{line\ 33}
+\DoxyCodeLine{line\ 34}
+\DoxyCodeLine{line\ 35}
+\DoxyCodeLine{line\ 36}
+\DoxyCodeLine{line\ 37}
+\DoxyCodeLine{line\ 38}
+\DoxyCodeLine{line\ 39}
+\DoxyCodeLine{line\ 40}
+\DoxyCodeLine{line\ 41}
+\DoxyCodeLine{line\ 42}
+\DoxyCodeLine{line\ 43}
+\DoxyCodeLine{line\ 44}
+\DoxyCodeLine{line\ 45}
+\DoxyCodeLine{line\ 46}
+\DoxyCodeLine{line\ 47}
+\DoxyCodeLine{line\ 48}
+\DoxyCodeLine{line\ 49}
+\DoxyCodeLine{line\ 50}
+\DoxyCodeLine{line\ 51}
+\DoxyCodeLine{\`{};}
+
+\end{DoxyCode}
+
+
+Example of {\bfseries{correct}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exports[`a\ more\ manageable\ and\ readable\ snapshot\ 1`]\ =\ \`{}}
+\DoxyCodeLine{line\ 1}
+\DoxyCodeLine{line\ 2}
+\DoxyCodeLine{line\ 3}
+\DoxyCodeLine{line\ 4}
+\DoxyCodeLine{\`{};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10428}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots_autotoc_md10428}
+This rule has options for modifying the max number of lines allowed for a snapshot\+:
+
+In an {\ttfamily eslintrc} file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}rules"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}jest/no-\/large-\/snapshots"{}:\ ["{}warn"{},\ \{\ "{}maxSize"{}:\ 12,\ "{}inlineMaxSize"{}:\ 6\ \}]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Max number of lines allowed could be defined by snapshot type (Inline and External). Use {\ttfamily inline\+Max\+Size} for \href{https://jestjs.io/docs/en/snapshot-testing\#inline-snapshots}{\texttt{ Inline Snapshots}} size and {\ttfamily max\+Size} for \href{https://jestjs.io/docs/en/snapshot-testing\#snapshot-testing-with-jest}{\texttt{ External Snapshots}}. If only {\ttfamily max\+Size} is provided on options, the value of {\ttfamily max\+Size} will be used to both snapshot types (Inline and External).
+
+Since {\ttfamily eslint-\/disable} comments are not preserved by Jest when updating snapshots, you can use the {\ttfamily allowed\+Snapshots} option to have specific snapshots allowed regardless of their size.
+
+This option takes a map, with the key being the absolute filepath to a snapshot file, and the value an array of values made up of strings and regular expressions to compare to the names of the snapshots in the {\ttfamily .snap} file when checking if the snapshots size should be allowed.
+
+Note that regular expressions can only be passed in via {\ttfamily .eslintrc.\+js} as instances of {\ttfamily Reg\+Exp}.
+
+In an {\ttfamily .eslintrc.\+js} file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ 'jest/no-\/large-\/snapshots':\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'error',}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ allowedSnapshots:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ '/path/to/file.js.snap':\ ['snapshot\ name\ 1',\ /a\ big\ snapshot\ \(\backslash\)d+/],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Since absolute paths are typically not very portable, you can use the builtin {\ttfamily path.\+resolve} function to expand relative paths into absolutes like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require('path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ 'jest/no-\/large-\/snapshots':\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'error',}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ allowedSnapshots:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ [path.resolve('test/\_\_snapshots\_\_/get.js.snap')]:\ ['full\ request'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ [path.resolve('test/\_\_snapshots\_\_/put.js.snap')]:\ ['full\ request'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ 

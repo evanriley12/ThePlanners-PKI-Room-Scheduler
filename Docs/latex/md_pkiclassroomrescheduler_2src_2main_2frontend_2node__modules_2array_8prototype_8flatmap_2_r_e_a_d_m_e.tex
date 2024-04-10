@@ -1,0 +1,67 @@
+\chapter{array.\+prototype.\+flatmap \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/array.\+prototype.\+flatmap"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/es-\/shims/\+Array.\+prototype.\+flat\+Map.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e}\index{array.prototype.flatmap $<$sup$>$$<$a href="{}https://npmjs.org/package/array.prototype.flatmap"{} $>$$<$img src="{}https://versionbadg.es/es-\/shims/Array.prototype.flatMap.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{array.prototype.flatmap $<$sup$>$$<$a href=""https://npmjs.org/package/array.prototype.flatmap"" $>$$<$img src=""https://versionbadg.es/es-\/shims/Array.prototype.flatMap.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5307}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5307}%
+ \href{https://github.com/es-shims/Array.prototype.flatMap/actions}{\texttt{ }} \href{https://app.codecov.io/gh/es-shims/Array.prototype.flatMap/}{\texttt{ }} \href{https://david-dm.org/es-shims/Array.prototype.flatMap}{\texttt{ }} \href{https://david-dm.org/es-shims/Array.prototype.flatMap\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=array.prototype.flatmap}{\texttt{ }}
+
+\href{https://npmjs.org/package/array.prototype.flatmap}{\texttt{ }}
+
+An ES2019 spec-\/compliant {\ttfamily Array.\+prototype.\+flat\+Map} shim/polyfill/replacement that works as far down as ES3.
+
+This package implements the \href{https://github.com/es-shims/api}{\texttt{ es-\/shim API}} interface. It works in an ES3-\/supported environment and complies with the \href{https://tc39.es/ecma262/\#sec-array.prototype.flatmap}{\texttt{ spec}}.
+
+Because {\ttfamily Array.\+prototype.\+flat\+Map} depends on a receiver (the {\ttfamily this} value), the main export takes the array to operate on as the first argument.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5308}{}\doxysection{\texorpdfstring{Getting started}{Getting started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5308}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ array.prototype.flatmap}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5309}{}\doxysection{\texorpdfstring{Usage/\+Examples}{Usage/\+Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5309}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ flatMap\ =\ require('array.prototype.flatmap');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ arr\ =\ [1,\ [2],\ [],\ 3];}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ results\ =\ flatMap(arr,\ function\ (x,\ i)\ \{}
+\DoxyCodeLine{\ \ \ \ assert.equal(x,\ arr[i]);}
+\DoxyCodeLine{\ \ \ \ return\ x;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.deepEqual(results,\ [1,\ 2,\ 3]);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ flatMap\ =\ require('array.prototype.flatmap');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{/*\ when\ Array\#flatMap\ is\ not\ present\ */}
+\DoxyCodeLine{delete\ Array.prototype.flatMap;}
+\DoxyCodeLine{var\ shimmedFlatMap\ =\ flatMap.shim();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ mapper\ =\ function\ (x)\ \{\ return\ [x,\ 1];\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.equal(shimmedFlatMap,\ flatMap.getPolyfill());}
+\DoxyCodeLine{assert.deepEqual(arr.flatMap(mapper),\ flatMap(arr,\ mapper));}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ flatMap\ =\ require('array.prototype.flatmap');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{/*\ when\ Array\#flatMap\ is\ present\ */}
+\DoxyCodeLine{var\ shimmedIncludes\ =\ flatMap.shim();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ mapper\ =\ function\ (x)\ \{\ return\ [x,\ 1];\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.equal(shimmedIncludes,\ Array.prototype.flatMap);}
+\DoxyCodeLine{assert.deepEqual(arr.flatMap(mapper),\ flatMap(arr,\ mapper));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5310}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8flatmap_2_r_e_a_d_m_e_autotoc_md5310}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

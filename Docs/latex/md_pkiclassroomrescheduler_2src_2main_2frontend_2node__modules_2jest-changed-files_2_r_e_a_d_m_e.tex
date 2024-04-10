@@ -1,0 +1,58 @@
+\chapter{jest-\/changed-\/files}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e}\index{jest-\/changed-\/files@{jest-\/changed-\/files}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15305}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15305}%
+ A module used internally by Jest to check which files have changed since you last committed in git or hg.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15306}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15306}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ jest-\/changed-\/files}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15307}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15307}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15308}{}\doxysubsection{\texorpdfstring{{\ttfamily get\+Changed\+Files\+For\+Roots(roots\+: \texorpdfstring{$<$}{<}Array\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}, options\+: ?object)\+: Promise\texorpdfstring{$<$}{<}?object\texorpdfstring{$>$}{>}}}{{\ttfamily get\+Changed\+Files\+For\+Roots(roots\+: \texorpdfstring{$<$}{<}Array\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}, options\+: ?object)\+: Promise\texorpdfstring{$<$}{<}?object\texorpdfstring{$>$}{>}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15308}
+Get the list of files and repos that have changed since the last commit.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15309}{}\doxysubsubsection{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15309}
+roots\+: Array of string paths gathered from \href{https://jestjs.io/docs/configuration\#roots-arraystring}{\texttt{ jest roots}}.
+
+options\+: Object literal with keys
+
+
+\begin{DoxyItemize}
+\item last\+Commit\+: boolean
+\item with\+Ancestor\+: boolean
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15310}{}\doxysubsection{\texorpdfstring{find\+Repos(roots\+: $<$\+Array$<$string$>$$>$)\+: Promise\texorpdfstring{$<$}{<}?object\texorpdfstring{$>$}{>}}{find\+Repos(roots\+: $<$\+Array$<$string$>$$>$)\+: Promise\texorpdfstring{$<$}{<}?object\texorpdfstring{$>$}{>}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15310}
+Get a set of git and hg repositories.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15311}{}\doxysubsubsection{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15311}
+roots\+: Array of string paths gathered from \href{https://jestjs.io/docs/configuration\#roots-arraystring}{\texttt{ jest roots}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15312}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-changed-files_2_r_e_a_d_m_e_autotoc_md15312}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{getChangedFilesForRoots\}\ from\ 'jest-\/changed-\/files';}
+\DoxyCodeLine{}
+\DoxyCodeLine{getChangedFilesForRoots(['/path/to/test'],\ \{}
+\DoxyCodeLine{\ \ lastCommit:\ true,}
+\DoxyCodeLine{\ \ withAncestor:\ true,}
+\DoxyCodeLine{\}).then(files\ =>\ \{}
+\DoxyCodeLine{\ \ /*}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ repos:\ [],}
+\DoxyCodeLine{\ \ \ \ changedFiles:\ []}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ */}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{findRepos\}\ from\ 'jest-\/changed-\/files';}
+\DoxyCodeLine{}
+\DoxyCodeLine{findRepos(['/path/to/test']).then(repos\ =>\ \{}
+\DoxyCodeLine{\ \ /*}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ git:\ Set<Path>,}
+\DoxyCodeLine{\ \ \ \ hg:\ Set<Path>}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ */}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

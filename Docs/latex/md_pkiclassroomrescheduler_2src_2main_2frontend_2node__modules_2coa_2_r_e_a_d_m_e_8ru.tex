@@ -1,0 +1,236 @@
+\chapter{Command-\/\+Option-\/\+Argument}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru}\index{Command-\/Option-\/Argument@{Command-\/Option-\/Argument}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7137}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7137}%
+\href{http://travis-ci.org/veged/coa}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7138}{}\doxysection{\texorpdfstring{Что это?}{Что это?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7138}
+COA — парсер параметров командной строки, позволяющий извлечь максимум пользы от формального API вашей программы. Как только вы опишете определение в терминах команд, параметров и аргументов, вы автоматически получите\+:
+
+
+\begin{DoxyItemize}
+\item Справку для командной строки
+\item API для использования программы как модуля в COA-\/совместимых программах
+\item Автодополнение для командной строки
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7139}{}\doxysubsection{\texorpdfstring{Прочие возможности}{Прочие возможности}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7139}
+
+\begin{DoxyItemize}
+\item Широкий выбор настроек для параметров и аргументов, включая множественные значения, логические значения и обязательность параметров
+\item Возможность асинхронного исполнения команд, используя промисы (используется библиотека \href{https://github.com/kriskowal/q}{\texttt{ Q}})
+\item Простота использования существующих команд как подмодулей для новых команд
+\item Комбинированная валидация и анализ сложных значений
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7140}{}\doxysection{\texorpdfstring{Примеры}{Примеры}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7140}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('coa').Cmd()\ //\ декларация\ команды\ верхнего\ уровня}
+\DoxyCodeLine{\ \ \ \ .name(process.argv[1])\ //\ имя\ команды\ верхнего\ уровня,\ берем\ из\ имени\ программы}
+\DoxyCodeLine{\ \ \ \ .title('Жутко\ полезная\ утилита\ для\ командной\ строки')\ //\ название\ для\ использования\ в\ справке\ и\ сообщениях}
+\DoxyCodeLine{\ \ \ \ .helpful()\ //\ добавляем\ поддержку\ справки\ командной\ строки\ (-\/h,\ -\/-\/help)}
+\DoxyCodeLine{\ \ \ \ .opt()\ //\ добавляем\ параметр}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .name('version')\ //\ имя\ параметра\ для\ использования\ в\ API}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .title('Version')\ //\ текст\ для\ вывода\ в\ сообщениях}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .short('v')\ //\ короткое\ имя\ параметра:\ -\/v}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .long('version')\ //\ длинное\ имя\ параметра:\ -\/-\/version}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .flag()\ //\ параметр\ не\ требует\ ввода\ значения}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .act(function(opts)\ \{\ \ //\ действия\ при\ вызове\ аргумента}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ результатом\ является\ вывод\ текстового\ сообщения}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ JSON.parse(require('fs').readFileSync(\_\_dirname\ +\ '/package.json'))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .version;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .end()\ //\ завершаем\ определение\ параметра\ и\ возвращаемся\ к\ определению\ верхнего\ уровня}
+\DoxyCodeLine{\ \ \ \ .cmd().name('subcommand').apply(require('./subcommand').COA).end()\ //\ загрузка\ подкоманды\ из\ модуля}
+\DoxyCodeLine{\ \ \ \ .cmd()\ //\ добавляем\ еще\ одну\ подкоманду}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .name('othercommand').title('Еще\ одна\ полезная\ подпрограмма').helpful()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .opt()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .name('input').title('input\ file,\ required')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .short('i').long('input')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .val(function(v)\ \{\ //\ функция-\/валидатор,\ также\ может\ использоваться\ для\ трансформации\ значений\ параметров}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ require('fs').createReadStream(v)\ \})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .req()\ //\ параметр\ является\ обязательным}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .end()\ //\ завершаем\ определение\ параметра\ и\ возвращаемся\ к\ определению\ команды}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .end()\ //\ завершаем\ определение\ подкоманды\ и\ возвращаемся\ к\ определению\ команды\ верхнего\ уровня}
+\DoxyCodeLine{\ \ \ \ .run(process.argv.slice(2));\ //\ разбираем\ process.argv\ и\ запускаем}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ subcommand.js}
+\DoxyCodeLine{exports.COA\ =\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ this}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .title('Полезная\ подпрограмма').helpful()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .opt()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .name('output').title('output\ file')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .short('o').long('output')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .output()\ //\ использовать\ стандартную\ настройку\ для\ параметра\ вывода}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ .end()}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7141}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7141}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7142}{}\doxysubsection{\texorpdfstring{Cmd}{Cmd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7142}
+Команда — сущность верхнего уровня. У команды могут быть определены параметры и аргументы.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7143}{}\doxysubsubsection{\texorpdfstring{Cmd.\+api}{Cmd.\+api}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7143}
+Возвращает объект, который можно использовать в других программах. Подкоманды являются методами этого объекта.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+\texorpdfstring{$\ast$}{*}\{Object\}\texorpdfstring{$\ast$}{*}
+\end{DoxyReturn}
+}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7144}{}\doxysubsubsection{\texorpdfstring{{\bfseries{Cmd.\+name}}}{{\bfseries{Cmd.\+name}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7144}
+{\bfseries{ Определяет канонический идентификатор команды, используемый в вызовах API.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape String} {\ttfamily \+\_\+name} имя команды~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)
+\end{DoxyReturn}
+}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7145}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{Cmd.\+title}}}}}{{\bfseries{{\bfseries{Cmd.\+title}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7145}
+{\bfseries{{\bfseries{ Определяет название команды, используемый в текстовых сообщениях.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape String} {\ttfamily \+\_\+title} название команды~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)
+\end{DoxyReturn}
+}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7146}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{Cmd.\+cmd}}}}}}}{{\bfseries{{\bfseries{{\bfseries{Cmd.\+cmd}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7146}
+{\bfseries{{\bfseries{{\bfseries{ Создает новую подкоманду или добавляет ранее определенную подкоманду к текущей команде.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape COA.\+Cmd} {\ttfamily \mbox{[}cmd\mbox{]}} экземпляр ранее определенной подкоманды~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} экземпляр новой или ранее определенной подкоманды
+\end{DoxyReturn}
+}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7147}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+opt}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+opt}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7147}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Создает параметр для текущей команды.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Opt} {\ttfamily new} экземпляр параметра
+\end{DoxyReturn}
+}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7148}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+arg}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+arg}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7148}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Создает аргумент для текущей команды.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Opt} {\ttfamily new} экземпляр аргумента
+\end{DoxyReturn}
+}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7149}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+act}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+act}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7149}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Добавляет (или создает) действие для текущей команды.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Function} {\ttfamily act} функция, выполняемая в контексте экземпляра текущей команды и принимающая следующие параметры\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Object} {\ttfamily opts} параметры команды~\newline
+
+\item {\itshape Array} {\ttfamily args} аргументы команды~\newline
+
+\item {\itshape Object} {\ttfamily res} объект-\/аккумулятор результатов~\newline
+ Функция может вернуть проваленный промис из Cmd.\+reject (в случае ошибки) или любое другое значение, рассматриваемое как результат.~\newline
+ {\bfseries{}}
+\end{DoxyItemize}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{\texorpdfstring{$\ast$}{*}\{Boolean\}\texorpdfstring{$\ast$}{*} \mbox{[}force=false\mbox{]} флаг, назначающий немедленное исполнение вместо добавления к списку существующих действий~\newline
+ {\bfseries{}}}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)}}
+\end{DoxyReturn}
+}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7150}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+apply}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+apply}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7150}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Исполняет функцию с переданными аргументами в контексте экземпляра текущей команды.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Function} {\ttfamily fn}~\newline
+ {\bfseries{}}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{{\itshape Array} {\ttfamily args}~\newline
+ {\bfseries{}}}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)}}
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7151}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+comp}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+comp}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7151}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Назначает кастомную функцию автодополнения для текущей команды.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Function} {\ttfamily fn} функция-\/генератор автодополнения, исполняемая в контексте текущей команды. Принимает параметры\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Object} {\ttfamily opts} параметры~\newline
+ Может возвращать промис или любое другое значение, рассматриваемое как результат исполнения команды.~\newline
+ {\bfseries{}}
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7152}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+helpful}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+helpful}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7152}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Ставит флаг поддержки справки командной строки, т.\+е. вызов команды с параметрами -\/h --help выводит справку по работе с командой.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7153}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+completable}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+completable}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7153}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Добавляет поддержку автодополнения командной строки. Добавляется подкоманда "{}completion"{}, которая выполняет все необходимые действия.~\newline
+ Может быть добавлен только для главной команды.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7154}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+usage}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+usage}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7154}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Возвращает текст справки по использованию команды для текущего экземпляра.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape String} {\ttfamily usage} Текст справки по использованию
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7155}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+run}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+run}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7155}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Разбирает аргументы из значения, возвращаемого Node\+JS process.\+argv, и запускает текущую программу, т.\+е. вызывает process.\+exit после завершения всех действий.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Array} {\ttfamily argv}~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape COA.\+Cmd} {\ttfamily this} экземпляр команды (для поддержки цепочки методов)
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7156}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+invoke}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+invoke}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7156}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Исполняет переданную (или текущую) команду с указанными параметрами и аргументами.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape String\texorpdfstring{$\vert$}{|}\+Array} {\ttfamily cmds} подкоманда для исполнения (необязательно)~\newline
+ {\bfseries{}}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{{\itshape Object} {\ttfamily opts} параметры, передаваемые команде (необязательно)~\newline
+ {\bfseries{}}}}\\
+\hline
+{\em $<$/strong$>$} & {\bfseries{{\bfseries{{\itshape Object} {\ttfamily args} аргументы, передаваемые команде (необязательно)~\newline
+ {\bfseries{}}}}}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{{\bfseries{{\bfseries{}} {\itshape Q.\+Promise}}}}}
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7157}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+reject}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+reject}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7157}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Проваливает промисы, возращенные в действиях.~\newline
+ Используется в .act() для возврата с ошибкой.~\newline
+ {\bfseries{
+\begin{DoxyParams}{Parameters}
+{\em $<$/strong$>$} & {\itshape Object} {\ttfamily reason} причина провала~\newline
+ Вы можете определить метод to\+String() и свойство to\+String() объекта причины провала.~\newline
+ {\bfseries{}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{}} {\itshape Q.\+promise} проваленный промис
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7158}{}\doxysubsubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+end}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Cmd.\+end}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7158}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Завершает цепочку методов текущей подкоманды и возвращает экземпляр родительской команды.~\newline
+ {\bfseries{\begin{DoxyReturn}{Returns}
+{\itshape COA.\+Cmd} {\ttfamily parent} родительская команда
+\end{DoxyReturn}
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7159}{}\doxysubsection{\texorpdfstring{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Opt}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{Opt}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2coa_2_r_e_a_d_m_e_8ru_autotoc_md7159}
+{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{{\bfseries{ Параметр — именованная сущность. У параметра может быть определено короткое или длинное имя для использования из командной строки.~\newline
+ {\bfseries{ }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}

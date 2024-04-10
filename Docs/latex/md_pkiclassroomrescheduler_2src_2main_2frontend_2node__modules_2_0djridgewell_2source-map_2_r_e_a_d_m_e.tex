@@ -1,0 +1,76 @@
+\chapter{@jridgewell/source-\/map}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e}\index{"@jridgewell/source-\/map@{"@jridgewell/source-\/map}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1480}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1480}%
+ \begin{quote}
+Packages {\ttfamily @jridgewell/trace-\/mapping} and {\ttfamily @jridgewell/gen-\/mapping} into the familiar source-\/map API \end{quote}
+This isn\textquotesingle{}t the full API, but it\textquotesingle{}s the core functionality. This wraps \href{https://github.com/jridgewell/trace-mapping/}{\texttt{ @jridgewell/trace-\/mapping}} and \href{https://github.com/jridgewell/gen-mapping/}{\texttt{ @jridgewell/gen-\/mapping}} implementations.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1481}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1481}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @jridgewell/source-\/map}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1482}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1482}
+TODO\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1483}{}\doxysubsection{\texorpdfstring{Source\+Map\+Consumer}{Source\+Map\+Consumer}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1483}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ SourceMapConsumer\ \}\ from\ '@jridgewell/source-\/map';}
+\DoxyCodeLine{const\ smc\ =\ new\ SourceMapConsumer(\{}
+\DoxyCodeLine{\ \ version:\ 3,}
+\DoxyCodeLine{\ \ names:\ ['foo'],}
+\DoxyCodeLine{\ \ sources:\ ['input.js'],}
+\DoxyCodeLine{\ \ mappings:\ 'AAAAA',}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1484}{}\doxysubsubsection{\texorpdfstring{Source\+Map\+Consumer.\+prototype.\+original\+Position\+For(generated\+Position)}{Source\+Map\+Consumer.\+prototype.\+original\+Position\+For(generated\+Position)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1484}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ smc\ =\ new\ SourceMapConsumer(map);}
+\DoxyCodeLine{smc.originalPositionFor(\{\ line:\ 1,\ column:\ 0\ \});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1485}{}\doxysubsection{\texorpdfstring{Source\+Map\+Generator}{Source\+Map\+Generator}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1485}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ SourceMapGenerator\ \}\ from\ '@jridgewell/source-\/map';}
+\DoxyCodeLine{const\ smg\ =\ new\ SourceMapGenerator(\{}
+\DoxyCodeLine{\ \ file:\ 'output.js',}
+\DoxyCodeLine{\ \ sourceRoot:\ 'https://example.com/',}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1486}{}\doxysubsubsection{\texorpdfstring{Source\+Map\+Generator.\+prototype.\+add\+Mapping(mapping)}{Source\+Map\+Generator.\+prototype.\+add\+Mapping(mapping)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1486}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ smg\ =\ new\ SourceMapGenerator();}
+\DoxyCodeLine{smg.addMapping(\{}
+\DoxyCodeLine{\ \ generated:\ \{\ line:\ 1,\ column:\ 0\ \},}
+\DoxyCodeLine{\ \ source:\ 'input.js',}
+\DoxyCodeLine{\ \ original:\ \{\ line:\ 1,\ column:\ 0\ \},}
+\DoxyCodeLine{\ \ name:\ 'foo',}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1487}{}\doxysubsubsection{\texorpdfstring{Source\+Map\+Generator.\+prototype.\+set\+Source\+Content(source\+File, source\+Content)}{Source\+Map\+Generator.\+prototype.\+set\+Source\+Content(source\+File, source\+Content)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1487}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ smg\ =\ new\ SourceMapGenerator();}
+\DoxyCodeLine{smg.setSourceContent('input.js',\ 'foobar');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1488}{}\doxysubsubsection{\texorpdfstring{Source\+Map\+Generator.\+prototype.\+to\+JSON()}{Source\+Map\+Generator.\+prototype.\+to\+JSON()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1488}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ smg\ =\ new\ SourceMapGenerator();}
+\DoxyCodeLine{smg.toJSON();\ //\ \{\ version:\ 3,\ names:\ [],\ sources:\ [],\ mappings:\ ''\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1489}{}\doxysubsubsection{\texorpdfstring{Source\+Map\+Generator.\+prototype.\+to\+Decoded\+Map()}{Source\+Map\+Generator.\+prototype.\+to\+Decoded\+Map()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0djridgewell_2source-map_2_r_e_a_d_m_e_autotoc_md1489}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ smg\ =\ new\ SourceMapGenerator();}
+\DoxyCodeLine{smg.toDecodedMap();\ //\ \{\ version:\ 3,\ names:\ [],\ sources:\ [],\ mappings:\ []\ \}}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,2346 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e}\index{README@{README}}
+  \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/css-loader}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://github.com/webpack-contrib/css-loader/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/css-loader}{\texttt{ }} \href{https://github.com/webpack/webpack/discussions}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=css-loader}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7899}{}\doxysection{\texorpdfstring{css-\/loader}{css-\/loader}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7899}
+The {\ttfamily css-\/loader} interprets {\ttfamily @import} and {\ttfamily url()} like {\ttfamily import/require()} and will resolve them.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7900}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7900}
+\begin{quote}
+{\bfseries{Warning}}
+
+To use the latest version of css-\/loader, webpack@5 is required \end{quote}
+To begin, you\textquotesingle{}ll need to install {\ttfamily css-\/loader}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ css-\/loader}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/D\ css-\/loader}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pnpm\ add\ -\/D\ css-\/loader}
+
+\end{DoxyCode}
+
+
+Then add the plugin to your {\ttfamily webpack} config. For example\+:
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ css\ from\ "{}file.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+And run {\ttfamily webpack} via your preferred method.
+
+If, for one reason or another, you need to extract CSS as a file (i.\+e. do not store CSS in a JS module) you might want to check out the \href{https://github.com/webpack-contrib/css-loader\#recommend}{\texttt{ recommend example}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7901}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7901}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}url\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}import\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}modules\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}source\+Map\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}import\+Loaders\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}es\+Module\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}export\+Type\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7902}{}\doxysubsubsection{\texorpdfstring{{\ttfamily url}}{{\ttfamily url}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7902}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ url\ =}
+\DoxyCodeLine{\ \ |\ boolean}
+\DoxyCodeLine{\ \ |\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ filter:\ (url:\ string,\ resourcePath:\ string)\ =>\ boolean;}
+\DoxyCodeLine{\ \ \ \ \};}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+Allow to enable/disables handling the CSS functions {\ttfamily url} and {\ttfamily image-\/set}. If set to {\ttfamily false}, {\ttfamily css-\/loader} will not parse any paths specified in {\ttfamily url} or {\ttfamily image-\/set}. A function can also be passed to control this behavior dynamically based on the path to the asset. Starting with version \href{https://github.com/webpack-contrib/css-loader/blob/master/CHANGELOG.md\#400-2020-07-25}{\texttt{ 4.\+0.\+0}}, absolute paths are parsed based on the server root.
+
+Examples resolutions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{url(image.png)\ =>\ require('./image.png')}
+\DoxyCodeLine{url('image.png')\ =>\ require('./image.png')}
+\DoxyCodeLine{url(./image.png)\ =>\ require('./image.png')}
+\DoxyCodeLine{url('./image.png')\ =>\ require('./image.png')}
+\DoxyCodeLine{url('http://dontwritehorriblecode.com/2112.png')\ =>\ require('http://dontwritehorriblecode.com/2112.png')}
+\DoxyCodeLine{image-\/set(url('image2x.png')\ 1x,\ url('image1x.png')\ 2x)\ =>\ require('./image1x.png')\ and\ require('./image2x.png')}
+
+\end{DoxyCode}
+
+
+To import assets from a {\ttfamily node\+\_\+modules} path (include {\ttfamily resolve.\+modules}) and for {\ttfamily alias}, prefix it with a {\ttfamily \texorpdfstring{$\sim$}{\string~}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{url(\string~module/image.png)\ =>\ require('module/image.png')}
+\DoxyCodeLine{url('\string~module/image.png')\ =>\ require('module/image.png')}
+\DoxyCodeLine{url(\string~aliasDirectory/image.png)\ =>\ require('otherDirectory/image.png')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7903}{}\doxyparagraph{\texorpdfstring{{\ttfamily boolean}}{{\ttfamily boolean}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7903}
+Enable/disable {\ttfamily url()} resolving.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ url:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7904}{}\doxyparagraph{\texorpdfstring{{\ttfamily object}}{{\ttfamily object}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7904}
+Allow to filter {\ttfamily url()}. All filtered {\ttfamily url()} will not be resolved (left in the code as they were written).
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ url:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ filter:\ (url,\ resourcePath)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ resourcePath\ -\/\ path\ to\ css\ file}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Don't\ handle\ \`{}img.png`\ urls}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (url.includes("{}img.png"{}))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Don't\ handle\ images\ under\ root-\/relative\ /external\_images/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (/\string^\(\backslash\)/external\_images\(\backslash\)//.test(path))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7905}{}\doxysubsubsection{\texorpdfstring{{\ttfamily import}}{{\ttfamily import}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7905}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ importFn\ =}
+\DoxyCodeLine{\ \ |\ boolean}
+\DoxyCodeLine{\ \ |\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ filter:\ (}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ url:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ media:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ resourcePath:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ supports?:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ layer?:\ string}
+\DoxyCodeLine{\ \ \ \ \ \ )\ =>\ boolean;}
+\DoxyCodeLine{\ \ \ \ \};}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+Allows to enables/disables {\ttfamily @import} at-\/rules handling. Control {\ttfamily @import} resolving. Absolute urls in {\ttfamily @import} will be moved in runtime code.
+
+Examples resolutions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@import\ 'style.css'\ =>\ require('./style.css')}
+\DoxyCodeLine{@import\ url(style.css)\ =>\ require('./style.css')}
+\DoxyCodeLine{@import\ url('style.css')\ =>\ require('./style.css')}
+\DoxyCodeLine{@import\ './style.css'\ =>\ require('./style.css')}
+\DoxyCodeLine{@import\ url(./style.css)\ =>\ require('./style.css')}
+\DoxyCodeLine{@import\ url('./style.css')\ =>\ require('./style.css')}
+\DoxyCodeLine{@import\ url('http://dontwritehorriblecode.com/style.css')\ =>\ @import\ url('http://dontwritehorriblecode.com/style.css')\ in\ runtime}
+
+\end{DoxyCode}
+
+
+To import styles from a {\ttfamily node\+\_\+modules} path (include {\ttfamily resolve.\+modules}) and for {\ttfamily alias}, prefix it with a {\ttfamily \texorpdfstring{$\sim$}{\string~}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@import\ url(\string~module/style.css)\ =>\ require('module/style.css')}
+\DoxyCodeLine{@import\ url('\string~module/style.css')\ =>\ require('module/style.css')}
+\DoxyCodeLine{@import\ url(\string~aliasDirectory/style.css)\ =>\ require('otherDirectory/style.css')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7906}{}\doxyparagraph{\texorpdfstring{{\ttfamily boolean}}{{\ttfamily boolean}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7906}
+Enable/disable {\ttfamily @import} resolving.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ import:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7907}{}\doxyparagraph{\texorpdfstring{{\ttfamily object}}{{\ttfamily object}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7907}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7908}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7908}%
+ \doxysubparagraph*{{\ttfamily filter}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ filter\ =\ (url:\ string,\ media:\ string,\ resourcePath:\ string)\ =>\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}
+
+Allow to filter {\ttfamily @import}. All filtered {\ttfamily @import} will not be resolved (left in the code as they were written).
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ import:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ filter:\ (url,\ media,\ resourcePath)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ resourcePath\ -\/\ path\ to\ css\ file}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Don't\ handle\ \`{}style.css`\ import}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (url.includes("{}style.css"{}))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7909}{}\doxysubsubsection{\texorpdfstring{{\ttfamily modules}}{{\ttfamily modules}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7909}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ modules\ =}
+\DoxyCodeLine{\ \ |\ boolean}
+\DoxyCodeLine{\ \ |\ "{}local"{}}
+\DoxyCodeLine{\ \ |\ "{}global"{}}
+\DoxyCodeLine{\ \ |\ "{}pure"{}}
+\DoxyCodeLine{\ \ |\ "{}icss"{}}
+\DoxyCodeLine{\ \ |\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ auto:\ boolean\ |\ regExp\ |\ ((resourcePath:\ string)\ =>\ boolean);}
+\DoxyCodeLine{\ \ \ \ \ \ mode:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}local"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}global"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}pure"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}icss"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ ((resourcePath)\ =>\ "{}local"{}\ |\ "{}global"{}\ |\ "{}pure"{}\ |\ "{}icss"{});}
+\DoxyCodeLine{\ \ \ \ \ \ localIdentName:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ localIdentContext:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ localIdentHashSalt:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ localIdentHashFunction:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ localIdentHashDigest:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ localIdentRegExp:\ string\ |\ regExp;}
+\DoxyCodeLine{\ \ \ \ \ \ getLocalIdent:\ (}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ context:\ LoaderContext,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ localIdentName:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ localName:\ string}
+\DoxyCodeLine{\ \ \ \ \ \ )\ =>\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ namedExport:\ boolean;}
+\DoxyCodeLine{\ \ \ \ \ \ exportGlobals:\ boolean;}
+\DoxyCodeLine{\ \ \ \ \ \ exportLocalsConvention:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}asIs"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}camelCase"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}camelCaseOnly"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}dashes"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}dashesOnly"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ ((name:\ string)\ =>\ string);}
+\DoxyCodeLine{\ \ \ \ \ \ exportOnlyLocals:\ boolean;}
+\DoxyCodeLine{\ \ \ \ \};}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}
+
+Allows to enable/disable CSS Modules or ICSS and setup configuration\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily undefined} -\/ enable CSS modules for all files matching {\ttfamily /\textbackslash{}.module\textbackslash{}.\textbackslash{}w+\$/i.test(filename)} and {\ttfamily /\textbackslash{}.icss\textbackslash{}.\textbackslash{}w+\$/i.test(filename)} regexp.
+\item {\ttfamily true} -\/ enable CSS modules for all files.
+\item {\ttfamily false} -\/ disables CSS Modules for all files.
+\item {\ttfamily string} -\/ disables CSS Modules for all files and set the {\ttfamily mode} option, more information you can read \href{https://github.com/webpack-contrib/css-loader\#mode}{\texttt{ here}}
+\item {\ttfamily object} -\/ enable CSS modules for all files, if {\ttfamily modules.\+auto} option is not specified, otherwise the {\ttfamily modules.\+auto} option will determine whether if it is CSS modules or not, more information you can read \href{https://github.com/webpack-contrib/css-loader\#auto}{\texttt{ here}}
+\end{DoxyItemize}
+
+The {\ttfamily modules} option enables/disables the {\bfseries{\href{https://github.com/css-modules/css-modules}{\texttt{ CSS Modules}}}} specification and setup basic behaviour.
+
+Using {\ttfamily false} value increase performance because we avoid parsing {\bfseries{CSS Modules}} features, it will be useful for developers who use vanilla css or use other technologies.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7910}{}\doxyparagraph{\texorpdfstring{{\ttfamily Features}}{{\ttfamily Features}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7910}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7911}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7911}%
+ \doxysubparagraph*{{\ttfamily Scope}}
+
+Using {\ttfamily local} value requires you to specify {\ttfamily \+:global} classes. Using {\ttfamily global} value requires you to specify {\ttfamily \+:local} classes. Using {\ttfamily pure} value requires selectors must contain at least one local class or id.
+
+You can find more information \href{https://github.com/css-modules/css-modules}{\texttt{ here}}.
+
+Styles can be locally scoped to avoid globally scoping styles.
+
+The syntax {\ttfamily \+:local(.class\+Name)} can be used to declare {\ttfamily class\+Name} in the local scope. The local identifiers are exported by the module.
+
+With {\ttfamily \+:local} (without brackets) local mode can be switched on for this selector. The {\ttfamily \+:global(.class\+Name)} notation can be used to declare an explicit global selector. With {\ttfamily \+:global} (without brackets) global mode can be switched on for this selector.
+
+The loader replaces local selectors with unique identifiers. The chosen unique identifiers are exported by the module.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:local(.className)\ \{}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{:local\ .className\ \{}
+\DoxyCodeLine{\ \ color:\ green;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{:local(.className\ .subClass)\ \{}
+\DoxyCodeLine{\ \ color:\ green;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{:local\ .className\ .subClass\ :global(.global-\/class-\/name)\ \{}
+\DoxyCodeLine{\ \ color:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.\_23\_aKvs-\/b8bW2Vg3fwHozO\ \{}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.\_23\_aKvs-\/b8bW2Vg3fwHozO\ \{}
+\DoxyCodeLine{\ \ color:\ green;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.\_23\_aKvs-\/b8bW2Vg3fwHozO\ .\_13LGdX8RMStbBE9w-\/t0gZ1\ \{}
+\DoxyCodeLine{\ \ color:\ green;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.\_23\_aKvs-\/b8bW2Vg3fwHozO\ .\_13LGdX8RMStbBE9w-\/t0gZ1\ .global-\/class-\/name\ \{}
+\DoxyCodeLine{\ \ color:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\bfseries{Note}}
+
+Identifiers are exported \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exports.locals\ =\ \{}
+\DoxyCodeLine{\ \ className:\ "{}\_23\_aKvs-\/b8bW2Vg3fwHozO"{},}
+\DoxyCodeLine{\ \ subClass:\ "{}\_13LGdX8RMStbBE9w-\/t0gZ1"{},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Camel\+Case is recommended for local selectors. They are easier to use within the imported JS module.
+
+You can use {\ttfamily \+:local(\#some\+Id)}, but this is not recommended. Use classes instead of ids.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7912}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7912}%
+ \doxysubparagraph*{{\ttfamily Composing}}
+
+When declaring a local classname you can compose a local class from another local classname.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:local(.className)\ \{}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\ \ color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{:local(.subClass)\ \{}
+\DoxyCodeLine{\ \ composes:\ className;}
+\DoxyCodeLine{\ \ background:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This doesn\textquotesingle{}t result in any change to the CSS itself but exports multiple classnames.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exports.locals\ =\ \{}
+\DoxyCodeLine{\ \ className:\ "{}\_23\_aKvs-\/b8bW2Vg3fwHozO"{},}
+\DoxyCodeLine{\ \ subClass:\ "{}\_13LGdX8RMStbBE9w-\/t0gZ1\ \_23\_aKvs-\/b8bW2Vg3fwHozO"{},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.\_23\_aKvs-\/b8bW2Vg3fwHozO\ \{}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\ \ color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.\_13LGdX8RMStbBE9w-\/t0gZ1\ \{}
+\DoxyCodeLine{\ \ background:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7913}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7913}%
+ \doxysubparagraph*{{\ttfamily Importing}}
+
+To import a local classname from another module.
+
+\begin{quote}
+{\bfseries{Note}}
+
+We strongly recommend that you specify the extension when importing a file, since it is possible to import a file with any extension and it is not known in advance which file to use. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:local(.continueButton)\ \{}
+\DoxyCodeLine{\ \ composes:\ button\ from\ "{}library/button.css"{};}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:local(.nameEdit)\ \{}
+\DoxyCodeLine{\ \ composes:\ edit\ highlight\ from\ "{}./edit.css"{};}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+To import from multiple modules use multiple {\ttfamily composes\+:} rules.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:local(.className)\ \{}
+\DoxyCodeLine{\ \ composes:\ edit\ highlight\ from\ "{}./edit.css"{};}
+\DoxyCodeLine{\ \ composes:\ button\ from\ "{}module/button.css"{};}
+\DoxyCodeLine{\ \ composes:\ classFromThisModule;}
+\DoxyCodeLine{\ \ background:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7914}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7914}%
+ \doxysubparagraph*{{\ttfamily Values}}
+
+You can use {\ttfamily @value} to specific values to be reused throughout a document.
+
+We recommend use prefix {\ttfamily v-\/} for values, {\ttfamily s-\/} for selectors and {\ttfamily m-\/} for media at-\/rules.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@value\ v-\/primary:\ \#BF4040;}
+\DoxyCodeLine{@value\ s-\/black:\ black-\/selector;}
+\DoxyCodeLine{@value\ m-\/large:\ (min-\/width:\ 960px);}
+\DoxyCodeLine{}
+\DoxyCodeLine{.header\ \{}
+\DoxyCodeLine{\ \ color:\ v-\/primary;}
+\DoxyCodeLine{\ \ padding:\ 0\ 10px;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.s-\/black\ \{}
+\DoxyCodeLine{\ \ color:\ black;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ m-\/large\ \{}
+\DoxyCodeLine{\ \ .header\ \{}
+\DoxyCodeLine{\ \ \ \ padding:\ 0\ 20px;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7915}{}\doxyparagraph{\texorpdfstring{{\ttfamily boolean}}{{\ttfamily boolean}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7915}
+Enable {\bfseries{CSS Modules}} features.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7916}{}\doxyparagraph{\texorpdfstring{{\ttfamily string}}{{\ttfamily string}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7916}
+Enable {\bfseries{CSS Modules}} features and setup {\ttfamily mode}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ Using\ \`{}local`\ value\ has\ same\ effect\ like\ using\ \`{}modules:\ true`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ "{}global"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7917}{}\doxyparagraph{\texorpdfstring{{\ttfamily object}}{{\ttfamily object}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7917}
+Enable {\bfseries{CSS Modules}} features and setup options for them.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ mode:\ "{}local"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ auto:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportGlobals:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentName:\ "{}[path][name]\_\_[local]-\/-\/[hash:base64:5]"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentContext:\ path.resolve(\_\_dirname,\ "{}src"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentHashSalt:\ "{}my-\/custom-\/hash"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ namedExport:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportLocalsConvention:\ "{}camelCase"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportOnlyLocals:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7918}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7918}%
+ \doxysubparagraph*{{\ttfamily auto}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ auto\ =}
+\DoxyCodeLine{\ \ |\ boolean}
+\DoxyCodeLine{\ \ |\ regExp}
+\DoxyCodeLine{\ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ resourcePath:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ resourceQuery:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ resourceFragment:\ string}
+\DoxyCodeLine{\ \ \ \ )\ =>\ boolean);}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}
+
+Allows auto enable CSS modules/\+ICSS based on the filename, query or fragment when {\ttfamily modules} option is object.
+
+Possible values\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily undefined} -\/ enable CSS modules for all files.
+\item {\ttfamily true} -\/ enable CSS modules for all files matching {\ttfamily /\textbackslash{}.module\textbackslash{}.\textbackslash{}w+\$/i.test(filename)} and {\ttfamily /\textbackslash{}.icss\textbackslash{}.\textbackslash{}w+\$/i.test(filename)} regexp.
+\item {\ttfamily false} -\/ disables CSS Modules.
+\item {\ttfamily Reg\+Exp} -\/ enable CSS modules for all files matching {\ttfamily /\+Reg\+Exp/i.test(filename)} regexp.
+\item {\ttfamily function} -\/ enable CSS Modules for files based on the filename satisfying your filter function check.
+\end{DoxyItemize}
+
+\doxysubparagraph*{{\ttfamily boolean}}
+
+Possible values\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily true} -\/ enables CSS modules or interoperable CSS format, sets the \`{}modules.mode\`{} option to {\ttfamily local} value for all files which satisfy {\ttfamily /\textbackslash{}.module(s)?\textbackslash{}.\textbackslash{}w+\$/i.test(filename)} condition or sets the \`{}modules.mode\`{} option to {\ttfamily icss} value for all files which satisfy {\ttfamily /\textbackslash{}.icss\textbackslash{}.\textbackslash{}w+\$/i.test(filename)} condition
+\item {\ttfamily false} -\/ disables CSS modules or interoperable CSS format based on filename
+\end{DoxyItemize}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ auto:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\doxysubparagraph*{{\ttfamily Reg\+Exp}}
+
+Enable CSS modules for files based on the filename satisfying your regex check.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ auto:\ /\(\backslash\).custom-\/module\(\backslash\).\(\backslash\)w+\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\doxysubparagraph*{{\ttfamily function}}
+
+Enable CSS modules for files based on the filename, query or fragment satisfying your filter function check.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ auto:\ (resourcePath,\ resourceQuery,\ resourceFragment)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ resourcePath.endsWith("{}.custom-\/module.css"{});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7919}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7919}%
+ \doxysubparagraph*{{\ttfamily mode}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ mode\ =}
+\DoxyCodeLine{\ \ |\ "{}local"{}}
+\DoxyCodeLine{\ \ |\ "{}global"{}}
+\DoxyCodeLine{\ \ |\ "{}pure"{}}
+\DoxyCodeLine{\ \ |\ "{}icss"{}}
+\DoxyCodeLine{\ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ resourcePath:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ resourceQuery:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ resourceFragment:\ string}
+\DoxyCodeLine{\ \ \ \ )\ =>\ "{}local"{}\ |\ "{}global"{}\ |\ "{}pure"{}\ |\ "{}icss"{});}
+
+\end{DoxyCode}
+
+
+Default\+: `\textquotesingle{}local'\`{}
+
+Setup {\ttfamily mode} option. You can omit the value when you want {\ttfamily local} mode.
+
+Controls the level of compilation applied to the input styles.
+
+The {\ttfamily local}, {\ttfamily global}, and {\ttfamily pure} handles {\ttfamily class} and {\ttfamily id} scoping and {\ttfamily @value} values. The {\ttfamily icss} will only compile the low level {\ttfamily Interoperable CSS} format for declaring {\ttfamily \+:import} and {\ttfamily \+:export} dependencies between CSS and other languages.
+
+ICSS underpins CSS Module support, and provides a low level syntax for other tools to implement CSS-\/module variations of their own.
+
+\doxysubparagraph*{{\ttfamily string}}
+
+Possible values -\/ {\ttfamily local}, {\ttfamily global}, {\ttfamily pure}, and {\ttfamily icss}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ mode:\ "{}global"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\doxysubparagraph*{{\ttfamily function}}
+
+Allows set different values for the {\ttfamily mode} option based on the filename, query or fragment.
+
+Possible return values -\/ {\ttfamily local}, {\ttfamily global}, {\ttfamily pure} and {\ttfamily icss}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Callback\ must\ return\ "{}local"{},\ "{}global"{},\ or\ "{}pure"{}\ values}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ mode:\ (resourcePath,\ resourceQuery,\ resourceFragment)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (/pure.css\$/i.test(resourcePath))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "{}pure"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (/global.css\$/i.test(resourcePath))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "{}global"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "{}local"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7920}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7920}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Name}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentName\ =\ string;}
+
+\end{DoxyCode}
+
+
+Default\+: `'\mbox{[}hash\+:base64\mbox{]}\textquotesingle{}\`{}
+
+Allows to configure the generated local ident name.
+
+For more information on options see\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://webpack.js.org/configuration/output/\#template-strings}{\texttt{ webpack template strings}},
+\item \href{https://webpack.js.org/configuration/output/\#outputhashdigest}{\texttt{ output.\+hash\+Digest}},
+\item \href{https://webpack.js.org/configuration/output/\#outputhashdigestlength}{\texttt{ output.\+hash\+Digest\+Length}},
+\item \href{https://webpack.js.org/configuration/output/\#outputhashfunction}{\texttt{ output.\+hash\+Function}},
+\item \href{https://webpack.js.org/configuration/output/\#outputhashsalt}{\texttt{ output.\+hash\+Salt}}.
+\end{DoxyItemize}
+
+Supported template strings\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}name\mbox{]}} the basename of the resource
+\item {\ttfamily \mbox{[}folder\mbox{]}} the folder the resource relative to the {\ttfamily compiler.\+context} option or {\ttfamily modules.\+local\+Ident\+Context} option.
+\item {\ttfamily \mbox{[}path\mbox{]}} the path of the resource relative to the {\ttfamily compiler.\+context} option or {\ttfamily modules.\+local\+Ident\+Context} option.
+\item {\ttfamily \mbox{[}file\mbox{]}} -\/ filename and path.
+\item {\ttfamily \mbox{[}ext\mbox{]}} -\/ extension with leading {\ttfamily .}.
+\item {\ttfamily \mbox{[}hash\mbox{]}} -\/ the hash of the string, generated based on {\ttfamily local\+Ident\+Hash\+Salt}, {\ttfamily local\+Ident\+Hash\+Function}, {\ttfamily local\+Ident\+Hash\+Digest}, {\ttfamily local\+Ident\+Hash\+Digest\+Length}, {\ttfamily local\+Ident\+Context}, {\ttfamily resource\+Path} and {\ttfamily export\+Name}
+\item {\ttfamily \mbox{[}\texorpdfstring{$<$}{<}hash\+Function\texorpdfstring{$>$}{>}\+:hash\+:\texorpdfstring{$<$}{<}hash\+Digest\texorpdfstring{$>$}{>}\+:\texorpdfstring{$<$}{<}hash\+Digest\+Length\texorpdfstring{$>$}{>}\mbox{]}} -\/ hash with hash settings.
+\item {\ttfamily \mbox{[}local\mbox{]}} -\/ original class.
+\end{DoxyItemize}
+
+Recommendations\+:
+
+
+\begin{DoxyItemize}
+\item use `'\mbox{[}path\mbox{]}\mbox{[}name\mbox{]}\+\_\+\+\_\+\mbox{[}local\mbox{]}\textquotesingle{}{\ttfamily for development}
+\item {\ttfamily use}\textquotesingle{}\mbox{[}hash\+:base64\mbox{]}\textquotesingle{}\`{} for production
+\end{DoxyItemize}
+
+The {\ttfamily \mbox{[}local\mbox{]}} placeholder contains original class.
+
+{\bfseries{Note\+:}} all reserved ({\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$>$}{>}\+:"{}/\textbackslash{}\texorpdfstring{$\vert$}{|}?\texorpdfstring{$\ast$}{*}$<$/tt$>$) and control filesystem characters (excluding characters in the $<$tt$>$\mbox{[}local\mbox{]}$<$/tt$>$ placeholder) will be converted to $<$tt$>$-\/$<$/tt$>$.  $<$strong$>$webpack.\+config.\+js$<$/strong$>$  @icode\{js\}  module.\+exports = \{   module\+: \{     rules\+: \mbox{[}       \{         test\+: /\textbackslash{}.\+css\$/i,         loader\+: "{}css-\/loader"{},         options\+: \{           modules\+: \{             local\+Ident\+Name\+: "{}\mbox{[}path\mbox{]}\mbox{[}name\mbox{]}\+\_\+\+\_\+\mbox{[}local\mbox{]}-\/-\/\mbox{[}hash\+:base64\+:5\mbox{]}"{}, \}, \}, \}, \mbox{]}, \}, \}; }
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7921}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7921}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Context}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentContex\ =\ string;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily compiler.\+context}}
+
+{\ttfamily Allows to redefine basic loader context for local ident name.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentContext:\ path.resolve(\_\_dirname,\ "{}src"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7922}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7922}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Hash\+Salt}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentHashSalt\ =\ string;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily undefined}}
+
+{\ttfamily Allows to add custom hash to generate more unique classes. For more information see \href{https://webpack.js.org/configuration/output/\#outputhashsalt}{\texttt{ output.\+hash\+Salt}}.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentHashSalt:\ "{}hash"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7923}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7923}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Hash\+Function}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentHashFunction\ =\ string;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily md4}}
+
+{\ttfamily Allows to specify hash function to generate classes . For more information see \href{https://webpack.js.org/configuration/output/\#outputhashfunction}{\texttt{ output.\+hash\+Function}}.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentHashFunction:\ "{}md4"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7924}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7924}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Hash\+Digest}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentHashDigest\ =\ string;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily hex}}
+
+{\ttfamily Allows to specify hash digest to generate classes. For more information see \href{https://webpack.js.org/configuration/output/\#outputhashdigest}{\texttt{ output.\+hash\+Digest}}.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentHashDigest:\ "{}base64"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7925}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7925}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Hash\+Digest\+Length}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentHashDigestLength\ =\ number;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily 20}}
+
+{\ttfamily Allows to specify hash digest length to generate classes. For more information see \href{https://webpack.js.org/configuration/output/\#outputhashdigestlength}{\texttt{ output.\+hash\+Digest\+Length}}.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentHashDigestLength:\ 5,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7926}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7926}%
+ \doxysubparagraph*{{\ttfamily hash\+Strategy}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+: `\textquotesingle{}resource-\/path-\/and-\/local-\/name' \texorpdfstring{$\vert$}{|} \textquotesingle{}minimal-\/subset\textquotesingle{}{\ttfamily  Default\+:}\textquotesingle{}resource-\/path-\/and-\/local-\/name\textquotesingle{}\`{}}
+
+{\ttfamily Should local name be used when computing the hash.}
+
+{\ttfamily 
+\begin{DoxyItemize}
+\item `\textquotesingle{}resource-\/path-\/and-\/local-\/name'{\ttfamily Both resource path and local name are used when hashing. Each identifier in a module gets its own hash digest, always. -\/}\textquotesingle{}minimal-\/subset\textquotesingle{}\`{} Auto detect if identifier names can be omitted from hashing. Use this value to optimize the output for better GZIP or Brotli compression.
+\end{DoxyItemize}}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ hashStrategy:\ "{}minimal-\/subset"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7927}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7927}%
+ \doxysubparagraph*{{\ttfamily local\+Ident\+Reg\+Exp}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ localIdentRegExp\ =\ string\ |\ RegExp;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily undefined}}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ localIdentRegExp:\ /page-\/(.*)\(\backslash\).css/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7928}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7928}%
+ \doxysubparagraph*{{\ttfamily get\+Local\+Ident}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ getLocalIdent\ =\ (}
+\DoxyCodeLine{\ \ context:\ LoaderContext,}
+\DoxyCodeLine{\ \ localIdentName:\ string,}
+\DoxyCodeLine{\ \ localName:\ string}
+\DoxyCodeLine{)\ =>\ string;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily undefined}}
+
+{\ttfamily Allows to specify a function to generate the classname. By default we use built-\/in function to generate a classname. If the custom function returns {\ttfamily null} or {\ttfamily undefined}, we fallback to the built-\/in function to generate the classname.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ getLocalIdent:\ (context,\ localIdentName,\ localName,\ options)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "{}whatever\_random\_class\_name"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7929}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7929}%
+ \doxysubparagraph*{{\ttfamily named\+Export}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ namedExport\ =\ boolean;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily false}}
+
+{\ttfamily Enables/disables ES modules named export for locals.}
+
+{\ttfamily \begin{quote}
+{\bfseries{Warning}}
+
+Names of locals are converted to camelcase, i.\+e. the {\ttfamily export\+Locals\+Convention} option has {\ttfamily camel\+Case\+Only} value by default. You can set this back to any other valid option but selectors which are not valid Java\+Script identifiers may run into problems which do not implement the entire modules specification. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+It is not allowed to use Java\+Script reserved words in css class names unless {\ttfamily export\+Locals\+Convention} is {\ttfamily "{}as\+Is"{}}. \end{quote}
+{\bfseries{styles.\+css}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo-\/baz\ \{}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.bar\ \{}
+\DoxyCodeLine{\ \ color:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{index.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ *\ as\ styles\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(styles.fooBaz,\ styles.bar);}
+\DoxyCodeLine{//\ or\ if\ using\ \`{}exportLocalsConvention:\ "{}asIs"{}`:}
+\DoxyCodeLine{console.log(styles["{}foo-\/baz"{}],\ styles.bar);}
+
+\end{DoxyCode}
+}
+
+{\ttfamily You can enable a ES module named export using\+:}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ esModule:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ namedExport:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily To set a custom name for named\+Export, can use \`{}export\+Locals\+Convention\`{} option as a function. Example below in the \`{}examples\`{} section.}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7930}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7930}%
+ \doxysubparagraph*{{\ttfamily export\+Globals}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ exportsGLobals\ =\ boolean;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily false}}
+
+{\ttfamily Allow {\ttfamily css-\/loader} to export names from global class or id, so you can use that as local name.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportGlobals:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7931}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7931}%
+ \doxysubparagraph*{{\ttfamily export\+Locals\+Convention}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ exportLocalsConvention\ =}
+\DoxyCodeLine{\ \ |\ "{}asIs"{}}
+\DoxyCodeLine{\ \ |\ "{}camelCase"{}}
+\DoxyCodeLine{\ \ |\ "{}camelCaseOnly"{}}
+\DoxyCodeLine{\ \ |\ "{}dashes"{}}
+\DoxyCodeLine{\ \ |\ "{}dashesOnly"{}}
+\DoxyCodeLine{\ \ |\ ((name:\ string)\ =>\ string);}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: based on the {\ttfamily modules.\+named\+Export} option value, if {\ttfamily true} -\/ {\ttfamily camel\+Case\+Only}, otherwise {\ttfamily as\+Is}}
+
+{\ttfamily Style of exported class names.}
+
+{\ttfamily \doxysubparagraph*{{\ttfamily string}}}
+
+{\ttfamily }
+
+{\ttfamily By default, the exported JSON keys mirror the class names (i.\+e {\ttfamily as\+Is} value).}
+
+{\ttfamily \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}`\textquotesingle{}as\+Is'{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}string{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Class names will be exported as is. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}\textquotesingle{}camel\+Case\textquotesingle{}{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}string{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Class names will be camelized, the original class name will not to be removed from the locals \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}\textquotesingle{}camel\+Case\+Only\textquotesingle{}{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}string{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Class names will be camelized, the original class name will be removed from the locals \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}\textquotesingle{}dashes\textquotesingle{}{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}string{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Only dashes in class names will be camelized \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}\textquotesingle{}dashes\+Only\textquotesingle{}{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}string\`{}   &Dashes in class names will be camelized, the original class name will be removed from the locals   \\\cline{1-3}
+\end{longtabu}
+}
+
+{\ttfamily {\bfseries{file.\+css}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.class-\/name\ \{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{file.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ className\ \}\ from\ "{}file.css"{};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportLocalsConvention:\ "{}camelCase"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \doxysubparagraph*{{\ttfamily function}}}
+
+{\ttfamily }
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportLocalsConvention:\ function\ (name)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ name.replace(/-\//g,\ "{}\_"{});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportLocalsConvention:\ function\ (name)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name.replace(/-\//g,\ "{}\_"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ dashesCamelCase}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name.replace(/-\/+(\(\backslash\)w)/g,\ (match,\ firstLetter)\ =>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ firstLetter.toUpperCase()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ ];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily \label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7932}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7932}%
+ \doxysubparagraph*{{\ttfamily export\+Only\+Locals}}}
+
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ exportOnlyLocals\ =\ boolean;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily false}}
+
+{\ttfamily Export only locals.}
+
+{\ttfamily {\bfseries{Useful}} when you use {\bfseries{css modules}} for pre-\/rendering (for example SSR). For pre-\/rendering with {\ttfamily mini-\/css-\/extract-\/plugin} you should use this option instead of {\ttfamily style-\/loader!css-\/loader} {\bfseries{in the pre-\/rendering bundle}}. It doesn\textquotesingle{}t embed CSS but only exports the identifier mappings.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportOnlyLocals:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7933}{}\doxysubsubsection{\texorpdfstring{{\ttfamily {\ttfamily import\+Loaders}}}{{\ttfamily {\ttfamily import\+Loaders}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7933}
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ importLoaders\ =\ number;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily 0}}
+
+{\ttfamily Allows to enables/disables or setups number of loaders applied before CSS loader for {\ttfamily @import} at-\/rules, CSS modules and ICSS imports, i.\+e. {\ttfamily @import}/{\ttfamily composes}/`@value value from './values.css\textquotesingle{}\`{}/etc.}
+
+{\ttfamily The option {\ttfamily import\+Loaders} allows you to configure how many loaders before {\ttfamily css-\/loader} should be applied to {\ttfamily @import}ed resources and CSS modules/\+ICSS imports.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0\ =>\ no\ loaders\ (default);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 1\ =>\ postcss-\/loader;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 2\ =>\ postcss-\/loader,\ sass-\/loader}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily This may change in the future when the module system (i. e. webpack) supports loader matching by origin.}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7934}{}\doxysubsubsection{\texorpdfstring{{\ttfamily {\ttfamily source\+Map}}}{{\ttfamily {\ttfamily source\+Map}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7934}
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ sourceMap\ =\ boolean;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: depends on the {\ttfamily compiler.\+devtool} value}
+
+{\ttfamily By default generation of source maps depends on the \href{https://webpack.js.org/configuration/devtool/}{\texttt{ {\ttfamily devtool}}} option. All values enable source map generation except {\ttfamily eval} and {\ttfamily false} value.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ sourceMap:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7935}{}\doxysubsubsection{\texorpdfstring{{\ttfamily {\ttfamily es\+Module}}}{{\ttfamily {\ttfamily es\+Module}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7935}
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ esModule\ =\ boolean;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: {\ttfamily true}}
+
+{\ttfamily By default, {\ttfamily css-\/loader} generates JS modules that use the ES modules syntax. There are some cases in which using ES modules is beneficial, like in the case of \href{https://webpack.js.org/plugins/module-concatenation-plugin/}{\texttt{ module concatenation}} and \href{https://webpack.js.org/guides/tree-shaking/}{\texttt{ tree shaking}}.}
+
+{\ttfamily You can enable a Common\+JS modules syntax using\+:}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ esModule:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7936}{}\doxysubsubsection{\texorpdfstring{{\ttfamily {\ttfamily export\+Type}}}{{\ttfamily {\ttfamily export\+Type}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7936}
+{\ttfamily }
+
+{\ttfamily Type\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ exportType\ =\ "{}array"{}\ |\ "{}string"{}\ |\ "{}css-\/style-\/sheet"{};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily Default\+: `\textquotesingle{}array'\`{}}
+
+{\ttfamily Allows exporting styles as array with modules, string or \href{https://developers.google.com/web/updates/2019/02/constructable-stylesheets}{\texttt{ constructable stylesheet}} (i.\+e. \href{https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet}{\texttt{ {\ttfamily CSSStyle\+Sheet}}}). Default value is `\textquotesingle{}array'{\ttfamily , i.\+e. loader exports array of modules with specific API which is used in}style-\/loader\`{} or other.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ assert:\ \{\ type:\ "{}css"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ exportType:\ "{}css-\/style-\/sheet"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{src/index.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ sheet\ from\ "{}./styles.css"{}\ assert\ \{\ type:\ "{}css"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{document.adoptedStyleSheets\ =\ [sheet];}
+\DoxyCodeLine{shadowRoot.adoptedStyleSheets\ =\ [sheet];}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7937}{}\doxyparagraph{\texorpdfstring{{\ttfamily `\textquotesingle{}array'\`{}}}{{\ttfamily `\textquotesingle{}array'\`{}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7937}
+{\ttfamily }
+
+{\ttfamily The default export is array of modules with specific API which is used in {\ttfamily style-\/loader} or other.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(sa|sc|c)ss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{},\ "{}postcss-\/loader"{},\ "{}sass-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{src/index.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ \`{}style-\/loader`\ applies\ styles\ to\ DOM}
+\DoxyCodeLine{import\ "{}./styles.css"{};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7938}{}\doxyparagraph{\texorpdfstring{{\ttfamily `\textquotesingle{}string'\`{}}}{{\ttfamily `\textquotesingle{}string'\`{}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7938}
+{\ttfamily }
+
+{\ttfamily \begin{quote}
+{\bfseries{Warning}}
+
+You should not use \href{https://github.com/webpack-contrib/style-loader}{\texttt{ {\ttfamily style-\/loader}}} or \href{https://github.com/webpack-contrib/mini-css-extract-plugin}{\texttt{ {\ttfamily mini-\/css-\/extract-\/plugin}}} with this value. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+The {\ttfamily es\+Module} option should be enabled if you want to use it with \href{https://github.com/webpack-contrib/css-loader\#modules}{\texttt{ {\ttfamily CSS modules}}}, by default for locals will be used \href{https://github.com/webpack-contrib/css-loader\#namedexport}{\texttt{ named export}}. \end{quote}
+The default export is {\ttfamily string}.}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(sa|sc|c)ss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}css-\/loader"{},\ "{}postcss-\/loader"{},\ "{}sass-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{src/index.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ sheet\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(sheet);}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7939}{}\doxyparagraph{\texorpdfstring{{\ttfamily `\textquotesingle{}css-\/style-\/sheet'\`{}}}{{\ttfamily `\textquotesingle{}css-\/style-\/sheet'\`{}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7939}
+{\ttfamily }
+
+{\ttfamily \begin{quote}
+{\bfseries{Warning}}
+
+{\ttfamily @import} rules not yet allowed, more \href{https://web.dev/css-module-scripts/\#@import-rules-not-yet-allowed}{\texttt{ information}} \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+You don\textquotesingle{}t need \href{https://github.com/webpack-contrib/style-loader}{\texttt{ {\ttfamily style-\/loader}}} anymore, please remove it. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+The {\ttfamily es\+Module} option should be enabled if you want to use it with \href{https://github.com/webpack-contrib/css-loader\#modules}{\texttt{ {\ttfamily CSS modules}}}, by default for locals will be used \href{https://github.com/webpack-contrib/css-loader\#namedexport}{\texttt{ named export}}. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+Source maps are not currently supported in {\ttfamily Chrome} due \href{https://bugs.chromium.org/p/chromium/issues/detail?id=1174094&q=CSSStyleSheet\%20source\%20maps&can=2}{\texttt{ bug}} \end{quote}
+The default export is a \href{https://developers.google.com/web/updates/2019/02/constructable-stylesheets}{\texttt{ constructable stylesheet}} (i.\+e. \href{https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet}{\texttt{ {\ttfamily CSSStyle\+Sheet}}}).}
+
+{\ttfamily Useful for \href{https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements}{\texttt{ custom elements}} and shadow DOM.}
+
+{\ttfamily More information\+:}
+
+{\ttfamily 
+\begin{DoxyItemize}
+\item \href{https://web.dev/css-module-scripts/}{\texttt{ Using CSS Module Scripts to import stylesheets}}
+\item \href{https://developers.google.com/web/updates/2019/02/constructable-stylesheets}{\texttt{ Constructable Stylesheets\+: seamless reusable styles}}
+\end{DoxyItemize}}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ assert:\ \{\ type:\ "{}css"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ exportType:\ "{}css-\/style-\/sheet"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ For\ Sass/SCSS:}
+\DoxyCodeLine{\ \ \ \ \ \ //}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ assert:\ \{\ type:\ "{}css"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ exportType:\ "{}css-\/style-\/sheet"{},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ //\ Other\ options}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ loader:\ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ \ \ //\ Other\ options}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{src/index.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Example\ for\ Sass/SCSS:}
+\DoxyCodeLine{//\ import\ sheet\ from\ "{}./styles.scss"{}\ assert\ \{\ type:\ "{}css"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Example\ for\ CSS\ modules:}
+\DoxyCodeLine{//\ import\ sheet,\ \{\ myClass\ \}\ from\ "{}./styles.scss"{}\ assert\ \{\ type:\ "{}css"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Example\ for\ CSS:}
+\DoxyCodeLine{import\ sheet\ from\ "{}./styles.css"{}\ assert\ \{\ type:\ "{}css"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{document.adoptedStyleSheets\ =\ [sheet];}
+\DoxyCodeLine{shadowRoot.adoptedStyleSheets\ =\ [sheet];}
+
+\end{DoxyCode}
+}
+
+{\ttfamily For migration purposes, you can use the following configuration\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ oneOf:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ assert:\ \{\ type:\ "{}css"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ exportType:\ "{}css-\/style-\/sheet"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Other\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Other\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7940}{}\doxysubsection{\texorpdfstring{{\ttfamily Examples}}{{\ttfamily Examples}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7940}
+{\ttfamily }
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7941}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Recommend}}{{\ttfamily Recommend}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7941}
+{\ttfamily }
+
+{\ttfamily For {\ttfamily production} builds it\textquotesingle{}s recommended to extract the CSS from your bundle being able to use parallel loading of CSS/\+JS resources later on. This can be achieved by using the \href{https://github.com/webpack-contrib/mini-css-extract-plugin}{\texttt{ mini-\/css-\/extract-\/plugin}}, because it creates separate css files. For {\ttfamily development} mode (including {\ttfamily webpack-\/dev-\/server}) you can use \href{https://github.com/webpack-contrib/style-loader}{\texttt{ style-\/loader}}, because it injects CSS into the DOM using multiple {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/style\texorpdfstring{$>$}{>}} and works faster.}
+
+{\ttfamily \begin{quote}
+{\bfseries{Note}}
+
+Do not use {\ttfamily style-\/loader} and {\ttfamily mini-\/css-\/extract-\/plugin} together. \end{quote}
+{\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{const\ devMode\ =\ process.env.NODE\_ENV\ !==\ "{}production"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ If\ you\ enable\ \`{}experiments.css`\ or\ \`{}experiments.futureDefaults`,\ please\ uncomment\ line\ below}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ type:\ "{}javascript/auto"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(sa|sc|c)ss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ devMode\ ?\ "{}style-\/loader"{}\ :\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [].concat(devMode\ ?\ []\ :\ [new\ MiniCssExtractPlugin()]),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7942}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Disable url resolving using the {\ttfamily /\texorpdfstring{$\ast$}{*} webpack\+Ignore\+: true \texorpdfstring{$\ast$}{*}/} comment}}{{\ttfamily Disable url resolving using the {\ttfamily /\texorpdfstring{$\ast$}{*} webpack\+Ignore\+: true \texorpdfstring{$\ast$}{*}/} comment}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7942}
+{\ttfamily }
+
+{\ttfamily With the help of the {\ttfamily /\texorpdfstring{$\ast$}{*} webpack\+Ignore\+: true \texorpdfstring{$\ast$}{*}/}comment, it is possible to disable sources handling for rules and for individual declarations.}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ webpackIgnore:\ true\ */}
+\DoxyCodeLine{@import\ url(./basic.css);}
+\DoxyCodeLine{@import\ /*\ webpackIgnore:\ true\ */\ url(./imported.css);}
+\DoxyCodeLine{}
+\DoxyCodeLine{.class\ \{}
+\DoxyCodeLine{\ \ /*\ Disabled\ url\ handling\ for\ the\ all\ urls\ in\ the\ 'background'\ declaration\ */}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\ \ /*\ webpackIgnore:\ true\ */}
+\DoxyCodeLine{\ \ background:\ url("{}./url/img.png"{}),\ url("{}./url/img.png"{});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.class\ \{}
+\DoxyCodeLine{\ \ /*\ Disabled\ url\ handling\ for\ the\ first\ url\ in\ the\ 'background'\ declaration\ */}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\ \ background:}
+\DoxyCodeLine{\ \ \ \ /*\ webpackIgnore:\ true\ */\ url("{}./url/img.png"{}),\ url("{}./url/img.png"{});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.class\ \{}
+\DoxyCodeLine{\ \ /*\ Disabled\ url\ handling\ for\ the\ second\ url\ in\ the\ 'background'\ declaration\ */}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\ \ background:\ url("{}./url/img.png"{}),}
+\DoxyCodeLine{\ \ \ \ /*\ webpackIgnore:\ true\ */\ url("{}./url/img.png"{});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ prettier-\/ignore\ */}
+\DoxyCodeLine{.class\ \{}
+\DoxyCodeLine{\ \ /*\ Disabled\ url\ handling\ for\ the\ second\ url\ in\ the\ 'background'\ declaration\ */}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\ \ background:\ url("{}./url/img.png"{}),}
+\DoxyCodeLine{\ \ \ \ /*\ webpackIgnore:\ true\ */}
+\DoxyCodeLine{\ \ \ \ url("{}./url/img.png"{});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ prettier-\/ignore\ */}
+\DoxyCodeLine{.class\ \{}
+\DoxyCodeLine{\ \ /*\ Disabled\ url\ handling\ for\ third\ and\ sixth\ urls\ in\ the\ 'background-\/image'\ declaration\ */}
+\DoxyCodeLine{\ \ background-\/image:\ image-\/set(}
+\DoxyCodeLine{\ \ \ \ url(./url/img.png)\ 2x,}
+\DoxyCodeLine{\ \ \ \ url(./url/img.png)\ 3x,}
+\DoxyCodeLine{\ \ \ \ /*\ webpackIgnore:\ \ true\ */\ url(./url/img.png)\ 4x,}
+\DoxyCodeLine{\ \ \ \ url(./url/img.png)\ 5x,}
+\DoxyCodeLine{\ \ \ \ url(./url/img.png)\ 6x,}
+\DoxyCodeLine{\ \ \ \ /*\ webpackIgnore:\ \ true\ */}
+\DoxyCodeLine{\ \ \ \ url(./url/img.png)\ 7x}
+\DoxyCodeLine{\ \ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7943}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Assets}}{{\ttfamily Assets}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7943}
+{\ttfamily }
+
+{\ttfamily The following {\ttfamily webpack.\+config.\+js} can load CSS files, embed small PNG/\+JPG/\+GIF/\+SVG images as well as fonts as \href{https://tools.ietf.org/html/rfc2397}{\texttt{ Data URLs}} and copy larger files to the output directory.}
+
+{\ttfamily {\bfseries{For webpack v5\+:}}}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif|svg|eot|ttf|woff|woff2)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ More\ information\ here\ https://webpack.js.org/guides/asset-\/modules/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ type:\ "{}asset"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7944}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Extract}}{{\ttfamily Extract}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7944}
+{\ttfamily }
+
+{\ttfamily For production builds it\textquotesingle{}s recommended to extract the CSS from your bundle being able to use parallel loading of CSS/\+JS resources later on.}
+
+{\ttfamily 
+\begin{DoxyItemize}
+\item This can be achieved by using the \href{https://github.com/webpack-contrib/mini-css-extract-plugin}{\texttt{ mini-\/css-\/extract-\/plugin}} to extract the CSS when running in production mode.
+\item As an alternative, if seeking better development performance and css outputs that mimic production. \href{https://github.com/faceyspacey/extract-css-chunks-webpack-plugin}{\texttt{ extract-\/css-\/chunks-\/webpack-\/plugin}} offers a hot module reload friendly, extended version of mini-\/css-\/extract-\/plugin. HMR real CSS files in dev, works like mini-\/css in non-\/dev
+\end{DoxyItemize}}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7945}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Pure CSS, CSS modules and Post\+CSS}}{{\ttfamily Pure CSS, CSS modules and Post\+CSS}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7945}
+{\ttfamily }
+
+{\ttfamily When you have pure CSS (without CSS modules), CSS modules and Post\+CSS in your project you can use this setup\+:}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ For\ pure\ CSS\ -\/\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ For\ Sass/SCSS\ -\/\ /\(\backslash\).((c|sa|sc)ss)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ For\ Less\ -\/\ /\(\backslash\).((c|le)ss)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).((c|sa|sc)ss)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Run\ \`{}postcss-\/loader`\ on\ each\ CSS\ \`{}@import`\ and\ CSS\ modules/ICSS\ imports,\ do\ not\ forget\ that\ \`{}sass-\/loader`\ compile\ non\ CSS\ \`{}@import`'s\ into\ a\ single\ file}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ If\ you\ need\ run\ \`{}sass-\/loader`\ and\ \`{}postcss-\/loader`\ on\ each\ CSS\ \`{}@import`\ please\ set\ it\ to\ \`{}2`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ plugins:\ ()\ =>\ [postcssPresetEnv(\{\ stage:\ 0\ \})]\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}less-\/loader`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ For\ webpack\ v5}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif|svg|eot|ttf|woff|woff2)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ More\ information\ here\ https://webpack.js.org/guides/asset-\/modules/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ type:\ "{}asset"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7946}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Resolve unresolved URLs using an alias}}{{\ttfamily Resolve unresolved URLs using an alias}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7946}
+{\ttfamily }
+
+{\ttfamily {\bfseries{index.\+css}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.class\ \{}
+\DoxyCodeLine{\ \ background:\ url(/assets/unresolved/img.png);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ resolve:\ \{}
+\DoxyCodeLine{\ \ \ \ alias:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}/assets/unresolved/img.png"{}:\ path.resolve(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_dirname,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}assets/real-\/path-\/to-\/img/img.png"{}}
+\DoxyCodeLine{\ \ \ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7947}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Named export with custom export names}}{{\ttfamily Named export with custom export names}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7947}
+{\ttfamily }
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ namedExport:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exportLocalsConvention:\ function\ (name)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ name.replace(/-\//g,\ "{}\_"{});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7948}{}\doxysubsubsection{\texorpdfstring{{\ttfamily Separating {\ttfamily Interoperable CSS}-\/only and {\ttfamily CSS Module} features}}{{\ttfamily Separating {\ttfamily Interoperable CSS}-\/only and {\ttfamily CSS Module} features}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7948}
+{\ttfamily }
+
+{\ttfamily The following setup is an example of allowing {\ttfamily Interoperable CSS} features only (such as {\ttfamily \+:import} and {\ttfamily \+:export}) without using further {\ttfamily CSS Module} functionality by setting {\ttfamily mode} option for all files that do not match {\ttfamily \texorpdfstring{$\ast$}{*}.module.\+scss} naming convention. This is for reference as having {\ttfamily ICSS} features applied to all files was default {\ttfamily css-\/loader} behavior before v4. Meanwhile all files matching {\ttfamily \texorpdfstring{$\ast$}{*}.module.\+scss} are treated as {\ttfamily CSS Modules} in this example.}
+
+{\ttfamily An example case is assumed where a project requires canvas drawing variables to be synchronized with CSS -\/ canvas drawing uses the same color (set by color name in Java\+Script) as HTML background (set by class name in CSS).}
+
+{\ttfamily {\bfseries{webpack.\+config.\+js}}}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ \ \ //\ -\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ //\ SCSS\ ALL\ EXCEPT\ MODULES}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).scss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /\(\backslash\).module\(\backslash\).scss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode:\ "{}icss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ -\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ //\ SCSS\ MODULES}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).module\(\backslash\).scss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode:\ "{}local"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ -\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{variables.\+scss}}}
+
+{\ttfamily File treated as {\ttfamily ICSS}-\/only.}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$colorBackground:\ red;}
+\DoxyCodeLine{:export\ \{}
+\DoxyCodeLine{\ \ colorBackgroundCanvas:\ \$colorBackground;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{Component.\+module.\+scss}}}
+
+{\ttfamily File treated as {\ttfamily CSS Module}.}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@import\ "{}variables.scss"{};}
+\DoxyCodeLine{.componentClass\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ \$colorBackground;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily {\bfseries{Component.\+jsx}}}
+
+{\ttfamily Using both {\ttfamily CSS Module} functionality as well as SCSS variables directly in Java\+Script.}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ svars\ from\ "{}variables.scss"{};}
+\DoxyCodeLine{import\ styles\ from\ "{}Component.module.scss"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Render\ DOM\ with\ CSS\ modules\ class\ name}
+\DoxyCodeLine{//\ <div\ className=\{styles.componentClass\}>}
+\DoxyCodeLine{//\ \ \ <canvas\ ref=\{mountsCanvas\}/>}
+\DoxyCodeLine{//\ </div>}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Somewhere\ in\ JavaScript\ canvas\ drawing\ code\ use\ the\ variable\ directly}
+\DoxyCodeLine{//\ const\ ctx\ =\ mountsCanvas.current.getContext('2d',\{alpha:\ false\});}
+\DoxyCodeLine{ctx.fillStyle\ =\ \`{}\$\{svars.colorBackgroundCanvas\}`;}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7949}{}\doxysubsection{\texorpdfstring{{\ttfamily Contributing}}{{\ttfamily Contributing}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7949}
+{\ttfamily }
+
+{\ttfamily Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.}
+
+{\ttfamily CONTRIBUTING}
+
+{\ttfamily }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7950}{}\doxysubsection{\texorpdfstring{{\ttfamily License}}{{\ttfamily License}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-loader_2_r_e_a_d_m_e_autotoc_md7950}
+{\ttfamily }
+
+{\ttfamily \href{./LICENSE}{\texttt{ MIT}} }

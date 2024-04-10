@@ -1,0 +1,47 @@
+\chapter{define-\/lazy-\/prop \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/define-\/lazy-\/prop"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/define-\/lazy-\/prop.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme}\index{define-\/lazy-\/prop $<$a href="{}https://travis-\/ci.org/sindresorhus/define-\/lazy-\/prop"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/define-\/lazy-\/prop.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{define-\/lazy-\/prop $<$a href=""https://travis-\/ci.org/sindresorhus/define-\/lazy-\/prop"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/define-\/lazy-\/prop.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8422}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8422}%
+ \begin{quote}
+Define a \href{https://en.wikipedia.org/wiki/Lazy_evaluation}{\texttt{ lazily evaluated}} property on an object \end{quote}
+Useful when the value of a property is expensive to generate, so you want to delay the computation until the property is needed. For example, improving startup performance by deferring nonessential operations.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8423}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8423}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ define-\/lazy-\/prop}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8424}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8424}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ defineLazyProp\ =\ require('define-\/lazy-\/prop');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ unicorn\ =\ \{}
+\DoxyCodeLine{\ \ \ \ //\ …}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{defineLazyProp(unicorn,\ 'rainbow',\ ()\ =>\ expensiveComputation());}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.on('user-\/action',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ doSomething(unicorn.rainbow);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8425}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8425}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8426}{}\doxysubsection{\texorpdfstring{define\+Lazy\+Prop(object, property\+Name, fn)}{define\+Lazy\+Prop(object, property\+Name, fn)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8426}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8427}{}\doxysubsubsection{\texorpdfstring{object}{object}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8427}
+Type\+: {\ttfamily Object}
+
+Object to add property to.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8428}{}\doxysubsubsection{\texorpdfstring{property\+Name}{property\+Name}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8428}
+Type\+: {\ttfamily string}
+
+Name of the property to add.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8429}{}\doxysubsubsection{\texorpdfstring{fn}{fn}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8429}
+Type\+: {\ttfamily Function}
+
+Called the first time {\ttfamily property\+Name} is accessed. Expected to return a value.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8430}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8430}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/lazy-value}{\texttt{ lazy-\/value}} -\/ Create a lazily evaluated value
+\item \href{https://github.com/sindresorhus/import-lazy}{\texttt{ import-\/lazy}} -\/ Import a module lazily
+\item \href{https://github.com/sindresorhus/p-lazy}{\texttt{ p-\/lazy}} -\/ Create a lazy promise
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8431}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2define-lazy-prop_2readme_autotoc_md8431}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

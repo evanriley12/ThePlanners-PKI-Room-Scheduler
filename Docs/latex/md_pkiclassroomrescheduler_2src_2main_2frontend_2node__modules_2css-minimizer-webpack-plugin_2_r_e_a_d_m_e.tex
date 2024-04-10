@@ -1,0 +1,552 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/css-minimizer-webpack-plugin}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://david-dm.org/webpack-contrib/css-minimizer-webpack-plugin}{\texttt{ }} \href{https://github.com/webpack-contrib/css-minimizer-webpack-plugin/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/css-minimizer-webpack-plugin}{\texttt{ }} \href{https://gitter.im/webpack/webpack}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=css-minimizer-webpack-plugin}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7951}{}\doxysection{\texorpdfstring{css-\/minimizer-\/webpack-\/plugin}{css-\/minimizer-\/webpack-\/plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7951}
+This plugin uses \href{https://cssnano.co}{\texttt{ cssnano}} to optimize and minify your CSS.
+
+Just like \href{https://github.com/NMFR/optimize-css-assets-webpack-plugin}{\texttt{ optimize-\/css-\/assets-\/webpack-\/plugin}} but more accurate with source maps and assets using query string, allows caching and works in parallel mode.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7952}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7952}
+To begin, you\textquotesingle{}ll need to install {\ttfamily css-\/minimizer-\/webpack-\/plugin}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ css-\/minimizer-\/webpack-\/plugin\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Then add the plugin to your {\ttfamily webpack} configuration. For example\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{const\ CssMinimizerPlugin\ =\ require("{}css-\/minimizer-\/webpack-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /.s?css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{},\ "{}sass-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ For\ webpack@5\ you\ can\ use\ the\ \`{}...`\ syntax\ to\ extend\ existing\ minimizers\ (i.e.\ \`{}terser-\/webpack-\/plugin`),\ uncomment\ the\ next\ line}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \`{}...`,}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [new\ MiniCssExtractPlugin()],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+This will enable CSS optimization only in production mode.
+
+If you want to run it also in development set the {\ttfamily optimization.\+minimize} option to {\ttfamily true}\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ [...]}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ [...]}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+And run {\ttfamily webpack} via your preferred method.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7953}{}\doxysubsection{\texorpdfstring{Note about source maps}{Note about source maps}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7953}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+Works only with {\ttfamily source-\/map}, {\ttfamily inline-\/source-\/map}, {\ttfamily hidden-\/source-\/map} and {\ttfamily nosources-\/source-\/map} values for the \href{https://webpack.js.org/configuration/devtool/}{\texttt{ {\ttfamily devtool}}} option.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Why? Because CSS support only these source map types.
+
+The plugin respect the \href{https://webpack.js.org/configuration/devtool/}{\texttt{ {\ttfamily devtool}}} and using the {\ttfamily Source\+Map\+Dev\+Tool\+Plugin} plugin. Using supported {\ttfamily devtool} values enable source map generation. Using {\ttfamily Source\+Map\+Dev\+Tool\+Plugin} with enabled the {\ttfamily columns} option enables source map generation.
+
+Use source maps to map error message locations to modules (this slows down the compilation). If you use your own {\ttfamily minify} function please read the {\ttfamily minify} section for handling source maps correctly.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7954}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7954}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}test\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Reg\+Exp\textbackslash{}\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$>$}{>}}   &\PBS\centering {\ttfamily /\textbackslash{}.css(\textbackslash{}?.\texorpdfstring{$\ast$}{*})?\$/i}   &Test to match files against.    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}include\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Reg\+Exp\textbackslash{}\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$>$}{>}}   &\PBS\centering {\ttfamily undefined}   &Files to include.    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}exclude\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Reg\+Exp\textbackslash{}\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$>$}{>}}   &\PBS\centering {\ttfamily undefined}   &Files to exclude.    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}parallel\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily Boolean\textbackslash{}\texorpdfstring{$\vert$}{|}\+Number}   &\PBS\centering {\ttfamily true}   &Enable/disable multi-\/process parallel running.    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}minify\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily Function\textbackslash{}\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}Function\texorpdfstring{$>$}{>}}   &\PBS\centering {\ttfamily Css\+Minimizer\+Plugin.\+cssnano\+Minify}   &Allows to override default minify function.    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}minimizer\+Options\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily Object\textbackslash{}\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}Object\texorpdfstring{$>$}{>}}   &\PBS\centering `\{ preset\+: \textquotesingle{}default' \}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Cssnano optimisations \mbox{[}options\mbox{]}(\href{https://cssnano.co/docs/optimisations}{\texttt{ https\+://cssnano.\+co/docs/optimisations}}). \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}warnings\+Filter{\ttfamily \mbox{]}(\#warningsfilter)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Function\texorpdfstring{$<$}{<}(warning, file, source) -\/\texorpdfstring{$>$}{>} Boolean\texorpdfstring{$>$}{>}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}() =\texorpdfstring{$>$}{>} true\`{}   &Allow to filter css-\/minimizer warnings.   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7955}{}\doxysubsubsection{\texorpdfstring{{\ttfamily test}}{{\ttfamily test}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7955}
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$>$}{>}} -\/ default\+: {\ttfamily /\textbackslash{}.css(\textbackslash{}?.\texorpdfstring{$\ast$}{*})?\$/i}
+
+Test to match files against.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).foo\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7956}{}\doxysubsubsection{\texorpdfstring{{\ttfamily include}}{{\ttfamily include}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7956}
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$>$}{>}} Default\+: {\ttfamily undefined}
+
+Files to include.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ include:\ /\(\backslash\)/includes/,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7957}{}\doxysubsubsection{\texorpdfstring{{\ttfamily exclude}}{{\ttfamily exclude}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7957}
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$>$}{>}} Default\+: {\ttfamily undefined}
+
+Files to exclude.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /\(\backslash\)/excludes/,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7958}{}\doxysubsubsection{\texorpdfstring{{\ttfamily parallel}}{{\ttfamily parallel}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7958}
+Type\+: {\ttfamily Boolean\texorpdfstring{$\vert$}{|}\+Number} Default\+: {\ttfamily true}
+
+Use multi-\/process parallel running to improve the build speed. Default number of concurrent runs\+: {\ttfamily os.\+cpus().length -\/ 1}.
+
+\begin{quote}
+ℹ️ Parallelization can speed up your build significantly and is therefore {\bfseries{highly recommended}}. If a parallelization is enabled, the packages in {\ttfamily minimizer\+Options} must be required via strings ({\ttfamily package\+Name} or {\ttfamily require.\+resolve(package\+Name)}). Read more in \`{}minimizer\+Options\`{} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7959}{}\doxyparagraph{\texorpdfstring{{\ttfamily Boolean}}{{\ttfamily Boolean}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7959}
+Enable/disable multi-\/process parallel running.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ parallel:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7960}{}\doxyparagraph{\texorpdfstring{{\ttfamily Number}}{{\ttfamily Number}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7960}
+Enable multi-\/process parallel running and set number of concurrent runs.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ parallel:\ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7961}{}\doxysubsubsection{\texorpdfstring{{\ttfamily minify}}{{\ttfamily minify}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7961}
+Type\+: {\ttfamily Function\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}Function\texorpdfstring{$>$}{>}} Default\+: {\ttfamily Css\+Minimizer\+Plugin.\+cssnano\+Minify}
+
+Allows overriding default minify function. By default, plugin uses \href{https://github.com/cssnano/cssnano}{\texttt{ cssnano}} package. Useful for using and testing unpublished versions or forks.
+
+Possible options\+:
+
+
+\begin{DoxyItemize}
+\item Css\+Minimizer\+Plugin.\+cssnano\+Minify
+\item Css\+Minimizer\+Plugin.\+csso\+Minify
+\item Css\+Minimizer\+Plugin.\+clean\+Css\+Minify
+\item Css\+Minimizer\+Plugin.\+esbuild\+Minify
+\item Css\+Minimizer\+Plugin.\+parcel\+Css\+Minify
+\item {\ttfamily async (data, input\+Map, minimizer\+Options) =\texorpdfstring{$>$}{>} \{return \{code\+: "{}a\{color\+: red\}"{}, map\+: "{}..."{}, warnings\+: \mbox{[}\mbox{]}, errors\+: \mbox{[}\mbox{]}\}\}}
+\end{DoxyItemize}
+
+\begin{quote}
+⚠️ {\bfseries{Always use {\ttfamily require} inside {\ttfamily minify} function when {\ttfamily parallel} option enabled}}. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7962}{}\doxyparagraph{\texorpdfstring{{\ttfamily Function}}{{\ttfamily Function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7962}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 1:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ roundingPrecision:\ "{}all=3,px=5"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ CssMinimizerPlugin.cleanCssMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7963}{}\doxyparagraph{\texorpdfstring{{\ttfamily Array}}{{\ttfamily Array}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7963}
+If an array of functions is passed to the {\ttfamily minify} option, the {\ttfamily minimizer\+Options} must also be an array. The function index in the {\ttfamily minify} array corresponds to the options object with the same index in the {\ttfamily minimizer\+Options} array.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\},\ //\ Options\ for\ the\ first\ function\ (CssMinimizerPlugin.cssnanoMinify)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\},\ //\ Options\ for\ the\ second\ function\ (CssMinimizerPlugin.cleanCssMinify)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\},\ //\ Options\ for\ the\ third\ function}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ CssMinimizerPlugin.cssnanoMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ CssMinimizerPlugin.cleanCssMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ async\ (data,\ inputMap,\ minimizerOptions)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ To\ do\ something}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ code:\ \`{}a\{color:\ red\}`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ map:\ \`{}\{"{}version"{}:\ "{}3"{},\ ...\}`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ warnings:\ [],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ errors:\ [],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7964}{}\doxysubsubsection{\texorpdfstring{{\ttfamily minimizer\+Options}}{{\ttfamily minimizer\+Options}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7964}
+Type\+: {\ttfamily Object\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$<$}{<}Object\texorpdfstring{$>$}{>}} Default\+: `\{ preset\+: \textquotesingle{}default' \}\`{}
+
+Cssnano optimisations \href{https://cssnano.co/docs/optimisations}{\texttt{ options}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7965}{}\doxyparagraph{\texorpdfstring{{\ttfamily Object}}{{\ttfamily Object}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7965}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ preset:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}default"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ discardComments:\ \{\ removeAll:\ true\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7966}{}\doxyparagraph{\texorpdfstring{{\ttfamily Array}}{{\ttfamily Array}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7966}
+The function index in the {\ttfamily minify} array corresponds to the options object with the same index in the {\ttfamily minimizer\+Options} array. If you use {\ttfamily minimizer\+Options} like object, all {\ttfamily minify} function accept it.
+
+\begin{quote}
+If a parallelization is enabled, the packages in {\ttfamily minimizer\+Options} must be required via strings ({\ttfamily package\+Name} or {\ttfamily require.\+resolve(package\+Name)}). In this case, we shouldn\textquotesingle{}t use {\ttfamily require}/{\ttfamily import}. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ preset:\ require.resolve("{}cssnano-\/preset-\/simple"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7967}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7967}%
+ \doxysubparagraph*{{\ttfamily processor\+Options} (⚠ only cssnano)}
+
+Type\+: {\ttfamily Object} Default\+: {\ttfamily \{ from\+: asset\+Name \}}
+
+Allows filtering options \href{https://postcss.org/api/\#processoptions}{\texttt{ {\ttfamily processoptions}}} for the cssnano. The {\ttfamily parser},{\ttfamily stringifier} and {\ttfamily syntax} can be either a function or a string indicating the module that will be imported.
+
+\begin{quote}
+⚠️ {\bfseries{If a function is passed, the {\ttfamily parallel} option must be disabled.}}. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ sugarss\ from\ "{}sugarss"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ parallel:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ processorOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ parser:\ sugarss,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ processorOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ parser:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7968}{}\doxysubsubsection{\texorpdfstring{{\ttfamily warnings\+Filter}}{{\ttfamily warnings\+Filter}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7968}
+Type\+: {\ttfamily Function\texorpdfstring{$<$}{<}(warning, file, source) -\/\texorpdfstring{$>$}{>} Boolean\texorpdfstring{$>$}{>}} Default\+: {\ttfamily () =\texorpdfstring{$>$}{>} true}
+
+Allow filtering css-\/minimizer warnings (By default \href{https://github.com/cssnano/cssnano}{\texttt{ cssnano}}). Return {\ttfamily true} to keep the warning, a falsy value ({\ttfamily false}/{\ttfamily null}/{\ttfamily undefined}) otherwise.
+
+\begin{quote}
+⚠️ The {\ttfamily source} argument will contain {\ttfamily undefined} if you don\textquotesingle{}t use source maps. \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ warningsFilter:\ (warning,\ file,\ source)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (/Dropping\ unreachable\ code/i.test(warning))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (/file\(\backslash\).css/i.test(file))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (/source\(\backslash\).css/i.test(source))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ return\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7969}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7969}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7970}{}\doxysubsubsection{\texorpdfstring{Use sourcemaps}{Use sourcemaps}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7970}
+Don\textquotesingle{}t forget to enable {\ttfamily source\+Map} options for all loaders.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ CssMinimizerPlugin\ =\ require("{}css-\/minimizer-\/webpack-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ devtool:\ "{}source-\/map"{},}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /.s?css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{},\ options:\ \{\ sourceMap:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}sass-\/loader"{},\ options:\ \{\ sourceMap:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [new\ CssMinimizerPlugin()],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [new\ MiniCssExtractPlugin()],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7971}{}\doxysubsubsection{\texorpdfstring{Remove all comments}{Remove all comments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7971}
+Remove all comments (including comments starting with {\ttfamily /\texorpdfstring{$\ast$}{*}!}).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minimizerOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ preset:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}default"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ discardComments:\ \{\ removeAll:\ true\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7972}{}\doxysubsubsection{\texorpdfstring{Using custom minifier \href{https://github.com/css/csso}{\texttt{ csso}}}{Using custom minifier \href{https://github.com/css/csso}{\texttt{ csso}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7972}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ //\ Uncomment\ if\ you\ need\ source\ maps}
+\DoxyCodeLine{\ \ //\ devtool:\ "{}source-\/map"{},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ CssMinimizerPlugin.cssoMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Uncomment\ this\ line\ for\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ minimizerOptions:\ \{\ restructure:\ false\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7973}{}\doxysubsubsection{\texorpdfstring{Using custom minifier \href{https://github.com/jakubpawlowicz/clean-css}{\texttt{ clean-\/css}}}{Using custom minifier \href{https://github.com/jakubpawlowicz/clean-css}{\texttt{ clean-\/css}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7973}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ //\ Uncomment\ if\ you\ need\ source\ maps}
+\DoxyCodeLine{\ \ //\ devtool:\ "{}source-\/map"{},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ CssMinimizerPlugin.cleanCssMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Uncomment\ this\ line\ for\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ minimizerOptions:\ \{\ compatibility:\ 'ie11,-\/properties.merging'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7974}{}\doxysubsubsection{\texorpdfstring{Using custom minifier \href{https://github.com/evanw/esbuild}{\texttt{ esbuild}}}{Using custom minifier \href{https://github.com/evanw/esbuild}{\texttt{ esbuild}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7974}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ //\ Uncomment\ if\ you\ need\ source\ maps}
+\DoxyCodeLine{\ \ //\ devtool:\ "{}source-\/map"{},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ CssMinimizerPlugin.esbuildMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7975}{}\doxysubsubsection{\texorpdfstring{Using custom minifier \href{https://github.com/parcel-bundler/parcel-css}{\texttt{ @parcel/css}}}{Using custom minifier \href{https://github.com/parcel-bundler/parcel-css}{\texttt{ @parcel/css}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7975}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ //\ Uncomment\ if\ you\ need\ source\ maps}
+\DoxyCodeLine{\ \ //\ devtool:\ "{}source-\/map"{},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ CssMinimizerPlugin.parcelCssMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Uncomment\ this\ line\ for\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ minimizerOptions:\ \{\ targets:\ \{\ ie:\ 11\ \},\ drafts:\ \{\ nesting:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7976}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7976}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7977}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-minimizer-webpack-plugin_2_r_e_a_d_m_e_autotoc_md7977}
+\href{./LICENSE}{\texttt{ MIT}} 

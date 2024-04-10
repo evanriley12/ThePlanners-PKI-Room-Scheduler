@@ -1,0 +1,34 @@
+\chapter{babel-\/plugin-\/jest-\/hoist}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e}\index{babel-\/plugin-\/jest-\/hoist@{babel-\/plugin-\/jest-\/hoist}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5866}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5866}%
+ Babel plugin to hoist {\ttfamily jest.\+disable\+Automock}, {\ttfamily jest.\+enable\+Automock}, {\ttfamily jest.\+unmock}, {\ttfamily jest.\+mock}, calls above {\ttfamily import} statements. This plugin is automatically included when using \href{https://github.com/facebook/jest/tree/main/packages/babel-jest}{\texttt{ babel-\/jest}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5867}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5867}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ yarn\ add\ -\/-\/dev\ babel-\/plugin-\/jest-\/hoist}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5868}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5868}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5869}{}\doxysubsection{\texorpdfstring{Via {\ttfamily babel.\+config.\+js} (Recommended)}{Via {\ttfamily babel.\+config.\+js} (Recommended)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5869}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ ['jest-\/hoist'],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5870}{}\doxysubsection{\texorpdfstring{Via CLI}{Via CLI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5870}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ babel\ -\/-\/plugins\ jest-\/hoist\ script.js}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5871}{}\doxysubsection{\texorpdfstring{Via Node API}{Via Node API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-jest-hoist_2_r_e_a_d_m_e_autotoc_md5871}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('@babel/core').transform('code',\ \{}
+\DoxyCodeLine{\ \ plugins:\ ['jest-\/hoist'],}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

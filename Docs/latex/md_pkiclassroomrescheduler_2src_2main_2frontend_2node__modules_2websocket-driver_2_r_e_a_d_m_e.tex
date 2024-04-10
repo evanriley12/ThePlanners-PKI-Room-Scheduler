@@ -1,0 +1,239 @@
+\chapter{websocket-\/driver \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/faye/websocket-\/driver-\/node"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/faye/websocket-\/driver-\/node.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e}\index{websocket-\/driver $<$a href="{}https://travis-\/ci.org/faye/websocket-\/driver-\/node"{} $>$$<$img src="{}https://travis-\/ci.org/faye/websocket-\/driver-\/node.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$@{websocket-\/driver $<$a href=""https://travis-\/ci.org/faye/websocket-\/driver-\/node"" $>$$<$img src=""https://travis-\/ci.org/faye/websocket-\/driver-\/node.svg"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26820}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26820}%
+ This module provides a complete implementation of the Web\+Socket protocols that can be hooked up to any I/O stream. It aims to simplify things by decoupling the protocol details from the I/O layer, such that users only need to implement code to stream data in and out of it without needing to know anything about how the protocol actually works. Think of it as a complete Web\+Socket system with pluggable I/O.
+
+Due to this design, you get a lot of things for free. In particular, if you hook this module up to some I/O object, it will do all of this for you\+:
+
+
+\begin{DoxyItemize}
+\item Select the correct server-\/side driver to talk to the client
+\item Generate and send both server-\/ and client-\/side handshakes
+\item Recognize when the handshake phase completes and the WS protocol begins
+\item Negotiate subprotocol selection based on {\ttfamily Sec-\/\+Web\+Socket-\/\+Protocol}
+\item Negotiate and use extensions via the \href{https://github.com/faye/websocket-extensions-node}{\texttt{ websocket-\/extensions}} module
+\item Buffer sent messages until the handshake process is finished
+\item Deal with proxies that defer delivery of the draft-\/76 handshake body
+\item Notify you when the socket is open and closed and when messages arrive
+\item Recombine fragmented messages
+\item Dispatch text, binary, ping, pong and close frames
+\item Manage the socket-\/closing handshake process
+\item Automatically reply to ping frames with a matching pong
+\item Apply masking to messages sent by the client
+\end{DoxyItemize}
+
+This library was originally extracted from the \href{http://faye.jcoglan.com}{\texttt{ Faye}} project but now aims to provide simple Web\+Socket support for any Node-\/based project.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26821}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26821}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ websocket-\/driver}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26822}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26822}
+This module provides protocol drivers that have the same interface on the server and on the client. A Web\+Socket driver is an object with two duplex streams attached; one for incoming/outgoing messages and one for managing the wire protocol over an I/O stream. The full API is described below.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26823}{}\doxysubsection{\texorpdfstring{Server-\/side with HTTP}{Server-\/side with HTTP}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26823}
+A Node webserver emits a special event for \textquotesingle{}upgrade\textquotesingle{} requests, and this is where you should handle Web\+Sockets. You first check whether the request is a Web\+Socket, and if so you can create a driver and attach the request\textquotesingle{}s I/O stream to it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ http\ =\ require('http'),}
+\DoxyCodeLine{\ \ \ \ websocket\ =\ require('websocket-\/driver');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer();}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.on('upgrade',\ function(request,\ socket,\ body)\ \{}
+\DoxyCodeLine{\ \ if\ (!websocket.isWebSocket(request))\ return;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ driver\ =\ websocket.http(request);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ driver.io.write(body);}
+\DoxyCodeLine{\ \ socket.pipe(driver.io).pipe(socket);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ driver.messages.on('data',\ function(message)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Got\ a\ message',\ message);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ driver.start();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Note the line {\ttfamily driver.\+io.\+write(body)} -\/ you must pass the {\ttfamily body} buffer to the socket driver in order to make certain versions of the protocol work.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26824}{}\doxysubsection{\texorpdfstring{Server-\/side with TCP}{Server-\/side with TCP}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26824}
+You can also handle Web\+Socket connections in a bare TCP server, if you\textquotesingle{}re not using an HTTP server and don\textquotesingle{}t want to implement HTTP parsing yourself.
+
+The driver will emit a {\ttfamily connect} event when a request is received, and at this point you can detect whether it\textquotesingle{}s a Web\+Socket and handle it as such. Here\textquotesingle{}s an example using the Node {\ttfamily net} module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ net\ =\ require('net'),}
+\DoxyCodeLine{\ \ \ \ websocket\ =\ require('websocket-\/driver');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ net.createServer(function(connection)\ \{}
+\DoxyCodeLine{\ \ var\ driver\ =\ websocket.server();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ driver.on('connect',\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (websocket.isWebSocket(driver))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ driver.start();}
+\DoxyCodeLine{\ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ handle\ other\ HTTP\ requests}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ driver.on('close',\ function()\ \{\ connection.end()\ \});}
+\DoxyCodeLine{\ \ connection.on('error',\ function()\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ connection.pipe(driver.io).pipe(connection);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ driver.messages.pipe(driver.messages);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(4180);}
+
+\end{DoxyCode}
+
+
+In the {\ttfamily connect} event, the driver gains several properties to describe the request, similar to a Node request object, such as {\ttfamily method}, {\ttfamily url} and {\ttfamily headers}. However you should remember it\textquotesingle{}s not a real request object; you cannot write data to it, it only tells you what request data we parsed from the input.
+
+If the request has a body, it will be in the {\ttfamily driver.\+body} buffer, but only as much of the body as has been piped into the driver when the {\ttfamily connect} event fires.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26825}{}\doxysubsection{\texorpdfstring{Client-\/side}{Client-\/side}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26825}
+Similarly, to implement a Web\+Socket client you just need to make a driver by passing in a URL. After this you use the driver API as described below to process incoming data and send outgoing data.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ net\ =\ require('net'),}
+\DoxyCodeLine{\ \ \ \ websocket\ =\ require('websocket-\/driver');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ driver\ =\ websocket.client('ws://www.example.com/socket'),}
+\DoxyCodeLine{\ \ \ \ tcp\ =\ net.connect(80,\ 'www.example.com');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tcp.pipe(driver.io).pipe(tcp);}
+\DoxyCodeLine{}
+\DoxyCodeLine{tcp.on('connect',\ function()\ \{}
+\DoxyCodeLine{\ \ driver.start();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{driver.messages.on('data',\ function(message)\ \{}
+\DoxyCodeLine{\ \ console.log('Got\ a\ message',\ message);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Client drivers have two additional properties for reading the HTTP data that was sent back by the server\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily driver.\+status\+Code} -\/ the integer value of the HTTP status code
+\item {\ttfamily driver.\+headers} -\/ an object containing the response headers
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26826}{}\doxysubsection{\texorpdfstring{HTTP Proxies}{HTTP Proxies}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26826}
+The client driver supports connections via HTTP proxies using the {\ttfamily CONNECT} method. Instead of sending the Web\+Socket handshake immediately, it will send a {\ttfamily CONNECT} request, wait for a {\ttfamily 200} response, and then proceed as normal.
+
+To use this feature, call {\ttfamily driver.\+proxy(url)} where {\ttfamily url} is the origin of the proxy, including a username and password if required. This produces a duplex stream that you should pipe in and out of your TCP connection to the proxy server. When the proxy emits {\ttfamily connect}, you can then pipe {\ttfamily driver.\+io} to your TCP stream and call {\ttfamily driver.\+start()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ net\ =\ require('net'),}
+\DoxyCodeLine{\ \ \ \ websocket\ =\ require('websocket-\/driver');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ driver\ =\ websocket.client('ws://www.example.com/socket'),}
+\DoxyCodeLine{\ \ \ \ proxy\ \ =\ driver.proxy('http://username:password@proxy.example.com'),}
+\DoxyCodeLine{\ \ \ \ tcp\ \ \ \ =\ net.connect(80,\ 'proxy.example.com');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tcp.pipe(proxy).pipe(tcp,\ \{\ end:\ false\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{tcp.on('connect',\ function()\ \{}
+\DoxyCodeLine{\ \ proxy.start();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{proxy.on('connect',\ function()\ \{}
+\DoxyCodeLine{\ \ driver.io.pipe(tcp).pipe(driver.io);}
+\DoxyCodeLine{\ \ driver.start();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{driver.messages.on('data',\ function(message)\ \{}
+\DoxyCodeLine{\ \ console.log('Got\ a\ message',\ message);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The proxy\textquotesingle{}s {\ttfamily connect} event is also where you should perform a TLS handshake on your TCP stream, if you are connecting to a {\ttfamily wss\+:} endpoint.
+
+In the event that proxy connection fails, {\ttfamily proxy} will emit an {\ttfamily error}. You can inspect the proxy\textquotesingle{}s response via {\ttfamily proxy.\+status\+Code} and {\ttfamily proxy.\+headers}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{proxy.on('error',\ function(error)\ \{}
+\DoxyCodeLine{\ \ console.error(error.message);}
+\DoxyCodeLine{\ \ console.log(proxy.statusCode);}
+\DoxyCodeLine{\ \ console.log(proxy.headers);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Before calling {\ttfamily proxy.\+start()} you can set custom headers using {\ttfamily proxy.\+set\+Header()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{proxy.setHeader('User-\/Agent',\ 'node');}
+\DoxyCodeLine{proxy.start();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26827}{}\doxysubsection{\texorpdfstring{Driver API}{Driver API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26827}
+Drivers are created using one of the following methods\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{driver\ =\ websocket.http(request,\ options)}
+\DoxyCodeLine{driver\ =\ websocket.server(options)}
+\DoxyCodeLine{driver\ =\ websocket.client(url,\ options)}
+
+\end{DoxyCode}
+
+
+The {\ttfamily http} method returns a driver chosen using the headers from a Node HTTP request object. The {\ttfamily server} method returns a driver that will parse an HTTP request and then decide which driver to use for it using the {\ttfamily http} method. The {\ttfamily client} method always returns a driver for the RFC version of the protocol with masking enabled on outgoing frames.
+
+The {\ttfamily options} argument is optional, and is an object. It may contain the following fields\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily max\+Length} -\/ the maximum allowed size of incoming message frames, in bytes. The default value is {\ttfamily 2\texorpdfstring{$^\wedge$}{\string^}26 -\/ 1}, or 1 byte short of 64 MiB.
+\item {\ttfamily protocols} -\/ an array of strings representing acceptable subprotocols for use over the socket. The driver will negotiate one of these to use via the {\ttfamily Sec-\/\+Web\+Socket-\/\+Protocol} header if supported by the other peer.
+\end{DoxyItemize}
+
+A driver has two duplex streams attached to it\+:
+
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily driver.\+io}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} -\/ this stream should be attached to an I/O socket like a TCP stream. Pipe incoming TCP chunks to this stream for them to be parsed, and pipe this stream back into TCP to send outgoing frames.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily driver.\+messages}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} -\/ this stream emits messages received over the Web\+Socket. Writing to it sends messages to the other peer by emitting frames via the {\ttfamily driver.\+io} stream.
+\end{DoxyItemize}
+
+All drivers respond to the following API methods, but some of them are no-\/ops depending on whether the client supports the behaviour.
+
+Note that most of these methods are commands\+: if they produce data that should be sent over the socket, they will give this to you by emitting {\ttfamily data} events on the {\ttfamily driver.\+io} stream.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26828}{}\doxysubsubsection{\texorpdfstring{`driver.\+on(\textquotesingle{}open', function(event) \{\})\`{}}{`driver.\+on(\textquotesingle{}open', function(event) \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26828}
+Adds a callback to execute when the socket becomes open.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26829}{}\doxysubsubsection{\texorpdfstring{`driver.\+on(\textquotesingle{}message', function(event) \{\})\`{}}{`driver.\+on(\textquotesingle{}message', function(event) \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26829}
+Adds a callback to execute when a message is received. {\ttfamily event} will have a {\ttfamily data} attribute containing either a string in the case of a text message or a {\ttfamily Buffer} in the case of a binary message.
+
+You can also listen for messages using the `driver.\+messages.\+on(\textquotesingle{}data')\`{} event, which emits strings for text messages and buffers for binary messages.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26830}{}\doxysubsubsection{\texorpdfstring{`driver.\+on(\textquotesingle{}error', function(event) \{\})\`{}}{`driver.\+on(\textquotesingle{}error', function(event) \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26830}
+Adds a callback to execute when a protocol error occurs due to the other peer sending an invalid byte sequence. {\ttfamily event} will have a {\ttfamily message} attribute describing the error.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26831}{}\doxysubsubsection{\texorpdfstring{`driver.\+on(\textquotesingle{}close', function(event) \{\})\`{}}{`driver.\+on(\textquotesingle{}close', function(event) \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26831}
+Adds a callback to execute when the socket becomes closed. The {\ttfamily event} object has {\ttfamily code} and {\ttfamily reason} attributes.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26832}{}\doxysubsubsection{\texorpdfstring{`driver.\+on(\textquotesingle{}ping', function(event) \{\})\`{}}{`driver.\+on(\textquotesingle{}ping', function(event) \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26832}
+Adds a callback block to execute when a ping is received. You do not need to handle this by sending a pong frame yourself; the driver handles this for you.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26833}{}\doxysubsubsection{\texorpdfstring{`driver.\+on(\textquotesingle{}pong', function(event) \{\})\`{}}{`driver.\+on(\textquotesingle{}pong', function(event) \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26833}
+Adds a callback block to execute when a pong is received. If this was in response to a ping you sent, you can also handle this event via the {\ttfamily driver.\+ping(message, function() \{ ... \})} callback.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26834}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+add\+Extension(extension)}}{{\ttfamily driver.\+add\+Extension(extension)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26834}
+Registers a protocol extension whose operation will be negotiated via the {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} header. {\ttfamily extension} is any extension compatible with the \href{https://github.com/faye/websocket-extensions-node}{\texttt{ websocket-\/extensions}} framework.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26835}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+set\+Header(name, value)}}{{\ttfamily driver.\+set\+Header(name, value)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26835}
+Sets a custom header to be sent as part of the handshake response, either from the server or from the client. Must be called before {\ttfamily start()}, since this is when the headers are serialized and sent.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26836}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+start()}}{{\ttfamily driver.\+start()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26836}
+Initiates the protocol by sending the handshake -\/ either the response for a server-\/side driver or the request for a client-\/side one. This should be the first method you invoke. Returns {\ttfamily true} if and only if a handshake was sent.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26837}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+parse(string)}}{{\ttfamily driver.\+parse(string)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26837}
+Takes a string and parses it, potentially resulting in message events being emitted (see `on(\textquotesingle{}message'){\ttfamily above) or in data being sent to}driver.\+io{\ttfamily . You should send all data you receive via I/O to this method by piping a stream into }driver.\+io\`{}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26838}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+text(string)}}{{\ttfamily driver.\+text(string)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26838}
+Sends a text message over the socket. If the socket handshake is not yet complete, the message will be queued until it is. Returns {\ttfamily true} if the message was sent or queued, and {\ttfamily false} if the socket can no longer send messages.
+
+This method is equivalent to {\ttfamily driver.\+messages.\+write(string)}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26839}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+binary(buffer)}}{{\ttfamily driver.\+binary(buffer)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26839}
+Takes a {\ttfamily Buffer} and sends it as a binary message. Will queue and return {\ttfamily true} or {\ttfamily false} the same way as the {\ttfamily text} method. It will also return {\ttfamily false} if the driver does not support binary messages.
+
+This method is equivalent to {\ttfamily driver.\+messages.\+write(buffer)}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26840}{}\doxysubsubsection{\texorpdfstring{`driver.\+ping(string = '\textquotesingle{}, function() \{\})\`{}}{`driver.\+ping(string = '\textquotesingle{}, function() \{\})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26840}
+Sends a ping frame over the socket, queueing it if necessary. {\ttfamily string} and the callback are both optional. If a callback is given, it will be invoked when the socket receives a pong frame whose content matches {\ttfamily string}. Returns {\ttfamily false} if frames can no longer be sent, or if the driver does not support ping/pong.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26841}{}\doxysubsubsection{\texorpdfstring{`driver.\+pong(string = '\textquotesingle{})\`{}}{`driver.\+pong(string = '\textquotesingle{})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26841}
+Sends a pong frame over the socket, queueing it if necessary. {\ttfamily string} is optional. Returns {\ttfamily false} if frames can no longer be sent, or if the driver does not support ping/pong.
+
+You don\textquotesingle{}t need to call this when a ping frame is received; pings are replied to automatically by the driver. This method is for sending unsolicited pongs.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26842}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+close()}}{{\ttfamily driver.\+close()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26842}
+Initiates the closing handshake if the socket is still open. For drivers with no closing handshake, this will result in the immediate execution of the `on(\textquotesingle{}close'){\ttfamily driver. For drivers with a closing handshake, this sends a closing frame and}emit(\textquotesingle{}close\textquotesingle{})\`{} will execute when a response is received or a protocol error occurs.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26843}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+version}}{{\ttfamily driver.\+version}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26843}
+Returns the Web\+Socket version in use as a string. Will either be {\ttfamily hixie-\/75}, {\ttfamily hixie-\/76} or {\ttfamily hybi-\/\$version}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26844}{}\doxysubsubsection{\texorpdfstring{{\ttfamily driver.\+protocol}}{{\ttfamily driver.\+protocol}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-driver_2_r_e_a_d_m_e_autotoc_md26844}
+Returns a string containing the selected subprotocol, if any was agreed upon using the {\ttfamily Sec-\/\+Web\+Socket-\/\+Protocol} mechanism. This value becomes available after `emit(\textquotesingle{}open')\`{} has fired. 

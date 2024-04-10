@@ -1,0 +1,39 @@
+\chapter{\texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}postcss\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}-\/normalize-\/url}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e}\index{$<$a href="{}https://github.com/postcss/postcss"{} $>$postcss$<$/a$>$-\/normalize-\/url@{$<$a href=""https://github.com/postcss/postcss"" $>$postcss$<$/a$>$-\/normalize-\/url}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19198}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19198}%
+ \begin{quote}
+\href{https://github.com/sindresorhus/normalize-url}{\texttt{ Normalize URLs}} with Post\+CSS. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19199}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19199}
+With \href{https://npmjs.org/package/postcss-normalize-url}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/normalize-\/url\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19200}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19200}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19201}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19201}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ background:\ url("{}http://site.com:80/image.jpg"{})}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19202}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19202}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ \ \ background:\ url(http://site.com/image.jpg)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Note that this module will also try to normalize relative URLs, and is capable of stripping unnecessary quotes. For more examples, see the \href{test.js}{\texttt{ tests}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19203}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19203}
+See the \href{https://github.com/postcss/postcss\#usage}{\texttt{ Post\+CSS documentation}} for examples for your environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19204}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19204}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19205}{}\doxysubsection{\texorpdfstring{normalize(\mbox{[}options\mbox{]})}{normalize(\mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19205}
+Please see the \href{https://github.com/sindresorhus/normalize-url\#options}{\texttt{ normalize-\/url documentation}}. By default, {\ttfamily normalize\+Protocol}, {\ttfamily strip\+Hash} \& {\ttfamily strip\+WWW} are set to {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19206}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19206}
+See \href{https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md}{\texttt{ CONTRIBUTORS.\+md}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19207}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-normalize-url_2_r_e_a_d_m_e_autotoc_md19207}
+MIT © \href{http://beneb.info}{\texttt{ Ben Briggs}} 

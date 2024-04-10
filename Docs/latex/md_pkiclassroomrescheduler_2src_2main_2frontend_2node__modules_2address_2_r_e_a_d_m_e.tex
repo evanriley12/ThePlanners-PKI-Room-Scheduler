@@ -1,0 +1,86 @@
+\chapter{address}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e}\index{address@{address}}
+\href{https://npmjs.org/package/address}{\texttt{ }} \href{https://github.com/node-modules/address/actions/workflows/nodejs.yml}{\texttt{ }} \href{https://coveralls.io/r/node-modules/address?branch=master}{\texttt{ }} \href{https://npmjs.org/package/address}{\texttt{ }}
+
+Get current machine IP, MAC and DNS servers.
+
+DNS servers receive from {\ttfamily /etc/resolv.conf}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4879}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4879}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ address}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4880}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4880}
+Get IP is sync and get MAC is async for now.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ address\ =\ require('address');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ default\ interface\ 'eth'\ on\ linux,\ 'en'\ on\ osx.}
+\DoxyCodeLine{address.ip();\ \ \ //\ '192.168.0.2'}
+\DoxyCodeLine{address.ipv6();\ //\ 'fe80::7aca:39ff:feb0:e67d'}
+\DoxyCodeLine{address.mac(function\ (err,\ addr)\ \{}
+\DoxyCodeLine{\ \ console.log(addr);\ //\ '78:ca:39:b0:e6:7d'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ local\ loopback}
+\DoxyCodeLine{address.ip('lo');\ //\ '127.0.0.1'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ vboxnet\ MAC}
+\DoxyCodeLine{address.mac('vboxnet',\ function\ (err,\ addr)\ \{}
+\DoxyCodeLine{\ \ console.log(addr);\ //\ '0a:00:27:00:00:00'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4881}{}\doxysubsection{\texorpdfstring{Get all addresses\+: IPv4, IPv6 and MAC}{Get all addresses\+: IPv4, IPv6 and MAC}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4881}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{address((err,\ addrs)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log(addrs.ip,\ addrs.ipv6,\ addrs.mac);}
+\DoxyCodeLine{\ \ //\ '192.168.0.2',\ 'fe80::7aca:39ff:feb0:e67d',\ '78:ca:39:b0:e6:7d'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{address('vboxnet',\ (err,\ addrs)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log(addrs.ip,\ addrs.ipv6,\ addrs.mac);}
+\DoxyCodeLine{\ \ //\ '192.168.56.1',\ null,\ '0a:00:27:00:00:00'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4882}{}\doxysubsection{\texorpdfstring{Get an interface info with family}{Get an interface info with family}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4882}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{address.interface('IPv4',\ 'eth1');}
+\DoxyCodeLine{//\ \{\ address:\ '192.168.1.1',\ family:\ 'IPv4',\ mac:\ '78:ca:39:b0:e6:7d'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4883}{}\doxysubsection{\texorpdfstring{Get DNS servers}{Get DNS servers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4883}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{address.dns((err,\ addrs)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log(addrs);}
+\DoxyCodeLine{\ \ //\ ['10.13.2.1',\ '10.13.2.6']}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4884}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4884}
+\href{LICENSE.txt}{\texttt{ MIT}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4885}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2address_2_r_e_a_d_m_e_autotoc_md4885}
+\texorpdfstring{$\vert$}{|}\href{https://github.com/fengmk2}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/156269?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{fengmk2}}}}}~\newline
+\texorpdfstring{$\vert$}{|}\href{https://github.com/alsotang}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/1147375?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{alsotang}}}}}~\newline
+\texorpdfstring{$\vert$}{|}\href{https://github.com/jkelleyrtp}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/10237910?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{jkelleyrtp}}}}}~\newline
+\texorpdfstring{$\vert$}{|}\href{https://github.com/mariodu}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/1409643?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{mariodu}}}}}~\newline
+\texorpdfstring{$\vert$}{|}\href{https://github.com/mathieutu}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/11351322?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{mathieutu}}}}}~\newline
+\texorpdfstring{$\vert$}{|}\href{https://github.com/zhangyuheng}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/2139038?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{zhangyuheng}}}}}~\newline
+\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \+:---\+: \texorpdfstring{$\vert$}{|} \+:---\+: \texorpdfstring{$\vert$}{|} \+:---\+: \texorpdfstring{$\vert$}{|} \+:---\+: \texorpdfstring{$\vert$}{|} \+:---\+: \texorpdfstring{$\vert$}{|} \+:---\+: \texorpdfstring{$\vert$}{|} \href{https://github.com/coolme200}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/1400114?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{coolme200}}}}}~\newline
+\texorpdfstring{$\vert$}{|}\href{https://github.com/whxaxes}{\texttt{ \texorpdfstring{$<$}{<}img src="{}https\+://avatars.\+githubusercontent.\+com/u/5856440?v=4"{} width="{}100px;"{}/\texorpdfstring{$>$}{>}~\newline
+\textsubscript{{\bfseries{whxaxes}}}}}~\newline
+
+
+This project follows the git-\/contributor \href{https://github.com/xudafeng/git-contributor}{\texttt{ spec}}, auto updated at {\ttfamily Tue Sep 13 2022 09\+:09\+:11 GMT+0800}. 

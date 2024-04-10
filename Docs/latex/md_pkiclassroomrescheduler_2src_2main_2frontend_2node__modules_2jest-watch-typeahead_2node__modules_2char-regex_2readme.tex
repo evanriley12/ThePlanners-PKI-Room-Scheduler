@@ -1,0 +1,27 @@
+\chapter{char-\/regex}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme}\index{char-\/regex@{char-\/regex}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15467}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15467}%
+ A regex to match any full character, considering weird character ranges. Tested on every single emoji and unicode character. Based on the Lodash implementation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15468}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15468}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ char-\/regex}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15469}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15469}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ charRegex\ from\ 'char-\/regex';}
+\DoxyCodeLine{}
+\DoxyCodeLine{'❤️👊🏽'.match(/./);}
+\DoxyCodeLine{//=>\ ['',\ '',\ '',\ '',\ '',\ '',\ '']}
+\DoxyCodeLine{}
+\DoxyCodeLine{'❤️👊🏽'.match(charRegex());}
+\DoxyCodeLine{//=>\ ['❤️',\ '👊🏽']}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15470}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2char-regex_2readme_autotoc_md15470}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/string-length}{\texttt{ string-\/length}} -\/ Get the real length of a string 
+\end{DoxyItemize}

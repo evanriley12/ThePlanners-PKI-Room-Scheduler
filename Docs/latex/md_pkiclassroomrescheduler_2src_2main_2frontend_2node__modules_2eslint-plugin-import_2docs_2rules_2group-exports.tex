@@ -1,0 +1,147 @@
+\chapter{import/group-\/exports}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports}\index{import/group-\/exports@{import/group-\/exports}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9871}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9871}%
+
+
+Reports when named exports are not grouped together in a single {\ttfamily export} declaration or when multiple assignments to Common\+JS {\ttfamily module.\+exports} or {\ttfamily exports} object are present in a single file.
+
+{\bfseries{Rationale\+:}} An {\ttfamily export} declaration or {\ttfamily module.\+exports} assignment can appear anywhere in the code. By requiring a single export declaration all your exports will remain at one place, making it easier to see what exports a module provides.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9872}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9872}
+This rule warns whenever a single file contains multiple named export declarations or multiple assignments to {\ttfamily module.\+exports} (or {\ttfamily exports}).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9873}{}\doxysubsection{\texorpdfstring{Valid}{Valid}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9873}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ A\ single\ named\ export\ declaration\ -\/>\ ok}
+\DoxyCodeLine{export\ const\ valid\ =\ true}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ first\ =\ true}
+\DoxyCodeLine{const\ second\ =\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ A\ single\ named\ export\ declaration\ -\/>\ ok}
+\DoxyCodeLine{export\ \{}
+\DoxyCodeLine{\ \ first,}
+\DoxyCodeLine{\ \ second,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Aggregating\ exports\ -\/>\ ok}
+\DoxyCodeLine{export\ \{\ default\ as\ module1\ \}\ from\ 'module-\/1'}
+\DoxyCodeLine{export\ \{\ default\ as\ module2\ \}\ from\ 'module-\/2'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ A\ single\ exports\ assignment\ -\/>\ ok}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ first:\ true,}
+\DoxyCodeLine{\ \ second:\ true}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ first\ =\ true}
+\DoxyCodeLine{const\ second\ =\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ A\ single\ exports\ assignment\ -\/>\ ok}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ first,}
+\DoxyCodeLine{\ \ second,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ test()\ \{\}}
+\DoxyCodeLine{test.property\ =\ true}
+\DoxyCodeLine{test.another\ =\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ A\ single\ exports\ assignment\ -\/>\ ok}
+\DoxyCodeLine{module.exports\ =\ test}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ first\ =\ true;}
+\DoxyCodeLine{type\ firstType\ =\ boolean}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ A\ single\ named\ export\ declaration\ (type\ exports\ handled\ separately)\ -\/>\ ok}
+\DoxyCodeLine{export\ \{first\}}
+\DoxyCodeLine{export\ type\ \{firstType\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9874}{}\doxysubsection{\texorpdfstring{Invalid}{Invalid}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9874}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Multiple\ named\ export\ statements\ -\/>\ not\ ok!}
+\DoxyCodeLine{export\ const\ first\ =\ true}
+\DoxyCodeLine{export\ const\ second\ =\ true}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Aggregating\ exports\ from\ the\ same\ module\ -\/>\ not\ ok!}
+\DoxyCodeLine{export\ \{\ module1\ \}\ from\ 'module-\/1'}
+\DoxyCodeLine{export\ \{\ module2\ \}\ from\ 'module-\/1'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Multiple\ exports\ assignments\ -\/>\ not\ ok!}
+\DoxyCodeLine{exports.first\ =\ true}
+\DoxyCodeLine{exports.second\ =\ true}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Multiple\ exports\ assignments\ -\/>\ not\ ok!}
+\DoxyCodeLine{module.exports\ =\ \{\}}
+\DoxyCodeLine{module.exports.first\ =\ true}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Multiple\ exports\ assignments\ -\/>\ not\ ok!}
+\DoxyCodeLine{module.exports\ =\ ()\ =>\ \{\}}
+\DoxyCodeLine{module.exports.first\ =\ true}
+\DoxyCodeLine{module.exports.second\ =\ true}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ firstType\ =\ boolean}
+\DoxyCodeLine{type\ secondType\ =\ any}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Multiple\ named\ type\ export\ statements\ -\/>\ not\ ok!}
+\DoxyCodeLine{export\ type\ \{firstType\}}
+\DoxyCodeLine{export\ type\ \{secondType\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9875}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2group-exports_autotoc_md9875}
+If you do not mind having your exports spread across the file, you can safely turn this rule off. 

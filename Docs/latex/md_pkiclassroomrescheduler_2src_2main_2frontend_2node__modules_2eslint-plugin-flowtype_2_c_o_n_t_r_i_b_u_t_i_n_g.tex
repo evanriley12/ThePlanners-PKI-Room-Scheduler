@@ -1,0 +1,55 @@
+\chapter{Contributing}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g}\index{Contributing@{Contributing}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9480}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9480}%
+ \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily README.\+md} is a generated file. Do not edit it directly.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Edit the files inside {\ttfamily .README} instead.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9481}{}\doxysection{\texorpdfstring{Pre-\/\+Commit Hook}{Pre-\/\+Commit Hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9481}
+When making a commit, the following Pre-\/\+Commit hooks run\+:
+
+
+\begin{DoxyItemize}
+\item test and documentation checks
+\item tests
+\item lint
+\item commit message validation (see "{}\+Commit Messages"{} below)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9482}{}\doxysection{\texorpdfstring{Commit Messages}{Commit Messages}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9482}
+All commit messages must begin with one of the following prefixes\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily fix\+:}
+\item {\ttfamily feat\+:}
+\item {\ttfamily refactor\+:}
+\item {\ttfamily docs\+:}
+\item {\ttfamily chore\+:}
+\end{DoxyItemize}
+
+The prefix is used to bump the correct segment of the version number during the automatic release.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9483}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9483}
+Run them with {\ttfamily npm test}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9484}{}\doxysection{\texorpdfstring{Lint}{Lint}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9484}
+Run with {\ttfamily npm run lint}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9485}{}\doxysection{\texorpdfstring{Adding a Rule}{Adding a Rule}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9485}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9486}{}\doxysubsection{\texorpdfstring{Source \& Tests}{Source \& Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9486}
+
+\begin{DoxyEnumerate}
+\item Create a file in {\ttfamily tests/rules/assertions} named the {\ttfamily camel\+Case} version of your rule name with the following template\+:
+\begin{DoxyItemize}
+\item {\ttfamily export default \{ invalid\+: \mbox{[}\mbox{]}, valid\+: \mbox{[}\mbox{]} \}}
+\end{DoxyItemize}
+\item Add your test file to {\ttfamily tests/rules/index.\+js}
+\item Create a file in {\ttfamily src/rules} named the {\ttfamily camel\+Case} version of your rule name
+\item Add your rule file to {\ttfamily src/index.\+js}
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9487}{}\doxysubsection{\texorpdfstring{Adding Documentation}{Adding Documentation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-flowtype_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9487}
+
+\begin{DoxyEnumerate}
+\item Create new file in {\ttfamily ./.README/rules/\mbox{[}rule-\/name\mbox{]}.md}.
+\begin{DoxyItemize}
+\item Use ./.README/rules/require-\/valid-\/file-\/annotation.md as a template.
+\item Ensure that rule documentation document includes {\ttfamily \texorpdfstring{$<$}{<}!-\/-\/ assertions space\+After\+Type\+Colon -\/-\/\texorpdfstring{$>$}{>}} declaration.
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Update ./.README/\+README.md to include the new rule.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Run {\ttfamily npm run create-\/readme} to generate the new {\ttfamily README.\+md} (you must be on {\ttfamily master} branch for this command to work)
+\end{DoxyEnumerate}
+
+Note\+: Sections "{}\+The following patterns are considered problems\+:"{} and "{}\+The following patterns are not considered problems\+:"{} are {\bfseries{generated automatically}} using the test cases. 

@@ -1,0 +1,52 @@
+\chapter{Glob To Regular Expression}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e}\index{Glob To Regular Expression@{Glob To Regular Expression}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13262}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13262}%
+ \href{https://travis-ci.org/fitzgen/glob-to-regexp}{\texttt{ }}
+
+Turn a \texorpdfstring{$\ast$}{*}-\/wildcard style glob ({\ttfamily "{}\texorpdfstring{$\ast$}{*}.\+min.\+js"{}}) into a regular expression ({\ttfamily /\texorpdfstring{$^\wedge$}{\string^}.\texorpdfstring{$\ast$}{*}\textbackslash{}.min\textbackslash{}.js\$/})!
+
+To match bash-\/like globs, eg. {\ttfamily ?} for any single-\/character match, {\ttfamily \mbox{[}a-\/z\mbox{]}} for character ranges, and {\ttfamily \{\texorpdfstring{$\ast$}{*}.html, \texorpdfstring{$\ast$}{*}.js\}} for multiple alternatives, call with {\ttfamily \{ extended\+: true \}}.
+
+To obey \href{https://github.com/isaacs/node-glob\#glob-primer}{\texttt{ globstars {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}}} rules set option {\ttfamily \{globstar\+: true\}}. NOTE\+: This changes the behavior of {\ttfamily \texorpdfstring{$\ast$}{*}} when {\ttfamily globstar} is {\ttfamily true} as shown below\+: When {\ttfamily \{globstar\+: true\}}\+: {\ttfamily /foo/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}} will match any string that starts with {\ttfamily /foo/} like {\ttfamily /foo/index.htm}, {\ttfamily /foo/bar/baz.txt}, etc. Also, {\ttfamily /foo/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}.txt} will match any string that starts with {\ttfamily /foo/} and ends with {\ttfamily .txt} like {\ttfamily /foo/bar.txt}, {\ttfamily /foo/bar/baz.txt}, etc. Whereas {\ttfamily /foo/\texorpdfstring{$\ast$}{*}} (single {\ttfamily \texorpdfstring{$\ast$}{*}}, not a globstar) will match strings that start with {\ttfamily /foo/} like {\ttfamily /foo/index.htm}, {\ttfamily /foo/baz.txt} but will not match strings that contain a {\ttfamily /} to the right like {\ttfamily /foo/bar/baz.txt}, {\ttfamily /foo/bar/baz/qux.dat}, etc.
+
+Set flags on the resulting {\ttfamily Reg\+Exp} object by adding the {\ttfamily flags} property to the option object, eg {\ttfamily \{ flags\+: "{}i"{} \}} for ignoring case.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13263}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13263}
+\begin{DoxyVerb}npm install glob-to-regexp
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13264}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13264}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ globToRegExp\ =\ require('glob-\/to-\/regexp');}
+\DoxyCodeLine{var\ re\ =\ globToRegExp("{}p*uck"{});}
+\DoxyCodeLine{re.test("{}pot\ luck"{});\ //\ true}
+\DoxyCodeLine{re.test("{}pluck"{});\ //\ true}
+\DoxyCodeLine{re.test("{}puck"{});\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{re\ =\ globToRegExp("{}*.min.js"{});}
+\DoxyCodeLine{re.test("{}http://example.com/jquery.min.js"{});\ //\ true}
+\DoxyCodeLine{re.test("{}http://example.com/jquery.min.js.map"{});\ //\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{re\ =\ globToRegExp("{}*/www/*.js"{});}
+\DoxyCodeLine{re.test("{}http://example.com/www/app.js"{});\ //\ true}
+\DoxyCodeLine{re.test("{}http://example.com/www/lib/factory-\/proxy-\/model-\/observer.js"{});\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Extended\ globs}
+\DoxyCodeLine{re\ =\ globToRegExp("{}*/www/\{*.js,*.html\}"{},\ \{\ extended:\ true\ \});}
+\DoxyCodeLine{re.test("{}http://example.com/www/app.js"{});\ //\ true}
+\DoxyCodeLine{re.test("{}http://example.com/www/index.html"{});\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13265}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2glob-to-regexp_2_r_e_a_d_m_e_autotoc_md13265}
+Copyright (c) 2013, Nick Fitzgerald
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+
+
+\begin{DoxyItemize}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\end{DoxyItemize}
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}\+AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 

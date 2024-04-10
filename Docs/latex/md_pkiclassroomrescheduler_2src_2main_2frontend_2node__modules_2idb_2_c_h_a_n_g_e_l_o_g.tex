@@ -1,0 +1,87 @@
+\chapter{Breaking changes in 7.x}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g}\index{Breaking changes in 7.x@{Breaking changes in 7.x}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14185}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14185}%
+
+\begin{DoxyItemize}
+\item No longer committing {\ttfamily build} to Git\+Hub.
+\item Renamed files in dist.
+\item Added conditional exports.
+\item iife build is now a umd.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14186}{}\doxysection{\texorpdfstring{Breaking changes in 6.\+x}{Breaking changes in 6.\+x}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14186}
+Some Type\+Script definitions changed so write-\/methods are missing from \textquotesingle{}readonly\textquotesingle{} transactions. This might be backwards-\/incompatible with code that performs a lot of type wrangling.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14187}{}\doxysection{\texorpdfstring{Breaking changes in 5.\+x}{Breaking changes in 5.\+x}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14187}
+I moved some files around, so I bumped the major version for safety.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14188}{}\doxysection{\texorpdfstring{Changes in 4.\+x}{Changes in 4.\+x}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14188}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14189}{}\doxysubsection{\texorpdfstring{Breaking changes}{Breaking changes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14189}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14190}{}\doxysubsubsection{\texorpdfstring{Opening a database}{Opening a database}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14190}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Old\ 3.x\ way}
+\DoxyCodeLine{import\ \{\ openDb\ \}\ from\ 'idb';}
+\DoxyCodeLine{}
+\DoxyCodeLine{openDb('db-\/name',\ 1,\ (upgradeDb)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log(upgradeDb.oldVersion);}
+\DoxyCodeLine{\ \ console.log(upgradeDb.transaction);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ New\ 4.x\ way}
+\DoxyCodeLine{import\ \{\ openDB\ \}\ from\ 'idb';}
+\DoxyCodeLine{}
+\DoxyCodeLine{openDB('db-\/name',\ 1,\ \{}
+\DoxyCodeLine{\ \ upgrade(db,\ oldVersion,\ newVersion,\ transaction)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(oldVersion);}
+\DoxyCodeLine{\ \ \ \ console.log(transaction);}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily open\+Db} and {\ttfamily delete\+Db} were renamed {\ttfamily open\+DB} and {\ttfamily delete\+DB} to be more consistent with DOM naming.
+\item The signature of {\ttfamily open\+DB} changed. The third parameter used to be the upgrade callback, it\textquotesingle{}s now an option object which can include an {\ttfamily upgrade} method.
+\item There\textquotesingle{}s no {\ttfamily Upgrade\+DB} anymore. You get the same database {\ttfamily open\+DB} resolves with. Versions numbers and the upgrade transaction are included as additional parameters.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14191}{}\doxysubsubsection{\texorpdfstring{Promises \& throwing}{Promises \& throwing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14191}
+The library turns all {\ttfamily IDBRequest} objects into promises, but it doesn\textquotesingle{}t know in advance which methods may return promises.
+
+As a result, methods such as {\ttfamily store.\+put} may throw instead of returning a promise.
+
+If you\textquotesingle{}re using async functions, there isn\textquotesingle{}t a difference.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14192}{}\doxysubsubsection{\texorpdfstring{Other breaking changes}{Other breaking changes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14192}
+
+\begin{DoxyItemize}
+\item {\ttfamily iterate\+Cursor} and {\ttfamily iterate\+Key\+Cursor} have been removed. These existed to work around browsers microtask issues which have since been fixed. Async iterators provide similar functionality.
+\item All pseudo-\/private properties (those beginning with an underscore) are gone. Use {\ttfamily unwrap()} to get access to bare IDB objects.
+\item {\ttfamily transaction.\+complete} was renamed to {\ttfamily transaction.\+done} to be shorter and more consistent with the DOM.
+\item {\ttfamily get\+All} is no longer polyfilled on indexes and stores.
+\item The library no longer officially supports IE11.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14193}{}\doxysubsection{\texorpdfstring{New stuff}{New stuff}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14193}
+
+\begin{DoxyItemize}
+\item The library now uses proxies, so objects will include everything from their plain-\/\+IDB equivalents.
+\item Type\+Script support has massively improved, including the ability to provide types for your database.
+\item Optional support for async iterators, which makes handling cursors much easier.
+\item Database objects now have shortcuts for single actions (like {\ttfamily get}, {\ttfamily put}, {\ttfamily add}, {\ttfamily get\+All} etc etc).
+\item For transactions that cover a single store {\ttfamily transaction.\+store} is a reference to that store.
+\item {\ttfamily open\+DB} lets you add callbacks for when your database is blocking another connection, or when you\textquotesingle{}re blocked by another connection.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14194}{}\doxysection{\texorpdfstring{Changes in 3.\+x}{Changes in 3.\+x}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2idb_2_c_h_a_n_g_e_l_o_g_autotoc_md14194}
+The library became a module.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Old\ 2.x\ way:}
+\DoxyCodeLine{import\ idb\ from\ 'idb';}
+\DoxyCodeLine{idb.open(…);}
+\DoxyCodeLine{idb.delete(…);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ 3.x\ way:}
+\DoxyCodeLine{import\ \{\ openDb,\ deleteDb\ \}\ from\ 'idb';}
+\DoxyCodeLine{openDb(…);}
+\DoxyCodeLine{deleteDb(…);}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,88 @@
+\chapter{Post\+CSS Opacity Percentage}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e}\index{PostCSS Opacity Percentage@{PostCSS Opacity Percentage}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19228}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19228}%
+ \href{https://github.com/mrcgrtz/postcss-opacity-percentage/actions/workflows/test.yml}{\texttt{ }} \href{https://coveralls.io/github/mrcgrtz/postcss-opacity-percentage?branch=main}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=postcss-opacity-percentage}{\texttt{ }} \href{https://github.com/sindresorhus/xo}{\texttt{ }} \href{https://github.com/mrcgrtz/postcss-opacity-percentage/blob/main/LICENSE.md}{\texttt{ }}
+
+\href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin to transform \href{https://www.w3.org/TR/css-color-4/\#transparency}{\texttt{ percentage-\/based opacity values}} to more compatible floating-\/point values.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19229}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19229}
+Using \href{https://www.npmjs.com/get-npm}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ postcss\ postcss-\/opacity-\/percentage}
+
+\end{DoxyCode}
+
+
+Using \href{https://yarnpkg.com/}{\texttt{ yarn}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/-\/dev\ postcss\ postcss-\/opacity-\/percentage}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19230}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19230}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Input\ */}
+\DoxyCodeLine{.foo\ \{}
+\DoxyCodeLine{\ \ opacity:\ 45\%;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Output\ */}
+\DoxyCodeLine{.foo\ \{}
+\DoxyCodeLine{\ \ opacity:\ 0.45;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19231}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19231}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ require('postcss-\/opacity-\/percentage'),}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+See \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} documentation for examples for your environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19232}{}\doxysubsection{\texorpdfstring{{\ttfamily postcss-\/preset-\/env}}{{\ttfamily postcss-\/preset-\/env}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19232}
+If you are using \href{https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/CHANGELOG.md\#730-january-31-2022}{\texttt{ {\ttfamily postcss-\/preset-\/env@\texorpdfstring{$>$}{>}=7.\+3.\+0}}}, you already have this plugin installed via this package.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19233}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19233}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19234}{}\doxysubsection{\texorpdfstring{{\ttfamily preserve}}{{\ttfamily preserve}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19234}
+The {\ttfamily preserve} option determines whether the original percentage value is preserved. By default, it is not preserved.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Keep\ the\ original\ notation}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ require('postcss-\/opacity-\/percentage')(\{preserve:\ true\}),}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Input\ */}
+\DoxyCodeLine{.foo\ \{}
+\DoxyCodeLine{\ \ opacity:\ 45\%;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Output\ */}
+\DoxyCodeLine{.foo\ \{}
+\DoxyCodeLine{\ \ opacity:\ 0.45;}
+\DoxyCodeLine{\ \ opacity:\ 45\%;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19235}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-opacity-percentage_2_r_e_a_d_m_e_autotoc_md19235}
+MIT © \href{https://marcgoertz.de/}{\texttt{ Marc Görtz}} 

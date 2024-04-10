@@ -1,0 +1,126 @@
+\chapter{negotiator}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e}\index{negotiator@{negotiator}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17037}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17037}%
+ \href{https://npmjs.org/package/negotiator}{\texttt{ }} \href{https://npmjs.org/package/negotiator}{\texttt{ }} \href{https://nodejs.org/en/download/}{\texttt{ }} \href{https://github.com/jshttp/negotiator/actions/workflows/ci.yml}{\texttt{ }} \href{https://coveralls.io/r/jshttp/negotiator?branch=master}{\texttt{ }}
+
+An HTTP content negotiator for Node.\+js\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17038}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17038}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ negotiator}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17039}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17039}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Negotiator\ =\ require('negotiator')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17040}{}\doxysubsection{\texorpdfstring{Accept Negotiation}{Accept Negotiation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17040}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{availableMediaTypes\ =\ ['text/html',\ 'text/plain',\ 'application/json']}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ The\ negotiator\ constructor\ receives\ a\ request\ object}
+\DoxyCodeLine{negotiator\ =\ new\ Negotiator(request)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Let's\ say\ Accept\ header\ is\ 'text/html,\ application/*;q=0.2,\ image/jpeg;q=0.8'}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.mediaTypes()}
+\DoxyCodeLine{//\ -\/>\ ['text/html',\ 'image/jpeg',\ 'application/*']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.mediaTypes(availableMediaTypes)}
+\DoxyCodeLine{//\ -\/>\ ['text/html',\ 'application/json']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.mediaType(availableMediaTypes)}
+\DoxyCodeLine{//\ -\/>\ 'text/html'}
+
+\end{DoxyCode}
+
+
+You can check a working example at {\ttfamily examples/accept.\+js}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17041}{}\doxysubsubsection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17041}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17042}{}\doxyparagraph{\texorpdfstring{media\+Type()}{media\+Type()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17042}
+Returns the most preferred media type from the client.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17043}{}\doxyparagraph{\texorpdfstring{media\+Type(available\+Media\+Type)}{media\+Type(available\+Media\+Type)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17043}
+Returns the most preferred media type from a list of available media types.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17044}{}\doxyparagraph{\texorpdfstring{media\+Types()}{media\+Types()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17044}
+Returns an array of preferred media types ordered by the client preference.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17045}{}\doxyparagraph{\texorpdfstring{media\+Types(available\+Media\+Types)}{media\+Types(available\+Media\+Types)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17045}
+Returns an array of preferred media types ordered by priority from a list of available media types.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17046}{}\doxysubsection{\texorpdfstring{Accept-\/\+Language Negotiation}{Accept-\/\+Language Negotiation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17046}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{negotiator\ =\ new\ Negotiator(request)}
+\DoxyCodeLine{}
+\DoxyCodeLine{availableLanguages\ =\ ['en',\ 'es',\ 'fr']}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Let's\ say\ Accept-\/Language\ header\ is\ 'en;q=0.8,\ es,\ pt'}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.languages()}
+\DoxyCodeLine{//\ -\/>\ ['es',\ 'pt',\ 'en']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.languages(availableLanguages)}
+\DoxyCodeLine{//\ -\/>\ ['es',\ 'en']}
+\DoxyCodeLine{}
+\DoxyCodeLine{language\ =\ negotiator.language(availableLanguages)}
+\DoxyCodeLine{//\ -\/>\ 'es'}
+
+\end{DoxyCode}
+
+
+You can check a working example at {\ttfamily examples/language.\+js}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17047}{}\doxysubsubsection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17047}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17048}{}\doxyparagraph{\texorpdfstring{language()}{language()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17048}
+Returns the most preferred language from the client.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17049}{}\doxyparagraph{\texorpdfstring{language(available\+Languages)}{language(available\+Languages)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17049}
+Returns the most preferred language from a list of available languages.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17050}{}\doxyparagraph{\texorpdfstring{languages()}{languages()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17050}
+Returns an array of preferred languages ordered by the client preference.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17051}{}\doxyparagraph{\texorpdfstring{languages(available\+Languages)}{languages(available\+Languages)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17051}
+Returns an array of preferred languages ordered by priority from a list of available languages.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17052}{}\doxysubsection{\texorpdfstring{Accept-\/\+Charset Negotiation}{Accept-\/\+Charset Negotiation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17052}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{availableCharsets\ =\ ['utf-\/8',\ 'iso-\/8859-\/1',\ 'iso-\/8859-\/5']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator\ =\ new\ Negotiator(request)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Let's\ say\ Accept-\/Charset\ header\ is\ 'utf-\/8,\ iso-\/8859-\/1;q=0.8,\ utf-\/7;q=0.2'}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.charsets()}
+\DoxyCodeLine{//\ -\/>\ ['utf-\/8',\ 'iso-\/8859-\/1',\ 'utf-\/7']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.charsets(availableCharsets)}
+\DoxyCodeLine{//\ -\/>\ ['utf-\/8',\ 'iso-\/8859-\/1']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.charset(availableCharsets)}
+\DoxyCodeLine{//\ -\/>\ 'utf-\/8'}
+
+\end{DoxyCode}
+
+
+You can check a working example at {\ttfamily examples/charset.\+js}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17053}{}\doxysubsubsection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17053}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17054}{}\doxyparagraph{\texorpdfstring{charset()}{charset()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17054}
+Returns the most preferred charset from the client.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17055}{}\doxyparagraph{\texorpdfstring{charset(available\+Charsets)}{charset(available\+Charsets)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17055}
+Returns the most preferred charset from a list of available charsets.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17056}{}\doxyparagraph{\texorpdfstring{charsets()}{charsets()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17056}
+Returns an array of preferred charsets ordered by the client preference.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17057}{}\doxyparagraph{\texorpdfstring{charsets(available\+Charsets)}{charsets(available\+Charsets)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17057}
+Returns an array of preferred charsets ordered by priority from a list of available charsets.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17058}{}\doxysubsection{\texorpdfstring{Accept-\/\+Encoding Negotiation}{Accept-\/\+Encoding Negotiation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17058}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{availableEncodings\ =\ ['identity',\ 'gzip']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator\ =\ new\ Negotiator(request)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Let's\ say\ Accept-\/Encoding\ header\ is\ 'gzip,\ compress;q=0.2,\ identity;q=0.5'}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.encodings()}
+\DoxyCodeLine{//\ -\/>\ ['gzip',\ 'identity',\ 'compress']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.encodings(availableEncodings)}
+\DoxyCodeLine{//\ -\/>\ ['gzip',\ 'identity']}
+\DoxyCodeLine{}
+\DoxyCodeLine{negotiator.encoding(availableEncodings)}
+\DoxyCodeLine{//\ -\/>\ 'gzip'}
+
+\end{DoxyCode}
+
+
+You can check a working example at {\ttfamily examples/encoding.\+js}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17059}{}\doxysubsubsection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17059}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17060}{}\doxyparagraph{\texorpdfstring{encoding()}{encoding()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17060}
+Returns the most preferred encoding from the client.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17061}{}\doxyparagraph{\texorpdfstring{encoding(available\+Encodings)}{encoding(available\+Encodings)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17061}
+Returns the most preferred encoding from a list of available encodings.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17062}{}\doxyparagraph{\texorpdfstring{encodings()}{encodings()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17062}
+Returns an array of preferred encodings ordered by the client preference.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17063}{}\doxyparagraph{\texorpdfstring{encodings(available\+Encodings)}{encodings(available\+Encodings)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17063}
+Returns an array of preferred encodings ordered by priority from a list of available encodings.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17064}{}\doxysection{\texorpdfstring{See Also}{See Also}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17064}
+The \href{https://npmjs.org/package/accepts\#readme}{\texttt{ accepts}} module builds on this module and provides an alternative interface, mime type validation, and more.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17065}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2negotiator_2_r_e_a_d_m_e_autotoc_md17065}
+\mbox{[}MIT\mbox{]}(LICENSE) 

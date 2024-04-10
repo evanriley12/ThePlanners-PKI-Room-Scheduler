@@ -1,0 +1,99 @@
+\chapter{pify \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/pify"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/pify.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme}\index{pify $<$a href="{}https://travis-\/ci.org/sindresorhus/pify"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/pify.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{pify $<$a href=""https://travis-\/ci.org/sindresorhus/pify"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/pify.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18166}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18166}%
+ \begin{quote}
+Promisify a callback-\/style function \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18167}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18167}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ pify}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18168}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18168}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fs\ =\ require('fs');}
+\DoxyCodeLine{const\ pify\ =\ require('pify');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ promisify\ a\ single\ function}
+\DoxyCodeLine{}
+\DoxyCodeLine{pify(fs.readFile)('package.json',\ 'utf8').then(data\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(JSON.parse(data).name);}
+\DoxyCodeLine{\ \ \ \ //=>\ 'pify'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or\ promisify\ all\ methods\ in\ a\ module}
+\DoxyCodeLine{}
+\DoxyCodeLine{pify(fs).readFile('package.json',\ 'utf8').then(data\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(JSON.parse(data).name);}
+\DoxyCodeLine{\ \ \ \ //=>\ 'pify'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18169}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18169}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18170}{}\doxysubsection{\texorpdfstring{pify(input, \mbox{[}promise\+Module\mbox{]}, \mbox{[}options\mbox{]})}{pify(input, \mbox{[}promise\+Module\mbox{]}, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18170}
+Returns a promise wrapped version of the supplied function or module.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18171}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18171}
+Type\+: {\ttfamily function}, {\ttfamily object}
+
+Callback-\/style function or module whose methods you want to promisify.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18172}{}\doxysubsubsection{\texorpdfstring{promise\+Module}{promise\+Module}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18172}
+Type\+: {\ttfamily function}
+
+Custom promise module to use instead of the native one.
+
+Check out \href{https://github.com/floatdrop/pinkie-promise}{\texttt{ {\ttfamily pinkie-\/promise}}} if you need a tiny promise polyfill.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18173}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18173}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18174}{}\doxyparagraph{\texorpdfstring{multi\+Args}{multi\+Args}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18174}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+By default, the promisified function will only return the second argument from the callback, which works fine for most APIs. This option can be useful for modules like {\ttfamily request} that return multiple arguments. Turning this on will make it return an array of all arguments from the callback, excluding the error argument, instead of just the second argument.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ request\ =\ require('request');}
+\DoxyCodeLine{const\ pify\ =\ require('pify');}
+\DoxyCodeLine{}
+\DoxyCodeLine{pify(request,\ \{multiArgs:\ true\})('https://sindresorhus.com').then(result\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ const\ [httpResponse,\ body]\ =\ result;}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18175}{}\doxyparagraph{\texorpdfstring{include}{include}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18175}
+Type\+: {\ttfamily array} of ({\ttfamily string}\texorpdfstring{$\vert$}{|}{\ttfamily regex})
+
+Methods in a module to promisify. Remaining methods will be left untouched.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18176}{}\doxyparagraph{\texorpdfstring{exclude}{exclude}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18176}
+Type\+: {\ttfamily array} of ({\ttfamily string}\texorpdfstring{$\vert$}{|}{\ttfamily regex}) ~\newline
+ Default\+: {\ttfamily \mbox{[}/.+Sync\$/\mbox{]}}
+
+Methods in a module {\bfseries{not}} to promisify. Methods with names ending with `\textquotesingle{}Sync'\`{} are excluded by default.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18177}{}\doxyparagraph{\texorpdfstring{exclude\+Main}{exclude\+Main}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18177}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+By default, if given module is a function itself, this function will be promisified. Turn this option on if you want to promisify only methods of the module.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pify\ =\ require('pify');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ fn()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ true;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{fn.method\ =\ (data,\ callback)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ setImmediate(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(data,\ null);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ promisify\ methods\ but\ not\ fn()}
+\DoxyCodeLine{const\ promiseFn\ =\ pify(fn,\ \{excludeMain:\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (promiseFn())\ \{}
+\DoxyCodeLine{\ \ \ \ promiseFn.method('hi').then(data\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(data);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18178}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pify_2readme_autotoc_md18178}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

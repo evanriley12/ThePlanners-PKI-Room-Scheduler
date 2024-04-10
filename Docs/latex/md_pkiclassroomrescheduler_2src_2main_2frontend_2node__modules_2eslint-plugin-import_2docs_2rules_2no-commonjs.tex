@@ -1,0 +1,91 @@
+\chapter{import/no-\/commonjs}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs}\index{import/no-\/commonjs@{import/no-\/commonjs}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9915}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9915}%
+
+
+Reports {\ttfamily require(\mbox{[}string\mbox{]})} function calls. Will not report if \texorpdfstring{$>$}{>}1 argument, or single argument is not a literal string.
+
+Reports {\ttfamily module.\+exports} or {\ttfamily exports.\texorpdfstring{$\ast$}{*}}, also.
+
+Intended for temporary use when migrating to pure ES6 modules.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9916}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9916}
+This will be reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ mod\ =\ require('./mod')}
+\DoxyCodeLine{\ \ ,\ common\ =\ require('./common')}
+\DoxyCodeLine{\ \ ,\ fs\ =\ require('fs')}
+\DoxyCodeLine{\ \ ,\ whateverModule\ =\ require('./not-\/found')}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{\ a:\ "{}b"{}\ \}}
+\DoxyCodeLine{exports.c\ =\ "{}d"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9917}{}\doxysubsection{\texorpdfstring{Allow require}{Allow require}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9917}
+If {\ttfamily allow\+Require} option is set to {\ttfamily true}, {\ttfamily require} calls are valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*eslint\ no-\/commonjs:\ [2,\ \{\ allowRequire:\ true\ \}]*/}
+\DoxyCodeLine{var\ mod\ =\ require('./mod');}
+
+\end{DoxyCode}
+
+
+but {\ttfamily module.\+exports} is reported as usual.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9918}{}\doxysubsection{\texorpdfstring{Allow conditional require}{Allow conditional require}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9918}
+By default, conditional requires are allowed\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ b\ \&\&\ require("{}c"{})}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (typeof\ window\ !==\ "{}undefined"{})\ \{}
+\DoxyCodeLine{\ \ require('that-\/ugly-\/thing');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ fs\ =\ null;}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ fs\ =\ require("{}fs"{})}
+\DoxyCodeLine{\}\ catch\ (error)\ \{\}}
+
+\end{DoxyCode}
+
+
+If the {\ttfamily allow\+Conditional\+Require} option is set to {\ttfamily false}, they will be reported.
+
+If you don\textquotesingle{}t rely on synchronous module loading, check out \href{https://github.com/airbnb/babel-plugin-dynamic-import-node}{\texttt{ dynamic import}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9919}{}\doxysubsection{\texorpdfstring{Allow primitive modules}{Allow primitive modules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9919}
+If {\ttfamily allow\+Primitive\+Modules} option is set to {\ttfamily true}, the following is valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*eslint\ no-\/commonjs:\ [2,\ \{\ allowPrimitiveModules:\ true\ \}]*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ "{}foo"{}}
+\DoxyCodeLine{module.exports\ =\ function\ rule(context)\ \{\ return\ \{\ /*\ ...\ */\ \}\ \}}
+
+\end{DoxyCode}
+
+
+but this is still reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*eslint\ no-\/commonjs:\ [2,\ \{\ allowPrimitiveModules:\ true\ \}]*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{\ x:\ "{}y"{}\ \}}
+\DoxyCodeLine{exports.z\ =\ function\ boop()\ \{\ /*\ ...\ */\ \}}
+
+\end{DoxyCode}
+
+
+This is useful for things like ESLint rule modules, which must export a function as the module.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9920}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9920}
+If you don\textquotesingle{}t mind mixing module systems (sometimes this is useful), you probably don\textquotesingle{}t want this rule.
+
+It is also fairly noisy if you have a larger codebase that is being transitioned from Common\+JS to ES6 modules.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9921}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9921}
+Special thanks to @xjamundx for donating the module.\+exports and exports.\texorpdfstring{$\ast$}{*} bits.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9922}{}\doxysection{\texorpdfstring{Further Reading}{Further Reading}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-commonjs_autotoc_md9922}
+
+\begin{DoxyItemize}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-amd}{{\ttfamily no-\/amd}}{0}\+: report on AMD {\ttfamily require}, {\ttfamily define}
+\item Source\+: \href{https://github.com/xjamundx/eslint-plugin-modules}{\texttt{ https\+://github.\+com/xjamundx/eslint-\/plugin-\/modules}} 
+\end{DoxyItemize}

@@ -1,0 +1,295 @@
+\chapter{websocket-\/extensions \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/faye/websocket-\/extensions-\/node"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/faye/websocket-\/extensions-\/node.\+svg"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e}\index{websocket-\/extensions $<$a href="{}http://travis-\/ci.org/faye/websocket-\/extensions-\/node"{} $>$$<$img src="{}https://secure.travis-\/ci.org/faye/websocket-\/extensions-\/node.svg"{} alt="{}Build status"{}/$>$$<$/a$>$@{websocket-\/extensions $<$a href=""http://travis-\/ci.org/faye/websocket-\/extensions-\/node"" $>$$<$img src=""https://secure.travis-\/ci.org/faye/websocket-\/extensions-\/node.svg"" alt=""Build status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26859}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26859}%
+ A minimal framework that supports the implementation of Web\+Socket extensions in a way that\textquotesingle{}s decoupled from the main protocol. This library aims to allow a Web\+Socket extension to be written and used with any protocol library, by defining abstract representations of frames and messages that allow modules to co-\/operate.
+
+{\ttfamily websocket-\/extensions} provides a container for registering extension plugins, and provides all the functions required to negotiate which extensions to use during a session via the {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} header. By implementing the APIs defined in this document, an extension may be used by any Web\+Socket library based on this framework.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26860}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26860}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ websocket-\/extensions}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26861}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26861}
+There are two main audiences for this library\+: authors implementing the Web\+Socket protocol, and authors implementing extensions. End users of a Web\+Socket library or an extension should be able to use any extension by passing it as an argument to their chosen protocol library, without needing to know how either of them work, or how the {\ttfamily websocket-\/extensions} framework operates.
+
+The library is designed with the aim that any protocol implementation and any extension can be used together, so long as they support the same abstract representation of frames and messages.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26862}{}\doxysubsection{\texorpdfstring{Data types}{Data types}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26862}
+The APIs provided by the framework rely on two data types; extensions will expect to be given data and to be able to return data in these formats\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26863}{}\doxysubsubsection{\texorpdfstring{{\itshape Frame}}{{\itshape Frame}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26863}
+{\itshape Frame} is a structure representing a single Web\+Socket frame of any type. Frames are simple objects that must have at least the following properties, which represent the data encoded in the frame\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-2}
+\endhead
+{\ttfamily final}   &{\ttfamily true} if the {\ttfamily FIN} bit is set, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily rsv1}   &{\ttfamily true} if the {\ttfamily RSV1} bit is set, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily rsv2}   &{\ttfamily true} if the {\ttfamily RSV2} bit is set, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily rsv3}   &{\ttfamily true} if the {\ttfamily RSV3} bit is set, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily opcode}   &the numeric opcode ({\ttfamily 0}, {\ttfamily 1}, {\ttfamily 2}, {\ttfamily 8}, {\ttfamily 9}, or {\ttfamily 10}) of the frame    \\\cline{1-2}
+{\ttfamily masked}   &{\ttfamily true} if the {\ttfamily MASK} bit is set, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily masking\+Key}   &a 4-\/byte {\ttfamily Buffer} if {\ttfamily masked} is {\ttfamily true}, otherwise {\ttfamily null}    \\\cline{1-2}
+{\ttfamily payload}   &a {\ttfamily Buffer} containing the (unmasked) application data   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26864}{}\doxysubsubsection{\texorpdfstring{{\itshape Message}}{{\itshape Message}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26864}
+A {\itshape Message} represents a complete application message, which can be formed from text, binary and continuation frames. It has the following properties\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-2}
+\endhead
+{\ttfamily rsv1}   &{\ttfamily true} if the first frame of the message has the {\ttfamily RSV1} bit set    \\\cline{1-2}
+{\ttfamily rsv2}   &{\ttfamily true} if the first frame of the message has the {\ttfamily RSV2} bit set    \\\cline{1-2}
+{\ttfamily rsv3}   &{\ttfamily true} if the first frame of the message has the {\ttfamily RSV3} bit set    \\\cline{1-2}
+{\ttfamily opcode}   &the numeric opcode ({\ttfamily 1} or {\ttfamily 2}) of the first frame of the message    \\\cline{1-2}
+{\ttfamily data}   &the concatenation of all the frame payloads in the message   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26865}{}\doxysubsection{\texorpdfstring{For driver authors}{For driver authors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26865}
+A driver author is someone implementing the Web\+Socket protocol proper, and who wishes end users to be able to use Web\+Socket extensions with their library.
+
+At the start of a Web\+Socket session, on both the client and the server side, they should begin by creating an extension container and adding whichever extensions they want to use.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Extensions\ =\ require('websocket-\/extensions'),}
+\DoxyCodeLine{\ \ \ \ deflate\ \ \ \ =\ require('permessage-\/deflate');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ exts\ =\ new\ Extensions();}
+\DoxyCodeLine{exts.add(deflate);}
+
+\end{DoxyCode}
+
+
+In the following examples, {\ttfamily exts} refers to this {\ttfamily Extensions} instance.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26866}{}\doxysubsubsection{\texorpdfstring{Client sessions}{Client sessions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26866}
+Clients will use the methods {\ttfamily generate\+Offer()} and {\ttfamily activate(header)}.
+
+As part of the handshake process, the client must send a {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} header to advertise that it supports the registered extensions. This header should be generated using\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.headers['sec-\/websocket-\/extensions']\ =\ exts.generateOffer();}
+
+\end{DoxyCode}
+
+
+This returns a string, for example {\ttfamily "{}permessage-\/deflate; client\+\_\+max\+\_\+window\+\_\+bits"{}}, that represents all the extensions the client is offering to use, and their parameters. This string may contain multiple offers for the same extension.
+
+When the client receives the handshake response from the server, it should pass the incoming {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} header in to {\ttfamily exts} to activate the extensions the server has accepted\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exts.activate(response.headers['sec-\/websocket-\/extensions']);}
+
+\end{DoxyCode}
+
+
+If the server has sent any extension responses that the client does not recognize, or are in conflict with one another for use of RSV bits, or that use invalid parameters for the named extensions, then {\ttfamily exts.\+activate()} will {\ttfamily throw}. In this event, the client driver should fail the connection with closing code {\ttfamily 1010}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26867}{}\doxysubsubsection{\texorpdfstring{Server sessions}{Server sessions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26867}
+Servers will use the method {\ttfamily generate\+Response(header)}.
+
+A server session needs to generate a {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} header to send in its handshake response\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ clientOffer\ =\ request.headers['sec-\/websocket-\/extensions'],}
+\DoxyCodeLine{\ \ \ \ extResponse\ =\ exts.generateResponse(clientOffer);}
+\DoxyCodeLine{}
+\DoxyCodeLine{response.headers['sec-\/websocket-\/extensions']\ =\ extResponse;}
+
+\end{DoxyCode}
+
+
+Calling {\ttfamily exts.\+generate\+Response(header)} activates those extensions the client has asked to use, if they are registered, asks each extension for a set of response parameters, and returns a string containing the response parameters for all accepted extensions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26868}{}\doxysubsubsection{\texorpdfstring{In both directions}{In both directions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26868}
+Both clients and servers will use the methods {\ttfamily valid\+Frame\+Rsv(frame)}, {\ttfamily process\+Incoming\+Message(message)} and {\ttfamily process\+Outgoing\+Message(message)}.
+
+The Web\+Socket protocol requires that frames do not have any of the {\ttfamily RSV} bits set unless there is an extension in use that allows otherwise. When processing an incoming frame, sessions should pass a {\itshape Frame} object to\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exts.validFrameRsv(frame)}
+
+\end{DoxyCode}
+
+
+If this method returns {\ttfamily false}, the session should fail the Web\+Socket connection with closing code {\ttfamily 1002}.
+
+To pass incoming messages through the extension stack, a session should construct a {\itshape Message} object according to the above datatype definitions, and call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exts.processIncomingMessage(message,\ function(error,\ msg)\ \{}
+\DoxyCodeLine{\ \ //\ hand\ the\ message\ off\ to\ the\ application}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If any extensions fail to process the message, then the callback will yield an error and the session should fail the Web\+Socket connection with closing code {\ttfamily 1010}. If {\ttfamily error} is {\ttfamily null}, then {\ttfamily msg} should be passed on to the application.
+
+To pass outgoing messages through the extension stack, a session should construct a {\itshape Message} as before, and call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exts.processOutgoingMessage(message,\ function(error,\ msg)\ \{}
+\DoxyCodeLine{\ \ //\ write\ message\ to\ the\ transport}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If any extensions fail to process the message, then the callback will yield an error and the session should fail the Web\+Socket connection with closing code {\ttfamily 1010}. If {\ttfamily error} is {\ttfamily null}, then {\ttfamily message} should be converted into frames (with the message\textquotesingle{}s {\ttfamily rsv1}, {\ttfamily rsv2}, {\ttfamily rsv3} and {\ttfamily opcode} set on the first frame) and written to the transport.
+
+At the end of the Web\+Socket session (either when the protocol is explicitly ended or the transport connection disconnects), the driver should call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{exts.close(function()\ \{\})}
+
+\end{DoxyCode}
+
+
+The callback is invoked when all extensions have finished processing any messages in the pipeline and it\textquotesingle{}s safe to close the socket.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26869}{}\doxysubsection{\texorpdfstring{For extension authors}{For extension authors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26869}
+An extension author is someone implementing an extension that transforms Web\+Socket messages passing between the client and server. They would like to implement their extension once and have it work with any protocol library.
+
+Extension authors will not install {\ttfamily websocket-\/extensions} or call it directly. Instead, they should implement the following API to allow their extension to plug into the {\ttfamily websocket-\/extensions} framework.
+
+An {\ttfamily Extension} is any object that has the following properties\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ property   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ description    }\\\cline{1-2}
+\endhead
+{\ttfamily name}   &a string containing the name of the extension as used in negotiation headers    \\\cline{1-2}
+{\ttfamily type}   &a string, must be {\ttfamily "{}permessage"{}}    \\\cline{1-2}
+{\ttfamily rsv1}   &either {\ttfamily true} if the extension uses the RSV1 bit, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily rsv2}   &either {\ttfamily true} if the extension uses the RSV2 bit, {\ttfamily false} otherwise    \\\cline{1-2}
+{\ttfamily rsv3}   &either {\ttfamily true} if the extension uses the RSV3 bit, {\ttfamily false} otherwise   \\\cline{1-2}
+\end{longtabu}
+
+
+It must also implement the following methods\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ext.createClientSession()}
+
+\end{DoxyCode}
+
+
+This returns a {\itshape Client\+Session}, whose interface is defined below.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ext.createServerSession(offers)}
+
+\end{DoxyCode}
+
+
+This takes an array of offer params and returns a {\itshape Server\+Session}, whose interface is defined below. For example, if the client handshake contains the offer header\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Sec-\/WebSocket-\/Extensions:\ permessage-\/deflate;\ server\_no\_context\_takeover;\ server\_max\_window\_bits=8,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ permessage-\/deflate;\ server\_max\_window\_bits=15}
+
+\end{DoxyCode}
+
+
+then the {\ttfamily permessage-\/deflate} extension will receive the call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ext.createServerSession([}
+\DoxyCodeLine{\ \ \{\ server\_no\_context\_takeover:\ true,\ server\_max\_window\_bits:\ 8\ \},}
+\DoxyCodeLine{\ \ \{\ server\_max\_window\_bits:\ 15\ \}}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+The extension must decide which set of parameters it wants to accept, if any, and return a {\itshape Server\+Session} if it wants to accept the parameters and {\ttfamily null} otherwise.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26870}{}\doxysubsubsection{\texorpdfstring{{\itshape Client\+Session}}{{\itshape Client\+Session}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26870}
+A {\itshape Client\+Session} is the type returned by {\ttfamily ext.\+create\+Client\+Session()}. It must implement the following methods, as well as the {\itshape Session} API listed below.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{clientSession.generateOffer()}
+\DoxyCodeLine{//\ e.g.\ \ -\/>\ [}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ \ \ \{\ server\_no\_context\_takeover:\ true,\ server\_max\_window\_bits:\ 8\ \},}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ \ \ \{\ server\_max\_window\_bits:\ 15\ \}}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ ]}
+
+\end{DoxyCode}
+
+
+This must return a set of parameters to include in the client\textquotesingle{}s {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} offer header. If the session wants to offer multiple configurations, it can return an array of sets of parameters as shown above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{clientSession.activate(params)\ //\ -\/>\ true}
+
+\end{DoxyCode}
+
+
+This must take a single set of parameters from the server\textquotesingle{}s handshake response and use them to configure the client session. If the client accepts the given parameters, then this method must return {\ttfamily true}. If it returns any other value, the framework will interpret this as the client rejecting the response, and will {\ttfamily throw}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26871}{}\doxysubsubsection{\texorpdfstring{{\itshape Server\+Session}}{{\itshape Server\+Session}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26871}
+A {\itshape Server\+Session} is the type returned by {\ttfamily ext.\+create\+Server\+Session(offers)}. It must implement the following methods, as well as the {\itshape Session} API listed below.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serverSession.generateResponse()}
+\DoxyCodeLine{//\ e.g.\ \ -\/>\ \{\ server\_max\_window\_bits:\ 8\ \}}
+
+\end{DoxyCode}
+
+
+This returns the set of parameters the server session wants to send in its {\ttfamily Sec-\/\+Web\+Socket-\/\+Extensions} response header. Only one set of parameters is returned to the client per extension. Server sessions that would confict on their use of RSV bits are not activated.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26872}{}\doxysubsubsection{\texorpdfstring{{\itshape Session}}{{\itshape Session}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26872}
+The {\itshape Session} API must be implemented by both client and server sessions. It contains two methods, {\ttfamily process\+Incoming\+Message(message)} and {\ttfamily process\+Outgoing\+Message(message)}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{session.processIncomingMessage(message,\ function(error,\ msg)\ \{\ ...\ \})}
+
+\end{DoxyCode}
+
+
+The session must implement this method to take an incoming {\itshape Message} as defined above, transform it in any way it needs, then return it via the callback. If there is an error processing the message, this method should yield an error as the first argument.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{session.processOutgoingMessage(message,\ function(error,\ msg)\ \{\ ...\ \})}
+
+\end{DoxyCode}
+
+
+The session must implement this method to take an outgoing {\itshape Message} as defined above, transform it in any way it needs, then return it via the callback. If there is an error processing the message, this method should yield an error as the first argument.
+
+Note that both {\ttfamily process\+Incoming\+Message()} and {\ttfamily process\+Outgoing\+Message()} can perform their logic asynchronously, are allowed to process multiple messages concurrently, and are not required to complete working on messages in the same order the messages arrive. {\ttfamily websocket-\/extensions} will reorder messages as your extension emits them and will make sure every extension is given messages in the order they arrive from the driver. This allows extensions to maintain state that depends on the messages\textquotesingle{} wire order, for example keeping a DEFLATE compression context between messages.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{session.close()}
+
+\end{DoxyCode}
+
+
+The framework will call this method when the Web\+Socket session ends, allowing the session to release any resources it\textquotesingle{}s using.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26873}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2websocket-extensions_2_r_e_a_d_m_e_autotoc_md26873}
+
+\begin{DoxyItemize}
+\item Consumer\+: \href{https://github.com/faye/websocket-driver-node}{\texttt{ websocket-\/driver}}
+\item Provider\+: \href{https://github.com/faye/permessage-deflate-node}{\texttt{ permessage-\/deflate}} 
+\end{DoxyItemize}

@@ -1,0 +1,46 @@
+\chapter{string-\/length}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme}\index{string-\/length@{string-\/length}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15477}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15477}%
+ \begin{quote}
+Get the real length of a string -\/ by correctly counting astral symbols and ignoring \href{https://github.com/sindresorhus/strip-ansi}{\texttt{ ansi escape codes}} \end{quote}
+{\ttfamily String\#length} erroneously counts \href{https://web.archive.org/web/20150721114550/http://www.tlg.uci.edu/~opoudjis/unicode/unicode_astral.html}{\texttt{ astral symbols}} as two characters.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15478}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15478}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ string-\/length}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15479}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15479}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ stringLength\ from\ 'string-\/length';}
+\DoxyCodeLine{}
+\DoxyCodeLine{'🐴'.length;}
+\DoxyCodeLine{//=>\ 2}
+\DoxyCodeLine{}
+\DoxyCodeLine{stringLength('🐴');}
+\DoxyCodeLine{//=>\ 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{stringLength('\(\backslash\)u001B[1municorn\(\backslash\)u001B[22m');}
+\DoxyCodeLine{//=>\ 7}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15480}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15480}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15481}{}\doxysubsection{\texorpdfstring{string\+Length(string, options?)}{string\+Length(string, options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15481}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15482}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15482}
+Type\+: {\ttfamily object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15483}{}\doxyparagraph{\texorpdfstring{count\+Ansi\+Escape\+Codes}{count\+Ansi\+Escape\+Codes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15483}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Whether \href{https://en.wikipedia.org/wiki/ANSI_escape_code}{\texttt{ ANSI escape codes}} should be counted. They are ignored by default.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15484}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-watch-typeahead_2node__modules_2string-length_2readme_autotoc_md15484}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/LitoMore/string-length-cli}{\texttt{ string-\/length-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/string-width}{\texttt{ string-\/width}} -\/ Get visual width of a string
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-string-length?utm_source=npm-string-length&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for this package with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

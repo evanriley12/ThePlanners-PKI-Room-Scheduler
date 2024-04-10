@@ -1,0 +1,29 @@
+\chapter{jsx-\/a11y/no-\/access-\/key}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key}\index{jsx-\/a11y/no-\/access-\/key@{jsx-\/a11y/no-\/access-\/key}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10766}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10766}%
+ 💼 This rule is enabled in the following configs\+: ☑️ {\ttfamily recommended}, 🔒 {\ttfamily strict}.
+
+Enforce no access\+Key prop on element. Access keys are HTML attributes that allow web developers to assign keyboard shortcuts to elements. Inconsistencies between keyboard shortcuts and keyboard commands used by screenreaders and keyboard-\/only users create accessibility complications so to avoid complications, access keys should not be used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10767}{}\doxysubsection{\texorpdfstring{References}{References}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10767}
+
+\begin{DoxyEnumerate}
+\item \href{https://webaim.org/techniques/keyboard/accesskey\#spec}{\texttt{ Web\+AIM}}
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10768}{}\doxysection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10768}
+This rule takes no arguments.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10769}{}\doxysubsection{\texorpdfstring{Succeed}{Succeed}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10769}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<div\ />}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10770}{}\doxysubsection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10770}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<div\ accessKey="{}h"{}\ />}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10771}{}\doxysection{\texorpdfstring{Accessibility guidelines}{Accessibility guidelines}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10771}
+General best practice (reference resources)\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10772}{}\doxysubsection{\texorpdfstring{Resources}{Resources}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rules_2no-access-key_autotoc_md10772}
+
+\begin{DoxyItemize}
+\item \href{https://webaim.org/techniques/keyboard/accesskey\#spec}{\texttt{ Web\+AIM, Keyboard Accessibility\+: Accesskey}} 
+\end{DoxyItemize}

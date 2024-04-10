@@ -1,0 +1,112 @@
+\chapter{make-\/dir \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/gh/sindresorhus/make-\/dir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://codecov.\+io/gh/sindresorhus/make-\/dir/branch/main/graph/badge.\+svg"{} alt="{}codecov"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme}\index{make-\/dir $<$a href="{}https://codecov.io/gh/sindresorhus/make-\/dir"{} $>$$<$img src="{}https://codecov.io/gh/sindresorhus/make-\/dir/branch/main/graph/badge.svg"{} alt="{}codecov"{}/$>$$<$/a$>$@{make-\/dir $<$a href=""https://codecov.io/gh/sindresorhus/make-\/dir"" $>$$<$img src=""https://codecov.io/gh/sindresorhus/make-\/dir/branch/main/graph/badge.svg"" alt=""codecov""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15097}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15097}%
+ \begin{quote}
+Make a directory and its parents if needed -\/ Think {\ttfamily mkdir -\/p} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15098}{}\doxysection{\texorpdfstring{Advantages over \href{https://github.com/substack/node-mkdirp}{\texttt{ {\ttfamily mkdirp}}}}{Advantages over \href{https://github.com/substack/node-mkdirp}{\texttt{ {\ttfamily mkdirp}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15098}
+
+\begin{DoxyItemize}
+\item Promise API \texorpdfstring{$\ast$}{*}(Async/await ready!)\texorpdfstring{$\ast$}{*}
+\item Fixes many {\ttfamily mkdirp} issues\+: \href{https://github.com/substack/node-mkdirp/pull/96}{\texttt{ \#96}} \href{https://github.com/substack/node-mkdirp/issues/70}{\texttt{ \#70}} \href{https://github.com/substack/node-mkdirp/issues/66}{\texttt{ \#66}}
+\item 100\% test coverage
+\item CI-\/tested on mac\+OS, Linux, and Windows
+\item Actively maintained
+\item Doesn\textquotesingle{}t bundle a CLI
+\item Uses the native {\ttfamily fs.\+mkdir/mkdir\+Sync} \href{https://nodejs.org/dist/latest/docs/api/fs.html\#fs_fs_mkdir_path_options_callback}{\texttt{ {\ttfamily recursive} option}} in Node.\+js \texorpdfstring{$>$}{>}=10.\+12.\+0 unless overridden
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15099}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15099}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ make-\/dir}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15100}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15100}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ pwd}
+\DoxyCodeLine{/Users/sindresorhus/fun}
+\DoxyCodeLine{\$\ tree}
+\DoxyCodeLine{.}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ makeDir\ =\ require('make-\/dir');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ const\ path\ =\ await\ makeDir('unicorn/rainbow/cake');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(path);}
+\DoxyCodeLine{\ \ \ \ //=>\ '/Users/sindresorhus/fun/unicorn/rainbow/cake'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ tree}
+\DoxyCodeLine{.}
+\DoxyCodeLine{└──\ unicorn}
+\DoxyCodeLine{\ \ \ \ └──\ rainbow}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ └──\ cake}
+
+\end{DoxyCode}
+
+
+Multiple directories\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ makeDir\ =\ require('make-\/dir');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ const\ paths\ =\ await\ Promise.all([}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ makeDir('unicorn/rainbow'),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ makeDir('foo/bar')}
+\DoxyCodeLine{\ \ \ \ ]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(paths);}
+\DoxyCodeLine{\ \ \ \ /*}
+\DoxyCodeLine{\ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ '/Users/sindresorhus/fun/unicorn/rainbow',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ '/Users/sindresorhus/fun/foo/bar'}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ */}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15101}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15101}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15102}{}\doxysubsection{\texorpdfstring{make\+Dir(path, options?)}{make\+Dir(path, options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15102}
+Returns a {\ttfamily Promise} for the path to the created directory.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15103}{}\doxysubsection{\texorpdfstring{make\+Dir.\+sync(path, options?)}{make\+Dir.\+sync(path, options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15103}
+Returns the path to the created directory.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15104}{}\doxysubsubsection{\texorpdfstring{path}{path}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15104}
+Type\+: {\ttfamily string}
+
+Directory to create.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15105}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15105}
+Type\+: {\ttfamily object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15106}{}\doxyparagraph{\texorpdfstring{mode}{mode}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15106}
+Type\+: {\ttfamily integer}\textbackslash{} Default\+: {\ttfamily 0o777}
+
+Directory \href{https://x-team.com/blog/file-system-permissions-umask-node-js/}{\texttt{ permissions}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15107}{}\doxyparagraph{\texorpdfstring{fs}{fs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15107}
+Type\+: {\ttfamily object}\textbackslash{} Default\+: `require(\textquotesingle{}fs')\`{}
+
+Use a custom {\ttfamily fs} implementation. For example \href{https://github.com/isaacs/node-graceful-fs}{\texttt{ {\ttfamily graceful-\/fs}}}.
+
+Using a custom {\ttfamily fs} implementation will block the use of the native {\ttfamily recursive} option if {\ttfamily fs.\+mkdir} or {\ttfamily fs.\+mkdir\+Sync} is not the native function.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15108}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-report_2node__modules_2make-dir_2readme_autotoc_md15108}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/make-dir-cli}{\texttt{ make-\/dir-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/del}{\texttt{ del}} -\/ Delete files and directories
+\item \href{https://github.com/sindresorhus/globby}{\texttt{ globby}} -\/ User-\/friendly glob matching
+\item \href{https://github.com/sindresorhus/cpy}{\texttt{ cpy}} -\/ Copy files
+\item \href{https://github.com/sindresorhus/cpy-cli}{\texttt{ cpy-\/cli}} -\/ Copy files on the command-\/line
+\item \href{https://github.com/sindresorhus/move-file}{\texttt{ move-\/file}} -\/ Move a file
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-make-dir?utm_source=npm-make-dir&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for this package with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

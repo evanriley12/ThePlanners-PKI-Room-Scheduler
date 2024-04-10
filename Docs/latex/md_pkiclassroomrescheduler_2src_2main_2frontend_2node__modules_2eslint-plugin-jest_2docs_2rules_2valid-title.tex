@@ -1,0 +1,284 @@
+\chapter{Enforce valid titles (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}valid-\/title\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title}\index{Enforce valid titles ($<$tt$>$valid-\/title$<$/tt$>$)@{Enforce valid titles ($<$tt$>$valid-\/title$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10506}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10506}%
+ Checks that the title of Jest blocks are valid by ensuring that titles are\+:
+
+
+\begin{DoxyItemize}
+\item not empty,
+\item is a string,
+\item not prefixed with their block name,
+\item have no leading or trailing spaces
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10507}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10507}
+{\bfseries{empty\+Title}}
+
+An empty title is not informative, and serves little purpose.
+
+Examples of {\bfseries{incorrect}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ it('',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{it('',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xdescribe('',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xit('',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ it('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{test('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xdescribe('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xit('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('foo',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+
+
+{\bfseries{title\+Must\+Be\+String}}
+
+Titles for test blocks should always be a string.
+
+This is also applied to {\ttfamily describe} blocks by default, but can be turned off via the {\ttfamily ignore\+Type\+Of\+Describe\+Name} option\+:
+
+Examples of {\bfseries{incorrect}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it(123,\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe(String(/.+/),\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe(myFunction,\ ()\ =>\ \{\});}
+\DoxyCodeLine{xdescribe(myFunction,\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe(6,\ function\ ()\ \{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe.skip('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fdescribe('is\ a\ string',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code when {\ttfamily ignore\+Type\+Of\+Describe\+Name} is {\ttfamily true}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe.skip('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fdescribe('is\ a\ string',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe(String(/.+/),\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe(myFunction,\ ()\ =>\ \{\});}
+\DoxyCodeLine{xdescribe(myFunction,\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe(6,\ function\ ()\ \{\});}
+
+\end{DoxyCode}
+
+
+{\bfseries{duplicate\+Prefix}}
+
+A {\ttfamily describe} / {\ttfamily test} block should not start with {\ttfamily duplicate\+Prefix}
+
+Examples of {\bfseries{incorrect}} code for this rule
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('test\ foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('it\ foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('test\ bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('describe\ foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+{\bfseries{accidental\+Space}}
+
+A {\ttfamily describe} / {\ttfamily test} block should not contain accidental\+Space
+
+Examples of {\bfseries{incorrect}} code for this rule
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('\ foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('\ foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('\ bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('\ foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo\ \ ',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ test('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10508}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10508}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{interface\ Options\ \{}
+\DoxyCodeLine{\ \ ignoreTypeOfDescribeName?:\ boolean;}
+\DoxyCodeLine{\ \ disallowedWords?:\ string[];}
+\DoxyCodeLine{\ \ mustNotMatch?:\ Partial<Record<'describe'\ |\ 'test'\ |\ 'it',\ string>>\ |\ string;}
+\DoxyCodeLine{\ \ mustMatch?:\ Partial<Record<'describe'\ |\ 'test'\ |\ 'it',\ string>>\ |\ string;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10509}{}\doxysubsubsection{\texorpdfstring{{\ttfamily ignore\+Type\+Of\+Describe\+Name}}{{\ttfamily ignore\+Type\+Of\+Describe\+Name}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10509}
+Default\+: {\ttfamily false}
+
+When enabled, the type of the first argument to {\ttfamily describe} blocks won\textquotesingle{}t be checked.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10510}{}\doxysubsubsection{\texorpdfstring{{\ttfamily disallowed\+Words}}{{\ttfamily disallowed\+Words}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10510}
+Default\+: {\ttfamily \mbox{[}\mbox{]}}
+
+A string array of words that are not allowed to be used in test titles. Matching is not case-\/sensitive, and looks for complete words\+:
+
+Examples of {\bfseries{incorrect}} code when using {\ttfamily disallowed\+Words}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ with\ disallowedWords:\ ['correct',\ 'all',\ 'every',\ 'properly']}
+\DoxyCodeLine{describe('the\ correct\ way\ to\ do\ things',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('has\ ALL\ the\ things',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xdescribe('every\ single\ one\ of\ them',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test(`that\ the\ value\ is\ set\ properly`,\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code when using {\ttfamily disallowed\+Words}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ with\ disallowedWords:\ ['correct',\ 'all',\ 'every',\ 'properly']}
+\DoxyCodeLine{it('correctly\ sets\ the\ value',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('that\ everything\ is\ as\ it\ should\ be',\ ()\ =>\ \{\});}
+\DoxyCodeLine{describe('the\ proper\ way\ to\ handle\ things',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10511}{}\doxysubsubsection{\texorpdfstring{{\ttfamily must\+Match} \& {\ttfamily must\+Not\+Match}}{{\ttfamily must\+Match} \& {\ttfamily must\+Not\+Match}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title_autotoc_md10511}
+Defaults\+: {\ttfamily \{\}}
+
+Allows enforcing that titles must match or must not match a given Regular Expression, with an optional message. An object can be provided to apply different Regular Expressions (with optional messages) to specific Jest test function groups ({\ttfamily describe}, {\ttfamily test}, and {\ttfamily it}).
+
+Examples of {\bfseries{incorrect}} code when using {\ttfamily must\+Match}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ with\ mustMatch:\ '\string^that'}
+\DoxyCodeLine{describe('the\ correct\ way\ to\ do\ things',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fit('this\ there!',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ with\ mustMatch:\ \{\ test:\ '\string^that'\ \}}
+\DoxyCodeLine{describe('the\ tests\ that\ will\ be\ run',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('the\ stuff\ works',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('errors\ that\ are\ thrown\ have\ messages',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code when using {\ttfamily must\+Match}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ with\ mustMatch:\ '\string^that'}
+\DoxyCodeLine{describe('that\ thing\ that\ needs\ to\ be\ done',\ ()\ =>\ \{\});}
+\DoxyCodeLine{fit('that\ this\ there!',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ with\ mustMatch:\ \{\ test:\ '\string^that'\ \}}
+\DoxyCodeLine{describe('the\ tests\ that\ will\ be\ run',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('that\ the\ stuff\ works',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('that\ errors\ that\ thrown\ have\ messages',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+
+
+Optionally you can provide a custom message to show for a particular matcher by using a tuple at any level where you can provide a matcher\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ prefixes\ =\ ['when',\ 'with',\ 'without',\ 'if',\ 'unless',\ 'for'];}
+\DoxyCodeLine{const\ prefixesList\ =\ prefixes.join('\ \ -\/\ \(\backslash\)n');}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ 'jest/valid-\/title':\ [}
+\DoxyCodeLine{\ \ \ \ \ \ 'error',}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ mustNotMatch:\ ['\(\backslash\)\(\backslash\).\$',\ 'Titles\ should\ not\ end\ with\ a\ full-\/stop'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ mustMatch:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ describe:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ new\ RegExp(`\string^(?:[A-\/Z]|\(\backslash\)\(\backslash\)b(\$\{prefixes.join('|')\})\(\backslash\)\(\backslash\)b`,\ 'u').source,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \`{}Describe\ titles\ should\ either\ start\ with\ a\ capital\ letter\ or\ one\ of\ the\ following\ prefixes:\ \$\{prefixesList\}`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ test:\ [/[\string^A-\/Z]/u.source],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ it:\ /[\string^A-\/Z]/u.source,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ 

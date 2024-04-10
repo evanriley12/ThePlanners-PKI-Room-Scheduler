@@ -1,0 +1,50 @@
+\chapter{import/no-\/namespace}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace}\index{import/no-\/namespace@{import/no-\/namespace}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9979}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9979}%
+ 🔧 This rule is automatically fixable by the \href{https://eslint.org/docs/latest/user-guide/command-line-interface\#--fix}{\texttt{ {\ttfamily -\/-\/fix} CLI option}}.
+
+Enforce a convention of not using namespace (a.\+k.\+a. "{}wildcard"{} {\ttfamily \texorpdfstring{$\ast$}{*}}) imports.
+
+The rule is auto-\/fixable when the namespace object is only used for direct member access, e.\+g. {\ttfamily namespace.\+a}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9980}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9980}
+This rule supports the following options\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily ignore}\+: array of glob strings for modules that should be ignored by the rule.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9981}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9981}
+Valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ defaultExport\ from\ './foo'}
+\DoxyCodeLine{import\ \{\ a,\ b\ \}\ \ from\ './bar'}
+\DoxyCodeLine{import\ defaultExport,\ \{\ a,\ b\ \}\ \ from\ './foobar'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ eslint\ import/no-\/namespace:\ ["{}error"{},\ \{ignore:\ ['*.ext']\}]\ */}
+\DoxyCodeLine{import\ *\ as\ bar\ from\ './ignored-\/module.ext';}
+
+\end{DoxyCode}
+
+
+Invalid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ *\ as\ foo\ from\ 'foo';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ defaultExport,\ *\ as\ foo\ from\ 'foo';}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9982}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-namespace_autotoc_md9982}
+If you want to use namespaces, you don\textquotesingle{}t want to use this rule. 

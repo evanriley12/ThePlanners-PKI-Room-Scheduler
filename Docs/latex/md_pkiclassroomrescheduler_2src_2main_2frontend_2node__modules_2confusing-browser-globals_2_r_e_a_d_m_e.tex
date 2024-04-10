@@ -1,0 +1,44 @@
+\chapter{confusing-\/browser-\/globals}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e}\index{confusing-\/browser-\/globals@{confusing-\/browser-\/globals}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7626}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7626}%
+ A curated list of browser globals that commonly cause confusion and are not recommended to use without an explicit {\ttfamily window.} qualifier.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7627}{}\doxysection{\texorpdfstring{Motivation}{Motivation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7627}
+Some global variables in browser are likely to be used by people without the intent of using them as globals, such as {\ttfamily status}, {\ttfamily name}, {\ttfamily event}, etc.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{handleClick()\ \{\ //\ missing\ \`{}event`\ argument}
+\DoxyCodeLine{\ \ this.setState(\{}
+\DoxyCodeLine{\ \ \ \ text:\ event.target.value\ //\ uses\ the\ \`{}event`\ global:\ oops!}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This package exports a list of globals that are often used by mistake. You can feed this list to a static analysis tool like ESLint to prevent their usage without an explicit {\ttfamily window.} qualifier.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7628}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7628}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ confusing-\/browser-\/globals}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7629}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7629}
+If you use Create React App, you don\textquotesingle{}t need to configure anything, as this rule is already included in the default {\ttfamily eslint-\/config-\/react-\/app} preset.
+
+If you maintain your own ESLint configuration, you can do this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ restrictedGlobals\ =\ require('confusing-\/browser-\/globals');}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ 'no-\/restricted-\/globals':\ ['error'].concat(restrictedGlobals),}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7630}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2confusing-browser-globals_2_r_e_a_d_m_e_autotoc_md7630}
+MIT 

@@ -1,0 +1,42 @@
+\chapter{import/no-\/named-\/default}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default}\index{import/no-\/named-\/default@{import/no-\/named-\/default}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default_autotoc_md9974}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default_autotoc_md9974}%
+
+
+Reports use of a default export as a locally named import.
+
+Rationale\+: the syntax exists to import default exports expressively, let\textquotesingle{}s use it.
+
+Note that type imports, as used by \href{https://flow.org/}{\texttt{ Flow}}, are always ignored.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default_autotoc_md9975}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-default_autotoc_md9975}
+Given\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ foo.js}
+\DoxyCodeLine{export\ default\ 'foo';}
+\DoxyCodeLine{export\ const\ bar\ =\ 'baz';}
+
+\end{DoxyCode}
+
+
+...these would be valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ foo\ from\ './foo.js';}
+\DoxyCodeLine{import\ foo,\ \{\ bar\ \}\ from\ './foo.js';}
+
+\end{DoxyCode}
+
+
+...and these would be reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ message:\ Using\ exported\ name\ 'bar'\ as\ identifier\ for\ default\ export.}
+\DoxyCodeLine{import\ \{\ default\ as\ foo\ \}\ from\ './foo.js';}
+\DoxyCodeLine{import\ \{\ default\ as\ foo,\ bar\ \}\ from\ './foo.js';}
+
+\end{DoxyCode}
+ 

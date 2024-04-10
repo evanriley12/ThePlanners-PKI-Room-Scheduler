@@ -1,0 +1,64 @@
+\chapter{Prefers Color Scheme \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/csstools/postcss-\/plugins/tree/main/plugins/css-\/prefers-\/color-\/scheme"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://jonathantneal.\+github.\+io/js-\/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e}\index{Prefers Color Scheme $<$a href="{}https://github.com/csstools/postcss-\/plugins/tree/main/plugins/css-\/prefers-\/color-\/scheme"{} $>$$<$img src=\textbackslash{}"{}https://jonathantneal.github.io/js-\/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{Prefers Color Scheme $<$a href=""https://github.com/csstools/postcss-\/plugins/tree/main/plugins/css-\/prefers-\/color-\/scheme"" $>$$<$img src=\textbackslash{}""https://jonathantneal.github.io/js-\/logo.svg\textbackslash{}"" alt=\textbackslash{}""\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7992}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7992}%
+ \href{https://www.npmjs.com/package/css-prefers-color-scheme}{\texttt{ }} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme}{\texttt{ Prefers Color Scheme}} lets you use light and dark color schemes in all browsers, following the \href{https://drafts.csswg.org/mediaqueries-5/\#descdef-media-prefers-color-scheme}{\texttt{ Media Queries}} specification.
+
+\href{https://caniuse.com/\#feat=prefers-color-scheme}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7993}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7993}
+From the command line, transform CSS files that use {\ttfamily prefers-\/color-\/scheme} media queries\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npx\ css-\/prefers-\/color-\/scheme\ SOURCE.css\ TRANSFORMED.css}
+
+\end{DoxyCode}
+
+
+Next, use that transformed CSS with this script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<link\ rel="{}stylesheet"{}\ href="{}TRANSFORMED.css"{}>}
+\DoxyCodeLine{<script\ src="{}https://unpkg.com/css-\/prefers-\/color-\/scheme/dist/browser-\/global.js"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{colorScheme\ =\ initPrefersColorScheme('dark')\ //\ apply\ "{}dark"{}\ queries\ (you\ can\ change\ it\ afterward,\ too)}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+
+
+⚠️ Please use a versioned url, like this \+: {\ttfamily \href{https://unpkg.com/css-prefers-color-scheme}{\texttt{ https\+://unpkg.\+com/css-\/prefers-\/color-\/scheme}}@6.\+0.\+0/dist/browser-\/global.js} Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url. The old URL will no longer work in a future release.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7994}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7994}
+
+\begin{DoxyItemize}
+\item First, transform {\ttfamily prefers-\/color-\/scheme} queries using this Post\+CSS plugin.
+\item Next, apply light and dark color schemes everywhere using this browser script.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7996}{}\doxysection{\texorpdfstring{How does it work?}{How does it work?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7996}
+{\itshape This plugin used to work with {\ttfamily color-\/index} as detailed here \+: \href{https://github.com/csstools/css-prefers-color-scheme\#how-does-it-work}{\texttt{ color-\/index}}.} {\itshape This is deprecated but will continue to work for now.} \+\_\+{\ttfamily color} has better browser support and enables complex media queries.\+\_\+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme}{\texttt{ Prefers Color Scheme}} uses a Post\+CSS plugin to transform {\ttfamily prefers-\/color-\/scheme} queries into {\ttfamily color} queries. This changes {\ttfamily prefers-\/color-\/scheme\+: dark} into {\ttfamily (color\+: 48842621)}, {\ttfamily prefers-\/color-\/scheme\+: light} into {\ttfamily (color\+: 70318723)}, and {\ttfamily prefers-\/color-\/scheme\+: no-\/preference} into {\ttfamily (color\+: 22511989)}.
+
+The frontend receives these {\ttfamily color} queries, which are understood in all major browsers going back to Internet Explorer 9. However, since browsers can only have a reasonably small number of bits per color, our color scheme values are ignored.
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/css-prefers-color-scheme}{\texttt{ Prefers Color Scheme}} uses a browser script to change {\ttfamily (color\+: 48842621)} queries into {\ttfamily (max-\/color\+: 48842621)} in order to activate “dark mode” specific CSS, and it changes {\ttfamily (color\+: 70318723)} queries into {\ttfamily (max-\/color\+: 48842621)} to activate “light mode” specific CSS.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ (color:\ 70318723)\ \{\ /*\ prefers-\/color-\/scheme:\ light\ */}
+\DoxyCodeLine{\ \ body\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/color:\ white;}
+\DoxyCodeLine{\ \ \ \ color:\ black;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Since these media queries are accessible to {\ttfamily document.\+style\+Sheet}, no CSS parsing is required.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7997}{}\doxysection{\texorpdfstring{Why does the fallback work this way?}{Why does the fallback work this way?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_r_e_a_d_m_e_autotoc_md7997}
+The value of {\ttfamily 48} is chosen for dark mode because it is the keycode for {\ttfamily 0}, the hexidecimal value of black. Likewise, {\ttfamily 70} is chosen for light mode because it is the keycode for {\ttfamily f}, the hexidecimal value of white. These are suffixed with a random large number. 

@@ -1,0 +1,63 @@
+\chapter{\texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}postcss\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}-\/reduce-\/initial}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e}\index{$<$a href="{}https://github.com/postcss/postcss"{} $>$postcss$<$/a$>$-\/reduce-\/initial@{$<$a href=""https://github.com/postcss/postcss"" $>$postcss$<$/a$>$-\/reduce-\/initial}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19413}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19413}%
+ \begin{quote}
+Reduce {\ttfamily initial} definitions to the {\itshape actual} initial value, where possible. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19414}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19414}
+With \href{https://npmjs.org/package/postcss-reduce-initial}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/reduce-\/initial\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19415}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19415}
+See the \mbox{[}data\mbox{]}(data) for more conversions. This data is courtesy of Mozilla.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19416}{}\doxysubsection{\texorpdfstring{Convert {\ttfamily initial} values}{Convert {\ttfamily initial} values}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19416}
+When the {\ttfamily initial} keyword is longer than the property value, it will be converted\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19417}{}\doxysubsubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19417}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ min-\/width:\ initial;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19418}{}\doxysubsubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19418}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ min-\/width:\ auto;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19419}{}\doxysubsection{\texorpdfstring{Convert values back to {\ttfamily initial}}{Convert values back to {\ttfamily initial}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19419}
+When the {\ttfamily initial} value is smaller than the property value, it will be converted\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19420}{}\doxysubsubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19420}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ transform-\/box:\ border-\/box;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19421}{}\doxysubsubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19421}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ transform-\/box:\ initial;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This conversion is only applied when you supply a browsers list that all support the {\ttfamily initial} keyword; it\textquotesingle{}s worth noting that Internet Explorer has no support.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19422}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19422}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19423}{}\doxysubsection{\texorpdfstring{reduce\+Initial(\mbox{[}options\mbox{]})}{reduce\+Initial(\mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19423}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19424}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19424}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19425}{}\doxyparagraph{\texorpdfstring{ignore}{ignore}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19425}
+Type\+: {\ttfamily Array\texorpdfstring{$<$}{<}String\texorpdfstring{$>$}{>}} Default\+: {\ttfamily undefined}
+
+It contains the Array of properties that will be ignored while reducing its value to initial. Example \+: {\ttfamily \{ ignore \+: \mbox{[}"{}min-\/height"{}\mbox{]} \}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19426}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19426}
+See the \href{https://github.com/postcss/postcss\#usage}{\texttt{ Post\+CSS documentation}} for examples for your environment.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19427}{}\doxysection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19427}
+See \href{https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md}{\texttt{ CONTRIBUTORS.\+md}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19428}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-reduce-initial_2_r_e_a_d_m_e_autotoc_md19428}
+This program uses a list of CSS properties derived from data maintained my the MDN team at Mozilla and licensed under the \href{https://creativecommons.org/publicdomain/zero/1.0/}{\texttt{ CC0 1.\+0 Universal Public Domain Dedication}}.
+
+MIT © \href{http://beneb.info}{\texttt{ Ben Briggs}} 

@@ -1,0 +1,125 @@
+\chapter{readme}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme}\index{readme@{readme}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7863}{}\doxysection{\texorpdfstring{CSS Declaration Sorter}{CSS Declaration Sorter}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7863}
+\href{https://www.npmjs.com/package/css-declaration-sorter}{\texttt{ }}
+
+A Node.\+js module and \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin to sort CSS, SCSS or Less declarations based on their property names. Ensuring styling is organized, more consistent and in order... The goal of this package is to sort the source code of a project in the build process or to decrease the distributed CSS gzipped size.
+
+Check out \href{https://github.com/Siilwyn/prettier-plugin-css-order}{\texttt{ the Prettier plugin}} for usage with a variety of file formats.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7864}{}\doxysubsection{\texorpdfstring{Niceness}{Niceness}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7864}
+
+\begin{DoxyItemize}
+\item Up-\/to-\/date CSS properties fetched from the \href{https://github.com/mdn/browser-compat-data/}{\texttt{ MDN Compatibility Data}} project.
+\item Choose your wanted order or provide your own.
+\item Nested rules sorting support.
+\item SCSS and Less support when combined with either \href{https://github.com/postcss/postcss-scss}{\texttt{ postcss-\/scss}} or \href{https://github.com/webschik/postcss-less}{\texttt{ postcss-\/less}}.
+\item Thought-\/out sorting orders out of the box, {\bfseries{approved by their authors}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7865}{}\doxysubsection{\texorpdfstring{Alphabetical example}{Alphabetical example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7865}
+Input\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \ \ animation:\ none;}
+\DoxyCodeLine{\ \ \ \ color:\ \#C55;}
+\DoxyCodeLine{\ \ \ \ border:\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Output\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ \ \ animation:\ none;}
+\DoxyCodeLine{\ \ \ \ border:\ 0;}
+\DoxyCodeLine{\ \ \ \ color:\ \#C55;}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7866}{}\doxysubsection{\texorpdfstring{Built-\/in sorting orders}{Built-\/in sorting orders}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7866}
+
+\begin{DoxyItemize}
+\item Alphabetical ~\newline
+ {\ttfamily alphabetical} ~\newline
+ {\itshape Default, order in a simple alphabetical manner from a -\/ z.}
+\item \href{http://smacss.com/book/formatting\#grouping}{\texttt{ SMACSS}} ~\newline
+ {\ttfamily smacss} ~\newline
+ {\itshape Order from most important, flow affecting properties, to least important properties.}
+\begin{DoxyEnumerate}
+\item Box
+\item Border
+\item Background
+\item Text
+\item Other
+\end{DoxyEnumerate}
+\item \href{https://github.com/brandon-rhodes/Concentric-CSS}{\texttt{ Concentric CSS}} ~\newline
+ {\ttfamily concentric-\/css} ~\newline
+ {\itshape Order properties applying outside the box model, moving inward to intrinsic changes.}
+\begin{DoxyEnumerate}
+\item Positioning
+\item Visibility
+\item Box model
+\item Dimensions
+\item Text
+\end{DoxyEnumerate}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7867}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7867}
+Following the Post\+CSS plugin guidelines, this package depends on Post\+CSS as a peer dependency\+: ~\newline
+ {\ttfamily npm install postcss css-\/declaration-\/sorter -\/-\/save-\/dev}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7868}{}\doxysubsubsection{\texorpdfstring{CLI}{CLI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7868}
+This module does not include its own CLI but works with the official \href{https://github.com/postcss/postcss-cli}{\texttt{ Post\+CSS CLI}}. To use the examples below, the {\ttfamily postcss-\/cli} package is a required dependency.
+
+Piping out result from file\+: ~\newline
+ {\ttfamily postcss input.\+css -\/-\/use css-\/declaration-\/sorter \texorpdfstring{$\vert$}{|} cat}
+
+Sorting multiple files by overwriting\+: ~\newline
+ {\ttfamily postcss \texorpdfstring{$\ast$}{*}.css -\/-\/use css-\/declaration-\/sorter -\/-\/replace -\/-\/no-\/map}
+
+Sorting all files in a directory with SCSS syntax using \href{https://github.com/postcss/postcss-scss}{\texttt{ postcss-\/scss}} by overwriting\+: ~\newline
+ {\ttfamily postcss ./src/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}.scss -\/-\/syntax postcss-\/scss -\/-\/use css-\/declaration-\/sorter -\/-\/replace -\/-\/no-\/map}
+
+Sorting all files in the directory with SCSS syntax and SMACSS order by overwriting, using {\ttfamily package.\+json} configuration\+: ~\newline
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}postcss"{}:\ \{}
+\DoxyCodeLine{\ \ "{}syntax"{}:\ "{}postcss-\/scss"{},}
+\DoxyCodeLine{\ \ "{}map"{}:\ false,}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}css-\/declaration-\/sorter"{}:\ \{\ "{}order"{}:\ "{}smacss"{}\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\ttfamily postcss ./src/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}.scss -\/-\/replace -\/-\/config package.\+json}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7869}{}\doxysubsubsection{\texorpdfstring{Vanilla JS}{Vanilla JS}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7869}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ postcss\ from\ 'postcss';}
+\DoxyCodeLine{import\ \{\ cssDeclarationSorter\ \}\ from\ 'css-\/declaration-\/sorter';}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([cssDeclarationSorter(\{\ order:\ 'smacss'\ \})])}
+\DoxyCodeLine{\ \ .process('a\ \{\ color:\ hyperblue;\ display:\ block;\ \}',\ \{\ from:\ undefined\ \})}
+\DoxyCodeLine{\ \ .then(result\ =>\ console.log(}
+\DoxyCodeLine{\ \ \ \ result.css\ ===\ 'a\ \{\ display:\ block;\ color:\ hyperblue;\ \}'}
+\DoxyCodeLine{\ \ ));}
+
+\end{DoxyCode}
+ \DoxyHorRuler{0}
+
+
+{\bfseries{\href{/examples}{\texttt{ View more usage examples}} in combination with other tools.}} ~\newline
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7870}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7870}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7871}{}\doxysubsubsection{\texorpdfstring{css\+Declaration\+Sorter(\{ order, keep\+Overrides \})}{css\+Declaration\+Sorter(\{ order, keep\+Overrides \})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7871}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7872}{}\doxyparagraph{\texorpdfstring{order}{order}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7872}
+Type\+: {\ttfamily string} or {\ttfamily function} ~\newline
+ Default\+: {\ttfamily alphabetical} ~\newline
+ Options\+: {\ttfamily alphabetical}, {\ttfamily smacss}, {\ttfamily concentric-\/css}
+
+Provide the name of one of the built-\/in sort orders or a comparison function that is passed to (\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort}{\texttt{ {\ttfamily Array.\+sort}}}). This function receives two declaration names and is expected to return {\ttfamily -\/1}, {\ttfamily 0} or {\ttfamily 1} depending on the wanted order.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7873}{}\doxyparagraph{\texorpdfstring{keep\+Overrides}{keep\+Overrides}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-declaration-sorter_2readme_autotoc_md7873}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false} ~\newline
+
+
+To prevent breaking legacy CSS where shorthand declarations override longhand declarations (also taking into account vendor prefixes) this option can enabled. For example {\ttfamily animation-\/name\+: some; animation\+: greeting;} will be kept in this order when {\ttfamily keep\+Overrides} is {\ttfamily true}. 

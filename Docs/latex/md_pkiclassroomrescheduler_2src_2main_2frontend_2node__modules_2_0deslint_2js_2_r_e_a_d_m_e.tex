@@ -1,0 +1,56 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e}\index{README@{README}}
+\href{https://www.npmjs.com/package/@eslint/js}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1237}{}\doxysection{\texorpdfstring{ESLint Java\+Script Plugin}{ESLint Java\+Script Plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1237}
+\href{https://eslint.org}{\texttt{ Website}} \texorpdfstring{$\vert$}{|} \href{https://eslint.org/docs/latest/use/configure}{\texttt{ Configure ESLint}} \texorpdfstring{$\vert$}{|} \href{https://eslint.org/docs/rules/}{\texttt{ Rules}} \texorpdfstring{$\vert$}{|} \href{https://eslint.org/docs/latest/contribute}{\texttt{ Contributing}} \texorpdfstring{$\vert$}{|} \href{https://twitter.com/geteslint}{\texttt{ Twitter}} \texorpdfstring{$\vert$}{|} \href{https://eslint.org/chat}{\texttt{ Chatroom}}
+
+The beginnings of separating out Java\+Script-\/specific functionality from ESLint.
+
+Right now, this plugin contains two configurations\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily recommended} -\/ enables the rules recommended by the ESLint team (the replacement for {\ttfamily "{}eslint\+:recommended"{}})
+\item {\ttfamily all} -\/ enables all ESLint rules (the replacement for {\ttfamily "{}eslint\+:all"{}})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1238}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1238}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @eslint/js\ -\/D}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1239}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1239}
+Use in your {\ttfamily eslint.\+config.\+js} file anytime you want to extend one of the configs\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ js\ from\ "{}@eslint/js"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ [}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ apply\ recommended\ rules\ to\ JS\ files}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ files:\ ["{}**/*.js"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rules:\ js.configs.recommended.rules}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ apply\ recommended\ rules\ to\ JS\ files\ with\ an\ override}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ files:\ ["{}**/*.js"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ...js.configs.recommended.rules,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}no-\/unused-\/vars"{}:\ "{}warn"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ apply\ all\ rules\ to\ JS\ files}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ files:\ ["{}**/*.js"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ...js.configs.all.rules,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}no-\/unused-\/vars"{}:\ "{}warn"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1240}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0deslint_2js_2_r_e_a_d_m_e_autotoc_md1240}
+MIT 

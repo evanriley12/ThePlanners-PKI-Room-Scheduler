@@ -1,0 +1,183 @@
+\chapter{long.\+js}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e}\index{long.js@{long.js}}
+A Long class for representing a 64 bit two\textquotesingle{}s-\/complement integer value derived from the \href{https://github.com/google/closure-library}{\texttt{ Closure Library}} for stand-\/alone use and extended with unsigned support.
+
+\href{https://www.npmjs.com/package/long}{\texttt{ }} \href{https://travis-ci.org/dcodeIO/long.js}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4389}{}\doxysection{\texorpdfstring{Background}{Background}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4389}
+As of \href{http://ecma262-5.com/ELS5_HTML.htm\#Section_8.5}{\texttt{ ECMA-\/262 5th Edition}}, "{}all the positive and negative integers whose magnitude is no greater than 2$<$sup$>$53$<$/sup$>$ are representable in the Number type"{}, which is "{}representing the doubleprecision 64-\/bit format IEEE 754 values as specified in the IEEE Standard for Binary Floating-\/\+Point Arithmetic"{}. The \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER}{\texttt{ maximum safe integer}} in Java\+Script is 2\textsuperscript{53}-\/1.
+
+Example\+: 2\textsuperscript{64}-\/1 is 1844674407370955\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}1615\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} but in Java\+Script it evaluates to 1844674407370955\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}2000\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}.
+
+Furthermore, bitwise operators in Java\+Script "{}deal only with integers in the range −2$<$sup$>$31$<$/sup$>$ through 2$<$sup$>$31$<$/sup$>$−1, inclusive, or in the range 0 through 2$<$sup$>$32$<$/sup$>$−1, inclusive. These operators accept any value of the Number type but first convert each such value to one of 2$<$sup$>$32$<$/sup$>$ integer values."{}
+
+In some use cases, however, it is required to be able to reliably work with and perform bitwise operations on the full 64 bits. This is where long.\+js comes into play.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4390}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4390}
+The class is compatible with Common\+JS and AMD loaders and is exposed globally as {\ttfamily Long} if neither is available.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Long\ =\ require("{}long"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ longVal\ =\ new\ Long(0xFFFFFFFF,\ 0x7FFFFFFF);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(longVal.toString());}
+\DoxyCodeLine{...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4391}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4391}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4392}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4392}
+
+\begin{DoxyItemize}
+\item new {\bfseries{Long}}(low\+: {\ttfamily number}, high\+: {\ttfamily number}, unsigned?\+: {\ttfamily boolean})~\newline
+ Constructs a 64 bit two\textquotesingle{}s-\/complement integer, given its low and high 32 bit values as {\itshape signed} integers. See the from\texorpdfstring{$\ast$}{*} functions below for more convenient ways of constructing Longs.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4393}{}\doxysubsection{\texorpdfstring{Fields}{Fields}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4393}
+
+\begin{DoxyItemize}
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}low\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily number}~\newline
+ The low 32 bits as a signed value.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}high\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily number}~\newline
+ The high 32 bits as a signed value.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}unsigned\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily boolean}~\newline
+ Whether unsigned or not.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4394}{}\doxysubsection{\texorpdfstring{Constants}{Constants}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4394}
+
+\begin{DoxyItemize}
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+ZERO\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Signed zero.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+ONE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Signed one.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+NEG\+\_\+\+ONE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Signed negative one.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+UZERO\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Unsigned zero.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+UONE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Unsigned one.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+MAX\+\_\+\+VALUE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Maximum signed value.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+MIN\+\_\+\+VALUE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Minimum signed value.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+MAX\+\_\+\+UNSIGNED\+\_\+\+VALUE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Long}~\newline
+ Maximum unsigned value.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4395}{}\doxysubsection{\texorpdfstring{Utility}{Utility}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4395}
+
+\begin{DoxyItemize}
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}is\+Long\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(obj\+: {\ttfamily \texorpdfstring{$\ast$}{*}})\+: {\ttfamily boolean}~\newline
+ Tests if the specified object is a Long.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Bits\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(low\+Bits\+: {\ttfamily number}, high\+Bits\+: {\ttfamily number}, unsigned?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Returns a Long representing the 64 bit integer that comes by concatenating the given low and high bits. Each is assumed to use 32 bits.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Bytes\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(bytes\+: {\ttfamily number\mbox{[}\mbox{]}}, unsigned?\+: {\ttfamily boolean}, le?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Creates a Long from its byte representation.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Bytes\+LE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(bytes\+: {\ttfamily number\mbox{[}\mbox{]}}, unsigned?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Creates a Long from its little endian byte representation.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Bytes\+BE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(bytes\+: {\ttfamily number\mbox{[}\mbox{]}}, unsigned?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Creates a Long from its big endian byte representation.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(value\+: {\ttfamily number}, unsigned?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Returns a Long representing the given 32 bit integer value.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Number\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(value\+: {\ttfamily number}, unsigned?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Returns a Long representing the given value, provided that it is a finite number. Otherwise, zero is returned.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+String\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(str\+: {\ttfamily string}, unsigned?\+: {\ttfamily boolean}, radix?\+: {\ttfamily number})~\newline
+ Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+String\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(str\+: {\ttfamily string}, radix\+: {\ttfamily number})~\newline
+ Returns a Long representation of the given string, written using the specified radix.
+\item Long.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}from\+Value\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(val\+: {\ttfamily \texorpdfstring{$\ast$}{*}}, unsigned?\+: {\ttfamily boolean})\+: {\ttfamily Long}~\newline
+ Converts the specified value to a Long using the appropriate from\texorpdfstring{$\ast$}{*} function for its type.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4396}{}\doxysubsection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4396}
+
+\begin{DoxyItemize}
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}add\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(addend\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns the sum of this and the specified Long.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}and\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns the bitwise AND of this Long and the specified.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}compare\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}comp\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily number}~\newline
+ Compares this Long\textquotesingle{}s value with the specified\textquotesingle{}s. Returns {\ttfamily 0} if they are the same, {\ttfamily 1} if the this is greater and {\ttfamily -\/1} if the given one is greater.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}divide\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}div\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(divisor\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long divided by the specified.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}equals\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}eq\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value equals the specified\textquotesingle{}s.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}get\+High\+Bits\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Gets the high 32 bits as a signed integer.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}get\+High\+Bits\+Unsigned\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Gets the high 32 bits as an unsigned integer.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}get\+Low\+Bits\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Gets the low 32 bits as a signed integer.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}get\+Low\+Bits\+Unsigned\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Gets the low 32 bits as an unsigned integer.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}get\+Num\+Bits\+Abs\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Gets the number of bits needed to represent the absolute value of this Long.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}greater\+Than\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gt\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is greater than the specified\textquotesingle{}s.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}greater\+Than\+Or\+Equal\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}gte\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ge\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is greater than or equal the specified\textquotesingle{}s.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}is\+Even\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is even.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}is\+Negative\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is negative.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}is\+Odd\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is odd.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}is\+Positive\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is positive.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}is\+Zero\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}eqz\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value equals zero.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}less\+Than\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lt\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is less than the specified\textquotesingle{}s.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}less\+Than\+Or\+Equal\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lte\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}le\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value is less than or equal the specified\textquotesingle{}s.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}modulo\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}mod\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rem\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(divisor\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long modulo the specified.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}multiply\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}mul\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(multiplier\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns the product of this and the specified Long.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}negate\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}neg\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily Long}~\newline
+ Negates this Long\textquotesingle{}s value.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}not\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily Long}~\newline
+ Returns the bitwise NOT of this Long.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}not\+Equals\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}neq\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ne\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily boolean}~\newline
+ Tests if this Long\textquotesingle{}s value differs from the specified\textquotesingle{}s.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}or\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns the bitwise OR of this Long and the specified.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shift\+Left\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shl\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(num\+Bits\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long with bits shifted to the left by the given amount.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shift\+Right\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shr\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(num\+Bits\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long with bits arithmetically shifted to the right by the given amount.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shift\+Right\+Unsigned\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shru\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shr\+\_\+u\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(num\+Bits\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long with bits logically shifted to the right by the given amount.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rotate\+Left\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rotl\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(num\+Bits\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long with bits rotated to the left by the given amount.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rotate\+Right\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rotr\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(num\+Bits\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns this Long with bits rotated to the right by the given amount.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}subtract\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}sub\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(subtrahend\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns the difference of this and the specified Long.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Bytes\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(le?\+: {\ttfamily boolean})\+: {\ttfamily number\mbox{[}\mbox{]}}~\newline
+ Converts this Long to its byte representation.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Bytes\+LE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number\mbox{[}\mbox{]}}~\newline
+ Converts this Long to its little endian byte representation.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Bytes\+BE\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number\mbox{[}\mbox{]}}~\newline
+ Converts this Long to its big endian byte representation.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Converts the Long to a 32 bit integer, assuming it is a 32 bit integer.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Number\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily number}~\newline
+ Converts the Long to a the nearest floating-\/point representation of this value (double, 53 bit mantissa).
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Signed\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily Long}~\newline
+ Converts this Long to signed.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+String\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(radix?\+: {\ttfamily number})\+: {\ttfamily string}~\newline
+ Converts the Long to a string written in the specified radix.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}to\+Unsigned\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}()\+: {\ttfamily Long}~\newline
+ Converts this Long to unsigned.
+\item Long\#\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}xor\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(other\+: {\ttfamily Long \texorpdfstring{$\vert$}{|} number \texorpdfstring{$\vert$}{|} string})\+: {\ttfamily Long}~\newline
+ Returns the bitwise XOR of this Long and the given one.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4397}{}\doxysection{\texorpdfstring{Web\+Assembly support}{Web\+Assembly support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4397}
+\href{http://webassembly.org}{\texttt{ Web\+Assembly}} supports 64-\/bit integer arithmetic out of the box, hence a \href{./src/wasm.wat}{\texttt{ tiny Web\+Assembly module}} is used to compute operations like multiplication, division and remainder more efficiently (slow operations like division are around twice as fast), falling back to floating point based computations in Java\+Script where Web\+Assembly is not yet supported, e.\+g., in older versions of node.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4398}{}\doxysection{\texorpdfstring{Building}{Building}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dxtuc_2long_2_r_e_a_d_m_e_autotoc_md4398}
+To build an UMD bundle to {\ttfamily dist/long.\+js}, run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ npm\ install}
+\DoxyCodeLine{\$>\ npm\ run\ build}
+
+\end{DoxyCode}
+
+
+Running the \href{./tests}{\texttt{ tests}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ npm\ test}
+
+\end{DoxyCode}
+ 

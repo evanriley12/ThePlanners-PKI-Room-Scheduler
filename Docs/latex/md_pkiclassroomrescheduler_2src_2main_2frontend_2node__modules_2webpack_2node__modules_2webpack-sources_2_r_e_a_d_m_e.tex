@@ -1,0 +1,208 @@
+\chapter{webpack-\/sources}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e}\index{webpack-\/sources@{webpack-\/sources}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26746}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26746}%
+ Contains multiple classes which represent a {\ttfamily Source}. A {\ttfamily Source} can be asked for source code, size, source map and hash.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26747}{}\doxysection{\texorpdfstring{{\ttfamily Source}}{{\ttfamily Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26747}
+Base class for all sources.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26748}{}\doxysubsection{\texorpdfstring{Public methods}{Public methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26748}
+All methods should be considered as expensive as they may need to do computations.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26749}{}\doxysubsubsection{\texorpdfstring{{\ttfamily source}}{{\ttfamily source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26749}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Source.prototype.source()\ -\/>\ String\ |\ Buffer}
+
+\end{DoxyCode}
+
+
+Returns the represented source code as string or Buffer (for binary Sources).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26750}{}\doxysubsubsection{\texorpdfstring{{\ttfamily buffer}}{{\ttfamily buffer}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26750}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Source.prototype.buffer()\ -\/>\ Buffer}
+
+\end{DoxyCode}
+
+
+Returns the represented source code as Buffer. Strings are converted to utf-\/8.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26751}{}\doxysubsubsection{\texorpdfstring{{\ttfamily size}}{{\ttfamily size}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26751}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Source.prototype.size()\ -\/>\ Number}
+
+\end{DoxyCode}
+
+
+Returns the size in bytes of the represented source code.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26752}{}\doxysubsubsection{\texorpdfstring{{\ttfamily map}}{{\ttfamily map}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26752}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Source.prototype.map(options?:\ Object)\ -\/>\ Object\ |\ null}
+
+\end{DoxyCode}
+
+
+Returns the Source\+Map of the represented source code as JSON. May return {\ttfamily null} if no Source\+Map is available.
+
+The {\ttfamily options} object can contain the following keys\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily columns\+: Boolean} (default {\ttfamily true})\+: If set to false the implementation may omit mappings for columns.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26753}{}\doxysubsubsection{\texorpdfstring{{\ttfamily source\+And\+Map}}{{\ttfamily source\+And\+Map}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26753}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Source.prototype.sourceAndMap(options?:\ Object)\ -\/>\ \{}
+\DoxyCodeLine{\ \ \ \ source:\ String\ |\ Buffer,}
+\DoxyCodeLine{\ \ \ \ map:\ Object\ |\ null}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Returns both, source code (like {\ttfamily Source.\+prototype.\+source()} and Source\+Map (like {\ttfamily Source.\+prototype.\+map()}). This method could have better performance than calling {\ttfamily source()} and {\ttfamily map()} separately.
+
+See {\ttfamily map()} for {\ttfamily options}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26754}{}\doxysubsubsection{\texorpdfstring{{\ttfamily update\+Hash}}{{\ttfamily update\+Hash}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26754}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Source.prototype.updateHash(hash:\ Hash)\ -\/>\ void}
+
+\end{DoxyCode}
+
+
+Updates the provided {\ttfamily Hash} object with the content of the represented source code. ({\ttfamily Hash} is an object with an {\ttfamily update} method, which is called with string values)\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26755}{}\doxysection{\texorpdfstring{{\ttfamily Raw\+Source}}{{\ttfamily Raw\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26755}
+Represents source code without Source\+Map.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ RawSource(sourceCode:\ String\ |\ Buffer)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26756}{}\doxysection{\texorpdfstring{{\ttfamily Original\+Source}}{{\ttfamily Original\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26756}
+Represents source code, which is a copy of the original file.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ OriginalSource(}
+\DoxyCodeLine{\ \ \ \ sourceCode:\ String\ |\ Buffer,}
+\DoxyCodeLine{\ \ \ \ name:\ String}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily source\+Code}\+: The source code.
+\item {\ttfamily name}\+: The filename of the original source code.
+\end{DoxyItemize}
+
+Original\+Source tries to create column mappings if requested, by splitting the source code at typical statement borders ({\ttfamily ;}, {\ttfamily \{}, {\ttfamily \}}).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26757}{}\doxysection{\texorpdfstring{{\ttfamily Source\+Map\+Source}}{{\ttfamily Source\+Map\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26757}
+Represents source code with Source\+Map, optionally having an additional Source\+Map for the original source.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ SourceMapSource(}
+\DoxyCodeLine{\ \ \ \ sourceCode:\ String\ |\ Buffer,}
+\DoxyCodeLine{\ \ \ \ name:\ String,}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ Object\ |\ String\ |\ Buffer,}
+\DoxyCodeLine{\ \ \ \ originalSource?:\ String\ |\ Buffer,}
+\DoxyCodeLine{\ \ \ \ innerSourceMap?:\ Object\ |\ String\ |\ Buffer,}
+\DoxyCodeLine{\ \ \ \ removeOriginalSource?:\ boolean}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily source\+Code}\+: The source code.
+\item {\ttfamily name}\+: The filename of the original source code.
+\item {\ttfamily source\+Map}\+: The Source\+Map for the source code.
+\item {\ttfamily original\+Source}\+: The source code of the original file. Can be omitted if the {\ttfamily source\+Map} already contains the original source code.
+\item {\ttfamily inner\+Source\+Map}\+: The Source\+Map for the {\ttfamily original\+Source}/{\ttfamily name}.
+\item {\ttfamily remove\+Original\+Source}\+: Removes the source code for {\ttfamily name} from the final map, keeping only the deeper mappings for that file.
+\end{DoxyItemize}
+
+The {\ttfamily Source\+Map\+Source} supports "{}identity"{} mappings for the {\ttfamily inner\+Source\+Map}. When original source matches generated source for a mapping it\textquotesingle{}s assumed to be mapped char by char allowing to keep finer mappings from {\ttfamily source\+Map}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26758}{}\doxysection{\texorpdfstring{{\ttfamily Cached\+Source}}{{\ttfamily Cached\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26758}
+Decorates a {\ttfamily Source} and caches returned results of {\ttfamily map}, {\ttfamily source}, {\ttfamily buffer}, {\ttfamily size} and {\ttfamily source\+And\+Map} in memory. {\ttfamily update\+Hash} is not cached. It tries to reused cached results from other methods to avoid calculations, i. e. when {\ttfamily source} is already cached, calling {\ttfamily size} will get the size from the cached source, calling {\ttfamily source\+And\+Map} will only call {\ttfamily map} on the wrapped Source.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CachedSource(source:\ Source)}
+\DoxyCodeLine{new\ CachedSource(source:\ Source\ |\ ()\ =>\ Source,\ cachedData?:\ CachedData)}
+
+\end{DoxyCode}
+
+
+Instead of passing a {\ttfamily Source} object directly one can pass an function that returns a {\ttfamily Source} object. The function is only called when needed and once.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26759}{}\doxysubsection{\texorpdfstring{Public methods}{Public methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26759}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26760}{}\doxysubsubsection{\texorpdfstring{{\ttfamily get\+Cached\+Data()}}{{\ttfamily get\+Cached\+Data()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26760}
+Returns the cached data for passing to the constructor. All cached entries are converted to Buffers and strings are avoided.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26761}{}\doxysubsubsection{\texorpdfstring{{\ttfamily original()}}{{\ttfamily original()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26761}
+Returns the original {\ttfamily Source} object.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26762}{}\doxysubsubsection{\texorpdfstring{{\ttfamily original\+Lazy()}}{{\ttfamily original\+Lazy()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26762}
+Returns the original {\ttfamily Source} object or a function returning these.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26763}{}\doxysection{\texorpdfstring{{\ttfamily Prefix\+Source}}{{\ttfamily Prefix\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26763}
+Prefix every line of the decorated {\ttfamily Source} with a provided string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ PrefixSource(}
+\DoxyCodeLine{\ \ \ \ prefix:\ String,}
+\DoxyCodeLine{\ \ \ \ source:\ Source\ |\ String\ |\ Buffer}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26764}{}\doxysection{\texorpdfstring{{\ttfamily Concat\+Source}}{{\ttfamily Concat\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26764}
+Concatenate multiple {\ttfamily Source}s or strings to a single source.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ ConcatSource(}
+\DoxyCodeLine{\ \ \ \ ...items?:\ Source\ |\ String}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26765}{}\doxysubsection{\texorpdfstring{Public methods}{Public methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26765}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26766}{}\doxysubsubsection{\texorpdfstring{{\ttfamily add}}{{\ttfamily add}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26766}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ConcatSource.prototype.add(item:\ Source\ |\ String)}
+
+\end{DoxyCode}
+
+
+Adds an item to the source.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26767}{}\doxysection{\texorpdfstring{{\ttfamily Replace\+Source}}{{\ttfamily Replace\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26767}
+Decorates a {\ttfamily Source} with replacements and insertions of source code.
+
+The {\ttfamily Replace\+Source} supports "{}identity"{} mappings for child source. When original source matches generated source for a mapping it\textquotesingle{}s assumed to be mapped char by char allowing to split mappings at replacements/insertions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26768}{}\doxysubsection{\texorpdfstring{Public methods}{Public methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26768}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26769}{}\doxysubsubsection{\texorpdfstring{{\ttfamily replace}}{{\ttfamily replace}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26769}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ReplaceSource.prototype.replace(}
+\DoxyCodeLine{\ \ \ \ start:\ Number,}
+\DoxyCodeLine{\ \ \ \ end:\ Number,}
+\DoxyCodeLine{\ \ \ \ replacement:\ String}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+Replaces chars from {\ttfamily start} (0-\/indexed, inclusive) to {\ttfamily end} (0-\/indexed, inclusive) with {\ttfamily replacement}.
+
+Locations represents locations in the original source and are not influenced by other replacements or insertions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26770}{}\doxysubsubsection{\texorpdfstring{{\ttfamily insert}}{{\ttfamily insert}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26770}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ReplaceSource.prototype.insert(}
+\DoxyCodeLine{\ \ \ \ pos:\ Number,}
+\DoxyCodeLine{\ \ \ \ insertion:\ String}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+Inserts the {\ttfamily insertion} before char {\ttfamily pos} (0-\/indexed).
+
+Location represents location in the original source and is not influenced by other replacements or insertions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26771}{}\doxysubsubsection{\texorpdfstring{{\ttfamily original}}{{\ttfamily original}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26771}
+Get decorated {\ttfamily Source}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26772}{}\doxysection{\texorpdfstring{{\ttfamily Compat\+Source}}{{\ttfamily Compat\+Source}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26772}
+Converts a Source-\/like object into a real Source object.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26773}{}\doxysubsection{\texorpdfstring{Public methods}{Public methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26773}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26774}{}\doxysubsubsection{\texorpdfstring{static {\ttfamily from}}{static {\ttfamily from}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack_2node__modules_2webpack-sources_2_r_e_a_d_m_e_autotoc_md26774}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CompatSource.from(sourceLike:\ any\ |\ Source)}
+
+\end{DoxyCode}
+
+
+If {\ttfamily source\+Like} is a real Source it returns it unmodified. Otherwise it returns it wrapped in a Compat\+Source. 

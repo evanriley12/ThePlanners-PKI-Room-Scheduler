@@ -1,0 +1,1341 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://github.com/webpack/webpack}{\texttt{  }} \doxysection*{Style Loader}
+
+ 
+
+\href{https://npmjs.com/package/style-loader}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://github.com/webpack-contrib/style-loader/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/style-loader}{\texttt{ }} \href{https://github.com/webpack/webpack/discussions}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=style-loader}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23971}{}\doxysection{\texorpdfstring{style-\/loader}{style-\/loader}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23971}
+Inject CSS into the DOM.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23972}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23972}
+To begin, you\textquotesingle{}ll need to install {\ttfamily style-\/loader}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ style-\/loader}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/D\ style-\/loader}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pnpm\ add\ -\/D\ style-\/loader}
+
+\end{DoxyCode}
+
+
+It\textquotesingle{}s recommended to combine {\ttfamily style-\/loader} with the \href{https://github.com/webpack-contrib/css-loader}{\texttt{ {\ttfamily css-\/loader}}}
+
+Then add the loader to your {\ttfamily webpack} config. For example\+:
+
+{\bfseries{style.\+css}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ background:\ green;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./style.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23973}{}\doxysubsection{\texorpdfstring{Security Warning}{Security Warning}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23973}
+This loader is primarily meant for development. The default settings are not safe for production environments. See the recommended example configuration and the section on nonces for details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23974}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23974}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}inject\+Type\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}attributes\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}insert\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}style\+Tag\+Transform\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}base\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}es\+Module\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23975}{}\doxysubsubsection{\texorpdfstring{{\ttfamily inject\+Type}}{{\ttfamily inject\+Type}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23975}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ injectType\ =}
+\DoxyCodeLine{\ \ |\ "{}styleTag"{}}
+\DoxyCodeLine{\ \ |\ "{}singletonStyleTag"{}}
+\DoxyCodeLine{\ \ |\ "{}autoStyleTag"{}}
+\DoxyCodeLine{\ \ |\ "{}lazyStyleTag"{}}
+\DoxyCodeLine{\ \ |\ "{}lazySingletonStyleTag"{}}
+\DoxyCodeLine{\ \ |\ "{}lazyAutoStyleTag"{}}
+\DoxyCodeLine{\ \ |\ "{}linkTag"{};}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily style\+Tag}
+
+Allows to setup how styles will be injected into the DOM.
+
+Possible values\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23976}{}\doxyparagraph{\texorpdfstring{{\ttfamily style\+Tag}}{{\ttfamily style\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23976}
+Automatically injects styles into the DOM using multiple {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/style\texorpdfstring{$>$}{>}}. It is {\bfseries{default}} behaviour.
+
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./styles.css"{};}
+
+\end{DoxyCode}
+
+
+Example with Locals (CSS Modules)\+:
+
+{\bfseries{component-\/with-\/css-\/modules.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ styles\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ divElement\ =\ document.createElement("{}div"{});}
+\DoxyCodeLine{divElement.className\ =\ styles["{}my-\/class"{}];}
+
+\end{DoxyCode}
+
+
+All locals (class names) stored in imported object.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ The\ \`{}injectType`\ \ option\ can\ be\ avoided\ because\ it\ is\ default\ behaviour}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{},\ options:\ \{\ injectType:\ "{}styleTag"{}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader inject styles like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style>}
+\DoxyCodeLine{\ \ .foo\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+\DoxyCodeLine{<style>}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23977}{}\doxyparagraph{\texorpdfstring{{\ttfamily singleton\+Style\+Tag}}{{\ttfamily singleton\+Style\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23977}
+Automatically injects styles into the DOM using one {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/style\texorpdfstring{$>$}{>}}.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Source maps do not work. \end{quote}
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./styles.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{component-\/with-\/css-\/modules.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ styles\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ divElement\ =\ document.createElement("{}div"{});}
+\DoxyCodeLine{divElement.className\ =\ styles["{}my-\/class"{}];}
+
+\end{DoxyCode}
+
+
+All locals (class names) stored in imported object.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ injectType:\ "{}singletonStyleTag"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader inject styles like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style>}
+\DoxyCodeLine{\ \ .foo\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23978}{}\doxyparagraph{\texorpdfstring{{\ttfamily auto\+Style\+Tag}}{{\ttfamily auto\+Style\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23978}
+Works the same as a \`{}style\+Tag\`{}, but if the code is executed in IE6-\/9, turns on the \`{}singleton\+Style\+Tag\`{} mode.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23979}{}\doxyparagraph{\texorpdfstring{{\ttfamily lazy\+Style\+Tag}}{{\ttfamily lazy\+Style\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23979}
+Injects styles into the DOM using multiple {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/style\texorpdfstring{$>$}{>}} on demand. We recommend following {\ttfamily .lazy.\+css} naming convention for lazy styles and the {\ttfamily .css} for basic {\ttfamily style-\/loader} usage (similar to other file types, i.\+e. {\ttfamily .lazy.\+less} and {\ttfamily .less}). When you {\ttfamily lazy\+Style\+Tag} value the {\ttfamily style-\/loader} injects the styles lazily making them useable on-\/demand via {\ttfamily style.\+use()} / {\ttfamily style.\+unuse()}.
+
+\begin{quote}
+⚠️ Behavior is undefined when {\ttfamily unuse} is called more often than {\ttfamily use}. Don\textquotesingle{}t do that. \end{quote}
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ styles\ from\ "{}./styles.lazy.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{styles.use();}
+\DoxyCodeLine{//\ For\ removing\ styles\ you\ can\ use}
+\DoxyCodeLine{//\ styles.unuse();}
+
+\end{DoxyCode}
+
+
+{\bfseries{component-\/with-\/css-\/modules.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ styles\ from\ "{}./styles.lazy.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{styles.use();}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ divElement\ =\ document.createElement("{}div"{});}
+\DoxyCodeLine{divElement.className\ =\ styles.locals["{}my-\/class"{}];}
+
+\end{DoxyCode}
+
+
+All locals (class names) stored in {\ttfamily locals} property of imported object.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /\(\backslash\).lazy\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).lazy\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{},\ options:\ \{\ injectType:\ "{}lazyStyleTag"{}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader inject styles like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style>}
+\DoxyCodeLine{\ \ .foo\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+\DoxyCodeLine{<style>}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23980}{}\doxyparagraph{\texorpdfstring{{\ttfamily lazy\+Singleton\+Style\+Tag}}{{\ttfamily lazy\+Singleton\+Style\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23980}
+Injects styles into the DOM using one {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/style\texorpdfstring{$>$}{>}} on demand. We recommend following {\ttfamily .lazy.\+css} naming convention for lazy styles and the {\ttfamily .css} for basic {\ttfamily style-\/loader} usage (similar to other file types, i.\+e. {\ttfamily .lazy.\+less} and {\ttfamily .less}). When you {\ttfamily lazy\+Singleton\+Style\+Tag} value the {\ttfamily style-\/loader} injects the styles lazily making them useable on-\/demand via {\ttfamily style.\+use()} / {\ttfamily style.\+unuse()}.
+
+\begin{quote}
+⚠️ Source maps do not work. \end{quote}
+\begin{quote}
+⚠️ Behavior is undefined when {\ttfamily unuse} is called more often than {\ttfamily use}. Don\textquotesingle{}t do that. \end{quote}
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ styles\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{styles.use();}
+\DoxyCodeLine{//\ For\ removing\ styles\ you\ can\ use}
+\DoxyCodeLine{//\ styles.unuse();}
+
+\end{DoxyCode}
+
+
+{\bfseries{component-\/with-\/css-\/modules.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ styles\ from\ "{}./styles.lazy.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{styles.use();}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ divElement\ =\ document.createElement("{}div"{});}
+\DoxyCodeLine{divElement.className\ =\ styles.locals["{}my-\/class"{}];}
+
+\end{DoxyCode}
+
+
+All locals (class names) stored in {\ttfamily locals} property of imported object.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /\(\backslash\).lazy\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).lazy\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ injectType:\ "{}lazySingletonStyleTag"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader generate this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style>}
+\DoxyCodeLine{\ \ .foo\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23981}{}\doxyparagraph{\texorpdfstring{{\ttfamily lazy\+Auto\+Style\+Tag}}{{\ttfamily lazy\+Auto\+Style\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23981}
+Works the same as a \`{}lazy\+Style\+Tag\`{}, but if the code is executed in IE6-\/9, turns on the \`{}lazy\+Singleton\+Style\+Tag\`{} mode.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23982}{}\doxyparagraph{\texorpdfstring{{\ttfamily link\+Tag}}{{\ttfamily link\+Tag}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23982}
+Injects styles into the DOM using multiple {\ttfamily \texorpdfstring{$<$}{<}link rel="{}stylesheet"{} href="{}path/to/file.\+css"{}\texorpdfstring{$>$}{>}} .
+
+\begin{quote}
+ℹ️ The loader will dynamically insert the {\ttfamily \texorpdfstring{$<$}{<}link href="{}path/to/file.\+css"{} rel="{}stylesheet"{}\texorpdfstring{$>$}{>}} tag at runtime via Java\+Script. You should use \href{https://webpack.js.org/plugins/mini-css-extract-plugin/}{\texttt{ Mini\+Css\+Extract\+Plugin}} if you want to include a static {\ttfamily \texorpdfstring{$<$}{<}link href="{}path/to/file.\+css"{} rel="{}stylesheet"{}\texorpdfstring{$>$}{>}}. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./styles.css"{};}
+\DoxyCodeLine{import\ "{}./other-\/styles.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).link\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{},\ options:\ \{\ injectType:\ "{}linkTag"{}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}file-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader generate this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<link\ rel="{}stylesheet"{}\ href="{}path/to/style.css"{}\ />}
+\DoxyCodeLine{<link\ rel="{}stylesheet"{}\ href="{}path/to/other-\/styles.css"{}\ />}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23983}{}\doxysubsubsection{\texorpdfstring{{\ttfamily attributes}}{{\ttfamily attributes}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23983}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ attributes\ =\ HTMLAttributes;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily \{\}}
+
+If defined, the {\ttfamily style-\/loader} will attach given attributes with their values on {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} / {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} element.
+
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ style\ from\ "{}./file.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{},\ options:\ \{\ attributes:\ \{\ id:\ "{}id"{}\ \}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style\ id="{}id"{}></style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23984}{}\doxysubsubsection{\texorpdfstring{{\ttfamily insert}}{{\ttfamily insert}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23984}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ insert\ =}
+\DoxyCodeLine{\ \ |\ string}
+\DoxyCodeLine{\ \ |\ ((htmlElement:\ HTMLElement,\ options:\ Record<string,\ any>)\ =>\ void);}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily head}
+
+By default, the {\ttfamily style-\/loader} appends {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}}/{\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} elements to the end of the style target, which is the {\ttfamily \texorpdfstring{$<$}{<}head\texorpdfstring{$>$}{>}} tag of the page unless specified by {\ttfamily insert}. This will cause CSS created by the loader to take priority over CSS already present in the target. You can use other values if the standard behavior is not suitable for you, but we do not recommend doing this. If you target an \href{https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement}{\texttt{ iframe}} make sure you have sufficient access rights, the styles will be injected into the content document head.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23985}{}\doxyparagraph{\texorpdfstring{{\ttfamily string}}{{\ttfamily string}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23985}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23986}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23986}%
+ \doxysubparagraph*{{\ttfamily Selector}}
+
+Allows to setup custom \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector}{\texttt{ query selector}} where styles inject into the DOM.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ "{}body"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23987}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23987}%
+ \doxysubparagraph*{{\ttfamily Absolute path to function}}
+
+Allows to setup absolute path to custom function that allows to override default behavior and insert styles at any position.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that this code will be used in the browser and not all browsers support latest ECMA features like {\ttfamily let}, {\ttfamily const}, {\ttfamily arrow function expression} and etc. We recommend using \href{https://webpack.js.org/loaders/babel-loader/}{\texttt{ {\ttfamily babel-\/loader}}} for support latest ECMA features. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that some DOM methods may not be available in older browsers, we recommended use only \href{https://caniuse.com/\#search=DOM\%20Core}{\texttt{ DOM core level 2 properties}}, but it is depends what browsers you want to support \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ require.resolve("{}modulePath"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+A new {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}}/{\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} elements will be inserted into at bottom of {\ttfamily body} tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23988}{}\doxyparagraph{\texorpdfstring{{\ttfamily function}}{{\ttfamily function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23988}
+Allows to override default behavior and insert styles at any position.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that this code will be used in the browser and not all browsers support latest ECMA features like {\ttfamily let}, {\ttfamily const}, {\ttfamily arrow function expression} and etc, we recommend use only ECMA 5 features, but it is depends what browsers you want to support \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that some DOM methods may not be available in older browsers, we recommended use only \href{https://caniuse.com/\#search=DOM\%20Core}{\texttt{ DOM core level 2 properties}}, but it is depends what browsers you want to support \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ function\ insertAtTop(element)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ parent\ =\ document.querySelector("{}head"{});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ eslint-\/disable-\/next-\/line\ no-\/underscore-\/dangle}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ lastInsertedElement\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\_lastElementInsertedByStyleLoader;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!lastInsertedElement)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.insertBefore(element,\ parent.firstChild);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ if\ (lastInsertedElement.nextSibling)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.insertBefore(element,\ lastInsertedElement.nextSibling);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.appendChild(element);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ eslint-\/disable-\/next-\/line\ no-\/underscore-\/dangle}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\_lastElementInsertedByStyleLoader\ =\ element;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Insert styles at top of {\ttfamily head} tag.
+
+You can pass any parameters to {\ttfamily style.\+use(options)} and this value will be passed to {\ttfamily insert} and {\ttfamily style\+Tag\+Transform} functions.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ injectType:\ "{}lazyStyleTag"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Do\ not\ forget\ that\ this\ code\ will\ be\ used\ in\ the\ browser\ and}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ not\ all\ browsers\ support\ latest\ ECMA\ features\ like\ \`{}let`,\ \`{}const`,\ \`{}arrow\ function\ expression`\ and\ etc,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ we\ recommend\ use\ only\ ECMA\ 5\ features,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ but\ it\ is\ depends\ what\ browsers\ you\ want\ to\ support}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ function\ insertIntoTarget(element,\ options)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ parent\ =\ options.target\ ||\ document.head;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.appendChild(element);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Insert styles to the provided element or to the {\ttfamily head} tag if target isn\textquotesingle{}t provided. Now you can inject styles into Shadow DOM (or any other element).
+
+{\bfseries{custom-\/square.\+css}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{div\ \{}
+\DoxyCodeLine{\ \ width:\ 50px;}
+\DoxyCodeLine{\ \ height:\ 50px;}
+\DoxyCodeLine{\ \ background-\/color:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{custom-\/square.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ customSquareStyles\ from\ "{}./custom-\/square.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ CustomSquare\ extends\ HTMLElement\ \{}
+\DoxyCodeLine{\ \ constructor()\ \{}
+\DoxyCodeLine{\ \ \ \ super();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.attachShadow(\{\ mode:\ "{}open"{}\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ const\ divElement\ =\ document.createElement("{}div"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ divElement.textContent\ =\ "{}Text\ content."{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.shadowRoot.appendChild(divElement);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ customSquareStyles.use(\{\ target:\ this.shadowRoot\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ You\ can\ override\ injected\ styles}
+\DoxyCodeLine{\ \ \ \ const\ bgPurple\ =\ new\ CSSStyleSheet();}
+\DoxyCodeLine{\ \ \ \ const\ width\ =\ this.getAttribute("{}w"{});}
+\DoxyCodeLine{\ \ \ \ const\ height\ =\ this.getAttribute("{}h"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ bgPurple.replace(`div\ \{\ width:\ \$\{width\}px;\ height:\ \$\{height\}px;\ \}`);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.shadowRoot.adoptedStyleSheets\ =\ [bgPurple];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ \`{}divElement`\ will\ have\ \`{}100px`\ width,\ \`{}100px`\ height\ and\ \`{}red`\ background\ color}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{customElements.define("{}custom-\/square"{},\ CustomSquare);}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ CustomSquare;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23989}{}\doxysubsubsection{\texorpdfstring{{\ttfamily style\+Tag\+Transform}}{{\ttfamily style\+Tag\+Transform}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23989}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ styleTagTransform\ =}
+\DoxyCodeLine{\ \ |\ string}
+\DoxyCodeLine{\ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ css:\ string,}
+\DoxyCodeLine{\ \ \ \ \ \ styleElement:\ HTMLStyleElement,}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ Record<string,\ any>}
+\DoxyCodeLine{\ \ \ \ )\ =>\ void);}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23990}{}\doxyparagraph{\texorpdfstring{{\ttfamily string}}{{\ttfamily string}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23990}
+Allows to setup absolute path to custom function that allows to override default behavior style\+Tag\+Transform.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that this code will be used in the browser and not all browsers support latest ECMA features like {\ttfamily let}, {\ttfamily const}, {\ttfamily arrow function expression} and etc, we recommend use only ECMA 5 features, but it is depends what browsers you want to support \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ injectType:\ "{}styleTag"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ styleTagTransform:\ require.resolve("{}module-\/path"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23991}{}\doxyparagraph{\texorpdfstring{{\ttfamily function}}{{\ttfamily function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23991}
+Transform tag and css when insert \textquotesingle{}style\textquotesingle{} tag into the DOM.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that this code will be used in the browser and not all browsers support latest ECMA features like {\ttfamily let}, {\ttfamily const}, {\ttfamily arrow function expression} and etc, we recommend use only ECMA 5 features, but it is depends what browsers you want to support \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not forget that some DOM methods may not be available in older browsers, we recommended use only \href{https://caniuse.com/\#search=DOM\%20Core}{\texttt{ DOM core level 2 properties}}, but it is depends what browsers you want to support \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ injectType:\ "{}styleTag"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ styleTagTransform:\ function\ (css,\ style)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Do\ something\ ...}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ style.innerHTML\ =\ \`{}\$\{css\}.modify\{\}\(\backslash\)n`;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ document.head.appendChild(style);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23992}{}\doxysubsubsection{\texorpdfstring{{\ttfamily base}}{{\ttfamily base}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23992}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ base\ =\ number;}
+
+\end{DoxyCode}
+
+
+This setting is primarily used as a workaround for \href{https://github.com/webpack-contrib/style-loader/issues/163}{\texttt{ css clashes}} when using one or more \href{https://robertknight.me.uk/posts/webpack-dll-plugins/}{\texttt{ Dll\+Plugin}}\textquotesingle{}s. {\ttfamily base} allows you to prevent either the {\itshape app}\textquotesingle{}s css (or {\itshape Dll\+Plugin2}\textquotesingle{}s css) from overwriting {\itshape Dll\+Plugin1}\textquotesingle{}s css by specifying a css module id base which is greater than the range used by {\itshape Dll\+Plugin1} e.\+g.\+:
+
+{\bfseries{webpack.\+dll1.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+dll2.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{},\ options:\ \{\ base:\ 1000\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+app.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{},\ options:\ \{\ base:\ 2000\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23993}{}\doxysubsubsection{\texorpdfstring{{\ttfamily es\+Module}}{{\ttfamily es\+Module}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23993}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ esModule\ =\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+By default, {\ttfamily style-\/loader} generates JS modules that use the ES modules syntax. There are some cases in which using ES modules is beneficial, like in the case of \href{https://webpack.js.org/plugins/module-concatenation-plugin/}{\texttt{ module concatenation}} and \href{https://webpack.js.org/guides/tree-shaking/}{\texttt{ tree shaking}}.
+
+You can enable a Common\+JS modules syntax using\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ esModule:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23994}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23994}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23995}{}\doxysubsubsection{\texorpdfstring{Recommend}{Recommend}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23995}
+For {\ttfamily production} builds it\textquotesingle{}s recommended to extract the CSS from your bundle being able to use parallel loading of CSS/\+JS resources later on. This can be achieved by using the \href{https://github.com/webpack-contrib/mini-css-extract-plugin}{\texttt{ mini-\/css-\/extract-\/plugin}}, because it creates separate css files. For {\ttfamily development} mode (including {\ttfamily webpack-\/dev-\/server}) you can use {\ttfamily style-\/loader}, because it injects CSS into the DOM using multiple {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/style\texorpdfstring{$>$}{>}} and works faster.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Do not use together {\ttfamily style-\/loader} and {\ttfamily mini-\/css-\/extract-\/plugin}. \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{const\ devMode\ =\ process.env.NODE\_ENV\ !==\ "{}production"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(sa|sc|c)ss\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ devMode\ ?\ "{}style-\/loader"{}\ :\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [].concat(devMode\ ?\ []\ :\ [new\ MiniCssExtractPlugin()]),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23996}{}\doxysubsubsection{\texorpdfstring{Named export for CSS Modules}{Named export for CSS Modules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23996}
+\begin{quote}
+{\bfseries{Warning}}
+
+Names of locals are converted to {\ttfamily camel\+Case}. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+It is not allowed to use Java\+Script reserved words in css class names. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+Options {\ttfamily es\+Module} and {\ttfamily modules.\+named\+Export} in {\ttfamily css-\/loader} should be enabled. \end{quote}
+{\bfseries{styles.\+css}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo-\/baz\ \{}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.bar\ \{}
+\DoxyCodeLine{\ \ color:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{index.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ fooBaz,\ bar\ \}\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(fooBaz,\ bar);}
+
+\end{DoxyCode}
+
+
+You can enable a ES module named export using\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ namedExport:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23997}{}\doxysubsubsection{\texorpdfstring{Source maps}{Source maps}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23997}
+The loader automatically inject source maps when previous loader emit them. Therefore, to generate source maps, set the {\ttfamily source\+Map} option to {\ttfamily true} for the previous loader.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{},\ options:\ \{\ sourceMap:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23998}{}\doxysubsubsection{\texorpdfstring{Nonce}{Nonce}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23998}
+If you are using a \href{https://www.w3.org/TR/CSP3/}{\texttt{ Content Security Policy}} (CSP), the injected code will usually be blocked. A workaround is to use a nonce. Note, however, that using a nonce significantly reduces the protection provided by the CSP. You can read more about the security impact in \href{https://www.w3.org/TR/CSP3/\#security-considerations}{\texttt{ the specification}}. The better solution is not to use this loader in production.
+
+There are two ways to work with {\ttfamily nonce}\+:
+
+
+\begin{DoxyItemize}
+\item using the {\ttfamily attributes} option
+\item using the {\ttfamily \+\_\+\+\_\+webpack\+\_\+nonce\+\_\+\+\_\+} variable
+\end{DoxyItemize}
+
+\begin{quote}
+{\bfseries{Warning}}
+
+the {\ttfamily attributes} option takes precedence over the {\ttfamily \+\_\+\+\_\+webpack\+\_\+nonce\+\_\+\+\_\+} variable \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23999}{}\doxyparagraph{\texorpdfstring{{\ttfamily attributes}}{{\ttfamily attributes}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md23999}
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./style.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ attributes:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nonce:\ "{}12345678"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader generate\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style\ nonce="{}12345678"{}>}
+\DoxyCodeLine{\ \ .foo\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24000}{}\doxyparagraph{\texorpdfstring{{\ttfamily \+\_\+\+\_\+webpack\+\_\+nonce\+\_\+\+\_\+}}{{\ttfamily \+\_\+\+\_\+webpack\+\_\+nonce\+\_\+\+\_\+}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24000}
+{\bfseries{create-\/nonce.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_webpack\_nonce\_\_\ =\ "{}12345678"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./create-\/nonce.js"{};}
+\DoxyCodeLine{import\ "{}./style.css"{};}
+
+\end{DoxyCode}
+
+
+Alternative example for {\ttfamily require}\+:
+
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_webpack\_nonce\_\_\ =\ "{}12345678"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{require("{}./style.css"{});}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader generate\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<style\ nonce="{}12345678"{}>}
+\DoxyCodeLine{\ \ .foo\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{</style>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24001}{}\doxyparagraph{\texorpdfstring{Insert styles at top}{Insert styles at top}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24001}
+Inserts styles at top of {\ttfamily head} tag.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ function\ insertAtTop(element)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ parent\ =\ document.querySelector("{}head"{});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ lastInsertedElement\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\_lastElementInsertedByStyleLoader;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!lastInsertedElement)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.insertBefore(element,\ parent.firstChild);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ if\ (lastInsertedElement.nextSibling)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.insertBefore(element,\ lastInsertedElement.nextSibling);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.appendChild(element);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\_lastElementInsertedByStyleLoader\ =\ element;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24002}{}\doxyparagraph{\texorpdfstring{Insert styles before target element}{Insert styles before target element}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24002}
+Inserts styles before {\ttfamily \#id} element.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ function\ insertBeforeAt(element)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ parent\ =\ document.querySelector("{}head"{});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ target\ =\ document.querySelector("{}\#id"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ lastInsertedElement\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\_lastElementInsertedByStyleLoader;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\ (!lastInsertedElement)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.insertBefore(element,\ target);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ if\ (lastInsertedElement.nextSibling)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.insertBefore(element,\ lastInsertedElement.nextSibling);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.appendChild(element);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.\_lastElementInsertedByStyleLoader\ =\ element;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24003}{}\doxyparagraph{\texorpdfstring{Custom Elements (Shadow DOM)}{Custom Elements (Shadow DOM)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24003}
+You can define custom target for your styles for the {\ttfamily lazy\+Style\+Tag} type.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ injectType:\ "{}lazyStyleTag"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Do\ not\ forget\ that\ this\ code\ will\ be\ used\ in\ the\ browser\ and}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ not\ all\ browsers\ support\ latest\ ECMA\ features\ like\ \`{}let`,\ \`{}const`,\ \`{}arrow\ function\ expression`\ and\ etc,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ we\ recommend\ use\ only\ ECMA\ 5\ features,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ but\ it\ is\ depends\ what\ browsers\ you\ want\ to\ support}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ insert:\ function\ insertIntoTarget(element,\ options)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ parent\ =\ options.target\ ||\ document.head;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent.appendChild(element);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Insert styles to the provided element or to the {\ttfamily head} tag if target isn\textquotesingle{}t provided.
+
+{\bfseries{custom-\/square.\+css}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{div\ \{}
+\DoxyCodeLine{\ \ width:\ 50px;}
+\DoxyCodeLine{\ \ height:\ 50px;}
+\DoxyCodeLine{\ \ background-\/color:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{custom-\/square.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ customSquareStyles\ from\ "{}./custom-\/square.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ CustomSquare\ extends\ HTMLElement\ \{}
+\DoxyCodeLine{\ \ constructor()\ \{}
+\DoxyCodeLine{\ \ \ \ super();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.attachShadow(\{\ mode:\ "{}open"{}\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ const\ divElement\ =\ document.createElement("{}div"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ divElement.textContent\ =\ "{}Text\ content."{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.shadowRoot.appendChild(divElement);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ customSquareStyles.use(\{\ target:\ this.shadowRoot\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ You\ can\ override\ injected\ styles}
+\DoxyCodeLine{\ \ \ \ const\ bgPurple\ =\ new\ CSSStyleSheet();}
+\DoxyCodeLine{\ \ \ \ const\ width\ =\ this.getAttribute("{}w"{});}
+\DoxyCodeLine{\ \ \ \ const\ height\ =\ this.getAttribute("{}h"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ bgPurple.replace(`div\ \{\ width:\ \$\{width\}px;\ height:\ \$\{height\}px;\ \}`);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ this.shadowRoot.adoptedStyleSheets\ =\ [bgPurple];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ \`{}divElement`\ will\ have\ \`{}100px`\ width,\ \`{}100px`\ height\ and\ \`{}red`\ background\ color}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{customElements.define("{}custom-\/square"{},\ CustomSquare);}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ CustomSquare;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24004}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24004}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24005}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2style-loader_2_r_e_a_d_m_e_autotoc_md24005}
+\href{./LICENSE}{\texttt{ MIT}} 

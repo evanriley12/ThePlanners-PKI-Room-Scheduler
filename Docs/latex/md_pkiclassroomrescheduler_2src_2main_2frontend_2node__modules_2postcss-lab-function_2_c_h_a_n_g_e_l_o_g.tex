@@ -1,0 +1,146 @@
+\chapter{Changes to Post\+CSS Lab Function}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g}\index{Changes to PostCSS Lab Function@{Changes to PostCSS Lab Function}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18848}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18848}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18849}{}\doxysubsection{\texorpdfstring{4.\+2.\+1 (July 8, 2022)}{4.\+2.\+1 (July 8, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18849}
+
+\begin{DoxyItemize}
+\item Fix case insensitive matching.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18850}{}\doxysubsection{\texorpdfstring{4.\+2.\+0 (April 4, 2022)}{4.\+2.\+0 (April 4, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18850}
+
+\begin{DoxyItemize}
+\item Allow percentage and number units in more color components.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.percentages\ \{}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ lab(40\%\ 35\%\ 30\%);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ lch(40\%\ 50\%\ 39);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ rgb(163,\ 57,\ 35);}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ color(display-\/p3\ 0.59266\ 0.25309\ 0.17075);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ rgb(181,\ 30,\ 19);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ color(display-\/p3\ 0.65205\ 0.18193\ 0.12753);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.numbers\ \{}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ lab(40\ 35\ 30);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ lch(40\ 50\ 39);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ rgb(152,\ 68,\ 47);}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ color(display-\/p3\ 0.55453\ 0.28432\ 0.20788);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ rgb(157,\ 63,\ 45);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ color(display-\/p3\ 0.57072\ 0.27138\ 0.20109);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18851}{}\doxysubsection{\texorpdfstring{4.\+1.\+2 (March 8, 2022)}{4.\+1.\+2 (March 8, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18851}
+
+\begin{DoxyItemize}
+\item Fix gamut mapping giving overly unsaturated colors.
+\item Implement powerless color components in gamut mapping.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18852}{}\doxysubsection{\texorpdfstring{4.\+1.\+1 (February 15, 2022)}{4.\+1.\+1 (February 15, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18852}
+
+\begin{DoxyItemize}
+\item Fix plugin name
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18853}{}\doxysubsection{\texorpdfstring{4.\+1.\+0 (February 12, 2022)}{4.\+1.\+0 (February 12, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18853}
+
+\begin{DoxyItemize}
+\item Add gamut mapping for out of gamut colors.
+\item Add conversion to {\ttfamily display-\/p3} as a wider gamut fallback.
+\end{DoxyItemize}
+
+\href{https://github.com/csstools/postcss-plugins/blob/main/plugins/postcss-lab-function/README.md\#out-of-gamut-colors}{\texttt{ Read more about out of gamut colors}}
+
+\href{https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color()}{\texttt{ Read more about {\ttfamily color(display-\/p3 0 0 0)}}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.color-\/lab\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ lab(40\%\ 56.6\ 39);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ with\ a\ display-\/p3\ fallback\ :\ */}
+\DoxyCodeLine{.color\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ rgb(179,\ 35,\ 35);}
+\DoxyCodeLine{\ \ \ \ color:\ color(display-\/p3\ 0.64331\ 0.19245\ 0.16771);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18854}{}\doxysubsection{\texorpdfstring{4.\+0.\+4 (February 5, 2022)}{4.\+0.\+4 (February 5, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18854}
+
+\begin{DoxyItemize}
+\item Improved {\ttfamily es module} and {\ttfamily commonjs} compatibility
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18855}{}\doxysubsection{\texorpdfstring{4.\+0.\+3 (January 2, 2022)}{4.\+0.\+3 (January 2, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18855}
+
+\begin{DoxyItemize}
+\item Removed Sourcemaps from package tarball.
+\item Moved CLI to CLI Package. See \href{https://github.com/csstools/postcss-plugins/discussions/121}{\texttt{ announcement}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18856}{}\doxysubsection{\texorpdfstring{4.\+0.\+2 (December 13, 2021)}{4.\+0.\+2 (December 13, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18856}
+
+\begin{DoxyItemize}
+\item Changed\+: now uses {\ttfamily postcss-\/value-\/parser} for parsing.
+\item Updated\+: documentation
+\item Added\+: support for CSS variables with {\ttfamily preserve\+: true} option.
+\item Fixed\+: Hue values with units in {\ttfamily lch} functions are now correctly handled.
+\item Fixed\+: Rounding of values to match current browser behavior.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18857}{}\doxysubsection{\texorpdfstring{4.\+0.\+1 (November 18, 2021)}{4.\+0.\+1 (November 18, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18857}
+
+\begin{DoxyItemize}
+\item Added\+: Safeguards against postcss-\/values-\/parser potentially throwing an error.
+\item Updated\+: postcss-\/value-\/parser to 6.\+0.\+1 (patch)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18858}{}\doxysubsection{\texorpdfstring{4.\+0.\+0 (September 17, 2021)}{4.\+0.\+0 (September 17, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18858}
+
+\begin{DoxyItemize}
+\item Updated\+: Support for Post\+CS 8+ (major).
+\item Updated\+: Support for Node 12+ (major).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18859}{}\doxysubsection{\texorpdfstring{3.\+1.\+2 (April 25, 2020)}{3.\+1.\+2 (April 25, 2020)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18859}
+
+\begin{DoxyItemize}
+\item Updated\+: Publish
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18860}{}\doxysubsection{\texorpdfstring{3.\+1.\+1 (April 25, 2020)}{3.\+1.\+1 (April 25, 2020)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18860}
+
+\begin{DoxyItemize}
+\item Updated\+: Using {\ttfamily walk\+Type} to evade walker bug in {\ttfamily postcss-\/values-\/parser}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18861}{}\doxysubsection{\texorpdfstring{3.\+1.\+0 (April 25, 2020)}{3.\+1.\+0 (April 25, 2020)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18861}
+
+\begin{DoxyItemize}
+\item Updated\+: {\ttfamily postcss-\/values-\/parser} to 3.\+2.\+0 (minor).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18862}{}\doxysubsection{\texorpdfstring{3.\+0.\+1 (April 12, 2020)}{3.\+0.\+1 (April 12, 2020)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18862}
+
+\begin{DoxyItemize}
+\item Updated\+: Ownership moved to CSSTools.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18863}{}\doxysubsection{\texorpdfstring{3.\+0.\+0 (April 12, 2020)}{3.\+0.\+0 (April 12, 2020)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18863}
+
+\begin{DoxyItemize}
+\item Updated\+: {\ttfamily postcss-\/values-\/parser} to 3.\+1.\+1 (major).
+\item Updated\+: Node support to 10.\+0.\+0 (major).
+\item Updated\+: Feature to use new percentage syntax.
+\item Removed\+: Support for the removed {\ttfamily gray()} function.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18864}{}\doxysubsection{\texorpdfstring{2.\+0.\+1 (September 18, 2018)}{2.\+0.\+1 (September 18, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18864}
+
+\begin{DoxyItemize}
+\item Updated\+: Post\+CSS Values Parser 2.\+0.\+0
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18865}{}\doxysubsection{\texorpdfstring{2.\+0.\+0 (September 17, 2018)}{2.\+0.\+0 (September 17, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18865}
+
+\begin{DoxyItemize}
+\item Updated\+: Support for Post\+CSS 7+
+\item Updated\+: Support for Node 6+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18866}{}\doxysubsection{\texorpdfstring{1.\+1.\+0 (July 24, 2018)}{1.\+1.\+0 (July 24, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18866}
+
+\begin{DoxyItemize}
+\item Added\+: Support for {\ttfamily gray(a / b)} as {\ttfamily lab(a 0 0 / b)}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18867}{}\doxysubsection{\texorpdfstring{1.\+0.\+1 (May 11, 2018)}{1.\+0.\+1 (May 11, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18867}
+
+\begin{DoxyItemize}
+\item Fixed\+: Values beyond the acceptable 0-\/255 RGB range
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18868}{}\doxysubsection{\texorpdfstring{1.\+0.\+0 (May 11, 2018)}{1.\+0.\+0 (May 11, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-lab-function_2_c_h_a_n_g_e_l_o_g_autotoc_md18868}
+
+\begin{DoxyItemize}
+\item Initial version 
+\end{DoxyItemize}

@@ -1,0 +1,203 @@
+\chapter{Post\+CSS Nesting \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e}\index{PostCSS Nesting $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS Nesting $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19130}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19130}%
+ \href{https://www.npmjs.com/package/postcss-nesting}{\texttt{ }} \href{https://cssdb.org/\#nesting-rules}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting}{\texttt{ Post\+CSS Nesting}} lets you nest style rules inside each other, following the \href{https://drafts.csswg.org/css-nesting-1/}{\texttt{ CSS Nesting}} specification. If you want nested rules the same way \href{https://sass-lang.com/}{\texttt{ Sass}} works you might want to use \href{https://github.com/postcss/postcss-nested}{\texttt{ Post\+CSS Nested}} instead.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{a,\ b\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ "{}\&"{}\ comes\ first\ */}
+\DoxyCodeLine{\ \ \ \ \&\ c,\ \&\ d\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ color:\ white;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ "{}\&"{}\ comes\ later,\ requiring\ "{}@nest"{}\ */}
+\DoxyCodeLine{\ \ \ \ @nest\ e\ \&\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ color:\ yellow;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{a,\ b\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{a\ c,\ a\ d,\ b\ c,\ b\ d\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ white;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{e\ a,\ e\ b\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ yellow;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19131}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19131}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting}{\texttt{ Post\+CSS Nesting}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/nesting\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting}{\texttt{ Post\+CSS Nesting}} as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ postcss\ from\ 'postcss';}
+\DoxyCodeLine{import\ postcssNesting\ from\ 'postcss-\/nesting';}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ postcssNesting(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting}{\texttt{ Post\+CSS Nesting}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19132}{}\doxysubsection{\texorpdfstring{Deno}{Deno}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19132}
+You can also use \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting}{\texttt{ Post\+CSS Nesting}} on \mbox{[}Deno\mbox{]}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ postcss\ from\ "{}https://deno.land/x/postcss/mod.js"{};}
+\DoxyCodeLine{import\ postcssNesting\ from\ "{}https://cdn.jsdelivr.net/npm/postcss-\/nesting@10/mod.js"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ postcss([postcssNesting]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19133}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19133}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19134}{}\doxysubsection{\texorpdfstring{no\+Is\+Pseudo\+Selector}{no\+Is\+Pseudo\+Selector}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19134}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19135}{}\doxysubsubsection{\texorpdfstring{Specificity}{Specificity}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19135}
+Before \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#alpha,}
+\DoxyCodeLine{.beta\ \{}
+\DoxyCodeLine{\ \ \ \ \&:hover\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ order:\ 1;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+After {\bfseries{without}} the option \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssNesting()}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:is(\#alpha,.beta):hover\ \{}
+\DoxyCodeLine{\ \ \ \ order:\ 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\+\_\+$<$tt$>$.\+beta\+:hover has specificity as if {\ttfamily .beta} where an id selector, matching the specification.\+\_\+
+
+\href{https://polypane.app/css-specificity-calculator/\#selector=\%3Ais(\%23alpha\%2C.beta)\%3Ahover}{\texttt{ specificity\+: 1, 1, 0}}
+
+After {\bfseries{with}} the option \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssNesting(\{}
+\DoxyCodeLine{\ \ \ \ noIsPseudoSelector:\ true}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#alpha:hover,\ .beta:hover\ \{}
+\DoxyCodeLine{\ \ \ \ order:\ 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\+\_\+$<$tt$>$.\+beta\+:hover has specificity as if {\ttfamily .beta} where a class selector, conflicting with the specification.\+\_\+
+
+\href{https://polypane.app/css-specificity-calculator/\#selector=.beta\%3Ahover}{\texttt{ specificity\+: 0, 2, 0}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19136}{}\doxysubsubsection{\texorpdfstring{Complex selectors}{Complex selectors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19136}
+Before \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.alpha\ >\ .beta\ \{}
+\DoxyCodeLine{\ \ \ \ \&\ +\ \&\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ order:\ 2;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+After {\bfseries{without}} the option \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssNesting()}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:is(.alpha\ >\ .beta)\ +\ :is(.alpha\ >\ .beta)\ \{}
+\DoxyCodeLine{\ \ \ \ order:\ 2;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+After {\bfseries{with}} the option \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssNesting(\{}
+\DoxyCodeLine{\ \ \ \ noIsPseudoSelector:\ true}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.alpha\ >\ .beta\ +\ .alpha\ >\ .beta\ \{}
+\DoxyCodeLine{\ \ \ \ order:\ 2;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\itshape this is a different selector than expected as {\ttfamily .beta + .alpha} matches {\ttfamily .beta} followed by {\ttfamily .alpha}.}~\newline
+ {\itshape avoid these cases when you disable {\ttfamily \+:is()}}~\newline
+ {\itshape writing the selector without nesting is advised here}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ without\ nesting\ */}
+\DoxyCodeLine{.alpha\ >\ .beta\ +\ .beta\ \{}
+\DoxyCodeLine{\ \ \ \ order:\ 2;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19137}{}\doxysubsection{\texorpdfstring{⚠️ Spec disclaimer}{⚠️ Spec disclaimer}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-nesting_2_r_e_a_d_m_e_autotoc_md19137}
+The \href{https://www.w3.org/TR/css-nesting-1/}{\texttt{ CSS Nesting Module}} spec states on nesting that "{}\+Declarations occurring after a nested rule are invalid and ignored."{}. While we think it makes sense on browsers, enforcing this at the plugin level introduces several constraints that would interfere with Post\+CSS\textquotesingle{} plugin nature such as with {\ttfamily @mixin} 

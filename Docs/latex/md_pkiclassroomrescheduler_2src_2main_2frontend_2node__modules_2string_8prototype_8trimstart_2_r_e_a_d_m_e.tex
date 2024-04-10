@@ -1,0 +1,27 @@
+\chapter{String.\+prototype.\+trim\+Start \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+com/package/string.\+prototype.\+trimstart"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://vb.\+teelaun.\+ch/es-\/shims/\+String.\+prototype.\+trim\+Start.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2string_8prototype_8trimstart_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2string_8prototype_8trimstart_2_r_e_a_d_m_e}\index{String.prototype.trimStart $<$sup$>$$<$a href="{}https://npmjs.com/package/string.prototype.trimstart"{} $>$$<$img src="{}https://vb.teelaun.ch/es-\/shims/String.prototype.trimStart.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{String.prototype.trimStart $<$sup$>$$<$a href=""https://npmjs.com/package/string.prototype.trimstart"" $>$$<$img src=""https://vb.teelaun.ch/es-\/shims/String.prototype.trimStart.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2string_8prototype_8trimstart_2_r_e_a_d_m_e_autotoc_md23789}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2string_8prototype_8trimstart_2_r_e_a_d_m_e_autotoc_md23789}%
+ \href{https://github.com/es-shims/String.prototype.trimStart/actions}{\texttt{ }} \href{https://app.codecov.io/gh/es-shims/String.prototype.trimStart/}{\texttt{ }} \href{https://david-dm.org/es-shims/String.prototype.trimStart}{\texttt{ }} \href{https://david-dm.org/es-shims/String.prototype.trimStart\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=string.prototype.trimstart}{\texttt{ }}
+
+\href{https://npmjs.com/package/string.prototype.trimstart}{\texttt{ }}
+
+An ES2019-\/spec-\/compliant {\ttfamily String.\+prototype.\+trim\+Start} shim. Invoke its "{}shim"{} method to shim {\ttfamily String.\+prototype.\+trim\+Start} if it is unavailable.
+
+This package implements the \href{https://github.com/es-shims/api}{\texttt{ es-\/shim API}} interface. It works in an ES3-\/supported environment and complies with the \href{https://www.ecma-international.org/ecma-262/6.0/\#sec-object.assign}{\texttt{ spec}}. In an ES6 environment, it will also work properly with {\ttfamily Symbol}s.
+
+Most common usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ trimStart\ =\ require('string.prototype.trimstart');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(trimStart('\ \(\backslash\)t\(\backslash\)na\ \(\backslash\)t\(\backslash\)n')\ ===\ 'a\ \(\backslash\)t\(\backslash\)n');}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (!String.prototype.trimStart)\ \{}
+\DoxyCodeLine{\ \ \ \ trimStart.shim();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(trimStart('\ \(\backslash\)t\(\backslash\)na\ \(\backslash\)t\(\backslash\)n')\ ===\ '\ \(\backslash\)t\(\backslash\)na\ \(\backslash\)t\(\backslash\)n'.trimStart());}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2string_8prototype_8trimstart_2_r_e_a_d_m_e_autotoc_md23790}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2string_8prototype_8trimstart_2_r_e_a_d_m_e_autotoc_md23790}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

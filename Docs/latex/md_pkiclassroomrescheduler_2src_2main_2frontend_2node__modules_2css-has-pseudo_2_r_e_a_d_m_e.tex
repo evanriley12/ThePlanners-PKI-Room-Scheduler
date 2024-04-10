@@ -1,0 +1,100 @@
+\chapter{CSS Has Pseudo \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/csstools/postcss-\/plugins/tree/main/plugins/css-\/has-\/pseudo"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}http\+://jonathantneal.\+github.\+io/js-\/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e}\index{CSS Has Pseudo $<$a href="{}https://github.com/csstools/postcss-\/plugins/tree/main/plugins/css-\/has-\/pseudo"{} $>$$<$img src=\textbackslash{}"{}http://jonathantneal.github.io/js-\/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{CSS Has Pseudo $<$a href=""https://github.com/csstools/postcss-\/plugins/tree/main/plugins/css-\/has-\/pseudo"" $>$$<$img src=\textbackslash{}""http://jonathantneal.github.io/js-\/logo.svg\textbackslash{}"" alt=\textbackslash{}""\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e_autotoc_md7894}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e_autotoc_md7894}%
+ \href{https://www.npmjs.com/package/css-has-pseudo}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo}{\texttt{ CSS Has Pseudo}} lets you style elements relative to other elements in CSS, following the \href{https://drafts.csswg.org/selectors-4/\#has-pseudo}{\texttt{ Selectors Level 4}} specification.
+
+\href{https://caniuse.com/\#feat=css-has}{\texttt{ }}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{a:has(>\ img)\ \{}
+\DoxyCodeLine{\ \ /*\ style\ links\ that\ contain\ an\ image\ */}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1:has(+\ p)\ \{}
+\DoxyCodeLine{\ \ /*\ style\ level\ 1\ headings\ that\ are\ followed\ by\ a\ paragraph\ */}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{section:not(:has(h1,\ h2,\ h3,\ h4,\ h5,\ h6))\ \{}
+\DoxyCodeLine{\ \ /*\ style\ sections\ that\ don’t\ contain\ any\ heading\ elements\ */}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{body:has(:focus)\ \{}
+\DoxyCodeLine{\ \ /*\ style\ the\ body\ if\ it\ contains\ a\ focused\ element\ */}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e_autotoc_md7895}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e_autotoc_md7895}
+From the command line, transform CSS files that use {\ttfamily \+:has} selectors\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npx\ css-\/has-\/pseudo\ SOURCE.css\ -\/-\/output\ TRANSFORMED.css}
+
+\end{DoxyCode}
+
+
+Next, use your transformed CSS with this script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<link\ rel="{}stylesheet"{}\ href="{}TRANSFORMED.css"{}>}
+\DoxyCodeLine{<script\ src="{}https://unpkg.com/css-\/has-\/pseudo/dist/browser-\/global.js"{}></script>}
+\DoxyCodeLine{<script>cssHasPseudo(document)</script>}
+
+\end{DoxyCode}
+
+
+⚠️ Please use a versioned url, like this \+: {\ttfamily \href{https://unpkg.com/css-has-pseudo}{\texttt{ https\+://unpkg.\+com/css-\/has-\/pseudo}}@3.\+0.\+0/dist/browser-\/global.js} Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url. The old URL will no longer work in a future release.
+
+That’s it. The script is 765 bytes and works in most browser versions, including Internet Explorer 11. With a \href{https://github.com/webmodules/mutation-observer}{\texttt{ Mutation Observer polyfill}}, the script will work down to Internet Explorer 9.
+
+See README BROWSER for more information.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e_autotoc_md7896}{}\doxysection{\texorpdfstring{How it works}{How it works}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_r_e_a_d_m_e_autotoc_md7896}
+The Post\+CSS plugin clones rules containing {\ttfamily \+:has}, replacing them with an alternative {\ttfamily \mbox{[}\+:has\mbox{]}} selector.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{body:has(:focus)\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{section:not(:has(h1,\ h2,\ h3,\ h4,\ h5,\ h6))\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ gray;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{body[\(\backslash\):has\(\backslash\)(\(\backslash\):focus\(\backslash\))]\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{body:has(:focus)\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{section[\(\backslash\):not-\/has\(\backslash\)(h1\(\backslash\),\(\backslash\)\%20h2\(\backslash\),\(\backslash\)\%20h3\(\backslash\),\(\backslash\)\%20h4\(\backslash\),\(\backslash\)\%20h5\(\backslash\),\(\backslash\)\%20h6\(\backslash\))]\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ gray;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{section:not(:has(h1,\ h2,\ h3,\ h4,\ h5,\ h6))\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ gray;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Next, the Java\+Script library adds a {\ttfamily \mbox{[}\+:has\mbox{]}} attribute to elements otherwise matching {\ttfamily \+:has} natively.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<body\ :has(:focus)>}
+\DoxyCodeLine{\ \ <input\ value="{}This\ element\ is\ focused"{}>}
+\DoxyCodeLine{</body>}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,96 @@
+\chapter{Changes to Prefers Color Scheme}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g}\index{Changes to Prefers Color Scheme@{Changes to Prefers Color Scheme}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7978}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7978}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7979}{}\doxysubsection{\texorpdfstring{6.\+0.\+3 (January 31, 2022)}{6.\+0.\+3 (January 31, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7979}
+
+\begin{DoxyItemize}
+\item Fix {\ttfamily preserve\+: false} option.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7980}{}\doxysubsection{\texorpdfstring{6.\+0.\+2 (January 2, 2022)}{6.\+0.\+2 (January 2, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7980}
+
+\begin{DoxyItemize}
+\item Removed Sourcemaps from package tarball.
+\item Moved CLI to CLI Package. See \href{https://github.com/csstools/postcss-plugins/discussions/121}{\texttt{ announcement}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7981}{}\doxysubsection{\texorpdfstring{6.\+0.\+1 (December 27, 2021)}{6.\+0.\+1 (December 27, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7981}
+
+\begin{DoxyItemize}
+\item Fixed\+: require/import paths for browser script
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7982}{}\doxysubsection{\texorpdfstring{6.\+0.\+0 (December 13, 2021)}{6.\+0.\+0 (December 13, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7982}
+
+\begin{DoxyItemize}
+\item Breaking\+: require/import paths have changed
+\item Changed\+: new polyfill CDN urls.
+\item Updated\+: documentation
+\item Fixed\+: {\ttfamily CSSRule\+List} edits skipping rules as this is a live list.
+\item Fixed\+: complex {\ttfamily @media} queries not working.
+\end{DoxyItemize}
+
+{\bfseries{Migrating to 6.\+0.\+0}}
+
+Post\+CSS plugin \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ postcssPrefersColorScheme\ =\ require('css-\/prefers-\/color-\/scheme/postcss');}
+\DoxyCodeLine{+\ const\ postcssPrefersColorScheme\ =\ require('css-\/prefers-\/color-\/scheme');}
+
+\end{DoxyCode}
+
+
+Browser Polyfill \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ prefersColorScheme\ =\ require('css-\/prefers-\/color-\/scheme')();}
+\DoxyCodeLine{+\ const\ prefersColorScheme\ =\ require('css-\/prefers-\/color-\/scheme/browser')();}
+
+\end{DoxyCode}
+
+
+{\itshape The old CND url is now deprecated and will be removed in a next major release.} {\itshape It will continue to work for now.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ <script\ src="{}https://unpkg.com/css-\/prefers-\/color-\/scheme/browser.min"{}></script>}
+\DoxyCodeLine{+\ <script\ src="{}https://unpkg.com/css-\/prefers-\/color-\/scheme/dist/browser-\/global.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7983}{}\doxysubsection{\texorpdfstring{5.\+0.\+0 (September 17, 2021)}{5.\+0.\+0 (September 17, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7983}
+
+\begin{DoxyItemize}
+\item Updated\+: Support for Post\+CS 8+ (major).
+\item Updated\+: Support for Node 12+ (major).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7984}{}\doxysubsection{\texorpdfstring{4.\+0.\+0 (May 24, 2019)}{4.\+0.\+0 (May 24, 2019)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7984}
+
+\begin{DoxyItemize}
+\item Updated\+: {\ttfamily postcss} to 7.\+0.\+16 (patch)
+\item Updated\+: Node 8+ compatibility (major)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7985}{}\doxysubsection{\texorpdfstring{3.\+1.\+1 (November 10, 2018)}{3.\+1.\+1 (November 10, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7985}
+
+\begin{DoxyItemize}
+\item Updated\+: Project organization. No functional changes.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7986}{}\doxysubsection{\texorpdfstring{3.\+1.\+0 (November 10, 2018)}{3.\+1.\+0 (November 10, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7986}
+
+\begin{DoxyItemize}
+\item Include CLI tool for transforming CSS without any installation
+\item Update documentation
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7987}{}\doxysubsection{\texorpdfstring{3.\+0.\+0 (November 4, 2018)}{3.\+0.\+0 (November 4, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7987}
+
+\begin{DoxyItemize}
+\item Preserve {\ttfamily prefers-\/color-\/scheme} queries by default for non-\/\+JS environments
+\item Remove {\ttfamily prefers-\/color-\/scheme} queries on the frontend for JS environments
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7988}{}\doxysubsection{\texorpdfstring{2.\+0.\+0 (November 3, 2018)}{2.\+0.\+0 (November 3, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7988}
+
+\begin{DoxyItemize}
+\item The client library now returns an object with various features, including\+:
+\begin{DoxyItemize}
+\item {\ttfamily scheme} to get or set the preferred color scheme
+\item {\ttfamily has\+Native\+Support} to report whether {\ttfamily prefers-\/color-\/scheme} is supported
+\item {\ttfamily on\+Change} to listen for when the preferred color scheme changes
+\item {\ttfamily remove\+Listener} to destroy the native {\ttfamily prefers-\/color-\/scheme} listener
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7989}{}\doxysubsection{\texorpdfstring{1.\+0.\+0 (September 24, 2018)}{1.\+0.\+0 (September 24, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-prefers-color-scheme_2_c_h_a_n_g_e_l_o_g_autotoc_md7989}
+
+\begin{DoxyItemize}
+\item Initial version 
+\end{DoxyItemize}

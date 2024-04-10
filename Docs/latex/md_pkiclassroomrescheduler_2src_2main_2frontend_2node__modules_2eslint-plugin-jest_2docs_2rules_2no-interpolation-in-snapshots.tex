@@ -1,0 +1,60 @@
+\chapter{Disallow string interpolation inside snapshots (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/interpolation-\/in-\/snapshots\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots}\index{Disallow string interpolation inside snapshots ($<$tt$>$no-\/interpolation-\/in-\/snapshots$<$/tt$>$)@{Disallow string interpolation inside snapshots ($<$tt$>$no-\/interpolation-\/in-\/snapshots$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots_autotoc_md10416}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots_autotoc_md10416}%
+ Prevents the use of string interpolations in snapshots.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots_autotoc_md10417}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots_autotoc_md10417}
+Interpolation prevents snapshots from being updated. Instead, properties should be overloaded with a matcher by using \href{https://jestjs.io/docs/en/snapshot-testing\#property-matchers}{\texttt{ property matchers}}.
+
+Examples of {\bfseries{incorrect}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{expect(something).toMatchInlineSnapshot(}
+\DoxyCodeLine{\ \ \`{}Object\ \{}
+\DoxyCodeLine{\ \ \ \ property:\ \$\{interpolated\}}
+\DoxyCodeLine{\ \ \}`,}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(something).toMatchInlineSnapshot(}
+\DoxyCodeLine{\ \ \{\ other:\ expect.any(Number)\ \},}
+\DoxyCodeLine{\ \ \`{}Object\ \{}
+\DoxyCodeLine{\ \ \ \ other:\ Any<Number>,}
+\DoxyCodeLine{\ \ \ \ property:\ \$\{interpolated\}}
+\DoxyCodeLine{\ \ \}`,}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(errorThrowingFunction).toThrowErrorMatchingInlineSnapshot(}
+\DoxyCodeLine{\ \ \`{}\$\{interpolated\}`,}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+Examples of {\bfseries{correct}} code for this rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{expect(something).toMatchInlineSnapshot();}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(something).toMatchInlineSnapshot(}
+\DoxyCodeLine{\ \ \`{}Object\ \{}
+\DoxyCodeLine{\ \ \ \ property:\ 1}
+\DoxyCodeLine{\ \ \}`,}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(something).toMatchInlineSnapshot(}
+\DoxyCodeLine{\ \ \{\ property:\ expect.any(Date)\ \},}
+\DoxyCodeLine{\ \ \`{}Object\ \{}
+\DoxyCodeLine{\ \ \ \ property:\ Any<Date>}
+\DoxyCodeLine{\ \ \}`,}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(errorThrowingFunction).toThrowErrorMatchingInlineSnapshot();}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(errorThrowingFunction).toThrowErrorMatchingInlineSnapshot(}
+\DoxyCodeLine{\ \ \`{}Error\ Message`,}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots_autotoc_md10418}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots_autotoc_md10418}
+Don\textquotesingle{}t use this rule on non-\/jest test files. 

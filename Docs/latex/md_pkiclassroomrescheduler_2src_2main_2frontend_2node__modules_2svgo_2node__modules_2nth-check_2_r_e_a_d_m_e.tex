@@ -1,0 +1,46 @@
+\chapter{nth-\/check \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/fb55/nth-\/check"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/fb55/nth-\/check.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e}\index{nth-\/check $<$a href="{}https://travis-\/ci.org/fb55/nth-\/check"{} $>$$<$img src="{}https://travis-\/ci.org/fb55/nth-\/check.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$@{nth-\/check $<$a href=""https://travis-\/ci.org/fb55/nth-\/check"" $>$$<$img src=""https://travis-\/ci.org/fb55/nth-\/check.svg"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24437}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24437}%
+ A performant nth-\/check parser \& compiler.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24438}{}\doxysubsection{\texorpdfstring{About}{About}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24438}
+This module can be used to parse \& compile nth-\/checks, as they are found in CSS 3\textquotesingle{}s {\ttfamily nth-\/child()} and {\ttfamily nth-\/last-\/of-\/type()}.
+
+{\ttfamily nth-\/check} focusses on speed, providing optimized functions for different kinds of nth-\/child formulas, while still following the \href{http://www.w3.org/TR/css3-selectors/\#nth-child-pseudo}{\texttt{ spec}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24439}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24439}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ nthCheck\ =\ require("{}nth-\/check"{});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24440}{}\doxyparagraph{\texorpdfstring{{\ttfamily nth\+Check(formula)}}{{\ttfamily nth\+Check(formula)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24440}
+First parses, then compiles the formula.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24441}{}\doxyparagraph{\texorpdfstring{{\ttfamily nth\+Check.\+parse(formula)}}{{\ttfamily nth\+Check.\+parse(formula)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24441}
+Parses the expression, throws a {\ttfamily Syntax\+Error} if it fails, otherwise returns an array containing two elements.
+
+{\bfseries{Example\+:}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{nthCheck.parse("{}2n+3"{})\ //[2,\ 3]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24442}{}\doxyparagraph{\texorpdfstring{{\ttfamily nth\+Check.\+compile(\mbox{[}a, b\mbox{]})}}{{\ttfamily nth\+Check.\+compile(\mbox{[}a, b\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2nth-check_2_r_e_a_d_m_e_autotoc_md24442}
+Takes an array with two elements (as returned by {\ttfamily .parse}) and returns a highly optimized function.
+
+If the formula doesn\textquotesingle{}t match any elements, it returns \href{https://github.com/fb55/boolbase}{\texttt{ {\ttfamily boolbase}}}\textquotesingle{}s {\ttfamily false\+Func}, otherwise, a function accepting an {\itshape index} is returned, which returns whether or not a passed {\itshape index} matches the formula. (Note\+: The spec starts counting at {\ttfamily 1}, the returned function at {\ttfamily 0}).
+
+{\bfseries{Example\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ check\ =\ nthCheck.compile([2,\ 3]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{check(0)\ //false}
+\DoxyCodeLine{check(1)\ //false}
+\DoxyCodeLine{check(2)\ //true}
+\DoxyCodeLine{check(3)\ //false}
+\DoxyCodeLine{check(4)\ //true}
+\DoxyCodeLine{check(5)\ //false}
+\DoxyCodeLine{check(6)\ //true}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ License\+: BSD 

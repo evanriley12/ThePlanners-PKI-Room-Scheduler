@@ -1,0 +1,376 @@
+\chapter{Regenerate \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/mathiasbynens/regenerate"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/mathiasbynens/regenerate.\+svg?branch=master"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/gh/mathiasbynens/regenerate"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/codecov/c/github/mathiasbynens/regenerate.\+svg"{} alt="{}\+Code coverage status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e}\index{Regenerate $<$a href="{}https://travis-\/ci.org/mathiasbynens/regenerate"{} $>$$<$img src="{}https://travis-\/ci.org/mathiasbynens/regenerate.svg?branch=master"{} alt="{}Build status"{}/$>$$<$/a$>$ $<$a href="{}https://codecov.io/gh/mathiasbynens/regenerate"{} $>$$<$img src="{}https://img.shields.io/codecov/c/github/mathiasbynens/regenerate.svg"{} alt="{}Code coverage status"{}/$>$$<$/a$>$@{Regenerate $<$a href=""https://travis-\/ci.org/mathiasbynens/regenerate"" $>$$<$img src=""https://travis-\/ci.org/mathiasbynens/regenerate.svg?branch=master"" alt=""Build status""/$>$$<$/a$>$ $<$a href=""https://codecov.io/gh/mathiasbynens/regenerate"" $>$$<$img src=""https://img.shields.io/codecov/c/github/mathiasbynens/regenerate.svg"" alt=""Code coverage status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20447}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20447}%
+ {\itshape Regenerate} is a Unicode-\/aware regex generator for Java\+Script. It allows you to easily generate ES5-\/compatible regular expressions based on a given set of Unicode symbols or code points. (This is trickier than you might think, because of \href{https://mathiasbynens.be/notes/javascript-unicode}{\texttt{ how Java\+Script deals with astral symbols}}.)\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20448}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20448}
+Via \href{https://npmjs.org/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ regenerate}
+
+\end{DoxyCode}
+
+
+Via \href{http://bower.io/}{\texttt{ Bower}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bower\ install\ regenerate}
+
+\end{DoxyCode}
+
+
+In a browser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}regenerate.js"{}></script>}
+
+\end{DoxyCode}
+
+
+In \href{https://nodejs.org/}{\texttt{ Node.\+js}}, \href{https://iojs.org/}{\texttt{ io.\+js}}, and \href{http://ringojs.org/}{\texttt{ Ringo\+JS ≥ v0.\+8.\+0}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ regenerate\ =\ require('regenerate');}
+
+\end{DoxyCode}
+
+
+In \href{http://narwhaljs.org/}{\texttt{ Narwhal}} and \href{http://ringojs.org/}{\texttt{ Ringo\+JS ≤ v0.\+7.\+0}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ regenerate\ =\ require('regenerate').regenerate;}
+
+\end{DoxyCode}
+
+
+In \href{http://www.mozilla.org/rhino/}{\texttt{ Rhino}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{load('regenerate.js');}
+
+\end{DoxyCode}
+
+
+Using an AMD loader like \href{http://requirejs.org/}{\texttt{ Require\+JS}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require(}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ 'paths':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'regenerate':\ 'path/to/regenerate'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ ['regenerate'],}
+\DoxyCodeLine{\ \ function(regenerate)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(regenerate);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20449}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20449}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20450}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate(value1, value2, value3, ...)}}{{\ttfamily regenerate(value1, value2, value3, ...)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20450}
+The main Regenerate function. Calling this function creates a new set that gets a chainable API.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ set\ =\ regenerate()}
+\DoxyCodeLine{\ \ .addRange(0x60,\ 0x69)\ //\ add\ U+0060\ to\ U+0069}
+\DoxyCodeLine{\ \ .remove(0x62,\ 0x64)\ //\ remove\ U+0062\ and\ U+0064}
+\DoxyCodeLine{\ \ .add(0x1D306);\ //\ add\ U+1D306}
+\DoxyCodeLine{set.valueOf();}
+\DoxyCodeLine{//\ →\ [0x60,\ 0x61,\ 0x63,\ 0x65,\ 0x66,\ 0x67,\ 0x68,\ 0x69,\ 0x1D306]}
+\DoxyCodeLine{set.toString();}
+\DoxyCodeLine{//\ →\ '[`ace-\/i]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+\DoxyCodeLine{set.toRegExp();}
+\DoxyCodeLine{//\ →\ /[`ace-\/i]|\(\backslash\)uD834\(\backslash\)uDF06/}
+
+\end{DoxyCode}
+
+
+Any arguments passed to {\ttfamily regenerate()} will be added to the set right away. Both code points (numbers) and symbols (strings consisting of a single Unicode symbol) are accepted, as well as arrays containing values of these types.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate(0x1D306,\ 'A',\ '©',\ 0x2603).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9\(\backslash\)\(\backslash\)u2603]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ items\ =\ [0x1D306,\ 'A',\ '©',\ 0x2603];}
+\DoxyCodeLine{regenerate(items).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9\(\backslash\)\(\backslash\)u2603]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20451}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+add(value1, value2, value3, ...)}}{{\ttfamily regenerate.\+prototype.\+add(value1, value2, value3, ...)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20451}
+Any arguments passed to {\ttfamily add()} are added to the set. Both code points (numbers) and symbols (strings consisting of a single Unicode symbol) are accepted, as well as arrays containing values of these types.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate().add(0x1D306,\ 'A',\ '©',\ 0x2603).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9\(\backslash\)\(\backslash\)u2603]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ items\ =\ [0x1D306,\ 'A',\ '©',\ 0x2603];}
+\DoxyCodeLine{regenerate().add(items).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9\(\backslash\)\(\backslash\)u2603]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+
+\end{DoxyCode}
+
+
+It’s also possible to pass in a Regenerate instance. Doing so adds all code points in that instance to the current set.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ set\ =\ regenerate(0x1D306,\ 'A');}
+\DoxyCodeLine{regenerate().add('©',\ 0x2603).add(set).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9\(\backslash\)\(\backslash\)u2603]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+
+\end{DoxyCode}
+
+
+Note that the initial call to {\ttfamily regenerate()} acts like {\ttfamily add()}. This allows you to create a new Regenerate instance and add some code points to it in one go\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate(0x1D306,\ 'A',\ '©',\ 0x2603).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9\(\backslash\)\(\backslash\)u2603]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20452}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+remove(value1, value2, value3, ...)}}{{\ttfamily regenerate.\+prototype.\+remove(value1, value2, value3, ...)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20452}
+Any arguments passed to {\ttfamily remove()} are removed from the set. Both code points (numbers) and symbols (strings consisting of a single Unicode symbol) are accepted, as well as arrays containing values of these types.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate(0x1D306,\ 'A',\ '©',\ 0x2603).remove('☃').toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+
+\end{DoxyCode}
+
+
+It’s also possible to pass in a Regenerate instance. Doing so removes all code points in that instance from the current set.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ set\ =\ regenerate('☃');}
+\DoxyCodeLine{regenerate(0x1D306,\ 'A',\ '©',\ 0x2603).remove(set).toString();}
+\DoxyCodeLine{//\ →\ '[A\(\backslash\)\(\backslash\)xA9]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20453}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+add\+Range(start, end)}}{{\ttfamily regenerate.\+prototype.\+add\+Range(start, end)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20453}
+Adds a range of code points from {\ttfamily start} to {\ttfamily end} (inclusive) to the set. Both code points (numbers) and symbols (strings consisting of a single Unicode symbol) are accepted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate(0x1D306).addRange(0x00,\ 0xFF).toString(16);}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)xFF]|\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06'}
+\DoxyCodeLine{}
+\DoxyCodeLine{regenerate().addRange('A',\ 'z').toString();}
+\DoxyCodeLine{//\ →\ '[A-\/z]'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20454}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+remove\+Range(start, end)}}{{\ttfamily regenerate.\+prototype.\+remove\+Range(start, end)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20454}
+Removes a range of code points from {\ttfamily start} to {\ttfamily end} (inclusive) from the set. Both code points (numbers) and symbols (strings consisting of a single Unicode symbol) are accepted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate()}
+\DoxyCodeLine{\ \ .addRange(0x000000,\ 0x10FFFF)\ //\ add\ all\ Unicode\ code\ points}
+\DoxyCodeLine{\ \ .removeRange('A',\ 'z')\ //\ remove\ all\ symbols\ from\ \`{}A`\ to\ \`{}z`}
+\DoxyCodeLine{\ \ .toString();}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/@\(\backslash\)\(\backslash\)\{-\/\(\backslash\)\(\backslash\)uD7FF\(\backslash\)\(\backslash\)uE000-\/\(\backslash\)\(\backslash\)uFFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF][\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF](?![\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF])|(?:[\string^\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF]|\string^)[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]'}
+\DoxyCodeLine{}
+\DoxyCodeLine{regenerate()}
+\DoxyCodeLine{\ \ .addRange(0x000000,\ 0x10FFFF)\ //\ add\ all\ Unicode\ code\ points}
+\DoxyCodeLine{\ \ .removeRange(0x0041,\ 0x007A)\ //\ remove\ all\ code\ points\ from\ U+0041\ to\ U+007A}
+\DoxyCodeLine{\ \ .toString();}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/@\(\backslash\)\(\backslash\)\{-\/\(\backslash\)\(\backslash\)uD7FF\(\backslash\)\(\backslash\)uE000-\/\(\backslash\)\(\backslash\)uFFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF][\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF](?![\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF])|(?:[\string^\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF]|\string^)[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20455}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+intersection(code\+Points)}}{{\ttfamily regenerate.\+prototype.\+intersection(code\+Points)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20455}
+Removes any code points from the set that are not present in both the set and the given {\ttfamily code\+Points} array. {\ttfamily code\+Points} must be an array of numeric code point values, i.\+e. numbers.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate()}
+\DoxyCodeLine{\ \ .addRange(0x00,\ 0xFF)\ //\ add\ extended\ ASCII\ code\ points}
+\DoxyCodeLine{\ \ .intersection([0x61,\ 0x69])\ //\ remove\ all\ code\ points\ from\ the\ set\ except\ for\ these}
+\DoxyCodeLine{\ \ .toString();}
+\DoxyCodeLine{//\ →\ '[ai]'}
+
+\end{DoxyCode}
+
+
+Instead of the {\ttfamily code\+Points} array, it’s also possible to pass in a Regenerate instance.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ whitelist\ =\ regenerate(0x61,\ 0x69);}
+\DoxyCodeLine{}
+\DoxyCodeLine{regenerate()}
+\DoxyCodeLine{\ \ .addRange(0x00,\ 0xFF)\ //\ add\ extended\ ASCII\ code\ points}
+\DoxyCodeLine{\ \ .intersection(whitelist)\ //\ remove\ all\ code\ points\ from\ the\ set\ except\ for\ those\ in\ the\ \`{}whitelist`\ set}
+\DoxyCodeLine{\ \ .toString();}
+\DoxyCodeLine{//\ →\ '[ai]'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20456}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+contains(value)}}{{\ttfamily regenerate.\+prototype.\+contains(value)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20456}
+Returns {\ttfamily true} if the given value is part of the set, and {\ttfamily false} otherwise. Both code points (numbers) and symbols (strings consisting of a single Unicode symbol) are accepted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ set\ =\ regenerate().addRange(0x00,\ 0xFF);}
+\DoxyCodeLine{set.contains('A');}
+\DoxyCodeLine{//\ →\ true}
+\DoxyCodeLine{set.contains(0x1D306);}
+\DoxyCodeLine{//\ →\ false}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20457}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+clone()}}{{\ttfamily regenerate.\+prototype.\+clone()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20457}
+Returns a clone of the current code point set. Any actions performed on the clone won’t mutate the original set.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ setA\ =\ regenerate(0x1D306);}
+\DoxyCodeLine{var\ setB\ =\ setA.clone().add(0x1F4A9);}
+\DoxyCodeLine{setA.toArray();}
+\DoxyCodeLine{//\ →\ [0x1D306]}
+\DoxyCodeLine{setB.toArray();}
+\DoxyCodeLine{//\ →\ [0x1D306,\ 0x1F4A9]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20458}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+to\+String(options)}}{{\ttfamily regenerate.\+prototype.\+to\+String(options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20458}
+Returns a string representing (part of) a regular expression that matches all the symbols mapped to the code points within the set.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate(0x1D306,\ 0x1F4A9).toString();}
+\DoxyCodeLine{//\ →\ '\(\backslash\)\(\backslash\)uD834\(\backslash\)\(\backslash\)uDF06|\(\backslash\)\(\backslash\)uD83D\(\backslash\)\(\backslash\)uDCA9'}
+
+\end{DoxyCode}
+
+
+If the {\ttfamily bmp\+Only} property of the optional {\ttfamily options} object is set to {\ttfamily true}, the output matches surrogates individually, regardless of whether they’re lone surrogates or just part of a surrogate pair. This simplifies the output, but it can only be used in case you’re certain the strings it will be used on don’t contain any astral symbols.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ highSurrogates\ =\ regenerate().addRange(0xD800,\ 0xDBFF);}
+\DoxyCodeLine{highSurrogates.toString();}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF](?![\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF])'}
+\DoxyCodeLine{highSurrogates.toString(\{\ 'bmpOnly':\ true\ \});}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF]'}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ lowSurrogates\ =\ regenerate().addRange(0xDC00,\ 0xDFFF);}
+\DoxyCodeLine{lowSurrogates.toString();}
+\DoxyCodeLine{//\ →\ '(?:[\string^\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF]|\string^)[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]'}
+\DoxyCodeLine{lowSurrogates.toString(\{\ 'bmpOnly':\ true\ \});}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]'}
+
+\end{DoxyCode}
+
+
+Note that lone low surrogates cannot be matched accurately using regular expressions in Java\+Script without the use of \href{https://mathiasbynens.be/notes/es-regexp-proposals\#lookbehinds}{\texttt{ lookbehind assertions}}, which aren\textquotesingle{}t yet widely supported. Regenerate’s output makes a best-\/effort approach but \href{https://github.com/mathiasbynens/regenerate/issues/28\#issuecomment-72224808}{\texttt{ there can be false negatives in this regard}}.
+
+If the {\ttfamily has\+Unicode\+Flag} property of the optional {\ttfamily options} object is set to {\ttfamily true}, the output makes use of Unicode code point escapes ({\ttfamily \textbackslash{}u\{…\}}) where applicable. This simplifies the output at the cost of compatibility and portability, since it means the output can only be used as a pattern in a regular expression with \href{https://mathiasbynens.be/notes/es6-unicode-regex}{\texttt{ the ES6 {\ttfamily u} flag}} enabled.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ set\ =\ regenerate().addRange(0x0,\ 0x10FFFF);}
+\DoxyCodeLine{}
+\DoxyCodeLine{set.toString();}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)uD7FF\(\backslash\)\(\backslash\)uE000-\/\(\backslash\)\(\backslash\)uFFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF][\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]|[\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF](?![\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF])|(?:[\string^\(\backslash\)\(\backslash\)uD800-\/\(\backslash\)\(\backslash\)uDBFF]|\string^)[\(\backslash\)\(\backslash\)uDC00-\/\(\backslash\)\(\backslash\)uDFFF]''}
+\DoxyCodeLine{}
+\DoxyCodeLine{set.toString(\{\ 'hasUnicodeFlag':\ true\ \});}
+\DoxyCodeLine{//\ →\ '[\(\backslash\)\(\backslash\)0-\/\(\backslash\)\(\backslash\)u\{10FFFF\}]'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20459}{}\doxysubsection{\texorpdfstring{`regenerate.\+prototype.\+to\+Reg\+Exp(flags = '\textquotesingle{})\`{}}{`regenerate.\+prototype.\+to\+Reg\+Exp(flags = '\textquotesingle{})\`{}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20459}
+Returns a regular expression that matches all the symbols mapped to the code points within the set. Optionally, you can pass \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp\#Parameters}{\texttt{ flags}} to be added to the regular expression.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ regex\ =\ regenerate(0x1D306,\ 0x1F4A9).toRegExp();}
+\DoxyCodeLine{//\ →\ /\(\backslash\)uD834\(\backslash\)uDF06|\(\backslash\)uD83D\(\backslash\)uDCA9/}
+\DoxyCodeLine{regex.test('𝌆');}
+\DoxyCodeLine{//\ →\ true}
+\DoxyCodeLine{regex.test('A');}
+\DoxyCodeLine{//\ →\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ With\ flags:}
+\DoxyCodeLine{var\ regex\ =\ regenerate(0x1D306,\ 0x1F4A9).toRegExp('g');}
+\DoxyCodeLine{//\ →\ /\(\backslash\)uD834\(\backslash\)uDF06|\(\backslash\)uD83D\(\backslash\)uDCA9/g}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} This probably shouldn’t be used. Regenerate is intended as a tool that is used as part of a build process, not at runtime.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20460}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+prototype.\+value\+Of()} or {\ttfamily regenerate.\+prototype.\+to\+Array()}}{{\ttfamily regenerate.\+prototype.\+value\+Of()} or {\ttfamily regenerate.\+prototype.\+to\+Array()}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20460}
+Returns a sorted array of unique code points in the set.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regenerate(0x1D306)}
+\DoxyCodeLine{\ \ .addRange(0x60,\ 0x65)}
+\DoxyCodeLine{\ \ .add(0x59,\ 0x60)\ //\ note:\ 0x59\ is\ added\ after\ 0x65,\ and\ 0x60\ is\ a\ duplicate}
+\DoxyCodeLine{\ \ .valueOf();}
+\DoxyCodeLine{//\ →\ [0x59,\ 0x60,\ 0x61,\ 0x62,\ 0x63,\ 0x64,\ 0x65,\ 0x1D306]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20461}{}\doxysubsection{\texorpdfstring{{\ttfamily regenerate.\+version}}{{\ttfamily regenerate.\+version}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20461}
+A string representing the semantic version number.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20462}{}\doxysection{\texorpdfstring{Combine Regenerate with other libraries}{Combine Regenerate with other libraries}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20462}
+Regenerate gets even better when combined with other libraries such as \href{https://mths.be/punycode}{\texttt{ Punycode.\+js}}. Here’s an example where \href{https://mths.be/punycode}{\texttt{ Punycode.\+js}} is used to convert a string into an array of code points, that is then passed on to Regenerate\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ regenerate\ =\ require('regenerate');}
+\DoxyCodeLine{var\ punycode\ =\ require('punycode');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ string\ =\ 'Lorem\ ipsum\ dolor\ sit\ amet.';}
+\DoxyCodeLine{//\ Get\ an\ array\ of\ all\ code\ points\ used\ in\ the\ string:}
+\DoxyCodeLine{var\ codePoints\ =\ punycode.ucs2.decode(string);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Generate\ a\ regular\ expression\ that\ matches\ any\ of\ the\ symbols\ used\ in\ the\ string:}
+\DoxyCodeLine{regenerate(codePoints).toString();}
+\DoxyCodeLine{//\ →\ '[\ \(\backslash\)\(\backslash\).Ladeilmopr-\/u]'}
+
+\end{DoxyCode}
+
+
+In ES6 you can do something similar with \href{https://mths.be/array-from}{\texttt{ {\ttfamily Array.\+from}}} which uses \href{https://mathiasbynens.be/notes/javascript-unicode\#iterating-over-symbols}{\texttt{ the string’s iterator}} to split the given string into an array of strings that each contain a single symbol. \`{}regenerate()\`{} accepts both strings and code points, remember?
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ regenerate\ =\ require('regenerate');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ string\ =\ 'Lorem\ ipsum\ dolor\ sit\ amet.';}
+\DoxyCodeLine{//\ Get\ an\ array\ of\ all\ symbols\ used\ in\ the\ string:}
+\DoxyCodeLine{var\ symbols\ =\ Array.from(string);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Generate\ a\ regular\ expression\ that\ matches\ any\ of\ the\ symbols\ used\ in\ the\ string:}
+\DoxyCodeLine{regenerate(symbols).toString();}
+\DoxyCodeLine{//\ →\ '[\ \(\backslash\)\(\backslash\).Ladeilmopr-\/u]'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20463}{}\doxysection{\texorpdfstring{Support}{Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20463}
+Regenerate supports at least Chrome 27+, Firefox 3+, Safari 4+, Opera 10+, IE 6+, Node.\+js v0.\+10.\+0+, io.\+js v1.\+0.\+0+, Narwhal 0.\+3.\+2+, Ringo\+JS 0.\+8+, Phantom\+JS 1.\+9.\+0+, and Rhino 1.\+7\+RC4+.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20464}{}\doxysection{\texorpdfstring{Unit tests \& code coverage}{Unit tests \& code coverage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20464}
+After cloning this repository, run {\ttfamily npm install} to install the dependencies needed for Regenerate development and testing. You may want to install Istanbul {\itshape globally} using {\ttfamily npm install istanbul -\/g}.
+
+Once that’s done, you can run the unit tests in Node using {\ttfamily npm test} or {\ttfamily node tests/tests.\+js}. To run the tests in Rhino, Ringo, Narwhal, and web browsers as well, use {\ttfamily grunt test}.
+
+To generate the code coverage report, use {\ttfamily grunt cover}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20465}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20465}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endhead
+\href{https://mathiasbynens.be/}{\texttt{ Mathias Bynens}}   \\\cline{1-1}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20466}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerate_2_r_e_a_d_m_e_autotoc_md20466}
+Regenerate is available under the \href{https://mths.be/mit}{\texttt{ MIT}} license. 

@@ -1,0 +1,35 @@
+\chapter{import/export}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export}\index{import/export@{import/export}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export_autotoc_md9852}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export_autotoc_md9852}%
+ 💼 This rule is enabled in the following configs\+: ❗ {\ttfamily errors}, ☑️ {\ttfamily recommended}.
+
+Reports funny business with exports, like repeated exports of names or defaults.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export_autotoc_md9853}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export_autotoc_md9853}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ default\ class\ MyClass\ \{\ /*...*/\ \}\ //\ Multiple\ default\ exports.}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ makeClass()\ \{\ return\ new\ MyClass(...arguments)\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ makeClass\ //\ Multiple\ default\ exports.}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ const\ foo\ =\ function\ ()\ \{\ /*...*/\ \}\ //\ Multiple\ exports\ of\ name\ 'foo'.}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ bar()\ \{\ /*...*/\ \}}
+\DoxyCodeLine{export\ \{\ bar\ as\ foo\ \}\ //\ Multiple\ exports\ of\ name\ 'foo'.}
+
+\end{DoxyCode}
+
+
+In the case of named/default re-\/export, all {\ttfamily n} re-\/exports will be reported, as at least {\ttfamily n-\/1} of them are clearly mistakes, but it is not clear which one (if any) is intended. Could be the result of copy/paste, code duplication with intent to rename, etc.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export_autotoc_md9854}{}\doxysection{\texorpdfstring{Further Reading}{Further Reading}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2export_autotoc_md9854}
+
+\begin{DoxyItemize}
+\item Lee Byron\textquotesingle{}s \href{https://github.com/leebyron/ecmascript-more-export-from}{\texttt{ ES7}} export proposal 
+\end{DoxyItemize}

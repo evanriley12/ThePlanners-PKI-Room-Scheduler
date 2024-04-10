@@ -1,0 +1,356 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e}\index{README@{README}}
+\href{https://www.npmjs.com/package/@rollup/plugin-babel}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=@rollup/plugin-babel}{\texttt{ }} \href{https://liberamanifesto.com}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1837}{}\doxysection{\texorpdfstring{@rollup/plugin-\/babel}{@rollup/plugin-\/babel}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1837}
+🍣 A Rollup plugin for seamless integration between Rollup and Babel.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1838}{}\doxysubsection{\texorpdfstring{Why?}{Why?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1838}
+If you\textquotesingle{}re using Babel to transpile your ES6/7 code and Rollup to generate a standalone bundle, you have a couple of options\+:
+
+
+\begin{DoxyItemize}
+\item run the code through Babel first, being careful to exclude the module transformer, or
+\item run the code through Rollup first, and {\itshape then} pass it to Babel.
+\end{DoxyItemize}
+
+Both approaches have disadvantages – in the first case, on top of the additional configuration complexity, you may end up with Babel\textquotesingle{}s helpers (like {\ttfamily class\+Call\+Check}) repeated throughout your code (once for each module where the helpers are used). In the second case, transpiling is likely to be slower, because transpiling a large bundle is much more work for Babel than transpiling a set of small files.
+
+Either way, you have to worry about a place to put the intermediate files, and getting sourcemaps to behave becomes a royal pain.
+
+Using Rollup with {\ttfamily @rollup/plugin-\/babel} makes the process far easier.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1839}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1839}
+This plugin requires an \href{https://github.com/nodejs/Release}{\texttt{ LTS}} Node version (v10.\+0.\+0+) and Rollup v1.\+20.\+0+.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1840}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1840}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @rollup/plugin-\/babel\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1841}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1841}
+Create a {\ttfamily rollup.\+config.\+js} \href{https://www.rollupjs.org/guide/en/\#configuration-files}{\texttt{ configuration file}} and import the plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ babel\ \}\ from\ '@rollup/plugin-\/babel';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ config\ =\ \{}
+\DoxyCodeLine{\ \ input:\ 'src/index.js',}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ dir:\ 'output',}
+\DoxyCodeLine{\ \ \ \ format:\ 'esm'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [babel(\{\ babelHelpers:\ 'bundled'\ \})]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ config;}
+
+\end{DoxyCode}
+
+
+Then call {\ttfamily rollup} either via the \href{https://www.rollupjs.org/guide/en/\#command-line-reference}{\texttt{ CLI}} or the \href{https://www.rollupjs.org/guide/en/\#javascript-api}{\texttt{ API}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1842}{}\doxysubsubsection{\texorpdfstring{Using With {\ttfamily @rollup/plugin-\/commonjs}}{Using With {\ttfamily @rollup/plugin-\/commonjs}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1842}
+When using {\ttfamily @rollup/plugin-\/babel} with {\ttfamily @rollup/plugin-\/commonjs} in the same Rollup configuration, it\textquotesingle{}s important to note that {\ttfamily @rollup/plugin-\/commonjs} {\itshape must} be placed before this plugin in the {\ttfamily plugins} array for the two to work together properly. e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ babel\ \}\ from\ '@rollup/plugin-\/babel';}
+\DoxyCodeLine{import\ commonjs\ from\ '@rollup/plugin-\/commonjs';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ config\ =\ \{}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ commonjs(),}
+\DoxyCodeLine{\ \ \ \ babel(\{\ babelHelpers:\ 'bundled'\ \})}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1843}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1843}
+This plugin respects Babel \href{https://babeljs.io/docs/en/configuration}{\texttt{ configuration files}} by default and they are generally the best place to put your configuration.
+
+You can also run Babel on the generated chunks instead of the input files. Even though this is slower, it is the only way to transpile Rollup\textquotesingle{}s auto-\/generated wrapper code to lower compatibility targets than ES5, see Running Babel on the generated code for details.
+
+All options are as per the \href{https://babeljs.io/docs/en/options}{\texttt{ Babel documentation}}, plus the following\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1844}{}\doxysubsubsection{\texorpdfstring{{\ttfamily exclude}}{{\ttfamily exclude}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1844}
+Type\+: {\ttfamily String \texorpdfstring{$\vert$}{|} Reg\+Exp \texorpdfstring{$\vert$}{|} Array\mbox{[}...String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\mbox{]}}~\newline
+
+
+A \href{https://github.com/isaacs/minimatch}{\texttt{ minimatch pattern}}, or array of patterns, which specifies the files in the build the plugin should {\itshape ignore}. When relying on Babel configuration files you can only exclude additional files with this option, you cannot override what you have configured for Babel itself.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1845}{}\doxysubsubsection{\texorpdfstring{{\ttfamily include}}{{\ttfamily include}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1845}
+Type\+: {\ttfamily String \texorpdfstring{$\vert$}{|} Reg\+Exp \texorpdfstring{$\vert$}{|} Array\mbox{[}...String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\mbox{]}}~\newline
+
+
+A \href{https://github.com/isaacs/minimatch}{\texttt{ minimatch pattern}}, or array of patterns, which specifies the files in the build the plugin should operate on. When relying on Babel configuration files you cannot include files already excluded there.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1846}{}\doxysubsubsection{\texorpdfstring{{\ttfamily filter}}{{\ttfamily filter}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1846}
+Type\+: (id\+: string) =\texorpdfstring{$>$}{>} boolean~\newline
+
+
+Custom \href{https://github.com/rollup/plugins/tree/master/packages/pluginutils\#createfilter}{\texttt{ filter function}} can be used to determine whether or not certain modules should be operated upon.
+
+Usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ createFilter\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{const\ include\ =\ 'include/**.js';}
+\DoxyCodeLine{const\ exclude\ =\ 'exclude/**.js';}
+\DoxyCodeLine{const\ filter\ =\ createFilter(include,\ exclude,\ \{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1847}{}\doxysubsubsection{\texorpdfstring{{\ttfamily extensions}}{{\ttfamily extensions}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1847}
+Type\+: {\ttfamily Array\mbox{[}...String\mbox{]}}~\newline
+ Default\+: `\mbox{[}'.js\textquotesingle{}, \textquotesingle{}.jsx\textquotesingle{}, \textquotesingle{}.es6\textquotesingle{}, \textquotesingle{}.es\textquotesingle{}, \textquotesingle{}.mjs\textquotesingle{}\mbox{]}\`{}
+
+An array of file extensions that Babel should transpile. If you want to transpile Type\+Script files with this plugin it\textquotesingle{}s essential to include {\ttfamily .ts} and {\ttfamily .tsx} in this option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1848}{}\doxysubsubsection{\texorpdfstring{{\ttfamily babel\+Helpers}}{{\ttfamily babel\+Helpers}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1848}
+Type\+: `\textquotesingle{}bundled' \texorpdfstring{$\vert$}{|} \textquotesingle{}runtime\textquotesingle{} \texorpdfstring{$\vert$}{|} \textquotesingle{}inline\textquotesingle{} \texorpdfstring{$\vert$}{|} \textquotesingle{}external\textquotesingle{}{\ttfamily \texorpdfstring{$<$}{<}br\texorpdfstring{$>$}{>} Default\+:}\textquotesingle{}bundled\textquotesingle{}\`{}
+
+It is recommended to configure this option explicitly (even if with its default value) so an informed decision is taken on how those babel helpers are inserted into the code.
+
+We recommend to follow these guidelines to determine the most appropriate value for your project\+:
+
+
+\begin{DoxyItemize}
+\item `\textquotesingle{}runtime'{\ttfamily -\/ you should use this especially when building libraries with Rollup. It has to be used in combination with}@babel/plugin-\/transform-\/runtime{\ttfamily and you should also specify}@babel/runtime{\ttfamily as dependency of your package. Don\textquotesingle{}t forget to tell Rollup to treat the helpers imported from within the}@babel/runtime{\ttfamily module as external dependencies when bundling for}cjs{\ttfamily \&}es{\ttfamily formats. This can be accomplished via regex (}external\+: \mbox{[}/@babel\textbackslash{}/runtime/\mbox{]}{\ttfamily ) or a function (}external\+: id =\texorpdfstring{$>$}{>} id.\+includes(\textquotesingle{}@babel/runtime\textquotesingle{}){\ttfamily ). It\textquotesingle{}s important to not only specify}external\+: \mbox{[}\textquotesingle{}@babel/runtime\textquotesingle{}\mbox{]}{\ttfamily since the helpers are imported from nested paths (e.\+g}@babel/runtime/helpers/get{\ttfamily ) and \mbox{[}Rollup will only exclude modules that match strings exactly\mbox{]}(\href{https://rollupjs.org/guide/en/}{\texttt{ https\+://rollupjs.\+org/guide/en/}}\#peer-\/dependencies). -\/}\textquotesingle{}bundled\textquotesingle{}{\ttfamily -\/ you should use this if you want your resulting bundle to contain those helpers (at most one copy of each). Useful especially if you bundle an application code. -\/}\textquotesingle{}external\textquotesingle{}{\ttfamily -\/ use this only if you know what you are doing. It will reference helpers on \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}global\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}babel\+Helpers{\ttfamily object. Used in combination with}@babel/plugin-\/external-\/helpers{\ttfamily . -\/}\textquotesingle{}inline\textquotesingle{}{\ttfamily -\/ this is not recommended. Helpers will be inserted in each file using this option. This can cause serious code duplication. This is the default Babel behavior as Babel operates on isolated files -\/ however, as Rollup is a bundler and is project-\/aware (and therefore likely operating across multiple input files), the default of this plugin is}"{}bundled"{}\`{}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1849}{}\doxysubsubsection{\texorpdfstring{{\ttfamily skip\+Preflight\+Check}}{{\ttfamily skip\+Preflight\+Check}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1849}
+Type\+: {\ttfamily Boolean}~\newline
+ Default\+: {\ttfamily false}
+
+Before transpiling your input files this plugin also transpile a short piece of code {\bfseries{for each}} input file. This is used to validate some misconfiguration errors, but for sufficiently big projects it can slow your build times so if you are confident about your configuration then you might disable those checks with this option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1850}{}\doxysubsubsection{\texorpdfstring{External dependencies}{External dependencies}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1850}
+Ideally, you should only be transforming your source code, rather than running all of your external dependencies through Babel (to ignore external dependencies from being handled by this plugin you might use `exclude\+: \textquotesingle{}node\+\_\+modules/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}'{\ttfamily option). If you have a dependency that exposes untranspiled ES6 source code that doesn\textquotesingle{}t run in your target environment, then you may need to break this rule, but it often causes problems with unusual}.babelrc\`{} files or mismatched versions of Babel.
+
+We encourage library authors not to distribute code that uses untranspiled ES6 features (other than modules) for this reason. Consumers of your library should {\itshape not} have to transpile your ES6 code, any more than they should have to transpile your Coffee\+Script, Clojure\+Script or Type\+Script.
+
+Use {\ttfamily babelrc\+: false} to prevent Babel from using local (i.\+e. to your external dependencies) {\ttfamily .babelrc} files, relying instead on the configuration you pass in.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1851}{}\doxysubsubsection{\texorpdfstring{Helpers}{Helpers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1851}
+In some cases Babel uses {\itshape helpers} to avoid repeating chunks of code – for example, if you use the {\ttfamily class} keyword, it will use a {\ttfamily class\+Call\+Check} function to ensure that the class is instantiated correctly.
+
+By default, those helpers will be inserted at the top of the file being transformed, which can lead to duplication. This rollup plugin automatically deduplicates those helpers, keeping only one copy of each one used in the output bundle. Rollup will combine the helpers in a single block at the top of your bundle.
+
+You can customize how those helpers are being inserted into the transformed file with \`{}babel\+Helpers\`{} option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1852}{}\doxysubsubsection{\texorpdfstring{Modules}{Modules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1852}
+This is not needed since Babel 7 -\/ it knows automatically that Rollup understands ES modules \& that it shouldn\textquotesingle{}t use any module transform with it. Unless you forcefully include a module transform in your Babel configuration.
+
+If you have been pointed to this section by an error thrown by this plugin, please check your Babel configuration files and disable any module transforms when running Rollup builds.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1853}{}\doxysubsection{\texorpdfstring{Running Babel on the generated code}{Running Babel on the generated code}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1853}
+You can run {\ttfamily @rollup/plugin-\/babel} on the output files instead of the input files by using {\ttfamily get\+Babel\+Output\+Plugin(...)}. This can be used to perform code transformations on the resulting chunks and is the only way to transform Rollup\textquotesingle{}s auto-\/generated code. By default, the plugin will be applied to all outputs\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ rollup.config.js}
+\DoxyCodeLine{import\ \{\ getBabelOutputPlugin\ \}\ from\ '@rollup/plugin-\/babel';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ \{}
+\DoxyCodeLine{\ \ input:\ 'main.js',}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ getBabelOutputPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ presets:\ ['@babel/preset-\/env']}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ output:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ file:\ 'bundle.cjs.js',\ format:\ 'cjs'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ file:\ 'bundle.esm.js',\ format:\ 'esm'\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+If you only want to apply it to specific outputs, you can use it as an output plugin (requires at least Rollup v1.\+27.\+0)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ rollup.config.js}
+\DoxyCodeLine{import\ \{\ getBabelOutputPlugin\ \}\ from\ '@rollup/plugin-\/babel';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ \{}
+\DoxyCodeLine{\ \ input:\ 'main.js',}
+\DoxyCodeLine{\ \ output:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ file:\ 'bundle.js',\ format:\ 'esm'\ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ file:\ 'bundle.es5.js',}
+\DoxyCodeLine{\ \ \ \ \ \ format:\ 'esm',}
+\DoxyCodeLine{\ \ \ \ \ \ plugins:\ [getBabelOutputPlugin(\{\ presets:\ ['@babel/preset-\/env']\ \})]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The {\ttfamily include}, {\ttfamily exclude} and {\ttfamily extensions} options are ignored when the when using {\ttfamily get\+Babel\+Output\+Plugin} and {\ttfamily create\+Babel\+Output\+Plugin\+Factory} will produce warnings, and there are a few more points to note that users should be aware of.
+
+You can also run the plugin twice on the code, once when processing the input files to transpile special syntax to Java\+Script and once on the output to transpile to a lower compatibility target\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ rollup.config.js}
+\DoxyCodeLine{import\ babel,\ \{\ getBabelOutputPlugin\ \}\ from\ '@rollup/plugin-\/babel';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ \{}
+\DoxyCodeLine{\ \ input:\ 'main.js',}
+\DoxyCodeLine{\ \ plugins:\ [babel(\{\ presets:\ ['@babel/preset-\/react']\ \})],}
+\DoxyCodeLine{\ \ output:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ file:\ 'bundle.js',}
+\DoxyCodeLine{\ \ \ \ \ \ format:\ 'esm',}
+\DoxyCodeLine{\ \ \ \ \ \ plugins:\ [getBabelOutputPlugin(\{\ presets:\ ['@babel/preset-\/env']\ \})]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1854}{}\doxysubsubsection{\texorpdfstring{Babel configuration files}{Babel configuration files}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1854}
+Unlike the regular {\ttfamily babel} plugin, {\ttfamily get\+Babel\+Output\+Plugin(...)} will {\bfseries{not}} automatically search for \href{https://babeljs.io/docs/en/config-files}{\texttt{ Babel configuration files}}. Besides passing in Babel options directly, however, you can specify a configuration file manually via Babel\textquotesingle{}s \href{https://babeljs.io/docs/en/options\#configfile}{\texttt{ {\ttfamily config\+File}}} option\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{getBabelOutputPlugin(\{}
+\DoxyCodeLine{\ \ configFile:\ path.resolve(\_\_dirname,\ 'babel.config.js')}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1855}{}\doxysubsubsection{\texorpdfstring{Using formats other than ES modules or Common\+JS}{Using formats other than ES modules or Common\+JS}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1855}
+As {\ttfamily get\+Babel\+Output\+Plugin(...)} will run {\itshape after} Rollup has done all its transformations, it needs to make sure it preserves the semantics of Rollup\textquotesingle{}s output format. This is especially important for Babel plugins that add, modify or remove imports or exports, but also for other transformations that add new variables as they can accidentally become global variables depending on the format. Therefore it is recommended that for formats other than {\ttfamily esm} or {\ttfamily cjs}, you set Rollup to use the {\ttfamily esm} output format and let Babel handle the transformation to another format, e.\+g. via
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{presets:\ [['@babel/preset-\/env',\ \{\ modules:\ 'umd'\ \}],\ ...]}
+
+\end{DoxyCode}
+
+
+to create a UMD/\+IIFE compatible output. If you want to use {\ttfamily get\+Babel\+Output\+Plugin(...)} with other formats, you need to specify {\ttfamily allow\+All\+Formats\+: true} as plugin option\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rollup.rollup(\{...\})}
+\DoxyCodeLine{.then(bundle\ =>\ bundle.generate(\{}
+\DoxyCodeLine{\ \ format:\ 'iife',}
+\DoxyCodeLine{\ \ plugins:\ [getBabelOutputPlugin(\{}
+\DoxyCodeLine{\ \ \ \ allowAllFormats:\ true,}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \})]}
+\DoxyCodeLine{\}))}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1856}{}\doxysubsubsection{\texorpdfstring{Injected helpers}{Injected helpers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1856}
+By default, helpers e.\+g. when transpiling classes will be inserted at the top of each chunk. In contrast to when applying this plugin on the input files, helpers will not be deduplicated across chunks.
+
+Alternatively, you can use imported runtime helpers by adding the {\ttfamily @babel/transform-\/runtime} plugin. This will make {\ttfamily @babel/runtime} an external dependency of your project, see \href{https://babeljs.io/docs/en/babel-plugin-transform-runtime}{\texttt{ @babel/plugin-\/transform-\/runtime}} for details.
+
+Note that this will only work for {\ttfamily esm} and {\ttfamily cjs} formats, and you need to make sure to set the {\ttfamily use\+ESModules} option of {\ttfamily @babel/plugin-\/transform-\/runtime} to {\ttfamily true} if you create ESM output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rollup.rollup(\{...\})}
+\DoxyCodeLine{.then(bundle\ =>\ bundle.generate(\{}
+\DoxyCodeLine{\ \ format:\ 'esm',}
+\DoxyCodeLine{\ \ plugins:\ [getBabelOutputPlugin(\{}
+\DoxyCodeLine{\ \ \ \ presets:\ ['@babel/preset-\/env'],}
+\DoxyCodeLine{\ \ \ \ plugins:\ [['@babel/plugin-\/transform-\/runtime',\ \{\ useESModules:\ true\ \}]]}
+\DoxyCodeLine{\ \ \})]}
+\DoxyCodeLine{\}))}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ input}
+\DoxyCodeLine{export\ default\ class\ Foo\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ output}
+\DoxyCodeLine{import\ \_classCallCheck\ from\ '@babel/runtime/helpers/esm/classCallCheck';}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ Foo\ =\ function\ Foo()\ \{}
+\DoxyCodeLine{\ \ \_classCallCheck(this,\ Foo);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ Foo;}
+
+\end{DoxyCode}
+
+
+And for Common\+JS\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rollup.rollup(\{...\})}
+\DoxyCodeLine{.then(bundle\ =>\ bundle.generate(\{}
+\DoxyCodeLine{\ \ format:\ 'cjs',}
+\DoxyCodeLine{\ \ plugins:\ [getBabelOutputPlugin(\{}
+\DoxyCodeLine{\ \ \ \ presets:\ ['@babel/preset-\/env'],}
+\DoxyCodeLine{\ \ \ \ plugins:\ [['@babel/plugin-\/transform-\/runtime',\ \{\ useESModules:\ false\ \}]]}
+\DoxyCodeLine{\ \ \})]}
+\DoxyCodeLine{\}))}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ input}
+\DoxyCodeLine{export\ default\ class\ Foo\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ output}
+\DoxyCodeLine{('use\ strict');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ \_classCallCheck\ =\ require('@babel/runtime/helpers/classCallCheck');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ Foo\ =\ function\ Foo()\ \{}
+\DoxyCodeLine{\ \ \_classCallCheck(this,\ Foo);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ Foo;}
+
+\end{DoxyCode}
+
+
+Another option is to use {\ttfamily @babel/plugin-\/external-\/helpers}, which will reference the global {\ttfamily babel\+Helpers} object. It is your responsibility to make sure this global variable exists.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1857}{}\doxysubsection{\texorpdfstring{Custom plugin builder}{Custom plugin builder}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1857}
+{\ttfamily @rollup/plugin-\/babel} exposes a plugin-\/builder utility that allows users to add custom handling of Babel\textquotesingle{}s configuration for each file that it processes.
+
+{\ttfamily create\+Babel\+Input\+Plugin\+Factory} accepts a callback that will be called with the loader\textquotesingle{}s instance of {\ttfamily babel} so that tooling can ensure that it using exactly the same {\ttfamily @babel/core} instance as the loader itself.
+
+It\textquotesingle{}s main purpose is to allow other tools for configuration of transpilation without forcing people to add extra configuration but still allow for using their own babelrc / babel config files.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1858}{}\doxysubsubsection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1858}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ createBabelInputPluginFactory\ \}\ from\ '@rollup/plugin-\/babel';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ createBabelInputPluginFactory((babelCore)\ =>\ \{}
+\DoxyCodeLine{\ \ function\ myPlugin()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ visitor:\ \{\}}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Passed\ the\ plugin\ options.}
+\DoxyCodeLine{\ \ \ \ options(\{\ opt1,\ opt2,\ ...pluginOptions\ \})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Pull\ out\ any\ custom\ options\ that\ the\ plugin\ might\ have.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ customOptions:\ \{\ opt1,\ opt2\ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Pass\ the\ options\ back\ with\ the\ two\ custom\ options\ removed.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ pluginOptions}
+\DoxyCodeLine{\ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ config(cfg\ /*\ Passed\ Babel's\ 'PartialConfig'\ object.\ */,\ \{\ code,\ customOptions\ \})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (cfg.hasFilesystemConfig())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Use\ the\ normal\ config}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ cfg.options;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ...cfg.options,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ...(cfg.options.plugins\ ||\ []),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ Include\ a\ custom\ plugin\ in\ the\ options.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ myPlugin}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ result(result,\ \{\ code,\ customOptions,\ config,\ transformOptions\ \})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ...result,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ code:\ result.code\ +\ '\(\backslash\)n//\ Generated\ by\ some\ custom\ plugin'}
+\DoxyCodeLine{\ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1859}{}\doxysubsection{\texorpdfstring{Meta}{Meta}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2plugin-babel_2_r_e_a_d_m_e_autotoc_md1859}
+CONTRIBUTING
+
+\href{/LICENSE}{\texttt{ LICENSE (MIT)}} 

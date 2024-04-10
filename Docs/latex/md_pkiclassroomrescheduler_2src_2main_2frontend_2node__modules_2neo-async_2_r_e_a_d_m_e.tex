@@ -1,0 +1,278 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e}\index{README@{README}}
+\doxysection*{Neo-\/\+Async}
+
+
+
+ 
+
+
+
+\href{https://www.npmjs.com/package/neo-async}{\texttt{ }} \href{https://travis-ci.org/suguru03/neo-async}{\texttt{ }} \href{https://codecov.io/gh/suguru03/neo-async}{\texttt{ }} \href{https://www.npmjs.com/package/neo-async}{\texttt{ }} \href{https://lgtm.com/projects/g/suguru03/neo-async/context:javascript}{\texttt{ }} \href{https://lgtm.com/projects/g/suguru03/neo-async/alerts}{\texttt{ }} \href{https://app.fossa.io/projects/git\%2Bgithub.com\%2Fsuguru03\%2Fneo-async?ref=badge_shield}{\texttt{ }} 
+
+Neo-\/\+Async is thought to be used as a drop-\/in replacement for \href{https://github.com/caolan/async}{\texttt{ Async}}, it almost fully covers its functionality and runs \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2jest_2node__modules_2_0dsinclair_2typebox_2readme_benchmark}{faster}.
+
+Benchmark is \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2jest_2node__modules_2_0dsinclair_2typebox_2readme_benchmark}{here}!
+
+Bluebird\textquotesingle{}s benchmark is \href{https://github.com/suguru03/bluebird/tree/aigle/benchmark}{\texttt{ here}}!\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17066}{}\doxysubsection{\texorpdfstring{Code Coverage}{Code Coverage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17066}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17067}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17067}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17068}{}\doxysubsubsection{\texorpdfstring{In a browser}{In a browser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17068}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}async.min.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17069}{}\doxysubsubsection{\texorpdfstring{In an AMD loader}{In an AMD loader}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17069}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require(['async'],\ function(async)\ \{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17070}{}\doxysubsubsection{\texorpdfstring{Promise and async/await}{Promise and async/await}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17070}
+I recommend to use \href{https://github.com/suguru03/aigle}{\texttt{ {\ttfamily Aigle}}}.
+
+It is optimized for Promise handling and has almost the same functionality as {\ttfamily neo-\/async}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17071}{}\doxysubsubsection{\texorpdfstring{Node.\+js}{Node.\+js}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17071}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17072}{}\doxyparagraph{\texorpdfstring{standard}{standard}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17072}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ neo-\/async}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ async\ =\ require('neo-\/async');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17073}{}\doxyparagraph{\texorpdfstring{replacement}{replacement}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17073}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ neo-\/async}
+\DoxyCodeLine{\$\ ln\ -\/s\ ./node\_modules/neo-\/async\ ./node\_modules/async}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ async\ =\ require('async');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17074}{}\doxysubsubsection{\texorpdfstring{Bower}{Bower}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17074}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{bower\ install\ neo-\/async}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17075}{}\doxysubsection{\texorpdfstring{Feature}{Feature}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17075}
+\href{http://suguru03.github.io/neo-async/doc/async.html}{\texttt{ JSDoc}}
+
+
+\begin{DoxyItemize}
+\item not in Async
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17076}{}\doxysubsubsection{\texorpdfstring{Collections}{Collections}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17076}
+
+\begin{DoxyItemize}
+\item \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily each}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily each\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily each\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily for\+Each}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily each}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily for\+Each\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily each\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily for\+Each\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily each\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily each\+Of}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily each}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily each\+Of\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily each\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily each\+Of\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily each\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily for\+Each\+Of}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.each.html}{\texttt{ {\ttfamily each}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily for\+Each\+Of\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.eachSeries.html}{\texttt{ {\ttfamily each\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily each\+Of\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.eachLimit.html}{\texttt{ {\ttfamily for\+Each\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.map.html}{\texttt{ {\ttfamily map}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.mapSeries.html}{\texttt{ {\ttfamily map\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.mapLimit.html}{\texttt{ {\ttfamily map\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.mapValues.html}{\texttt{ {\ttfamily map\+Values}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.mapValuesSeries.html}{\texttt{ {\ttfamily map\+Values\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.mapValuesLimit.html}{\texttt{ {\ttfamily map\+Values\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.filter.html}{\texttt{ {\ttfamily filter}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.filterSeries.html}{\texttt{ {\ttfamily filter\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.filterLimit.html}{\texttt{ {\ttfamily filter\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.filter.html}{\texttt{ {\ttfamily select}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.filter.html}{\texttt{ {\ttfamily filter}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.filterSeries.html}{\texttt{ {\ttfamily select\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.filterSeries.html}{\texttt{ {\ttfamily filter\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.filterLimit.html}{\texttt{ {\ttfamily select\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.filterLimit.html}{\texttt{ {\ttfamily filter\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.reject.html}{\texttt{ {\ttfamily reject}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.rejectSeries.html}{\texttt{ {\ttfamily reject\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.rejectLimit.html}{\texttt{ {\ttfamily reject\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.detect.html}{\texttt{ {\ttfamily detect}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.detectSeries.html}{\texttt{ {\ttfamily detect\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.detectLimit.html}{\texttt{ {\ttfamily detect\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.detect.html}{\texttt{ {\ttfamily find}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.detect.html}{\texttt{ {\ttfamily detect}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.detectSeries.html}{\texttt{ {\ttfamily find\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.detectSeries.html}{\texttt{ {\ttfamily detect\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.detectLimit.html}{\texttt{ {\ttfamily find\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.detectLimit.html}{\texttt{ {\ttfamily detect\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.pick.html}{\texttt{ {\ttfamily pick}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.pickSeries.html}{\texttt{ {\ttfamily pick\+Series}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.pickLimit.html}{\texttt{ {\ttfamily pick\+Limit}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.omit.html}{\texttt{ {\ttfamily omit}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.omitSeries.html}{\texttt{ {\ttfamily omit\+Series}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.omitLimit.html}{\texttt{ {\ttfamily omit\+Limit}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.reduce.html}{\texttt{ {\ttfamily reduce}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.reduce.html}{\texttt{ {\ttfamily inject}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.reduce.html}{\texttt{ {\ttfamily reduce}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.reduce.html}{\texttt{ {\ttfamily foldl}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.reduce.html}{\texttt{ {\ttfamily reduce}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.reduceRight.html}{\texttt{ {\ttfamily reduce\+Right}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.reduceRight.html}{\texttt{ {\ttfamily foldr}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.reduceRight.html}{\texttt{ {\ttfamily reduce\+Right}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.transform.html}{\texttt{ {\ttfamily transform}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.transformSeries.html}{\texttt{ {\ttfamily transform\+Series}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.transformLimit.html}{\texttt{ {\ttfamily transform\+Limit}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.sortBy.html}{\texttt{ {\ttfamily sort\+By}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.sortBySeries.html}{\texttt{ {\ttfamily sort\+By\+Series}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.sortByLimit.html}{\texttt{ {\ttfamily sort\+By\+Limit}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.some.html}{\texttt{ {\ttfamily some}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.someSeries.html}{\texttt{ {\ttfamily some\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.someLimit.html}{\texttt{ {\ttfamily some\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.some.html}{\texttt{ {\ttfamily any}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.some.html}{\texttt{ {\ttfamily some}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.someSeries.html}{\texttt{ {\ttfamily any\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.someSeries.html}{\texttt{ {\ttfamily some\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.someLimit.html}{\texttt{ {\ttfamily any\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.someLimit.html}{\texttt{ {\ttfamily some\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.every.html}{\texttt{ {\ttfamily every}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.everySeries.html}{\texttt{ {\ttfamily every\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.everyLimit.html}{\texttt{ {\ttfamily every\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.every.html}{\texttt{ {\ttfamily all}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.every.html}{\texttt{ {\ttfamily every}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.everySeries.html}{\texttt{ {\ttfamily all\+Series}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.everySeries.html}{\texttt{ {\ttfamily every}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.everyLimit.html}{\texttt{ {\ttfamily all\+Limit}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.everyLimit.html}{\texttt{ {\ttfamily every}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.concat.html}{\texttt{ {\ttfamily concat}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.concatSeries.html}{\texttt{ {\ttfamily concat\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.concatLimit.html}{\texttt{ {\ttfamily concat\+Limit}}} \texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17077}{}\doxysubsubsection{\texorpdfstring{Control Flow}{Control Flow}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17077}
+
+\begin{DoxyItemize}
+\item \href{http://suguru03.github.io/neo-async/doc/async.parallel.html}{\texttt{ {\ttfamily parallel}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.series.html}{\texttt{ {\ttfamily series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.series.html}{\texttt{ {\ttfamily parallel\+Limit}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.tryEach.html}{\texttt{ {\ttfamily try\+Each}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.waterfall.html}{\texttt{ {\ttfamily waterfall}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.angelFall.html}{\texttt{ {\ttfamily angel\+Fall}}} \texorpdfstring{$\ast$}{*}
+\item \href{http://suguru03.github.io/neo-async/doc/async.angelFall.html}{\texttt{ {\ttfamily angelfall}}} -\/\texorpdfstring{$>$}{>} \href{http://suguru03.github.io/neo-async/doc/async.angelFall.html}{\texttt{ {\ttfamily angel\+Fall}}} \texorpdfstring{$\ast$}{*}
+\item \`{}whilst\`{}
+\item \`{}do\+Whilst\`{}
+\item \`{}until\`{}
+\item \`{}do\+Until\`{}
+\item \`{}during\`{}
+\item \`{}do\+During\`{}
+\item \`{}forever\`{}
+\item \`{}compose\`{}
+\item \`{}seq\`{}
+\item \`{}apply\+Each\`{}
+\item \`{}apply\+Each\+Series\`{}
+\item \`{}queue\`{}
+\item \`{}priority\+Queue\`{}
+\item \`{}cargo\`{}
+\item \`{}auto\`{}
+\item \`{}auto\+Inject\`{}
+\item \`{}retry\`{}
+\item \`{}retryable\`{}
+\item \`{}iterator\`{}
+\item \href{http://suguru03.github.io/neo-async/doc/async.times.html}{\texttt{ {\ttfamily times}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.timesSeries.html}{\texttt{ {\ttfamily times\+Series}}}
+\item \href{http://suguru03.github.io/neo-async/doc/async.timesLimit.html}{\texttt{ {\ttfamily times\+Limit}}}
+\item \`{}race\`{}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17078}{}\doxysubsubsection{\texorpdfstring{Utils}{Utils}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17078}
+
+\begin{DoxyItemize}
+\item \`{}apply\`{}
+\item \`{}set\+Immediate\`{}
+\item \`{}next\+Tick\`{}
+\item \`{}memoize\`{}
+\item \`{}unmemoize\`{}
+\item \`{}ensure\+Async\`{}
+\item \`{}constant\`{}
+\item \`{}asyncify\`{}
+\item \`{}wrap\+Sync\`{} -\/\texorpdfstring{$>$}{>} \`{}asyncify\`{}
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2node-forge_2_r_e_a_d_m_e_log}{\`{}log\`{}}
+\item \`{}dir\`{}
+\item \href{http://suguru03.github.io/neo-async/doc/async.timeout.html}{\texttt{ {\ttfamily timeout}}}
+\item \`{}reflect\`{}
+\item \`{}reflect\+All\`{}
+\item \`{}create\+Logger\`{}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17079}{}\doxysubsection{\texorpdfstring{Mode}{Mode}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17079}
+
+\begin{DoxyItemize}
+\item \`{}safe\`{} \texorpdfstring{$\ast$}{*}
+\item \`{}fast\`{} \texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17080}{}\doxysubsection{\texorpdfstring{Benchmark}{Benchmark}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17080}
+\href{http://suguru03.hatenablog.com/entry/2016/06/10/135559}{\texttt{ Benchmark\+: Async vs Neo-\/\+Async}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17081}{}\doxysubsubsection{\texorpdfstring{How to check}{How to check}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17081}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ perf}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17082}{}\doxysubsubsection{\texorpdfstring{Environment}{Environment}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17082}
+
+\begin{DoxyItemize}
+\item Darwin 17.\+3.\+0 x64
+\item Node.\+js v8.\+9.\+4
+\item async v2.\+6.\+0
+\item neo-\/async v2.\+5.\+0
+\item benchmark v2.\+1.\+4
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17083}{}\doxysubsubsection{\texorpdfstring{Result}{Result}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17083}
+The value is the ratio (Neo-\/\+Async/\+Async) of the average speed.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17084}{}\doxyparagraph{\texorpdfstring{Collections}{Collections}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17084}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ function   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ benchmark    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ function   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ benchmark    }\\\cline{1-2}
+\endhead
+each/for\+Each   &\PBS\raggedleft 2.\+43    \\\cline{1-2}
+each\+Series/for\+Each\+Series   &\PBS\raggedleft 1.\+75    \\\cline{1-2}
+each\+Limit/for\+Each\+Limit   &\PBS\raggedleft 1.\+68    \\\cline{1-2}
+each\+Of   &\PBS\raggedleft 3.\+29    \\\cline{1-2}
+each\+Of\+Series   &\PBS\raggedleft 1.\+50    \\\cline{1-2}
+each\+Of\+Limit   &\PBS\raggedleft 1.\+59    \\\cline{1-2}
+map   &\PBS\raggedleft 3.\+95    \\\cline{1-2}
+map\+Series   &\PBS\raggedleft 1.\+81    \\\cline{1-2}
+map\+Limit   &\PBS\raggedleft 1.\+27    \\\cline{1-2}
+map\+Values   &\PBS\raggedleft 2.\+73    \\\cline{1-2}
+map\+Values\+Series   &\PBS\raggedleft 1.\+59    \\\cline{1-2}
+map\+Values\+Limit   &\PBS\raggedleft 1.\+23    \\\cline{1-2}
+filter   &\PBS\raggedleft 3.\+00    \\\cline{1-2}
+filter\+Series   &\PBS\raggedleft 1.\+74    \\\cline{1-2}
+filter\+Limit   &\PBS\raggedleft 1.\+17    \\\cline{1-2}
+reject   &\PBS\raggedleft 4.\+59    \\\cline{1-2}
+reject\+Series   &\PBS\raggedleft 2.\+31    \\\cline{1-2}
+reject\+Limit   &\PBS\raggedleft 1.\+58    \\\cline{1-2}
+detect   &\PBS\raggedleft 4.\+30    \\\cline{1-2}
+detect\+Series   &\PBS\raggedleft 1.\+86    \\\cline{1-2}
+detect\+Limit   &\PBS\raggedleft 1.\+32    \\\cline{1-2}
+reduce   &\PBS\raggedleft 1.\+82    \\\cline{1-2}
+transform   &\PBS\raggedleft 2.\+46    \\\cline{1-2}
+sort\+By   &\PBS\raggedleft 4.\+08    \\\cline{1-2}
+some   &\PBS\raggedleft 2.\+19    \\\cline{1-2}
+some\+Series   &\PBS\raggedleft 1.\+83    \\\cline{1-2}
+some\+Limit   &\PBS\raggedleft 1.\+32    \\\cline{1-2}
+every   &\PBS\raggedleft 2.\+09    \\\cline{1-2}
+every\+Series   &\PBS\raggedleft 1.\+84    \\\cline{1-2}
+every\+Limit   &\PBS\raggedleft 1.\+35    \\\cline{1-2}
+concat   &\PBS\raggedleft 3.\+79    \\\cline{1-2}
+concat\+Series   &\PBS\raggedleft 4.\+45   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17085}{}\doxyparagraph{\texorpdfstring{Control Flow}{Control Flow}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17085}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ funciton   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ benchmark    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ funciton   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ benchmark    }\\\cline{1-2}
+\endhead
+parallel   &\PBS\raggedleft 2.\+93    \\\cline{1-2}
+series   &\PBS\raggedleft 1.\+96    \\\cline{1-2}
+waterfall   &\PBS\raggedleft 1.\+29    \\\cline{1-2}
+whilst   &\PBS\raggedleft 1.\+00    \\\cline{1-2}
+do\+Whilst   &\PBS\raggedleft 1.\+12    \\\cline{1-2}
+until   &\PBS\raggedleft 1.\+12    \\\cline{1-2}
+do\+Until   &\PBS\raggedleft 1.\+12    \\\cline{1-2}
+during   &\PBS\raggedleft 1.\+18    \\\cline{1-2}
+do\+During   &\PBS\raggedleft 2.\+42    \\\cline{1-2}
+times   &\PBS\raggedleft 4.\+25    \\\cline{1-2}
+auto   &\PBS\raggedleft 1.\+97   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17086}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2neo-async_2_r_e_a_d_m_e_autotoc_md17086}
+\href{https://app.fossa.io/projects/git\%2Bgithub.com\%2Fsuguru03\%2Fneo-async?ref=badge_large}{\texttt{ }} 

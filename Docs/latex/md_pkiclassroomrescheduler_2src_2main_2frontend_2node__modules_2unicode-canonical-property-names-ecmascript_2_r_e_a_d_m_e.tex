@@ -1,0 +1,73 @@
+\chapter{unicode-\/canonical-\/property-\/names-\/ecmascript \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/mathiasbynens/unicode-\/canonical-\/property-\/names-\/ecmascript"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/mathiasbynens/unicode-\/canonical-\/property-\/names-\/ecmascript.\+svg?branch=main"{} alt="{}\+Build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/unicode-\/canonical-\/property-\/names-\/ecmascript"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/unicode-\/canonical-\/property-\/names-\/ecmascript"{} alt="{}unicode-\/canonical-\/property-\/names-\/ecmascript on npm"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e}\index{unicode-\/canonical-\/property-\/names-\/ecmascript $<$a href="{}https://travis-\/ci.org/mathiasbynens/unicode-\/canonical-\/property-\/names-\/ecmascript"{} $>$$<$img src="{}https://travis-\/ci.org/mathiasbynens/unicode-\/canonical-\/property-\/names-\/ecmascript.svg?branch=main"{} alt="{}Build status"{}/$>$$<$/a$>$ $<$a href="{}https://www.npmjs.com/package/unicode-\/canonical-\/property-\/names-\/ecmascript"{} $>$$<$img src="{}https://img.shields.io/npm/v/unicode-\/canonical-\/property-\/names-\/ecmascript"{} alt="{}unicode-\/canonical-\/property-\/names-\/ecmascript on npm"{}/$>$$<$/a$>$@{unicode-\/canonical-\/property-\/names-\/ecmascript $<$a href=""https://travis-\/ci.org/mathiasbynens/unicode-\/canonical-\/property-\/names-\/ecmascript"" $>$$<$img src=""https://travis-\/ci.org/mathiasbynens/unicode-\/canonical-\/property-\/names-\/ecmascript.svg?branch=main"" alt=""Build status""/$>$$<$/a$>$ $<$a href=""https://www.npmjs.com/package/unicode-\/canonical-\/property-\/names-\/ecmascript"" $>$$<$img src=""https://img.shields.io/npm/v/unicode-\/canonical-\/property-\/names-\/ecmascript"" alt=""unicode-\/canonical-\/property-\/names-\/ecmascript on npm""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26087}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26087}%
+ {\itshape unicode-\/canonical-\/property-\/names-\/ecmascript} exports the set of canonical Unicode property names that are supported in \href{https://github.com/tc39/proposal-regexp-unicode-property-escapes}{\texttt{ ECMAScript Reg\+Exp property escapes}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26088}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26088}
+To use {\itshape unicode-\/canonical-\/property-\/names-\/ecmascript}, install it as a dependency via \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ unicode-\/canonical-\/property-\/names-\/ecmascript}
+
+\end{DoxyCode}
+
+
+Then, {\ttfamily require} it\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ properties\ =\ require('unicode-\/canonical-\/property-\/names-\/ecmascript');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26089}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26089}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{properties.has('ID\_Start');}
+\DoxyCodeLine{//\ →\ true}
+\DoxyCodeLine{properties.has('IDS');}
+\DoxyCodeLine{//\ →\ false}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26090}{}\doxysection{\texorpdfstring{For maintainers}{For maintainers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26090}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26091}{}\doxysubsection{\texorpdfstring{How to publish a new release}{How to publish a new release}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26091}
+
+\begin{DoxyEnumerate}
+\item On the {\ttfamily main} branch, bump the version number in {\ttfamily package.\+json}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ version\ patch\ -\/m\ 'Release\ v\%s'}
+
+\end{DoxyCode}
+
+
+Instead of {\ttfamily patch}, use {\ttfamily minor} or {\ttfamily major} \href{https://semver.org/}{\texttt{ as needed}}.
+
+Note that this produces a Git commit + tag.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Push the release commit and tag\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ push\ \&\&\ git\ push\ -\/-\/tags}
+
+\end{DoxyCode}
+
+
+Our CI then automatically publishes the new release to npm.
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26092}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26092}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{1}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://twitter.com/mathias}{\texttt{ }}    }\\\cline{1-1}
+\endhead
+\href{https://mathiasbynens.be/}{\texttt{ Mathias Bynens}}   \\\cline{1-1}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26093}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2unicode-canonical-property-names-ecmascript_2_r_e_a_d_m_e_autotoc_md26093}
+{\itshape unicode-\/canonical-\/property-\/names-\/ecmascript} is available under the \href{https://mths.be/mit}{\texttt{ MIT}} license. 

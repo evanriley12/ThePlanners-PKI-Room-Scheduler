@@ -1,0 +1,326 @@
+\chapter{resolve.\+exports \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/lukeed/resolve.\+exports/actions"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://github.\+com/lukeed/resolve.\+exports/workflows/\+CI/badge.\+svg"{} alt="{}\+CI"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/gh/lukeed/resolve.\+exports"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://codecov.\+io/gh/lukeed/resolve.\+exports/branch/master/graph/badge.\+svg?token=4\+P7d4\+Omw2h"{} alt="{}codecov"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme}\index{resolve.exports $<$a href="{}https://github.com/lukeed/resolve.exports/actions"{} $>$$<$img src="{}https://github.com/lukeed/resolve.exports/workflows/CI/badge.svg"{} alt="{}CI"{}/$>$$<$/a$>$ $<$a href="{}https://codecov.io/gh/lukeed/resolve.exports"{} $>$$<$img src="{}https://codecov.io/gh/lukeed/resolve.exports/branch/master/graph/badge.svg?token=4P7d4Omw2h"{} alt="{}codecov"{}/$>$$<$/a$>$@{resolve.exports $<$a href=""https://github.com/lukeed/resolve.exports/actions"" $>$$<$img src=""https://github.com/lukeed/resolve.exports/workflows/CI/badge.svg"" alt=""CI""/$>$$<$/a$>$ $<$a href=""https://codecov.io/gh/lukeed/resolve.exports"" $>$$<$img src=""https://codecov.io/gh/lukeed/resolve.exports/branch/master/graph/badge.svg?token=4P7d4Omw2h"" alt=""codecov""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20679}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20679}%
+ \begin{quote}
+A tiny (813b), correct, general-\/purpose, and configurable {\ttfamily "{}exports"{}} resolver without file-\/system reliance \end{quote}
+{\itshape {\bfseries{Why?}}}
+
+Hopefully, this module may serve as a reference point (and/or be used directly) so that the varying tools and bundlers within the ecosystem can share a common approach with one another {\bfseries{as well as}} with the native Node.\+js implementation.
+
+With the push for ESM, we must be {\itshape very} careful and avoid fragmentation. If we, as a community, begin propagating different {\itshape dialects} of {\ttfamily "{}exports"{}} resolution, then we\textquotesingle{}re headed for deep trouble. It will make supporting (and using) {\ttfamily "{}exports"{}} nearly impossible, which may force its abandonment and along with it, its benefits.
+
+Let\textquotesingle{}s have nice things.
+
+{\itshape {\bfseries{TODO}}}
+
+
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} exports string
+\item \mbox{[}x\mbox{]} exports object (single entry)
+\item \mbox{[}x\mbox{]} exports object (multi entry)
+\item \mbox{[}x\mbox{]} nested / recursive conditions
+\item \mbox{[}x\mbox{]} exports arrayable
+\item \mbox{[}x\mbox{]} directory mapping ({\ttfamily ./foobar/} =\texorpdfstring{$>$}{>} {\ttfamily /foobar/})
+\item \mbox{[}x\mbox{]} directory mapping ({\ttfamily ./foobar/\texorpdfstring{$\ast$}{*}} =\texorpdfstring{$>$}{>} {\ttfamily ./other/\texorpdfstring{$\ast$}{*}.js})
+\item \mbox{[}x\mbox{]} directory mapping w/ conditions
+\item \mbox{[}x\mbox{]} directory mapping w/ nested conditions
+\item \mbox{[}x\mbox{]} legacy fields ({\ttfamily main} vs {\ttfamily module} vs ...)
+\item \mbox{[}x\mbox{]} legacy "{}browser"{} files object
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20680}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20680}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ resolve.exports}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20681}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20681}
+\begin{quote}
+Please see \href{/test}{\texttt{ {\ttfamily /test/}}} for examples. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ resolve,\ legacy\ \}\ from\ 'resolve.exports';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ contents\ =\ \{}
+\DoxyCodeLine{\ \ "{}name"{}:\ "{}foobar"{},}
+\DoxyCodeLine{\ \ "{}module"{}:\ "{}dist/module.mjs"{},}
+\DoxyCodeLine{\ \ "{}main"{}:\ "{}dist/require.js"{},}
+\DoxyCodeLine{\ \ "{}exports"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}."{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}import"{}:\ "{}./dist/module.mjs"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}require"{}:\ "{}./dist/require.js"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}./lite"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}worker"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}browser"{}:\ "{}./lite/worker.brower.js"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}node"{}:\ "{}./lite/worker.node.js"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}import"{}:\ "{}./lite/module.mjs"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}require"{}:\ "{}./lite/require.js"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Assumes\ \`{}.`\ as\ default\ entry}
+\DoxyCodeLine{//\ Assumes\ \`{}import`\ as\ default\ condition}
+\DoxyCodeLine{resolve(contents);\ //=>\ "{}./dist/module.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ entry:\ nullish\ ===\ "{}foobar"{}\ ===\ "{}."{}}
+\DoxyCodeLine{resolve(contents,\ 'foobar');\ //=>\ "{}./dist/module.mjs"{}}
+\DoxyCodeLine{resolve(contents,\ '.');\ //=>\ "{}./dist/module.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ entry:\ "{}foobar/lite"{}\ ===\ "{}./lite"{}}
+\DoxyCodeLine{resolve(contents,\ 'foobar/lite');\ //=>\ "{}./lite/module.mjs"{}}
+\DoxyCodeLine{resolve(contents,\ './lite');\ //=>\ "{}./lite/module.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Assume\ \`{}require`\ usage}
+\DoxyCodeLine{resolve(contents,\ 'foobar',\ \{\ require:\ true\ \});\ //=>\ "{}./dist/require.js"{}}
+\DoxyCodeLine{resolve(contents,\ './lite',\ \{\ require:\ true\ \});\ //=>\ "{}./lite/require.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Throws\ "{}Missing\ <entry>\ export\ in\ <name>\ package"{}\ Error}
+\DoxyCodeLine{resolve(contents,\ 'foobar/hello');}
+\DoxyCodeLine{resolve(contents,\ './hello/world');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Add\ custom\ condition(s)}
+\DoxyCodeLine{resolve(contents,\ 'foobar/lite',\ \{}
+\DoxyCodeLine{\ \ conditions:\ ['worker']}
+\DoxyCodeLine{\});\ //\ =>\ "{}./lite/worker.node.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Toggle\ "{}browser"{}\ condition}
+\DoxyCodeLine{resolve(contents,\ 'foobar/lite',\ \{}
+\DoxyCodeLine{\ \ conditions:\ ['worker'],}
+\DoxyCodeLine{\ \ browser:\ true}
+\DoxyCodeLine{\});\ //\ =>\ "{}./lite/worker.browser.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/-\/}
+\DoxyCodeLine{//\ Legacy}
+\DoxyCodeLine{//\ -\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ prefer\ "{}module"{}\ >\ "{}main"{}\ (default)}
+\DoxyCodeLine{legacy(contents);\ //=>\ "{}dist/module.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ customize\ fields\ order}
+\DoxyCodeLine{legacy(contents,\ \{}
+\DoxyCodeLine{\ \ fields:\ ['main',\ 'module']}
+\DoxyCodeLine{\});\ //=>\ "{}dist/require.js"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20682}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20682}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20683}{}\doxysubsection{\texorpdfstring{resolve(pkg, entry?, options?)}{resolve(pkg, entry?, options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20683}
+Returns\+: {\ttfamily string} or {\ttfamily undefined}
+
+Traverse the {\ttfamily "{}exports"{}} within the contents of a {\ttfamily package.\+json} file. ~\newline
+ If the contents {\itshape does not} contain an {\ttfamily "{}exports"{}} map, then {\ttfamily undefined} will be returned.
+
+Successful resolutions will always result in a string value. This will be the value of the resolved mapping itself – which means that the output is a relative file path.
+
+This function may throw an Error if\+:
+
+
+\begin{DoxyItemize}
+\item the requested {\ttfamily entry} cannot be resolved (aka, not defined in the {\ttfamily "{}exports"{}} map)
+\item an {\ttfamily entry} {\itshape was} resolved but no known conditions were found (see \`{}options.conditions\`{})
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20684}{}\doxysubsubsection{\texorpdfstring{pkg}{pkg}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20684}
+Type\+: {\ttfamily object} ~\newline
+ Required\+: {\ttfamily true}
+
+The {\ttfamily package.\+json} contents.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20685}{}\doxysubsubsection{\texorpdfstring{entry}{entry}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20685}
+Type\+: {\ttfamily string} ~\newline
+ Required\+: {\ttfamily false} ~\newline
+ Default\+: {\ttfamily .} (aka, root)
+
+The desired target entry, or the original {\ttfamily import} path.
+
+When {\ttfamily entry} {\itshape is not} a relative path (aka, does not start with `'.\textquotesingle{}{\ttfamily ), then}entry{\ttfamily is given the}\textquotesingle{}./\textquotesingle{}\`{} prefix.
+
+When {\ttfamily entry} begins with the package name (determined via the {\ttfamily pkg.\+name} value), then {\ttfamily entry} is truncated and made relative.
+
+When {\ttfamily entry} is already relative, it is accepted as is.
+
+{\itshape {\bfseries{Examples}}}
+
+Assume we have a module named "{}foobar"{} and whose {\ttfamily pkg} contains {\ttfamily "{}name"{}\+: "{}foobar"{}}.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily entry} value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ treated as   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ reason    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily entry} value   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ treated as   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ reason    }\\\cline{1-3}
+\endhead
+{\ttfamily null} / {\ttfamily undefined}   &`'.\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} default \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}.\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}.\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} value was relative \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}foobar\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}.\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} value was}pkg.\+name{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}foobar/lite\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}./lite\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} value had}pkg.\+name{\ttfamily prefix \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}./lite\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}./lite\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} value was relative \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}lite\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}\textquotesingle{}./lite\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} value was not relative \& did not have}pkg.\+name\`{} prefix   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20686}{}\doxysubsubsection{\texorpdfstring{options.\+require}{options.\+require}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20686}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+When truthy, the {\ttfamily "{}require"{}} field is added to the list of allowed/known conditions.
+
+When falsey, the {\ttfamily "{}import"{}} field is added to the list of allowed/known conditions instead.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20687}{}\doxysubsubsection{\texorpdfstring{options.\+browser}{options.\+browser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20687}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+When truthy, the {\ttfamily "{}browser"{}} field is added to the list of allowed/known conditions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20688}{}\doxysubsubsection{\texorpdfstring{options.\+conditions}{options.\+conditions}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20688}
+Type\+: {\ttfamily string\mbox{[}\mbox{]}} ~\newline
+ Default\+: {\ttfamily \mbox{[}\mbox{]}}
+
+Provide a list of additional/custom conditions that should be accepted when seen.
+
+\begin{quote}
+{\bfseries{Important\+:}} The order specified within {\ttfamily options.\+conditions} does not matter. ~\newline
+The matching order/priority is {\bfseries{always}} determined by the {\ttfamily "{}exports"{}} map\textquotesingle{}s key order. \end{quote}
+For example, you may choose to accept a {\ttfamily "{}production"{}} condition in certain environments. Given the following {\ttfamily pkg} content\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ contents\ =\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\ \ "{}exports"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}worker"{}:\ "{}./index.worker.js"{},}
+\DoxyCodeLine{\ \ \ \ "{}require"{}:\ "{}./index.require.js"{},}
+\DoxyCodeLine{\ \ \ \ "{}production"{}:\ "{}./index.prod.js"{},}
+\DoxyCodeLine{\ \ \ \ "{}import"{}:\ "{}./index.import.mjs"{},}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ '.');}
+\DoxyCodeLine{//=>\ "{}./index.import.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ '.',\ \{}
+\DoxyCodeLine{\ \ conditions:\ ['production']}
+\DoxyCodeLine{\});\ //=>\ "{}./index.prod.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ '.',\ \{}
+\DoxyCodeLine{\ \ conditions:\ ['production'],}
+\DoxyCodeLine{\ \ require:\ true,}
+\DoxyCodeLine{\});\ //=>\ "{}./index.require.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ '.',\ \{}
+\DoxyCodeLine{\ \ conditions:\ ['production',\ 'worker'],}
+\DoxyCodeLine{\ \ require:\ true,}
+\DoxyCodeLine{\});\ //=>\ "{}./index.worker.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ '.',\ \{}
+\DoxyCodeLine{\ \ conditions:\ ['production',\ 'worker']}
+\DoxyCodeLine{\});\ //=>\ "{}./index.worker.js"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20689}{}\doxysubsubsection{\texorpdfstring{options.\+unsafe}{options.\+unsafe}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20689}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+\begin{quote}
+{\bfseries{Important\+:}} You probably do not want this option! ~\newline
+It will break out of Node\textquotesingle{}s default resolution conditions. \end{quote}
+When enabled, this option will ignore {\bfseries{all other options}} except \`{}options.conditions\`{}. This is because, when enabled, {\ttfamily options.\+unsafe} {\bfseries{does not}} assume or provide any default conditions except the {\ttfamily "{}default"{}} condition.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{resolve(contents);}
+\DoxyCodeLine{//=>\ Conditions:\ ["{}default"{},\ "{}import"{},\ "{}node"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ \{\ unsafe:\ true\ \});}
+\DoxyCodeLine{//=>\ Conditions:\ ["{}default"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ \{\ unsafe:\ true,\ require:\ true,\ browser:\ true\ \});}
+\DoxyCodeLine{//=>\ Conditions:\ ["{}default"{}]}
+
+\end{DoxyCode}
+
+
+In other words, this means that trying to use {\ttfamily options.\+require} or {\ttfamily options.\+browser} alongside {\ttfamily options.\+unsafe} will have no effect. In order to enable these conditions, you must provide them manually into the {\ttfamily options.\+conditions} list\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{resolve(contents,\ \{}
+\DoxyCodeLine{\ \ unsafe:\ true,}
+\DoxyCodeLine{\ \ conditions:\ ["{}require"{}]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ Conditions:\ ["{}default"{},\ "{}require"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolve(contents,\ \{}
+\DoxyCodeLine{\ \ unsafe:\ true,}
+\DoxyCodeLine{\ \ conditions:\ ["{}browser"{},\ "{}require"{},\ "{}custom123"{}]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ Conditions:\ ["{}default"{},\ "{}browser"{},\ "{}require"{},\ "{}custom123"{}]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20690}{}\doxysubsection{\texorpdfstring{legacy(pkg, options?)}{legacy(pkg, options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20690}
+Returns\+: {\ttfamily string} or {\ttfamily undefined}
+
+Also included is a "{}legacy"{} method for resolving non-\/{\ttfamily "{}exports"{}} package fields. This may be used as a fallback method when for when no {\ttfamily "{}exports"{}} mapping is defined. In other words, it\textquotesingle{}s completely optional (and tree-\/shakeable).
+
+You may customize the field priority via \`{}options.fields\`{}.
+
+When a field is found, its value is returned {\itshape as written}. ~\newline
+ When no fields were found, {\ttfamily undefined} is returned. If you wish to mimic Node.\+js behavior, you can assume this means `\textquotesingle{}index.\+js'\`{} – but this module does not make that assumption for you.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20691}{}\doxysubsubsection{\texorpdfstring{options.\+browser}{options.\+browser}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20691}
+Type\+: {\ttfamily boolean} or {\ttfamily string} ~\newline
+ Default\+: {\ttfamily false}
+
+When truthy, ensures that the `\textquotesingle{}browser'{\ttfamily field is part of the acceptable}fields\`{} list.
+
+\begin{quote}
+{\bfseries{Important\+:}} If your custom \`{}options.fields\`{} value includes `\textquotesingle{}browser'{\ttfamily , then \+\_\+your\+\_\+ order is respected. \texorpdfstring{$<$}{<}br\texorpdfstring{$>$}{>}Otherwise, when truthy,}options.\+browser{\ttfamily will move}\textquotesingle{}browser\textquotesingle{}{\ttfamily to the front of the list, making it the top priority. \texorpdfstring{$<$}{<}/blockquote\texorpdfstring{$>$}{>} When}true{\ttfamily and}"{}browser"{}{\ttfamily is an object, then}legacy(){\ttfamily will return the the entire}"{}browser"{}\`{} object.
+
+You may also pass a string value, which will be treated as an import/file path. When this is the case and {\ttfamily "{}browser"{}} is an object, then {\ttfamily legacy()} may return\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily false} – if the package author decided a file should be ignored; or
+\item your {\ttfamily options.\+browser} string value – but made relative, if not already
+\end{DoxyItemize}
+
+\begin{quote}
+See the \href{https://github.com/defunctzombie/package-browser-field-spec}{\texttt{ \`{}"{}browser"{} field specification}} for more information. \end{quote}
+\end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20692}{}\doxysubsubsection{\texorpdfstring{options.\+fields}{options.\+fields}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20692}
+Type\+: {\ttfamily string\mbox{[}\mbox{]}} ~\newline
+ Default\+: `\mbox{[}\textquotesingle{}module', \textquotesingle{}main\textquotesingle{}\mbox{]}\`{}
+
+A list of fields to accept. The order of the array determines the priority/importance of each field, with the most important fields at the beginning of the list.
+
+By default, the {\ttfamily legacy()} method will accept any {\ttfamily "{}module"{}} and/or "{}main"{} fields if they are defined. However, if both fields are defined, then "{}module"{} will be returned.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ contents\ =\ \{}
+\DoxyCodeLine{\ \ "{}name"{}:\ "{}..."{},}
+\DoxyCodeLine{\ \ "{}worker"{}:\ "{}worker.js"{},}
+\DoxyCodeLine{\ \ "{}module"{}:\ "{}module.mjs"{},}
+\DoxyCodeLine{\ \ "{}browser"{}:\ "{}browser.js"{},}
+\DoxyCodeLine{\ \ "{}main"{}:\ "{}main.js"{},}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{legacy(contents);}
+\DoxyCodeLine{//\ fields\ =\ [module,\ main]}
+\DoxyCodeLine{//=>\ "{}module.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{legacy(contents,\ \{\ browser:\ true\ \});}
+\DoxyCodeLine{//\ fields\ =\ [browser,\ module,\ main]}
+\DoxyCodeLine{//=>\ "{}browser.mjs"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{legacy(contents,\ \{}
+\DoxyCodeLine{\ \ fields:\ ['missing',\ 'worker',\ 'module',\ 'main']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ fields\ =\ [missing,\ worker,\ module,\ main]}
+\DoxyCodeLine{//=>\ "{}worker.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{legacy(contents,\ \{}
+\DoxyCodeLine{\ \ fields:\ ['missing',\ 'worker',\ 'module',\ 'main'],}
+\DoxyCodeLine{\ \ browser:\ true,}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ fields\ =\ [browser,\ missing,\ worker,\ module,\ main]}
+\DoxyCodeLine{//=>\ "{}browser.js"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{legacy(contents,\ \{}
+\DoxyCodeLine{\ \ fields:\ ['module',\ 'browser',\ 'main'],}
+\DoxyCodeLine{\ \ browser:\ true,}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ fields\ =\ [module,\ browser,\ main]}
+\DoxyCodeLine{//=>\ "{}module.mjs"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20693}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2resolve_8exports_2readme_autotoc_md20693}
+MIT © \href{https://lukeed.com}{\texttt{ Luke Edwards}} 

@@ -1,0 +1,71 @@
+\chapter{raf}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e}\index{raf@{raf}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20192}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20192}%
+ \href{http://ci.testling.com/chrisdickinson/raf}{\texttt{ }}
+
+request\+Animation\+Frame polyfill for node and the browser.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ raf\ =\ require('raf')}
+\DoxyCodeLine{}
+\DoxyCodeLine{raf(function\ tick()\ \{}
+\DoxyCodeLine{\ \ //\ Animation\ logic}
+\DoxyCodeLine{\ \ raf(tick)}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} The stream/event emitter logic found in versions prior to 1.\+0.\+0 can be found in \href{https://www.npmjs.org/package/raf-stream}{\texttt{ raf-\/stream}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20193}{}\doxysection{\texorpdfstring{Getting started}{Getting started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20193}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20194}{}\doxysubsection{\texorpdfstring{Common\+JS (Node, Browserify, Webpack, etc.)}{Common\+JS (Node, Browserify, Webpack, etc.)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20194}
+Install {\ttfamily raf} from npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ raf}
+
+\end{DoxyCode}
+
+
+Require it like you would any other module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ raf\ =\ require('raf')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20195}{}\doxysubsection{\texorpdfstring{AMD (require.\+js, etc)}{AMD (require.\+js, etc)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20195}
+Download the UMD-\/bundle from \href{https://wzrd.in/standalone/raf@latest}{\texttt{ wzrd.\+in}} (remember to include the current version number in the filename).
+
+Add it to your AMD module loader config and require it like you would any other module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{define(['raf'],\ raf\ =>\ \{...\})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20196}{}\doxysubsection{\texorpdfstring{{\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}}}{{\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20196}
+Download the UMD-\/bundle from \href{https://wzrd.in/standalone/raf@latest}{\texttt{ wzrd.\+in}} (remember to include the current version number in the filename).
+
+Then include it via a script tag\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}raf-\/x.x.x.js"{}></script>}
+
+\end{DoxyCode}
+
+
+The API will be available on {\ttfamily window.\+raf}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20197}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20197}
+\href{https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame}{\texttt{ Documentation at Mozilla Developer Network}}, \href{http://www.w3.org/TR/animation-timing/\#requestAnimationFrame}{\texttt{ W3 Specification}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20198}{}\doxysubsection{\texorpdfstring{var handle = raf(callback)}{var handle = raf(callback)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20198}
+{\ttfamily callback} is the function to invoke in the next frame. {\ttfamily handle} is a long integer value that uniquely identifies the entry in the callback list. This is a non-\/zero value, but you may not make any other assumptions about its value.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20199}{}\doxysubsection{\texorpdfstring{raf.\+cancel(handle)}{raf.\+cancel(handle)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20199}
+{\ttfamily handle} is the entry identifier returned by {\ttfamily raf()}. Removes the queued animation frame callback (other queued callbacks will still be invoked unless cancelled).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20200}{}\doxysubsection{\texorpdfstring{raf.\+polyfill(\mbox{[}object\mbox{]})}{raf.\+polyfill(\mbox{[}object\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20200}
+Shorthand to polyfill {\ttfamily window.\+request\+Animation\+Frame} and {\ttfamily window.\+cancel\+Animation\+Frame} if necessary (Polyfills {\ttfamily global} in node).
+
+Alternatively you can require {\ttfamily raf/polyfill} which will act the same as `require(\textquotesingle{}raf').polyfill()\`{}.
+
+If you provide {\ttfamily object} the polyfills are attached to that given object, instead of the inferred global. Useful if you have an instance of a fake {\ttfamily window} object, and want to add {\ttfamily raf} and {\ttfamily caf} to it.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20201}{}\doxysection{\texorpdfstring{Acknowledgments}{Acknowledgments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20201}
+Based on work by Erik Möller, Paul Irish, and Tino Zijdel (\href{https://gist.github.com/paulirish/1579671}{\texttt{ https\+://gist.\+github.\+com/paulirish/1579671}})\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20202}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2raf_2_r_e_a_d_m_e_autotoc_md20202}
+MIT 

@@ -1,0 +1,51 @@
+\chapter{mimic-\/fn \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/mimic-\/fn"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/mimic-\/fn.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme}\index{mimic-\/fn $<$a href="{}https://travis-\/ci.org/sindresorhus/mimic-\/fn"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/mimic-\/fn.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{mimic-\/fn $<$a href=""https://travis-\/ci.org/sindresorhus/mimic-\/fn"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/mimic-\/fn.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16771}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16771}%
+ \begin{quote}
+Make a function mimic another one \end{quote}
+Useful when you wrap a function in another function and like to preserve the original name and other properties.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16772}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16772}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ mimic-\/fn}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16773}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16773}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ mimicFn\ =\ require('mimic-\/fn');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ foo()\ \{\}}
+\DoxyCodeLine{foo.unicorn\ =\ '🦄';}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ wrapper()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ foo();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(wrapper.name);}
+\DoxyCodeLine{//=>\ 'wrapper'}
+\DoxyCodeLine{}
+\DoxyCodeLine{mimicFn(wrapper,\ foo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(wrapper.name);}
+\DoxyCodeLine{//=>\ 'foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(wrapper.unicorn);}
+\DoxyCodeLine{//=>\ '🦄'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16774}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16774}
+It will copy over the properties {\ttfamily name}, {\ttfamily length}, {\ttfamily display\+Name}, and any custom properties you may have set.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16775}{}\doxysubsection{\texorpdfstring{mimic\+Fn(to, from)}{mimic\+Fn(to, from)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16775}
+Modifies the {\ttfamily to} function and returns it.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16776}{}\doxysubsubsection{\texorpdfstring{to}{to}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16776}
+Type\+: {\ttfamily Function}
+
+Mimicking function.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16777}{}\doxysubsubsection{\texorpdfstring{from}{from}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16777}
+Type\+: {\ttfamily Function}
+
+Function to mimic.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16778}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16778}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/rename-fn}{\texttt{ rename-\/fn}} -\/ Rename a function
+\item \href{https://github.com/ehmicky/keep-func-props}{\texttt{ keep-\/func-\/props}} -\/ Wrap a function without changing its name, length and other properties
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16779}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mimic-fn_2readme_autotoc_md16779}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

@@ -1,0 +1,948 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/terser-webpack-plugin}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://github.com/webpack-contrib/terser-webpack-plugin/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/terser-webpack-plugin}{\texttt{ }} \href{https://github.com/webpack/webpack/discussions}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=terser-webpack-plugin}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25197}{}\doxysection{\texorpdfstring{terser-\/webpack-\/plugin}{terser-\/webpack-\/plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25197}
+This plugin uses \href{https://github.com/terser/terser}{\texttt{ terser}} to minify/minimize your Java\+Script.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25198}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25198}
+Webpack v5 comes with the latest {\ttfamily terser-\/webpack-\/plugin} out of the box. If you are using Webpack v5 or above and wish to customize the options, you will still need to install {\ttfamily terser-\/webpack-\/plugin}. Using Webpack v4, you have to install {\ttfamily terser-\/webpack-\/plugin} v4.
+
+To begin, you\textquotesingle{}ll need to install {\ttfamily terser-\/webpack-\/plugin}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ terser-\/webpack-\/plugin\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/D\ terser-\/webpack-\/plugin}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pnpm\ add\ -\/D\ terser-\/webpack-\/plugin}
+
+\end{DoxyCode}
+
+
+Then add the plugin to your {\ttfamily webpack} config. For example\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ TerserPlugin\ =\ require("{}terser-\/webpack-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [new\ TerserPlugin()],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+And run {\ttfamily webpack} via your preferred method.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25199}{}\doxysubsection{\texorpdfstring{Note about source maps}{Note about source maps}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25199}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+Works only with {\ttfamily source-\/map}, {\ttfamily inline-\/source-\/map}, {\ttfamily hidden-\/source-\/map} and {\ttfamily nosources-\/source-\/map} values for the \href{https://webpack.js.org/configuration/devtool/}{\texttt{ {\ttfamily devtool}}} option.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Why?
+
+
+\begin{DoxyItemize}
+\item {\ttfamily eval} wraps modules in {\ttfamily eval("{}string"{})} and the minimizer does not handle strings.
+\item {\ttfamily cheap} has not column information and minimizer generate only a single line, which leave only a single mapping.
+\end{DoxyItemize}
+
+Using supported {\ttfamily devtool} values enable source map generation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25200}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25200}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}test\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}include\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}exclude\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}parallel\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}minify\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}terser\+Options\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}extract\+Comments\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25201}{}\doxysubsubsection{\texorpdfstring{{\ttfamily test}}{{\ttfamily test}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25201}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ test\ =\ string\ |\ RegExp\ |\ Array<string\ |\ RegExp>;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily /\textbackslash{}.m?js(\textbackslash{}?.\texorpdfstring{$\ast$}{*})?\$/i}
+
+Test to match files against.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).js(\(\backslash\)?.*)?\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25202}{}\doxysubsubsection{\texorpdfstring{{\ttfamily include}}{{\ttfamily include}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25202}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ include\ =\ string\ |\ RegExp\ |\ Array<string\ |\ RegExp>;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}
+
+Files to include.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ include:\ /\(\backslash\)/includes/,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25203}{}\doxysubsubsection{\texorpdfstring{{\ttfamily exclude}}{{\ttfamily exclude}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25203}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ exclude\ =\ string\ |\ RegExp\ |\ Array<string\ |\ RegExp>;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}
+
+Files to exclude.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exclude:\ /\(\backslash\)/excludes/,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25204}{}\doxysubsubsection{\texorpdfstring{{\ttfamily parallel}}{{\ttfamily parallel}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25204}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ parallel\ =\ boolean\ |\ number;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+Use multi-\/process parallel running to improve the build speed. Default number of concurrent runs\+: {\ttfamily os.\+cpus().length -\/ 1}.
+
+\begin{quote}
+{\bfseries{Note}}
+
+Parallelization can speedup your build significantly and is therefore {\bfseries{highly recommended}}. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+If you use {\bfseries{Circle CI}} or any other environment that doesn\textquotesingle{}t provide real available count of CPUs then you need to setup explicitly number of CPUs to avoid {\ttfamily Error\+: Call retries were exceeded} (see \href{https://github.com/webpack-contrib/terser-webpack-plugin/issues/143}{\texttt{ \#143}}, \href{https://github.com/webpack-contrib/terser-webpack-plugin/issues/202}{\texttt{ \#202}}). \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25205}{}\doxyparagraph{\texorpdfstring{{\ttfamily boolean}}{{\ttfamily boolean}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25205}
+Enable/disable multi-\/process parallel running.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ parallel:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25206}{}\doxyparagraph{\texorpdfstring{{\ttfamily number}}{{\ttfamily number}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25206}
+Enable multi-\/process parallel running and set number of concurrent runs.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ parallel:\ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25207}{}\doxysubsubsection{\texorpdfstring{{\ttfamily minify}}{{\ttfamily minify}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25207}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ minify\ =\ (}
+\DoxyCodeLine{\ \ input:\ \{}
+\DoxyCodeLine{\ \ \ \ [file:\ string]:\ string;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ sourceMap:\ import("{}@jridgewell/trace-\/mapping"{}).SourceMapInput\ |\ undefined,}
+\DoxyCodeLine{\ \ minifyOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ module?:\ boolean\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ ecma?:\ import("{}terser"{}).ECMA\ |\ undefined;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ extractComments:}
+\DoxyCodeLine{\ \ \ \ |\ boolean}
+\DoxyCodeLine{\ \ \ \ |\ "{}all"{}}
+\DoxyCodeLine{\ \ \ \ |\ "{}some"{}}
+\DoxyCodeLine{\ \ \ \ |\ RegExp}
+\DoxyCodeLine{\ \ \ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ astNode:\ any,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ comment:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ value:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ type:\ "{}comment1"{}\ |\ "{}comment2"{}\ |\ "{}comment3"{}\ |\ "{}comment4"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ pos:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ line:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ col:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ )\ =>\ boolean)}
+\DoxyCodeLine{\ \ \ \ |\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ condition?:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ boolean}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ "{}all"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ "{}some"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ RegExp}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ astNode:\ any,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ comment:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ "{}comment1"{}\ |\ "{}comment2"{}\ |\ "{}comment3"{}\ |\ "{}comment4"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ col:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ )\ =>\ boolean)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ filename?:\ string\ |\ ((fileData:\ any)\ =>\ string)\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ banner?:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ string}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ boolean}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ ((commentsFile:\ string)\ =>\ string)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ |\ undefined}
+\DoxyCodeLine{)\ =>\ Promise<\{}
+\DoxyCodeLine{\ \ code:\ string;}
+\DoxyCodeLine{\ \ map?:\ import("{}@jridgewell/trace-\/mapping"{}).SourceMapInput\ |\ undefined;}
+\DoxyCodeLine{\ \ errors?:\ (string\ |\ Error)[]\ |\ undefined;}
+\DoxyCodeLine{\ \ warnings?:\ (string\ |\ Error)[]\ |\ undefined;}
+\DoxyCodeLine{\ \ extractedComments?:\ string[]\ |\ undefined;}
+\DoxyCodeLine{\}>;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily Terser\+Plugin.\+terser\+Minify}
+
+Allows you to override default minify function. By default plugin uses \href{https://github.com/terser/terser}{\texttt{ terser}} package. Useful for using and testing unpublished versions or forks.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+{\bfseries{Always use {\ttfamily require} inside {\ttfamily minify} function when {\ttfamily parallel} option enabled}}. \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Can\ be\ async}
+\DoxyCodeLine{const\ minify\ =\ (input,\ sourceMap,\ minimizerOptions,\ extractsComments)\ =>\ \{}
+\DoxyCodeLine{\ \ //\ The\ \`{}minimizerOptions`\ option\ contains\ option\ from\ the\ \`{}terserOptions`\ option}
+\DoxyCodeLine{\ \ //\ You\ can\ use\ \`{}minimizerOptions.myCustomOption`}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Custom\ logic\ for\ extract\ comments}
+\DoxyCodeLine{\ \ const\ \{\ map,\ code\ \}\ =\ require("{}uglify-\/module"{})\ //\ Or\ require('./path/to/uglify-\/module')}
+\DoxyCodeLine{\ \ \ \ .minify(input,\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ /*\ Your\ options\ for\ minification\ */}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ \{\ map,\ code,\ warnings:\ [],\ errors:\ [],\ extractedComments:\ []\ \};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Used\ to\ regenerate\ \`{}fullhash`/`chunkhash`\ between\ different\ implementation}
+\DoxyCodeLine{//\ Example:\ you\ fix\ a\ bug\ in\ custom\ minimizer/custom\ function,\ but\ unfortunately\ webpack\ doesn't\ know\ about\ it,\ so\ you\ will\ get\ the\ same\ fullhash/chunkhash}
+\DoxyCodeLine{//\ to\ avoid\ this\ you\ can\ provide\ version\ of\ your\ custom\ minimizer}
+\DoxyCodeLine{//\ You\ don't\ need\ if\ you\ use\ only\ \`{}contenthash`}
+\DoxyCodeLine{minify.getMinimizerVersion\ =\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ let\ packageJson;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ //\ eslint-\/disable-\/next-\/line\ global-\/require,\ import/no-\/extraneous-\/dependencies}
+\DoxyCodeLine{\ \ \ \ packageJson\ =\ require("{}uglify-\/module/package.json"{});}
+\DoxyCodeLine{\ \ \}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Ignore}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ packageJson\ \&\&\ packageJson.version;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ myCustomOption:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25208}{}\doxysubsubsection{\texorpdfstring{{\ttfamily terser\+Options}}{{\ttfamily terser\+Options}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25208}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ terserOptions\ =\ \{}
+\DoxyCodeLine{\ \ compress?:\ boolean\ |\ CompressOptions;}
+\DoxyCodeLine{\ \ ecma?:\ ECMA;}
+\DoxyCodeLine{\ \ enclose?:\ boolean\ |\ string;}
+\DoxyCodeLine{\ \ ie8?:\ boolean;}
+\DoxyCodeLine{\ \ keep\_classnames?:\ boolean\ |\ RegExp;}
+\DoxyCodeLine{\ \ keep\_fnames?:\ boolean\ |\ RegExp;}
+\DoxyCodeLine{\ \ mangle?:\ boolean\ |\ MangleOptions;}
+\DoxyCodeLine{\ \ module?:\ boolean;}
+\DoxyCodeLine{\ \ nameCache?:\ object;}
+\DoxyCodeLine{\ \ format?:\ FormatOptions;}
+\DoxyCodeLine{\ \ /**\ @deprecated\ */}
+\DoxyCodeLine{\ \ output?:\ FormatOptions;}
+\DoxyCodeLine{\ \ parse?:\ ParseOptions;}
+\DoxyCodeLine{\ \ safari10?:\ boolean;}
+\DoxyCodeLine{\ \ sourceMap?:\ boolean\ |\ SourceMapOptions;}
+\DoxyCodeLine{\ \ toplevel?:\ boolean;}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Default\+: \href{https://github.com/terser/terser\#minify-options}{\texttt{ default}}
+
+Terser \href{https://github.com/terser/terser\#minify-options}{\texttt{ options}}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ecma:\ undefined,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ parse:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ compress:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ mangle:\ true,\ //\ Note\ \`{}mangle.properties`\ is\ \`{}false`\ by\ default.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ module:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ Deprecated}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ output:\ null,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ format:\ null,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ toplevel:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ nameCache:\ null,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ie8:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ keep\_classnames:\ undefined,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ keep\_fnames:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ safari10:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25209}{}\doxysubsubsection{\texorpdfstring{{\ttfamily extract\+Comments}}{{\ttfamily extract\+Comments}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25209}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ extractComments\ =}
+\DoxyCodeLine{\ \ |\ boolean}
+\DoxyCodeLine{\ \ |\ string}
+\DoxyCodeLine{\ \ |\ RegExp}
+\DoxyCodeLine{\ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ astNode:\ any,}
+\DoxyCodeLine{\ \ \ \ \ \ comment:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ value:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ type:\ "{}comment1"{}\ |\ "{}comment2"{}\ |\ "{}comment3"{}\ |\ "{}comment4"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ pos:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ line:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ col:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ )\ =>\ boolean)}
+\DoxyCodeLine{\ \ |\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ condition?:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ boolean}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}all"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ "{}some"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ RegExp}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ astNode:\ any,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ comment:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ value:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ "{}comment1"{}\ |\ "{}comment2"{}\ |\ "{}comment3"{}\ |\ "{}comment4"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ pos:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ line:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ col:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ )\ =>\ boolean)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ filename?:\ string\ |\ ((fileData:\ any)\ =>\ string)\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ banner?:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ string}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ boolean}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ ((commentsFile:\ string)\ =>\ string)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \};}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+Whether comments shall be extracted to a separate file, (see \href{https://github.com/webpack/webpack/commit/71933e979e51c533b432658d5e37917f9e71595a}{\texttt{ details}}). By default extract only comments using {\ttfamily /\texorpdfstring{$^\wedge$}{\string^}\textbackslash{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}!\texorpdfstring{$\vert$}{|}@preserve\texorpdfstring{$\vert$}{|}@license\texorpdfstring{$\vert$}{|}@cc\+\_\+on/i} regexp condition and remove remaining comments. If the original file is named {\ttfamily foo.\+js}, then the comments will be stored to {\ttfamily foo.\+js.\+LICENSE.\+txt}. The {\ttfamily terser\+Options.\+format.\+comments} option specifies whether the comment will be preserved, i.\+e. it is possible to preserve some comments (e.\+g. annotations) while extracting others or even preserving comments that have been extracted.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25210}{}\doxyparagraph{\texorpdfstring{{\ttfamily boolean}}{{\ttfamily boolean}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25210}
+Enable/disable extracting comments.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25211}{}\doxyparagraph{\texorpdfstring{{\ttfamily string}}{{\ttfamily string}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25211}
+Extract {\ttfamily all} or {\ttfamily some} (use {\ttfamily /\texorpdfstring{$^\wedge$}{\string^}\textbackslash{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}!\texorpdfstring{$\vert$}{|}@preserve\texorpdfstring{$\vert$}{|}@license\texorpdfstring{$\vert$}{|}@cc\+\_\+on/i} Reg\+Exp) comments.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ "{}all"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25212}{}\doxyparagraph{\texorpdfstring{{\ttfamily Reg\+Exp}}{{\ttfamily Reg\+Exp}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25212}
+All comments that match the given expression will be extracted to the separate file.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ /@extract/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25213}{}\doxyparagraph{\texorpdfstring{{\ttfamily function}}{{\ttfamily function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25213}
+All comments that match the given expression will be extracted to the separate file.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ (astNode,\ comment)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (/@extract/i.test(comment.value))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ return\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25214}{}\doxyparagraph{\texorpdfstring{{\ttfamily object}}{{\ttfamily object}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25214}
+Allow to customize condition for extract comments, specify extracted file name and banner.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ condition:\ /\string^\(\backslash\)**!|@preserve|@license|@cc\_on/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ filename:\ (fileData)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ The\ "{}fileData"{}\ argument\ contains\ object\ with\ "{}filename"{},\ "{}basename"{},\ "{}query"{}\ and\ "{}hash"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}\$\{fileData.filename\}.LICENSE.txt\$\{fileData.query\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ banner:\ (licenseFile)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}License\ information\ can\ be\ found\ in\ \$\{licenseFile\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25215}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25215}%
+ \doxysubparagraph*{{\ttfamily condition}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ condition\ =}
+\DoxyCodeLine{\ \ |\ boolean}
+\DoxyCodeLine{\ \ |\ "{}all"{}}
+\DoxyCodeLine{\ \ |\ "{}some"{}}
+\DoxyCodeLine{\ \ |\ RegExp}
+\DoxyCodeLine{\ \ |\ ((}
+\DoxyCodeLine{\ \ \ \ \ \ astNode:\ any,}
+\DoxyCodeLine{\ \ \ \ \ \ comment:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ value:\ string;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ type:\ "{}comment1"{}\ |\ "{}comment2"{}\ |\ "{}comment3"{}\ |\ "{}comment4"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ pos:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ line:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ col:\ number;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ )\ =>\ boolean)}
+\DoxyCodeLine{\ \ |\ undefined;}
+
+\end{DoxyCode}
+
+
+Condition what comments you need extract.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ condition:\ "{}some"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ filename:\ (fileData)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ The\ "{}fileData"{}\ argument\ contains\ object\ with\ "{}filename"{},\ "{}basename"{},\ "{}query"{}\ and\ "{}hash"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}\$\{fileData.filename\}.LICENSE.txt\$\{fileData.query\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ banner:\ (licenseFile)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}License\ information\ can\ be\ found\ in\ \$\{licenseFile\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25216}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25216}%
+ \doxysubparagraph*{{\ttfamily filename}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ filename\ =\ string\ |\ ((fileData:\ any)\ =>\ string)\ |\ undefined;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily \mbox{[}file\mbox{]}.LICENSE.\+txt\mbox{[}query\mbox{]}}
+
+Available placeholders\+: {\ttfamily \mbox{[}file\mbox{]}}, {\ttfamily \mbox{[}query\mbox{]}} and {\ttfamily \mbox{[}filebase\mbox{]}} ({\ttfamily \mbox{[}base\mbox{]}} for webpack 5).
+
+The file where the extracted comments will be stored. Default is to append the suffix {\ttfamily .LICENSE.\+txt} to the original filename.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+We highly recommend using the {\ttfamily txt} extension. Using {\ttfamily js}/{\ttfamily cjs}/{\ttfamily mjs} extensions may conflict with existing assets which leads to broken code. \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ condition:\ /\string^\(\backslash\)**!|@preserve|@license|@cc\_on/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ filename:\ "{}extracted-\/comments.js"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ banner:\ (licenseFile)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}License\ information\ can\ be\ found\ in\ \$\{licenseFile\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25217}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25217}%
+ \doxysubparagraph*{{\ttfamily banner}}
+
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ banner\ =\ string\ |\ boolean\ |\ ((commentsFile:\ string)\ =>\ string)\ |\ undefined;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily /\texorpdfstring{$\ast$}{*}! For license information please see \$\{comments\+File\} \texorpdfstring{$\ast$}{*}/}
+
+The banner text that points to the extracted file and will be added on top of the original file. Can be {\ttfamily false} (no banner), a {\ttfamily String}, or a {\ttfamily Function\texorpdfstring{$<$}{<}(string) -\/\texorpdfstring{$>$}{>} String\texorpdfstring{$>$}{>}} that will be called with the filename where extracted comments have been stored. Will be wrapped into comment.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ condition:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ filename:\ (fileData)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ The\ "{}fileData"{}\ argument\ contains\ object\ with\ "{}filename"{},\ "{}basename"{},\ "{}query"{}\ and\ "{}hash"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}\$\{fileData.filename\}.LICENSE.txt\$\{fileData.query\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ banner:\ (commentsFile)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}My\ custom\ banner\ about\ license\ information\ \$\{commentsFile\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25218}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25218}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25219}{}\doxysubsubsection{\texorpdfstring{Preserve Comments}{Preserve Comments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25219}
+Extract all legal comments (i.\+e. {\ttfamily /\texorpdfstring{$^\wedge$}{\string^}\textbackslash{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}!\texorpdfstring{$\vert$}{|}@preserve\texorpdfstring{$\vert$}{|}@license\texorpdfstring{$\vert$}{|}@cc\+\_\+on/i}) and preserve {\ttfamily /@license/i} comments.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ format:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ comments:\ /@license/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25220}{}\doxysubsubsection{\texorpdfstring{Remove Comments}{Remove Comments}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25220}
+If you avoid building with comments, use this config\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ format:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ comments:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extractComments:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25221}{}\doxysubsubsection{\texorpdfstring{\href{https://github.com/mishoo/UglifyJS}{\texttt{ {\ttfamily uglify-\/js}}}}{\href{https://github.com/mishoo/UglifyJS}{\texttt{ {\ttfamily uglify-\/js}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25221}
+\href{https://github.com/mishoo/UglifyJS}{\texttt{ {\ttfamily Uglify\+JS}}} is a Java\+Script parser, minifier, compressor and beautifier toolkit.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.uglifyJsMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \`{}terserOptions`\ options\ will\ be\ passed\ to\ \`{}uglify-\/js`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Link\ to\ options\ -\/\ https://github.com/mishoo/UglifyJS\#minify-\/options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25222}{}\doxysubsubsection{\texorpdfstring{\href{https://github.com/swc-project/swc}{\texttt{ {\ttfamily swc}}}}{\href{https://github.com/swc-project/swc}{\texttt{ {\ttfamily swc}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25222}
+\href{https://github.com/swc-project/swc}{\texttt{ {\ttfamily swc}}} is a super-\/fast compiler written in rust; producing widely-\/supported javascript from modern standards and typescript.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+the {\ttfamily extract\+Comments} option is not supported and all comments will be removed by default, it will be fixed in future \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.swcMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \`{}terserOptions`\ options\ will\ be\ passed\ to\ \`{}swc`\ (`@swc/core`)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Link\ to\ options\ -\/\ https://swc.rs/docs/config-\/js-\/minify}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25223}{}\doxysubsubsection{\texorpdfstring{\href{https://github.com/evanw/esbuild}{\texttt{ {\ttfamily esbuild}}}}{\href{https://github.com/evanw/esbuild}{\texttt{ {\ttfamily esbuild}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25223}
+\href{https://github.com/evanw/esbuild}{\texttt{ {\ttfamily esbuild}}} is an extremely fast Java\+Script bundler and minifier.
+
+\begin{quote}
+{\bfseries{Warning}}
+
+the {\ttfamily extract\+Comments} option is not supported and all legal comments (i.\+e. copyright, licenses and etc) will be preserved \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.esbuildMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \`{}terserOptions`\ options\ will\ be\ passed\ to\ \`{}esbuild`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Link\ to\ options\ -\/\ https://esbuild.github.io/api/\#minify}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Note:\ the\ \`{}minify`\ options\ is\ true\ by\ default\ (and\ override\ other\ \`{}minify*`\ options),\ so\ if\ you\ want\ to\ disable\ the\ \`{}minifyIdentifiers`\ option\ (or\ other\ \`{}minify*`\ options)\ please\ use:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \ \ minify:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \ \ minifyWhitespace:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \ \ minifyIdentifiers:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \ \ minifySyntax:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25224}{}\doxysubsubsection{\texorpdfstring{Custom Minify Function}{Custom Minify Function}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25224}
+Override default minify function -\/ use {\ttfamily uglify-\/js} for minification.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ (file,\ sourceMap)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ https://github.com/mishoo/UglifyJS2\#minify-\/options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ const\ uglifyJsOptions\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ /*\ your\ \`{}uglify-\/js`\ package\ options\ */}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (sourceMap)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ uglifyJsOptions.sourceMap\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ content:\ sourceMap,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ return\ require("{}uglify-\/js"{}).minify(file,\ uglifyJsOptions);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25225}{}\doxysubsubsection{\texorpdfstring{Typescript}{Typescript}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25225}
+With default terser minify function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ compress:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+With built-\/in minify functions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ type\ \{\ JsMinifyOptions\ as\ SwcOptions\ \}\ from\ "{}@swc/core"{};}
+\DoxyCodeLine{import\ type\ \{\ MinifyOptions\ as\ UglifyJSOptions\ \}\ from\ "{}uglify-\/js"{};}
+\DoxyCodeLine{import\ type\ \{\ TransformOptions\ as\ EsbuildOptions\ \}\ from\ "{}esbuild"{};}
+\DoxyCodeLine{import\ type\ \{\ MinifyOptions\ as\ TerserOptions\ \}\ from\ "{}terser"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimize:\ true,}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin<SwcOptions>(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.swcMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ \`{}swc`\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin<UglifyJSOptions>(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.uglifyJsMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ \`{}uglif-\/js`\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin<EsbuildOptions>(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.esbuildMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ \`{}esbuild`\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Alternative\ usage:}
+\DoxyCodeLine{\ \ \ \ \ \ new\ TerserPlugin<TerserOptions>(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minify:\ TerserPlugin.terserMinify,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ terserOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ \`{}terser`\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25226}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25226}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25227}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2terser-webpack-plugin_2_r_e_a_d_m_e_autotoc_md25227}
+\href{./LICENSE}{\texttt{ MIT}} 

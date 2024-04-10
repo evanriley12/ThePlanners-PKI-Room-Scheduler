@@ -1,0 +1,65 @@
+\chapter{p-\/locate \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/p-\/locate"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/p-\/locate.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme}\index{p-\/locate $<$a href="{}https://travis-\/ci.org/sindresorhus/p-\/locate"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/p-\/locate.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{p-\/locate $<$a href=""https://travis-\/ci.org/sindresorhus/p-\/locate"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/p-\/locate.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18229}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18229}%
+ \begin{quote}
+Get the first fulfilled promise that satisfies the provided testing function \end{quote}
+Think of it like an async version of \href{https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find}{\texttt{ {\ttfamily Array\#find}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18230}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18230}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ p-\/locate}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18231}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18231}
+Here we find the first file that exists on disk, in array order.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pathExists\ =\ require('path-\/exists');}
+\DoxyCodeLine{const\ pLocate\ =\ require('p-\/locate');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ files\ =\ [}
+\DoxyCodeLine{\ \ \ \ 'unicorn.png',}
+\DoxyCodeLine{\ \ \ \ 'rainbow.png',\ //\ Only\ this\ one\ actually\ exists\ on\ disk}
+\DoxyCodeLine{\ \ \ \ 'pony.png'}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ const\ foundPath\ =\ await\ pLocate(files,\ file\ =>\ pathExists(file));}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(foundPath);}
+\DoxyCodeLine{\ \ \ \ //=>\ 'rainbow'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+
+
+\texorpdfstring{$\ast$}{*}\+The above is just an example. Use \href{https://github.com/sindresorhus/locate-path}{\texttt{ {\ttfamily locate-\/path}}} if you need this.\texorpdfstring{$\ast$}{*}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18232}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18232}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18233}{}\doxysubsection{\texorpdfstring{p\+Locate(input, tester, \mbox{[}options\mbox{]})}{p\+Locate(input, tester, \mbox{[}options\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18233}
+Returns a {\ttfamily Promise} that is fulfilled when {\ttfamily tester} resolves to {\ttfamily true} or the iterable is done, or rejects if any of the promises reject. The fulfilled value is the current iterable value or {\ttfamily undefined} if {\ttfamily tester} never resolved to {\ttfamily true}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18234}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18234}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}Promise \texorpdfstring{$\vert$}{|} unknown\texorpdfstring{$>$}{>}}
+
+An iterable of promises/values to test.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18235}{}\doxysubsubsection{\texorpdfstring{tester(element)}{tester(element)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18235}
+Type\+: {\ttfamily Function}
+
+This function will receive resolved values from {\ttfamily input} and is expected to return a {\ttfamily Promise\texorpdfstring{$<$}{<}boolean\texorpdfstring{$>$}{>}} or {\ttfamily boolean}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18236}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18236}
+Type\+: {\ttfamily Object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18237}{}\doxyparagraph{\texorpdfstring{concurrency}{concurrency}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18237}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily Infinity}~\newline
+ Minimum\+: {\ttfamily 1}
+
+Number of concurrently pending promises returned by {\ttfamily tester}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18238}{}\doxyparagraph{\texorpdfstring{preserve\+Order}{preserve\+Order}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18238}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Preserve {\ttfamily input} order when searching.
+
+Disable this to improve performance if you don\textquotesingle{}t care about the order.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18239}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18239}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/p-map}{\texttt{ p-\/map}} -\/ Map over promises concurrently
+\item \href{https://github.com/sindresorhus/p-filter}{\texttt{ p-\/filter}} -\/ Filter promises concurrently
+\item \href{https://github.com/sindresorhus/p-any}{\texttt{ p-\/any}} -\/ Wait for any promise to be fulfilled
+\item \href{https://github.com/sindresorhus/promise-fun}{\texttt{ More…}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18240}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2node__modules_2p-locate_2readme_autotoc_md18240}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

@@ -1,0 +1,204 @@
+\chapter{css-\/select \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/css-\/select"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}http\+://img.\+shields.\+io/npm/v/css-\/select.\+svg"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/fb55/css-\/select"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/fb55/css-\/select.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/css-\/select"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dm/css-\/select.\+svg"{} alt="{}\+Downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://coveralls.\+io/r/fb55/css-\/select"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://coveralls.\+io/repos/fb55/css-\/select/badge.\+svg?branch=master"{} alt="{}\+Coverage"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e}\index{css-\/select $<$a href="{}https://npmjs.org/package/css-\/select"{} $>$$<$img src="{}http://img.shields.io/npm/v/css-\/select.svg"{} alt="{}NPM version"{}/$>$$<$/a$>$ $<$a href="{}http://travis-\/ci.org/fb55/css-\/select"{} $>$$<$img src="{}https://travis-\/ci.org/fb55/css-\/select.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/css-\/select"{} $>$$<$img src="{}https://img.shields.io/npm/dm/css-\/select.svg"{} alt="{}Downloads"{}/$>$$<$/a$>$ $<$a href="{}https://coveralls.io/r/fb55/css-\/select"{} $>$$<$img src="{}https://coveralls.io/repos/fb55/css-\/select/badge.svg?branch=master"{} alt="{}Coverage"{}/$>$$<$/a$>$@{css-\/select $<$a href=""https://npmjs.org/package/css-\/select"" $>$$<$img src=""http://img.shields.io/npm/v/css-\/select.svg"" alt=""NPM version""/$>$$<$/a$>$ $<$a href=""http://travis-\/ci.org/fb55/css-\/select"" $>$$<$img src=""https://travis-\/ci.org/fb55/css-\/select.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/css-\/select"" $>$$<$img src=""https://img.shields.io/npm/dm/css-\/select.svg"" alt=""Downloads""/$>$$<$/a$>$ $<$a href=""https://coveralls.io/r/fb55/css-\/select"" $>$$<$img src=""https://coveralls.io/repos/fb55/css-\/select/badge.svg?branch=master"" alt=""Coverage""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24354}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24354}%
+ a CSS selector compiler/engine\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24355}{}\doxysection{\texorpdfstring{What?}{What?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24355}
+css-\/select turns CSS selectors into functions that tests if elements match them. When searching for elements, testing is executed "{}from the top"{}, similar to how browsers execute CSS selectors.
+
+In its default configuration, css-\/select queries the DOM structure of the \href{https://github.com/fb55/domhandler}{\texttt{ {\ttfamily domhandler}}} module (also known as htmlparser2 DOM). It uses \href{https://github.com/fb55/domutils}{\texttt{ {\ttfamily domutils}}} as its default adapter over the DOM structure. See Options below for details on querying alternative DOM structures.
+
+{\bfseries{Features\+:}}
+
+
+\begin{DoxyItemize}
+\item Full implementation of CSS3 selectors
+\item Partial implementation of j\+Query/\+Sizzle extensions
+\item Very high test coverage
+\item Pretty good performance
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24356}{}\doxysection{\texorpdfstring{Why?}{Why?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24356}
+The traditional approach of executing CSS selectors, named left-\/to-\/right execution, is to execute every component of the selector in order, from left to right \+\_\+(duh)\+\_\+. The execution of the selector {\ttfamily a b} for example will first query for {\ttfamily a} elements, then search these for {\ttfamily b} elements. (That\textquotesingle{}s the approach of eg. \href{https://github.com/jquery/sizzle}{\texttt{ {\ttfamily Sizzle}}}, \href{https://github.com/dperini/nwmatcher/}{\texttt{ {\ttfamily nwmatcher}}} and \href{https://github.com/ded/qwery}{\texttt{ {\ttfamily qwery}}}.)
+
+While this works, it has some downsides\+: Children of {\ttfamily a}s will be checked multiple times; first, to check if they are also {\ttfamily a}s, then, for every superior {\ttfamily a} once, if they are {\ttfamily b}s. Using \href{http://en.wikipedia.org/wiki/Big_O_notation}{\texttt{ Big O notation}}, that would be {\ttfamily O(n\texorpdfstring{$^\wedge$}{\string^}(k+1))}, where {\ttfamily k} is the number of descendant selectors (that\textquotesingle{}s the space in the example above).
+
+The far more efficient approach is to first look for {\ttfamily b} elements, then check if they have superior {\ttfamily a} elements\+: Using big O notation again, that would be {\ttfamily O(n)}. That\textquotesingle{}s called right-\/to-\/left execution.
+
+And that\textquotesingle{}s what css-\/select does – and why it\textquotesingle{}s quite performant.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24357}{}\doxysection{\texorpdfstring{How does it work?}{How does it work?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24357}
+By building a stack of functions.
+
+{\itshape Wait, what?}
+
+Okay, so let\textquotesingle{}s suppose we want to compile the selector {\ttfamily a b} again, for right-\/to-\/left execution. We start by {\itshape parsing} the selector, which means we turn the selector into an array of the building-\/blocks of the selector, so we can distinguish them easily. That\textquotesingle{}s what the \href{https://github.com/fb55/css-what}{\texttt{ {\ttfamily css-\/what}}} module is for, if you want to have a look.
+
+Anyway, after parsing, we end up with an array like this one\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[}
+\DoxyCodeLine{\ \ \{\ type:\ 'tag',\ name:\ 'a'\ \},}
+\DoxyCodeLine{\ \ \{\ type:\ 'descendant'\ \},}
+\DoxyCodeLine{\ \ \{\ type:\ 'tag',\ name:\ 'b'\ \}}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+Actually, this array is wrapped in another array, but that\textquotesingle{}s another story (involving commas in selectors).
+
+Now that we know the meaning of every part of the selector, we can compile it. That\textquotesingle{}s where it becomes interesting.
+
+The basic idea is to turn every part of the selector into a function, which takes an element as its only argument. The function checks whether a passed element matches its part of the selector\+: If it does, the element is passed to the next turned-\/into-\/a-\/function part of the selector, which does the same. If an element is accepted by all parts of the selector, it {\itshape matches} the selector and double rainbow ALL THE WAY.
+
+As said before, we want to do right-\/to-\/left execution with all the big O improvements nonsense, so elements are passed from the rightmost part of the selector ({\ttfamily b} in our example) to the leftmost (\sout{which would be {\ttfamily c}} of course {\ttfamily a}).
+
+\+\_\+//\+TODO\+: More in-\/depth description. Implementation details. Build a spaceship.\+\_\+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24358}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24358}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ CSSselect\ =\ require("{}css-\/select"{});}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} css-\/select throws errors when invalid selectors are passed to it, contrary to the behavior in browsers, which swallow them. This is done to aid with writing css selectors, but can be unexpected when processing arbitrary strings.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24359}{}\doxysubsubsection{\texorpdfstring{{\ttfamily CSSselect(query, elems, options)}}{{\ttfamily CSSselect(query, elems, options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24359}
+Queries {\ttfamily elems}, returns an array containing all matches.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily query} can be either a CSS selector or a function.
+\item {\ttfamily elems} can be either an array of elements, or a single element. If it is an element, its children will be queried.
+\item {\ttfamily options} is described below.
+\end{DoxyItemize}
+
+Aliases\+: {\ttfamily CSSselect.\+select\+All(query, elems)}, {\ttfamily CSSselect.\+iterate(query, elems)}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24360}{}\doxysubsubsection{\texorpdfstring{{\ttfamily CSSselect.\+compile(query)}}{{\ttfamily CSSselect.\+compile(query)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24360}
+Compiles the query, returns a function.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24361}{}\doxysubsubsection{\texorpdfstring{{\ttfamily CSSselect.\+is(elem, query, options)}}{{\ttfamily CSSselect.\+is(elem, query, options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24361}
+Tests whether or not an element is matched by {\ttfamily query}. {\ttfamily query} can be either a CSS selector or a function.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24362}{}\doxysubsubsection{\texorpdfstring{{\ttfamily CSSselect.\+select\+One(query, elems, options)}}{{\ttfamily CSSselect.\+select\+One(query, elems, options)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24362}
+Arguments are the same as for {\ttfamily CSSselect(query, elems)}. Only returns the first match, or {\ttfamily null} if there was no match.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24363}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24363}
+
+\begin{DoxyItemize}
+\item {\ttfamily xml\+Mode}\+: When enabled, tag names will be case-\/sensitive. Default\+: {\ttfamily false}.
+\item {\ttfamily strict}\+: Limits the module to only use CSS3 selectors. Default\+: {\ttfamily false}.
+\item {\ttfamily root\+Func}\+: The last function in the stack, will be called with the last element that\textquotesingle{}s looked at. Should return {\ttfamily true}.
+\item {\ttfamily adapter}\+: The adapter to use when interacting with the backing DOM structure. By default it uses \href{https://github.com/fb55/domutils}{\texttt{ {\ttfamily domutils}}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24364}{}\doxysubsubsection{\texorpdfstring{Custom Adapters}{Custom Adapters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24364}
+A custom adapter must implement the following functions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isTag,\ existsOne,\ getAttributeValue,\ getChildren,\ getName,\ getParent,}
+\DoxyCodeLine{getSiblings,\ getText,\ hasAttrib,\ removeSubsets,\ findAll,\ findOne}
+
+\end{DoxyCode}
+
+
+The method signature notation used below should be fairly intuitive -\/ if not, see the \href{https://github.com/ericelliott/rtype}{\texttt{ {\ttfamily rtype}}} or \href{https://www.typescriptlang.org/}{\texttt{ {\ttfamily Type\+Script}}} docs, as it is very similar to both of those. You may also want to look at -\/\href{https://github.com/fb55/domutils}{\texttt{ {\ttfamily domutils}}} to see the default -\/implementation, or at -\/\href{https://github.com/nrkn/css-select-browser-adapter/blob/master/index.js}{\texttt{ {\ttfamily css-\/select-\/browser-\/adapter}}} -\/for an implementation backed by the DOM.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ //\ is\ the\ node\ a\ tag?}
+\DoxyCodeLine{\ \ isTag:\ (\ node:Node\ )\ =>\ isTag:Boolean,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ does\ at\ least\ one\ of\ passed\ element\ nodes\ pass\ the\ test\ predicate?}
+\DoxyCodeLine{\ \ existsOne:\ (\ test:Predicate,\ elems:[ElementNode]\ )\ =>\ existsOne:Boolean,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ get\ the\ attribute\ value}
+\DoxyCodeLine{\ \ getAttributeValue:\ (\ elem:ElementNode,\ name:String\ )\ =>\ value:String,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ get\ the\ node's\ children}
+\DoxyCodeLine{\ \ getChildren:\ (\ node:Node\ )\ =>\ children:[Node],}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ get\ the\ name\ of\ the\ tag}
+\DoxyCodeLine{\ \ getName:\ (\ elem:ElementNode\ )\ =>\ tagName:String,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ get\ the\ parent\ of\ the\ node}
+\DoxyCodeLine{\ \ getParent:\ (\ node:Node\ )\ =>\ parentNode:Node,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ /*}
+\DoxyCodeLine{\ \ \ \ get\ the\ siblings\ of\ the\ node.\ Note\ that\ unlike\ jQuery's\ \`{}siblings`\ method,}
+\DoxyCodeLine{\ \ \ \ this\ is\ expected\ to\ include\ the\ current\ node\ as\ well}
+\DoxyCodeLine{\ \ */}
+\DoxyCodeLine{\ \ getSiblings:\ (\ node:Node\ )\ =>\ siblings:[Node],}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ get\ the\ text\ content\ of\ the\ node,\ and\ its\ children\ if\ it\ has\ any}
+\DoxyCodeLine{\ \ getText:\ (\ node:Node\ )\ =>\ text:String,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ does\ the\ element\ have\ the\ named\ attribute?}
+\DoxyCodeLine{\ \ hasAttrib:\ (\ elem:ElementNode,\ name:String\ )\ =>\ hasAttrib:Boolean,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ takes\ an\ array\ of\ nodes,\ and\ removes\ any\ duplicates,\ as\ well\ as\ any\ nodes}
+\DoxyCodeLine{\ \ //\ whose\ ancestors\ are\ also\ in\ the\ array}
+\DoxyCodeLine{\ \ removeSubsets:\ (\ nodes:[Node]\ )\ =>\ unique:[Node],}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ finds\ all\ of\ the\ element\ nodes\ in\ the\ array\ that\ match\ the\ test\ predicate,}
+\DoxyCodeLine{\ \ //\ as\ well\ as\ any\ of\ their\ children\ that\ match\ it}
+\DoxyCodeLine{\ \ findAll:\ (\ test:Predicate,\ nodes:[Node]\ )\ =>\ elems:[ElementNode],}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ finds\ the\ first\ node\ in\ the\ array\ that\ matches\ the\ test\ predicate,\ or\ one}
+\DoxyCodeLine{\ \ //\ of\ its\ children\ }
+\DoxyCodeLine{\ \ findOne:\ (\ test:Predicate,\ elems:[ElementNode]\ )\ =>\ findOne:ElementNode,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ /*}
+\DoxyCodeLine{\ \ \ \ The\ adapter\ can\ also\ optionally\ include\ an\ equals\ method,\ if\ your\ DOM}
+\DoxyCodeLine{\ \ \ \ structure\ needs\ a\ custom\ equality\ test\ to\ compare\ two\ objects\ which\ refer}
+\DoxyCodeLine{\ \ \ \ to\ the\ same\ underlying\ node.\ If\ not\ provided,\ \`{}css-\/select`\ will\ fall\ back\ to}
+\DoxyCodeLine{\ \ \ \ \`{}a\ ===\ b`.}
+\DoxyCodeLine{\ \ */}
+\DoxyCodeLine{\ \ equals:\ (\ a:Node,\ b:Node\ )\ =>\ Boolean}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24365}{}\doxysection{\texorpdfstring{Supported selectors}{Supported selectors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24365}
+{\itshape As defined by CSS 4 and / or j\+Query.}
+
+
+\begin{DoxyItemize}
+\item Universal ({\ttfamily \texorpdfstring{$\ast$}{*}})
+\item Tag ({\ttfamily \texorpdfstring{$<$}{<}tagname\texorpdfstring{$>$}{>}})
+\item Descendant ()
+\item Child ({\ttfamily \texorpdfstring{$>$}{>}})
+\item Parent ({\ttfamily \texorpdfstring{$<$}{<}}) \texorpdfstring{$\ast$}{*}
+\item Sibling ({\ttfamily +})
+\item Adjacent ({\ttfamily \texorpdfstring{$\sim$}{\string~}})
+\item Attribute ({\ttfamily \mbox{[}attr=foo\mbox{]}}), with supported comparisons\+:
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}attr\mbox{]}} (existential)
+\item {\ttfamily =}
+\item {\ttfamily \texorpdfstring{$\sim$}{\string~}=}
+\item {\ttfamily \texorpdfstring{$\vert$}{|}=}
+\item {\ttfamily \texorpdfstring{$\ast$}{*}=}
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}=}
+\item {\ttfamily \$=}
+\item {\ttfamily !=} \texorpdfstring{$\ast$}{*}
+\item Also, {\ttfamily i} can be added after the comparison to make the comparison case-\/insensitive (eg. {\ttfamily \mbox{[}attr=foo i\mbox{]}}) \texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}
+\item Pseudos\+:
+\begin{DoxyItemize}
+\item {\ttfamily \+:not}
+\item {\ttfamily \+:contains} \texorpdfstring{$\ast$}{*}
+\item {\ttfamily \+:icontains} \texorpdfstring{$\ast$}{*} (case-\/insensitive version of {\ttfamily \+:contains})
+\item {\ttfamily \+:has} \texorpdfstring{$\ast$}{*}
+\item {\ttfamily \+:root}
+\item {\ttfamily \+:empty}
+\item {\ttfamily \+:parent} \texorpdfstring{$\ast$}{*}
+\item {\ttfamily \+:\mbox{[}first\texorpdfstring{$\vert$}{|}last\mbox{]}-\/child\mbox{[}-\/of-\/type\mbox{]}}
+\item {\ttfamily \+:only-\/of-\/type}, {\ttfamily \+:only-\/child}
+\item {\ttfamily \+:nth-\/\mbox{[}last-\/\mbox{]}child\mbox{[}-\/of-\/type\mbox{]}}
+\item {\ttfamily \+:link}
+\item {\ttfamily \+:visited}, {\ttfamily \+:hover}, {\ttfamily \+:active} \texorpdfstring{$\ast$}{*} (these depend on optional Adapter methods, so these will work only if implemented in Adapter)
+\item {\ttfamily \+:selected} \texorpdfstring{$\ast$}{*}, {\ttfamily \+:checked}
+\item {\ttfamily \+:enabled}, {\ttfamily \+:disabled}
+\item {\ttfamily \+:required}, {\ttfamily \+:optional}
+\item {\ttfamily \+:header}, {\ttfamily \+:button}, {\ttfamily \+:input}, {\ttfamily \+:text}, {\ttfamily \+:checkbox}, {\ttfamily \+:file}, {\ttfamily \+:password}, {\ttfamily \+:reset}, {\ttfamily \+:radio} etc. \texorpdfstring{$\ast$}{*}
+\item {\ttfamily \+:matches} \texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries{\texorpdfstring{$\ast$}{*}}}\+: Not part of CSS3
+
+\DoxyHorRuler{0}
+
+
+License\+: BSD-\/2-\/\+Clause\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24367}{}\doxysection{\texorpdfstring{Security contact information}{Security contact information}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24367}
+To report a security vulnerability, please use the \href{https://tidelift.com/security}{\texttt{ Tidelift security contact}}. Tidelift will coordinate the fix and disclosure.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24368}{}\doxysection{\texorpdfstring{{\ttfamily css-\/select} for enterprise}{{\ttfamily css-\/select} for enterprise}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2svgo_2node__modules_2css-select_2_r_e_a_d_m_e_autotoc_md24368}
+Available as part of the Tidelift Subscription
+
+The maintainers of {\ttfamily css-\/select} and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-css-select?utm_source=npm-css-select&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}} 

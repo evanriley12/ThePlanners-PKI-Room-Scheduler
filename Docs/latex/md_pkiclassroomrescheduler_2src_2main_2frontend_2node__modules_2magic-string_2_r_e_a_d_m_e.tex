@@ -1,0 +1,179 @@
+\chapter{magic-\/string}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e}\index{magic-\/string@{magic-\/string}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16413}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16413}%
+ \href{https://travis-ci.org/Rich-Harris/magic-string}{\texttt{  }} \href{https://npmjs.org/package/magic-string}{\texttt{  }} \href{https://github.com/Rich-Harris/magic-string/blob/master/LICENSE.md}{\texttt{  }}
+
+Suppose you have some source code. You want to make some light modifications to it -\/ replacing a few characters here and there, wrapping it with a header and footer, etc -\/ and ideally you\textquotesingle{}d like to generate a source map at the end of it. You\textquotesingle{}ve thought about using something like \href{https://github.com/benjamn/recast}{\texttt{ recast}} (which allows you to generate an AST from some Java\+Script, manipulate it, and reprint it with a sourcemap without losing your comments and formatting), but it seems like overkill for your needs (or maybe the source code isn\textquotesingle{}t Java\+Script).
+
+Your requirements are, frankly, rather niche. But they\textquotesingle{}re requirements that I also have, and for which I made magic-\/string. It\textquotesingle{}s a small, fast utility for manipulating strings and generating sourcemaps.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16414}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16414}
+magic-\/string works in both node.\+js and browser environments. For node, install with npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ magic-\/string}
+
+\end{DoxyCode}
+
+
+To use in browser, grab the \href{https://unpkg.com/magic-string/dist/magic-string.umd.js}{\texttt{ magic-\/string.\+umd.\+js}} file and add it to your page\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src='magic-\/string.umd.js'></script>}
+
+\end{DoxyCode}
+
+
+(It also works with various module systems, if you prefer that sort of thing -\/ it has a dependency on \href{https://github.com/Rich-Harris/vlq}{\texttt{ vlq}}.)\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16415}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16415}
+These examples assume you\textquotesingle{}re in node.\+js, or something similar\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ MagicString\ from\ 'magic-\/string';}
+\DoxyCodeLine{import\ fs\ from\ 'fs'}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ s\ =\ new\ MagicString('problems\ =\ 99');}
+\DoxyCodeLine{}
+\DoxyCodeLine{s.overwrite(0,\ 8,\ 'answer');}
+\DoxyCodeLine{s.toString();\ //\ 'answer\ =\ 99'}
+\DoxyCodeLine{}
+\DoxyCodeLine{s.overwrite(11,\ 13,\ '42');\ //\ character\ indices\ always\ refer\ to\ the\ original\ string}
+\DoxyCodeLine{s.toString();\ //\ 'answer\ =\ 42'}
+\DoxyCodeLine{}
+\DoxyCodeLine{s.prepend('var\ ').append(';');\ //\ most\ methods\ are\ chainable}
+\DoxyCodeLine{s.toString();\ //\ 'var\ answer\ =\ 42;'}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ map\ =\ s.generateMap(\{}
+\DoxyCodeLine{\ \ source:\ 'source.js',}
+\DoxyCodeLine{\ \ file:\ 'converted.js.map',}
+\DoxyCodeLine{\ \ includeContent:\ true}
+\DoxyCodeLine{\});\ //\ generates\ a\ v3\ sourcemap}
+\DoxyCodeLine{}
+\DoxyCodeLine{fs.writeFileSync('converted.js',\ s.toString());}
+\DoxyCodeLine{fs.writeFileSync('converted.js.map',\ map.toString());}
+
+\end{DoxyCode}
+
+
+You can pass an options argument\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ s\ =\ new\ MagicString(someCode,\ \{}
+\DoxyCodeLine{\ \ //\ both\ these\ options\ will\ be\ used\ if\ you\ later}
+\DoxyCodeLine{\ \ //\ call\ \`{}bundle.addSource(\ s\ )`\ -\/\ see\ below}
+\DoxyCodeLine{\ \ filename:\ 'foo.js',}
+\DoxyCodeLine{\ \ indentExclusionRanges:\ [/*...*/]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16416}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16416}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16417}{}\doxysubsection{\texorpdfstring{s.\+add\+Sourcemap\+Location( index )}{s.\+add\+Sourcemap\+Location( index )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16417}
+Adds the specified character index (with respect to the original string) to sourcemap mappings, if {\ttfamily hires} is {\ttfamily false} (see below).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16418}{}\doxysubsection{\texorpdfstring{s.\+append( content )}{s.\+append( content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16418}
+Appends the specified content to the end of the string. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16419}{}\doxysubsection{\texorpdfstring{s.\+append\+Left( index, content )}{s.\+append\+Left( index, content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16419}
+Appends the specified {\ttfamily content} at the {\ttfamily index} in the original string. If a range {\itshape ending} with {\ttfamily index} is subsequently moved, the insert will be moved with it. Returns {\ttfamily this}. See also {\ttfamily s.\+prepend\+Left(...)}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16420}{}\doxysubsection{\texorpdfstring{s.\+append\+Right( index, content )}{s.\+append\+Right( index, content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16420}
+Appends the specified {\ttfamily content} at the {\ttfamily index} in the original string. If a range {\itshape starting} with {\ttfamily index} is subsequently moved, the insert will be moved with it. Returns {\ttfamily this}. See also {\ttfamily s.\+prepend\+Right(...)}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16421}{}\doxysubsection{\texorpdfstring{s.\+clone()}{s.\+clone()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16421}
+Does what you\textquotesingle{}d expect.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16422}{}\doxysubsection{\texorpdfstring{s.\+generate\+Decoded\+Map( options )}{s.\+generate\+Decoded\+Map( options )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16422}
+Generates a sourcemap object with raw mappings in array form, rather than encoded as a string. See {\ttfamily generate\+Map} documentation below for options details. Useful if you need to manipulate the sourcemap further, but most of the time you will use {\ttfamily generate\+Map} instead.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16423}{}\doxysubsection{\texorpdfstring{s.\+generate\+Map( options )}{s.\+generate\+Map( options )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16423}
+Generates a \href{https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit}{\texttt{ version 3 sourcemap}}. All options are, well, optional\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily file} -\/ the filename where you plan to write the sourcemap
+\item {\ttfamily source} -\/ the filename of the file containing the original source
+\item {\ttfamily include\+Content} -\/ whether to include the original content in the map\textquotesingle{}s {\ttfamily sources\+Content} array
+\item {\ttfamily hires} -\/ whether the mapping should be high-\/resolution. Hi-\/res mappings map every single character, meaning (for example) your devtools will always be able to pinpoint the exact location of function calls and so on. With lo-\/res mappings, devtools may only be able to identify the correct line -\/ but they\textquotesingle{}re quicker to generate and less bulky. If sourcemap locations have been specified with {\ttfamily s.\+add\+Source\+Map\+Location()}, they will be used here.
+\end{DoxyItemize}
+
+The returned sourcemap has two (non-\/enumerable) methods attached for convenience\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily to\+String} -\/ returns the equivalent of {\ttfamily JSON.\+stringify(map)}
+\item {\ttfamily to\+Url} -\/ returns a Data\+URI containing the sourcemap. Useful for doing this sort of thing\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{code\ +=\ '\(\backslash\)n//\#\ sourceMappingURL='\ +\ map.toUrl();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16424}{}\doxysubsection{\texorpdfstring{s.\+indent( prefix\mbox{[}, options\mbox{]} )}{s.\+indent( prefix\mbox{[}, options\mbox{]} )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16424}
+Prefixes each line of the string with {\ttfamily prefix}. If {\ttfamily prefix} is not supplied, the indentation will be guessed from the original content, falling back to a single tab character. Returns {\ttfamily this}.
+
+The {\ttfamily options} argument can have an {\ttfamily exclude} property, which is an array of {\ttfamily \mbox{[}start, end\mbox{]}} character ranges. These ranges will be excluded from the indentation -\/ useful for (e.\+g.) multiline strings.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16425}{}\doxysubsection{\texorpdfstring{s.\+insert\+Left( index, content )}{s.\+insert\+Left( index, content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16425}
+{\bfseries{DEPRECATED}} since 0.\+17 – use {\ttfamily s.\+append\+Left(...)} instead\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16426}{}\doxysubsection{\texorpdfstring{s.\+insert\+Right( index, content )}{s.\+insert\+Right( index, content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16426}
+{\bfseries{DEPRECATED}} since 0.\+17 – use {\ttfamily s.\+prepend\+Right(...)} instead\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16427}{}\doxysubsection{\texorpdfstring{s.\+locate( index )}{s.\+locate( index )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16427}
+{\bfseries{DEPRECATED}} since 0.\+10 – see \href{https://github.com/Rich-Harris/magic-string/pull/30}{\texttt{ \#30}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16428}{}\doxysubsection{\texorpdfstring{s.\+locate\+Origin( index )}{s.\+locate\+Origin( index )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16428}
+{\bfseries{DEPRECATED}} since 0.\+10 – see \href{https://github.com/Rich-Harris/magic-string/pull/30}{\texttt{ \#30}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16429}{}\doxysubsection{\texorpdfstring{s.\+move( start, end, new\+Index )}{s.\+move( start, end, new\+Index )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16429}
+Moves the characters from {\ttfamily start} and {\ttfamily end} to {\ttfamily index}. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16430}{}\doxysubsection{\texorpdfstring{s.\+overwrite( start, end, content\mbox{[}, options\mbox{]} )}{s.\+overwrite( start, end, content\mbox{[}, options\mbox{]} )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16430}
+Replaces the characters from {\ttfamily start} to {\ttfamily end} with {\ttfamily content}. The same restrictions as {\ttfamily s.\+remove()} apply. Returns {\ttfamily this}.
+
+The fourth argument is optional. It can have a {\ttfamily store\+Name} property — if {\ttfamily true}, the original name will be stored for later inclusion in a sourcemap\textquotesingle{}s {\ttfamily names} array — and a {\ttfamily content\+Only} property which determines whether only the content is overwritten, or anything that was appended/prepended to the range as well.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16431}{}\doxysubsection{\texorpdfstring{s.\+prepend( content )}{s.\+prepend( content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16431}
+Prepends the string with the specified content. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16432}{}\doxysubsection{\texorpdfstring{s.\+prepend\+Left ( index, content )}{s.\+prepend\+Left ( index, content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16432}
+Same as {\ttfamily s.\+append\+Left(...)}, except that the inserted content will go {\itshape before} any previous appends or prepends at {\ttfamily index}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16433}{}\doxysubsection{\texorpdfstring{s.\+prepend\+Right ( index, content )}{s.\+prepend\+Right ( index, content )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16433}
+Same as {\ttfamily s.\+append\+Right(...)}, except that the inserted content will go {\itshape before} any previous appends or prepends at {\ttfamily index}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16434}{}\doxysubsection{\texorpdfstring{s.\+remove( start, end )}{s.\+remove( start, end )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16434}
+Removes the characters from {\ttfamily start} to {\ttfamily end} (of the original string, {\bfseries{not}} the generated string). Removing the same content twice, or making removals that partially overlap, will cause an error. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16435}{}\doxysubsection{\texorpdfstring{s.\+slice( start, end )}{s.\+slice( start, end )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16435}
+Returns the content of the generated string that corresponds to the slice between {\ttfamily start} and {\ttfamily end} of the original string. Throws error if the indices are for characters that were already removed.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16436}{}\doxysubsection{\texorpdfstring{s.\+snip( start, end )}{s.\+snip( start, end )}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16436}
+Returns a clone of {\ttfamily s}, with all content before the {\ttfamily start} and {\ttfamily end} characters of the original string removed.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16437}{}\doxysubsection{\texorpdfstring{s.\+to\+String()}{s.\+to\+String()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16437}
+Returns the generated string.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16438}{}\doxysubsection{\texorpdfstring{s.\+trim(\mbox{[} char\+Type \mbox{]})}{s.\+trim(\mbox{[} char\+Type \mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16438}
+Trims content matching {\ttfamily char\+Type} (defaults to {\ttfamily \textbackslash{}s}, i.\+e. whitespace) from the start and end. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16439}{}\doxysubsection{\texorpdfstring{s.\+trim\+Start(\mbox{[} char\+Type \mbox{]})}{s.\+trim\+Start(\mbox{[} char\+Type \mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16439}
+Trims content matching {\ttfamily char\+Type} (defaults to {\ttfamily \textbackslash{}s}, i.\+e. whitespace) from the start. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16440}{}\doxysubsection{\texorpdfstring{s.\+trim\+End(\mbox{[} char\+Type \mbox{]})}{s.\+trim\+End(\mbox{[} char\+Type \mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16440}
+Trims content matching {\ttfamily char\+Type} (defaults to {\ttfamily \textbackslash{}s}, i.\+e. whitespace) from the end. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16441}{}\doxysubsection{\texorpdfstring{s.\+trim\+Lines()}{s.\+trim\+Lines()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16441}
+Removes empty lines from the start and end. Returns {\ttfamily this}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16442}{}\doxysubsection{\texorpdfstring{s.\+is\+Empty()}{s.\+is\+Empty()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16442}
+Returns true if the resulting source is empty (disregarding white space).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16443}{}\doxysection{\texorpdfstring{Bundling}{Bundling}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16443}
+To concatenate several sources, use {\ttfamily Magic\+String.\+Bundle}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ bundle\ =\ new\ MagicString.Bundle();}
+\DoxyCodeLine{}
+\DoxyCodeLine{bundle.addSource(\{}
+\DoxyCodeLine{\ \ filename:\ 'foo.js',}
+\DoxyCodeLine{\ \ content:\ new\ MagicString('var\ answer\ =\ 42;')}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{bundle.addSource(\{}
+\DoxyCodeLine{\ \ filename:\ 'bar.js',}
+\DoxyCodeLine{\ \ content:\ new\ MagicString('console.log(\ answer\ )')}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Advanced:\ a\ source\ can\ include\ an\ \`{}indentExclusionRanges`\ property}
+\DoxyCodeLine{//\ alongside\ \`{}filename`\ and\ \`{}content`.\ This\ will\ be\ passed\ to\ \`{}s.indent()`}
+\DoxyCodeLine{//\ -\/\ see\ documentation\ above}
+\DoxyCodeLine{}
+\DoxyCodeLine{bundle.indent()\ //\ optionally,\ pass\ an\ indent\ string,\ otherwise\ it\ will\ be\ guessed}
+\DoxyCodeLine{\ \ .prepend('(function\ ()\ \{\(\backslash\)n')}
+\DoxyCodeLine{\ \ .append('\}());');}
+\DoxyCodeLine{}
+\DoxyCodeLine{bundle.toString();}
+\DoxyCodeLine{//\ (function\ ()\ \{}
+\DoxyCodeLine{//\ \ \ var\ answer\ =\ 42;}
+\DoxyCodeLine{//\ \ \ console.log(\ answer\ );}
+\DoxyCodeLine{//\ \}());}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ options\ are\ as\ per\ \`{}s.generateMap()`\ above}
+\DoxyCodeLine{const\ map\ =\ bundle.generateMap(\{}
+\DoxyCodeLine{\ \ file:\ 'bundle.js',}
+\DoxyCodeLine{\ \ includeContent:\ true,}
+\DoxyCodeLine{\ \ hires:\ true}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+As an alternative syntax, if you a) don\textquotesingle{}t have {\ttfamily filename} or {\ttfamily indent\+Exclusion\+Ranges} options, or b) passed those in when you used {\ttfamily new Magic\+String(...)}, you can simply pass the {\ttfamily Magic\+String} instance itself\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ bundle\ =\ new\ MagicString.Bundle();}
+\DoxyCodeLine{const\ source\ =\ new\ MagicString(someCode,\ \{}
+\DoxyCodeLine{\ \ filename:\ 'foo.js'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{bundle.addSource(source);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16444}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2magic-string_2_r_e_a_d_m_e_autotoc_md16444}
+MIT 

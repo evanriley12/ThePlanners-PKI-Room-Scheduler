@@ -1,0 +1,40 @@
+\chapter{supports-\/hyperlinks \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jamestalmage/supports-\/hyperlinks"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/jamestalmage/supports-\/hyperlinks.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://codecov.\+io/gh/jamestalmage/supports-\/hyperlinks?branch=master"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://codecov.\+io/gh/jamestalmage/supports-\/hyperlinks/badge.\+svg?branch=master"{} alt="{}codecov"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme}\index{supports-\/hyperlinks $<$a href="{}https://travis-\/ci.org/jamestalmage/supports-\/hyperlinks"{} $>$$<$img src="{}https://travis-\/ci.org/jamestalmage/supports-\/hyperlinks.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}https://codecov.io/gh/jamestalmage/supports-\/hyperlinks?branch=master"{} $>$$<$img src="{}https://codecov.io/gh/jamestalmage/supports-\/hyperlinks/badge.svg?branch=master"{} alt="{}codecov"{}/$>$$<$/a$>$@{supports-\/hyperlinks $<$a href=""https://travis-\/ci.org/jamestalmage/supports-\/hyperlinks"" $>$$<$img src=""https://travis-\/ci.org/jamestalmage/supports-\/hyperlinks.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""https://codecov.io/gh/jamestalmage/supports-\/hyperlinks?branch=master"" $>$$<$img src=""https://codecov.io/gh/jamestalmage/supports-\/hyperlinks/badge.svg?branch=master"" alt=""codecov""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24212}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24212}%
+ \begin{quote}
+Detect whether a terminal emulator supports hyperlinks \end{quote}
+Terminal emulators are \href{https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda}{\texttt{ starting to support hyperlinks}}. While many terminals have long detected URL\textquotesingle{}s and linkified them, allowing you to Command-\/\+Click or Control-\/\+Click them to open a browser, you were forced to print the long unsightly URL\textquotesingle{}s on the screen. As of spring 2017 \href{https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda}{\texttt{ a few terminals}} began supporting HTML like links, where the link text and destination could be specified separately.
+
+This module allows you to detect if hyperlinks are supported in the current Terminal.
+
+As this is a new development, we anticipate the list of supported Terminals to grow rapidly. Please open an issue or submit a PR as new Terminals implement support.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24213}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24213}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ supports-\/hyperlinks}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24214}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24214}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ supportsHyperlinks\ =\ require('supports-\/hyperlinks');}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (supportsHyperlinks.stdout)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Terminal\ stdout\ supports\ hyperlinks');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (supportsHyperlinks.stderr)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Terminal\ stderr\ supports\ hyperlinks');}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24215}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24215}
+Returns an {\ttfamily Object} with a {\ttfamily stdout} and {\ttfamily stderr} property for testing either streams. Each property is a {\ttfamily boolean}, indicating whether or not hyperlinks are supported.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24216}{}\doxysection{\texorpdfstring{Info}{Info}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24216}
+Obeys the {\ttfamily -\/-\/no-\/hyperlinks}, {\ttfamily -\/-\/hyperlink=always}, and {\ttfamily -\/-\/hyperlink=never} CLI flags.
+
+Can be overridden by the user with the flags {\ttfamily -\/-\/hyperlinks=always} and {\ttfamily -\/-\/no-\/hyperlinks}. For situations where using those flags are not possible, add the environment variable {\ttfamily FORCE\+\_\+\+HYPERLINK=1} to forcefully enable hyperlinks or {\ttfamily FORCE\+\_\+\+HYPERLINK=0} to forcefully disable. The use of {\ttfamily FORCE\+\_\+\+HYPERLINK} overrides all other hyperlink support checks.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24217}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24217}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jamestalmage/hyperlinker}{\texttt{ {\ttfamily hyperlinker}}}\+: Write hyperlinks for the Terminal.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24218}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2supports-hyperlinks_2readme_autotoc_md24218}
+MIT © \href{https://github.com/jamestalmage}{\texttt{ James Talmage}} 

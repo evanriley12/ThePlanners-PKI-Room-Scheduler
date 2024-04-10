@@ -1,0 +1,136 @@
+\chapter{Adjust Source-\/map Loader}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme}\index{Adjust Source-\/map Loader@{Adjust Source-\/map Loader}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4886}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4886}%
+ \href{http://github.com/bholloway/adjust-sourcemap-loader}{\texttt{ }}
+
+Webpack loader that adjusts source maps.
+
+Use as a {\bfseries{loader}} to debug source-\/maps or to adjust source-\/maps between other loaders.
+
+Use as a {\bfseries{module filename template}} to ensure the final source-\/map are to your liking.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4887}{}\doxysection{\texorpdfstring{Usage \+: Loader}{Usage \+: Loader}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4887}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{require('adjust-\/sourcemap?format=absolute!babel?sourceMap');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4888}{}\doxysubsection{\texorpdfstring{Source maps required}{Source maps required}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4888}
+Note that {\bfseries{source maps}} must be enabled on any preceding loader. In the above example we use {\ttfamily babel?source\+Map}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4889}{}\doxysubsection{\texorpdfstring{Apply via webpack config}{Apply via webpack config}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4889}
+It is preferable to adjust your {\ttfamily webpack.\+config} so to avoid having to prefix every {\ttfamily require()} statement\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ loaders:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test\ \ \ :\ /\(\backslash\).js/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loaders:\ ['adjust-\/sourcemap?format=absolute',\ 'babel?sourceMap']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4890}{}\doxysection{\texorpdfstring{Usage \+: Module filename template}{Usage \+: Module filename template}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4890}
+Specifying a certain format as the final step in a loader chain will {\bfseries{not}} influence the final source format that Webpack will output. Instead the format is determined by the {\bfseries{module filename template}}.
+
+There are limitations to the filename templating that Webpack provides. This package may also operate as a custom template function that will convert output source-\/map sources to the desired {\ttfamily format}.
+
+In the following example we ensure project-\/relative source-\/map sources are output.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ templateFn\ =\ require('adjust-\/sourcemap-\/loader')}
+\DoxyCodeLine{\ \ .moduleFilenameTemplate(\{}
+\DoxyCodeLine{\ \ \ \ format:\ 'projectRelative'}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{\ \ \ \ devtoolModuleFilenameTemplate\ \ \ \ \ \ \ \ :\ templateFn,}
+\DoxyCodeLine{\ \ \ \ devtoolFallbackModuleFilenameTemplate:\ templateFn}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4891}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4891}
+As a loader, options may be set using \href{https://webpack.github.io/docs/using-loaders.html\#query-parameters}{\texttt{ query parameters}} or by using \href{https://webpack.github.io/docs/how-to-write-a-loader.html\#programmable-objects-as-query-option}{\texttt{ programmatic parameters}}. Programmatic means the following in your {\ttfamily webpack.\+config}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ \ adjustSourcemapLoader:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ ...}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Where {\ttfamily ...} is a hash of any of the following options.
+
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily debug}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \+: {\ttfamily boolean\texorpdfstring{$\vert$}{|}\+Reg\+Exp} May be used alone (boolean) or with a {\ttfamily Reg\+Exp} to match the resource(s) you are interested in debugging.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily fail}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \+: {\ttfamily boolean} Implies an {\bfseries{Error}} if a source-\/map source cannot be decoded.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily format}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \+: {\ttfamily string} Optional output format for source-\/map {\ttfamily sources}. Must be the name of one of the available {\ttfamily codecs}. Omitting the format will result in {\bfseries{no change}} and the outgoing source-\/map will match the incomming one.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily root}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \+: {\ttfamily boolean} A boolean flag that indices that a {\ttfamily source\+Root} path sould be included in the output map. This is contingent on a {\ttfamily format} being specified.
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily codecs}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \+: {\ttfamily Array.\texorpdfstring{$<$}{<}\{name\+:string, decode\+:function, encode\+:function, root\+:function\}\texorpdfstring{$>$}{>}} Optional Array of codecs. There are a number of built-\/in codecs available. If you specify you own codecs you will loose those that are built-\/in. However you can include them from the {\ttfamily codec/} directory.
+\end{DoxyItemize}
+
+Note that {\bfseries{query}} parameters take precedence over {\bfseries{programmatic}} parameters.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4892}{}\doxysubsection{\texorpdfstring{Changing the format}{Changing the format}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4892}
+Built-\/in codecs that may be specified as a {\ttfamily format} include\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily absolute}
+\item {\ttfamily output\+Relative}
+\item {\ttfamily project\+Relative}
+\item {\ttfamily webpack\+Protocol}
+\item {\ttfamily source\+Relative} (works for loader only, {\bfseries{not}} Module filename template)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4893}{}\doxysubsection{\texorpdfstring{Specifying codecs}{Specifying codecs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4893}
+There are additional built-\/in codecs that do not support encoding. These are still necessary to decode source-\/map sources. If you specify your own {\ttfamily options.\+codecs} then you should {\bfseries{also include the built-\/in codecs}}. Otherwise you will find that some sources cannot be decoded.
+
+The existing codecs may be found in {\ttfamily /codec}, or on the loader itself\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ inBuiltCodecs\ =\ require('adjust-\/sourcemap-\/loader').codecs,}
+\DoxyCodeLine{\ \ \ \ myCodecs\ \ \ \ \ \ =\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ \ :\ 'foo',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ decode:\ function(uri)\ \{...\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ encode:\ function(absolute)\ \{...\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ root\ \ :\ function()\ \{...\}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ ...}
+\DoxyCodeLine{\ \ \ \ ];}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ \ adjustSourcemapLoader:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ codecs:\ inBuiltCodecs.concat(myCodecs)}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The codec {\bfseries{order is important}}. Those that come first have precedence. Any codec that detects a distinct URI should be foremost so that illegal paths are not encountered by successive codecs.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4894}{}\doxysubsection{\texorpdfstring{Abstract codecs}{Abstract codecs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4894}
+A codec that detects generated code and cannot {\ttfamily decode()} a URI to an absolute file path.
+
+Instead of implementing {\ttfamily encode()} or {\ttfamily root()} it should instead specify {\ttfamily abstract\+:true}. Its {\ttfamily decode()} function then may return {\ttfamily boolean} where it detects such generated sources.
+
+For example, a built-\/in abstract codec will match the {\bfseries{Webpack bootstrap}} code and ensure that its illegal source uri is not encountered by later coders.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4895}{}\doxysection{\texorpdfstring{How it works}{How it works}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2adjust-sourcemap-loader_2readme_autotoc_md4895}
+The loader will receive a source map as its second parameter, so long as the preceding loader was using source-\/maps.
+
+The exception is the {\bfseries{css-\/loader}} where the source-\/map is in the content, which is {\bfseries{not currently supported}} .
+
+The source-\/map {\ttfamily sources} are parsed by applying {\bfseries{codec.\+decode()}} functions until one of them returns an absolute path to a file that exists. The exception is abstract codecs, where the source with remain unchanged.
+
+If a format is specified then the source-\/map {\ttfamily sources} are recreated by applying the {\bfseries{codec.\+encode()}} function for the stated {\ttfamily format} and (where the {\ttfamily root} option is specified) the {\bfseries{codec.\+root()}} function will set the source-\/map {\ttfamily source\+Root}.
+
+If a codec does not specify {\bfseries{codec.\+encode()}} or {\bfseries{codec.\+root()}} then it may {\bfseries{not}} be used as the {\ttfamily format}. 

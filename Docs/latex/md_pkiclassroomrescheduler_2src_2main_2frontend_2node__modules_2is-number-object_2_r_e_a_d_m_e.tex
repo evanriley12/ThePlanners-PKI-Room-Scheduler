@@ -1,0 +1,34 @@
+\chapter{is-\/number-\/object \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/is-\/number-\/object"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/is-\/number-\/object.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e}\index{is-\/number-\/object $<$sup$>$$<$a href="{}https://npmjs.org/package/is-\/number-\/object"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/is-\/number-\/object.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{is-\/number-\/object $<$sup$>$$<$a href=""https://npmjs.org/package/is-\/number-\/object"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/is-\/number-\/object.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e_autotoc_md14675}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e_autotoc_md14675}%
+ \href{https://github.com/inspect-js/is-number-object/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/is-number-object/}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-number-object}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-number-object\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=is-number-object}{\texttt{ }}
+
+\href{https://npmjs.org/package/is-number-object}{\texttt{ }}
+
+Is this value a JS Number object? This module works cross-\/realm/iframe, and despite ES6 @to\+String\+Tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e_autotoc_md14676}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e_autotoc_md14676}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isNumber\ =\ require('is-\/number-\/object');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.notOk(isNumber(undefined));}
+\DoxyCodeLine{assert.notOk(isNumber(null));}
+\DoxyCodeLine{assert.notOk(isNumber(false));}
+\DoxyCodeLine{assert.notOk(isNumber(true));}
+\DoxyCodeLine{assert.notOk(isNumber('foo'));}
+\DoxyCodeLine{assert.notOk(isNumber(function\ ()\ \{\}));}
+\DoxyCodeLine{assert.notOk(isNumber([]));}
+\DoxyCodeLine{assert.notOk(isNumber(\{\}));}
+\DoxyCodeLine{assert.notOk(isNumber(/a/g));}
+\DoxyCodeLine{assert.notOk(isNumber(new\ RegExp('a',\ 'g')));}
+\DoxyCodeLine{assert.notOk(isNumber(new\ Date()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.ok(isNumber(42));}
+\DoxyCodeLine{assert.ok(isNumber(NaN));}
+\DoxyCodeLine{assert.ok(isNumber(Infinity));}
+\DoxyCodeLine{assert.ok(isNumber(new\ Number(42)));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e_autotoc_md14677}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-number-object_2_r_e_a_d_m_e_autotoc_md14677}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

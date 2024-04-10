@@ -1,0 +1,138 @@
+\chapter{Post\+CSS image-\/set() Function \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e}\index{PostCSS image-\/set() Function $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS image-\/set() Function $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS Logo\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18796}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18796}%
+ \href{https://www.npmjs.com/package/postcss-image-set-function}{\texttt{ }} \href{https://cssdb.org/\#image-set-function}{\texttt{ }} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function}{\texttt{ Post\+CSS image-\/set() Function}} lets you display resolution-\/dependent images using the {\ttfamily image-\/set()} function in CSS, following the \href{https://drafts.csswg.org/css-images-4/\#image-set-notation}{\texttt{ CSS Images}} specification.
+
+\href{https://caniuse.com/\#feat=css-image-set}{\texttt{ }}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.example\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ image-\/set(}
+\DoxyCodeLine{\ \ \ \ url(img.png)\ 1x,}
+\DoxyCodeLine{\ \ \ \ url(img@2x.png)\ 2x,}
+\DoxyCodeLine{\ \ \ \ url(img@print.png)\ 600dpi}
+\DoxyCodeLine{\ \ );}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{.example\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ url(img.png);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/webkit-\/min-\/device-\/pixel-\/ratio:\ 2),\ (min-\/resolution:\ 192dpi)\ \{}
+\DoxyCodeLine{\ \ .example\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/image:\ url(img@2x.png);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/webkit-\/min-\/device-\/pixel-\/ratio:\ 6.25),\ (min-\/resolution:\ 600dpi)\ \{}
+\DoxyCodeLine{\ \ .example\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/image:\ url(my@print.png);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.example\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ image-\/set(}
+\DoxyCodeLine{\ \ \ \ url(img.png)\ 1x,}
+\DoxyCodeLine{\ \ \ \ url(img@2x.png)\ 2x,}
+\DoxyCodeLine{\ \ \ \ url(img@print.png)\ 600dpi}
+\DoxyCodeLine{\ \ );}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18797}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18797}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function}{\texttt{ Post\+CSS image-\/set() Function}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/image-\/set-\/function\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function}{\texttt{ Post\+CSS image-\/set() Function}} as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcss\ =\ require('postcss');}
+\DoxyCodeLine{const\ postcssImageSetFunction\ =\ require('postcss-\/image-\/set-\/function');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ postcssImageSetFunction(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-image-set-function}{\texttt{ Post\+CSS image-\/set() Function}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#postcss-cli}{\texttt{ Post\+CSS CLI}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18798}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18798}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18799}{}\doxysubsection{\texorpdfstring{preserve}{preserve}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18799}
+The {\ttfamily preserve} option determines whether the original declaration using {\ttfamily image-\/set()} is preserved. By default, it is preserved.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssImageSetFunction(\{\ preserve:\ false\ \})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.example\ \{}
+\DoxyCodeLine{\ \ background-\/image:\ image-\/set(}
+\DoxyCodeLine{\ \ \ \ url(img.png)\ 1x,}
+\DoxyCodeLine{\ \ \ \ url(img@2x.png)\ 2x,}
+\DoxyCodeLine{\ \ \ \ url(img@print.png)\ 600dpi}
+\DoxyCodeLine{\ \ );}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/webkit-\/min-\/device-\/pixel-\/ratio:\ 1),\ (min-\/resolution:\ 96dpi)\ \{}
+\DoxyCodeLine{\ \ .example\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/image:\ url(img.png);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/webkit-\/min-\/device-\/pixel-\/ratio:\ 2),\ (min-\/resolution:\ 192dpi)\ \{}
+\DoxyCodeLine{\ \ .example\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/image:\ url(img@2x.png);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/webkit-\/min-\/device-\/pixel-\/ratio:\ 6.25),\ (min-\/resolution:\ 600dpi)\ \{}
+\DoxyCodeLine{\ \ .example\ \{}
+\DoxyCodeLine{\ \ \ \ background-\/image:\ url(my@print.png);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18800}{}\doxysubsection{\texorpdfstring{onvalid}{onvalid}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18800}
+The {\ttfamily oninvalid} option determines how invalid usage of {\ttfamily image-\/set()} should be handled. By default, invalid usages of {\ttfamily image-\/set()} are ignored. They can be configured to display a {\ttfamily warning} or {\ttfamily throw} an error.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssImageSetFunction(\{\ oninvalid:\ 'warning'\ \})\ //\ warn\ on\ invalid\ usages}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssImageSetFunction(\{\ oninvalid:\ 'throw'\ \})\ //\ throw\ on\ invalid\ usages}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18801}{}\doxysection{\texorpdfstring{Image Resolution}{Image Resolution}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-image-set-function_2_r_e_a_d_m_e_autotoc_md18801}
+The {\ttfamily image-\/set()} function allows an author to provide multiple resolutions of an image and let the browser decide which is most appropriate in a given situation. The {\ttfamily image-\/set()} also never fails to choose an image; the {\ttfamily \texorpdfstring{$<$}{<}resolution\texorpdfstring{$>$}{>}} just helps determine which of the images is chosen.
+
+Since this plugin is not a browser, the image options are sorted by device pixel ratio and the lowest ratio is used as the default, while the remaining images are pushed behind media queries.
+
+Therefore, this plugin can only approximate native browser behavior. While images should typically match the resolution as the device they’re being viewed in, other factors can affect the chosen image. For example, if the user is on a slow mobile connection, the browser may prefer to select a lower-\/res image rather than wait for a larger, resolution-\/matching image to load. 

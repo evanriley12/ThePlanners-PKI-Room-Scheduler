@@ -1,0 +1,39 @@
+\chapter{Camel Case}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e}\index{Camel Case@{Camel Case}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6485}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6485}%
+ \href{https://npmjs.org/package/camel-case}{\texttt{ }} \href{https://npmjs.org/package/camel-case}{\texttt{ }} \href{https://bundlephobia.com/result?p=camel-case}{\texttt{ }}
+
+\begin{quote}
+Transform into a string with the separator denoted by the next word capitalized. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6486}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6486}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ camel-\/case\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6487}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6487}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ camelCase\ \}\ from\ "{}camel-\/case"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{camelCase("{}string"{});\ //=>\ "{}string"{}}
+\DoxyCodeLine{camelCase("{}dot.case"{});\ //=>\ "{}dotCase"{}}
+\DoxyCodeLine{camelCase("{}PascalCase"{});\ //=>\ "{}pascalCase"{}}
+\DoxyCodeLine{camelCase("{}version\ 1.2.10"{});\ //=>\ "{}version\_1\_2\_10"{}}
+
+\end{DoxyCode}
+
+
+The function also accepts \href{https://github.com/blakeembrey/change-case\#options}{\texttt{ {\ttfamily options}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6488}{}\doxysubsection{\texorpdfstring{Merge Numbers}{Merge Numbers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6488}
+If you\textquotesingle{}d like to remove the behavior prefixing {\ttfamily \+\_\+} before numbers, you can use {\ttfamily camel\+Case\+Transform\+Merge}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ camelCaseTransformMerge\ \}\ from\ "{}camel-\/case"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{camelCase("{}version\ 12"{},\ \{\ transform:\ camelCaseTransformMerge\ \});\ //=>\ "{}version12"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6489}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2camel-case_2_r_e_a_d_m_e_autotoc_md6489}
+MIT 

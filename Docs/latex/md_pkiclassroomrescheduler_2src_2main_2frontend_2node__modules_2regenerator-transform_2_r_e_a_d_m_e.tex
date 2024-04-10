@@ -1,0 +1,47 @@
+\chapter{regenerator-\/transform}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e}\index{regenerator-\/transform@{regenerator-\/transform}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20468}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20468}%
+ Transform async/generator functions with \href{https://github.com/facebook/regenerator}{\texttt{ regenerator}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20469}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20469}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ regenerator-\/transform}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20470}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20470}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20471}{}\doxysubsection{\texorpdfstring{Via {\ttfamily .babelrc} (Recommended)}{Via {\ttfamily .babelrc} (Recommended)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20471}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}.babelrc\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ without\ options}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ ["{}regenerator-\/transform"{}]}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{//\ with\ options}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ [}
+\DoxyCodeLine{\ \ \ \ ["{}regenerator-\/transform"{},\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ asyncGenerators:\ false,\ //\ true\ by\ default}
+\DoxyCodeLine{\ \ \ \ \ \ generators:\ false,\ //\ true\ by\ default}
+\DoxyCodeLine{\ \ \ \ \ \ async:\ false\ //\ true\ by\ default}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20472}{}\doxysubsection{\texorpdfstring{Via CLI}{Via CLI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20472}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ babel\ -\/-\/plugins\ regenerator-\/transform\ script.js}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20473}{}\doxysubsection{\texorpdfstring{Via Node API}{Via Node API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2regenerator-transform_2_r_e_a_d_m_e_autotoc_md20473}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require("{}@babel/core"{}).transformSync("{}code"{},\ \{}
+\DoxyCodeLine{\ \ plugins:\ ["{}regenerator-\/transform"{}]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,30 @@
+\chapter{Disallow manually importing from \texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}\+\_\+\+\_\+mocks\+\_\+\+\_\+\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>} (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/mocks-\/import\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import}\index{Disallow manually importing from $<$tt$>$\_\_mocks\_\_$<$/tt$>$ ($<$tt$>$no-\/mocks-\/import$<$/tt$>$)@{Disallow manually importing from $<$tt$>$\_\_mocks\_\_$<$/tt$>$ ($<$tt$>$no-\/mocks-\/import$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import_autotoc_md10429}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import_autotoc_md10429}%
+ When using {\ttfamily jest.\+mock}, your tests (just like the code being tested) should import from {\ttfamily ./x}, not {\ttfamily ./\+\_\+\+\_\+mocks\+\_\+\+\_\+/x}. Not following this rule can lead to confusion, because you will have multiple instances of the mocked module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jest.mock('./x');}
+\DoxyCodeLine{const\ x1\ =\ require('./x');}
+\DoxyCodeLine{const\ x2\ =\ require('./\_\_mocks\_\_/x');}
+\DoxyCodeLine{}
+\DoxyCodeLine{test('x',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ expect(x1).toBe(x2);\ //\ fails!\ They\ are\ both\ instances\ of\ \`{}./\_\_mocks\_\_/x`,\ but\ not\ referentially\ equal}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import_autotoc_md10430}{}\doxysubsection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import_autotoc_md10430}
+This rule reports imports from a path containing a {\ttfamily \+\_\+\+\_\+mocks\+\_\+\+\_\+} component.
+
+Example violations\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ thing\ from\ './\_\_mocks\_\_/index';}
+\DoxyCodeLine{require('./\_\_mocks\_\_/index');}
+\DoxyCodeLine{require('\_\_mocks\_\_');}
+
+\end{DoxyCode}
+ 

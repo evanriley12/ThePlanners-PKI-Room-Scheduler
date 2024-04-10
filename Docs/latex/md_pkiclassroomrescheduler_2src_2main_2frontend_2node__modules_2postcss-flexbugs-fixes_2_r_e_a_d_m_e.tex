@@ -1,0 +1,81 @@
+\chapter{Post\+CSS Flexbugs Fixes \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/luisrudge/postcss-\/flexbugs-\/fixes"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/luisrudge/postcss-\/flexbugs-\/fixes.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e}\index{PostCSS Flexbugs Fixes $<$a href="{}https://travis-\/ci.org/luisrudge/postcss-\/flexbugs-\/fixes"{} $>$$<$img src="{}https://travis-\/ci.org/luisrudge/postcss-\/flexbugs-\/fixes.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$@{PostCSS Flexbugs Fixes $<$a href=""https://travis-\/ci.org/luisrudge/postcss-\/flexbugs-\/fixes"" $>$$<$img src=""https://travis-\/ci.org/luisrudge/postcss-\/flexbugs-\/fixes.svg"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18702}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18702}%
+\href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin This project tries to fix all of \href{https://github.com/philipwalton/flexbugs}{\texttt{ flexbug\textquotesingle{}s}} issues.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18703}{}\doxysection{\texorpdfstring{bug \href{https://github.com/philipwalton/flexbugs/blob/master/README.md\#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored}{\texttt{ 4}}}{bug \href{https://github.com/philipwalton/flexbugs/blob/master/README.md\#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored}{\texttt{ 4}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18703}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18704}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18704}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{\ flex:\ 1;\ \}}
+\DoxyCodeLine{.bar\ \{\ flex:\ 1\ 1;\ \}}
+\DoxyCodeLine{.foz\ \{\ flex:\ 1\ 1\ 0;\ \}}
+\DoxyCodeLine{.baz\ \{\ flex:\ 1\ 1\ 0px;\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18705}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18705}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{\ flex:\ 1\ 1;\ \}}
+\DoxyCodeLine{.bar\ \{\ flex:\ 1\ 1;\ \}}
+\DoxyCodeLine{.foz\ \{\ flex:\ 1\ 1;\ \}}
+\DoxyCodeLine{.baz\ \{\ flex:\ 1\ 1;\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18706}{}\doxysection{\texorpdfstring{bug \href{https://github.com/philipwalton/flexbugs/blob/master/README.md\#6-the-default-flex-value-has-changed}{\texttt{ 6}}}{bug \href{https://github.com/philipwalton/flexbugs/blob/master/README.md\#6-the-default-flex-value-has-changed}{\texttt{ 6}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18706}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18707}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18707}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{\ flex:\ 1;\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18708}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18708}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{\ flex:\ 1\ 1\ 0\%;\ \}}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+This only fixes css classes that have the {\ttfamily flex} property set. To fix elements that are contained inside a flexbox container, use this global rule\+: \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*\ \{}
+\DoxyCodeLine{\ \ \ \ flex-\/shrink:\ 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18709}{}\doxysection{\texorpdfstring{bug \href{https://github.com/philipwalton/flexbugs/blob/master/README.md\#8-flex-basis-doesnt-support-calc}{\texttt{ 8.\+1.\+a}}}{bug \href{https://github.com/philipwalton/flexbugs/blob/master/README.md\#8-flex-basis-doesnt-support-calc}{\texttt{ 8.\+1.\+a}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18709}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18710}{}\doxysubsection{\texorpdfstring{Input}{Input}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18710}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{\ flex:\ 1\ 0\ calc(1vw\ -\/\ 1px);\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18711}{}\doxysubsection{\texorpdfstring{Output}{Output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18711}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{}
+\DoxyCodeLine{\ \ flex-\/grow:\ 1;}
+\DoxyCodeLine{\ \ flex-\/shrink:\ 0;}
+\DoxyCodeLine{\ \ flex-\/basis:\ calc(1vw\ -\/\ 1px);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18712}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-flexbugs-fixes_2_r_e_a_d_m_e_autotoc_md18712}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcss([require('postcss-\/flexbugs-\/fixes')]);}
+
+\end{DoxyCode}
+
+
+You can also disable bugs individually, possible keys {\ttfamily bug4}, {\ttfamily bug6} and {\ttfamily bug8a}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ plugin\ =\ require('postcss-\/flexbugs-\/fixes');}
+\DoxyCodeLine{postcss([plugin(\{\ bug6:\ false\ \})]);}
+
+\end{DoxyCode}
+
+
+See \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} docs for examples for your environment. 

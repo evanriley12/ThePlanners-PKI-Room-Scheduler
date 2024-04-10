@@ -1,0 +1,69 @@
+\chapter{Disallow disabled tests (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/disabled-\/tests\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests}\index{Disallow disabled tests ($<$tt$>$no-\/disabled-\/tests$<$/tt$>$)@{Disallow disabled tests ($<$tt$>$no-\/disabled-\/tests$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests_autotoc_md10393}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests_autotoc_md10393}%
+ Jest has a feature that allows you to temporarily mark tests as disabled. This feature is often helpful while debugging or to create placeholders for future tests. Before committing changes we may want to check that all tests are running.
+
+This rule raises a warning about disabled tests.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests_autotoc_md10394}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests_autotoc_md10394}
+There are a number of ways to disable tests in Jest\+:
+
+
+\begin{DoxyItemize}
+\item by appending {\ttfamily .skip} to the test-\/suite or test-\/case
+\item by prepending the test function name with {\ttfamily x}
+\item by declaring a test with a name but no function body
+\item by making a call to {\ttfamily pending()} anywhere within the test
+\end{DoxyItemize}
+
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe.skip('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it.skip('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test.skip('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe['skip']('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it['skip']('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test['skip']('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{xdescribe('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xit('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{xtest('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('bar');}
+\DoxyCodeLine{test('bar');}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ pending();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+These patterns would not be considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test('foo',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe.only('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{it.only('bar',\ ()\ =>\ \{\});}
+\DoxyCodeLine{test.only('bar',\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests_autotoc_md10395}{}\doxysubsection{\texorpdfstring{Limitations}{Limitations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests_autotoc_md10395}
+The plugin looks at the literal function names within test code, so will not catch more complex examples of disabled tests, such as\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ testSkip\ =\ test.skip;}
+\DoxyCodeLine{testSkip('skipped\ test',\ ()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ myTest\ =\ test;}
+\DoxyCodeLine{myTest('does\ not\ have\ function\ body');}
+
+\end{DoxyCode}
+ 

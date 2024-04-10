@@ -1,0 +1,60 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e}\index{README@{README}}
+\href{https://travis-ci.org/css-modules/postcss-modules-local-by-default}{\texttt{ }} \href{https://codecov.io/github/css-modules/postcss-modules-local-by-default?branch=master}{\texttt{ }} \href{https://www.npmjs.com/package/postcss-modules-local-by-default}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19091}{}\doxysection{\texorpdfstring{CSS Modules\+: Local by Default}{CSS Modules\+: Local by Default}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19091}
+Transformation examples\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo\ \{\ ...\ \}\ /*\ =>\ */\ :local(.foo)\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.foo\ .bar\ \{\ ...\ \}\ /*\ =>\ */\ :local(.foo)\ :local(.bar)\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Shorthand\ global\ selector\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{:global\ .foo\ .bar\ \{\ ...\ \}\ /*\ =>\ */\ .foo\ .bar\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.foo\ :global\ .bar\ \{\ ...\ \}\ /*\ =>\ */\ :local(.foo)\ .bar\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Targeted\ global\ selector\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{:global(.foo)\ .bar\ \{\ ...\ \}\ /*\ =>\ */\ .foo\ :local(.bar)\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.foo:global(.bar)\ \{\ ...\ \}\ /*\ =>\ */\ :local(.foo).bar\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.foo\ :global(.bar)\ .baz\ \{\ ...\ \}\ /*\ =>\ */\ :local(.foo)\ .bar\ :local(.baz)\ \{\ ...\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.foo:global(.bar)\ .baz\ \{\ ...\ \}\ /*\ =>\ */\ :local(.foo).bar\ :local(.baz)\ \{\ ...\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19092}{}\doxysubsection{\texorpdfstring{Building}{Building}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19092}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install}
+\DoxyCodeLine{\$\ npm\ test}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Build\+: \href{https://travis-ci.org/css-modules/postcss-modules-local-by-default}{\texttt{ }}
+\item Lines\+: \href{https://coveralls.io/r/css-modules/postcss-modules-local-by-default?branch=master}{\texttt{ }}
+\item Statements\+: \href{https://codecov.io/github/css-modules/postcss-modules-local-by-default?branch=master}{\texttt{ }}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19093}{}\doxysubsection{\texorpdfstring{Development}{Development}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19093}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ yarn\ test:watch}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19094}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19094}
+MIT\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19095}{}\doxysubsection{\texorpdfstring{With thanks}{With thanks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-modules-local-by-default_2_r_e_a_d_m_e_autotoc_md19095}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sokra}{\texttt{ Tobias Koppers}}
+\item \href{https://github.com/geelen}{\texttt{ Glen Maddern}}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Mark Dalgleish, 2015. 

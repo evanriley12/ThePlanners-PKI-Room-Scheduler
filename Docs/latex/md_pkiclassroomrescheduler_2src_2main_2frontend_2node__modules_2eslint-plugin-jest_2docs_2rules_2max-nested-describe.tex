@@ -1,0 +1,129 @@
+\chapter{Enforces a maximum depth to nested describe calls (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}max-\/nested-\/describe\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe}\index{Enforces a maximum depth to nested describe calls ($<$tt$>$max-\/nested-\/describe$<$/tt$>$)@{Enforces a maximum depth to nested describe calls ($<$tt$>$max-\/nested-\/describe$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10373}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10373}%
+ While it\textquotesingle{}s useful to be able to group your tests together within the same file using {\ttfamily describe()}, having too many levels of nesting throughout your tests make them difficult to read.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10374}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10374}
+This rule enforces a maximum depth to nested {\ttfamily describe()} calls to improve code clarity in your tests.
+
+The following patterns are considered warnings (with the default option of {\ttfamily \{ "{}max"{}\+: 5 \}})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ describe('bar',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ describe('baz',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ describe('qux',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ describe('quxx',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ describe('too\ many',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ describe('bar',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ describe('baz',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ describe('qux',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ describe('quxx',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ describe('too\ many',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The following patterns are {\bfseries{not}} considered warnings (with the default option of {\ttfamily \{ "{}max"{}\+: 5 \}})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ describe('bar',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ describe('qux',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo2',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ describe('bar',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ describe('baz',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ describe('qux',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ describe('this\ is\ the\ limit',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10375}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10375}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}jest/max-\/nested-\/describe"{}:\ [}
+\DoxyCodeLine{\ \ \ \ "{}error"{},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}max"{}:\ 5}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10376}{}\doxysubsection{\texorpdfstring{{\ttfamily max}}{{\ttfamily max}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe_autotoc_md10376}
+Enforces a maximum depth for nested {\ttfamily describe()}.
+
+This has a default value of {\ttfamily 5}.
+
+Examples of patterns {\bfseries{not}} considered warnings with options set to {\ttfamily \{ "{}max"{}\+: 2 \}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{describe('foo',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ describe('bar',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ it('should\ get\ something',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{describe('foo2',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ describe('bar2',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ it('should\ get\ something',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ it('should\ get\ \ else',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(getSomething()).toBe('Something');}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

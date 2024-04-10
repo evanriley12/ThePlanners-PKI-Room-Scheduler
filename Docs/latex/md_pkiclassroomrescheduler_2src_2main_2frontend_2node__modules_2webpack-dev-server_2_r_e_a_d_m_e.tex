@@ -1,0 +1,281 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/webpack-dev-server}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://github.com/webpack/webpack-dev-server/actions?query=workflow\%3Awebpack-dev-server}{\texttt{ }} \href{https://codecov.io/gh/webpack/webpack-dev-server}{\texttt{ }} \href{https://gitter.im/webpack/webpack}{\texttt{ }} \href{https://npmjs.com/package/webpack-dev-server}{\texttt{ }} \href{https://github.com/webpack/webpack-dev-server/graphs/contributors}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26555}{}\doxysection{\texorpdfstring{webpack-\/dev-\/server}{webpack-\/dev-\/server}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26555}
+Use \href{https://webpack.js.org}{\texttt{ webpack}} with a development server that provides live reloading. This should be used for {\bfseries{development only}}.
+
+It uses \href{https://github.com/webpack/webpack-dev-middleware}{\texttt{ webpack-\/dev-\/middleware}} under the hood, which provides fast in-\/memory access to the webpack assets.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26556}{}\doxysubsection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26556}
+
+\begin{DoxyItemize}
+\item Getting Started
+\item \doxylink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2jest_2node__modules_2_0dsinclair_2typebox_2readme_usage}{Usage}
+\begin{DoxyItemize}
+\item With the CLI
+\item With NPM Scripts
+\item With the API
+\item With Type\+Script
+\item The Result
+\end{DoxyItemize}
+\item Browser Support
+\item Support
+\item Contributing
+\item Attribution
+\item License
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26557}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26557}
+First things first, install the module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ webpack-\/dev-\/server\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/D\ webpack-\/dev-\/server}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pnpm\ add\ -\/D\ webpack-\/dev-\/server}
+
+\end{DoxyCode}
+
+
+{\itshape Note\+: While you can install and run webpack-\/dev-\/server globally, we recommend installing it locally. webpack-\/dev-\/server will always use a local installation over a global one.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26558}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26558}
+There are two main, recommended methods of using the module\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26559}{}\doxysubsubsection{\texorpdfstring{With the CLI}{With the CLI}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26559}
+The easiest way to use it is with the \href{https://webpack.js.org/api/cli/}{\texttt{ webpack CLI}}. In the directory where your {\ttfamily webpack.\+config.\+js} is, run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npx\ webpack\ serve}
+
+\end{DoxyCode}
+
+
+Following options are available with {\ttfamily webpack serve}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Usage:\ webpack\ serve|server|s\ [entries...]\ [options]}
+\DoxyCodeLine{}
+\DoxyCodeLine{Run\ the\ webpack\ dev\ server.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Options:}
+\DoxyCodeLine{\ \ -\/c,\ -\/-\/config\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Provide\ path\ to\ a\ webpack\ configuration\ file\ e.g.\ ./webpack.config.js.}
+\DoxyCodeLine{\ \ -\/-\/config-\/name\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name\ of\ the\ configuration\ to\ use.}
+\DoxyCodeLine{\ \ -\/m,\ -\/-\/merge\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Merge\ two\ or\ more\ configurations\ using\ 'webpack-\/merge'.}
+\DoxyCodeLine{\ \ -\/-\/env\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Environment\ passed\ to\ the\ configuration\ when\ it\ is\ a\ function.}
+\DoxyCodeLine{\ \ -\/-\/node-\/env\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Sets\ process.env.NODE\_ENV\ to\ the\ specified\ value.}
+\DoxyCodeLine{\ \ -\/-\/progress\ [value]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Print\ compilation\ progress\ during\ build.}
+\DoxyCodeLine{\ \ -\/j,\ -\/-\/json\ [value]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Prints\ result\ as\ JSON\ or\ store\ it\ in\ a\ file.}
+\DoxyCodeLine{\ \ -\/d,\ -\/-\/devtool\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Determine\ source\ maps\ to\ use.}
+\DoxyCodeLine{\ \ -\/-\/no-\/devtool\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Do\ not\ generate\ source\ maps.}
+\DoxyCodeLine{\ \ -\/-\/entry\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ entry\ point(s)\ of\ your\ application\ e.g.\ ./src/main.js.}
+\DoxyCodeLine{\ \ -\/-\/mode\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Defines\ the\ mode\ to\ pass\ to\ webpack.}
+\DoxyCodeLine{\ \ -\/-\/name\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name\ of\ the\ configuration.\ Used\ when\ loading\ multiple\ configurations.}
+\DoxyCodeLine{\ \ -\/o,\ -\/-\/output-\/path\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Output\ location\ of\ the\ file\ generated\ by\ webpack\ e.g.\ ./dist/.}
+\DoxyCodeLine{\ \ -\/-\/stats\ [value]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ It\ instructs\ webpack\ on\ how\ to\ treat\ the\ stats\ e.g.\ verbose.}
+\DoxyCodeLine{\ \ -\/-\/no-\/stats\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disable\ stats\ output.}
+\DoxyCodeLine{\ \ -\/t,\ -\/-\/target\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Sets\ the\ build\ target\ e.g.\ node.}
+\DoxyCodeLine{\ \ -\/-\/no-\/target\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Negative\ 'target'\ option.}
+\DoxyCodeLine{\ \ -\/-\/watch-\/options-\/stdin\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Stop\ watching\ when\ stdin\ stream\ has\ ended.}
+\DoxyCodeLine{\ \ -\/-\/no-\/watch-\/options-\/stdin\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Do\ not\ stop\ watching\ when\ stdin\ stream\ has\ ended.}
+\DoxyCodeLine{\ \ -\/-\/allowed-\/hosts\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ enumerate\ the\ hosts\ from\ which\ access\ to\ the\ dev\ server\ are\ allowed\ (useful\ when\ you\ are\ proxying\ dev\ server,\ by\ default\ is\ 'auto').}
+\DoxyCodeLine{\ \ -\/-\/allowed-\/hosts-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'allowedHosts'\ configuration.\ Allows\ to\ enumerate\ the\ hosts\ from\ which\ access\ to\ the\ dev\ server\ are\ allowed\ (useful\ when\ you\ are\ proxying\ dev\ server,\ by\ default\ is\ 'auto').}
+\DoxyCodeLine{\ \ -\/-\/bonjour\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ broadcasts\ dev\ server\ via\ ZeroConf\ networking\ on\ start.}
+\DoxyCodeLine{\ \ -\/-\/no-\/bonjour\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disallows\ to\ broadcasts\ dev\ server\ via\ ZeroConf\ networking\ on\ start.}
+\DoxyCodeLine{\ \ -\/-\/no-\/client\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ client\ script.}
+\DoxyCodeLine{\ \ -\/-\/client-\/logging\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ set\ log\ level\ in\ the\ browser.}
+\DoxyCodeLine{\ \ -\/-\/client-\/overlay\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enables\ a\ full-\/screen\ overlay\ in\ the\ browser\ when\ there\ are\ compiler\ errors\ or\ warnings.}
+\DoxyCodeLine{\ \ -\/-\/no-\/client-\/overlay\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ the\ full-\/screen\ overlay\ in\ the\ browser\ when\ there\ are\ compiler\ errors\ or\ warnings.}
+\DoxyCodeLine{\ \ -\/-\/client-\/overlay-\/errors\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enables\ a\ full-\/screen\ overlay\ in\ the\ browser\ when\ there\ are\ compiler\ errors.}
+\DoxyCodeLine{\ \ -\/-\/no-\/client-\/overlay-\/errors\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ the\ full-\/screen\ overlay\ in\ the\ browser\ when\ there\ are\ compiler\ errors.}
+\DoxyCodeLine{\ \ -\/-\/client-\/overlay-\/warnings\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enables\ a\ full-\/screen\ overlay\ in\ the\ browser\ when\ there\ are\ compiler\ warnings.}
+\DoxyCodeLine{\ \ -\/-\/no-\/client-\/overlay-\/warnings\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ the\ full-\/screen\ overlay\ in\ the\ browser\ when\ there\ are\ compiler\ warnings.}
+\DoxyCodeLine{\ \ -\/-\/client-\/overlay-\/trusted-\/types-\/policy-\/name\ <value>\ \ The\ name\ of\ a\ Trusted\ Types\ policy\ for\ the\ overlay.\ Defaults\ to\ 'webpack-\/dev-\/server\#overlay'.}
+\DoxyCodeLine{\ \ -\/-\/client-\/progress\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Prints\ compilation\ progress\ in\ percentage\ in\ the\ browser.}
+\DoxyCodeLine{\ \ -\/-\/no-\/client-\/progress\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ print\ compilation\ progress\ in\ percentage\ in\ the\ browser.}
+\DoxyCodeLine{\ \ -\/-\/client-\/reconnect\ [value]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tells\ dev-\/server\ the\ number\ of\ times\ it\ should\ try\ to\ reconnect\ the\ client.}
+\DoxyCodeLine{\ \ -\/-\/no-\/client-\/reconnect\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tells\ dev-\/server\ to\ not\ to\ try\ to\ reconnect\ the\ client.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/transport\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ set\ custom\ web\ socket\ transport\ to\ communicate\ with\ dev\ server.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ specify\ URL\ to\ web\ socket\ server\ (useful\ when\ you're\ proxying\ dev\ server\ and\ client\ script\ does\ not\ always\ know\ where\ to\ connect\ to).}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url-\/hostname\ <value>\ \ \ \ \ \ \ \ \ \ \ \ Tells\ clients\ connected\ to\ devServer\ to\ use\ the\ provided\ hostname.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url-\/pathname\ <value>\ \ \ \ \ \ \ \ \ \ \ \ Tells\ clients\ connected\ to\ devServer\ to\ use\ the\ provided\ path\ to\ connect.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url-\/password\ <value>\ \ \ \ \ \ \ \ \ \ \ \ Tells\ clients\ connected\ to\ devServer\ to\ use\ the\ provided\ password\ to\ authenticate.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url-\/port\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tells\ clients\ connected\ to\ devServer\ to\ use\ the\ provided\ port.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url-\/protocol\ <value>\ \ \ \ \ \ \ \ \ \ \ \ Tells\ clients\ connected\ to\ devServer\ to\ use\ the\ provided\ protocol.}
+\DoxyCodeLine{\ \ -\/-\/client-\/web-\/socket-\/url-\/username\ <value>\ \ \ \ \ \ \ \ \ \ \ \ Tells\ clients\ connected\ to\ devServer\ to\ use\ the\ provided\ username\ to\ authenticate.}
+\DoxyCodeLine{\ \ -\/-\/compress\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enables\ gzip\ compression\ for\ everything\ served.}
+\DoxyCodeLine{\ \ -\/-\/no-\/compress\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ gzip\ compression\ for\ everything\ served.}
+\DoxyCodeLine{\ \ -\/-\/history-\/api-\/fallback\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ proxy\ requests\ through\ a\ specified\ index\ page\ (by\ default\ 'index.html'),\ useful\ for\ Single\ Page\ Applications\ that\ utilise\ the\ HTML5\ History\ API.}
+\DoxyCodeLine{\ \ -\/-\/no-\/history-\/api-\/fallback\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disallows\ to\ proxy\ requests\ through\ a\ specified\ index\ page.}
+\DoxyCodeLine{\ \ -\/-\/host\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ specify\ a\ hostname\ to\ use.}
+\DoxyCodeLine{\ \ -\/-\/hot\ [value]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enables\ Hot\ Module\ Replacement.}
+\DoxyCodeLine{\ \ -\/-\/no-\/hot\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ Hot\ Module\ Replacement.}
+\DoxyCodeLine{\ \ -\/-\/http2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ serve\ over\ HTTP/2\ using\ SPDY.\ Deprecated,\ use\ the\ \`{}server`\ option.}
+\DoxyCodeLine{\ \ -\/-\/no-\/http2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ serve\ over\ HTTP/2\ using\ SPDY.}
+\DoxyCodeLine{\ \ -\/-\/https\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ configure\ the\ server's\ listening\ socket\ for\ TLS\ (by\ default,\ dev\ server\ will\ be\ served\ over\ HTTP).\ Deprecated,\ use\ the\ \`{}server`\ option.}
+\DoxyCodeLine{\ \ -\/-\/no-\/https\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disallows\ to\ configure\ the\ server's\ listening\ socket\ for\ TLS\ (by\ default,\ dev\ server\ will\ be\ served\ over\ HTTP).}
+\DoxyCodeLine{\ \ -\/-\/https-\/passphrase\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Passphrase\ for\ a\ pfx\ file.\ Deprecated,\ use\ the\ \`{}server.options.passphrase`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/request-\/cert\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Request\ for\ an\ SSL\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.requestCert`\ option.}
+\DoxyCodeLine{\ \ -\/-\/no-\/https-\/request-\/cert\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ request\ for\ an\ SSL\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/https-\/ca\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.ca`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/ca-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'https.ca'\ configuration.\ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.ca`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/cacert\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.ca`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/cacert-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'https.cacert'\ configuration.\ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.ca`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/cert\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ certificate\ or\ content\ of\ an\ SSL\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.cert`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/cert-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'https.cert'\ configuration.\ Path\ to\ an\ SSL\ certificate\ or\ content\ of\ an\ SSL\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.cert`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/crl\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists)\ or\ content\ of\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists).\ Deprecated,\ use\ the\ \`{}server.options.crl`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/crl-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'https.crl'\ configuration.\ Path\ to\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists)\ or\ content\ of\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists).\ Deprecated,\ use\ the\ \`{}server.options.crl`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/key\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ key\ or\ content\ of\ an\ SSL\ key.\ Deprecated,\ use\ the\ \`{}server.options.key`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/key-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'https.key'\ configuration.\ Path\ to\ an\ SSL\ key\ or\ content\ of\ an\ SSL\ key.\ Deprecated,\ use\ the\ \`{}server.options.key`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/pfx\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ pfx\ file\ or\ content\ of\ an\ SSL\ pfx\ file.\ Deprecated,\ use\ the\ \`{}server.options.pfx`\ option.}
+\DoxyCodeLine{\ \ -\/-\/https-\/pfx-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'https.pfx'\ configuration.\ Path\ to\ an\ SSL\ pfx\ file\ or\ content\ of\ an\ SSL\ pfx\ file.\ Deprecated,\ use\ the\ \`{}server.options.pfx`\ option.}
+\DoxyCodeLine{\ \ -\/-\/ipc\ [value]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Listen\ to\ a\ unix\ socket.}
+\DoxyCodeLine{\ \ -\/-\/live-\/reload\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enables\ reload/refresh\ the\ page(s)\ when\ file\ changes\ are\ detected\ (enabled\ by\ default).}
+\DoxyCodeLine{\ \ -\/-\/no-\/live-\/reload\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ reload/refresh\ the\ page(s)\ when\ file\ changes\ are\ detected\ (enabled\ by\ default).}
+\DoxyCodeLine{\ \ -\/-\/magic-\/html\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tells\ dev-\/server\ whether\ to\ enable\ magic\ HTML\ routes\ (routes\ corresponding\ to\ your\ webpack\ output,\ for\ example\ '/main'\ for\ 'main.js').}
+\DoxyCodeLine{\ \ -\/-\/no-\/magic-\/html\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disables\ magic\ HTML\ routes\ (routes\ corresponding\ to\ your\ webpack\ output,\ for\ example\ '/main'\ for\ 'main.js').}
+\DoxyCodeLine{\ \ -\/-\/open\ [value...]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ configure\ dev\ server\ to\ open\ the\ browser(s)\ and\ page(s)\ after\ server\ had\ been\ started\ (set\ it\ to\ true\ to\ open\ your\ default\ browser).}
+\DoxyCodeLine{\ \ -\/-\/no-\/open\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ open\ the\ default\ browser.}
+\DoxyCodeLine{\ \ -\/-\/open-\/target\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Opens\ specified\ page\ in\ browser.}
+\DoxyCodeLine{\ \ -\/-\/open-\/app-\/name\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Open\ specified\ browser.}
+\DoxyCodeLine{\ \ -\/-\/open-\/app\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Open\ specified\ browser.\ Deprecated:\ please\ use\ '-\/-\/open-\/app-\/name'.}
+\DoxyCodeLine{\ \ -\/-\/open-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'open'\ configuration.\ Allows\ to\ configure\ dev\ server\ to\ open\ the\ browser(s)\ and\ page(s)\ after\ server\ had\ been\ started\ (set\ it\ to\ true\ to\ open\ your\ default\ browser).}
+\DoxyCodeLine{\ \ -\/-\/open-\/target-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'open.target'\ configuration.\ Opens\ specified\ page\ in\ browser.}
+\DoxyCodeLine{\ \ -\/-\/open-\/app-\/name-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'open.app.name'\ configuration.\ Open\ specified\ browser.}
+\DoxyCodeLine{\ \ -\/-\/port\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ specify\ a\ port\ to\ use.}
+\DoxyCodeLine{\ \ -\/-\/server-\/type\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ set\ server\ and\ options\ (by\ default\ 'http').}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/passphrase\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Passphrase\ for\ a\ pfx\ file.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/request-\/cert\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Request\ for\ an\ SSL\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/no-\/server-\/options-\/request-\/cert\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ request\ for\ an\ SSL\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/ca\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/ca-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'server.options.ca'\ configuration.\ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/cacert\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.ca`\ option.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/cacert-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'server.options.cacert'\ configuration.\ Path\ to\ an\ SSL\ CA\ certificate\ or\ content\ of\ an\ SSL\ CA\ certificate.\ Deprecated,\ use\ the\ \`{}server.options.ca`\ option.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/cert\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ certificate\ or\ content\ of\ an\ SSL\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/cert-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'server.options.cert'\ configuration.\ Path\ to\ an\ SSL\ certificate\ or\ content\ of\ an\ SSL\ certificate.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/crl\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists)\ or\ content\ of\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists).}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/crl-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'server.options.crl'\ configuration.\ Path\ to\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists)\ or\ content\ of\ PEM\ formatted\ CRLs\ (Certificate\ Revocation\ Lists).}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/key\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ key\ or\ content\ of\ an\ SSL\ key.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/key-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'server.options.key'\ configuration.\ Path\ to\ an\ SSL\ key\ or\ content\ of\ an\ SSL\ key.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/pfx\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Path\ to\ an\ SSL\ pfx\ file\ or\ content\ of\ an\ SSL\ pfx\ file.}
+\DoxyCodeLine{\ \ -\/-\/server-\/options-\/pfx-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'server.options.pfx'\ configuration.\ Path\ to\ an\ SSL\ pfx\ file\ or\ content\ of\ an\ SSL\ pfx\ file.}
+\DoxyCodeLine{\ \ -\/-\/static\ [value...]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ configure\ options\ for\ serving\ static\ files\ from\ directory\ (by\ default\ 'public'\ directory).}
+\DoxyCodeLine{\ \ -\/-\/no-\/static\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disallows\ to\ configure\ options\ for\ serving\ static\ files\ from\ directory.}
+\DoxyCodeLine{\ \ -\/-\/static-\/directory\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Directory\ for\ static\ contents.}
+\DoxyCodeLine{\ \ -\/-\/static-\/public-\/path\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ static\ files\ will\ be\ available\ in\ the\ browser\ under\ this\ public\ path.}
+\DoxyCodeLine{\ \ -\/-\/static-\/serve-\/index\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Tells\ dev\ server\ to\ use\ serveIndex\ middleware\ when\ enabled.}
+\DoxyCodeLine{\ \ -\/-\/no-\/static-\/serve-\/index\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ tell\ dev\ server\ to\ use\ serveIndex\ middleware.}
+\DoxyCodeLine{\ \ -\/-\/static-\/watch\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Watches\ for\ files\ in\ static\ content\ directory.}
+\DoxyCodeLine{\ \ -\/-\/no-\/static-\/watch\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Does\ not\ watch\ for\ files\ in\ static\ content\ directory.}
+\DoxyCodeLine{\ \ -\/-\/static-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'static'\ configuration.\ Allows\ to\ configure\ options\ for\ serving\ static\ files\ from\ directory\ (by\ default\ 'public'\ directory).}
+\DoxyCodeLine{\ \ -\/-\/static-\/public-\/path-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'static.publicPath'\ configuration.\ The\ static\ files\ will\ be\ available\ in\ the\ browser\ under\ this\ public\ path.}
+\DoxyCodeLine{\ \ -\/-\/watch-\/files\ <value...>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ configure\ list\ of\ globs/directories/files\ to\ watch\ for\ file\ changes.}
+\DoxyCodeLine{\ \ -\/-\/watch-\/files-\/reset\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Clear\ all\ items\ provided\ in\ 'watchFiles'\ configuration.\ Allows\ to\ configure\ list\ of\ globs/directories/files\ to\ watch\ for\ file\ changes.}
+\DoxyCodeLine{\ \ -\/-\/web-\/socket-\/server\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Deprecated:\ please\ use\ '-\/-\/web-\/socket-\/server-\/type'\ option.\ Allows\ to\ set\ web\ socket\ server\ and\ options\ (by\ default\ 'ws').}
+\DoxyCodeLine{\ \ -\/-\/no-\/web-\/socket-\/server\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disallows\ to\ set\ web\ socket\ server\ and\ options.}
+\DoxyCodeLine{\ \ -\/-\/web-\/socket-\/server-\/type\ <value>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Allows\ to\ set\ web\ socket\ server\ and\ options\ (by\ default\ 'ws').}
+\DoxyCodeLine{}
+\DoxyCodeLine{Global\ options:}
+\DoxyCodeLine{\ \ -\/-\/color\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enable\ colors\ on\ console.}
+\DoxyCodeLine{\ \ -\/-\/no-\/color\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Disable\ colors\ on\ console.}
+\DoxyCodeLine{\ \ -\/v,\ -\/-\/version\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Output\ the\ version\ number\ of\ 'webpack',\ 'webpack-\/cli'\ and\ 'webpack-\/dev-\/server'\ and\ commands.}
+\DoxyCodeLine{\ \ -\/h,\ -\/-\/help\ [verbose]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Display\ help\ for\ commands\ and\ options.}
+\DoxyCodeLine{}
+\DoxyCodeLine{To\ see\ list\ of\ all\ supported\ commands\ and\ options\ run\ 'webpack\ -\/-\/help=verbose'.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Webpack\ documentation:\ https://webpack.js.org/.}
+\DoxyCodeLine{CLI\ documentation:\ https://webpack.js.org/api/cli/.}
+\DoxyCodeLine{Made\ with\ ♥\ by\ the\ webpack\ team.}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\bfseries{Note}}
+
+{\itshape Detailed documentation for above options is available on this \href{https://webpack.js.org/configuration/dev-server/}{\texttt{ link}}.} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26560}{}\doxysubsubsection{\texorpdfstring{With NPM Scripts}{With NPM Scripts}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26560}
+NPM package.\+json scripts are a convenient and useful means to run locally installed binaries without having to be concerned about their full paths. Simply define a script as such\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}scripts"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}serve"{}:\ "{}webpack\ serve"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+And run the following in your terminal/console\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ run\ serve}
+
+\end{DoxyCode}
+
+
+NPM will automatically refer to the the binary in {\ttfamily node\+\_\+modules} for you, and execute the file or command.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26561}{}\doxysubsubsection{\texorpdfstring{With the API}{With the API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26561}
+While it\textquotesingle{}s recommended to run webpack-\/dev-\/server via the CLI, you may also choose to start a server via the API.
+
+See the related \href{https://webpack.js.org/api/webpack-dev-server/}{\texttt{ API documentation for {\ttfamily webpack-\/dev-\/server}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26562}{}\doxysubsubsection{\texorpdfstring{With Type\+Script}{With Type\+Script}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26562}
+If you use Type\+Script in the webpack config, you\textquotesingle{}ll need to properly type {\ttfamily dev\+Server} property in order to avoid TS errors (e.\+g. `\textquotesingle{}dev\+Server' does not exist in type \textquotesingle{}Configuration\textquotesingle{}\`{}). For that use either\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{///\ <reference\ path="{}node\_modules/webpack-\/dev-\/server/types/lib/Server.d.ts"{}/>}
+\DoxyCodeLine{import\ type\ \{\ Configuration\ \}\ from\ "{}webpack"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Your\ logic}
+
+\end{DoxyCode}
+
+
+Or you can import the type from {\ttfamily webpack-\/dev-\/server}, i.\+e.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ type\ \{\ Configuration\ as\ DevServerConfiguration\ \}\ from\ "{}webpack-\/dev-\/server"{};}
+\DoxyCodeLine{import\ type\ \{\ Configuration\ \}\ from\ "{}webpack"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ devServer:\ DevServerConfiguration\ =\ \{\};}
+\DoxyCodeLine{const\ config:\ Configuration\ =\ \{\ devServer\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ module.exports}
+\DoxyCodeLine{export\ default\ config;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26563}{}\doxysubsubsection{\texorpdfstring{The Result}{The Result}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26563}
+Either method will start a server instance and begin listening for connections from {\ttfamily localhost} on port {\ttfamily 8080}.
+
+webpack-\/dev-\/server is configured by default to support live-\/reload of files as you edit your assets while the server is running.
+
+See \href{https://webpack.js.org/configuration/dev-server/\#devserver}{\texttt{ {\bfseries{the documentation}}}} for more use cases and options.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26564}{}\doxysubsection{\texorpdfstring{Browser Support}{Browser Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26564}
+While {\ttfamily webpack-\/dev-\/server} transpiles the client (browser) scripts to an ES5 state, the project only officially supports the {\itshape last two versions of major browsers}. We simply don\textquotesingle{}t have the resources to support every whacky browser out there.
+
+If you find a bug with an obscure / old browser, we would actively welcome a Pull Request to resolve the bug.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26565}{}\doxysubsection{\texorpdfstring{Support}{Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26565}
+We do our best to keep issues in the repository focused on bugs, features, and needed modifications to the code for the module. Because of that, we ask users with general support, "{}how-\/to"{}, or "{}why isn\textquotesingle{}t this working"{} questions to try one of the other support channels that are available.
+
+Your first-\/stop-\/shop for support for webpack-\/dev-\/server should be the excellent \href{https://webpack.js.org/configuration/dev-server/\#devserver}{\texttt{ documentation}} for the module. If you see an opportunity for improvement of those docs, please head over to the \href{https://github.com/webpack/webpack.js.org}{\texttt{ webpack.\+js.\+org repo}} and open a pull request.
+
+From there, we encourage users to visit the \href{https://gitter.im/webpack/webpack}{\texttt{ webpack Gitter chat}} and talk to the fine folks there. If your quest for answers comes up dry in chat, head over to \href{https://stackoverflow.com/questions/tagged/webpack-dev-server}{\texttt{ Stack\+Overflow}} and do a quick search or open a new question. Remember; It\textquotesingle{}s always much easier to answer questions that include your {\ttfamily webpack.\+config.\+js} and relevant files!
+
+If you\textquotesingle{}re twitter-\/savvy you can tweet \href{https://twitter.com/search?q=webpack}{\texttt{ \#webpack}} with your question and someone should be able to reach out and lend a hand.
+
+If you have discovered a \+:bug\+:, have a feature suggestion, or would like to see a modification, please feel free to create an issue on Github. {\itshape Note\+: The issue template isn\textquotesingle{}t optional, so please be sure not to remove it, and please fill it out completely.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26566}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26566}
+We welcome your contributions! Please have a read of CONTRIBUTING.md for more information on how to get involved.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26567}{}\doxysubsection{\texorpdfstring{Attribution}{Attribution}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26567}
+This project is heavily inspired by \href{https://github.com/peerigon/nof5}{\texttt{ peerigon/nof5}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26568}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26568}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26569}{}\doxyparagraph{\texorpdfstring{\href{./LICENSE}{\texttt{ MIT}}}{\href{./LICENSE}{\texttt{ MIT}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-server_2_r_e_a_d_m_e_autotoc_md26569}

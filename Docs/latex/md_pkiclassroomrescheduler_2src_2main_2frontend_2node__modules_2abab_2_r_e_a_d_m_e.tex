@@ -1,0 +1,49 @@
+\chapter{abab \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/abab"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://badge.\+fury.\+io/js/abab.\+svg"{} alt="{}npm version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jsdom/abab"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/jsdom/abab.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e}\index{abab $<$a href="{}https://www.npmjs.com/package/abab"{} $>$$<$img src="{}https://badge.fury.io/js/abab.svg"{} alt="{}npm version"{}/$>$$<$/a$>$ $<$a href="{}https://travis-\/ci.org/jsdom/abab"{} $>$$<$img src="{}https://travis-\/ci.org/jsdom/abab.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{abab $<$a href=""https://www.npmjs.com/package/abab"" $>$$<$img src=""https://badge.fury.io/js/abab.svg"" alt=""npm version""/$>$$<$/a$>$ $<$a href=""https://travis-\/ci.org/jsdom/abab"" $>$$<$img src=""https://travis-\/ci.org/jsdom/abab.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4400}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4400}%
+ A Java\+Script module that implements {\ttfamily window.\+atob} and {\ttfamily window.\+btoa} according the forgiving-\/base64 algorithm in the \href{https://infra.spec.whatwg.org/\#forgiving-base64}{\texttt{ Infra Standard}}. The original code was forked from \href{https://github.com/w3c/web-platform-tests/blob/master/html/webappapis/atob/base64.html}{\texttt{ w3c/web-\/platform-\/tests}}.
+
+Compatibility\+: Node.\+js version 3+ and all major browsers.
+
+Install with {\ttfamily npm}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ abab}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4401}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4401}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4402}{}\doxysubsection{\texorpdfstring{{\ttfamily btoa} (base64 encode)}{{\ttfamily btoa} (base64 encode)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4402}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ btoa\ \}\ =\ require('abab');}
+\DoxyCodeLine{btoa('Hello,\ world!');\ //\ 'SGVsbG8sIHdvcmxkIQ=='}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4403}{}\doxysubsection{\texorpdfstring{{\ttfamily atob} (base64 decode)}{{\ttfamily atob} (base64 decode)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4403}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ atob\ \}\ =\ require('abab');}
+\DoxyCodeLine{atob('SGVsbG8sIHdvcmxkIQ==');\ //\ 'Hello,\ world!'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4404}{}\doxysubsubsection{\texorpdfstring{Valid characters}{Valid characters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4404}
+\href{https://html.spec.whatwg.org/multipage/webappapis.html\#atob:dom-windowbase64-btoa-3}{\texttt{ Per the spec}}, {\ttfamily btoa} will accept strings "{}containing only characters in the range \`{}\+U+0000\`{} to \`{}\+U+00\+FF\`{}."{} If passed a string with characters above {\ttfamily U+00\+FF}, {\ttfamily btoa} will return {\ttfamily null}. If {\ttfamily atob} is passed a string that is not base64-\/valid, it will also return {\ttfamily null}. In both cases when {\ttfamily null} is returned, the spec calls for throwing a {\ttfamily DOMException} of type {\ttfamily Invalid\+Character\+Error}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4405}{}\doxysection{\texorpdfstring{Browsers}{Browsers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4405}
+If you want to include just one of the methods to save bytes in your client-\/side code, you can {\ttfamily require} the desired module directly.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ atob\ =\ require('abab/lib/atob');}
+\DoxyCodeLine{const\ btoa\ =\ require('abab/lib/btoa');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4406}{}\doxysection{\texorpdfstring{Development}{Development}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4406}
+If you\textquotesingle{}re {\bfseries{submitting a PR}} or {\bfseries{deploying to npm}}, please use the \href{CONTRIBUTING.md\#checklists}{\texttt{ checklists in CONTRIBUTING.\+md}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4407}{}\doxysection{\texorpdfstring{Remembering what {\ttfamily atob} and {\ttfamily btoa} stand for}{Remembering what {\ttfamily atob} and {\ttfamily btoa} stand for}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2abab_2_r_e_a_d_m_e_autotoc_md4407}
+Base64 comes from IETF \href{https://tools.ietf.org/html/rfc4648\#section-4}{\texttt{ RFC 4648}} (2006).
+
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily btoa}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, the encoder function, stands for {\bfseries{binary}} to {\bfseries{ASCII}}, meaning it converts any binary input into a subset of {\bfseries{ASCII}} (Base64).
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily atob}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, the decoder function, converts {\bfseries{ASCII}} (or Base64) to its original {\bfseries{binary}} format. 
+\end{DoxyItemize}

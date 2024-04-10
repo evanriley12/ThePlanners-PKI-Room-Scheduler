@@ -1,0 +1,55 @@
+\chapter{pkg-\/dir \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/pkg-\/dir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/pkg-\/dir.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme}\index{pkg-\/dir $<$a href="{}https://travis-\/ci.org/sindresorhus/pkg-\/dir"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/pkg-\/dir.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{pkg-\/dir $<$a href=""https://travis-\/ci.org/sindresorhus/pkg-\/dir"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/pkg-\/dir.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18241}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18241}%
+ \begin{quote}
+Find the root directory of a Node.\+js project or npm package \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18242}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18242}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ pkg-\/dir}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18243}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18243}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/}
+\DoxyCodeLine{└──\ Users}
+\DoxyCodeLine{\ \ \ \ └──\ sindresorhus}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ └──\ foo}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ├──\ package.json}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ └──\ bar}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ├──\ baz}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ └──\ example.js}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ example.js}
+\DoxyCodeLine{const\ pkgDir\ =\ require('pkg-\/dir');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ const\ rootDir\ =\ await\ pkgDir(\_\_dirname);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(rootDir);}
+\DoxyCodeLine{\ \ \ \ //=>\ '/Users/sindresorhus/foo'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18244}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18244}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18245}{}\doxysubsection{\texorpdfstring{pkg\+Dir(\mbox{[}cwd\mbox{]})}{pkg\+Dir(\mbox{[}cwd\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18245}
+Returns a {\ttfamily Promise} for either the project root path or {\ttfamily undefined} if it couldn\textquotesingle{}t be found.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18246}{}\doxysubsection{\texorpdfstring{pkg\+Dir.\+sync(\mbox{[}cwd\mbox{]})}{pkg\+Dir.\+sync(\mbox{[}cwd\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18246}
+Returns the project root path or {\ttfamily undefined} if it couldn\textquotesingle{}t be found.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18247}{}\doxysubsubsection{\texorpdfstring{cwd}{cwd}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18247}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Directory to start from.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18248}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18248}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/pkg-dir-cli}{\texttt{ pkg-\/dir-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/pkg-up}{\texttt{ pkg-\/up}} -\/ Find the closest package.\+json file
+\item \href{https://github.com/sindresorhus/find-up}{\texttt{ find-\/up}} -\/ Find a file by walking up parent directories
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18249}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2pkg-dir_2readme_autotoc_md18249}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

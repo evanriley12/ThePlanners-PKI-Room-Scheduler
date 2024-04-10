@@ -1,0 +1,43 @@
+\chapter{path-\/key \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/path-\/key"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/path-\/key.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme}\index{path-\/key $<$a href="{}https://travis-\/ci.org/sindresorhus/path-\/key"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/path-\/key.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{path-\/key $<$a href=""https://travis-\/ci.org/sindresorhus/path-\/key"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/path-\/key.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17940}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17940}%
+ \begin{quote}
+Get the \href{https://en.wikipedia.org/wiki/PATH_(variable)}{\texttt{ PATH}} environment variable key cross-\/platform \end{quote}
+It\textquotesingle{}s usually {\ttfamily PATH}, but on Windows it can be any casing like {\ttfamily Path}...\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17941}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17941}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ path-\/key}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17942}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17942}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pathKey\ =\ require('path-\/key');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ key\ =\ pathKey();}
+\DoxyCodeLine{//=>\ 'PATH'}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ PATH\ =\ process.env[key];}
+\DoxyCodeLine{//=>\ '/usr/local/bin:/usr/bin:/bin'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17943}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17943}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17944}{}\doxysubsection{\texorpdfstring{path\+Key(options?)}{path\+Key(options?)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17944}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17945}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17945}
+Type\+: {\ttfamily object}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17946}{}\doxyparagraph{\texorpdfstring{env}{env}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17946}
+Type\+: {\ttfamily object}~\newline
+ Default\+: \href{https://nodejs.org/api/process.html\#process_process_env}{\texttt{ {\ttfamily process.\+env}}}
+
+Use a custom environment variables object.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17947}{}\doxysubsubsection{\texorpdfstring{platform}{platform}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2path-key_2readme_autotoc_md17947}
+Type\+: {\ttfamily string}~\newline
+ Default\+: \href{https://nodejs.org/api/process.html\#process_process_platform}{\texttt{ {\ttfamily process.\+platform}}}
+
+Get the PATH key for a specific platform.
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-path-key?utm_source=npm-path-key&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for this package with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

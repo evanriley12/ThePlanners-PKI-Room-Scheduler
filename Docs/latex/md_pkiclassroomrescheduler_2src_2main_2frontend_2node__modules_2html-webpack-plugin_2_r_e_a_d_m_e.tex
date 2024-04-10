@@ -1,0 +1,602 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e}\index{README@{README}}
+\href{https://npmjs.com/package/html-webpack-plugin}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }}  \href{https://github.com/jantimon/html-webpack-plugin/actions?query=workflow\%3ACI}{\texttt{ }} !\mbox{[}Backers on Open Collective\mbox{]}(https\+://opencollective.com/html-\/webpack-\/plugin/backers/badge.svg) !\mbox{[}Sponsors on Open Collective\mbox{]}(https\+://opencollective.com/html-\/webpack-\/plugin/sponsors/badge.svg)
+
+  \href{https://github.com/webpack/webpack}{\texttt{  }}    \doxysection*{HTML Webpack Plugin}
+
+ 
+
+Plugin that simplifies creation of HTML files to serve your bundles
+
+ 
+
+\doxysubsection*{Install}
+
+\doxysubsubsection*{Webpack 5}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ -\/-\/save-\/dev\ html-\/webpack-\/plugin}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/-\/dev\ html-\/webpack-\/plugin}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{Webpack 4}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ -\/-\/save-\/dev\ html-\/webpack-\/plugin@4}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/-\/dev\ html-\/webpack-\/plugin@4}
+
+\end{DoxyCode}
+
+
+This is a \href{http://webpack.js.org/}{\texttt{ webpack}} plugin that simplifies creation of HTML files to serve your {\ttfamily webpack} bundles. This is especially useful for {\ttfamily webpack} bundles that include a hash in the filename which changes every compilation. You can either let the plugin generate an HTML file for you, supply your own template using {\ttfamily lodash} templates or use your own loader.
+
+\doxysubsection*{Sponsors}
+
+\href{https://opencollective.com/html-webpack-plugin/sponsor/0/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/1/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/2/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/3/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/4/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/5/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/6/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/7/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/8/website}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/sponsor/9/website}{\texttt{ }}
+
+Thanks for supporting the ongoing improvements to the html-\/webpack-\/plugin! ~\newline
+
+
+\doxysubsection*{Zero Config}
+
+The {\ttfamily html-\/webpack-\/plugin} works without configuration. ~\newline
+ It\textquotesingle{}s a great addition to the \href{https://github.com/namics/webpack-config-plugins/blob/master/README.md\#zero-config-webpack-dev-server-example}{\texttt{ ⚙️ webpack-\/config-\/plugins}}.
+
+\doxysubsection*{Plugins}
+
+The {\ttfamily html-\/webpack-\/plugin} provides \href{https://github.com/jantimon/html-webpack-plugin\#events}{\texttt{ hooks}} to extend it to your needs. There are already some really powerful plugins which can be integrated with zero configuration
+
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/webpack-subresource-integrity}{\texttt{ webpack-\/subresource-\/integrity}} for enhanced asset security
+\item \href{https://github.com/lettertwo/appcache-webpack-plugin}{\texttt{ appcache-\/webpack-\/plugin}} for i\+OS and Android offline usage
+\item \href{https://github.com/jantimon/favicons-webpack-plugin}{\texttt{ favicons-\/webpack-\/plugin}} which generates favicons and icons for i\+OS, Android and desktop browsers
+\item \href{https://github.com/jantimon/html-webpack-harddisk-plugin}{\texttt{ html-\/webpack-\/harddisk-\/plugin}} can be used to always write to disk the html file, useful when webpack-\/dev-\/server / HMR are being used
+\item \href{https://github.com/thegc/html-webpack-inline-svg-plugin}{\texttt{ html-\/webpack-\/inline-\/svg-\/plugin}} to inline SVGs in the resulting HTML file.
+\item \href{https://github.com/jamesjieye/html-webpack-exclude-assets-plugin}{\texttt{ html-\/webpack-\/exclude-\/assets-\/plugin}} for excluding assets using regular expressions
+\item \href{https://github.com/jharris4/html-webpack-include-assets-plugin}{\texttt{ html-\/webpack-\/include-\/assets-\/plugin}} for including lists of js or css file paths (such as those copied by the copy-\/webpack-\/plugin).
+\item \href{https://github.com/thearchitgarg/html-webpack-injector}{\texttt{ html-\/webpack-\/injector}} to inject chunks in {\ttfamily head} or {\ttfamily body} (different locations ) of same html document.
+\item \href{https://github.com/jantimon/resource-hints-webpack-plugin}{\texttt{ resource-\/hints-\/webpack-\/plugin}} to add resource hints for faster initial page loads using `\texorpdfstring{$<$}{<}link rel=\textquotesingle{}preload'\texorpdfstring{$>$}{>}{\ttfamily and}$<$link rel=\textquotesingle{}prefetch\textquotesingle{}$>${\ttfamily }
+\item {\ttfamily \mbox{[}link-\/media-\/html-\/webpack-\/plugin\mbox{]}(\href{https://github.com/yaycmyk/link-media-html-webpack-plugin}{\texttt{ https\+://github.\+com/yaycmyk/link-\/media-\/html-\/webpack-\/plugin}}) allows for injected stylesheet}$<$link $>${\ttfamily tags to have their media attribute set automatically; useful for providing specific desktop/mobile/print etc. stylesheets that the browser will conditionally download}
+\item {\ttfamily \mbox{[}html-\/webpack-\/inline-\/style-\/plugin\mbox{]}(\href{https://github.com/djaax/html-webpack-inline-style-plugin}{\texttt{ https\+://github.\+com/djaax/html-\/webpack-\/inline-\/style-\/plugin}}) for inlining styles to HTML elements using \mbox{[}juice\mbox{]}(\href{https://github.com/Automattic/juice}{\texttt{ https\+://github.\+com/\+Automattic/juice}}). Useful for email generation automatisation.}
+\item {\ttfamily \mbox{[}html-\/webpack-\/exclude-\/empty-\/assets-\/plugin\mbox{]}(\href{https://github.com/KnisterPeter/html-webpack-exclude-empty-assets-plugin}{\texttt{ https\+://github.\+com/\+Knister\+Peter/html-\/webpack-\/exclude-\/empty-\/assets-\/plugin}}) removes empty assets from being added to the html. This fixes some problems with extract-\/text-\/plugin with webpack 4.}
+\item {\ttfamily \mbox{[}webpack-\/concat-\/plugin\mbox{]}(\href{https://github.com/hxlniada/webpack-concat-plugin}{\texttt{ https\+://github.\+com/hxlniada/webpack-\/concat-\/plugin}}) for concat and uglify files that needn\textquotesingle{}t to be webpack bundles(for legacy files) and inject to html-\/webpack-\/plugin.}
+\item {\ttfamily \mbox{[}html-\/webpack-\/link-\/type-\/plugin\mbox{]}(\href{https://github.com/steadyapp/html-webpack-link-type-plugin}{\texttt{ https\+://github.\+com/steadyapp/html-\/webpack-\/link-\/type-\/plugin}}) adds a configurable mimetype to resources injected as links (such as adding type="{}text/css"{} to external stylesheets) for compatibility with "{}strict mode"{}.}
+\item {\ttfamily \mbox{[}csp-\/html-\/webpack-\/plugin\mbox{]}(\href{https://github.com/slackhq/csp-html-webpack-plugin}{\texttt{ https\+://github.\+com/slackhq/csp-\/html-\/webpack-\/plugin}}) to add \mbox{[}Content Security Policy\mbox{]}(\href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+HTTP/\+Headers/\+Content-\/\+Security-\/\+Policy}}) meta tags to the HTML output}
+\item {\ttfamily \mbox{[}strict-\/csp-\/html-\/webpack-\/plugin\mbox{]}(\href{https://github.com/google/strict-csp/tree/main/strict-csp-html-webpack-plugin}{\texttt{ https\+://github.\+com/google/strict-\/csp/tree/main/strict-\/csp-\/html-\/webpack-\/plugin}}) to add a \mbox{[}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}strict\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Content-\/\+Security-\/\+Policy (CSP)\mbox{]}(\href{https://web.dev}{\texttt{ https\+://web.\+dev}}) as a}meta{\ttfamily tag to the HTML output. A strict CSP is specifically efficient against XSS attacks.}
+\item {\ttfamily \mbox{[}webpack-\/nomodule-\/plugin\mbox{]}(\href{https://github.com/swimmadude66/webpack-nomodule-plugin}{\texttt{ https\+://github.\+com/swimmadude66/webpack-\/nomodule-\/plugin}}) allows you to add a}nomodule` attribute to specific injected scripts, which prevents the scripts from being loaded by newer browsers. Good for limiting loads of polyfills.
+\begin{DoxyItemize}
+\item \mbox{[}html-\/webpack-\/skip-\/assets-\/plugin\mbox{]}(\href{https://github.com/swimmadude66/html-webpack-skip-assets-plugin}{\texttt{ https\+://github.\+com/swimmadude66/html-\/webpack-\/skip-\/assets-\/plugin}}) Skip adding certain output files to the html file. Built as a drop-\/in replacement for \mbox{[}html-\/webpack-\/exclude-\/assets-\/plugin\mbox{]}(\href{https://www.npmjs.com/package/html-webpack-exclude-assets-plugin}{\texttt{ https\+://www.\+npmjs.\+com/package/html-\/webpack-\/exclude-\/assets-\/plugin}}) and works with newer \mbox{[}html-\/webpack-\/plugin\mbox{]}(\href{https://github.com/jantimon/html-webpack-plugin}{\texttt{ https\+://github.\+com/jantimon/html-\/webpack-\/plugin}}) versions
+\end{DoxyItemize}
+\item \mbox{[}html-\/webpack-\/inject-\/preload\mbox{]}(\href{https://github.com/principalstudio/html-webpack-inject-preload}{\texttt{ https\+://github.\+com/principalstudio/html-\/webpack-\/inject-\/preload}}) allows to add preload links \texorpdfstring{$<$}{<}link rel=\textquotesingle{}preload'\texorpdfstring{$>$}{>} anywhere you want.
+\item \href{https://github.com/Jaid/inject-body-webpack-plugin}{\texttt{ inject-\/body-\/webpack-\/plugin}} is a simple method of injecting a custom HTML string into the body.
+\item \href{https://github.com/TommasoAmici/html-webpack-plugin-django}{\texttt{ html-\/webpack-\/plugin-\/django}} a Webpack plugin to inject Django static tags.
+\item \href{https://github.com/dyw934854565/html-webpack-inject-attributes-plugin}{\texttt{ html-\/webpack-\/inject-\/attributes-\/plugin}} add extra attributes to inject asset\+Tags.
+\item \href{https://github.com/liam61/html-webpack-plugin}{\texttt{ js-\/entry-\/webpack-\/plugin}} creates webpack bundles into your js entry
+\end{DoxyItemize}
+
+\doxysubsection*{Usage}
+
+The plugin will generate an HTML5 file for you that includes all your {\ttfamily webpack} bundles in the head using {\ttfamily script} tags. Just add the plugin to your {\ttfamily webpack} config as follows\+:
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ HtmlWebpackPlugin\ =\ require('html-\/webpack-\/plugin')}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ entry:\ 'index.js',}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ path:\ \_\_dirname\ +\ '/dist',}
+\DoxyCodeLine{\ \ \ \ filename:\ 'index\_bundle.js'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ HtmlWebpackPlugin()}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This will generate a file {\ttfamily dist/index.\+html} containing the following
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!DOCTYPE\ html>}
+\DoxyCodeLine{<html>}
+\DoxyCodeLine{\ \ <head>}
+\DoxyCodeLine{\ \ \ \ <meta\ charset="{}utf-\/8"{}>}
+\DoxyCodeLine{\ \ \ \ <title>Webpack\ App</title>}
+\DoxyCodeLine{\ \ \ \ <script\ defer\ src="{}index\_bundle.js"{}></script>}
+\DoxyCodeLine{\ \ </head>}
+\DoxyCodeLine{\ \ <body>}
+\DoxyCodeLine{\ \ </body>}
+\DoxyCodeLine{</html>}
+
+\end{DoxyCode}
+
+
+If you have multiple {\ttfamily webpack} entry points, they will all be included with {\ttfamily script} tags in the generated HTML.
+
+If you have any CSS assets in webpack\textquotesingle{}s output (for example, CSS extracted with the \href{https://github.com/webpack-contrib/mini-css-extract-plugin}{\texttt{ mini-\/css-\/extract-\/plugin}}) then these will be included with {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} tags in the HTML head.
+
+If you have plugins that make use of it, {\ttfamily html-\/webpack-\/plugin} should be ordered first before any of the integrated Plugins.
+
+\doxysubsection*{Options}
+
+You can pass a hash of configuration options to {\ttfamily html-\/webpack-\/plugin}. Allowed values are as follows\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily title}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily \{String\}}   &\PBS\centering {\ttfamily Webpack App}   &The title to use for the generated HTML document    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily filename}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily \{String\textbackslash{}\texorpdfstring{$\vert$}{|}\+Function\}}   &\PBS\centering `\textquotesingle{}index.\+html'{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} The file to write the HTML to. Defaults to}index.\+html{\ttfamily . You can specify a subdirectory here too (eg\+:}assets/admin.\+html{\ttfamily ). The}\mbox{[}name\mbox{]}{\ttfamily placeholder will be replaced with the entry name. Can also be a function e.\+g.}(entry\+Name) =\texorpdfstring{$>$}{>} entry\+Name + \textquotesingle{}.html\textquotesingle{}{\ttfamily . \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}template{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{String\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>}}webpack{\ttfamily relative or absolute path to the template. By default it will use}src/index.\+ejs{\ttfamily if it exists. Please see the \mbox{[}docs\mbox{]}(\href{https://github.com/jantimon/html-webpack-plugin/blob/master/docs/template-option.md}{\texttt{ https\+://github.\+com/jantimon/html-\/webpack-\/plugin/blob/master/docs/template-\/option.\+md}}) for details \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}template\+Content{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{string$|$Function$|$false\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} false \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Can be used instead of}template{\ttfamily to provide an inline template -\/ please read the \mbox{[}Writing Your Own Templates\mbox{]}(\href{https://github.com/jantimon/html-webpack-plugin}{\texttt{ https\+://github.\+com/jantimon/html-\/webpack-\/plugin}}\#writing-\/your-\/own-\/templates) section \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}template\+Parameters{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{Boolean$|$Object$|$Function\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}false{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Allows to overwrite the parameters used in the template -\/ see \mbox{[}example\mbox{]}(\href{https://github.com/jantimon/html-webpack-plugin/tree/master/examples/template-parameters}{\texttt{ https\+://github.\+com/jantimon/html-\/webpack-\/plugin/tree/master/examples/template-\/parameters}}) \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}inject{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{Boolean$|$String\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}true{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>}}true $|$$|$ \textquotesingle{}head\textquotesingle{} $|$$|$ \textquotesingle{}body\textquotesingle{} $|$$|$ false{\ttfamily Inject all assets into the given}template{\ttfamily or}template\+Content{\ttfamily . When passing}\textquotesingle{}body\textquotesingle{}{\ttfamily all javascript resources will be placed at the bottom of the body element.}\textquotesingle{}head\textquotesingle{}{\ttfamily will place the scripts in the head element. Passing}true{\ttfamily will add it to the head/body depending on the}script\+Loading{\ttfamily option. Passing}false{\ttfamily will disable automatic injections. -\/ see the \mbox{[}inject\+:false example\mbox{]}(\href{https://github.com/jantimon/html-webpack-plugin/tree/master/examples/custom-insertion-position}{\texttt{ https\+://github.\+com/jantimon/html-\/webpack-\/plugin/tree/master/examples/custom-\/insertion-\/position}}) \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}public\+Path{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{String$|$\textquotesingle{}auto\textquotesingle{}\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\textquotesingle{}auto\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} The public\+Path used for script and link tags \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}script\+Loading{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{\textquotesingle{}blocking\textquotesingle{}$|$\textquotesingle{}defer\textquotesingle{}$|$\textquotesingle{}module\textquotesingle{}$|$\textquotesingle{}systemjs-\/module\textquotesingle{}\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\textquotesingle{}defer\textquotesingle{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Modern browsers support non blocking javascript loading (}\textquotesingle{}defer\textquotesingle{}{\ttfamily ) to improve the page startup performance. Setting to}\textquotesingle{}module\textquotesingle{}{\ttfamily adds attribute \mbox{[}}type="{}module"{}{\ttfamily \mbox{]}(\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Guide/\+Modules}}\#applying\+\_\+the\+\_\+module\+\_\+to\+\_\+your\+\_\+html). This also implies "{}defer"{}, since modules are automatically deferred. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}favicon{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{String\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Adds the given favicon path to the output HTML \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}meta{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{Object\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Allows to inject}meta{\ttfamily -\/tags. E.\+g.}meta\+: \{viewport\+: \textquotesingle{}width=device-\/width, initial-\/scale=1, shrink-\/to-\/fit=no\textquotesingle{}\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}base{\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}\{Object$|$String$|$false\}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}false{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Inject a \mbox{[}}base{\ttfamily \mbox{]}(\href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+HTML/\+Element/base}}) tag. E.\+g.}base\+: "{}\href{https://example.com/path/page.html}{\texttt{ https\+://example.\+com/path/page.\+html}}\`{}    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}minify\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{Boolean$|$Object\}\`{}   &\PBS\centering \`{}true\`{} if \`{}mode\`{} is \`{}\textquotesingle{}production\textquotesingle{}\`{}, otherwise \`{}false\`{}   &Controls if and in what ways the output should be minified. See \mbox{[}minification\mbox{]}(\#minification) below for more details.    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}hash\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{Boolean\}\`{}   &\PBS\centering \`{}false\`{}   &If \`{}true\`{} then append a unique \`{}webpack\`{} compilation hash to all included scripts and CSS files (i.\+e. \`{}main.js?hash=compilation\+\_\+hash\`{}). This is useful for cache busting    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}cache\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{Boolean\}\`{}   &\PBS\centering \`{}true\`{}   &Emit the file only if it was changed    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}show\+Errors\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{Boolean\}\`{}   &\PBS\centering \`{}true\`{}   &Errors details will be written into the HTML page    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}chunks\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{?\}\`{}   &\PBS\centering \`{}?\`{}   &Allows you to add only some chunks (e.\+g only the unit-\/test chunk)    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}chunks\+Sort\+Mode\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{String$|$Function\}\`{}   &\PBS\centering \`{}auto\`{}   &Allows to control how chunks should be sorted before they are included to the HTML. Allowed values are \`{}\textquotesingle{}none\textquotesingle{} $|$ \textquotesingle{}auto\textquotesingle{} $|$ \textquotesingle{}manual\textquotesingle{} $|$ \{Function\}\`{}    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}exclude\+Chunks\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{Array.$<$string$>$\}\`{}   &\PBS\centering \`{}\`{}   &Allows you to skip some chunks (e.\+g don\textquotesingle{}t add the unit-\/test chunk)    \\\cline{1-4}
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}xhtml\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering \`{}\{Boolean\}\`{}   &\PBS\centering \`{}false\`{}   &If {\ttfamily true} render the {\ttfamily link} tags as self-\/closing (XHTML compliant)   \\\cline{1-4}
+\end{longtabu}
+
+
+Here\textquotesingle{}s an example webpack config illustrating how to use these options
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ entry:\ 'index.js',}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ path:\ \_\_dirname\ +\ '/dist',}
+\DoxyCodeLine{\ \ \ \ filename:\ 'index\_bundle.js'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ title:\ 'My\ App',}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ 'assets/admin.html'}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13692}{}\doxysubsubsection{\texorpdfstring{Generating Multiple HTML Files}{Generating Multiple HTML Files}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13692}
+To generate more than one HTML file, declare the plugin more than once in your plugins array
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ entry:\ 'index.js',}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ path:\ \_\_dirname\ +\ '/dist',}
+\DoxyCodeLine{\ \ \ \ filename:\ 'index\_bundle.js'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ HtmlWebpackPlugin(),\ //\ Generates\ default\ index.html}
+\DoxyCodeLine{\ \ \ \ new\ HtmlWebpackPlugin(\{\ \ //\ Also\ generate\ a\ test.html}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ 'test.html',}
+\DoxyCodeLine{\ \ \ \ \ \ template:\ 'src/assets/test.html'}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13693}{}\doxysubsubsection{\texorpdfstring{Writing Your Own Templates}{Writing Your Own Templates}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13693}
+If the default generated HTML doesn\textquotesingle{}t meet your needs you can supply your own template. The easiest way is to use the {\ttfamily template} option and pass a custom HTML file. The html-\/webpack-\/plugin will automatically inject all necessary CSS, JS, manifest and favicon files into the markup.
+
+Details of other template loaders are \href{https://github.com/jantimon/html-webpack-plugin/blob/master/docs/template-option.md}{\texttt{ documented here}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ title:\ 'Custom\ template',}
+\DoxyCodeLine{\ \ \ \ //\ Load\ a\ custom\ template\ (lodash\ by\ default)}
+\DoxyCodeLine{\ \ \ \ template:\ 'index.html'}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+{\bfseries{index.\+html}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!DOCTYPE\ html>}
+\DoxyCodeLine{<html>}
+\DoxyCodeLine{\ \ <head>}
+\DoxyCodeLine{\ \ \ \ <meta\ charset="{}utf-\/8"{}/>}
+\DoxyCodeLine{\ \ \ \ <title><\%=\ htmlWebpackPlugin.options.title\ \%></title>}
+\DoxyCodeLine{\ \ </head>}
+\DoxyCodeLine{\ \ <body>}
+\DoxyCodeLine{\ \ </body>}
+\DoxyCodeLine{</html>}
+
+\end{DoxyCode}
+
+
+If you already have a template loader, you can use it to parse the template. Please note that this will also happen if you specify the html-\/loader and use {\ttfamily .html} file as template.
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module:\ \{}
+\DoxyCodeLine{\ \ loaders:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ test:\ /\(\backslash\).hbs\$/,\ loader:\ "{}handlebars-\/loader"{}\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ title:\ 'Custom\ template\ using\ Handlebars',}
+\DoxyCodeLine{\ \ \ \ template:\ 'index.hbs'}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+You can use the {\ttfamily lodash} syntax out of the box. If the {\ttfamily inject} feature doesn\textquotesingle{}t fit your needs and you want full control over the asset placement use the \href{https://github.com/jaketrent/html-webpack-template/blob/86f285d5c790a6c15263f5cc50fd666d51f974fd/index.html}{\texttt{ default template}} of the \href{https://github.com/jaketrent/html-webpack-template}{\texttt{ html-\/webpack-\/template project}} as a starting point for writing your own.
+
+The following variables are available in the template by default (you can extend them using the {\ttfamily template\+Parameters} option)\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily html\+Webpack\+Plugin}\+: data specific to this plugin
+\begin{DoxyItemize}
+\item {\ttfamily html\+Webpack\+Plugin.\+options}\+: the options hash that was passed to the plugin. In addition to the options actually used by this plugin, you can use this hash to pass arbitrary data through to your template.
+\item {\ttfamily html\+Webpack\+Plugin.\+tags}\+: the prepared {\ttfamily head\+Tags} and {\ttfamily body\+Tags} Array to render the {\ttfamily \texorpdfstring{$<$}{<}base\texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}meta\texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>}} and {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} tags. Can be used directly in templates and literals. For example\+: {\ttfamily html \texorpdfstring{$<$}{<}html\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}head\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}\%= html\+Webpack\+Plugin.\+tags.\+head\+Tags \%\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/head\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}body\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}\%= html\+Webpack\+Plugin.\+tags.\+body\+Tags \%\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/body\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/html\texorpdfstring{$>$}{>} }
+\item {\ttfamily html\+Webpack\+Plugin.\+files}\+: direct access to the files used during the compilation.
+
+{\ttfamily typescript public\+Path\+: string; js\+: string\mbox{[}\mbox{]}; css\+: string\mbox{[}\mbox{]}; manifest?\+: string; favicon?\+: string; }
+\end{DoxyItemize}
+\item {\ttfamily webpack\+Config}\+: the webpack configuration that was used for this compilation. This can be used, for example, to get the {\ttfamily public\+Path} ({\ttfamily webpack\+Config.\+output.\+public\+Path}).
+\item {\ttfamily compilation}\+: the webpack \href{https://webpack.js.org/api/compilation-object/}{\texttt{ compilation object}}. This can be used, for example, to get the contents of processed assets and inline them directly in the page, through {\ttfamily compilation.\+assets\mbox{[}...\mbox{]}.source()} (see \href{examples/inline/template.pug}{\texttt{ the inline template example}}).
+\end{DoxyItemize}
+
+The template can also be directly inlined directly into the options object. ~\newline
+ ⚠️ \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily template\+Content} does not allow to use webpack loaders for your template and will not watch for template file changes\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ templateContent:\ \`{}}
+\DoxyCodeLine{\ \ \ \ <html>}
+\DoxyCodeLine{\ \ \ \ \ \ <body>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ <h1>Hello\ World</h1>}
+\DoxyCodeLine{\ \ \ \ \ \ </body>}
+\DoxyCodeLine{\ \ \ \ </html>}
+\DoxyCodeLine{\ \ \`{}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+The {\ttfamily template\+Content} can also access all {\ttfamily template\+Parameters} values. ~\newline
+ ⚠️ \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily template\+Content} does not allow to use webpack loaders for your template and will not watch for template file changes\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ inject:\ false,}
+\DoxyCodeLine{\ \ templateContent:\ (\{htmlWebpackPlugin\})\ =>\ \`{}}
+\DoxyCodeLine{\ \ \ \ <html>}
+\DoxyCodeLine{\ \ \ \ \ \ <head>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$\{htmlWebpackPlugin.tags.headTags\}}
+\DoxyCodeLine{\ \ \ \ \ \ </head>}
+\DoxyCodeLine{\ \ \ \ \ \ <body>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ <h1>Hello\ World</h1>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \$\{htmlWebpackPlugin.tags.bodyTags\}}
+\DoxyCodeLine{\ \ \ \ \ \ </body>}
+\DoxyCodeLine{\ \ \ \ </html>}
+\DoxyCodeLine{\ \ \`{}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13694}{}\doxysubsubsection{\texorpdfstring{Filtering Chunks}{Filtering Chunks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13694}
+To include only certain chunks you can limit the chunks being used
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ chunks:\ ['app']}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+It is also possible to exclude certain chunks by setting the {\ttfamily exclude\+Chunks} option
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ excludeChunks:\ [\ 'dev-\/helper'\ ]}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13695}{}\doxysubsubsection{\texorpdfstring{Minification}{Minification}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13695}
+If the {\ttfamily minify} option is set to {\ttfamily true} (the default when webpack\textquotesingle{}s {\ttfamily mode} is `\textquotesingle{}production'\`{}), the generated HTML will be minified using \href{https://github.com/DanielRuf/html-minifier-terser}{\texttt{ html-\/minifier-\/terser}} and the following options\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ collapseWhitespace:\ true,}
+\DoxyCodeLine{\ \ keepClosingSlash:\ true,}
+\DoxyCodeLine{\ \ removeComments:\ true,}
+\DoxyCodeLine{\ \ removeRedundantAttributes:\ true,}
+\DoxyCodeLine{\ \ removeScriptTypeAttributes:\ true,}
+\DoxyCodeLine{\ \ removeStyleLinkTypeAttributes:\ true,}
+\DoxyCodeLine{\ \ useShortDoctype:\ true}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+To use custom \href{https://github.com/DanielRuf/html-minifier-terser\#options-quick-reference}{\texttt{ html-\/minifier options}} pass an object to {\ttfamily minify} instead. This object will not be merged with the defaults above.
+
+To disable minification during production mode set the {\ttfamily minify} option to {\ttfamily false}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13696}{}\doxysubsubsection{\texorpdfstring{Meta Tags}{Meta Tags}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13696}
+If the {\ttfamily meta} option is set the html-\/webpack-\/plugin will inject meta tags. ~\newline
+ For the default template the html-\/webpack-\/plugin will already provide a default for the {\ttfamily viewport} meta tag.
+
+Please take a look at this well maintained list of almost all \href{https://github.com/joshbuchea/HEAD\#meta}{\texttt{ possible meta tags}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13697}{}\doxyparagraph{\texorpdfstring{name/content meta tags}{name/content meta tags}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13697}
+Most meta tags are configured by setting a {\ttfamily name} and a {\ttfamily content} attribute. ~\newline
+ To add those use a key/value pair\+:
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ 'meta':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'viewport':\ 'width=device-\/width,\ initial-\/scale=1,\ shrink-\/to-\/fit=no',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Will\ generate:\ <meta\ name="{}viewport"{}\ content="{}width=device-\/width,\ initial-\/scale=1,\ shrink-\/to-\/fit=no"{}>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'theme-\/color':\ '\#4285f4'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Will\ generate:\ <meta\ name="{}theme-\/color"{}\ content="{}\#4285f4"{}>}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13698}{}\doxyparagraph{\texorpdfstring{Simulate http response headers}{Simulate http response headers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13698}
+The {\bfseries{http-\/equiv}} attribute is essentially used to simulate a HTTP response header. ~\newline
+ This format is supported using an object notation which allows you to add any attribute\+:
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ 'meta':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'Content-\/Security-\/Policy':\ \{\ 'http-\/equiv':\ 'Content-\/Security-\/Policy',\ 'content':\ 'default-\/src\ https:'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Will\ generate:\ <meta\ http-\/equiv="{}Content-\/Security-\/Policy"{}\ content="{}default-\/src\ https:"{}>}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Which\ equals\ to\ the\ following\ http\ header:\ \`{}Content-\/Security-\/Policy:\ default-\/src\ https:`}
+\DoxyCodeLine{\ \ \ \ \ \ 'set-\/cookie':\ \{\ 'http-\/equiv':\ 'set-\/cookie',\ content:\ 'name=value;\ expires=date;\ path=url'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Will\ generate:\ <meta\ http-\/equiv="{}set-\/cookie"{}\ content="{}value;\ expires=date;\ path=url"{}>}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Which\ equals\ to\ the\ following\ http\ header:\ \`{}set-\/cookie:\ value;\ expires=date;\ path=url`}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13699}{}\doxysubsubsection{\texorpdfstring{Base Tag}{Base Tag}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13699}
+When the {\ttfamily base} option is used, html-\/webpack-\/plugin will inject a \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base}{\texttt{ base tag}}. By default, a base tag will not be injected.
+
+The following two are identical and will both insert {\ttfamily \texorpdfstring{$<$}{<}base href="{}http\+://example.\+com/some/page.\+html"{}\texorpdfstring{$>$}{>}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ 'base':\ 'http://example.com/some/page.html'}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ 'base':\ \{\ 'href':\ 'http://example.com/some/page.html'\ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+The {\ttfamily target} can be specified with the corresponding key\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ 'base':\ \{}
+\DoxyCodeLine{\ \ \ \ 'href':\ 'http://example.com/some/page.html',}
+\DoxyCodeLine{\ \ \ \ 'target':\ '\_blank'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+which will inject the element {\ttfamily \texorpdfstring{$<$}{<}base href="{}http\+://example.\+com/some/page.\+html"{} target="{}\+\_\+blank"{}\texorpdfstring{$>$}{>}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13700}{}\doxysubsubsection{\texorpdfstring{Long Term Caching}{Long Term Caching}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13700}
+For long term caching add {\ttfamily contenthash} to the filename.
+
+{\bfseries{Example\+:}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ HtmlWebpackPlugin(\{}
+\DoxyCodeLine{\ \ \ \ filename:\ 'index.[contenthash].html'}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+{\ttfamily contenthash} is the hash of the content of the output file.
+
+Refer webpack\textquotesingle{}s \href{https://webpack.js.org/configuration/output/\#template-strings}{\texttt{ Template Strings}} for more details\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13701}{}\doxysubsubsection{\texorpdfstring{Events}{Events}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13701}
+To allow other \href{https://github.com/webpack/docs/wiki/plugins}{\texttt{ plugins}} to alter the HTML this plugin executes \href{https://github.com/webpack/tapable/tree/master}{\texttt{ tapable}} hooks.
+
+The \href{https://github.com/jantimon/html-webpack-plugin/blob/master/lib/hooks.js}{\texttt{ lib/hooks.\+js}} contains all information about which values are passed.
+
+\href{https://github.com/jantimon/html-webpack-plugin/blob/master/flow.puml}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13702}{}\doxyparagraph{\texorpdfstring{{\ttfamily before\+Asset\+Tag\+Generation} hook}{{\ttfamily before\+Asset\+Tag\+Generation} hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13702}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AsyncSeriesWaterfallHook<\{}
+\DoxyCodeLine{\ \ assets:\ \{}
+\DoxyCodeLine{\ \ \ \ publicPath:\ string,}
+\DoxyCodeLine{\ \ \ \ js:\ Array<\{string\}>,}
+\DoxyCodeLine{\ \ \ \ css:\ Array<\{string\}>,}
+\DoxyCodeLine{\ \ \ \ favicon?:\ string\ |\ undefined,}
+\DoxyCodeLine{\ \ \ \ manifest?:\ string\ |\ undefined}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ outputName:\ string,}
+\DoxyCodeLine{\ \ plugin:\ HtmlWebpackPlugin}
+\DoxyCodeLine{\}>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13703}{}\doxyparagraph{\texorpdfstring{{\ttfamily alter\+Asset\+Tags} hook}{{\ttfamily alter\+Asset\+Tags} hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13703}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AsyncSeriesWaterfallHook<\{}
+\DoxyCodeLine{\ \ assetTags:\ \{}
+\DoxyCodeLine{\ \ \ \ scripts:\ Array<HtmlTagObject>,}
+\DoxyCodeLine{\ \ \ \ styles:\ Array<HtmlTagObject>,}
+\DoxyCodeLine{\ \ \ \ meta:\ Array<HtmlTagObject>,}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ publicPath:\ string,}
+\DoxyCodeLine{\ \ outputName:\ string,}
+\DoxyCodeLine{\ \ plugin:\ HtmlWebpackPlugin}
+\DoxyCodeLine{\}>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13704}{}\doxyparagraph{\texorpdfstring{{\ttfamily alter\+Asset\+Tag\+Groups} hook}{{\ttfamily alter\+Asset\+Tag\+Groups} hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13704}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AsyncSeriesWaterfallHook<\{}
+\DoxyCodeLine{\ \ headTags:\ Array<HtmlTagObject\ |\ HtmlTagObject>,}
+\DoxyCodeLine{\ \ bodyTags:\ Array<HtmlTagObject\ |\ HtmlTagObject>,}
+\DoxyCodeLine{\ \ publicPath:\ string,}
+\DoxyCodeLine{\ \ outputName:\ string,}
+\DoxyCodeLine{\ \ plugin:\ HtmlWebpackPlugin}
+\DoxyCodeLine{\}>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13705}{}\doxyparagraph{\texorpdfstring{{\ttfamily after\+Template\+Execution} hook}{{\ttfamily after\+Template\+Execution} hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13705}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AsyncSeriesWaterfallHook<\{}
+\DoxyCodeLine{\ \ html:\ string,}
+\DoxyCodeLine{\ \ headTags:\ Array<HtmlTagObject\ |\ HtmlTagObject>,}
+\DoxyCodeLine{\ \ bodyTags:\ Array<HtmlTagObject\ |\ HtmlTagObject>,}
+\DoxyCodeLine{\ \ outputName:\ string,}
+\DoxyCodeLine{\ \ plugin:\ HtmlWebpackPlugin,}
+\DoxyCodeLine{\}>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13706}{}\doxyparagraph{\texorpdfstring{{\ttfamily before\+Emit} hook}{{\ttfamily before\+Emit} hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13706}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AsyncSeriesWaterfallHook<\{}
+\DoxyCodeLine{\ \ html:\ string,}
+\DoxyCodeLine{\ \ outputName:\ string,}
+\DoxyCodeLine{\ \ plugin:\ HtmlWebpackPlugin,}
+\DoxyCodeLine{\}>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13707}{}\doxyparagraph{\texorpdfstring{{\ttfamily after\+Emit} hook}{{\ttfamily after\+Emit} hook}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13707}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AsyncSeriesWaterfallHook<\{}
+\DoxyCodeLine{\ \ outputName:\ string,}
+\DoxyCodeLine{\ \ plugin:\ HtmlWebpackPlugin}
+\DoxyCodeLine{\}>}
+
+\end{DoxyCode}
+
+
+Example implementation\+: \href{https://www.npmjs.com/package/webpack-subresource-integrity}{\texttt{ webpack-\/subresource-\/integrity}}
+
+{\bfseries{plugin.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ If\ your\ plugin\ is\ direct\ dependent\ to\ the\ html\ webpack\ plugin:}
+\DoxyCodeLine{const\ HtmlWebpackPlugin\ =\ require('html-\/webpack-\/plugin');}
+\DoxyCodeLine{//\ If\ your\ plugin\ is\ using\ html-\/webpack-\/plugin\ as\ an\ optional\ dependency}
+\DoxyCodeLine{//\ you\ can\ use\ https://github.com/tallesl/node-\/safe-\/require\ instead:}
+\DoxyCodeLine{const\ HtmlWebpackPlugin\ =\ require('safe-\/require')('html-\/webpack-\/plugin');}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ MyPlugin\ \{}
+\DoxyCodeLine{\ \ apply\ (compiler)\ \{}
+\DoxyCodeLine{\ \ \ \ compiler.hooks.compilation.tap('MyPlugin',\ (compilation)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log('The\ compiler\ is\ starting\ a\ new\ compilation...')}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Static\ Plugin\ interface\ |compilation\ |HOOK\ NAME\ |\ register\ listener\ }
+\DoxyCodeLine{\ \ \ \ \ \ HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'MyPlugin',\ //\ <-\/-\/\ Set\ a\ meaningful\ name\ here\ for\ stacktraces}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ (data,\ cb)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ Manipulate\ the\ content}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ data.html\ +=\ 'The\ Magic\ Footer'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ Tell\ webpack\ to\ move\ on}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ cb(null,\ data)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ )}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ MyPlugin}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{plugins:\ [}
+\DoxyCodeLine{\ \ new\ MyPlugin(\{\ options:\ ''\ \})}
+\DoxyCodeLine{]}
+
+\end{DoxyCode}
+
+
+Note that the callback must be passed the Html\+Webpack\+Plugin\+Data in order to pass this onto any other plugins listening on the same {\ttfamily before\+Emit} event
+
+\doxysubsection*{Maintainers}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering   \href{https://github.com/jantimon}{\texttt{ Jan Nicklas}}  &\PBS\centering   \href{https://github.com/mastilver}{\texttt{ Thomas Sileghem}}    \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13708}{}\doxysubsection{\texorpdfstring{Backers}{Backers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13708}
+Thank you to all our backers! ~\newline
+ If you want to support the project as well \href{https://opencollective.com/html-webpack-plugin\#sponsor}{\texttt{ become a sponsor}} or a \href{https://opencollective.com/html-webpack-plugin\#backer}{\texttt{ a backer}}.
+
+\href{https://opencollective.com/html-webpack-plugin/backer/0/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/1/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/2/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/3/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/4/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/5/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/6/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/7/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/8/website?requireActive=false}{\texttt{ }} \href{https://opencollective.com/html-webpack-plugin/backer/9/website?requireActive=false}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13709}{}\doxysubsection{\texorpdfstring{Contributors}{Contributors}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2html-webpack-plugin_2_r_e_a_d_m_e_autotoc_md13709}
+This project exists thanks to all the people who contribute.
+
+You\textquotesingle{}re free to contribute to this project by submitting \href{https://github.com/jantimon/html-webpack-plugin/issues}{\texttt{ issues}} and/or \href{https://github.com/jantimon/html-webpack-plugin/pulls}{\texttt{ pull requests}}. This project is test-\/driven, so keep in mind that every change and new feature should be covered by tests.
+
+This project uses the \href{https://github.com/Flet/semistandard}{\texttt{ semistandard code style}}.
+
+\href{https://github.com/jantimon/html-webpack-plugin/graphs/contributors}{\texttt{ }} 

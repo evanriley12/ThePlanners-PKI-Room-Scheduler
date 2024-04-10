@@ -1,0 +1,38 @@
+\chapter{Suggest using \texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}jest.\+spy\+On()\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>} (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}prefer-\/spy-\/on\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on}\index{Suggest using $<$tt$>$jest.spyOn()$<$/tt$>$ ($<$tt$>$prefer-\/spy-\/on$<$/tt$>$)@{Suggest using $<$tt$>$jest.spyOn()$<$/tt$>$ ($<$tt$>$prefer-\/spy-\/on$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on_autotoc_md10465}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on_autotoc_md10465}%
+ When mocking a function by overwriting a property you have to manually restore the original implementation when cleaning up. When using {\ttfamily jest.\+spy\+On()} Jest keeps track of changes, and they can be restored with {\ttfamily jest.\+restore\+All\+Mocks()}, {\ttfamily mock\+Fn.\+mock\+Restore()} or by setting {\ttfamily restore\+Mocks} to {\ttfamily true} in the Jest config.
+
+Note\+: The mock created by {\ttfamily jest.\+spy\+On()} still behaves the same as the original function. The original function can be overwritten with {\ttfamily mock\+Fn.\+mock\+Implementation()} or by some of the \href{https://jestjs.io/docs/en/mock-function-api}{\texttt{ other mock functions}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Date.now\ =\ jest.fn();\ //\ Original\ behaviour\ lost,\ returns\ undefined}
+\DoxyCodeLine{}
+\DoxyCodeLine{jest.spyOn(Date,\ 'now');\ //\ Turned\ into\ a\ mock\ function\ but\ behaviour\ hasn't\ changed}
+\DoxyCodeLine{jest.spyOn(Date,\ 'now').mockImplementation(()\ =>\ 10);\ //\ Will\ always\ return\ 10}
+\DoxyCodeLine{jest.spyOn(Date,\ 'now').mockReturnValue(10);\ //\ Will\ always\ return\ 10}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on_autotoc_md10466}{}\doxysection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on_autotoc_md10466}
+This rule triggers a warning if an object\textquotesingle{}s property is overwritten with a jest mock.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on_autotoc_md10467}{}\doxysubsection{\texorpdfstring{Default configuration}{Default configuration}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on_autotoc_md10467}
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Date.now\ =\ jest.fn();}
+\DoxyCodeLine{Date.now\ =\ jest.fn(()\ =>\ 10);}
+
+\end{DoxyCode}
+
+
+These patterns would not be considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jest.spyOn(Date,\ 'now');}
+\DoxyCodeLine{jest.spyOn(Date,\ 'now').mockImplementation(()\ =>\ 10);}
+
+\end{DoxyCode}
+ 

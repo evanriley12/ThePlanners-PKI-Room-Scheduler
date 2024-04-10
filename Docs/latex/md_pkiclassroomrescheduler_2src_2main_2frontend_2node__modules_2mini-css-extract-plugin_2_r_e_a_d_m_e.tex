@@ -1,0 +1,1264 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e}\index{README@{README}}
+  \href{https://webpack.js.org/}{\texttt{  }} \doxysection*{mini-\/css-\/extract-\/plugin}
+
+ 
+
+\href{https://npmjs.com/package/mini-css-extract-plugin}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://github.com/webpack-contrib/mini-css-extract-plugin/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/mini-css-extract-plugin}{\texttt{ }} \href{https://github.com/webpack/webpack/discussions}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=mini-css-extract-plugin}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16785}{}\doxysection{\texorpdfstring{mini-\/css-\/extract-\/plugin}{mini-\/css-\/extract-\/plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16785}
+This plugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-\/\+Demand-\/\+Loading of CSS and Source\+Maps.
+
+It builds on top of a new webpack v5 feature and requires webpack 5 to work.
+
+Compared to the extract-\/text-\/webpack-\/plugin\+:
+
+
+\begin{DoxyItemize}
+\item Async loading
+\item No duplicate compilation (performance)
+\item Easier to use
+\item Specific to CSS
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16786}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16786}
+To begin, you\textquotesingle{}ll need to install {\ttfamily mini-\/css-\/extract-\/plugin}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ mini-\/css-\/extract-\/plugin}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/D\ mini-\/css-\/extract-\/plugin}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pnpm\ add\ -\/D\ mini-\/css-\/extract-\/plugin}
+
+\end{DoxyCode}
+
+
+It\textquotesingle{}s recommended to combine {\ttfamily mini-\/css-\/extract-\/plugin} with the \href{https://github.com/webpack-contrib/css-loader}{\texttt{ {\ttfamily css-\/loader}}}
+
+Then add the loader and the plugin to your {\ttfamily webpack} config. For example\+:
+
+{\bfseries{style.\+css}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ background:\ green;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{component.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./style.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [new\ MiniCssExtractPlugin()],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Note that if you import CSS from your webpack entrypoint or import styles in the \href{https://webpack.js.org/concepts/under-the-hood/\#chunks}{\texttt{ initial}} chunk, {\ttfamily mini-\/css-\/extract-\/plugin} will not load this CSS into the page. Please use \href{https://github.com/jantimon/html-webpack-plugin}{\texttt{ {\ttfamily html-\/webpack-\/plugin}}} for automatic generation {\ttfamily link} tags or create {\ttfamily index.\+html} file with {\ttfamily link} tag. \end{quote}
+\begin{quote}
+{\bfseries{Warning}}
+
+Source maps works only for {\ttfamily source-\/map}/{\ttfamily nosources-\/source-\/map}/{\ttfamily hidden-\/nosources-\/source-\/map}/{\ttfamily hidden-\/source-\/map} values because CSS only supports source maps with the {\ttfamily source\+Mapping\+URL} comment (i.\+e. {\ttfamily //\# source\+Mapping\+URL=style.\+css.\+map}). If you need set {\ttfamily devtool} to another value you can enable source maps generation for extracted CSS using \href{https://github.com/webpack-contrib/css-loader\#sourcemap}{\texttt{ {\ttfamily source\+Map\+: true}}} for {\ttfamily css-\/loader}. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16787}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16787}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16788}{}\doxysubsubsection{\texorpdfstring{Plugin Options}{Plugin Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16788}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}filename\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}chunk\+Filename\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}ignore\+Order\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}insert\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}attributes\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}link\+Type\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}runtime\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}experimental\+Use\+Import\+Module\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16789}{}\doxyparagraph{\texorpdfstring{{\ttfamily filename}}{{\ttfamily filename}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16789}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ filename\ =}
+\DoxyCodeLine{\ \ |\ string}
+\DoxyCodeLine{\ \ |\ ((pathData:\ PathData,\ assetInfo?:\ AssetInfo)\ =>\ string);}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily \mbox{[}name\mbox{]}.css}
+
+This option determines the name of each output CSS file.
+
+Works like \href{https://webpack.js.org/configuration/output/\#outputfilename}{\texttt{ {\ttfamily output.\+filename}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16790}{}\doxyparagraph{\texorpdfstring{{\ttfamily chunk\+Filename}}{{\ttfamily chunk\+Filename}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16790}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ chunkFilename\ =}
+\DoxyCodeLine{\ \ |\ string}
+\DoxyCodeLine{\ \ |\ ((pathData:\ PathData,\ assetInfo?:\ AssetInfo)\ =>\ string);}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily based on filename}
+
+\begin{quote}
+Specifying {\ttfamily chunk\+Filename} as a {\ttfamily function} is only available in webpack@5 \end{quote}
+This option determines the name of non-\/entry chunk files.
+
+Works like \href{https://webpack.js.org/configuration/output/\#outputchunkfilename}{\texttt{ {\ttfamily output.\+chunk\+Filename}}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16791}{}\doxyparagraph{\texorpdfstring{{\ttfamily ignore\+Order}}{{\ttfamily ignore\+Order}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16791}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ ignoreOrder\ =\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily false}
+
+Remove Order Warnings. See examples below for details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16792}{}\doxyparagraph{\texorpdfstring{{\ttfamily insert}}{{\ttfamily insert}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16792}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ insert\ =\ string\ |\ ((linkTag:\ HTMLLinkElement)\ =>\ void);}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily document.\+head.\+append\+Child(link\+Tag);}
+
+Inserts the {\ttfamily link} tag at the given position for \href{https://webpack.js.org/concepts/under-the-hood/\#chunks}{\texttt{ non-\/initial (async)}} CSS chunks
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Only for \href{https://webpack.js.org/concepts/under-the-hood/\#chunks}{\texttt{ non-\/initial (async)}} chunks. \end{quote}
+By default, the {\ttfamily mini-\/css-\/extract-\/plugin} appends styles ({\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} elements) to {\ttfamily document.\+head} of the current {\ttfamily window}.
+
+However in some circumstances it might be necessary to have finer control over the append target or even delay {\ttfamily link} elements insertion. For example this is the case when you asynchronously load styles for an application that runs inside of an iframe. In such cases {\ttfamily insert} can be configured to be a function or a custom selector.
+
+If you target an \href{https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement}{\texttt{ iframe}} make sure that the parent document has sufficient access rights to reach into the frame document and append elements to it.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16793}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16793}%
+ \doxysubparagraph*{{\ttfamily string}}
+
+Allows to setup custom \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector}{\texttt{ query selector}}. A new {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} element will be inserted after the found item.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ insert:\ "{}\#some-\/element"{},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+A new {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} element will be inserted after the element with id {\ttfamily some-\/element}.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16794}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16794}%
+ \doxysubparagraph*{{\ttfamily function}}
+
+Allows to override default behavior and insert styles at any position.
+
+\begin{quote}
+⚠ Do not forget that this code will run in the browser alongside your application. Since not all browsers support latest ECMA features like {\ttfamily let}, {\ttfamily const}, {\ttfamily arrow function expression} and etc we recommend you to use only ECMA 5 features and syntax. \end{quote}
+\begin{quote}
+\begin{quote}
+⚠ The {\ttfamily insert} function is serialized to string and passed to the plugin. This means that it won\textquotesingle{}t have access to the scope of the webpack configuration module. \end{quote}
+\end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ insert:\ function\ (linkTag)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ reference\ =\ document.querySelector("{}\#some-\/element"{});}
+\DoxyCodeLine{\ \ \ \ if\ (reference)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ reference.parentNode.insertBefore(linkTag,\ reference);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+A new {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} element will be inserted before the element with id {\ttfamily some-\/element}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16795}{}\doxyparagraph{\texorpdfstring{{\ttfamily attributes}}{{\ttfamily attributes}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16795}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ attributes\ =\ Record<string,\ string>\};}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily \{\}}
+
+\begin{quote}
+{\bfseries{Warning}}
+
+Only for \href{https://webpack.js.org/concepts/under-the-hood/\#chunks}{\texttt{ non-\/initial (async)}} chunks. \end{quote}
+If defined, the {\ttfamily mini-\/css-\/extract-\/plugin} will attach given attributes with their values on {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} element.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ attributes:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ id:\ "{}target"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}data-\/target"{}:\ "{}example"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+{\bfseries{Note}}
+
+It\textquotesingle{}s only applied to dynamically loaded css chunks, if you want to modify link attributes inside html file, please using \href{https://github.com/jantimon/html-webpack-plugin}{\texttt{ html-\/webpack-\/plugin}} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16796}{}\doxyparagraph{\texorpdfstring{{\ttfamily link\+Type}}{{\ttfamily link\+Type}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16796}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ linkType\ =\ string\ |\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily text/css}
+
+This option allows loading asynchronous chunks with a custom link type, such as {\ttfamily \texorpdfstring{$<$}{<}link type="{}text/css"{} ...\texorpdfstring{$>$}{>}}.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16797}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16797}%
+ \doxysubparagraph*{{\ttfamily string}}
+
+Possible values\+: {\ttfamily text/css}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ linkType:\ "{}text/css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16798}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16798}%
+ \doxysubparagraph*{{\ttfamily boolean}}
+
+{\ttfamily false} disables the link {\ttfamily type} attribute
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ linkType:\ false,}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16799}{}\doxyparagraph{\texorpdfstring{{\ttfamily runtime}}{{\ttfamily runtime}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16799}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ runtime\ =\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+Allows to enable/disable the runtime generation. CSS will be still extracted and can be used for a custom loading methods. For example, you can use \href{https://github.com/ztoben/assets-webpack-plugin}{\texttt{ assets-\/webpack-\/plugin}} to retrieve them then use your own runtime code to download assets when needed.
+
+{\ttfamily false} to skip.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ runtime:\ false,}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16800}{}\doxyparagraph{\texorpdfstring{{\ttfamily experimental\+Use\+Import\+Module}}{{\ttfamily experimental\+Use\+Import\+Module}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16800}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ experimentalUseImportModule\ =\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily undefined}
+
+Enabled by default if not explicitly enabled (i.\+e. {\ttfamily true} and {\ttfamily false} allow you to explicitly control this option) and new API is available (at least webpack {\ttfamily 5.\+52.\+0} is required). Boolean values are available since version {\ttfamily 5.\+33.\+2}, but you need to enable {\ttfamily experiments.\+execute\+Module} (not required from webpack {\ttfamily 5.\+52.\+0}).
+
+Use a new webpack API to execute modules instead of child compilers. This improves performance and memory usage a lot.
+
+When combined with {\ttfamily experiments.\+layers}, this adds a {\ttfamily layer} option to the loader options to specify the layer of the css execution.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ You\ don't\ need\ this\ for\ \`{}>=\ 5.52.0`\ due\ to\ the\ fact\ that\ this\ is\ enabled\ by\ default}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Required\ only\ for\ \`{}>=\ 5.33.2\ \&\ <=\ 5.52.0`}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Not\ available/unsafe\ for\ \`{}<=\ 5.33.2`}
+\DoxyCodeLine{\ \ \ \ \ \ experimentalUseImportModule:\ true,}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16801}{}\doxysubsubsection{\texorpdfstring{Loader Options}{Loader Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16801}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}public\+Path\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}emit\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}es\+Module\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16802}{}\doxyparagraph{\texorpdfstring{{\ttfamily public\+Path}}{{\ttfamily public\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16802}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ publicPath\ =}
+\DoxyCodeLine{\ \ |\ string}
+\DoxyCodeLine{\ \ |\ ((resourcePath:\ string,\ rootContext:\ string)\ =>\ string);}
+
+\end{DoxyCode}
+
+
+Default\+: the {\ttfamily public\+Path} in {\ttfamily webpack\+Options.\+output}
+
+Specifies a custom public path for the external resources like images, files, etc inside {\ttfamily CSS}. Works like \href{https://webpack.js.org/configuration/output/\#outputpublicpath}{\texttt{ {\ttfamily output.\+public\+Path}}}
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16803}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16803}%
+ \doxysubparagraph*{{\ttfamily string}}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Options\ similar\ to\ the\ same\ options\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ \ \ //\ both\ options\ are\ optional}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ chunkFilename:\ "{}[id].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ publicPath:\ "{}/public/path/to/"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16804}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16804}%
+ \doxysubparagraph*{{\ttfamily function}}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Options\ similar\ to\ the\ same\ options\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ \ \ //\ both\ options\ are\ optional}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ chunkFilename:\ "{}[id].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ publicPath:\ (resourcePath,\ context)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ path.relative(path.dirname(resourcePath),\ context)\ +\ "{}/"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16805}{}\doxyparagraph{\texorpdfstring{{\ttfamily emit}}{{\ttfamily emit}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16805}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ emit\ =\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+If true, emits a file (writes a file to the filesystem). If false, the plugin will extract the CSS but {\bfseries{will not}} emit the file. It is often useful to disable this option for server-\/side packages.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16806}{}\doxyparagraph{\texorpdfstring{{\ttfamily es\+Module}}{{\ttfamily es\+Module}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16806}
+Type\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ esModule\ =\ boolean;}
+
+\end{DoxyCode}
+
+
+Default\+: {\ttfamily true}
+
+By default, {\ttfamily mini-\/css-\/extract-\/plugin} generates JS modules that use the ES modules syntax. There are some cases in which using ES modules is beneficial, like in the case of \href{https://webpack.js.org/plugins/module-concatenation-plugin/}{\texttt{ module concatenation}} and \href{https://webpack.js.org/guides/tree-shaking/}{\texttt{ tree shaking}}.
+
+You can enable a Common\+JS syntax using\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [new\ MiniCssExtractPlugin()],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ esModule:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16807}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16807}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16808}{}\doxysubsubsection{\texorpdfstring{Recommended}{Recommended}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16808}
+For {\ttfamily production} builds it\textquotesingle{}s recommended to extract the CSS from your bundle being able to use parallel loading of CSS/\+JS resources later on. This can be achieved by using the {\ttfamily mini-\/css-\/extract-\/plugin}, because it creates separate css files. For {\ttfamily development} mode (including {\ttfamily webpack-\/dev-\/server}) you can use \href{https://github.com/webpack-contrib/style-loader}{\texttt{ style-\/loader}}, because it injects CSS into the DOM using multiple $<$style$>$$<$/style$>$ and works faster.
+
+\begin{quote}
+Do not use {\ttfamily style-\/loader} and {\ttfamily mini-\/css-\/extract-\/plugin} together. \end{quote}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{const\ devMode\ =\ process.env.NODE\_ENV\ !==\ "{}production"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ If\ you\ enable\ \`{}experiments.css`\ or\ \`{}experiments.futureDefaults`,\ please\ uncomment\ line\ below}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ type:\ "{}javascript/auto"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(sa|sc|c)ss\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ devMode\ ?\ "{}style-\/loader"{}\ :\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [].concat(devMode\ ?\ []\ :\ [new\ MiniCssExtractPlugin()]),}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16809}{}\doxysubsubsection{\texorpdfstring{Minimal example}{Minimal example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16809}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Options\ similar\ to\ the\ same\ options\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ \ \ //\ all\ options\ are\ optional}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ chunkFilename:\ "{}[id].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ ignoreOrder:\ false,\ //\ Enable\ to\ remove\ warnings\ about\ conflicting\ order}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ you\ can\ specify\ a\ publicPath\ here}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ by\ default\ it\ uses\ publicPath\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ publicPath:\ "{}../"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16810}{}\doxysubsubsection{\texorpdfstring{Named export for CSS Modules}{Named export for CSS Modules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16810}
+\begin{quote}
+⚠ Names of locals are converted to {\ttfamily camel\+Case}. \end{quote}
+\begin{quote}
+⚠ It is not allowed to use Java\+Script reserved words in css class names. \end{quote}
+\begin{quote}
+⚠ Options {\ttfamily es\+Module} and {\ttfamily modules.\+named\+Export} in {\ttfamily css-\/loader} should be enabled. \end{quote}
+{\bfseries{styles.\+css}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.foo-\/baz\ \{}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.bar\ \{}
+\DoxyCodeLine{\ \ color:\ blue;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{index.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ fooBaz,\ bar\ \}\ from\ "{}./styles.css"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(fooBaz,\ bar);}
+
+\end{DoxyCode}
+
+
+You can enable a ES module named export using\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [new\ MiniCssExtractPlugin()],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ esModule:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ modules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ namedExport:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localIdentName:\ "{}foo\_\_[name]\_\_[local]"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16811}{}\doxysubsubsection{\texorpdfstring{The {\ttfamily public\+Path} option as function}{The {\ttfamily public\+Path} option as function}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16811}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Options\ similar\ to\ the\ same\ options\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ \ \ //\ both\ options\ are\ optional}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ chunkFilename:\ "{}[id].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ publicPath:\ (resourcePath,\ context)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ publicPath\ is\ the\ relative\ path\ of\ the\ resource\ to\ the\ context}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ e.g.\ for\ ./css/admin/main.css\ the\ publicPath\ will\ be\ ../../}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ while\ for\ ./css/main.css\ the\ publicPath\ will\ be\ ../}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ path.relative(path.dirname(resourcePath),\ context)\ +\ "{}/"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16812}{}\doxysubsubsection{\texorpdfstring{Advanced configuration example}{Advanced configuration example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16812}
+This plugin should not be used with {\ttfamily style-\/loader} in the loaders chain.
+
+Here is an example to have both HMR in {\ttfamily development} and your styles extracted in a file for {\ttfamily production} builds.
+
+(Loaders options left out for clarity, adapt accordingly to your needs.)
+
+You should not use {\ttfamily Hot\+Module\+Replacement\+Plugin} plugin if you are using a {\ttfamily webpack-\/dev-\/server}. {\ttfamily webpack-\/dev-\/server} enables / disables HMR using {\ttfamily hot} option.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{const\ devMode\ =\ process.env.NODE\_ENV\ !==\ "{}production"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ plugins\ =\ [}
+\DoxyCodeLine{\ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ //\ Options\ similar\ to\ the\ same\ options\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ //\ both\ options\ are\ optional}
+\DoxyCodeLine{\ \ \ \ filename:\ devMode\ ?\ "{}[name].css"{}\ :\ "{}[name].[contenthash].css"{},}
+\DoxyCodeLine{\ \ \ \ chunkFilename:\ devMode\ ?\ "{}[id].css"{}\ :\ "{}[id].[contenthash].css"{},}
+\DoxyCodeLine{\ \ \}),}
+\DoxyCodeLine{];}
+\DoxyCodeLine{if\ (devMode)\ \{}
+\DoxyCodeLine{\ \ //\ only\ enable\ hot\ in\ development}
+\DoxyCodeLine{\ \ plugins.push(new\ webpack.HotModuleReplacementPlugin());}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins,}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(sa|sc|c)ss\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16813}{}\doxysubsubsection{\texorpdfstring{Hot Module Reloading (HMR)}{Hot Module Reloading (HMR)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16813}
+\begin{quote}
+{\bfseries{Note}}
+
+HMR is automatically supported in webpack 5. No need to configure it. Skip the following\+: \end{quote}
+The {\ttfamily mini-\/css-\/extract-\/plugin} supports hot reloading of actual css files in development. Some options are provided to enable HMR of both standard stylesheets and locally scoped CSS or CSS modules. Below is an example configuration of mini-\/css for HMR use with CSS modules.
+
+You should not use {\ttfamily Hot\+Module\+Replacement\+Plugin} plugin if you are using a {\ttfamily webpack-\/dev-\/server}. {\ttfamily webpack-\/dev-\/server} enables / disables HMR using {\ttfamily hot} option.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ plugins\ =\ [}
+\DoxyCodeLine{\ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ //\ Options\ similar\ to\ the\ same\ options\ in\ webpackOptions.output}
+\DoxyCodeLine{\ \ \ \ //\ both\ options\ are\ optional}
+\DoxyCodeLine{\ \ \ \ filename:\ devMode\ ?\ "{}[name].css"{}\ :\ "{}[name].[contenthash].css"{},}
+\DoxyCodeLine{\ \ \ \ chunkFilename:\ devMode\ ?\ "{}[id].css"{}\ :\ "{}[id].[contenthash].css"{},}
+\DoxyCodeLine{\ \ \}),}
+\DoxyCodeLine{];}
+\DoxyCodeLine{if\ (devMode)\ \{}
+\DoxyCodeLine{\ \ //\ only\ enable\ hot\ in\ development}
+\DoxyCodeLine{\ \ plugins.push(new\ webpack.HotModuleReplacementPlugin());}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins,}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16814}{}\doxysubsubsection{\texorpdfstring{Minimizing For Production}{Minimizing For Production}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16814}
+To minify the output, use a plugin like \href{https://github.com/webpack-contrib/css-minimizer-webpack-plugin}{\texttt{ css-\/minimizer-\/webpack-\/plugin}}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{const\ CssMinimizerPlugin\ =\ require("{}css-\/minimizer-\/webpack-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ chunkFilename:\ "{}[id].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ minimizer:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ For\ webpack@5\ you\ can\ use\ the\ \`{}...`\ syntax\ to\ extend\ existing\ minimizers\ (i.e.\ \`{}terser-\/webpack-\/plugin`),\ uncomment\ the\ next\ line}
+\DoxyCodeLine{\ \ \ \ \ \ //\ \`{}...`,}
+\DoxyCodeLine{\ \ \ \ \ \ new\ CssMinimizerPlugin(),}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+This will enable CSS optimization only in production mode. If you want to run it also in development set the {\ttfamily optimization.\+minimize} option to true.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16815}{}\doxysubsubsection{\texorpdfstring{Using preloaded or inlined CSS}{Using preloaded or inlined CSS}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16815}
+The runtime code detects already added CSS via {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} or {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} tag. This can be useful when injecting CSS on server-\/side for Server-\/\+Side-\/\+Rendering. The {\ttfamily href} of the {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} tag has to match the URL that will be used for loading the CSS chunk. The {\ttfamily data-\/href} attribute can be used for {\ttfamily \texorpdfstring{$<$}{<}link\texorpdfstring{$>$}{>}} and {\ttfamily \texorpdfstring{$<$}{<}style\texorpdfstring{$>$}{>}} too. When inlining CSS {\ttfamily data-\/href} must be used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16816}{}\doxysubsubsection{\texorpdfstring{Extracting all CSS in a single file}{Extracting all CSS in a single file}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16816}
+The CSS can be extracted in one CSS file using {\ttfamily optimization.\+split\+Chunks.\+cache\+Groups}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ splitChunks:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ cacheGroups:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ styles:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ "{}styles"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ type:\ "{}css/mini-\/extract"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ chunks:\ "{}all"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ enforce:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Note that {\ttfamily type} should be used instead of {\ttfamily test} in Webpack 5, or else an extra {\ttfamily .js} file can be generated besides the {\ttfamily .css} file. This is because {\ttfamily test} doesn\textquotesingle{}t know which modules should be dropped (in this case, it won\textquotesingle{}t detect that {\ttfamily .js} should be dropped).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16817}{}\doxysubsubsection{\texorpdfstring{Extracting CSS based on entry}{Extracting CSS based on entry}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16817}
+You may also extract the CSS based on the webpack entry name. This is especially useful if you import routes dynamically but want to keep your CSS bundled according to entry. This also prevents the CSS duplication issue one had with the Extract\+Text\+Plugin.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require("{}path"{});}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ entry:\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ path.resolve(\_\_dirname,\ "{}src/foo"{}),}
+\DoxyCodeLine{\ \ \ \ bar:\ path.resolve(\_\_dirname,\ "{}src/bar"{}),}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ optimization:\ \{}
+\DoxyCodeLine{\ \ \ \ splitChunks:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ cacheGroups:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fooStyles:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ type:\ "{}css/mini-\/extract"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ "{}styles\_foo"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ chunks:\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ chunk.name\ ===\ "{}foo"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ enforce:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ barStyles:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ type:\ "{}css/mini-\/extract"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ "{}styles\_bar"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ chunks:\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ chunk.name\ ===\ "{}bar"{};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ enforce:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16818}{}\doxysubsubsection{\texorpdfstring{Filename Option as function}{Filename Option as function}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16818}
+With the {\ttfamily filename} option you can use chunk data to customize the filename. This is particularly useful when dealing with multiple entry points and wanting to get more control out of the filename for a given entry point/chunk. In the example below, we\textquotesingle{}ll use {\ttfamily filename} to output the generated css into a different directory.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ (\{\ chunk\ \})\ =>\ \`{}\$\{chunk.name.replace("{}/js/"{},\ "{}/css/"{})\}.css`,}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16819}{}\doxysubsubsection{\texorpdfstring{Long Term Caching}{Long Term Caching}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16819}
+For long term caching use {\ttfamily filename\+: "{}\mbox{[}contenthash\mbox{]}.\+css"{}}. Optionally add {\ttfamily \mbox{[}name\mbox{]}}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].[contenthash].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ chunkFilename:\ "{}[id].[contenthash].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16820}{}\doxysubsubsection{\texorpdfstring{Remove Order Warnings}{Remove Order Warnings}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16820}
+For projects where css ordering has been mitigated through consistent use of scoping or naming conventions, such as \href{https://github.com/css-modules/css-modules}{\texttt{ CSS Modules}}, the css order warnings can be disabled by setting the ignore\+Order flag to true for the plugin.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ ignoreOrder:\ true,}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [MiniCssExtractPlugin.loader,\ "{}css-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16821}{}\doxysubsubsection{\texorpdfstring{Multiple Themes}{Multiple Themes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16821}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ entry:\ "{}./src/index.js"{},}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).s[ac]ss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ oneOf:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ resourceQuery:\ "{}?dark"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ additionalData:\ \`{}@use\ 'dark-\/theme/vars'\ as\ vars;`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ MiniCssExtractPlugin.loader,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}sass-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ additionalData:\ \`{}@use\ 'light-\/theme/vars'\ as\ vars;`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \ \ attributes:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ id:\ "{}theme"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{src/index.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ "{}./style.scss"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{let\ theme\ =\ "{}light"{};}
+\DoxyCodeLine{const\ themes\ =\ \{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{themes[theme]\ =\ document.querySelector("{}\#theme"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{async\ function\ loadTheme(newTheme)\ \{}
+\DoxyCodeLine{\ \ //\ eslint-\/disable-\/next-\/line\ no-\/console}
+\DoxyCodeLine{\ \ console.log(`CHANGE\ THEME\ -\/\ \$\{newTheme\}`);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ const\ themeElement\ =\ document.querySelector("{}\#theme"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ if\ (themeElement)\ \{}
+\DoxyCodeLine{\ \ \ \ themeElement.remove();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ if\ (themes[newTheme])\ \{}
+\DoxyCodeLine{\ \ \ \ //\ eslint-\/disable-\/next-\/line\ no-\/console}
+\DoxyCodeLine{\ \ \ \ console.log(`THEME\ ALREADY\ LOADED\ -\/\ \$\{newTheme\}`);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ document.head.appendChild(themes[newTheme]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ return;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ if\ (newTheme\ ===\ "{}dark"{})\ \{}
+\DoxyCodeLine{\ \ \ \ //\ eslint-\/disable-\/next-\/line\ no-\/console}
+\DoxyCodeLine{\ \ \ \ console.log(`LOADING\ THEME\ -\/\ \$\{newTheme\}`);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ import(/*\ webpackChunkName:\ "{}dark"{}\ */\ "{}./style.scss?dark"{}).then(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ themes[newTheme]\ =\ document.querySelector("{}\#theme"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ eslint-\/disable-\/next-\/line\ no-\/console}
+\DoxyCodeLine{\ \ \ \ \ \ console.log(`LOADED\ -\/\ \$\{newTheme\}`);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{document.onclick\ =\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ if\ (theme\ ===\ "{}light"{})\ \{}
+\DoxyCodeLine{\ \ \ \ theme\ =\ "{}dark"{};}
+\DoxyCodeLine{\ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ theme\ =\ "{}light"{};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ loadTheme(theme);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{src/dark-\/theme/\+\_\+vars.\+scss}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$background:\ black;}
+
+\end{DoxyCode}
+
+
+{\bfseries{src/light-\/theme/\+\_\+vars.\+scss}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$background:\ white;}
+
+\end{DoxyCode}
+
+
+{\bfseries{src/styles.\+scss}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{body\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ vars.\$background;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{public/index.\+html}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!DOCTYPE\ html>}
+\DoxyCodeLine{<html\ lang="{}en"{}>}
+\DoxyCodeLine{\ \ <head>}
+\DoxyCodeLine{\ \ \ \ <meta\ charset="{}UTF-\/8"{}\ />}
+\DoxyCodeLine{\ \ \ \ <meta\ name="{}viewport"{}\ content="{}width=device-\/width,\ initial-\/scale=1"{}\ />}
+\DoxyCodeLine{\ \ \ \ <title>Document</title>}
+\DoxyCodeLine{\ \ \ \ <link\ id="{}theme"{}\ rel="{}stylesheet"{}\ type="{}text/css"{}\ href="{}./main.css"{}\ />}
+\DoxyCodeLine{\ \ </head>}
+\DoxyCodeLine{\ \ <body>}
+\DoxyCodeLine{\ \ \ \ <script\ src="{}./main.js"{}></script>}
+\DoxyCodeLine{\ \ </body>}
+\DoxyCodeLine{</html>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16822}{}\doxysubsubsection{\texorpdfstring{Media Query Plugin}{Media Query Plugin}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16822}
+If you\textquotesingle{}d like to extract the media queries from the extracted CSS (so mobile users don\textquotesingle{}t need to load desktop or tablet specific CSS anymore) you should use one of the following plugins\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/SassNinja/media-query-plugin}{\texttt{ Media Query Plugin}}
+\item \href{https://github.com/mike-diamond/media-query-splitting-plugin}{\texttt{ Media Query Splitting Plugin}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16823}{}\doxysubsection{\texorpdfstring{Hooks}{Hooks}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16823}
+The mini-\/css-\/extract-\/plugin provides hooks to extend it to your needs.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16824}{}\doxysubsubsection{\texorpdfstring{before\+Tag\+Insert}{before\+Tag\+Insert}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16824}
+{\ttfamily Sync\+Waterfall\+Hook}
+
+Called before inject the insert code for link tag. Should return a string
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MiniCssExtractPlugin.getCompilationHooks(compilation).beforeTagInsert.tap(}
+\DoxyCodeLine{\ \ "{}changeHref"{},}
+\DoxyCodeLine{\ \ (source,\ varNames)\ =>}
+\DoxyCodeLine{\ \ \ \ Template.asString([}
+\DoxyCodeLine{\ \ \ \ \ \ source,}
+\DoxyCodeLine{\ \ \ \ \ \ \`{}\$\{varNames.tag\}.setAttribute("{}href"{},\ "{}https://github.com/webpack-\/contrib/mini-\/css-\/extract-\/plugin"{});`,}
+\DoxyCodeLine{\ \ \ \ ])}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16825}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16825}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16826}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2mini-css-extract-plugin_2_r_e_a_d_m_e_autotoc_md16826}
+\href{./LICENSE}{\texttt{ MIT}} 

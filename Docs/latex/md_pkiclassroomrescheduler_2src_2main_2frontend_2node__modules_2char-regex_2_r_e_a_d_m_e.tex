@@ -1,0 +1,26 @@
+\chapter{Char Regex \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/\+Richienb/char-\/regex"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/travis/com/\+Richienb/char-\/regex/master.\+svg?style=for-\/the-\/badge"{} alt="{}\+Travis CI Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e}\index{Char Regex $<$a href="{}https://travis-\/ci.com/Richienb/char-\/regex"{} $>$$<$img src="{}https://img.shields.io/travis/com/Richienb/char-\/regex/master.svg?style=for-\/the-\/badge"{} alt="{}Travis CI Build Status"{}/$>$$<$/a$>$@{Char Regex $<$a href=""https://travis-\/ci.com/Richienb/char-\/regex"" $>$$<$img src=""https://img.shields.io/travis/com/Richienb/char-\/regex/master.svg?style=for-\/the-\/badge"" alt=""Travis CI Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6572}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6572}%
+ A regex to match any full character, considering weird character ranges. Tested on every single emoji and unicode character. Based on the Lodash implementation.
+
+\href{https://npmjs.com/package/char-regex}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6573}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6573}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ char-\/regex}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6574}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6574}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ charRegex\ =\ require("{}char-\/regex"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{"{}❤️👊🏽"{}.match(/./);}
+\DoxyCodeLine{//=>\ ["{}"{},\ "{}"{},\ "{}"{},\ "{}"{},\ "{}"{},\ "{}"{},\ "{}"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{"{}❤️👊🏽"{}.match(charRegex());}
+\DoxyCodeLine{//=>\ ["{}❤️"{},\ "{}👊🏽"{}]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6575}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6575}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6576}{}\doxysubsection{\texorpdfstring{char\+Regex()}{char\+Regex()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2char-regex_2_r_e_a_d_m_e_autotoc_md6576}

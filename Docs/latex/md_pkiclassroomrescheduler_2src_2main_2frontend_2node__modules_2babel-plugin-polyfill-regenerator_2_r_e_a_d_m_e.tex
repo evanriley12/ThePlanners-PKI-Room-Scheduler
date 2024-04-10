@@ -1,0 +1,34 @@
+\chapter{babel-\/plugin-\/polyfill-\/regenerator}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e}\index{babel-\/plugin-\/polyfill-\/regenerator@{babel-\/plugin-\/polyfill-\/regenerator}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e_autotoc_md5905}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e_autotoc_md5905}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e_autotoc_md5906}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e_autotoc_md5906}
+Using npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ babel-\/plugin-\/polyfill-\/regenerator}
+
+\end{DoxyCode}
+
+
+or using yarn\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ babel-\/plugin-\/polyfill-\/regenerator\ -\/-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e_autotoc_md5907}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2babel-plugin-polyfill-regenerator_2_r_e_a_d_m_e_autotoc_md5907}
+Add this plugin to your Babel configuration\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ [["{}polyfill-\/regenerator"{},\ \{\ "{}method"{}:\ "{}usage-\/global"{}\ \}]]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This package supports the {\ttfamily usage-\/pure}, {\ttfamily usage-\/global}, and {\ttfamily entry-\/global} methods. When {\ttfamily entry-\/global} is used, it replaces imports to {\ttfamily regenerator-\/runtime}. 

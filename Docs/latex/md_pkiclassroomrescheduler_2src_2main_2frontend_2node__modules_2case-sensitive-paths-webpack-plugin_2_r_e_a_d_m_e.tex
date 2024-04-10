@@ -1,0 +1,51 @@
+\chapter{Case Sensitive Paths -\/ Webpack Plugin}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e}\index{Case Sensitive Paths -\/ Webpack Plugin@{Case Sensitive Paths -\/ Webpack Plugin}}
+\href{https://travis-ci.org/Urthen/case-sensitive-paths-webpack-plugin}{\texttt{ }} \href{https://snyk.io/test/github/urthen/case-sensitive-paths-webpack-plugin?targetFile=package.json}{\texttt{ }} \href{https://badge.fury.io/js/case-sensitive-paths-webpack-plugin}{\texttt{ }} \href{https://www.npmjs.com/package/case-sensitive-paths-webpack-plugin}{\texttt{ }}  \href{https://app.fossa.io/projects/git\%2Bgithub.com\%2FUrthen\%2Fcase-sensitive-paths-webpack-plugin?ref=badge_shield}{\texttt{ }}
+
+This Webpack plugin enforces the entire path of all required modules match the exact case of the actual path on disk. Using this plugin helps alleviate cases where developers working on OSX, which does not follow strict path case sensitivity, will cause conflicts with other developers or build boxes running other operating systems which require correctly cased paths.
+
+\href{https://gist.github.com/Morhaus/333579c2a5b4db644bd50}{\texttt{ Previous}} \href{https://github.com/dcousineau/force-case-sensitivity-webpack-plugin}{\texttt{ iterations}} on this same idea provide the basis for this plugin, but unfortunately do not properly check case on the entire path. This plugin fixes that. Example output\+:
+
+\begin{quote}
+ERROR in ./src/containers/\+Search\+Products.js Module not found\+: Error\+: \mbox{[}Case\+Sensitive\+Paths\+Plugin\mbox{]} {\ttfamily /\+Users/example/yourproject/src/components/search\+Products/searchproducts.js} does not match the corresponding path on disk {\ttfamily /\+Users/example/yourproject/src/components/searchproducts} @ ./src/containers/\+Search\+Products.js 9\+:22-\/84 \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6546}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6546}
+npm install --save-\/dev case-\/sensitive-\/paths-\/webpack-\/plugin\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6547}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6547}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ CaseSensitivePathsPlugin\ =\ require('case-\/sensitive-\/paths-\/webpack-\/plugin');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ webpackConfig\ =\ \{}
+\DoxyCodeLine{\ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ new\ CaseSensitivePathsPlugin()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ other\ plugins\ ...}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ //\ other\ webpack\ config\ ...}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Want more information? Pass {\ttfamily \{debug\+: true\}} to the plugin like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CaseSensitivePathsPlugin(\{debug:\ true\})}
+
+\end{DoxyCode}
+
+
+It will output every directory it reads, as well as a sum total of filesystem operations. This is mostly useful for internal debugging of the plugin, but if you find it useful, more power to you.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6548}{}\doxysection{\texorpdfstring{Demo}{Demo}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6548}
+Check the {\ttfamily /demo} directory for a working example of the plugin in action, with tests demonstrating the effect of the plugin. See {\ttfamily /demo/\+README.md} for more.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6549}{}\doxysection{\texorpdfstring{Thanks \& Credit}{Thanks \& Credit}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6549}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/dcousineau}{\texttt{ Daniel Cousineau}} who wrote an \href{https://github.com/dcousineau/force-case-sensitivity-webpack-plugin}{\texttt{ earlier version}} of this case-\/sensitivity plugin
+\item \href{https://github.com/Morhaus}{\texttt{ Alexandre Kirszenberg}} who\textquotesingle{}s \href{https://gist.github.com/Morhaus/333579c2a5b4db644bd5}{\texttt{ gist}} formed the basis of both these plugins.
+\item \href{https://github.com/morethanfire}{\texttt{ Cameron Brewer}} and \href{https://github.com/aggieben}{\texttt{ Ben Collins}} who added Windows support.
+\item \href{https://github.com/xml}{\texttt{ Christian Lilley}} who added a demo/test package.
+\item \href{https://github.com/NorwegianKiwi}{\texttt{ Lance Eastgate}} who added some internationalization support
+\item \href{https://github.com/jkimbo}{\texttt{ Jonathan Kim}} and \href{https://github.com/gaearon}{\texttt{ Dan Abramov}} who investigated, fixed, and added some tests for a crashing bug.
+\item \href{https://github.com/jquense}{\texttt{ Jason Quense}} who switched it to properly use the webpack-\/provided fs object.
+\item \href{https://github.com/caesarsol}{\texttt{ Cesare Soldini}} who added a test
+\item \href{https://github.com/kirill-konshin}{\texttt{ Kirill Konshin}} who helped update to Webpack 5
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6550}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2case-sensitive-paths-webpack-plugin_2_r_e_a_d_m_e_autotoc_md6550}
+\href{https://app.fossa.io/projects/git\%2Bgithub.com\%2FUrthen\%2Fcase-sensitive-paths-webpack-plugin?ref=badge_large}{\texttt{ }} 

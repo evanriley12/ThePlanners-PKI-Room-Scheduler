@@ -1,0 +1,77 @@
+\doxysection{com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Meeting\+Time\+Converter Class Reference}
+\hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter}{}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter}\index{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Meeting\+Time}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Meeting\+Time \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_a2cc793d8e6dd92d1850d5c7c6ec0ed47}{parse\+Meeting\+Time}} (String meeting\+Time\+String)
+\item 
+static Array\+List$<$ Day\+Of\+Week $>$ \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_a98a087f056dfa2ec07104b55a6170aab}{convert\+To\+Day\+Of\+Week}} (String days\+String)
+\item 
+static Local\+Time \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_aceba6cc55ce45eaa990d2748d8d50f4b}{convert\+To\+Local\+Time}} (String time\+String)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Meeting\+Time\+Converter is a class that converts the meeting time string (Ex\+: "{}\+MW 3pm-\/4\+:15pm"{}) into easier to use formats, an Array\+List$<$\+Day\+Of\+Week$>$ for meeting days and a Local\+Time for each the start and end time. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_a98a087f056dfa2ec07104b55a6170aab}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_a98a087f056dfa2ec07104b55a6170aab} 
+\index{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}!convertToDayOfWeek@{convertToDayOfWeek}}
+\index{convertToDayOfWeek@{convertToDayOfWeek}!com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}}
+\doxysubsubsection{\texorpdfstring{convertToDayOfWeek()}{convertToDayOfWeek()}}
+{\footnotesize\ttfamily static Array\+List$<$ Day\+Of\+Week $>$ com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Meeting\+Time\+Converter.\+convert\+To\+Day\+Of\+Week (\begin{DoxyParamCaption}\item[{String}]{days\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Given a string, formatted "{}\+MW"{} or "{}\+F"{} representing Monday, Wednesday and Friday respectively, return an Array\+List of Day\+Of\+Week enumerations Ex\+: "{}\+MW"{} -\/\texorpdfstring{$>$}{>} \mbox{[}MONDAY, WEDNESDAY\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em days\+String} & the string containing the meeting days \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List of Day\+Of\+Week enumerations representing the input string
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+java.\+time.\+Day\+Of\+Week 
+\end{DoxySeeAlso}
+\Hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_aceba6cc55ce45eaa990d2748d8d50f4b}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_aceba6cc55ce45eaa990d2748d8d50f4b} 
+\index{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}!convertToLocalTime@{convertToLocalTime}}
+\index{convertToLocalTime@{convertToLocalTime}!com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}}
+\doxysubsubsection{\texorpdfstring{convertToLocalTime()}{convertToLocalTime()}}
+{\footnotesize\ttfamily static Local\+Time com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Meeting\+Time\+Converter.\+convert\+To\+Local\+Time (\begin{DoxyParamCaption}\item[{String}]{time\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Takes a time in the format "{}3pm"{} or "{}8am"{} and converts it to java.\+Local\+Time 
+\begin{DoxyParams}{Parameters}
+{\em time\+String} & the string containing the a time in format "{}3pm"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the time represented as a Local\+Time
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+java.\+Local\+Time 
+\end{DoxySeeAlso}
+\Hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_a2cc793d8e6dd92d1850d5c7c6ec0ed47}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter_a2cc793d8e6dd92d1850d5c7c6ec0ed47} 
+\index{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}!parseMeetingTime@{parseMeetingTime}}
+\index{parseMeetingTime@{parseMeetingTime}!com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter@{com.theplanners.pkiclassroomrescheduler.system.MeetingTimeConverter}}
+\doxysubsubsection{\texorpdfstring{parseMeetingTime()}{parseMeetingTime()}}
+{\footnotesize\ttfamily static Meeting\+Time com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Meeting\+Time\+Converter.\+parse\+Meeting\+Time (\begin{DoxyParamCaption}\item[{String}]{meeting\+Time\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Takes a meeting time string, formatted as "{}\+MW 3pm-\/4\+:15pm"{}, parses out the meeting days and meeting times, and returns tham as a Meeting\+Time object. 
+\begin{DoxyParams}{Parameters}
+{\em meeting\+Time\+String} & String directly from csv in format "{}\+MW 3pm-\/4\+:15pm"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Meeting\+Time\+: a custom class that contains the meeting days, the start time, and the end time. or returns null if pattern doesn\textquotesingle{}t match. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 0
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pkiclassroomrescheduler/src/main/java/com/theplanners/pkiclassroomrescheduler/system/Meeting\+Time\+Converter.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,90 @@
+\chapter{import/no-\/useless-\/path-\/segments}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments}\index{import/no-\/useless-\/path-\/segments@{import/no-\/useless-\/path-\/segments}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10025}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10025}%
+ 🔧 This rule is automatically fixable by the \href{https://eslint.org/docs/latest/user-guide/command-line-interface\#--fix}{\texttt{ {\ttfamily -\/-\/fix} CLI option}}.
+
+Use this rule to prevent unnecessary path segments in import and require statements.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10026}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10026}
+Given the following folder structure\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{my-\/project}
+\DoxyCodeLine{├──\ app.js}
+\DoxyCodeLine{├──\ footer.js}
+\DoxyCodeLine{├──\ header.js}
+\DoxyCodeLine{└──\ helpers.js}
+\DoxyCodeLine{└──\ helpers}
+\DoxyCodeLine{\ \ \ \ └──\ index.js}
+\DoxyCodeLine{├──\ index.js}
+\DoxyCodeLine{└──\ pages}
+\DoxyCodeLine{\ \ \ \ ├──\ about.js}
+\DoxyCodeLine{\ \ \ \ ├──\ contact.js}
+\DoxyCodeLine{\ \ \ \ └──\ index.js}
+
+\end{DoxyCode}
+
+
+The following patterns are considered problems\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ \ in\ my-\/project/app.js}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ "{}./../my-\/project/pages/about.js"{};\ //\ should\ be\ "{}./pages/about.js"{}}
+\DoxyCodeLine{import\ "{}./../my-\/project/pages/about"{};\ //\ should\ be\ "{}./pages/about"{}}
+\DoxyCodeLine{import\ "{}../my-\/project/pages/about.js"{};\ //\ should\ be\ "{}./pages/about.js"{}}
+\DoxyCodeLine{import\ "{}../my-\/project/pages/about"{};\ //\ should\ be\ "{}./pages/about"{}}
+\DoxyCodeLine{import\ "{}./pages//about"{};\ //\ should\ be\ "{}./pages/about"{}}
+\DoxyCodeLine{import\ "{}./pages/"{};\ //\ should\ be\ "{}./pages"{}}
+\DoxyCodeLine{import\ "{}./pages/index"{};\ //\ should\ be\ "{}./pages"{}\ (except\ if\ there\ is\ a\ ./pages.js\ file)}
+\DoxyCodeLine{import\ "{}./pages/index.js"{};\ //\ should\ be\ "{}./pages"{}\ (except\ if\ there\ is\ a\ ./pages.js\ file)}
+
+\end{DoxyCode}
+
+
+The following patterns are NOT considered problems\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ \ in\ my-\/project/app.js}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ "{}./header.js"{};}
+\DoxyCodeLine{import\ "{}./pages"{};}
+\DoxyCodeLine{import\ "{}./pages/about"{};}
+\DoxyCodeLine{import\ "{}."{};}
+\DoxyCodeLine{import\ "{}.."{};}
+\DoxyCodeLine{import\ fs\ from\ "{}fs"{};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10027}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10027}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10028}{}\doxysubsection{\texorpdfstring{no\+Useless\+Index}{no\+Useless\+Index}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10028}
+If you want to detect unnecessary {\ttfamily /index} or {\ttfamily /index.js} (depending on the specified file extensions, see below) imports in your paths, you can enable the option {\ttfamily no\+Useless\+Index}. By default it is set to {\ttfamily false}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}import/no-\/useless-\/path-\/segments"{}:\ ["{}error"{},\ \{}
+\DoxyCodeLine{\ \ noUselessIndex:\ true,}
+\DoxyCodeLine{\}]}
+
+\end{DoxyCode}
+
+
+Additionally to the patterns described above, the following imports are considered problems if {\ttfamily no\+Useless\+Index} is enabled\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ in\ my-\/project/app.js}
+\DoxyCodeLine{import\ "{}./helpers/index"{};\ //\ should\ be\ "{}./helpers/"{}\ (not\ auto-\/fixable\ to\ \`{}./helpers`\ because\ this\ would\ lead\ to\ an\ ambiguous\ import\ of\ \`{}./helpers.js`\ and\ \`{}./helpers/index.js`)}
+\DoxyCodeLine{import\ "{}./pages/index"{};\ //\ should\ be\ "{}./pages"{}\ (auto-\/fixable)}
+\DoxyCodeLine{import\ "{}./pages/index.js"{};\ //\ should\ be\ "{}./pages"{}\ (auto-\/fixable)}
+
+\end{DoxyCode}
+
+
+Note\+: {\ttfamily no\+Useless\+Index} only avoids ambiguous imports for {\ttfamily .js} files if you haven\textquotesingle{}t specified other resolved file extensions. See \href{https://github.com/import-js/eslint-plugin-import\#importextensions}{\texttt{ Settings\+: import/extensions}} for details.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10029}{}\doxysubsection{\texorpdfstring{commonjs}{commonjs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-useless-path-segments_autotoc_md10029}
+When set to {\ttfamily true}, this rule checks Common\+JS imports. Default to {\ttfamily false}. 

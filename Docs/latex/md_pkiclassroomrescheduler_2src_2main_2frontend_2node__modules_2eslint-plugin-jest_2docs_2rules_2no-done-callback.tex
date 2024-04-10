@@ -1,0 +1,98 @@
+\chapter{Avoid using a callback in asynchronous tests and hooks (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}no-\/done-\/callback\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback}\index{Avoid using a callback in asynchronous tests and hooks ($<$tt$>$no-\/done-\/callback$<$/tt$>$)@{Avoid using a callback in asynchronous tests and hooks ($<$tt$>$no-\/done-\/callback$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback_autotoc_md10396}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback_autotoc_md10396}%
+ When calling asynchronous code in hooks and tests, {\ttfamily jest} needs to know when the asynchronous work is complete to progress the current run.
+
+Originally the most common pattern to achieve this was to use callbacks\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('the\ data\ is\ peanut\ butter',\ done\ =>\ \{}
+\DoxyCodeLine{\ \ function\ callback(data)\ \{}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ expect(data).toBe('peanut\ butter');}
+\DoxyCodeLine{\ \ \ \ \ \ done();}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ done(error);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ fetchData(callback);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+This can be very error-\/prone however, as it requires careful understanding of how assertions work in tests or otherwise tests won\textquotesingle{}t behave as expected.
+
+For example, if the {\ttfamily try/catch} was left out of the above code, the test would time out rather than fail. Even with the {\ttfamily try/catch}, forgetting to pass the caught error to {\ttfamily done} will result in {\ttfamily jest} believing the test has passed.
+
+A more straightforward way to handle asynchronous code is to use Promises\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('the\ data\ is\ peanut\ butter',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ return\ fetchData().then(data\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(data).toBe('peanut\ butter');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+When a test or hook returns a promise, {\ttfamily jest} waits for that promise to resolve, as well as automatically failing should the promise reject.
+
+If your environment supports {\ttfamily async/await}, this becomes even simpler\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{test('the\ data\ is\ peanut\ butter',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ data\ =\ await\ fetchData();}
+\DoxyCodeLine{\ \ expect(data).toBe('peanut\ butter');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback_autotoc_md10397}{}\doxysection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback_autotoc_md10397}
+This rule checks the function parameter of hooks \& tests for use of the {\ttfamily done} argument, suggesting you return a promise instead.
+
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{beforeEach(done\ =>\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{test('myFunction()',\ done\ =>\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{test('myFunction()',\ function\ (done)\ \{}
+\DoxyCodeLine{\ \ //\ ...}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The following patterns are not considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{beforeEach(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ await\ setupUsTheBomb();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{test('myFunction()',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ expect(myFunction()).toBeTruthy();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{test('myFunction()',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ return\ new\ Promise(done\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(myFunction()).toBeTruthy();}
+\DoxyCodeLine{\ \ \ \ done();}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

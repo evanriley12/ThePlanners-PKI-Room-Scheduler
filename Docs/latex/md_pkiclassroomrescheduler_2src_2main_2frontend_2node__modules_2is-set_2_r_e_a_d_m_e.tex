@@ -1,0 +1,31 @@
+\chapter{is-\/set \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/is-\/set"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/is-\/set.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e}\index{is-\/set $<$sup$>$$<$a href="{}https://npmjs.org/package/is-\/set"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/is-\/set.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{is-\/set $<$sup$>$$<$a href=""https://npmjs.org/package/is-\/set"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/is-\/set.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e_autotoc_md14764}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e_autotoc_md14764}%
+ \href{https://david-dm.org/inspect-js/is-set}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-set\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=is-set}{\texttt{ }}
+
+\href{https://npmjs.org/package/is-set}{\texttt{ }}
+
+Is this value a JS Set? This module works cross-\/realm/iframe, and despite ES6 @to\+String\+Tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e_autotoc_md14765}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e_autotoc_md14765}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isSet\ =\ require('is-\/set');}
+\DoxyCodeLine{assert(!isSet(function\ ()\ \{\}));}
+\DoxyCodeLine{assert(!isSet(null));}
+\DoxyCodeLine{assert(!isSet(function*\ ()\ \{\ yield\ 42;\ return\ Infinity;\ \});}
+\DoxyCodeLine{assert(!isSet(Symbol('foo')));}
+\DoxyCodeLine{assert(!isSet(1n));}
+\DoxyCodeLine{assert(!isSet(Object(1n)));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(!isSet(new\ Map()));}
+\DoxyCodeLine{assert(!isSet(new\ WeakSet()));}
+\DoxyCodeLine{assert(!isSet(new\ WeakMap()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(isSet(new\ Set()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ MySet\ extends\ Set\ \{\}}
+\DoxyCodeLine{assert(isSet(new\ MySet()));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e_autotoc_md14766}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-set_2_r_e_a_d_m_e_autotoc_md14766}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

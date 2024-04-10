@@ -1,0 +1,28 @@
+\chapter{read-\/cache \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/\+Try\+Sound/read-\/cache"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/\+Try\+Sound/read-\/cache.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e}\index{read-\/cache $<$a href="{}https://travis-\/ci.org/TrySound/read-\/cache"{} $>$$<$img src="{}https://travis-\/ci.org/TrySound/read-\/cache.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{read-\/cache $<$a href=""https://travis-\/ci.org/TrySound/read-\/cache"" $>$$<$img src=""https://travis-\/ci.org/TrySound/read-\/cache.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20379}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20379}%
+ Reads and caches the entire contents of a file until it is modified.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20380}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20380}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ i\ read-\/cache}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20381}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20381}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ foo.js}
+\DoxyCodeLine{var\ readCache\ =\ require('read-\/cache');}
+\DoxyCodeLine{}
+\DoxyCodeLine{readCache('foo.js').then(function\ (contents)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(contents);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20382}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20382}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20383}{}\doxysubsection{\texorpdfstring{read\+Cache(path\mbox{[}, encoding\mbox{]})}{read\+Cache(path\mbox{[}, encoding\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20383}
+Returns a promise that resolves with the file\textquotesingle{}s contents.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20384}{}\doxysubsection{\texorpdfstring{read\+Cache.\+sync(path\mbox{[}, encoding\mbox{]})}{read\+Cache.\+sync(path\mbox{[}, encoding\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20384}
+Returns the content of the file.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20385}{}\doxysubsection{\texorpdfstring{read\+Cache.\+get(path\mbox{[}, encoding\mbox{]})}{read\+Cache.\+get(path\mbox{[}, encoding\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20385}
+Returns the content of cached file or null.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20386}{}\doxysubsection{\texorpdfstring{read\+Cache.\+clear()}{read\+Cache.\+clear()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20386}
+Clears the contents of the cache.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20387}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2read-cache_2_r_e_a_d_m_e_autotoc_md20387}
+MIT © \href{mailto:trysound@yandex.ru}{\texttt{ Bogdan Chadkin}} 

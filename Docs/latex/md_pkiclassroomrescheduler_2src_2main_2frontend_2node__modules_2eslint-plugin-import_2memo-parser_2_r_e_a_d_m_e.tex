@@ -1,0 +1,25 @@
+\chapter{eslint-\/plugin-\/import/memo-\/parser}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2memo-parser_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2memo-parser_2_r_e_a_d_m_e}\index{eslint-\/plugin-\/import/memo-\/parser@{eslint-\/plugin-\/import/memo-\/parser}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2memo-parser_2_r_e_a_d_m_e_autotoc_md10057}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2memo-parser_2_r_e_a_d_m_e_autotoc_md10057}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2memo-parser_2_r_e_a_d_m_e_autotoc_md10058}{}\doxysection{\texorpdfstring{NOTE}{NOTE}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2memo-parser_2_r_e_a_d_m_e_autotoc_md10058}
+This used to improve performance, but as of ESLint 5 and v2 of this plugin, it seems to just consume a bunch of memory and slightly increase lint times.
+
+{\bfseries{Not recommended for use at this time!}}
+
+This parser is just a memoizing wrapper around some actual parser.
+
+To configure, just add your {\itshape actual} parser to the {\ttfamily parser\+Options}, like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser:\ eslint-\/plugin-\/import/memo-\/parser}
+\DoxyCodeLine{\#\ parser:\ babel-\/eslint}
+\DoxyCodeLine{}
+\DoxyCodeLine{parserOptions:}
+\DoxyCodeLine{\ \ parser:\ babel-\/eslint}
+\DoxyCodeLine{\ \ sourceType:\ module}
+\DoxyCodeLine{\ \ ecmaVersion:\ 6}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,35 @@
+\chapter{HPACK.\+js}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e}\index{HPACK.js@{HPACK.js}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e_autotoc_md13613}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e_autotoc_md13613}%
+ \href{http://travis-ci.org/indutny/hpack.js}{\texttt{ }} \href{http://badge.fury.io/js/hpack.js}{\texttt{ }}
+
+Plain-\/\+JS implementation of \href{https://tools.ietf.org/html/rfc7541}{\texttt{ HPACK}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e_autotoc_md13614}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e_autotoc_md13614}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hpack\ =\ require('hpack.js');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ comp\ =\ hpack.compressor.create(\{\ table:\ \{\ size:\ 256\ \}\ \});}
+\DoxyCodeLine{var\ decomp\ =\ hpack.decompressor.create(\{\ table:\ \{\ size:\ 256\ \}\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{comp.write([\ \{\ name:\ 'host',\ value:\ 'localhost'\ \}\ ]);}
+\DoxyCodeLine{var\ raw\ =\ comp.read();}
+\DoxyCodeLine{console.log(raw);}
+\DoxyCodeLine{//\ <Buffer\ 66\ 86\ a0\ e4\ 1d\ 13\ 9d\ 09>}
+\DoxyCodeLine{}
+\DoxyCodeLine{decomp.write(raw);}
+\DoxyCodeLine{decomp.execute();}
+\DoxyCodeLine{console.log(decomp.read());}
+\DoxyCodeLine{//\ \{\ name:\ 'host',\ value:\ 'localhost',\ neverIndex:\ false\ \}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e_autotoc_md13615}{}\doxysubsubsection{\texorpdfstring{LICENSE}{LICENSE}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2hpack_8js_2_r_e_a_d_m_e_autotoc_md13615}
+This software is licensed under the MIT License.
+
+Copyright Fedor Indutny, 2015.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "{}\+Software"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "{}\+AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

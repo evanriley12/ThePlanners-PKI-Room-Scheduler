@@ -1,0 +1,52 @@
+\chapter{Installation}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e}\index{Installation@{Installation}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2772}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2772}%
+\begin{quote}
+{\ttfamily npm install -\/-\/save @types/connect-\/history-\/api-\/fallback} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2773}{}\doxysection{\texorpdfstring{Summary}{Summary}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2773}
+This package contains type definitions for connect-\/history-\/api-\/fallback (\href{https://github.com/bripkens/connect-history-api-fallback\#readme}{\texttt{ https\+://github.\+com/bripkens/connect-\/history-\/api-\/fallback\#readme}}).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2774}{}\doxysection{\texorpdfstring{Details}{Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2774}
+Files were exported from \href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/connect-history-api-fallback}{\texttt{ https\+://github.\+com/\+Definitely\+Typed/\+Definitely\+Typed/tree/master/types/connect-\/history-\/api-\/fallback}}. \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2775}{}\doxysubsection{\texorpdfstring{\href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/connect-history-api-fallback/index.d.ts}{\texttt{ index.\+d.\+ts}}}{\href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/connect-history-api-fallback/index.d.ts}{\texttt{ index.\+d.\+ts}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2775}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{///\ <reference\ types="{}node"{}\ />}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ \{\ Url\ \}\ from\ "{}url"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ *\ as\ core\ from\ "{}express-\/serve-\/static-\/core"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ =\ historyApiFallback;}
+\DoxyCodeLine{}
+\DoxyCodeLine{declare\ function\ historyApiFallback(options?:\ historyApiFallback.Options):\ core.RequestHandler;}
+\DoxyCodeLine{}
+\DoxyCodeLine{declare\ namespace\ historyApiFallback\ \{}
+\DoxyCodeLine{\ \ \ \ interface\ Options\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ disableDotRule?:\ true\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ htmlAcceptHeaders?:\ readonly\ string[]\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ index?:\ string\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ logger?:\ typeof\ console.log\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ rewrites?:\ readonly\ Rewrite[]\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ verbose?:\ boolean\ |\ undefined;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ interface\ Context\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ match:\ RegExpMatchArray;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ parsedUrl:\ Url;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ request:\ core.Request;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ type\ RewriteTo\ =\ (context:\ Context)\ =>\ string;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ interface\ Rewrite\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ from:\ RegExp;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ readonly\ to:\ string\ |\ RegExp\ |\ RewriteTo;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2776}{}\doxysubsubsection{\texorpdfstring{Additional Details}{Additional Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2776}
+
+\begin{DoxyItemize}
+\item Last updated\+: Mon, 20 Nov 2023 23\+:36\+:24 GMT
+\item Dependencies\+: \href{https://npmjs.com/package/@types/express-serve-static-core}{\texttt{ @types/express-\/serve-\/static-\/core}}, \href{https://npmjs.com/package/@types/node}{\texttt{ @types/node}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2777}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dtypes_2connect-history-api-fallback_2_r_e_a_d_m_e_autotoc_md2777}
+These definitions were written by \href{https://github.com/douglasduteil}{\texttt{ Douglas Duteil}}. 

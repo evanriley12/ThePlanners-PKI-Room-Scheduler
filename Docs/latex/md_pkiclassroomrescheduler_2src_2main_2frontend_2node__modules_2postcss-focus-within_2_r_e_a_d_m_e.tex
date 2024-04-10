@@ -1,0 +1,120 @@
+\chapter{Post\+CSS Focus Within \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e}\index{PostCSS Focus Within $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS Focus Within $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS Logo\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18743}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18743}%
+ \href{https://www.npmjs.com/package/postcss-focus-within}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}npm version"{} src="{}https\+://img.\+shields.\+io/npm/v/postcss-\/focus-\/within.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://cssdb.org/\#focus-within-pseudo-class}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}CSS Standard Status"{} src="{}https\+://cssdb.\+org/images/badges/focus-\/within-\/pseudo-\/class.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within/actions/workflows/test.yml?query=workflow/test}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Build Status"{} src="{}https\+://github.\+com/csstools/postcss-\/plugins/tree/main/postcss-\/focus-\/within/workflows/test/badge.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within}{\texttt{ Post\+CSS Focus Within}} lets you use the {\ttfamily \+:focus-\/within} pseudo-\/class in CSS, following the \href{https://www.w3.org/TR/selectors-4/\#the-focus-within-pseudo}{\texttt{ Selectors Level 4 specification}}.
+
+It is the companion to the \href{https://github.com/jsxtools/focus-within}{\texttt{ focus-\/within polyfill}}.
+
+\href{https://caniuse.com/\#feat=css-focus-within}{\texttt{ }}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.my-\/form-\/field:focus-\/within\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{.my-\/form-\/field[focus-\/within]\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.my-\/form-\/field:focus-\/within\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within}{\texttt{ Post\+CSS Focus Within}} duplicates rules using the {\ttfamily \+:focus-\/within} pseudo-\/class with a {\ttfamily \mbox{[}focus-\/within\mbox{]}} attribute selector, the same selector used by the \href{https://github.com/jsxtools/focus-within}{\texttt{ focus-\/within polyfill}}. This replacement selector can be changed using the {\ttfamily replace\+With} option. Also, the preservation of the original {\ttfamily \+:focus-\/within} rule can be disabled using the {\ttfamily preserve} option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18744}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18744}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within}{\texttt{ Post\+CSS Focus Within}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss\ postcss-\/focus-\/within\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use \href{https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within}{\texttt{ Post\+CSS Focus Within}} to process your CSS\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcssFocusWithin\ =\ require('postcss-\/focus-\/within');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcssFocusWithin.process(YOUR\_CSS\ /*,\ processOptions,\ pluginOptions\ */);}
+
+\end{DoxyCode}
+
+
+Or use it as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcss\ =\ require('postcss');}
+\DoxyCodeLine{const\ postcssFocusWithin\ =\ require('postcss-\/focus-\/within');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ postcssFocusWithin(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/postcss-focus-within}{\texttt{ Post\+CSS Focus Within}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#postcss-cli}{\texttt{ Post\+CSS CLI}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18745}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18745}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18746}{}\doxysubsection{\texorpdfstring{preserve}{preserve}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18746}
+The {\ttfamily preserve} option defines whether the original selector should remain. By default, the original selector is preserved.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{focusWithin(\{\ preserve:\ false\ \});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.my-\/form-\/field:focus-\/within\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{.my-\/form-\/field[focus-\/within]\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18747}{}\doxysubsection{\texorpdfstring{replace\+With}{replace\+With}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-focus-within_2_r_e_a_d_m_e_autotoc_md18747}
+The {\ttfamily replace\+With} option defines the selector to replace {\ttfamily \+:focus-\/within}. By default, the replacement selector is {\ttfamily \mbox{[}focus-\/within\mbox{]}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{focusWithin(\{\ replaceWith:\ '.focus-\/within'\ \});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.my-\/form-\/field:focus-\/within\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{.my-\/form-\/field.focus-\/within\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{.my-\/form-\/field:focus-\/within\ label\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

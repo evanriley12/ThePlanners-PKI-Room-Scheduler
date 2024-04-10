@@ -1,0 +1,132 @@
+\chapter{Post\+CSS Stepped Value Functions \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e}\index{PostCSS Stepped Value Functions $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS Logo\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS Stepped Value Functions $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS Logo\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md908}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md908}%
+ \href{https://www.npmjs.com/package/@csstools/postcss-stepped-value-functions}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}npm version"{} src="{}https\+://img.\+shields.\+io/npm/v/@csstools/postcss-\/stepped-\/value-\/functions.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://cssdb.org/\#stepped-value-functions}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}CSS Standard Status"{} src="{}https\+://cssdb.\+org/images/badges/stepped-\/value-\/functions.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Build Status"{} src="{}https\+://github.\+com/csstools/postcss-\/plugins/workflows/test/badge.\+svg"{} height="{}20"{}\texorpdfstring{$>$}{>}}} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions}{\texttt{ Post\+CSS Stepped Value Functions}} lets you use {\ttfamily round}, {\ttfamily rem} and {\ttfamily mod} stepped value functions, following the \href{https://www.w3.org/TR/css-values-4/\#round-func}{\texttt{ CSS Values 4}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.test-\/functions\ \{}
+\DoxyCodeLine{\ \ \ \ padding:\ 8px\ mod(18px,\ 5px)\ 1px\ calc(rem(15px,\ 6px)\ +\ 50\%);}
+\DoxyCodeLine{\ \ \ \ transform:\ rotate(mod(-\/140deg,\ -\/90deg));}
+\DoxyCodeLine{\ \ \ \ top:\ round(15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ right:\ round(nearest,\ 15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ bottom:\ round(up,\ 15px,\ 7px);}
+\DoxyCodeLine{\ \ \ \ left:\ round(down,\ 15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ width:\ round(to-\/zero,\ 15px,\ 4px);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{.test-\/functions\ \{}
+\DoxyCodeLine{\ \ \ \ padding:\ 8px\ 3px\ 1px\ calc(3px\ +\ 50\%);}
+\DoxyCodeLine{\ \ \ \ transform:\ rotate(-\/50deg);}
+\DoxyCodeLine{\ \ \ \ top:\ 16px;}
+\DoxyCodeLine{\ \ \ \ right:\ 16px;}
+\DoxyCodeLine{\ \ \ \ bottom:\ 21px;}
+\DoxyCodeLine{\ \ \ \ left:\ 12px;}
+\DoxyCodeLine{\ \ \ \ width:\ 12px;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md909}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md909}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions}{\texttt{ Post\+CSS Stepped Value Functions}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss\ @csstools/postcss-\/stepped-\/value-\/functions\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use it as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcss\ =\ require('postcss');}
+\DoxyCodeLine{const\ postcssSteppedValueFunctions\ =\ require('@csstools/postcss-\/stepped-\/value-\/functions');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ \ \ postcssSteppedValueFunctions(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-stepped-value-functions}{\texttt{ Post\+CSS Stepped Value Functions}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#postcss-cli}{\texttt{ Post\+CSS CLI}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md910}{}\doxysection{\texorpdfstring{⚠️ About custom properties}{⚠️ About custom properties}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md910}
+Given the dynamic nature of custom properties it\textquotesingle{}s impossible to know what the variable value is, which means the plugin can\textquotesingle{}t compute a final value for the stylesheet.
+
+Because of that, any usage that contains a {\ttfamily var} is skipped.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md911}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md911}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md912}{}\doxysubsection{\texorpdfstring{preserve}{preserve}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md912}
+The {\ttfamily preserve} option determines whether the original notation is preserved. By default, it is not preserved.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssSteppedValueFunctions(\{\ preserve:\ true\ \})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.test-\/functions\ \{}
+\DoxyCodeLine{\ \ \ \ padding:\ 8px\ mod(18px,\ 5px)\ 1px\ calc(rem(15px,\ 6px)\ +\ 50\%);}
+\DoxyCodeLine{\ \ \ \ transform:\ rotate(mod(-\/140deg,\ -\/90deg));}
+\DoxyCodeLine{\ \ \ \ top:\ round(15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ right:\ round(nearest,\ 15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ bottom:\ round(up,\ 15px,\ 7px);}
+\DoxyCodeLine{\ \ \ \ left:\ round(down,\ 15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ width:\ round(to-\/zero,\ 15px,\ 4px);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{.test-\/functions\ \{}
+\DoxyCodeLine{\ \ \ \ padding:\ 8px\ 3px\ 1px\ calc(3px\ +\ 50\%);}
+\DoxyCodeLine{\ \ \ \ padding:\ 8px\ mod(18px,\ 5px)\ 1px\ calc(rem(15px,\ 6px)\ +\ 50\%);}
+\DoxyCodeLine{\ \ \ \ transform:\ rotate(-\/50deg);}
+\DoxyCodeLine{\ \ \ \ transform:\ rotate(mod(-\/140deg,\ -\/90deg));}
+\DoxyCodeLine{\ \ \ \ top:\ 16px;}
+\DoxyCodeLine{\ \ \ \ top:\ round(15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ right:\ 16px;}
+\DoxyCodeLine{\ \ \ \ right:\ round(nearest,\ 15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ bottom:\ 21px;}
+\DoxyCodeLine{\ \ \ \ bottom:\ round(up,\ 15px,\ 7px);}
+\DoxyCodeLine{\ \ \ \ left:\ 12px;}
+\DoxyCodeLine{\ \ \ \ left:\ round(down,\ 15px,\ 4px);}
+\DoxyCodeLine{\ \ \ \ width:\ 12px;}
+\DoxyCodeLine{\ \ \ \ width:\ round(to-\/zero,\ 15px,\ 4px);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md913}{}\doxysubsection{\texorpdfstring{on\+Invalid}{on\+Invalid}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-stepped-value-functions_2_r_e_a_d_m_e_autotoc_md913}
+{\ttfamily on\+Invalid} option allows you to assign the {\ttfamily warn} value so you can get warnings when the usage of the functions is wrong.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssSteppedValueFunctions(\{\ onInvalid:\ 'warn'\ \})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.invalid\ \{}
+\DoxyCodeLine{\ \ \ \ font-\/size:\ mod(18px,\ 5rem);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Will produce on the terminal\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[postcss-\/stepped-\/value-\/functions]:\ Failed\ to\ transform\ mod(18px,\ 5rem)\ as\ the\ units\ don't\ match}
+
+\end{DoxyCode}
+ 

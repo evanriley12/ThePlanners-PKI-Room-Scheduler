@@ -1,0 +1,62 @@
+\chapter{import/no-\/named-\/as-\/default}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default}\index{import/no-\/named-\/as-\/default@{import/no-\/named-\/as-\/default}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default_autotoc_md9971}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default_autotoc_md9971}%
+ ⚠️ This rule {\itshape warns} in the following configs\+: ☑️ {\ttfamily recommended}, 🚸 {\ttfamily warnings}.
+
+Reports use of an exported name as the locally imported name of a default export.
+
+Rationale\+: using an exported name as the name of the default export is likely...
+
+
+\begin{DoxyItemize}
+\item {\itshape misleading}\+: others familiar with {\ttfamily foo.\+js} probably expect the name to be {\ttfamily foo}
+\item {\itshape a mistake}\+: only needed to import {\ttfamily bar} and forgot the brackets (the case that is prompting this)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default_autotoc_md9972}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default_autotoc_md9972}
+Given\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ foo.js}
+\DoxyCodeLine{export\ default\ 'foo';}
+\DoxyCodeLine{export\ const\ bar\ =\ 'baz';}
+
+\end{DoxyCode}
+
+
+...this would be valid\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ foo\ from\ './foo.js';}
+
+\end{DoxyCode}
+
+
+...and this would be reported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ message:\ Using\ exported\ name\ 'bar'\ as\ identifier\ for\ default\ export.}
+\DoxyCodeLine{import\ bar\ from\ './foo.js';}
+
+\end{DoxyCode}
+
+
+For post-\/\+ES2015 {\ttfamily export} extensions, this also prevents exporting the default from a referenced module as a name within that module, for the same reasons\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ valid:}
+\DoxyCodeLine{export\ foo\ from\ './foo.js';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ message:\ Using\ exported\ name\ 'bar'\ as\ identifier\ for\ default\ export.}
+\DoxyCodeLine{export\ bar\ from\ './foo.js';}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default_autotoc_md9973}{}\doxysection{\texorpdfstring{Further Reading}{Further Reading}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-named-as-default_autotoc_md9973}
+
+\begin{DoxyItemize}
+\item ECMAScript Proposal\+: \href{https://github.com/leebyron/ecmascript-export-ns-from}{\texttt{ export ns from}}
+\item ECMAScript Proposal\+: \href{https://github.com/leebyron/ecmascript-export-default-from}{\texttt{ export default from}} 
+\end{DoxyItemize}

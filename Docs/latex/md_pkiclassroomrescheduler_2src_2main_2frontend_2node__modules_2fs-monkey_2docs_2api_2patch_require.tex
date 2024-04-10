@@ -1,0 +1,62 @@
+\chapter{\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}patch\+Require(vol\mbox{[}, unixify\+Paths\mbox{[}, Module\mbox{]}\mbox{]})\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2fs-monkey_2docs_2api_2patch_require}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2fs-monkey_2docs_2api_2patch_require}\index{$<$tt$>$patchRequire(vol\mbox{[}, unixifyPaths\mbox{[}, Module\mbox{]}\mbox{]})$<$/tt$>$@{$<$tt$>$patchRequire(vol[, unixifyPaths[, Module]])$<$/tt$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2fs-monkey_2docs_2api_2patch_require_autotoc_md13085}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2fs-monkey_2docs_2api_2patch_require_autotoc_md13085}%
+ Patches Node\textquotesingle{}s {\ttfamily module} module to use a given {\itshape fs-\/like} object {\ttfamily vol} for module loading.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily vol} -\/ fs-\/like object
+\item {\ttfamily unixify\+Paths} \texorpdfstring{$\ast$}{*}(optional)\texorpdfstring{$\ast$}{*} -\/ whether to convert Windows paths to unix style paths, defaults to {\ttfamily false}.
+\item {\ttfamily Module} \texorpdfstring{$\ast$}{*}(optional)\texorpdfstring{$\ast$}{*} -\/ a module to patch, defaults to `require(\textquotesingle{}module')\`{}
+\end{DoxyItemize}
+
+Monkey-\/patches the {\ttfamily require} function in Node, this way you can make Node.\+js to {\itshape require} modules from your custom filesystem.
+
+It expects an object with three filesystem methods implemented that are needed for the {\ttfamily require} function to work.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{let\ vol\ =\ \{}
+\DoxyCodeLine{\ \ \ \ readFileSync:\ ()\ =>\ \{\},}
+\DoxyCodeLine{\ \ \ \ realpathSync:\ ()\ =>\ \{\},}
+\DoxyCodeLine{\ \ \ \ statSync:\ ()\ =>\ \{\},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+If you want to make Node.\+js to {\itshape require} your files from memory, you don\textquotesingle{}t need to implement those functions yourself, just use the \href{https://github.com/streamich/memfs}{\texttt{ {\ttfamily memfs}}} package\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{vol\}\ from\ 'memfs';}
+\DoxyCodeLine{import\ \{patchRequire\}\ from\ 'fs-\/monkey';}
+\DoxyCodeLine{}
+\DoxyCodeLine{vol.fromJSON(\{'/foo/bar.js':\ 'console.log("{}obi\ trice"{});'\});}
+\DoxyCodeLine{patchRequire(vol);}
+\DoxyCodeLine{require('/foo/bar');\ //\ obi\ trice}
+
+\end{DoxyCode}
+
+
+Now the {\ttfamily require} function will only load the files from the {\ttfamily vol} file system, but not from the actual filesystem on the disk.
+
+If you want the {\ttfamily require} function to load modules from both file systems, use the \href{https://github.com/streamich/unionfs}{\texttt{ {\ttfamily unionfs}}} package to combine both filesystems into a union\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{vol\}\ from\ 'memfs';}
+\DoxyCodeLine{import\ \{patchRequire\}\ from\ 'fs-\/monkey';}
+\DoxyCodeLine{import\ \{ufs\}\ from\ 'unionfs';}
+\DoxyCodeLine{import\ *\ as\ fs\ from\ 'fs';}
+\DoxyCodeLine{}
+\DoxyCodeLine{vol.fromJSON(\{'/foo/bar.js':\ 'console.log("{}obi\ trice"{});'\});}
+\DoxyCodeLine{ufs}
+\DoxyCodeLine{\ \ \ \ .use(vol)}
+\DoxyCodeLine{\ \ \ \ .use(fs);}
+\DoxyCodeLine{patchRequire(ufs);}
+\DoxyCodeLine{require('/foo/bar.js');\ //\ obi\ trice}
+
+\end{DoxyCode}
+ 

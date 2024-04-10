@@ -1,0 +1,159 @@
+\chapter{shell-\/quote \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/shell-\/quote"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/ljharb/shell-\/quote.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e}\index{shell-\/quote $<$sup$>$$<$a href="{}https://npmjs.org/package/shell-\/quote"{} $>$$<$img src="{}https://versionbadg.es/ljharb/shell-\/quote.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{shell-\/quote $<$sup$>$$<$a href=""https://npmjs.org/package/shell-\/quote"" $>$$<$img src=""https://versionbadg.es/ljharb/shell-\/quote.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23213}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23213}%
+ \href{https://github.com/ljharb/shell-quote/actions}{\texttt{ }} \href{https://app.codecov.io/gh/ljharb/shell-quote/}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=shell-quote}{\texttt{ }}
+
+\href{https://npmjs.org/package/shell-quote}{\texttt{ }}
+
+Parse and quote shell commands.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23214}{}\doxysection{\texorpdfstring{example}{example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23214}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23215}{}\doxysubsection{\texorpdfstring{quote}{quote}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23215}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ quote\ =\ require('shell-\/quote/quote');}
+\DoxyCodeLine{var\ s\ =\ quote([\ 'a',\ 'b\ c\ d',\ '\$f',\ '"{}g"{}'\ ]);}
+\DoxyCodeLine{console.log(s);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{a\ 'b\ c\ d'\ \(\backslash\)\$f\ '"{}g"{}'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23216}{}\doxysubsection{\texorpdfstring{parse}{parse}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23216}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote/parse');}
+\DoxyCodeLine{var\ xs\ =\ parse('a\ "{}b\ c"{}\ \(\backslash\)\(\backslash\)\$def\ \(\backslash\)'it\(\backslash\)\(\backslash\)\(\backslash\)'s\ great\(\backslash\)'');}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'a',\ 'b\ c',\ '\(\backslash\)\(\backslash\)\$def',\ 'it\(\backslash\)'s\ great'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23217}{}\doxysubsection{\texorpdfstring{parse with an environment variable}{parse with an environment variable}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23217}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote/parse');}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ -\/-\/boop="{}\$PWD"{}',\ \{\ PWD:\ '/home/robot'\ \});}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ '-\/-\/boop=/home/robot'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23218}{}\doxysubsection{\texorpdfstring{parse with custom escape character}{parse with custom escape character}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23218}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote/parse');}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ \string^-\/-\/boop="{}\$PWD"{}',\ \{\ PWD:\ '/home/robot'\ \},\ \{\ escape:\ '\string^'\ \});}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep\ -\/-\/boop=/home/robot'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23219}{}\doxysubsection{\texorpdfstring{parsing shell operators}{parsing shell operators}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23219}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote/parse');}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ ||\ boop\ >\ /byte');}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ \{\ op:\ '||'\ \},\ 'boop',\ \{\ op:\ '>'\ \},\ '/byte'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23220}{}\doxysubsection{\texorpdfstring{parsing shell comment}{parsing shell comment}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23220}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote/parse');}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ >\ boop\ \#\ >\ kaboom');}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ \{\ op:\ '>'\ \},\ 'boop',\ \{\ comment:\ '>\ kaboom'\ \}\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23221}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23221}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ quote\ =\ require('shell-\/quote/quote');}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote/parse');}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23222}{}\doxysubsection{\texorpdfstring{quote(args)}{quote(args)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23222}
+Return a quoted string for the array {\ttfamily args} suitable for using in shell commands.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23223}{}\doxysubsection{\texorpdfstring{parse(cmd, env=\{\})}{parse(cmd, env=\{\})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23223}
+Return an array of arguments from the quoted string {\ttfamily cmd}.
+
+Interpolate embedded bash-\/style {\ttfamily \$VARNAME} and {\ttfamily \$\{VARNAME\}} variables with the {\ttfamily env} object which like bash will replace undefined variables with {\ttfamily "{}"{}}.
+
+{\ttfamily env} is usually an object but it can also be a function to perform lookups. When {\ttfamily env(key)} returns a string, its result will be output just like {\ttfamily env\mbox{[}key\mbox{]}} would. When {\ttfamily env(key)} returns an object, it will be inserted into the result array like the operator objects.
+
+When a bash operator is encountered, the element in the array with be an object with an {\ttfamily "{}op"{}} key set to the operator string. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'beep\ ||\ boop\ >\ /byte'}
+
+\end{DoxyCode}
+
+
+parses as\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ \{\ op:\ '||'\ \},\ 'boop',\ \{\ op:\ '>'\ \},\ '/byte'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23224}{}\doxysection{\texorpdfstring{install}{install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23224}
+With \href{http://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ shell-\/quote}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23225}{}\doxysection{\texorpdfstring{license}{license}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2shell-quote_2_r_e_a_d_m_e_autotoc_md23225}
+MIT 

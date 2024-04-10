@@ -1,0 +1,26 @@
+\chapter{strip-\/final-\/newline \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/sindresorhus/strip-\/final-\/newline"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+com/sindresorhus/strip-\/final-\/newline.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme}\index{strip-\/final-\/newline $<$a href="{}https://travis-\/ci.com/sindresorhus/strip-\/final-\/newline"{} $>$$<$img src="{}https://travis-\/ci.com/sindresorhus/strip-\/final-\/newline.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{strip-\/final-\/newline $<$a href=""https://travis-\/ci.com/sindresorhus/strip-\/final-\/newline"" $>$$<$img src=""https://travis-\/ci.com/sindresorhus/strip-\/final-\/newline.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23854}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23854}%
+ \begin{quote}
+Strip the final \href{https://en.wikipedia.org/wiki/Newline}{\texttt{ newline character}} from a string/buffer \end{quote}
+Can be useful when parsing the output of, for example, {\ttfamily Child\+Process\#exec\+File}, as \href{https://stackoverflow.com/questions/729692/why-should-text-files-end-with-a-newline}{\texttt{ binaries usually output a newline at the end}}. Normally, you would use {\ttfamily stdout.\+trim()}, but that would also remove newlines at the start and whitespace.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23855}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23855}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ strip-\/final-\/newline}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23856}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23856}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ stripFinalNewline\ =\ require('strip-\/final-\/newline');}
+\DoxyCodeLine{}
+\DoxyCodeLine{stripFinalNewline('foo\(\backslash\)nbar\(\backslash\)n\(\backslash\)n');}
+\DoxyCodeLine{//=>\ 'foo\(\backslash\)nbar\(\backslash\)n'}
+\DoxyCodeLine{}
+\DoxyCodeLine{stripFinalNewline(Buffer.from('foo\(\backslash\)nbar\(\backslash\)n\(\backslash\)n')).toString();}
+\DoxyCodeLine{//=>\ 'foo\(\backslash\)nbar\(\backslash\)n'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23857}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2strip-final-newline_2readme_autotoc_md23857}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

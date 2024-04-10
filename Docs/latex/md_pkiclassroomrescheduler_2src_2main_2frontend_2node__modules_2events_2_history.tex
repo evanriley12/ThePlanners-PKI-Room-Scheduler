@@ -1,0 +1,117 @@
+\chapter{3.3.0}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history}\index{3.3.0@{3.3.0}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11462}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11462}%
+
+\begin{DoxyItemize}
+\item Support Event\+Target emitters in {\ttfamily events.\+once} from Node.\+js 12.\+11.\+0.
+
+Now you can use the {\ttfamily events.\+once} function with objects that implement the Event\+Target interface. This interface is used widely in the DOM and other web APIs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ events\ =\ require('events');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{async\ function\ connect()\ \{}
+\DoxyCodeLine{\ \ var\ ws\ =\ new\ WebSocket('wss://example.com');}
+\DoxyCodeLine{\ \ await\ events.once(ws,\ 'open');}
+\DoxyCodeLine{\ \ assert(ws.readyState\ ===\ WebSocket.OPEN);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{async\ function\ onClick()\ \{}
+\DoxyCodeLine{\ \ await\ events.once(document.body,\ 'click');}
+\DoxyCodeLine{\ \ alert('you\ clicked\ the\ page!');}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11463}{}\doxysection{\texorpdfstring{3.\+2.\+0}{3.\+2.\+0}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11463}
+
+\begin{DoxyItemize}
+\item Add {\ttfamily events.\+once} from Node.\+js 11.\+13.\+0.
+
+To use this function, Promises must be supported in the environment. Use a polyfill like {\ttfamily es6-\/promise} if you support older browsers.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11464}{}\doxysection{\texorpdfstring{3.\+1.\+0 (2020-\/01-\/08)}{3.\+1.\+0 (2020-\/01-\/08)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11464}
+{\ttfamily events} now matches the Node.\+js 11.\+12.\+0 API.
+
+
+\begin{DoxyItemize}
+\item pass through return value in wrapped {\ttfamily emitter.\+once()} listeners
+
+Now, this works\+: {\ttfamily js emitter.\+once(\textquotesingle{}myevent\textquotesingle{}, function () \{ return 1; \}); var listener = emitter.\+raw\+Listeners(\textquotesingle{}myevent\textquotesingle{})\mbox{[}0\mbox{]} assert(listener() === 1); } Previously, {\ttfamily listener()} would return undefined regardless of the implementation.
+
+Ported from \href{https://github.com/nodejs/node/commit/acc506c2d2771dab8d7bba6d3452bc5180dff7cf}{\texttt{ https\+://github.\+com/nodejs/node/commit/acc506c2d2771dab8d7bba6d3452bc5180dff7cf}}
+\item Reduce code duplication in listener type check (\href{https://github.com/Gozala/events/pull/67}{\texttt{ \#67}} by \href{https://github.com/friederbluemle}{\texttt{ @friederbluemle}}).
+\item Improve {\ttfamily emitter.\+once()} performance in some engines
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11465}{}\doxysection{\texorpdfstring{3.\+0.\+0 (2018-\/05-\/25)}{3.\+0.\+0 (2018-\/05-\/25)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11465}
+{\bfseries{This version drops support for IE8.}} {\ttfamily events} no longer includes polyfills for ES5 features. If you need to support older environments, use an ES5 shim like \href{https://npmjs.com/package/es5-shim}{\texttt{ es5-\/shim}}. Both the shim and sham versions of es5-\/shim are necessary.
+
+
+\begin{DoxyItemize}
+\item Update to events code from Node.\+js 10.\+x
+\begin{DoxyItemize}
+\item (semver major) Adds {\ttfamily off()} method
+\end{DoxyItemize}
+\item Port more tests from Node.\+js
+\item Switch browser tests to airtap, making things more reliable
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11466}{}\doxysection{\texorpdfstring{2.\+1.\+0 (2018-\/05-\/25)}{2.\+1.\+0 (2018-\/05-\/25)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11466}
+
+\begin{DoxyItemize}
+\item add Emitter\+::raw\+Listeners from Node.\+js v9.\+4
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11467}{}\doxysection{\texorpdfstring{2.\+0.\+0 (2018-\/02-\/02)}{2.\+0.\+0 (2018-\/02-\/02)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11467}
+
+\begin{DoxyItemize}
+\item Update to events code from node.\+js 8.\+x
+\begin{DoxyItemize}
+\item Adds {\ttfamily prepend\+Listener()} and {\ttfamily prepend\+Once\+Listener()}
+\item Adds {\ttfamily event\+Names()} method
+\item (semver major) Unwrap {\ttfamily once()} listeners in {\ttfamily listeners()}
+\end{DoxyItemize}
+\item copy tests from node.\+js
+\end{DoxyItemize}
+
+Note that this version doubles the gzipped size, jumping from 1.\+1\+KB to 2.\+1\+KB, due to new methods and runtime performance improvements. Be aware of that when upgrading.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11468}{}\doxysection{\texorpdfstring{1.\+1.\+1 (2016-\/06-\/22)}{1.\+1.\+1 (2016-\/06-\/22)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11468}
+
+\begin{DoxyItemize}
+\item add more context to errors if they are not instanceof Error
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11469}{}\doxysection{\texorpdfstring{1.\+1.\+0 (2015-\/09-\/29)}{1.\+1.\+0 (2015-\/09-\/29)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11469}
+
+\begin{DoxyItemize}
+\item add Emitter\+::lister\+Count (to match node v4 api)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11470}{}\doxysection{\texorpdfstring{1.\+0.\+2 (2014-\/08-\/28)}{1.\+0.\+2 (2014-\/08-\/28)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11470}
+
+\begin{DoxyItemize}
+\item remove un-\/reachable code
+\item update dev\+Deps
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11471}{}\doxysubsection{\texorpdfstring{1.\+0.\+1 / 2014-\/05-\/11}{1.\+0.\+1 / 2014-\/05-\/11}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11471}
+
+\begin{DoxyItemize}
+\item check for console.\+trace before using it
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11472}{}\doxysubsection{\texorpdfstring{1.\+0.\+0 / 2013-\/12-\/10}{1.\+0.\+0 / 2013-\/12-\/10}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11472}
+
+\begin{DoxyItemize}
+\item Update to latest events code from node.\+js 0.\+10
+\item copy tests from node.\+js
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11473}{}\doxysubsection{\texorpdfstring{0.\+4.\+0 / 2011-\/07-\/03}{0.\+4.\+0 / 2011-\/07-\/03}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11473}
+
+\begin{DoxyItemize}
+\item Switching to graphquire@0.\+8.\+0
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11474}{}\doxysubsection{\texorpdfstring{0.\+3.\+0 / 2011-\/07-\/03}{0.\+3.\+0 / 2011-\/07-\/03}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11474}
+
+\begin{DoxyItemize}
+\item Switching to URL based module require.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11475}{}\doxysubsection{\texorpdfstring{0.\+2.\+0 / 2011-\/06-\/10}{0.\+2.\+0 / 2011-\/06-\/10}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11475}
+
+\begin{DoxyItemize}
+\item Simplified package structure.
+\item Graphquire for dependency management.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11476}{}\doxysubsection{\texorpdfstring{0.\+1.\+1 / 2011-\/05-\/16}{0.\+1.\+1 / 2011-\/05-\/16}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11476}
+
+\begin{DoxyItemize}
+\item Unhandled errors are logged via console.\+error
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11477}{}\doxysubsection{\texorpdfstring{0.\+1.\+0 / 2011-\/04-\/22}{0.\+1.\+0 / 2011-\/04-\/22}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2events_2_history_autotoc_md11477}
+
+\begin{DoxyItemize}
+\item Initial release 
+\end{DoxyItemize}

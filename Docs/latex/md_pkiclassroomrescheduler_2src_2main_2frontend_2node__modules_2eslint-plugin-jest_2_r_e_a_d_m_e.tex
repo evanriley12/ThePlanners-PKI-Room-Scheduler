@@ -1,0 +1,222 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://eslint.org/}{\texttt{  }} \href{https://facebook.github.io/jest/}{\texttt{  }} \doxysection*{eslint-\/plugin-\/jest}
+
+ 
+
+ESLint plugin for Jest
+
+ 
+
+\href{https://github.com/jest-community/eslint-plugin-jest/actions}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10512}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10512}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/-\/dev\ eslint\ eslint-\/plugin-\/jest}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} If you installed ESLint globally then you must also install {\ttfamily eslint-\/plugin-\/jest} globally.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10513}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10513}
+Add {\ttfamily jest} to the plugins section of your {\ttfamily .eslintrc} configuration file. You can omit the {\ttfamily eslint-\/plugin-\/} prefix\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ ["{}jest"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Then configure the rules you want to use under the rules section.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}rules"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}jest/no-\/disabled-\/tests"{}:\ "{}warn"{},}
+\DoxyCodeLine{\ \ \ \ "{}jest/no-\/focused-\/tests"{}:\ "{}error"{},}
+\DoxyCodeLine{\ \ \ \ "{}jest/no-\/identical-\/title"{}:\ "{}error"{},}
+\DoxyCodeLine{\ \ \ \ "{}jest/prefer-\/to-\/have-\/length"{}:\ "{}warn"{},}
+\DoxyCodeLine{\ \ \ \ "{}jest/valid-\/expect"{}:\ "{}error"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You can also tell ESLint about the environment variables provided by Jest by doing\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}env"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}jest/globals"{}:\ true}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This is included in all configs shared by this plugin, so can be omitted if extending them.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10514}{}\doxysubsubsection{\texorpdfstring{Jest {\ttfamily version} setting}{Jest {\ttfamily version} setting}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10514}
+The behaviour of some rules (specifically \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-deprecated-functions}{{\ttfamily no-\/deprecated-\/functions}}{0}) change depending on the version of Jest being used.
+
+By default, this plugin will attempt to determine to locate Jest using {\ttfamily require.\+resolve}, meaning it will start looking in the closest {\ttfamily node\+\_\+modules} folder to the file being linted and work its way up.
+
+Since we cache the automatically determined version, if you\textquotesingle{}re linting sub-\/folders that have different versions of Jest, you may find that the wrong version of Jest is considered when linting. You can work around this by providing the Jest version explicitly in nested ESLint configs\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}settings"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}jest"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}version"{}:\ 27}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+To avoid hard-\/coding a number, you can also fetch it from the installed version of Jest if you use a Java\+Script config file such as {\ttfamily .eslintrc.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ settings:\ \{}
+\DoxyCodeLine{\ \ \ \ jest:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ version:\ require('jest/package.json').version,}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10515}{}\doxysubsection{\texorpdfstring{Shareable configurations}{Shareable configurations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10515}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10516}{}\doxysubsubsection{\texorpdfstring{Recommended}{Recommended}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10516}
+This plugin exports a recommended configuration that enforces good testing practices.
+
+To enable this configuration use the {\ttfamily extends} property in your {\ttfamily .eslintrc} config file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}extends"{}:\ ["{}plugin:jest/recommended"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10517}{}\doxysubsubsection{\texorpdfstring{Style}{Style}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10517}
+This plugin also exports a configuration named {\ttfamily style}, which adds some stylistic rules, such as {\ttfamily prefer-\/to-\/be-\/null}, which enforces usage of {\ttfamily to\+Be\+Null} over {\ttfamily to\+Be(null)}.
+
+To enable this configuration use the {\ttfamily extends} property in your {\ttfamily .eslintrc} config file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}extends"{}:\ ["{}plugin:jest/style"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+See \href{https://eslint.org/docs/user-guide/configuring/configuration-files\#extending-configuration-files}{\texttt{ ESLint documentation}} for more information about extending configuration files.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10518}{}\doxysubsubsection{\texorpdfstring{All}{All}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10518}
+If you want to enable all rules instead of only some you can do so by adding the {\ttfamily all} configuration to your {\ttfamily .eslintrc} config file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}extends"{}:\ ["{}plugin:jest/all"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+While the {\ttfamily recommended} and {\ttfamily style} configurations only change in major versions the {\ttfamily all} configuration may change in any release and is thus unsuited for installations requiring long-\/term consistency.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10519}{}\doxysubsection{\texorpdfstring{Rules}{Rules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10519}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rule   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Configurations   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fixable    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rule   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Configurations   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fixable    }\\\cline{1-4}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2consistent-test-it}{consistent-\/test-\/it}{0}   &Have control over {\ttfamily test} and {\ttfamily it} usages   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2expect-expect}{expect-\/expect}{0}   &Enforce assertion to be made in a test body   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2max-nested-describe}{max-\/nested-\/describe}{0}   &Enforces a maximum depth to nested describe calls   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-alias-methods}{no-\/alias-\/methods}{0}   &Disallow alias methods   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-commented-out-tests}{no-\/commented-\/out-\/tests}{0}   &Disallow commented out tests   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-conditional-expect}{no-\/conditional-\/expect}{0}   &Prevent calling {\ttfamily expect} conditionally   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-deprecated-functions}{no-\/deprecated-\/functions}{0}   &Disallow use of deprecated functions   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-disabled-tests}{no-\/disabled-\/tests}{0}   &Disallow disabled tests   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-done-callback}{no-\/done-\/callback}{0}   &Avoid using a callback in asynchronous tests and hooks   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-duplicate-hooks}{no-\/duplicate-\/hooks}{0}   &Disallow duplicate setup and teardown hooks   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-export}{no-\/export}{0}   &Disallow using {\ttfamily exports} in files containing tests   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-focused-tests}{no-\/focused-\/tests}{0}   &Disallow focused tests   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-hooks}{no-\/hooks}{0}   &Disallow setup and teardown hooks   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-identical-title}{no-\/identical-\/title}{0}   &Disallow identical titles   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-if}{no-\/if}{0}   &Disallow conditional logic   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-interpolation-in-snapshots}{no-\/interpolation-\/in-\/snapshots}{0}   &Disallow string interpolation inside snapshots   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-jasmine-globals}{no-\/jasmine-\/globals}{0}   &Disallow Jasmine globals   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-jest-import}{no-\/jest-\/import}{0}   &Disallow importing Jest   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-large-snapshots}{no-\/large-\/snapshots}{0}   &disallow large snapshots   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-mocks-import}{no-\/mocks-\/import}{0}   &Disallow manually importing from {\ttfamily \+\_\+\+\_\+mocks\+\_\+\+\_\+}   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-restricted-matchers}{no-\/restricted-\/matchers}{0}   &Disallow specific matchers \& modifiers   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-standalone-expect}{no-\/standalone-\/expect}{0}   &Disallow using {\ttfamily expect} outside of {\ttfamily it} or {\ttfamily test} blocks   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-test-prefixes}{no-\/test-\/prefixes}{0}   &Use {\ttfamily .only} and {\ttfamily .skip} over {\ttfamily f} and {\ttfamily x}   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2no-test-return-statement}{no-\/test-\/return-\/statement}{0}   &Disallow explicitly returning from tests   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-called-with}{prefer-\/called-\/with}{0}   &Suggest using {\ttfamily to\+Be\+Called\+With()} or {\ttfamily to\+Have\+Been\+Called\+With()}   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-comparison-matcher}{prefer-\/comparison-\/matcher}{0}   &Suggest using the built-\/in comparison matchers   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-equality-matcher}{prefer-\/equality-\/matcher}{0}   &Suggest using the built-\/in equality matchers   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-expect-assertions}{prefer-\/expect-\/assertions}{0}   &Suggest using {\ttfamily expect.\+assertions()} OR {\ttfamily expect.\+has\+Assertions()}   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-expect-resolves}{prefer-\/expect-\/resolves}{0}   &Prefer {\ttfamily await expect(...).resolves} over {\ttfamily expect(await ...)} syntax   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-hooks-on-top}{prefer-\/hooks-\/on-\/top}{0}   &Suggest having hooks before any test cases   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-lowercase-title}{prefer-\/lowercase-\/title}{0}   &Enforce lowercase test names   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-spy-on}{prefer-\/spy-\/on}{0}   &Suggest using {\ttfamily jest.\+spy\+On()}   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-strict-equal}{prefer-\/strict-\/equal}{0}   &Suggest using {\ttfamily to\+Strict\+Equal()}   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-be}{prefer-\/to-\/be}{0}   &Suggest using {\ttfamily to\+Be()} for primitive literals   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-contain}{prefer-\/to-\/contain}{0}   &Suggest using {\ttfamily to\+Contain()}   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-to-have-length}{prefer-\/to-\/have-\/length}{0}   &Suggest using {\ttfamily to\+Have\+Length()}   &   &    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2prefer-todo}{prefer-\/todo}{0}   &Suggest using {\ttfamily test.\+todo}   &&    \\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2require-hook}{require-\/hook}{0}   &Require setup and teardown code to be within a hook   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2require-to-throw-message}{require-\/to-\/throw-\/message}{0}   &Require a message for {\ttfamily to\+Throw()}   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2require-top-level-describe}{require-\/top-\/level-\/describe}{0}   &Require test cases and hooks to be inside a {\ttfamily describe} block   &&\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-describe-callback}{valid-\/describe-\/callback}{0}   &Enforce valid {\ttfamily describe()} callback   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect}{valid-\/expect}{0}   &Enforce valid {\ttfamily expect()} usage   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise}{valid-\/expect-\/in-\/promise}{0}   &Ensure promises that have expectations in their chain are valid   &   &\\\cline{1-4}
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-title}{valid-\/title}{0}   &Enforce valid titles   &   &   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10520}{}\doxysubsection{\texorpdfstring{Type\+Script Rules}{Type\+Script Rules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10520}
+In addition to the above rules, this plugin also includes a few advanced rules that are powered by type-\/checking information provided by Type\+Script.
+
+In order to use these rules, you must be using {\ttfamily @typescript-\/eslint/parser} \& adjust your eslint config as outlined \href{https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/TYPED_LINTING.md}{\texttt{ here}}
+
+Note that unlike the type-\/checking rules in {\ttfamily @typescript-\/eslint/eslint-\/plugin}, the rules here will fallback to doing nothing if type information is not available, meaning its safe to include them in shared configs that could be used on Java\+Script and Type\+Script projects.
+
+Also note that {\ttfamily unbound-\/method} depends on {\ttfamily @typescript-\/eslint/eslint-\/plugin}, as it extends the original {\ttfamily unbound-\/method} rule from that plugin.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rule   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Configurations   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fixable    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rule   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Configurations   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fixable    }\\\cline{1-4}
+\endhead
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2unbound-method}{unbound-\/method}{0}   &Enforces unbound methods are called with their expected scope   &&\\\cline{1-4}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10521}{}\doxysubsection{\texorpdfstring{Credit}{Credit}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10521}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/lo1tuma/eslint-plugin-mocha}{\texttt{ eslint-\/plugin-\/mocha}}
+\item \href{https://github.com/tlvince/eslint-plugin-jasmine}{\texttt{ eslint-\/plugin-\/jasmine}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10522}{}\doxysubsection{\texorpdfstring{Related Projects}{Related Projects}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10522}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10523}{}\doxysubsubsection{\texorpdfstring{eslint-\/plugin-\/jest-\/formatting}{eslint-\/plugin-\/jest-\/formatting}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10523}
+This project aims to provide formatting rules (auto-\/fixable where possible) to ensure consistency and readability in jest test suites.
+
+\href{https://github.com/dangreenisrael/eslint-plugin-jest-formatting}{\texttt{ https\+://github.\+com/dangreenisrael/eslint-\/plugin-\/jest-\/formatting}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10524}{}\doxysubsubsection{\texorpdfstring{eslint-\/plugin-\/istanbul}{eslint-\/plugin-\/istanbul}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2_r_e_a_d_m_e_autotoc_md10524}
+A set of rules to enforce good practices for Istanbul, one of the code coverage tools used by Jest.
+
+\href{https://github.com/istanbuljs/eslint-plugin-istanbul}{\texttt{ https\+://github.\+com/istanbuljs/eslint-\/plugin-\/istanbul}} 

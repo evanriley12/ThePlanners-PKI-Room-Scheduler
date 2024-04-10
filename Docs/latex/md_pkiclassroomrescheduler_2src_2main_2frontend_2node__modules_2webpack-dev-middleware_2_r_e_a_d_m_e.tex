@@ -1,0 +1,436 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/webpack-dev-middleware}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://david-dm.org/webpack/webpack-dev-middleware}{\texttt{ }} \href{https://github.com/webpack/webpack-dev-middleware/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack/webpack-dev-middleware}{\texttt{ }} \href{https://gitter.im/webpack/webpack}{\texttt{ }} \href{https://packagephobia.com/result?p=webpack-dev-middleware}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26521}{}\doxysection{\texorpdfstring{webpack-\/dev-\/middleware}{webpack-\/dev-\/middleware}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26521}
+An express-\/style development middleware for use with \href{https://webpack.js.org}{\texttt{ webpack}} bundles and allows for serving of the files emitted from webpack. This should be used for {\bfseries{development only}}.
+
+Some of the benefits of using this middleware include\+:
+
+
+\begin{DoxyItemize}
+\item No files are written to disk, rather it handles files in memory
+\item If files changed in watch mode, the middleware delays requests until compiling has completed.
+\item Supports hot module reload (HMR).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26522}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26522}
+First thing\textquotesingle{}s first, install the module\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ webpack-\/dev-\/middleware\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+{\itshape Note\+: We do not recommend installing this module globally.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26523}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26523}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ middleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ //\ webpack\ options}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ express\ =\ require("{}express"{});}
+\DoxyCodeLine{const\ app\ =\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.use(}
+\DoxyCodeLine{\ \ middleware(compiler,\ \{}
+\DoxyCodeLine{\ \ \ \ //\ webpack-\/dev-\/middleware\ options}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.listen(3000,\ ()\ =>\ console.log("{}Example\ app\ listening\ on\ port\ 3000!"{}));}
+
+\end{DoxyCode}
+
+
+See below for an example of use with fastify.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26524}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26524}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+\PBS\centering \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\`{}methods\`{}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}   &\PBS\centering {\ttfamily Array}   &\PBS\centering `\mbox{[} \textquotesingle{}GET', \textquotesingle{}HEAD\textquotesingle{} \mbox{]}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Allows to pass the list of HTTP request methods accepted by the middleware \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}headers{\ttfamily \mbox{]}(\#headers)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Array$|$Object$|$Function{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}undefined{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Allows to pass custom HTTP headers on each request. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}index{\ttfamily \mbox{]}(\#index)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Boolean$|$String{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}index.\+html{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} If}false{\ttfamily (but not}undefined{\ttfamily ), the server will not respond to requests to the root URL. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}mime\+Types{\ttfamily \mbox{]}(\#mimetypes)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Object{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}undefined{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Allows to register custom mime types or extension mappings. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}public\+Path{\ttfamily \mbox{]}(\#publicpath)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}String{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}output.\+public\+Path$<$tt$>$(from a configuration) \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} The public path that the middleware is bound to. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}stats{\ttfamily \mbox{]}(\#stats)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Boolean$|$String$|$Object{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}stats$<$tt$>$(from a configuration) \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Stats options object or preset name. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}server\+Side\+Render{\ttfamily \mbox{]}(\#serversiderender)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Boolean{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}undefined{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Instructs the module to enable or disable the server-\/side rendering mode. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Even"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}write\+To\+Disk{\ttfamily \mbox{]}(\#writetodisk)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Boolean$|$Function{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}false{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Left"{}\texorpdfstring{$>$}{>} Instructs the module to write files to the configured location on disk as specified in your}webpack{\ttfamily configuration. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{[}}output\+File\+System{\ttfamily \mbox{]}(\#outputfilesystem)\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>}}Object{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+Center"{}\texorpdfstring{$>$}{>} \mbox{[}}memfs\`{}\mbox{]}(\href{https://github.com/streamich/memfs}{\texttt{ https\+://github.\+com/streamich/memfs}})   &Set the default file system which will be used by webpack as primary destination of generated files.   \\\cline{1-4}
+\end{longtabu}
+
+
+The middleware accepts an {\ttfamily options} Object. The following is a property reference for the Object.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26525}{}\doxysubsubsection{\texorpdfstring{methods}{methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26525}
+Type\+: {\ttfamily Array} ~\newline
+ Default\+: `\mbox{[} \textquotesingle{}GET', \textquotesingle{}HEAD\textquotesingle{} \mbox{]}\`{}
+
+This property allows a user to pass the list of HTTP request methods accepted by the middleware\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26526}{}\doxysubsubsection{\texorpdfstring{headers}{headers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26526}
+Type\+: {\ttfamily Array\texorpdfstring{$\vert$}{|}\+Object\texorpdfstring{$\vert$}{|}\+Function} Default\+: {\ttfamily undefined}
+
+This property allows a user to pass custom HTTP headers on each request. eg. {\ttfamily \{ "{}\+X-\/\+Custom-\/\+Header"{}\+: "{}yes"{} \}}
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{webpackDevMiddleware(compiler,\ \{}
+\DoxyCodeLine{\ \ headers:\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}Last-\/Modified"{}:\ new\ Date(),}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{webpackDevMiddleware(compiler,\ \{}
+\DoxyCodeLine{\ \ headers:\ (req,\ res,\ context)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ res.setHeader("{}Last-\/Modified"{},\ new\ Date());}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{webpackDevMiddleware(compiler,\ \{}
+\DoxyCodeLine{\ \ headers:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ key:\ "{}X-\/custom-\/header"{}}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ "{}foo"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ key:\ "{}Y-\/custom-\/header"{},}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ "{}bar"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{webpackDevMiddleware(compiler,\ \{}
+\DoxyCodeLine{\ \ headers:\ ()\ =>\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ key:\ "{}X-\/custom-\/header"{}}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ "{}foo"{}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ key:\ "{}Y-\/custom-\/header"{},}
+\DoxyCodeLine{\ \ \ \ \ \ value:\ "{}bar"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26527}{}\doxysubsubsection{\texorpdfstring{index}{index}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26527}
+Type\+: {\ttfamily Boolean\texorpdfstring{$\vert$}{|}\+String} Default\+: {\ttfamily index.\+html}
+
+If {\ttfamily false} (but not {\ttfamily undefined}), the server will not respond to requests to the root URL.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26528}{}\doxysubsubsection{\texorpdfstring{mime\+Types}{mime\+Types}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26528}
+Type\+: {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily undefined}
+
+This property allows a user to register custom mime types or extension mappings. eg. `mime\+Types\+: \{ phtml\+: \textquotesingle{}text/html' \}\`{}.
+
+Please see the documentation for \href{https://github.com/jshttp/mime-types}{\texttt{ {\ttfamily mime-\/types}}} for more information.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26529}{}\doxysubsubsection{\texorpdfstring{public\+Path}{public\+Path}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26529}
+Type\+: {\ttfamily String} Default\+: {\ttfamily output.\+public\+Path} (from a configuration)
+
+The public path that the middleware is bound to.
+
+{\itshape Best Practice\+: use the same {\ttfamily public\+Path} defined in your webpack config. For more information about {\ttfamily public\+Path}, please see \href{https://webpack.js.org/guides/public-path}{\texttt{ the webpack documentation}}.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26530}{}\doxysubsubsection{\texorpdfstring{stats}{stats}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26530}
+Type\+: {\ttfamily Boolean\texorpdfstring{$\vert$}{|}\+String\texorpdfstring{$\vert$}{|}\+Object} Default\+: {\ttfamily stats} (from a configuration)
+
+Stats options object or preset name.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26531}{}\doxysubsubsection{\texorpdfstring{server\+Side\+Render}{server\+Side\+Render}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26531}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily undefined}
+
+Instructs the module to enable or disable the server-\/side rendering mode. Please see Server-\/\+Side Rendering for more information.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26532}{}\doxysubsubsection{\texorpdfstring{write\+To\+Disk}{write\+To\+Disk}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26532}
+Type\+: {\ttfamily Boolean\texorpdfstring{$\vert$}{|}\+Function} ~\newline
+ Default\+: {\ttfamily false}
+
+If {\ttfamily true}, the option will instruct the module to write files to the configured location on disk as specified in your {\ttfamily webpack} config file. {\itshape Setting {\ttfamily write\+To\+Disk\+: true} won\textquotesingle{}t change the behavior of the {\ttfamily webpack-\/dev-\/middleware}, and bundle files accessed through the browser will still be served from memory.} This option provides the same capabilities as the \href{https://github.com/gajus/write-file-webpack-plugin/pulls}{\texttt{ {\ttfamily Write\+File\+Plugin}}}.
+
+This option also accepts a {\ttfamily Function} value, which can be used to filter which files are written to disk. The function follows the same premise as \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter}{\texttt{ {\ttfamily Array\#filter}}} in which a return value of {\ttfamily false} {\itshape will not} write the file, and a return value of {\ttfamily true} {\itshape will} write the file to disk. eg.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ configuration\ =\ \{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{const\ compiler\ =\ webpack(configuration);}
+\DoxyCodeLine{}
+\DoxyCodeLine{middleware(compiler,\ \{}
+\DoxyCodeLine{\ \ writeToDisk:\ (filePath)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ return\ /superman\(\backslash\).css\$/.test(filePath);}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26533}{}\doxysubsubsection{\texorpdfstring{output\+File\+System}{output\+File\+System}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26533}
+Type\+: {\ttfamily Object} ~\newline
+ Default\+: \href{https://github.com/streamich/memfs}{\texttt{ memfs}}
+
+Set the default file system which will be used by webpack as primary destination of generated files. This option isn\textquotesingle{}t affected by the write\+To\+Disk option.
+
+You have to provide {\ttfamily .join()} and {\ttfamily mkdirp} method to the {\ttfamily output\+File\+System} instance manually for compatibility with {\ttfamily webpack@4}.
+
+This can be done simply by using {\ttfamily path.\+join}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ path\ =\ require("{}path"{});}
+\DoxyCodeLine{const\ myOutputFileSystem\ =\ require("{}my-\/fs"{});}
+\DoxyCodeLine{const\ mkdirp\ =\ require("{}mkdirp"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{myOutputFileSystem.join\ =\ path.join.bind(path);\ //\ no\ need\ to\ bind}
+\DoxyCodeLine{myOutputFileSystem.mkdirp\ =\ mkdirp.bind(mkdirp);\ //\ no\ need\ to\ bind}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{middleware(compiler,\ \{\ outputFileSystem:\ myOutputFileSystem\ \});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26534}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26534}
+{\ttfamily webpack-\/dev-\/middleware} also provides convenience methods that can be use to interact with the middleware at runtime\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26535}{}\doxysubsubsection{\texorpdfstring{{\ttfamily close(callback)}}{{\ttfamily close(callback)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26535}
+Instructs {\ttfamily webpack-\/dev-\/middleware} instance to stop watching for file changes.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26536}{}\doxyparagraph{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26536}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26537}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26537}%
+ \doxysubparagraph*{{\ttfamily callback}}
+
+Type\+: {\ttfamily Function} Required\+: {\ttfamily No}
+
+A function executed once the middleware has stopped watching.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ express\ =\ require("{}express"{});}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ middleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{const\ instance\ =\ middleware(compiler);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ app\ =\ new\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.use(instance);}
+\DoxyCodeLine{}
+\DoxyCodeLine{setTimeout(()\ =>\ \{}
+\DoxyCodeLine{\ \ //\ Says\ \`{}webpack`\ to\ stop\ watch\ changes}
+\DoxyCodeLine{\ \ instance.close();}
+\DoxyCodeLine{\},\ 1000);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26538}{}\doxysubsubsection{\texorpdfstring{{\ttfamily invalidate(callback)}}{{\ttfamily invalidate(callback)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26538}
+Instructs {\ttfamily webpack-\/dev-\/middleware} instance to recompile the bundle, e.\+g. after a change to the configuration.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26539}{}\doxyparagraph{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26539}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26540}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26540}%
+ \doxysubparagraph*{{\ttfamily callback}}
+
+Type\+: {\ttfamily Function} Required\+: {\ttfamily No}
+
+A function executed once the middleware has invalidated.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ express\ =\ require("{}express"{});}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ middleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{const\ instance\ =\ middleware(compiler);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ app\ =\ new\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.use(instance);}
+\DoxyCodeLine{}
+\DoxyCodeLine{setTimeout(()\ =>\ \{}
+\DoxyCodeLine{\ \ //\ After\ a\ short\ delay\ the\ configuration\ is\ changed\ and\ a\ banner\ plugin\ is\ added\ to\ the\ config}
+\DoxyCodeLine{\ \ new\ webpack.BannerPlugin("{}A\ new\ banner"{}).apply(compiler);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Recompile\ the\ bundle\ with\ the\ banner\ plugin:}
+\DoxyCodeLine{\ \ instance.invalidate();}
+\DoxyCodeLine{\},\ 1000);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26541}{}\doxysubsubsection{\texorpdfstring{{\ttfamily wait\+Until\+Valid(callback)}}{{\ttfamily wait\+Until\+Valid(callback)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26541}
+Executes a callback function when the compiler bundle is valid, typically after compilation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26542}{}\doxyparagraph{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26542}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26543}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26543}%
+ \doxysubparagraph*{{\ttfamily callback}}
+
+Type\+: {\ttfamily Function} Required\+: {\ttfamily No}
+
+A function executed when the bundle becomes valid. If the bundle is valid at the time of calling, the callback is executed immediately.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ express\ =\ require("{}express"{});}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ middleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{const\ instance\ =\ middleware(compiler);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ app\ =\ new\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.use(instance);}
+\DoxyCodeLine{}
+\DoxyCodeLine{instance.waitUntilValid(()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log("{}Package\ is\ in\ a\ valid\ state"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26544}{}\doxysubsubsection{\texorpdfstring{{\ttfamily get\+Filename\+From\+Url(url)}}{{\ttfamily get\+Filename\+From\+Url(url)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26544}
+Get filename from URL.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26545}{}\doxyparagraph{\texorpdfstring{Parameters}{Parameters}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26545}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26546}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26546}%
+ \doxysubparagraph*{{\ttfamily url}}
+
+Type\+: {\ttfamily String} Required\+: {\ttfamily Yes}
+
+URL for the requested file.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ express\ =\ require("{}express"{});}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ middleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{const\ instance\ =\ middleware(compiler);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ app\ =\ new\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.use(instance);}
+\DoxyCodeLine{}
+\DoxyCodeLine{instance.waitUntilValid(()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ filename\ =\ instance.getFilenameFromUrl("{}/bundle.js"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log(`Filename\ is\ \$\{filename\}`);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26547}{}\doxysubsection{\texorpdfstring{Known Issues}{Known Issues}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26547}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26548}{}\doxysubsubsection{\texorpdfstring{Multiple Successive Builds}{Multiple Successive Builds}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26548}
+Watching will frequently cause multiple compilations as the bundle changes during compilation. This is due in part to cross-\/platform differences in file watchers, so that webpack doesn\textquotesingle{}t loose file changes when watched files change rapidly. If you run into this situation, please make use of the \href{https://github.com/egoist/time-fix-plugin}{\texttt{ {\ttfamily Time\+Fix\+Plugin}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26549}{}\doxysubsection{\texorpdfstring{Server-\/\+Side Rendering}{Server-\/\+Side Rendering}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26549}
+{\itshape Note\+: this feature is experimental and may be removed or changed completely in the future.}
+
+In order to develop an app using server-\/side rendering, we need access to the \href{https://github.com/webpack/docs/wiki/node.js-api\#stats}{\texttt{ {\ttfamily stats}}}, which is generated with each build.
+
+With server-\/side rendering enabled, {\ttfamily webpack-\/dev-\/middleware} sets the {\ttfamily stats} to {\ttfamily res.\+locals.\+webpack.\+dev\+Middleware.\+context.\+stats} and the filesystem to {\ttfamily res.\+locals.\+webpack.\+dev\+Middleware.\+context.\+output\+File\+System} before invoking the next middleware, allowing a developer to render the page body and manage the response to clients.
+
+{\itshape Note\+: Requests for bundle files will still be handled by {\ttfamily webpack-\/dev-\/middleware} and all requests will be pending until the build process is finished with server-\/side rendering enabled.}
+
+Example Implementation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ express\ =\ require("{}express"{});}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ compiler\ =\ webpack(\{}
+\DoxyCodeLine{\ \ /*\ Webpack\ configuration\ */}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ isObject\ =\ require("{}is-\/object"{});}
+\DoxyCodeLine{const\ middleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ app\ =\ new\ express();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ This\ function\ makes\ server\ rendering\ of\ asset\ references\ consistent\ with\ different\ webpack\ chunk/entry\ configurations}
+\DoxyCodeLine{function\ normalizeAssets(assets)\ \{}
+\DoxyCodeLine{\ \ if\ (isObject(assets))\ \{}
+\DoxyCodeLine{\ \ \ \ return\ Object.values(assets);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ Array.isArray(assets)\ ?\ assets\ :\ [assets];}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{app.use(middleware(compiler,\ \{\ serverSideRender:\ true\ \}));}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ The\ following\ middleware\ would\ not\ be\ invoked\ until\ the\ latest\ build\ is\ finished.}
+\DoxyCodeLine{app.use((req,\ res)\ =>\ \{}
+\DoxyCodeLine{\ \ const\ \{\ devMiddleware\ \}\ =\ res.locals.webpack;}
+\DoxyCodeLine{\ \ const\ outputFileSystem\ =\ devMiddleware.context.outputFileSystem;}
+\DoxyCodeLine{\ \ const\ jsonWebpackStats\ =\ devMiddleware.context.stats.toJson();}
+\DoxyCodeLine{\ \ const\ \{\ assetsByChunkName,\ outputPath\ \}\ =\ jsonWebpackStats;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Then\ use\ \`{}assetsByChunkName`\ for\ server-\/side\ rendering}
+\DoxyCodeLine{\ \ //\ For\ example,\ if\ you\ have\ only\ one\ main\ chunk:}
+\DoxyCodeLine{\ \ res.send(`}
+\DoxyCodeLine{<html>}
+\DoxyCodeLine{\ \ <head>}
+\DoxyCodeLine{\ \ \ \ <title>My\ App</title>}
+\DoxyCodeLine{\ \ \ \ <style>}
+\DoxyCodeLine{\ \ \ \ \$\{normalizeAssets(assetsByChunkName.main)}
+\DoxyCodeLine{\ \ \ \ \ \ .filter((path)\ =>\ path.endsWith("{}.css"{}))}
+\DoxyCodeLine{\ \ \ \ \ \ .map((path)\ =>\ outputFileSystem.readFileSync(path.join(outputPath,\ path)))}
+\DoxyCodeLine{\ \ \ \ \ \ .join("{}\(\backslash\)n"{})\}}
+\DoxyCodeLine{\ \ \ \ </style>}
+\DoxyCodeLine{\ \ </head>}
+\DoxyCodeLine{\ \ <body>}
+\DoxyCodeLine{\ \ \ \ <div\ id="{}root"{}></div>}
+\DoxyCodeLine{\ \ \ \ \$\{normalizeAssets(assetsByChunkName.main)}
+\DoxyCodeLine{\ \ \ \ \ \ .filter((path)\ =>\ path.endsWith("{}.js"{}))}
+\DoxyCodeLine{\ \ \ \ \ \ .map((path)\ =>\ \`{}<script\ src="{}\$\{path\}"{}></script>`)}
+\DoxyCodeLine{\ \ \ \ \ \ .join("{}\(\backslash\)n"{})\}}
+\DoxyCodeLine{\ \ </body>}
+\DoxyCodeLine{</html>}
+\DoxyCodeLine{\ \ \`{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26550}{}\doxysubsection{\texorpdfstring{Support}{Support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26550}
+We do our best to keep Issues in the repository focused on bugs, features, and needed modifications to the code for the module. Because of that, we ask users with general support, "{}how-\/to"{}, or "{}why isn\textquotesingle{}t this working"{} questions to try one of the other support channels that are available.
+
+Your first-\/stop-\/shop for support for webpack-\/dev-\/server should by the excellent \href{https://webpack.js.org/guides/development/\#using-webpack-dev-middleware}{\texttt{ documentation}} for the module. If you see an opportunity for improvement of those docs, please head over to the \href{https://github.com/webpack/webpack.js.org}{\texttt{ webpack.\+js.\+org repo}} and open a pull request.
+
+From there, we encourage users to visit the \href{https://gitter.im/webpack/webpack}{\texttt{ webpack Gitter chat}} and talk to the fine folks there. If your quest for answers comes up dry in chat, head over to \href{https://stackoverflow.com/questions/tagged/webpack-dev-middleware}{\texttt{ Stack\+Overflow}} and do a quick search or open a new question. Remember; It\textquotesingle{}s always much easier to answer questions that include your {\ttfamily webpack.\+config.\+js} and relevant files!
+
+If you\textquotesingle{}re twitter-\/savvy you can tweet \href{https://twitter.com/search?q=webpack}{\texttt{ \#webpack}} with your question and someone should be able to reach out and lend a hand.
+
+If you have discovered a \+:bug\+:, have a feature suggestion, or would like to see a modification, please feel free to create an issue on Github. {\itshape Note\+: The issue template isn\textquotesingle{}t optional, so please be sure not to remove it, and please fill it out completely.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26551}{}\doxysubsection{\texorpdfstring{Other servers}{Other servers}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26551}
+Examples of use with other servers will follow here.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26552}{}\doxysubsubsection{\texorpdfstring{Fastify}{Fastify}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26552}
+Fastify interop will require the use of {\ttfamily fastify-\/express} instead of {\ttfamily middie} for providing middleware support. As the authors of {\ttfamily fastify-\/express} recommend, this should only be used as a stopgap while full Fastify support is worked on.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fastify\ =\ require("{}fastify"{})();}
+\DoxyCodeLine{const\ webpack\ =\ require("{}webpack"{});}
+\DoxyCodeLine{const\ webpackConfig\ =\ require("{}./webpack.config.js"{});}
+\DoxyCodeLine{const\ devMiddleware\ =\ require("{}webpack-\/dev-\/middleware"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ compiler\ =\ webpack(webpackConfig);}
+\DoxyCodeLine{const\ \{\ publicPath\ \}\ =\ webpackConfig.output;}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ await\ fastify.register(require("{}fastify-\/express"{}));}
+\DoxyCodeLine{\ \ await\ fastify.use(devMiddleware(compiler,\ \{\ publicPath\ \}));}
+\DoxyCodeLine{\ \ await\ fastify.listen(3000);}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26553}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26553}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26554}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2webpack-dev-middleware_2_r_e_a_d_m_e_autotoc_md26554}
+\href{./LICENSE}{\texttt{ MIT}} 

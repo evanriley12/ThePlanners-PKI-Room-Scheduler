@@ -1,0 +1,48 @@
+\chapter{Changes to Post\+CSS Color Function}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g}\index{Changes to PostCSS Color Function@{Changes to PostCSS Color Function}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md783}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md783}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md784}{}\doxysubsection{\texorpdfstring{1.\+1.\+1 (July 8, 2022)}{1.\+1.\+1 (July 8, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md784}
+
+\begin{DoxyItemize}
+\item Fix case insensitive matching.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md785}{}\doxysubsection{\texorpdfstring{1.\+1.\+0 (April 4, 2022)}{1.\+1.\+0 (April 4, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md785}
+
+\begin{DoxyItemize}
+\item Allow percentage units in XYZ color spaces.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.percentages\ \{}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ color(xyz-\/d50\ 64.331\%\ 19.245\%\ 16.771\%);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ color(xyz-\/d65\ 64.331\%\ 19.245\%\ 16.771\%);}
+\DoxyCodeLine{\ \ \ \ color-\/3:\ color(xyz\ 64.331\%\ 19.245\%\ 16.771\%);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ /*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ color-\/1:\ rgb(245,0,135);}
+\DoxyCodeLine{\ \ \ \ color-\/2:\ rgb(253,0,127);}
+\DoxyCodeLine{\ \ \ \ color-\/3:\ rgb(253,0,127);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md786}{}\doxysubsection{\texorpdfstring{1.\+0.\+3 (March 8, 2022)}{1.\+0.\+3 (March 8, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md786}
+
+\begin{DoxyItemize}
+\item Fix gamut mapping giving overly unsaturated colors.
+\item Implement powerless color components in gamut mapping.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md787}{}\doxysubsection{\texorpdfstring{1.\+0.\+2 (February 12, 2022)}{1.\+0.\+2 (February 12, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md787}
+
+\begin{DoxyItemize}
+\item Updated {\ttfamily @csstools/postcss-\/progressive-\/custom-\/properties} to {\ttfamily 1.\+1.\+0}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md788}{}\doxysubsection{\texorpdfstring{1.\+0.\+1 (February 11, 2022)}{1.\+0.\+1 (February 11, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md788}
+
+\begin{DoxyItemize}
+\item Add tests for percentage values in non-\/xyz color spaces.
+\item Ignore percentage values in xyz color space as these are not supported.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md789}{}\doxysubsection{\texorpdfstring{1.\+0.\+0 (February 7, 2022)}{1.\+0.\+0 (February 7, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dcsstools_2postcss-color-function_2_c_h_a_n_g_e_l_o_g_autotoc_md789}
+
+\begin{DoxyItemize}
+\item Initial version 
+\end{DoxyItemize}

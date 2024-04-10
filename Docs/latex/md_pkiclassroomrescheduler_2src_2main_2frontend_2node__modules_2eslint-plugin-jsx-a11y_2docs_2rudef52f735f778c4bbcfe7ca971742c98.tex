@@ -1,0 +1,31 @@
+\chapter{jsx-\/a11y/role-\/has-\/required-\/aria-\/props}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98}\index{jsx-\/a11y/role-\/has-\/required-\/aria-\/props@{jsx-\/a11y/role-\/has-\/required-\/aria-\/props}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10854}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10854}%
+ 💼 This rule is enabled in the following configs\+: ☑️ {\ttfamily recommended}, 🔒 {\ttfamily strict}.
+
+Elements with ARIA roles must have all required attributes for that role.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10855}{}\doxysection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10855}
+This rule takes no arguments.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10856}{}\doxysubsection{\texorpdfstring{Succeed}{Succeed}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10856}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!-\/-\/\ Good:\ the\ checkbox\ role\ requires\ the\ aria-\/checked\ state\ -\/-\/>}
+\DoxyCodeLine{<span\ role="{}checkbox"{}\ aria-\/checked="{}false"{}\ aria-\/labelledby="{}foo"{}\ tabindex="{}0"{}></span>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10857}{}\doxysubsection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10857}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!-\/-\/\ Bad:\ the\ checkbox\ role\ requires\ the\ aria-\/checked\ state\ -\/-\/>}
+\DoxyCodeLine{<span\ role="{}checkbox"{}\ aria-\/labelledby="{}foo"{}\ tabindex="{}0"{}></span>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10858}{}\doxysection{\texorpdfstring{Accessibility guidelines}{Accessibility guidelines}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10858}
+
+\begin{DoxyItemize}
+\item \href{https://www.w3.org/WAI/WCAG21/Understanding/name-role-value}{\texttt{ WCAG 4.\+1.\+2}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10859}{}\doxysubsection{\texorpdfstring{Resources}{Resources}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jsx-a11y_2docs_2rudef52f735f778c4bbcfe7ca971742c98_autotoc_md10859}
+
+\begin{DoxyItemize}
+\item \href{https://www.w3.org/TR/wai-aria/\#roles}{\texttt{ ARIA Spec, Roles}}
+\item \href{https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules\#ax_aria_03}{\texttt{ Chrome Audit Rules, AX\+\_\+\+ARIA\+\_\+03}} 
+\end{DoxyItemize}

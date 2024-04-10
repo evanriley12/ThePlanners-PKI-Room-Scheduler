@@ -1,0 +1,37 @@
+\chapter{Polyfill for \texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}Object.\+set\+Prototype\+Of\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2setprototypeof_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2setprototypeof_2_r_e_a_d_m_e}\index{Polyfill for $<$tt$>$Object.setPrototypeOf$<$/tt$>$@{Polyfill for $<$tt$>$Object.setPrototypeOf$<$/tt$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2setprototypeof_2_r_e_a_d_m_e_autotoc_md23147}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2setprototypeof_2_r_e_a_d_m_e_autotoc_md23147}%
+ \href{https://npmjs.org/package/setprototypeof}{\texttt{ }} \href{https://npmjs.org/package/setprototypeof}{\texttt{ }} \href{https://github.com/standard/standard}{\texttt{ }}
+
+A simple cross platform implementation to set the prototype of an instianted object. Supports all modern browsers and at least back to IE8.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2setprototypeof_2_r_e_a_d_m_e_autotoc_md23148}{}\doxysection{\texorpdfstring{Usage\+:}{Usage\+:}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2setprototypeof_2_r_e_a_d_m_e_autotoc_md23148}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ setprototypeof}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ setPrototypeOf\ =\ require('setprototypeof')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ obj\ =\ \{\}}
+\DoxyCodeLine{setPrototypeOf(obj,\ \{}
+\DoxyCodeLine{\ \ foo:\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ 'bar'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{obj.foo()\ //\ bar}
+
+\end{DoxyCode}
+
+
+Type\+Script is also supported\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ setPrototypeOf\ from\ 'setprototypeof'}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,32 @@
+\chapter{PKI Room Scheduler}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{PKI Room Scheduler@{PKI Room Scheduler}}
+\label{md__r_e_a_d_m_e_autotoc_md27501}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md27501}%
+ UNO -\/ Spring 2024 CS Capstone Project
+
+Our application is a tool to manage and reschedule classroom assignments for PKI.\hypertarget{md__r_e_a_d_m_e_autotoc_md27502}{}\doxysection{\texorpdfstring{Milestone 3 Release Notes\+:}{Milestone 3 Release Notes\+:}}\label{md__r_e_a_d_m_e_autotoc_md27502}
+
+\begin{DoxyItemize}
+\item New Features\+:
+\begin{DoxyItemize}
+\item The class information box now shows the class information for the section selected from the dropdown menu.
+\item The Max Class Size and Enrollment input fields now automatically populate based on the selected section.
+\item The Max Class Size and Enrollment input fields can now properly be incremented and decremented using the arrows in each box.
+\item The Scheduling algorithm now actually works\+:
+\begin{DoxyItemize}
+\item Determines the relationship between all classes to determine which have overlapping times.
+\item Only considers rooms that are open during the time of the class.
+\item Displays the best choice to move the room to, based on which available classroom has the smallest number of seats that still accomodate the change.
+\item Also displays the other classrooms that would work just as well, as well as the options that work worse.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item Polish Changes\+:
+\begin{DoxyItemize}
+\item Gave the application an actual title rather than using React\textquotesingle{}s default.
+\item Added a UNO icon to the tab display rather than using React\textquotesingle{}s default.
+\item Font and text size changes to make information more readable.
+\item The class dropdown menu now adds leading 0\textquotesingle{}s to the section number to make the line length more consistent.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Our Main branch has our most updated version. 

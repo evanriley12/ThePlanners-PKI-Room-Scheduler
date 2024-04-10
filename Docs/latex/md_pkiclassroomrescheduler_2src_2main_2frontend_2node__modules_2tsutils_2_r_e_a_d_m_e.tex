@@ -1,0 +1,68 @@
+\chapter{Utility functions for working with typescript\textquotesingle{}s AST}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e}\index{Utility functions for working with typescript\textquotesingle{}s AST@{Utility functions for working with typescript\textquotesingle{}s AST}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e_autotoc_md25928}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e_autotoc_md25928}%
+ \href{https://greenkeeper.io/}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e_autotoc_md25929}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e_autotoc_md25929}
+This package consists of two major parts\+: utilities and typeguard functions. By importing the project you will get both of them. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ *\ as\ utils\ from\ "{}tsutils"{};}
+\DoxyCodeLine{utils.isIdentifier(node);\ //\ typeguard}
+\DoxyCodeLine{utils.getLineRanges(sourceFile);\ //\ utilities}
+
+\end{DoxyCode}
+
+
+If you don\textquotesingle{}t need everything offered by this package, you can select what should be imported. The parts that are not imported are never read from disk and may save some startup time and reduce memory consumtion.
+
+If you only need typeguards you can explicitly import them\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils/typeguard"{};}
+\DoxyCodeLine{//\ You\ can\ even\ distiguish\ between\ typeguards\ for\ nodes\ and\ types}
+\DoxyCodeLine{import\ \{\ isUnionTypeNode\ \}\ from\ "{}tsutils/typeguard/node"{};}
+\DoxyCodeLine{import\ \{\ isUnionType\ \}\ from\ "{}tsutils/typeguard/type"{};}
+
+\end{DoxyCode}
+
+
+If you only need the utilities you can also explicitly import them\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ forEachComment,\ forEachToken\ \}\ from\ "{}tsutils/util"{};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e_autotoc_md25930}{}\doxysubsection{\texorpdfstring{Typescript version dependency}{Typescript version dependency}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2tsutils_2_r_e_a_d_m_e_autotoc_md25930}
+This package is backwards compatible with typescript 2.\+8.\+0 at runtime although compiling might need a newer version of typescript installed.
+
+Using {\ttfamily typescript@next} might work, but it\textquotesingle{}s not officially supported. If you encounter any bugs, please open an issue.
+
+For compatibility with older versions of Type\+Script typeguard functions are separated by Type\+Script version. If you are stuck on {\ttfamily typescript@2.\+8}, you should import directly from the submodule for that version\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ all\ typeguards\ compatible\ with\ typescript@2.8}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils/typeguard/2.8"{};}
+\DoxyCodeLine{//\ you\ can\ even\ use\ nested\ submodules}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils/typeguard/2.8/node"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ all\ typeguards\ compatible\ with\ typescript@2.9\ (includes\ those\ of\ 2.8)}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils/typeguard/2.9"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ always\ points\ to\ the\ latest\ stable\ version\ (2.9\ as\ of\ writing\ this)}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils/typeguard"{};}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ always\ points\ to\ the\ typeguards\ for\ the\ next\ TypeScript\ version\ (3.0\ as\ of\ writing\ this)}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ "{}tsutils/typeguard/next"{};}
+
+\end{DoxyCode}
+
+
+Note that if you are also using utility functions, you should prefer the relevant submodule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ importing\ directly\ from\ 'tsutils'\ would\ pull\ in\ the\ latest\ typeguards}
+\DoxyCodeLine{import\ \{\ forEachToken\ \}\ from\ 'tsutils/util';}
+\DoxyCodeLine{import\ \{\ isIdentifier\ \}\ from\ 'tsutils/typeguard/2.8';}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,24 @@
+\chapter{is-\/symbol \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/is-\/symbol"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/is-\/symbol.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e}\index{is-\/symbol $<$sup$>$$<$a href="{}https://npmjs.org/package/is-\/symbol"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/is-\/symbol.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{is-\/symbol $<$sup$>$$<$a href=""https://npmjs.org/package/is-\/symbol"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/is-\/symbol.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e_autotoc_md14821}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e_autotoc_md14821}%
+ \href{https://github.com/inspect-js/is-symbol/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/is-symbol/}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-symbol}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-symbol\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=is-symbol}{\texttt{ }}
+
+\href{https://npmjs.org/package/is-symbol}{\texttt{ }}
+
+Is this an ES6 Symbol value?\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e_autotoc_md14822}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e_autotoc_md14822}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isSymbol\ =\ require('is-\/symbol');}
+\DoxyCodeLine{assert(!isSymbol(function\ ()\ \{\}));}
+\DoxyCodeLine{assert(!isSymbol(null));}
+\DoxyCodeLine{assert(!isSymbol(function*\ ()\ \{\ yield\ 42;\ return\ Infinity;\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(isSymbol(Symbol.iterator));}
+\DoxyCodeLine{assert(isSymbol(Symbol('foo')));}
+\DoxyCodeLine{assert(isSymbol(Symbol.for('foo')));}
+\DoxyCodeLine{assert(isSymbol(Object(Symbol('foo'))));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e_autotoc_md14823}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-symbol_2_r_e_a_d_m_e_autotoc_md14823}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

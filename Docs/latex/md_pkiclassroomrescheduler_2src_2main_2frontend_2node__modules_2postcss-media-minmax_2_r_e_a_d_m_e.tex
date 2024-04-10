@@ -1,0 +1,321 @@
+\chapter{Post\+CSS Media Minmax}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e}\index{PostCSS Media Minmax@{PostCSS Media Minmax}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19002}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19002}%
+ \href{https://cssdb.org/\#media-query-ranges}{\texttt{ }} \href{https://travis-ci.org/postcss/postcss-media-minmax}{\texttt{ }} \href{https://www.npmjs.com/package/postcss-media-minmax}{\texttt{ }} \href{https://www.npmjs.com/package/postcss-media-minmax}{\texttt{ }} \href{https://opensource.org/licenses/MIT}{\texttt{ }}
+
+\begin{quote}
+Writing simple and graceful media queries! \end{quote}
+The {\ttfamily min-\/width}, {\ttfamily max-\/width} and many other properties of media queries are really confusing. I want to cry every time I see them. But right now according to the new specs, you can use more intuitive {\ttfamily \texorpdfstring{$<$}{<}=} or {\ttfamily \texorpdfstring{$>$}{>}=} to replace the {\ttfamily min-\/}/{\ttfamily max-\/} prefixes in media queries.
+
+V2.\+1.\+0 began to support {\ttfamily \texorpdfstring{$>$}{>}} or {\ttfamily \texorpdfstring{$<$}{<}} symbol.
+
+This is a polyfill plugin which supports \href{https://drafts.csswg.org/mediaqueries/\#mq-range-context}{\texttt{ CSS Media Queries Level 4}} and gives you access to the new features right away. Mom will never worry about my study any more. So amazing!
+
+\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e-zh}{简体中文}{0}
+
+\DoxyHorRuler{0}
+
+
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19004}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19004}
+\begin{DoxyVerb}$ npm install postcss-media-minmax
+\end{DoxyVerb}
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19005}{}\doxysection{\texorpdfstring{Quick Start}{Quick Start}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19005}
+Example 1\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{var\ postcss\ =\ require('postcss')}
+\DoxyCodeLine{var\ minmax\ =\ require('postcss-\/media-\/minmax')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ css\ =\ fs.readFileSync('input.css',\ 'utf8')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ output\ =\ postcss()}
+\DoxyCodeLine{\ \ .use(minmax())}
+\DoxyCodeLine{\ \ .process(css)}
+\DoxyCodeLine{\ \ .css}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{console.log('\(\backslash\)n====>Output\ CSS:\(\backslash\)n',\ output)\ \ }
+
+\end{DoxyCode}
+
+
+Or just\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ output\ =\ postcss(minmax())}
+\DoxyCodeLine{\ \ .process(css)}
+\DoxyCodeLine{\ \ .css}
+
+\end{DoxyCode}
+
+
+input.\+css\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (width\ >=\ 500px)\ and\ (width\ <=\ 1200px)\ \{}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You will get\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (min-\/width:\ 500px)\ and\ (max-\/width:\ 1200px)\ \{}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19006}{}\doxysection{\texorpdfstring{CSS syntax}{CSS syntax}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19006}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19007}{}\doxysubsection{\texorpdfstring{\href{https://drafts.csswg.org/mediaqueries/\#mq-range-context}{\texttt{ Syntax}}}{\href{https://drafts.csswg.org/mediaqueries/\#mq-range-context}{\texttt{ Syntax}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19007}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<mf-\/range>\ =\ <mf-\/name>\ [\ '<'\ |\ '>'\ ]?\ '='?\ <mf-\/value>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ <mf-\/value>\ [\ '<'\ |\ '>'\ ]?\ '='?\ <mf-\/name>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ <mf-\/value>\ '<'\ '='?\ <mf-\/name>\ '<'\ '='?\ <mf-\/value>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ <mf-\/value>\ '>'\ '='?\ <mf-\/name>\ '>'\ '='?\ <mf-\/value>}
+
+\end{DoxyCode}
+
+
+
+
+Post\+CSS Media Minmax hasn\textquotesingle{}t implemented syntax such as {\ttfamily 200px \texorpdfstring{$>$}{>} = width} or {\ttfamily 200px \texorpdfstring{$<$}{<} = width} currently because its readability is not good enough yet.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19008}{}\doxysection{\texorpdfstring{\href{https://drafts.csswg.org/mediaqueries/\#values}{\texttt{ Values}}}{\href{https://drafts.csswg.org/mediaqueries/\#values}{\texttt{ Values}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19008}
+{\bfseries{The special values\+:}}
+
+
+\begin{DoxyItemize}
+\item \href{https://drafts.csswg.org/mediaqueries/\#typedef-ratio}{\texttt{ }}
+
+The $<$ratio$>$ value type is a positive (not zero or negative) $<$integer$>$ followed by optional whitespace, followed by a solidus (\textquotesingle{}/\textquotesingle{}), followed by optional whitespace, followed by a positive $<$integer$>$. $<$ratio$>$s can be ordered or compared by transforming them into the number obtained by dividing their first $<$integer$>$ by their second $<$integer$>$.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (device-\/aspect-\/ratio:\ 16\ /\ \ \ 9)\ \{}
+\DoxyCodeLine{\ \ /*\ rules\ */}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ equivalent\ to\ */}
+\DoxyCodeLine{@media\ screen\ and\ (device-\/aspect-\/ratio:\ 16/9)\ \{}
+\DoxyCodeLine{\ \ /*\ rules\ */}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\item \href{https://drafts.csswg.org/mediaqueries/\#typedef-mq-boolean}{\texttt{ \texorpdfstring{$<$}{<}mq-\/boolean\texorpdfstring{$>$}{>}}}
+
+The \texorpdfstring{$<$}{<}mq-\/boolean\texorpdfstring{$>$}{>} value type is an $<$integer$>$ with the value 0 or 1. Any other integer value is invalid. Note that -\/0 is always equivalent to 0 in CSS, and so is also accepted as a valid \texorpdfstring{$<$}{<}mq-\/boolean\texorpdfstring{$>$}{>} value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (grid:\ -\/0)\ \{}
+\DoxyCodeLine{\ \ /*\ rules\ */}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ equivalent\ to\ */}
+\DoxyCodeLine{@media\ screen\ and\ (grid:\ 0)\ \{}
+\DoxyCodeLine{\ \ /*\ rules\ */}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19009}{}\doxysection{\texorpdfstring{How to use}{How to use}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19009}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19010}{}\doxysubsection{\texorpdfstring{Shorthand}{Shorthand}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19010}
+In Example 1, if a feature has both {\ttfamily \texorpdfstring{$>$}{>}=} and {\ttfamily \texorpdfstring{$<$}{<}=} logic, it can be written as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (500px\ <=\ width\ <=\ 1200px)\ \{}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{/*\ Or\ */}
+\DoxyCodeLine{@media\ screen\ and\ (1200px\ >=\ width\ >=\ 500px)\ \{}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Which will output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (min-\/width:\ 500px)\ and\ (max-\/width:\ 1200px)\ \{}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note}}\+: When the media feature name is in the middle, we must ensure that two {\ttfamily \texorpdfstring{$<$}{<}=} or {\ttfamily \texorpdfstring{$>$}{>}=} are in the same direction, otherwise which will not be converted.
+
+E.\+g. in the example below, {\ttfamily width} is greater than or equal to 500px and is greater than or equal to 1200px, which is the wrong in both grammar and logic.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ screen\ and\ (1200px\ <=\ width\ >=\ 500px)\ \{}
+\DoxyCodeLine{\ \ .bar\ \{}
+\DoxyCodeLine{\ \ \ \ display:\ block;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19011}{}\doxysubsection{\texorpdfstring{Media feature names}{Media feature names}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19011}
+The following properties support the {\ttfamily min-\/}/{\ttfamily max-\/} prefixes in the specifications at present, and will be automatically converted by Post\+CSS Media Minmax.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily width}
+\item {\ttfamily height}
+\item {\ttfamily device-\/width}
+\item {\ttfamily device-\/height}
+\item {\ttfamily aspect-\/ratio}
+\item {\ttfamily device-\/aspect-\/ratio}
+\item {\ttfamily color}
+\item {\ttfamily color-\/index}
+\item {\ttfamily monochrome}
+\item {\ttfamily resolution}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19012}{}\doxysubsection{\texorpdfstring{Using with {\ttfamily @custom-\/media} \& Node Watch}{Using with {\ttfamily @custom-\/media} \& Node Watch}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19012}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{var\ chokidar\ =\ require('chokidar')}
+\DoxyCodeLine{var\ postcss\ =\ require('postcss')}
+\DoxyCodeLine{var\ minmax\ =\ require('postcss-\/media-\/minmax')}
+\DoxyCodeLine{var\ customMedia\ =\ require('postcss-\/custom-\/media')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ src\ =\ 'input.css'}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.info('Watching…\(\backslash\)nModify\ the\ input.css\ and\ save.')}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{chokidar.watch(src,\ \{}
+\DoxyCodeLine{\ \ ignored:\ /[\(\backslash\)/\(\backslash\)\(\backslash\)]\(\backslash\)./,}
+\DoxyCodeLine{\ \ persistent:\ true}
+\DoxyCodeLine{\}).on('all',}
+\DoxyCodeLine{\ \ function(event,\ path,\ stats)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ css\ =\ fs.readFileSync(src,\ 'utf8')}
+\DoxyCodeLine{\ \ \ \ var\ output\ =\ postcss()}
+\DoxyCodeLine{\ \ \ \ \ \ .use(customMedia())}
+\DoxyCodeLine{\ \ \ \ \ \ .use(minmax())}
+\DoxyCodeLine{\ \ \ \ \ \ .process(css)}
+\DoxyCodeLine{\ \ \ \ \ \ .css;}
+\DoxyCodeLine{\ \ \ \ fs.writeFileSync('output.css',\ output)}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+input.\+css\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@custom-\/media\ -\/-\/foo\ (width\ >=\ 20em)\ and\ (width\ <=\ 50em);}
+\DoxyCodeLine{@custom-\/media\ -\/-\/bar\ (height\ >=\ 300px)\ and\ (height\ <=\ 600px);}
+\DoxyCodeLine{}
+\DoxyCodeLine{@media\ (-\/-\/foo)\ and\ (-\/-\/bar)\ \{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+output.\+css\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{@media\ (min-\/width:\ 20em)\ and\ (max-\/width:\ 50em)\ and\ (min-\/height:\ 300px)\ and\ (max-\/height:\ 600px)\ \{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19013}{}\doxysubsection{\texorpdfstring{Grunt}{Grunt}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19013}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ function(grunt)\ \{}
+\DoxyCodeLine{\ \ grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ pkg:\ grunt.file.readJSON('package.json'),}
+\DoxyCodeLine{\ \ \ \ postcss:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ processors:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ require('autoprefixer-\/core')(\{\ browsers:\ ['>\ 0\%']\ \}).postcss,\ //Other\ plugin}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ require('postcss-\/media-\/minmax')(),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ dist:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ src:\ ['src/*.css'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ dest:\ 'build/grunt.css'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ grunt.loadNpmTasks('grunt-\/contrib-\/uglify');}
+\DoxyCodeLine{\ \ grunt.loadNpmTasks('grunt-\/postcss');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ grunt.registerTask('default',\ ['postcss']);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19014}{}\doxysubsection{\texorpdfstring{Gulp}{Gulp}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19014}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ gulp\ =\ require('gulp');}
+\DoxyCodeLine{var\ rename\ =\ require('gulp-\/rename');}
+\DoxyCodeLine{var\ postcss\ =\ require('gulp-\/postcss');}
+\DoxyCodeLine{var\ selector\ =\ require('postcss-\/media-\/minmax')}
+\DoxyCodeLine{var\ autoprefixer\ =\ require('autoprefixer-\/core')}
+\DoxyCodeLine{}
+\DoxyCodeLine{gulp.task('default',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ var\ processors\ =\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ autoprefixer(\{\ browsers:\ ['>\ 0\%']\ \}),\ //Other\ plugin}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ minmax()}
+\DoxyCodeLine{\ \ \ \ ];}
+\DoxyCodeLine{\ \ \ \ gulp.src('src/*.css')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pipe(postcss(processors))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pipe(rename('gulp.css'))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pipe(gulp.dest('build'))}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{gulp.watch('src/*.css',\ ['default']);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19015}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19015}
+
+\begin{DoxyItemize}
+\item Install all the dependent modules.
+\item Respect the coding style (Use \href{https://editorconfig.org/}{\texttt{ Editor\+Config}}).
+\item Add test cases in the \mbox{[}test\mbox{]}(test) directory.
+\item Run the test cases.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ git\ clone\ https://github.com/postcss/postcss-\/media-\/minmaxs.git}
+\DoxyCodeLine{\$\ git\ checkout\ -\/b\ patch}
+\DoxyCodeLine{\$\ npm\ install}
+\DoxyCodeLine{\$\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19016}{}\doxysection{\texorpdfstring{Acknowledgements}{Acknowledgements}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19016}
+
+\begin{DoxyItemize}
+\item Thank the author of Post\+CSS \href{https://github.com/ai}{\texttt{ Andrey Sitnik}} for giving us such simple and easy CSS syntax analysis tools.
+\item Thank \href{https://www.xanthir.com/contact/}{\texttt{ Tab Atkins Jr.}} for writing the specs of Media Queries Level 4.
+\item Thank \href{https://weibo.com/p/1005051708684567}{\texttt{ ziyunfei}} for suggestions and help of this plugin.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19017}{}\doxysection{\texorpdfstring{\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_c_h_a_n_g_e_l_o_g}{Changelog}{0}}{\doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_c_h_a_n_g_e_l_o_g}{Changelog}{0}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19017}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19018}{}\doxysection{\texorpdfstring{\mbox{[}License\mbox{]}(LICENSE)}{\mbox{[}License\mbox{]}(LICENSE)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-media-minmax_2_r_e_a_d_m_e_autotoc_md19018}

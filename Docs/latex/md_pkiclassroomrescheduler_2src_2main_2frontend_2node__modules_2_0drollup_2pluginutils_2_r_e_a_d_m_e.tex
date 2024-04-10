@@ -1,0 +1,199 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e}\index{README@{README}}
+\href{https://www.npmjs.com/package/@rollup/pluginutils}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=@rollup/pluginutils}{\texttt{ }} \href{https://liberamanifesto.com}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2083}{}\doxysection{\texorpdfstring{@rollup/pluginutils}{@rollup/pluginutils}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2083}
+A set of utility functions commonly used by 🍣 Rollup plugins.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2084}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2084}
+This plugin requires an \href{https://github.com/nodejs/Release}{\texttt{ LTS}} Node version (v8.\+0.\+0+) and Rollup v1.\+20.\+0+.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2085}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2085}
+Using npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @rollup/pluginutils\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2086}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2086}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ utils\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{//...}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2087}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2087}
+Available utility functions are listed below\+:
+
+{\itshape Note\+: Parameter names immediately followed by a {\ttfamily ?} indicate that the parameter is optional.}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2088}{}\doxysubsubsection{\texorpdfstring{add\+Extension}{add\+Extension}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2088}
+Adds an extension to a module ID if one does not exist.
+
+Parameters\+: {\ttfamily (filename\+: String, ext?\+: String)}~\newline
+ Returns\+: {\ttfamily String}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ addExtension\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ function\ myPlugin(options\ =\ \{\})\ \{}
+\DoxyCodeLine{\ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ resolveId(code,\ id)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ only\ adds\ an\ extension\ if\ there\ isn't\ one\ already}
+\DoxyCodeLine{\ \ \ \ \ \ id\ =\ addExtension(id);\ //\ \`{}foo`\ -\/>\ \`{}foo.js`,\ \`{}foo.js\ -\/>\ foo.js`}
+\DoxyCodeLine{\ \ \ \ \ \ id\ =\ addExtension(id,\ '.myext');\ //\ \`{}foo`\ -\/>\ \`{}foo.myext`,\ \`{}foo.js\ -\/>\ \`{}foo.js`}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2089}{}\doxysubsubsection{\texorpdfstring{attach\+Scopes}{attach\+Scopes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2089}
+Attaches {\ttfamily Scope} objects to the relevant nodes of an AST. Each {\ttfamily Scope} object has a {\ttfamily scope.\+contains(name)} method that returns {\ttfamily true} if a given name is defined in the current scope or a parent scope.
+
+Parameters\+: {\ttfamily (ast\+: Node, property\+Name?\+: String)}~\newline
+ Returns\+: {\ttfamily Object}
+
+See \href{https://github.com/rollup/rollup-plugin-inject}{\texttt{ rollup-\/plugin-\/inject}} or \href{https://github.com/rollup/rollup-plugin-commonjs}{\texttt{ rollup-\/plugin-\/commonjs}} for an example of usage.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ attachScopes\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{import\ \{\ walk\ \}\ from\ 'estree-\/walker';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ function\ myPlugin(options\ =\ \{\})\ \{}
+\DoxyCodeLine{\ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ transform(code)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ const\ ast\ =\ this.parse(code);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ let\ scope\ =\ attachScopes(ast,\ 'scope');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ walk(ast,\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ enter(node)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (node.scope)\ scope\ =\ node.scope;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (!scope.contains('foo'))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}foo`\ is\ not\ defined,\ so\ if\ we\ encounter\ it,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ we\ assume\ it's\ a\ global}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ leave(node)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (node.scope)\ scope\ =\ scope.parent;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2090}{}\doxysubsubsection{\texorpdfstring{create\+Filter}{create\+Filter}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2090}
+Constructs a filter function which can be used to determine whether or not certain modules should be operated upon.
+
+Parameters\+: {\ttfamily (include?\+: \texorpdfstring{$<$}{<}minmatch\texorpdfstring{$>$}{>}, exclude?\+: \texorpdfstring{$<$}{<}minmatch\texorpdfstring{$>$}{>}, options?\+: Object)}~\newline
+ Returns\+: {\ttfamily String}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2091}{}\doxyparagraph{\texorpdfstring{{\ttfamily include} and {\ttfamily exclude}}{{\ttfamily include} and {\ttfamily exclude}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2091}
+Type\+: {\ttfamily String \texorpdfstring{$\vert$}{|} Reg\+Exp \texorpdfstring{$\vert$}{|} Array\mbox{[}...String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\mbox{]}}~\newline
+
+
+A valid \href{https://www.npmjs.com/package/minimatch}{\texttt{ {\ttfamily minimatch}}} pattern, or array of patterns. If {\ttfamily options.\+include} is omitted or has zero length, filter will return {\ttfamily true} by default. Otherwise, an ID must match one or more of the {\ttfamily minimatch} patterns, and must not match any of the {\ttfamily options.\+exclude} patterns.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2092}{}\doxyparagraph{\texorpdfstring{{\ttfamily options}}{{\ttfamily options}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2092}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2093}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2093}%
+ \doxysubparagraph*{{\ttfamily resolve}}
+
+Type\+: {\ttfamily String \texorpdfstring{$\vert$}{|} Boolean \texorpdfstring{$\vert$}{|} null}
+
+Optionally resolves the patterns against a directory other than {\ttfamily process.\+cwd()}. If a {\ttfamily String} is specified, then the value will be used as the base directory. Relative paths will be resolved against {\ttfamily process.\+cwd()} first. If {\ttfamily false}, then the patterns will not be resolved against any directory. This can be useful if you want to create a filter for virtual module names.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2094}{}\doxyparagraph{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2094}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ createFilter\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ function\ myPlugin(options\ =\ \{\})\ \{}
+\DoxyCodeLine{\ \ //\ assume\ that\ the\ myPlugin\ accepts\ options\ of\ \`{}options.include`\ and\ \`{}options.exclude`}
+\DoxyCodeLine{\ \ var\ filter\ =\ createFilter(options.include,\ options.exclude,\ \{}
+\DoxyCodeLine{\ \ \ \ resolve:\ '/my/base/dir'}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ transform(code,\ id)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (!filter(id))\ return;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ proceed\ with\ the\ transformation...}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2095}{}\doxysubsubsection{\texorpdfstring{data\+To\+Esm}{data\+To\+Esm}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2095}
+Transforms objects into tree-\/shakable ES Module imports.
+
+Parameters\+: {\ttfamily (data\+: Object)}~\newline
+ Returns\+: {\ttfamily String}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2096}{}\doxyparagraph{\texorpdfstring{{\ttfamily data}}{{\ttfamily data}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2096}
+Type\+: {\ttfamily Object}
+
+An object to transform into an ES module.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2097}{}\doxyparagraph{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2097}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ dataToEsm\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ esModuleSource\ =\ dataToEsm(}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ custom:\ 'data',}
+\DoxyCodeLine{\ \ \ \ to:\ ['treeshake']}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ compact:\ false,}
+\DoxyCodeLine{\ \ \ \ indent:\ '\(\backslash\)t',}
+\DoxyCodeLine{\ \ \ \ preferConst:\ false,}
+\DoxyCodeLine{\ \ \ \ objectShorthand:\ false,}
+\DoxyCodeLine{\ \ \ \ namedExports:\ true}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{Outputs\ the\ string\ ES\ module\ source:}
+\DoxyCodeLine{\ \ export\ const\ custom\ =\ 'data';}
+\DoxyCodeLine{\ \ export\ const\ to\ =\ ['treeshake'];}
+\DoxyCodeLine{\ \ export\ default\ \{\ custom,\ to\ \};}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2098}{}\doxysubsubsection{\texorpdfstring{extract\+Assigned\+Names}{extract\+Assigned\+Names}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2098}
+Extracts the names of all assignment targets based upon specified patterns.
+
+Parameters\+: {\ttfamily (param\+: Node)}~\newline
+ Returns\+: {\ttfamily Array\mbox{[}...String\mbox{]}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2099}{}\doxyparagraph{\texorpdfstring{{\ttfamily param}}{{\ttfamily param}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2099}
+Type\+: {\ttfamily Node}
+
+An {\ttfamily acorn} AST Node.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2100}{}\doxyparagraph{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2100}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ extractAssignedNames\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{import\ \{\ walk\ \}\ from\ 'estree-\/walker';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ function\ myPlugin(options\ =\ \{\})\ \{}
+\DoxyCodeLine{\ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ transform(code)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ const\ ast\ =\ this.parse(code);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ walk(ast,\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ enter(node)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ if\ (node.type\ ===\ 'VariableDeclarator')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ const\ declaredNames\ =\ extractAssignedNames(node.id);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ do\ something\ with\ the\ declared\ names}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ e.g.\ for\ \`{}const\ \{x,\ y:\ z\}\ =\ ...\ =>\ declaredNames\ =\ ['x',\ 'z']}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2101}{}\doxysubsubsection{\texorpdfstring{make\+Legal\+Identifier}{make\+Legal\+Identifier}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2101}
+Constructs a bundle-\/safe identifier from a {\ttfamily String}.
+
+Parameters\+: {\ttfamily (str\+: String)}~\newline
+ Returns\+: {\ttfamily String}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2102}{}\doxyparagraph{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2102}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ makeLegalIdentifier\ \}\ from\ '@rollup/pluginutils';}
+\DoxyCodeLine{}
+\DoxyCodeLine{makeLegalIdentifier('foo-\/bar');\ //\ 'foo\_bar'}
+\DoxyCodeLine{makeLegalIdentifier('typeof');\ //\ '\_typeof'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2103}{}\doxysubsection{\texorpdfstring{Meta}{Meta}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0drollup_2pluginutils_2_r_e_a_d_m_e_autotoc_md2103}
+CONTRIBUTING
+
+\href{/LICENSE}{\texttt{ LICENSE (MIT)}} 

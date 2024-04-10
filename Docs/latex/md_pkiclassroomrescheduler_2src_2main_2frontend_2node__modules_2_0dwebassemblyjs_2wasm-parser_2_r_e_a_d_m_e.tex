@@ -1,0 +1,31 @@
+\chapter{@webassemblyjs/wasm-\/parser}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e}\index{"@webassemblyjs/wasm-\/parser@{"@webassemblyjs/wasm-\/parser}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4376}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4376}%
+ \begin{quote}
+Web\+Assembly binary format parser \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4377}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4377}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ @webassemblyjs/wasm-\/parser}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4378}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4378}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ decode\ \}\ from\ "{}@webassemblyjs/wasm-\/parser"{};}
+\DoxyCodeLine{import\ \{\ readFileSync\ \}\ from\ "{}fs"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ binary\ =\ readFileSync("{}/path/to/module.wasm"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ decoderOpts\ =\ \{\};}
+\DoxyCodeLine{const\ ast\ =\ decode(binary,\ decoderOpts);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4379}{}\doxysubsection{\texorpdfstring{Decoder options}{Decoder options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dwebassemblyjs_2wasm-parser_2_r_e_a_d_m_e_autotoc_md4379}
+
+\begin{DoxyItemize}
+\item {\ttfamily dump}\+: print dump information while decoding (default {\ttfamily false})
+\item {\ttfamily ignore\+Code\+Section}\+: ignore the code section (default {\ttfamily false})
+\item {\ttfamily ignore\+Data\+Section}\+: ignore the data section (default {\ttfamily false}) 
+\end{DoxyItemize}

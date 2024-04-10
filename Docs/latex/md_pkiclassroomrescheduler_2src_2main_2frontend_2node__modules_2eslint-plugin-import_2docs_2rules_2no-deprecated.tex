@@ -1,0 +1,76 @@
+\chapter{import/no-\/deprecated}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated}\index{import/no-\/deprecated@{import/no-\/deprecated}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated_autotoc_md9934}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated_autotoc_md9934}%
+
+
+Reports use of a deprecated name, as indicated by a JSDoc block with a {\ttfamily @deprecated} tag or Tom\+Doc {\ttfamily Deprecated\+:} comment.
+
+using a JSDoc {\ttfamily @deprecated} tag\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ @file:\ ./answer.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ this\ is\ what\ you\ get\ when\ you\ trust\ a\ mouse\ talk\ show}
+\DoxyCodeLine{\ *\ @deprecated\ need\ to\ restart\ the\ experiment}
+\DoxyCodeLine{\ *\ @returns\ \{Number\}\ nonsense}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{export\ function\ multiply(six,\ nine)\ \{}
+\DoxyCodeLine{\ \ return\ 42}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+will report as such\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ multiply\ \}\ from\ './answer'\ //\ Deprecated:\ need\ to\ restart\ the\ experiment}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ whatever(y,\ z)\ \{}
+\DoxyCodeLine{\ \ return\ multiply(y,\ z)\ //\ Deprecated:\ need\ to\ restart\ the\ experiment}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+or using the Tom\+Doc equivalent\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Deprecated:\ This\ is\ what\ you\ get\ when\ you\ trust\ a\ mouse\ talk\ show,\ need\ to}
+\DoxyCodeLine{//\ restart\ the\ experiment.}
+\DoxyCodeLine{//}
+\DoxyCodeLine{//\ Returns\ a\ Number\ nonsense}
+\DoxyCodeLine{export\ function\ multiply(six,\ nine)\ \{}
+\DoxyCodeLine{\ \ return\ 42}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Only JSDoc is enabled by default. Other documentation styles can be enabled with the {\ttfamily import/docstyle} setting.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .eslintrc.yml}
+\DoxyCodeLine{settings:}
+\DoxyCodeLine{\ \ import/docstyle:\ ['jsdoc',\ 'tomdoc']}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated_autotoc_md9935}{}\doxysection{\texorpdfstring{Worklist}{Worklist}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-deprecated_autotoc_md9935}
+
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} report explicit imports on the import node
+\item \mbox{[}x\mbox{]} support namespaces
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} should bubble up through deep namespaces (\#157)
+\end{DoxyItemize}
+\item \mbox{[}x\mbox{]} report explicit imports at reference time (at the identifier) similar to namespace
+\item \mbox{[}x\mbox{]} mark module deprecated if file JSDoc has a \begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000001}{Deprecated}}]tag?\end{DoxyRefDesc}
+
+\end{DoxyItemize}

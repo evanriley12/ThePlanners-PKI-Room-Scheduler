@@ -1,0 +1,77 @@
+\chapter{import/no-\/default-\/export}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export}\index{import/no-\/default-\/export@{import/no-\/default-\/export}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export_autotoc_md9931}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export_autotoc_md9931}%
+
+
+Prohibit default exports. Mostly an inverse of \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2prefer-default-export}{{\ttfamily prefer-\/default-\/export}}{0}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export_autotoc_md9932}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export_autotoc_md9932}
+The following patterns are considered warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ bad1.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ There\ is\ a\ default\ export.}
+\DoxyCodeLine{export\ const\ foo\ =\ 'foo';}
+\DoxyCodeLine{const\ bar\ =\ 'bar';}
+\DoxyCodeLine{export\ default\ 'bar';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ bad2.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ There\ is\ a\ default\ export.}
+\DoxyCodeLine{const\ foo\ =\ 'foo';}
+\DoxyCodeLine{export\ \{\ foo\ as\ default\ \}}
+
+\end{DoxyCode}
+
+
+The following patterns are not warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ good1.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ There\ is\ only\ a\ single\ module\ export\ and\ it's\ a\ named\ export.}
+\DoxyCodeLine{export\ const\ foo\ =\ 'foo';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ good2.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ There\ is\ more\ than\ one\ named\ export\ in\ the\ module.}
+\DoxyCodeLine{export\ const\ foo\ =\ 'foo';}
+\DoxyCodeLine{export\ const\ bar\ =\ 'bar';}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ good3.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ There\ is\ more\ than\ one\ named\ export\ in\ the\ module}
+\DoxyCodeLine{const\ foo\ =\ 'foo';}
+\DoxyCodeLine{const\ bar\ =\ 'bar';}
+\DoxyCodeLine{export\ \{\ foo,\ bar\ \}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ export-\/star.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Any\ batch\ export\ will\ disable\ this\ rule.\ The\ remote\ module\ is\ not\ inspected.}
+\DoxyCodeLine{export\ *\ from\ './other-\/module'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export_autotoc_md9933}{}\doxysection{\texorpdfstring{When Not To Use It}{When Not To Use It}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-default-export_autotoc_md9933}
+If you don\textquotesingle{}t care if default imports are used, or if you prefer default imports over named imports. 

@@ -1,0 +1,223 @@
+\chapter{IANA Language Tags for Java\+Script}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e}\index{IANA Language Tags for JavaScript@{IANA Language Tags for JavaScript}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16239}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16239}%
+ \href{https://travis-ci.org/mattcg/language-tags}{\texttt{ }} \href{https://coveralls.io/r/mattcg/language-tags}{\texttt{ }}
+
+Based on \href{https://www.rfc-editor.org/info/bcp47}{\texttt{ BCP 47}} (\href{https://www.rfc-editor.org/rfc/rfc5646.html}{\texttt{ RFC 5646}}) and the latest \href{http://www.iana.org/assignments/language-subtag-registry}{\texttt{ IANA language subtag registry}}.
+
+This project will be updated as the standards change.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16240}{}\doxysection{\texorpdfstring{JSON data}{JSON data}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16240}
+See the \href{https://github.com/mattcg/language-subtag-registry}{\texttt{ language-\/subtag-\/registry}} project for the underlying JSON data.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16241}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16241}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tags\ =\ require('language-\/tags')}
+
+\end{DoxyCode}
+
+
+Note that all lookups and checks for tags and subtags are case insensitive. For formatting according to common conventions, see {\ttfamily tag.\+format}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16242}{}\doxysubsection{\texorpdfstring{tags(tag)}{tags(tag)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16242}
+Check whether a hyphen-\/separated tag is valid and well-\/formed. Always returns a {\ttfamily Tag}, which can be checked using the {\ttfamily valid} method.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16243}{}\doxysubsection{\texorpdfstring{tags.\+check(tag)}{tags.\+check(tag)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16243}
+Shortcut for {\ttfamily tags(tag).valid()}. Return {\ttfamily true} if the tag is valid, {\ttfamily false} otherwise. For meaningful error output see {\ttfamily tag.\+errors()}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16244}{}\doxysubsection{\texorpdfstring{tags.\+subtags(subtag), tags.\+subtags(subtags)}{tags.\+subtags(subtag), tags.\+subtags(subtags)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16244}
+Look up one or more subtags. Returns an array of {\ttfamily Subtag} objects. Returns an empty array if all of the subtags are non-\/existent.
+
+Calling `tags.\+subtags(\textquotesingle{}mt'){\ttfamily will return an array with two}Subtag` objects\+: one for Malta (the \textquotesingle{}region' type subtag) and one for Maltese (the \textquotesingle{}language\textquotesingle{} type subtag).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.subtags('mt');}
+\DoxyCodeLine{[Subtag,\ Subtag]}
+\DoxyCodeLine{>\ tags.subtags('bumblebee');}
+\DoxyCodeLine{[]}
+
+\end{DoxyCode}
+
+
+To get or check a single subtag by type use {\ttfamily tags.\+language(subtag)}, {\ttfamily tags.\+region(subtag)} or {\ttfamily tags.\+type(subtag, type)}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16245}{}\doxysubsection{\texorpdfstring{tags.\+filter(subtags)}{tags.\+filter(subtags)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16245}
+The opposite of {\ttfamily tags.\+subtags(subtags)}. Returns an array of codes that are not registered subtags, otherwise returns an empty array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.filter(['en',\ 'Aargh']);}
+\DoxyCodeLine{['Aargh']}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16246}{}\doxysubsection{\texorpdfstring{tags.\+search(description, \mbox{[}all\mbox{]})}{tags.\+search(description, \mbox{[}all\mbox{]})}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16246}
+Search for tags and subtags by description. Supports either a Reg\+Exp object or a string for {\ttfamily description}. Returns an array of {\ttfamily Subtag} and {\ttfamily Tag} objects or an empty array if no results were found.
+
+Note that {\ttfamily Tag} objects in the results represent \textquotesingle{}grandfathered\textquotesingle{} or \textquotesingle{}redundant\textquotesingle{} tags. These are excluded by default. Set the {\ttfamily all} parameter to {\ttfamily true} to include them.
+
+Search is case-\/insensitive if {\ttfamily description} is a string.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16247}{}\doxysubsection{\texorpdfstring{tags.\+languages(macrolanguage)}{tags.\+languages(macrolanguage)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16247}
+Returns an array of {\ttfamily Subtag} objects representing all the \textquotesingle{}language\textquotesingle{} type subtags belonging to the given \textquotesingle{}macrolanguage\textquotesingle{} type subtag.
+
+Throws an error if {\ttfamily macrolanguage} is not a macrolanguage.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.languages('zh');}
+\DoxyCodeLine{[Subtag,\ Subtag...]}
+\DoxyCodeLine{>\ tags.languages('en');}
+\DoxyCodeLine{Error:\ 'en'\ is\ not\ a\ valid\ macrolanguage.}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16248}{}\doxysubsection{\texorpdfstring{tags.\+language(subtag)}{tags.\+language(subtag)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16248}
+Convenience method to get a single \textquotesingle{}language\textquotesingle{} type subtag. Can be used to validate an input value as a language subtag. Returns a {\ttfamily Subtag} object or {\ttfamily null}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('en');}
+\DoxyCodeLine{Subtag}
+\DoxyCodeLine{>\ tags.language('us');}
+\DoxyCodeLine{null}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16249}{}\doxysubsection{\texorpdfstring{tags.\+region(subtag)}{tags.\+region(subtag)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16249}
+As above, but with \textquotesingle{}region\textquotesingle{} type subtags.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.region('mt');}
+\DoxyCodeLine{Subtag}
+\DoxyCodeLine{>\ tags.region('en');}
+\DoxyCodeLine{null}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16250}{}\doxysubsection{\texorpdfstring{tags.\+type(subtag, type)}{tags.\+type(subtag, type)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16250}
+Get a subtag by type. Returns the subtag matching {\ttfamily type} as a {\ttfamily Subtag} object otherwise returns {\ttfamily null}.
+
+A {\ttfamily type} consists of one of the following strings\+: \textquotesingle{}language\textquotesingle{}, \textquotesingle{}extlang\textquotesingle{}, \textquotesingle{}script\textquotesingle{}, \textquotesingle{}region\textquotesingle{} or \textquotesingle{}variant\textquotesingle{}. To get a \textquotesingle{}grandfathered\textquotesingle{} or \textquotesingle{}redundant\textquotesingle{} type tag use {\ttfamily tags(tag)}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.type('zh',\ 'macrolanguage');}
+\DoxyCodeLine{Subtag}
+\DoxyCodeLine{>\ tags.type('zh',\ 'script');}
+\DoxyCodeLine{null}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16251}{}\doxysubsection{\texorpdfstring{tags.\+date()}{tags.\+date()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16251}
+Returns the file date for the underlying data, as a string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.date();}
+\DoxyCodeLine{'2004-\/06-\/28'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16252}{}\doxysubsection{\texorpdfstring{Subtag}{Subtag}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16252}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16253}{}\doxysubsubsection{\texorpdfstring{subtag.\+type()}{subtag.\+type()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16253}
+Get the subtag type (either \textquotesingle{}language\textquotesingle{}, \textquotesingle{}extlang\textquotesingle{}, \textquotesingle{}script\textquotesingle{}, \textquotesingle{}region\textquotesingle{} or \textquotesingle{}variant\textquotesingle{}). See \href{http://tools.ietf.org/html/rfc5646\#section-2.2}{\texttt{ RFC 5646 section 2.\+2}} for type definitions.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16254}{}\doxysubsubsection{\texorpdfstring{subtag.\+descriptions()}{subtag.\+descriptions()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16254}
+Returns an array of description strings (a subtag may have more than one description).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('ro').descriptions();}
+\DoxyCodeLine{['Romanian',\ 'Moldavian',\ 'Moldovan']}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16255}{}\doxysubsubsection{\texorpdfstring{subtag.\+preferred()}{subtag.\+preferred()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16255}
+Returns a preferred subtag as a {\ttfamily Subtag} object if the subtag is deprecated. For example, {\ttfamily ro} is preferred over deprecated {\ttfamily mo}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('mo').preferred();}
+\DoxyCodeLine{Subtag}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16256}{}\doxysubsubsection{\texorpdfstring{subtag.\+script()}{subtag.\+script()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16256}
+For subtags of type \textquotesingle{}language\textquotesingle{} or \textquotesingle{}extlang\textquotesingle{}, returns a {\ttfamily Subtag} object representing the language\textquotesingle{}s default script. See \href{http://tools.ietf.org/html/rfc5646\#section-3.1.9}{\texttt{ RFC 5646 section 3.\+1.\+9}} for a definition of \textquotesingle{}Suppress-\/\+Script\textquotesingle{}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16257}{}\doxysubsubsection{\texorpdfstring{subtag.\+scope()}{subtag.\+scope()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16257}
+Returns the subtag scope as a string, or {\ttfamily null} if the subtag has no scope.
+
+Tip\+: if the subtag represents a macrolanguage, you can use {\ttfamily tags.\+languages(macrolanguage)} to get a list of all the macrolanguage\textquotesingle{}s individual languages.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('zh').scope();}
+\DoxyCodeLine{'macrolanguage'}
+\DoxyCodeLine{>\ tags.language('nah').scope();}
+\DoxyCodeLine{'collection'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16258}{}\doxysubsubsection{\texorpdfstring{subtag.\+deprecated()}{subtag.\+deprecated()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16258}
+Returns a date string reflecting the deprecation date if the subtag is deprecated, otherwise returns {\ttfamily null}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('ja').deprecated();}
+\DoxyCodeLine{'2008-\/11-\/22'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16259}{}\doxysubsubsection{\texorpdfstring{subtag.\+added()}{subtag.\+added()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16259}
+Returns a date string reflecting the date the subtag was added to the registry.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('ja').added();}
+\DoxyCodeLine{'2005-\/10-\/16'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16260}{}\doxysubsubsection{\texorpdfstring{subtag.\+comments()}{subtag.\+comments()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16260}
+Returns an array of comments, if any, otherwise returns an empty array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags.language('nmf').comments();}
+\DoxyCodeLine{['see\ ntx']}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16261}{}\doxysubsubsection{\texorpdfstring{subtag.\+format()}{subtag.\+format()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16261}
+Return the subtag code formatted according to the case conventions defined in \href{http://tools.ietf.org/html/rfc5646\#section-2.1.1}{\texttt{ RFC 5646 section 2.\+1.\+1}}.
+
+
+\begin{DoxyItemize}
+\item language codes are made lowercase (\textquotesingle{}mn\textquotesingle{} for Mongolian)
+\item script codes are made lowercase with the initial letter capitalized (\textquotesingle{}Cyrl\textquotesingle{} for Cyrillic)
+\item country codes are capitalized (\textquotesingle{}MN\textquotesingle{} for Mongolia)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16262}{}\doxysubsection{\texorpdfstring{Tag}{Tag}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16262}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16263}{}\doxysubsubsection{\texorpdfstring{tag.\+preferred()}{tag.\+preferred()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16263}
+If the tag is listed as \textquotesingle{}deprecated\textquotesingle{} or \textquotesingle{}redundant\textquotesingle{} it might have a preferred value. This method returns a {\ttfamily Tag} object if so.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags('zh-\/cmn-\/Hant').preferred();}
+\DoxyCodeLine{Tag}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16264}{}\doxysubsubsection{\texorpdfstring{tag.\+type()}{tag.\+type()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16264}
+Returns {\ttfamily grandfathered} if the tag is grandfathered, {\ttfamily redundant} if the tag is redundant, and {\ttfamily tag} if neither. For a definition of grandfathered and redundant tags, see \href{http://tools.ietf.org/html/rfc5646\#section-2.2.8}{\texttt{ RFC 5646 section 2.\+2.\+8}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16265}{}\doxysubsubsection{\texorpdfstring{tag.\+subtags()}{tag.\+subtags()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16265}
+Returns an array of subtags making up the tag, as {\ttfamily Subtag} objects.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16266}{}\doxysubsubsection{\texorpdfstring{tag.\+language(), tag.\+region(), tag.\+script()}{tag.\+language(), tag.\+region(), tag.\+script()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16266}
+Shortcuts for `tag.\+find(\textquotesingle{}language'){\ttfamily ,}tag.\+find(\textquotesingle{}region\textquotesingle{}){\ttfamily and}tag.\+find(\textquotesingle{}script\textquotesingle{})\`{}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16267}{}\doxysubsubsection{\texorpdfstring{tag.\+find(type)}{tag.\+find(type)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16267}
+Find a subtag of the given type from those making up the tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16268}{}\doxysubsubsection{\texorpdfstring{tag.\+valid()}{tag.\+valid()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16268}
+Returns {\ttfamily true} if the tag is valid, {\ttfamily false} otherwise.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16269}{}\doxysubsubsection{\texorpdfstring{tag.\+errors()}{tag.\+errors()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16269}
+Returns an array of {\ttfamily Error} objects if the tag is invalid. The {\ttfamily message} property of each is readable and helpful enough for UI output. The {\ttfamily code} property can be checked against the {\ttfamily Tag.\+ERR\+\_\+\texorpdfstring{$\ast$}{*}} constants. Each error will also have either a {\ttfamily subtag} or {\ttfamily tag} property with the code of the offending tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16270}{}\doxysubsubsection{\texorpdfstring{tag.\+format()}{tag.\+format()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16270}
+Format a tag according to the case conventions defined in \href{http://tools.ietf.org/html/rfc5646\#section-2.1.1}{\texttt{ RFC 5646 section 2.\+1.\+1}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags('en-\/gb').format();}
+\DoxyCodeLine{'en-\/GB'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16271}{}\doxysubsubsection{\texorpdfstring{tag.\+deprecated()}{tag.\+deprecated()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16271}
+For grandfathered or redundant tags, returns a date string reflecting the deprecation date if the tag is deprecated.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>\ tags('zh-\/cmn-\/Hant').deprecated();}
+\DoxyCodeLine{'2009-\/07-\/29'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16272}{}\doxysubsubsection{\texorpdfstring{tag.\+added()}{tag.\+added()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16272}
+For grandfathered or redundant tags, returns a date string reflecting the date the tag was added to the registry.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16273}{}\doxysubsubsection{\texorpdfstring{tag.\+descriptions()}{tag.\+descriptions()}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16273}
+Returns an array of tag descriptions for grandfathered or redundant tags, otherwise returns an empty array.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16274}{}\doxysection{\texorpdfstring{Resources}{Resources}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16274}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/OnroerendErfgoed/language-tags}{\texttt{ Python version by the Flanders Heritage Agency}}
+\item \href{http://rishida.net/utils/subtags/}{\texttt{ Language Subtag Lookup tool by Richard Ishida}}
+\item \href{http://validator.w3.org/i18n-checker/}{\texttt{ W3C Internationalization Checker}}
+\item \href{http://tools.ietf.org/html/rfc5646}{\texttt{ RFC 5646}}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16275}{}\doxysection{\texorpdfstring{Credits and collaboration}{Credits and collaboration}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2language-tags_2_r_e_a_d_m_e_autotoc_md16275}
+Copyright (c) 2013, \href{http://twitter.com/mcaruanagalizia}{\texttt{ Matthew Caruana Galizia}}.
+
+The software part of this project is licensed under an \href{http://mattcg.mit-license.org/}{\texttt{ MIT licence}}.
+
+Comments, feedback and suggestions are welcome. Please feel free to raise an issue or pull request. Enjoy. 

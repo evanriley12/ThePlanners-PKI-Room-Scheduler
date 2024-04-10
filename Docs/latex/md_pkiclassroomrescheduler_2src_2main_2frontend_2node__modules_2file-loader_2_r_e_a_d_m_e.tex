@@ -1,0 +1,705 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e}\index{README@{README}}
+ \href{https://github.com/webpack/webpack}{\texttt{  }} 
+
+\href{https://npmjs.com/package/file-loader}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://david-dm.org/webpack-contrib/file-loader}{\texttt{ }} \href{https://github.com/webpack-contrib/file-loader/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/file-loader}{\texttt{ }} \href{https://gitter.im/webpack/webpack}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=file-loader}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12300}{}\doxysection{\texorpdfstring{file-\/loader}{file-\/loader}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12300}
+The {\ttfamily file-\/loader} resolves {\ttfamily import}/{\ttfamily require()} on a file into a url and emits the file into the output directory.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12301}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12301}
+To begin, you\textquotesingle{}ll need to install {\ttfamily file-\/loader}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ file-\/loader\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Import (or {\ttfamily require}) the target file(s) in one of the bundle\textquotesingle{}s files\+:
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ img\ from\ './file.png';}
+
+\end{DoxyCode}
+
+
+Then add the loader to your {\ttfamily webpack} config. For example\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+And run {\ttfamily webpack} via your preferred method. This will emit {\ttfamily file.\+png} as a file in the output directory (with the specified naming convention, if options are specified to do so) and returns the public URI of the file.
+
+\begin{quote}
+ℹ️ By default the filename of the resulting file is the hash of the file\textquotesingle{}s contents with the original extension of the required resource. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12302}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12302}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12303}{}\doxysubsubsection{\texorpdfstring{{\ttfamily name}}{{\ttfamily name}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12303}
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Function} Default\+: `'\mbox{[}contenthash\mbox{]}.\mbox{[}ext\mbox{]}\textquotesingle{}\`{}
+
+Specifies a custom filename template for the target file(s) using the query parameter {\ttfamily name}. For example, to emit a file from your {\ttfamily context} directory into the output directory retaining the full directory structure, you might use\+:\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12304}{}\doxyparagraph{\texorpdfstring{{\ttfamily String}}{{\ttfamily String}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12304}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ '[path][name].[ext]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12305}{}\doxyparagraph{\texorpdfstring{{\ttfamily Function}}{{\ttfamily Function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12305}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name(resourcePath,\ resourceQuery)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}resourcePath`\ -\/\ \`{}/absolute/path/to/file.js`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}resourceQuery`\ -\/\ \`{}?foo=bar`}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (process.env.NODE\_ENV\ ===\ 'development')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ '[path][name].[ext]';}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ '[contenthash].[ext]';}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+ℹ️ By default the path and name you specify will output the file in that same directory, and will also use the same URI path to access the file. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12306}{}\doxysubsubsection{\texorpdfstring{{\ttfamily output\+Path}}{{\ttfamily output\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12306}
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Function} Default\+: {\ttfamily undefined}
+
+Specify a filesystem path where the target file(s) will be placed.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12307}{}\doxyparagraph{\texorpdfstring{{\ttfamily String}}{{\ttfamily String}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12307}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ outputPath:\ 'images',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12308}{}\doxyparagraph{\texorpdfstring{{\ttfamily Function}}{{\ttfamily Function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12308}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ outputPath:\ (url,\ resourcePath,\ context)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}resourcePath`\ is\ original\ absolute\ path\ to\ asset}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}context`\ is\ directory\ where\ stored\ asset\ (`rootContext`)\ or\ \`{}context`\ option}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ To\ get\ relative\ path\ you\ can\ use}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ const\ relativePath\ =\ path.relative(context,\ resourcePath);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (/my-\/custom-\/image\(\backslash\).png/.test(resourcePath))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}other\_output\_path/\$\{url\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (/images/.test(context))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}image\_output\_path/\$\{url\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}output\_path/\$\{url\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12309}{}\doxysubsubsection{\texorpdfstring{{\ttfamily public\+Path}}{{\ttfamily public\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12309}
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Function} Default\+: \href{https://webpack.js.org/api/module-variables/\#__webpack_public_path__-webpack-specific-}{\texttt{ {\ttfamily \+\_\+\+\_\+webpack\+\_\+public\+\_\+path\+\_\+\+\_\+}}}+output\+Path
+
+Specifies a custom public path for the target file(s).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12310}{}\doxyparagraph{\texorpdfstring{{\ttfamily String}}{{\ttfamily String}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12310}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ publicPath:\ 'assets',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12311}{}\doxyparagraph{\texorpdfstring{{\ttfamily Function}}{{\ttfamily Function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12311}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ publicPath:\ (url,\ resourcePath,\ context)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}resourcePath`\ is\ original\ absolute\ path\ to\ asset}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ \`{}context`\ is\ directory\ where\ stored\ asset\ (`rootContext`)\ or\ \`{}context`\ option}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ To\ get\ relative\ path\ you\ can\ use}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ const\ relativePath\ =\ path.relative(context,\ resourcePath);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (/my-\/custom-\/image\(\backslash\).png/.test(resourcePath))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}other\_public\_path/\$\{url\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (/images/.test(context))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}image\_output\_path/\$\{url\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \`{}public\_path/\$\{url\}`;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12312}{}\doxysubsubsection{\texorpdfstring{{\ttfamily post\+Transform\+Public\+Path}}{{\ttfamily post\+Transform\+Public\+Path}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12312}
+Type\+: {\ttfamily Function} Default\+: {\ttfamily undefined}
+
+Specifies a custom function to post-\/process the generated public path. This can be used to prepend or append dynamic global variables that are only available at runtime, like {\ttfamily \+\_\+\+\_\+webpack\+\_\+public\+\_\+path\+\_\+\+\_\+}. This would not be possible with just {\ttfamily public\+Path}, since it stringifies the values.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpg|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ publicPath:\ '/some/path/',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postTransformPublicPath:\ (p)\ =>\ \`{}\_\_webpack\_public\_path\_\_\ +\ \$\{p\}`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12313}{}\doxysubsubsection{\texorpdfstring{{\ttfamily context}}{{\ttfamily context}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12313}
+Type\+: {\ttfamily String} Default\+: \href{https://webpack.js.org/configuration/entry-context/\#context}{\texttt{ {\ttfamily context}}}
+
+Specifies a custom file context.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ context:\ 'project',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12314}{}\doxysubsubsection{\texorpdfstring{{\ttfamily emit\+File}}{{\ttfamily emit\+File}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12314}
+Type\+: {\ttfamily Boolean} Default\+: {\ttfamily true}
+
+If true, emits a file (writes a file to the filesystem). If false, the loader will return a public URI but {\bfseries{will not}} emit the file. It is often useful to disable this option for server-\/side packages.
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ bundle\ file}
+\DoxyCodeLine{import\ img\ from\ './file.png';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ emitFile:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12315}{}\doxysubsubsection{\texorpdfstring{{\ttfamily reg\+Exp}}{{\ttfamily reg\+Exp}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12315}
+Type\+: {\ttfamily Reg\+Exp} Default\+: {\ttfamily undefined}
+
+Specifies a Regular Expression to one or many parts of the target file path. The capture groups can be reused in the {\ttfamily name} property using {\ttfamily \mbox{[}N\mbox{]}} \href{https://github.com/webpack-contrib/file-loader\#placeholders}{\texttt{ placeholder}}.
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ img\ from\ './customer01/file.png';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ regExp:\ /\(\backslash\)/([a-\/z0-\/9]+)\(\backslash\)/[a-\/z0-\/9]+\(\backslash\).png\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ '[1]-\/[name].[ext]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+ℹ️ If {\ttfamily \mbox{[}0\mbox{]}} is used, it will be replaced by the entire tested string, whereas {\ttfamily \mbox{[}1\mbox{]}} will contain the first capturing parenthesis of your regex and so on... \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12316}{}\doxysubsubsection{\texorpdfstring{{\ttfamily es\+Module}}{{\ttfamily es\+Module}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12316}
+Type\+: {\ttfamily Boolean} Default\+: {\ttfamily true}
+
+By default, {\ttfamily file-\/loader} generates JS modules that use the ES modules syntax. There are some cases in which using ES modules is beneficial, like in the case of \href{https://webpack.js.org/plugins/module-concatenation-plugin/}{\texttt{ module concatenation}} and \href{https://webpack.js.org/guides/tree-shaking/}{\texttt{ tree shaking}}.
+
+You can enable a Common\+JS module syntax using\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ esModule:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12317}{}\doxysubsection{\texorpdfstring{Placeholders}{Placeholders}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12317}
+Full information about placeholders you can find \href{https://github.com/webpack/loader-utils\#interpolatename}{\texttt{ here}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12318}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}ext\mbox{]}}}{{\ttfamily \mbox{[}ext\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12318}
+Type\+: {\ttfamily String} Default\+: {\ttfamily file.\+extname}
+
+The file extension of the target file/resource.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12319}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}name\mbox{]}}}{{\ttfamily \mbox{[}name\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12319}
+Type\+: {\ttfamily String} Default\+: {\ttfamily file.\+basename}
+
+The basename of the file/resource.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12320}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}path\mbox{]}}}{{\ttfamily \mbox{[}path\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12320}
+Type\+: {\ttfamily String} Default\+: {\ttfamily file.\+directory}
+
+The path of the resource relative to the webpack/config {\ttfamily context}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12321}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}folder\mbox{]}}}{{\ttfamily \mbox{[}folder\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12321}
+Type\+: {\ttfamily String} Default\+: {\ttfamily file.\+folder}
+
+The folder of the resource is in.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12322}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}query\mbox{]}}}{{\ttfamily \mbox{[}query\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12322}
+Type\+: {\ttfamily String} Default\+: {\ttfamily file.\+query}
+
+The query of the resource, i.\+e. {\ttfamily ?foo=bar}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12323}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}emoji\mbox{]}}}{{\ttfamily \mbox{[}emoji\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12323}
+Type\+: {\ttfamily String} Default\+: {\ttfamily undefined}
+
+A random emoji representation of {\ttfamily content}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12324}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}emoji\+:\texorpdfstring{$<$}{<}length\texorpdfstring{$>$}{>}\mbox{]}}}{{\ttfamily \mbox{[}emoji\+:\texorpdfstring{$<$}{<}length\texorpdfstring{$>$}{>}\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12324}
+Type\+: {\ttfamily String} Default\+: {\ttfamily undefined}
+
+Same as above, but with a customizable number of emojis\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12325}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}hash\mbox{]}}}{{\ttfamily \mbox{[}hash\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12325}
+Type\+: {\ttfamily String} Default\+: {\ttfamily md4}
+
+Specifies the hash method to use for hashing the file content.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12326}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}contenthash\mbox{]}}}{{\ttfamily \mbox{[}contenthash\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12326}
+Type\+: {\ttfamily String} Default\+: {\ttfamily md4}
+
+Specifies the hash method to use for hashing the file content.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12327}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}\texorpdfstring{$<$}{<}hash\+Type\texorpdfstring{$>$}{>}\+:hash\+:\texorpdfstring{$<$}{<}digest\+Type\texorpdfstring{$>$}{>}\+:\texorpdfstring{$<$}{<}length\texorpdfstring{$>$}{>}\mbox{]}}}{{\ttfamily \mbox{[}\texorpdfstring{$<$}{<}hash\+Type\texorpdfstring{$>$}{>}\+:hash\+:\texorpdfstring{$<$}{<}digest\+Type\texorpdfstring{$>$}{>}\+:\texorpdfstring{$<$}{<}length\texorpdfstring{$>$}{>}\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12327}
+Type\+: {\ttfamily String}
+
+The hash of options.\+content (Buffer) (by default it\textquotesingle{}s the hex digest of the hash).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12328}{}\doxyparagraph{\texorpdfstring{{\ttfamily digest\+Type}}{{\ttfamily digest\+Type}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12328}
+Type\+: {\ttfamily String} Default\+: `\textquotesingle{}hex'\`{}
+
+The \href{https://en.wikipedia.org/wiki/Cryptographic_hash_function}{\texttt{ digest}} that the hash function should use. Valid values include\+: base26, base32, base36, base49, base52, base58, base62, base64, and hex.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12329}{}\doxyparagraph{\texorpdfstring{{\ttfamily hash\+Type}}{{\ttfamily hash\+Type}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12329}
+Type\+: {\ttfamily String} Default\+: `\textquotesingle{}md4'\`{}
+
+The type of hash that the has function should use. Valid values include\+: {\ttfamily md4}, {\ttfamily md5}, {\ttfamily sha1}, {\ttfamily sha256}, and {\ttfamily sha512}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12330}{}\doxyparagraph{\texorpdfstring{{\ttfamily length}}{{\ttfamily length}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12330}
+Type\+: {\ttfamily Number} Default\+: {\ttfamily undefined}
+
+Users may also specify a length for the computed hash.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12331}{}\doxysubsubsection{\texorpdfstring{{\ttfamily \mbox{[}N\mbox{]}}}{{\ttfamily \mbox{[}N\mbox{]}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12331}
+Type\+: {\ttfamily String} Default\+: {\ttfamily undefined}
+
+The n-\/th match obtained from matching the current file name against the {\ttfamily reg\+Exp}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12332}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12332}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12333}{}\doxysubsubsection{\texorpdfstring{Names}{Names}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12333}
+The following examples show how one might use {\ttfamily file-\/loader} and what the result would be.
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ png\ from\ './image.png';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ 'dirname/[contenthash].[ext]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Result\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ result}
+\DoxyCodeLine{dirname/0dcbbaa701328ae351f.png}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ png\ from\ './image.png';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ '[sha512:hash:base64:7].[ext]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Result\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ result}
+\DoxyCodeLine{gdyb21L.png}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ png\ from\ './path/to/file.png';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ '[path][name].[ext]?[contenthash]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Result\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ result}
+\DoxyCodeLine{path/to/file.png?e43b20c069c4a01867c31e98cbce33c9}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12336}{}\doxysubsubsection{\texorpdfstring{CDN}{CDN}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12336}
+The following examples show how to use {\ttfamily file-\/loader} for CDN uses query params.
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ png\ from\ './directory/image.png?width=300\&height=300';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ publicPath:\ 'https://cdn.example.com/',}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpe?g|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ '[path][name].[ext][query]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Result\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ result}
+\DoxyCodeLine{https://cdn.example.com/directory/image.png?width=300\&height=300}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12337}{}\doxysubsubsection{\texorpdfstring{Dynamic public path depending on environment variable at run time}{Dynamic public path depending on environment variable at run time}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12337}
+An application might want to configure different CDN hosts depending on an environment variable that is only available when running the application. This can be an advantage, as only one build of the application is necessary, which behaves differently depending on environment variables of the deployment environment. Since file-\/loader is applied when compiling the application, and not when running it, the environment variable cannot be used in the file-\/loader configuration. A way around this is setting the {\ttfamily \+\_\+\+\_\+webpack\+\_\+public\+\_\+path\+\_\+\+\_\+} to the desired CDN host depending on the environment variable at the entrypoint of the application. The option {\ttfamily post\+Transform\+Public\+Path} can be used to configure a custom path depending on a variable like {\ttfamily \+\_\+\+\_\+webpack\+\_\+public\+\_\+path\+\_\+\+\_\+}.
+
+{\bfseries{main.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ assetPrefixForNamespace\ =\ (namespace)\ =>\ \{}
+\DoxyCodeLine{\ \ switch\ (namespace)\ \{}
+\DoxyCodeLine{\ \ \ \ case\ 'prod':}
+\DoxyCodeLine{\ \ \ \ \ \ return\ 'https://cache.myserver.net/web';}
+\DoxyCodeLine{\ \ \ \ case\ 'uat':}
+\DoxyCodeLine{\ \ \ \ \ \ return\ 'https://cache-\/uat.myserver.net/web';}
+\DoxyCodeLine{\ \ \ \ case\ 'st':}
+\DoxyCodeLine{\ \ \ \ \ \ return\ 'https://cache-\/st.myserver.net/web';}
+\DoxyCodeLine{\ \ \ \ case\ 'dev':}
+\DoxyCodeLine{\ \ \ \ \ \ return\ 'https://cache-\/dev.myserver.net/web';}
+\DoxyCodeLine{\ \ \ \ default:}
+\DoxyCodeLine{\ \ \ \ \ \ return\ '';}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{const\ namespace\ =\ process.env.NAMESPACE;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\_\_webpack\_public\_path\_\_\ =\ \`{}\$\{assetPrefixForNamespace(namespace)\}/`;}
+
+\end{DoxyCode}
+
+
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ png\ from\ './image.png';}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(png|jpg|gif)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ 'file-\/loader',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ '[name].[contenthash].[ext]',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ outputPath:\ 'static/assets/',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ publicPath:\ 'static/assets/',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postTransformPublicPath:\ (p)\ =>\ \`{}\_\_webpack\_public\_path\_\_\ +\ \$\{p\}`,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Result when run with {\ttfamily NAMESPACE=prod} env variable\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ result}
+\DoxyCodeLine{https://cache.myserver.net/web/static/assets/image.somehash.png}
+
+\end{DoxyCode}
+
+
+Result when run with {\ttfamily NAMESPACE=dev} env variable\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ result}
+\DoxyCodeLine{https://cache-\/dev.myserver.net/web/static/assets/image.somehash.png}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12338}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12338}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12339}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2file-loader_2_r_e_a_d_m_e_autotoc_md12339}
+\href{./LICENSE}{\texttt{ MIT}} 

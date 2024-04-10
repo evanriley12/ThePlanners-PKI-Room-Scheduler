@@ -1,0 +1,150 @@
+\chapter{relateurl \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/relateurl"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/relateurl.\+svg"{} alt="{}\+NPM Version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/stevenvachon/relateurl"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/travis/stevenvachon/relateurl.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://david-\/dm.\+org/stevenvachon/relateurl"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/david/stevenvachon/relateurl.\+svg"{} alt="{}\+Dependency Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e}\index{relateurl $<$a href="{}https://npmjs.org/package/relateurl"{} $>$$<$img src="{}https://img.shields.io/npm/v/relateurl.svg"{} alt="{}NPM Version"{}/$>$$<$/a$>$ $<$a href="{}https://travis-\/ci.org/stevenvachon/relateurl"{} $>$$<$img src="{}https://img.shields.io/travis/stevenvachon/relateurl.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}https://david-\/dm.org/stevenvachon/relateurl"{} $>$$<$img src="{}https://img.shields.io/david/stevenvachon/relateurl.svg"{} alt="{}Dependency Status"{}/$>$$<$/a$>$@{relateurl $<$a href=""https://npmjs.org/package/relateurl"" $>$$<$img src=""https://img.shields.io/npm/v/relateurl.svg"" alt=""NPM Version""/$>$$<$/a$>$ $<$a href=""https://travis-\/ci.org/stevenvachon/relateurl"" $>$$<$img src=""https://img.shields.io/travis/stevenvachon/relateurl.svg"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""https://david-\/dm.org/stevenvachon/relateurl"" $>$$<$img src=""https://img.shields.io/david/stevenvachon/relateurl.svg"" alt=""Dependency Status""/$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20553}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20553}%
+ \begin{quote}
+Minify URLs by converting them from absolute to relative. \end{quote}
+If you were to use this library on a website like {\ttfamily \href{http://example.com/dir1/dir1-1/}{\texttt{ http\+://example.\+com/dir1/dir1-\/1/}}}, you would get results such as\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Before   }&\cellcolor{\tableheadbgcolor}\textbf{ After    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Before   }&\cellcolor{\tableheadbgcolor}\textbf{ After    }\\\cline{1-2}
+\endhead
+{\ttfamily \href{http://example.com/dir1/dir1-2/index.html}{\texttt{ http\+://example.\+com/dir1/dir1-\/2/index.\+html}}}   &{\ttfamily ../dir1-\/2/}    \\\cline{1-2}
+{\ttfamily \href{http://example.com/dir2/dir2-1/}{\texttt{ http\+://example.\+com/dir2/dir2-\/1/}}}   &{\ttfamily /dir2/dir2-\/1/}    \\\cline{1-2}
+{\ttfamily \href{http://example.com/dir1/dir1-1/}{\texttt{ http\+://example.\+com/dir1/dir1-\/1/}}}   &\\\cline{1-2}
+{\ttfamily \href{https://example.com/dir1/dir1-1/}{\texttt{ https\+://example.\+com/dir1/dir1-\/1/}}}   &{\ttfamily \href{https://example.com/dir1/dir1-1/}{\texttt{ https\+://example.\+com/dir1/dir1-\/1/}}}    \\\cline{1-2}
+{\ttfamily \href{http://google.com:80/dir/}{\texttt{ http\+://google.\+com\+:80/dir/}}}   &{\ttfamily //google.com/dir/}    \\\cline{1-2}
+{\ttfamily ../../../../../../../../\#anchor}   &{\ttfamily /\#anchor}   \\\cline{1-2}
+\end{longtabu}
+
+
+{\bfseries{All string parsing.}} {\itshape No} directory browsing. It is thoroughly tested, very fast and lightweight with zero external dependencies.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20554}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20554}
+This utility requires \href{http://nodejs.org/}{\texttt{ Node.\+js}} {\ttfamily \texorpdfstring{$>$}{>}= 0.\+10}. To install, type this at the command line\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ relateurl\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20555}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20555}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20556}{}\doxysubsubsection{\texorpdfstring{options.\+default\+Ports}{options.\+default\+Ports}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20556}
+Type\+: {\ttfamily Object} ~\newline
+ Default value\+: {\ttfamily \{\href{ftp:21}{\texttt{ ftp\+:21}}, \href{http:80}{\texttt{ http\+:80}}, \href{https:443}{\texttt{ https\+:443}}\}} ~\newline
+
+
+Extend the list with any ports you need. Any URLs containing these default ports will have them removed. Example\+: {\ttfamily \href{http://example.com:80/}{\texttt{ http\+://example.\+com\+:80/}}} will become {\ttfamily \href{http://example.com/}{\texttt{ http\+://example.\+com/}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20557}{}\doxysubsubsection{\texorpdfstring{options.\+directory\+Indexes}{options.\+directory\+Indexes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20557}
+Type\+: {\ttfamily Array} ~\newline
+ Default value\+: {\ttfamily \mbox{[}"{}index.\+html"{}\mbox{]}} ~\newline
+
+
+Extend the list with any resources you need. Works with \`{}options.remove\+Directory\+Indexes\`{}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20558}{}\doxysubsubsection{\texorpdfstring{options.\+ignore\+\_\+www}{options.\+ignore\+\_\+www}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20558}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+
+
+This will, for example, consider any domains containing {\ttfamily \href{http://www.example.com/}{\texttt{ http\+://www.\+example.\+com/}}} to be related to any that contain {\ttfamily \href{http://example.com/}{\texttt{ http\+://example.\+com/}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20559}{}\doxysubsubsection{\texorpdfstring{options.\+output}{options.\+output}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20559}
+Type\+: constant or {\ttfamily String} ~\newline
+ Choices\+: {\ttfamily Relate\+Url.\+ABSOLUTE},{\ttfamily Relate\+Url.\+PATH\+\_\+\+RELATIVE},{\ttfamily Relate\+Url.\+ROOT\+\_\+\+RELATIVE},{\ttfamily Relate\+Url.\+SHORTEST} ~\newline
+ Choices\+: {\ttfamily "{}absolute"{}},{\ttfamily "{}path\+Relative"{}},{\ttfamily "{}root\+Relative"{}},{\ttfamily "{}shortest"{}} ~\newline
+ Default value\+: {\ttfamily Relate\+Url.\+SHORTEST} ~\newline
+
+
+{\ttfamily Relate\+Url.\+ABSOLUTE} will produce an absolute URL. Overrides \`{}options.scheme\+Relative\`{} with a value of {\ttfamily false}. ~\newline
+ {\ttfamily Relate\+Url.\+PATH\+\_\+\+RELATIVE} will produce something like {\ttfamily ../child-\/of-\/parent/etc/}. ~\newline
+ {\ttfamily Relate\+Url.\+ROOT\+\_\+\+RELATIVE} will produce something like {\ttfamily /child-\/of-\/root/etc/}. ~\newline
+ {\ttfamily Relate\+Url.\+SHORTEST} will choose whichever is shortest between root-\/ and path-\/relative. ~\newline
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20560}{}\doxysubsubsection{\texorpdfstring{options.\+rejected\+Schemes}{options.\+rejected\+Schemes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20560}
+Type\+: {\ttfamily Array} ~\newline
+ Default value\+: {\ttfamily \mbox{[}"{}data"{},"{}javascript"{},"{}mailto"{}\mbox{]}} ~\newline
+
+
+Extend the list with any additional schemes. Example\+: {\ttfamily javascript\+:something} will not be modified.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20561}{}\doxysubsubsection{\texorpdfstring{options.\+remove\+Auth}{options.\+remove\+Auth}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20561}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+
+
+Remove user authentication information from the output URL.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20562}{}\doxysubsubsection{\texorpdfstring{options.\+remove\+Directory\+Indexes}{options.\+remove\+Directory\+Indexes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20562}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily true} ~\newline
+
+
+Remove any resources that match any found in \`{}options.directory\+Indexes\`{}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20563}{}\doxysubsubsection{\texorpdfstring{options.\+remove\+Empty\+Queries}{options.\+remove\+Empty\+Queries}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20563}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+
+
+Remove empty query variables. Example\+: {\ttfamily \href{http://domain.com/?var1}{\texttt{ http\+://domain.\+com/?var1}}\&var2=\&var3=asdf} will become {\ttfamily \href{http://domain.com/?var3=adsf}{\texttt{ http\+://domain.\+com/?var3=adsf}}}. This does not apply to unrelated URLs (with other protocols, auths, hosts and/or ports).\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20564}{}\doxysubsubsection{\texorpdfstring{options.\+remove\+Root\+Trailing\+Slash}{options.\+remove\+Root\+Trailing\+Slash}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20564}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily true} ~\newline
+
+
+Remove trailing slashes from root paths. Example\+: {\ttfamily \href{http://domain.com/?var}{\texttt{ http\+://domain.\+com/?var}}} will become {\ttfamily \href{http://domain.com?var}{\texttt{ http\+://domain.\+com?var}}} while {\ttfamily \href{http://domain.com/dir/?var}{\texttt{ http\+://domain.\+com/dir/?var}}} will not be modified.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20565}{}\doxysubsubsection{\texorpdfstring{options.\+scheme\+Relative}{options.\+scheme\+Relative}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20565}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily true} ~\newline
+
+
+Output URLs relative to the scheme. Example\+: {\ttfamily \href{http://example.com/}{\texttt{ http\+://example.\+com/}}} will become {\ttfamily //example.com/}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20566}{}\doxysubsubsection{\texorpdfstring{options.\+site}{options.\+site}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20566}
+Type\+: {\ttfamily String} ~\newline
+ Default value\+: {\ttfamily undefined} ~\newline
+
+
+An options-\/based version of the \`{}from\`{} argument. If both are specified, {\ttfamily from} takes priority.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20567}{}\doxysubsubsection{\texorpdfstring{options.\+slashes\+Denote\+Host}{options.\+slashes\+Denote\+Host}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20567}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily true} ~\newline
+
+
+Passed to Node\textquotesingle{}s \href{http://nodejs.org/api/url.html\#url_url_parse_urlstr_parsequerystring_slashesdenotehost}{\texttt{ {\ttfamily url.\+parse}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20568}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20568}
+This library can be used as a function for single-\/use or as a class for multiple conversions.
+
+Upon successful conversion, a {\ttfamily String} will be returned. If an issue is encountered while parsing {\ttfamily from}, an error will be thrown.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20569}{}\doxysubsubsection{\texorpdfstring{Single Instance}{Single Instance}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20569}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ RelateUrl\ =\ require("{}relateurl"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ RelateUrl.relate(from,\ to,\ options);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20570}{}\doxysubsubsection{\texorpdfstring{Reusable Instances}{Reusable Instances}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20570}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ RelateUrl\ =\ require("{}relateurl"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ instance\ =\ new\ RelateUrl(from,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result1\ =\ instance.relate(to1);}
+\DoxyCodeLine{var\ result2\ =\ instance.relate(to2,\ customOptions);}
+\DoxyCodeLine{var\ result3\ =\ instance.relate(to3);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20571}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20571}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Why bother writing/using this?}} ~\newline
+ To aid in further minifying HTML, mainly for the purpose of faster page loads and SEO. It\textquotesingle{}s been integrated into \href{https://github.com/kangax/html-minifier}{\texttt{ HTMLMinifier}}.
+\item {\bfseries{Why not just use Node\textquotesingle{}s {\ttfamily url.\+parse}, {\ttfamily url.\+resolve} and {\ttfamily path.\+relative}?}} ~\newline
+ {\ttfamily url.\+parse} {\itshape is} used, but {\ttfamily url.\+resolve} and {\ttfamily path.\+relative} are both slower and less powerful than this library.
+\end{DoxyEnumerate}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20572}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20572}
+
+\begin{DoxyItemize}
+\item 0.\+2.\+7 Node v6 support
+\item 0.\+2.\+6 minor enhancements
+\item 0.\+2.\+5 added {\ttfamily options.\+remove\+Root\+Trailing\+Slash}
+\item 0.\+2.\+4 added {\ttfamily options.\+site}
+\item 0.\+2.\+3 added browserify npm-\/script
+\item 0.\+2.\+2 removed task runner
+\item 0.\+2.\+1 shorten resource-\/ and query-\/relative URLs, test variations list with other site URLs
+\item 0.\+2.\+0 code cleanup, {\ttfamily options.\+remove\+Empty\+Queries=true} only applied to unrelated URLs
+\item 0.\+1.\+0 initial release
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20573}{}\doxysection{\texorpdfstring{Roadmap}{Roadmap}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2relateurl_2_r_e_a_d_m_e_autotoc_md20573}
+
+\begin{DoxyItemize}
+\item 0.\+2.\+8 check if queries are the same, regardless of param order
+\item 0.\+2.\+8 possible \href{http://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml}{\texttt{ scheme exclusions}} such as {\ttfamily tel\+:}
+\item 0.\+2.\+8 decipher and return invalid input (special cases) to complete test suite
+\item 0.\+3.\+0 test {\ttfamily options.\+slashes\+Denote\+Host=false}, add something like {\ttfamily options.\+external\+Directory\+Indexes=\mbox{[}\mbox{]}} for external sites 
+\end{DoxyItemize}

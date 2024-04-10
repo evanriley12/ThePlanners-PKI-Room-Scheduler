@@ -1,0 +1,115 @@
+\chapter{Changes to CSS Has Pseudo}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g}\index{Changes to CSS Has Pseudo@{Changes to CSS Has Pseudo}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7874}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7874}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7875}{}\doxysubsection{\texorpdfstring{3.\+0.\+4 (February 5, 2022)}{3.\+0.\+4 (February 5, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7875}
+
+\begin{DoxyItemize}
+\item Rebuild of browser polyfills
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7876}{}\doxysubsection{\texorpdfstring{3.\+0.\+3 (January 12, 2022)}{3.\+0.\+3 (January 12, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7876}
+
+\begin{DoxyItemize}
+\item Fix compatibility with Post\+CSS {\ttfamily v8.\+2.\+x} \href{https://github.com/csstools/postcss-plugins/issues/147}{\texttt{ \#147}}
+\end{DoxyItemize}
+
+This version is not officially supported but some tool providers pinned Post\+CSS to {\ttfamily v8.\+2.\+x}, making it impossible for end users to have a working setup.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7877}{}\doxysubsection{\texorpdfstring{3.\+0.\+2 (January 2, 2022)}{3.\+0.\+2 (January 2, 2022)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7877}
+
+\begin{DoxyItemize}
+\item Removed Sourcemaps from package tarball.
+\item Moved CLI to CLI Package. See \href{https://github.com/csstools/postcss-plugins/discussions/121}{\texttt{ announcement}}.
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7878}{}\doxysubsection{\texorpdfstring{3.\+0.\+1 (December 27, 2021)}{3.\+0.\+1 (December 27, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7878}
+
+\begin{DoxyItemize}
+\item Fixed\+: require/import paths for browser script
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7879}{}\doxysubsection{\texorpdfstring{3.\+0.\+0 (December 13, 2021)}{3.\+0.\+0 (December 13, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7879}
+
+\begin{DoxyItemize}
+\item Breaking\+: require/import paths have changed
+\item Changed\+: new polyfill CDN urls.
+\item Updated\+: documentation
+\end{DoxyItemize}
+
+{\bfseries{Migrating to 3.\+0.\+0}}
+
+Post\+CSS plugin \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ postcssHasPseudo\ =\ require('css-\/has-\/pseudo/postcss');}
+\DoxyCodeLine{+\ const\ postcssHasPseudo\ =\ require('css-\/has-\/pseudo');}
+
+\end{DoxyCode}
+
+
+Browser Polyfill \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ const\ cssHasPseudo\ =\ require('css-\/has-\/pseudo');}
+\DoxyCodeLine{+\ const\ cssHasPseudo\ =\ require('css-\/has-\/pseudo/browser');}
+
+\end{DoxyCode}
+
+
+{\itshape The old CND url is now deprecated and will be removed in a next major release.} {\itshape It will continue to work for now.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ <script\ src="{}https://unpkg.com/css-\/has-\/pseudo/browser"{}></script>}
+\DoxyCodeLine{+\ <script\ src="{}https://unpkg.com/css-\/has-\/pseudo/dist/browser-\/global.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7880}{}\doxysubsection{\texorpdfstring{2.\+0.\+0 (September 16, 2021)}{2.\+0.\+0 (September 16, 2021)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7880}
+
+\begin{DoxyItemize}
+\item Updated\+: Support for Post\+CS 8+ (major).
+\item Updated\+: Support for Node 12+ (major).
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7881}{}\doxysubsection{\texorpdfstring{1.\+0.\+0 (June 10, 2019)}{1.\+0.\+0 (June 10, 2019)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7881}
+
+\begin{DoxyItemize}
+\item Updated\+: {\ttfamily postcss-\/selector-\/parser} to 6.\+0.\+2 (major)
+\item Updated\+: {\ttfamily postcss} to 7.\+0.\+16 (patch)
+\item Updated\+: Node 8+ compatibility (major)
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7882}{}\doxysubsection{\texorpdfstring{0.\+10.\+0 (December 11, 2018)}{0.\+10.\+0 (December 11, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7882}
+
+\begin{DoxyItemize}
+\item Fixed an issue where inaccessible rules would crash the library
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7883}{}\doxysubsection{\texorpdfstring{0.\+9.\+0 (November 26, 2018)}{0.\+9.\+0 (November 26, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7883}
+
+\begin{DoxyItemize}
+\item Improved CLI usage
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7884}{}\doxysubsection{\texorpdfstring{0.\+8.\+0 (November 26, 2018)}{0.\+8.\+0 (November 26, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7884}
+
+\begin{DoxyItemize}
+\item Fixed an issue where attribute names were not being properly encoded
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7885}{}\doxysubsection{\texorpdfstring{0.\+7.\+0 (November 25, 2018)}{0.\+7.\+0 (November 25, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7885}
+
+\begin{DoxyItemize}
+\item Replaced {\ttfamily set\+Immediate} with {\ttfamily request\+Animation\+Frame} for future compatibility
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7886}{}\doxysubsection{\texorpdfstring{0.\+6.\+0 (November 25, 2018)}{0.\+6.\+0 (November 25, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7886}
+
+\begin{DoxyItemize}
+\item Fixed an issue where nested rules were not supported
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7887}{}\doxysubsection{\texorpdfstring{0.\+5.\+0 (November 21, 2018)}{0.\+5.\+0 (November 21, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7887}
+
+\begin{DoxyItemize}
+\item Further optimize script; from 775 bytes to 757 bytes
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7888}{}\doxysubsection{\texorpdfstring{0.\+4.\+0 (November 21, 2018)}{0.\+4.\+0 (November 21, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7888}
+
+\begin{DoxyItemize}
+\item Fixed an issue with the browser script not picking up added nodes
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7889}{}\doxysubsection{\texorpdfstring{0.\+3.\+0 (November 21, 2018)}{0.\+3.\+0 (November 21, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7889}
+
+\begin{DoxyItemize}
+\item Fixed the misnamed function name for the browser-\/ready script
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7890}{}\doxysubsection{\texorpdfstring{0.\+2.\+0 (November 21, 2018)}{0.\+2.\+0 (November 21, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7890}
+
+\begin{DoxyItemize}
+\item Improved browser compatibility with updated parsers, encoders, and decoders
+\item Improved performance by walking the DOM less
+\item Reduced script size by 9\%; from 855 bytes to 775 bytes
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7891}{}\doxysubsection{\texorpdfstring{0.\+1.\+0 (November 20, 2018)}{0.\+1.\+0 (November 20, 2018)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-has-pseudo_2_c_h_a_n_g_e_l_o_g_autotoc_md7891}
+
+\begin{DoxyItemize}
+\item Initial version 
+\end{DoxyItemize}

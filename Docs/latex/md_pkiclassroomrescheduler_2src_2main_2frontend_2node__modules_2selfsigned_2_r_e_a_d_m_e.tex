@@ -1,0 +1,90 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e}\index{README@{README}}
+Generate a self signed x509 certificate from node.\+js.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22643}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22643}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ selfsigned}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22644}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22644}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ selfsigned\ =\ require('selfsigned');}
+\DoxyCodeLine{var\ attrs\ =\ [\{\ name:\ 'commonName',\ value:\ 'contoso.com'\ \}];}
+\DoxyCodeLine{var\ pems\ =\ selfsigned.generate(attrs,\ \{\ days:\ 365\ \});}
+\DoxyCodeLine{console.log(pems)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22645}{}\doxyparagraph{\texorpdfstring{Async}{Async}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22645}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{selfsigned.generate(attrs,\ \{\ days:\ 365\ \},\ function\ (err,\ pems)\ \{}
+\DoxyCodeLine{\ \ console.log(pems)}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Will return the following like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ private:\ '-\/-\/-\/-\/-\/BEGIN\ RSA\ PRIVATE\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIICXAIBAAKBgQCBFMXMYS/+RZz6+qzv+xeqXPdjw4YKZC4y3dPhSwgEwkecrCTX\(\backslash\)r\(\backslash\)nsR6boue+1MjIqPqWggXZnotIGldfEN0kn0Jbh2vMTrTx6YwqQ8tceBPoyuuqcYBO\(\backslash\)r\(\backslash\)nOONAcKOB3MLnZbyOgVtbyT3j68JE5V/lx6LhpIKAgY0m5WIuaKrW6mvLXQIDAQAB\(\backslash\)r\(\backslash\)nAoGAU6ODGxAqSecPdayyG/ml9vSwNAuAMgGB0eHcpZG5i2PbhRAh+0TAIXaoFQXJ\(\backslash\)r\(\backslash\)naAPeA2ISqlTJyRmQXYAO2uj61FzeyDzYCf0z3+yZEVz3cO7jB5Pl6iBvzbxWuuuA\(\backslash\)r\(\backslash\)ncbJtWLhWtW5/jioc8F0EAzZ+lkC/XuVJdwKHDmwt2qvJO+ECQQD+dvo1g3Sz9xGw\(\backslash\)r\(\backslash\)n21n+fDG5i4128+Qh+JPgh5AeLuXSofc1HMHaOXcC6Wu/Cloh7QAD934b7W0A7VoD\(\backslash\)r\(\backslash\)ndLd/JLyFAkEAgdwjryyvdhy69e516IrPB3b+m4rggtntBlZREMrk9tOzeIucVO3W\(\backslash\)r\(\backslash\)ntKI3FHm6JebN2gVcG+rZ+FaDPo+ifJkW+QJBAPojrMwEACmUevB2f9246gxx0UsY\(\backslash\)r\(\backslash\)nbq6yM3No71OsWEEY8/Bi53CEQqg7Gq5+F6H33qcHmBEN8LQTngN9rY+vZh0CQBg0\(\backslash\)r\(\backslash\)nqJImii5B/LeK03+dICoMDDmCEYdSh9P+ku3GZBd+Lp3xqBpMmxDgi9PNPN2DwCs7\(\backslash\)r\(\backslash\)nhIfPpwGbXqtyqp7/CkECQB4OdY+2FbCciI473eQkTu310RMf8jElU63iwnx4R/XN\(\backslash\)r\(\backslash\)n/mgqN589OfF4SS0U/MoRzYk9jF9IAJN1Mi/571T+nw4=\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ RSA\ PRIVATE\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ public:\ '-\/-\/-\/-\/-\/BEGIN\ PUBLIC\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCBFMXMYS/+RZz6+qzv+xeqXPdj\(\backslash\)r\(\backslash\)nw4YKZC4y3dPhSwgEwkecrCTXsR6boue+1MjIqPqWggXZnotIGldfEN0kn0Jbh2vM\(\backslash\)r\(\backslash\)nTrTx6YwqQ8tceBPoyuuqcYBOOONAcKOB3MLnZbyOgVtbyT3j68JE5V/lx6LhpIKA\(\backslash\)r\(\backslash\)ngY0m5WIuaKrW6mvLXQIDAQAB\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ PUBLIC\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ cert:\ '-\/-\/-\/-\/-\/BEGIN\ CERTIFICATE-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIICjTCCAfagAwIBAgIBATANBgkqhkiG9w0BAQUFADBpMRQwEgYDVQQDEwtleGFt\(\backslash\)r\(\backslash\)ncGxlLm9yZzELMAkGA1UEBhMCVVMxETAPBgNVBAgTCFZpcmdpbmlhMRMwEQYDVQQH\(\backslash\)r\(\backslash\)nEwpCbGFja3NidXJnMQ0wCwYDVQQKEwRUZXN0MQ0wCwYDVQQLEwRUZXN0MB4XDTEz\(\backslash\)r\(\backslash\)nMDgxMzA1NDAyN1oXDTE0MDgxMzA1NDAyN1owaTEUMBIGA1UEAxMLZXhhbXBsZS5v\(\backslash\)r\(\backslash\)ncmcxCzAJBgNVBAYTAlVTMREwDwYDVQQIEwhWaXJnaW5pYTETMBEGA1UEBxMKQmxh\(\backslash\)r\(\backslash\)nY2tzYnVyZzENMAsGA1UEChMEVGVzdDENMAsGA1UECxMEVGVzdDCBnzANBgkqhkiG\(\backslash\)r\(\backslash\)n9w0BAQEFAAOBjQAwgYkCgYEAgRTFzGEv/kWc+vqs7/sXqlz3Y8OGCmQuMt3T4UsI\(\backslash\)r\(\backslash\)nBMJHnKwk17Eem6LnvtTIyKj6loIF2Z6LSBpXXxDdJJ9CW4drzE608emMKkPLXHgT\(\backslash\)r\(\backslash\)n6MrrqnGATjjjQHCjgdzC52W8joFbW8k94+vCROVf5cei4aSCgIGNJuViLmiq1upr\(\backslash\)r\(\backslash\)ny10CAwEAAaNFMEMwDAYDVR0TBAUwAwEB/zALBgNVHQ8EBAMCAvQwJgYDVR0RBB8w\(\backslash\)r\(\backslash\)nHYYbaHR0cDovL2V4YW1wbGUub3JnL3dlYmlkI21lMA0GCSqGSIb3DQEBBQUAA4GB\(\backslash\)r\(\backslash\)nAC9hGQlDh8anNo1YDJdG2mYqOQ5uybJV++kixblGaOkoDROPsWepUpL6kMDUtbAM\(\backslash\)r\(\backslash\)n4uXTyFkvlUQSaQkhNgOY5w/BRIAkCIu6u4D4XcjlCdwFq6vcKMEuWTHMAlBWFla3\(\backslash\)r\(\backslash\)nXJZAPO10PHuDen7JeMOUf1Re7lRFtwfRGAvVYmrvYFKv\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ CERTIFICATE-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22646}{}\doxysubsection{\texorpdfstring{Attributes}{Attributes}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22646}
+for attributes, please refer to\+: \href{https://github.com/digitalbazaar/forge/blob/master/lib/x509.js}{\texttt{ https\+://github.\+com/digitalbazaar/forge/blob/master/lib/x509.\+js}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22647}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22647}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pems\ =\ selfsigned.generate(null,\ \{}
+\DoxyCodeLine{\ \ keySize:\ 2048,\ //\ the\ size\ for\ the\ private\ key\ in\ bits\ (default:\ 1024)}
+\DoxyCodeLine{\ \ days:\ 30,\ //\ how\ long\ till\ expiry\ of\ the\ signed\ certificate\ (default:\ 365)}
+\DoxyCodeLine{\ \ notBeforeDate:\ new\ Date(),\ //\ The\ date\ before\ which\ the\ certificate\ should\ not\ be\ valid\ (default:\ now)}
+\DoxyCodeLine{\ \ algorithm:\ 'sha256',\ //\ sign\ the\ certificate\ with\ specified\ algorithm\ (default:\ 'sha1')}
+\DoxyCodeLine{\ \ extensions:\ [\{\ name:\ 'basicConstraints',\ cA:\ true\ \}],\ //\ certificate\ extensions\ array}
+\DoxyCodeLine{\ \ pkcs7:\ true,\ //\ include\ PKCS\#7\ as\ part\ of\ the\ output\ (default:\ false)}
+\DoxyCodeLine{\ \ clientCertificate:\ true,\ //\ generate\ client\ cert\ signed\ by\ the\ original\ key\ (default:\ false)}
+\DoxyCodeLine{\ \ clientCertificateCN:\ 'jdoe'\ //\ client\ certificate's\ common\ name\ (default:\ 'John\ Doe\ jdoe123')}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+You can avoid key pair generation specifying your own keys (`\{ key\+Pair\+: \{ public\+Key\+: '-\/-\/---BEGIN PUBLIC KEY-\/-\/---...\textquotesingle{}, private\+Key\+: \textquotesingle{}-\/-\/---BEGIN RSA PRIVATE KEY-\/-\/---...\textquotesingle{} \}\`{}) \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22648}{}\doxysubsubsection{\texorpdfstring{Generate Client Certificates}{Generate Client Certificates}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22648}
+If you are in an environment where servers require client certificates, you can generate client keys signed by the original (server) key.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pems\ =\ selfsigned.generate(null,\ \{\ clientCertificate:\ true\ \});}
+\DoxyCodeLine{console.log(pems)}
+
+\end{DoxyCode}
+ Will return the following like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ private:\ '-\/-\/-\/-\/-\/BEGIN\ RSA\ PRIVATE\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIICXQIBAAKBgQDLg/kS4dCPVu96sbK6MQuUPmhqnF8SeBXVHH18h+0BTj7HqnrA\(\backslash\)r\(\backslash\)nA75hNVIiSLTChvpzQ0qi2Ju7O2ESUOdx7cvGiftGuZLiI8uL2HVlYuX+wQTIoRHx\(\backslash\)r\(\backslash\)n9nxv56TIiqnPg5d05vSTLXoiJg5uac3a6+4vnhhTo0XRRXVVboZsfNpuGQIDAQAB\(\backslash\)r\(\backslash\)nAoGAfhCd9QhUPLZJWeNBJvzCg221GHUMn1Arlfsz8DPyp+BkGyKLLu4iu+xfmEUZ\(\backslash\)r\(\backslash\)nU3ZxJX0FeqJatTwvAT2EYJpAovx+F37PWFTLAS6T57WI1O5Lj1pTIKVkLrasNQgF\(\backslash\)r\(\backslash\)nl6qFD3cvEtCZve4LiwDoJ52FO2OtcDcMJ0r2oqbCXSDIlAECQQDnkkxKcTejBZGH\(\backslash\)r\(\backslash\)nyYEXG9hAznnEZ63LLzlHHF2cIPfxT+9826Wm0IzBxn8Wr4hcAbNx3bVKgsU9p7xA\(\backslash\)r\(\backslash\)nfKnSqObhAkEA4PwCjPQqxFpiYUmNt7htb8nCEvUDD/QSDyxAH/uJzfr6gOJOD5nT\(\backslash\)r\(\backslash\)n5gZYblC+CCMDkgDUpro6oATNyeRNoU3GOQJBANdaW26DWZ1WqV9hCpcGAxdJrT30\(\backslash\)r\(\backslash\)nuVASq66w93Ehy9LzZqFz1tqKacwvH7NmLGZ8AngrGdSgRnOvEMfb50aMYqECQDcG\(\backslash\)r\(\backslash\)nzCTnbzJZHOjIkaXWsMV/pjz2ugoD2wrk+sYXwoujj/NH5mnAaOhAsw5AJ0pcLfpe\(\backslash\)r\(\backslash\)nw6QHtmD+68ouUaJbIFkCQQDeu0AXAp6Kbk6570i2DpGUSnkRdGCGS+3ekqqJUpE7\(\backslash\)r\(\backslash\)nfVUSx1nCF1sPD0p+pO8Rj3i87iI4MlblQRm/wVkrkjiR\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ RSA\ PRIVATE\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ public:\ '-\/-\/-\/-\/-\/BEGIN\ PUBLIC\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLg/kS4dCPVu96sbK6MQuUPmhq\(\backslash\)r\(\backslash\)nnF8SeBXVHH18h+0BTj7HqnrAA75hNVIiSLTChvpzQ0qi2Ju7O2ESUOdx7cvGiftG\(\backslash\)r\(\backslash\)nuZLiI8uL2HVlYuX+wQTIoRHx9nxv56TIiqnPg5d05vSTLXoiJg5uac3a6+4vnhhT\(\backslash\)r\(\backslash\)no0XRRXVVboZsfNpuGQIDAQAB\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ PUBLIC\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ cert:\ '-\/-\/-\/-\/-\/BEGIN\ CERTIFICATE-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIIClTCCAf6gAwIBAgIJdMZqoEeGMVYKMA0GCSqGSIb3DQEBBQUAMGkxFDASBgNV\(\backslash\)r\(\backslash\)nBAMTC2V4YW1wbGUub3JnMQswCQYDVQQGEwJVUzERMA8GA1UECBMIVmlyZ2luaWEx\(\backslash\)r\(\backslash\)nEzARBgNVBAcTCkJsYWNrc2J1cmcxDTALBgNVBAoTBFRlc3QxDTALBgNVBAsTBFRl\(\backslash\)r\(\backslash\)nc3QwHhcNMTUxMDI5MTMwNjA1WhcNMTYxMDI4MTMwNjA1WjBpMRQwEgYDVQQDEwtl\(\backslash\)r\(\backslash\)neGFtcGxlLm9yZzELMAkGA1UEBhMCVVMxETAPBgNVBAgTCFZpcmdpbmlhMRMwEQYD\(\backslash\)r\(\backslash\)nVQQHEwpCbGFja3NidXJnMQ0wCwYDVQQKEwRUZXN0MQ0wCwYDVQQLEwRUZXN0MIGf\(\backslash\)r\(\backslash\)nMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLg/kS4dCPVu96sbK6MQuUPmhqnF8S\(\backslash\)r\(\backslash\)neBXVHH18h+0BTj7HqnrAA75hNVIiSLTChvpzQ0qi2Ju7O2ESUOdx7cvGiftGuZLi\(\backslash\)r\(\backslash\)nI8uL2HVlYuX+wQTIoRHx9nxv56TIiqnPg5d05vSTLXoiJg5uac3a6+4vnhhTo0XR\(\backslash\)r\(\backslash\)nRXVVboZsfNpuGQIDAQABo0UwQzAMBgNVHRMEBTADAQH/MAsGA1UdDwQEAwIC9DAm\(\backslash\)r\(\backslash\)nBgNVHREEHzAdhhtodHRwOi8vZXhhbXBsZS5vcmcvd2ViaWQjbWUwDQYJKoZIhvcN\(\backslash\)r\(\backslash\)nAQEFBQADgYEAj1Yyyb0R9KRFjIWNFi6RErB/riWylW4CdOK1hOyJZ+VRBWeYLKfX\(\backslash\)r\(\backslash\)ni///V+tqRvLlYY5x5DnrjXbDjBy0CZuN/J772/Srgp7Nl5cn92zynMJK1q4MEEs3\(\backslash\)r\(\backslash\)nAE/FO85R0HbGEp+IrwUwDOLR6omBFVdh1EUOTcQU2jLZNbWvLDiWbDo=\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ CERTIFICATE-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ clientprivate:\ '-\/-\/-\/-\/-\/BEGIN\ RSA\ PRIVATE\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIICWwIBAAKBgQDjR5FrrdZ1jirqkx3KMPnGjrcObj/vmztWTEZ1kX6gTskQugJU\(\backslash\)r\(\backslash\)noxktzwDZza4jYODC6Ud2jouFLWeAi5BDSAeLwAQb951qVD9zVsmQ+63V/mvSJUoj\(\backslash\)r\(\backslash\)nigwj7YjcxyReJ17F0YgjceqrkZaPM8YRo8h1fj1JdPc4ZOUgA5ASZ0h2ewIDAQAB\(\backslash\)r\(\backslash\)nAoGAfB5DbjibG8ut6Di7VgX1AdhCY+EVjXaKqxAwklgIfOdJqpbKWwpO39NiNY+7\(\backslash\)r\(\backslash\)nf5qSZB8dZcNmsi4fjfWprPSTGVkk1Qp2uibtFS4MhbLEeyy4cgZfMIBQY+HD0Asf\(\backslash\)r\(\backslash\)n1NU7WTY5QfzgH3HAKuWpUEWdar/jE+hDPA+wnsMg+TgGARECQQDzlc+5WA9JsG9f\(\backslash\)r\(\backslash\)nwNRzhMGRxDP4QLmL0iLWupF4BMP/k4OLMjDtzWl725WJ4FjCzML7mSmkWWe/P8f5\(\backslash\)r\(\backslash\)nwrbR+e8lAkEA7t0CEsiIw8BE55YMuGIz5xI0QDnuwNWmCEmq6+ZziW3L+EuAr1S4\(\backslash\)r\(\backslash\)nDORqBYm5DuRvBWkWE9Sld0a8vNqWh58tHwJAP1ZYEhicuQuAmkRYucTuVEnRPZ8O\(\backslash\)r\(\backslash\)n4BV+65jNlIigskcYMEyXvm3oHMWnJ5fHXLfDh4p28n4w5ODfzcjcotK7ZQJAE7bX\(\backslash\)r\(\backslash\)n8fbtGsLmrPp8aEdqozqkZ1ygsPexMWPrIHcvt/sA56hLoazrV90ORxC73lfKNfcb\(\backslash\)r\(\backslash\)nZF2bnoGPGEMuQ1lG3wJAPnHysm3DgbSHZQiXWMjF4YDRRV2AeOqX1fmlSeMErwdj\(\backslash\)r\(\backslash\)ncwIs+ikIBnOwUOh6liJ7yK1YnckDTZTOfUDyG+vdFQ==\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ RSA\ PRIVATE\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ clientpublic:\ '-\/-\/-\/-\/-\/BEGIN\ PUBLIC\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjR5FrrdZ1jirqkx3KMPnGjrcO\(\backslash\)r\(\backslash\)nbj/vmztWTEZ1kX6gTskQugJUoxktzwDZza4jYODC6Ud2jouFLWeAi5BDSAeLwAQb\(\backslash\)r\(\backslash\)n951qVD9zVsmQ+63V/mvSJUojigwj7YjcxyReJ17F0YgjceqrkZaPM8YRo8h1fj1J\(\backslash\)r\(\backslash\)ndPc4ZOUgA5ASZ0h2ewIDAQAB\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ PUBLIC\ KEY-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n',}
+\DoxyCodeLine{\ \ clientcert:\ '-\/-\/-\/-\/-\/BEGIN\ CERTIFICATE-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)nMIICSzCCAbSgAwIBAgIBAjANBgkqhkiG9w0BAQUFADBpMRQwEgYDVQQDEwtleGFt\(\backslash\)r\(\backslash\)ncGxlLm9yZzELMAkGA1UEBhMCVVMxETAPBgNVBAgTCFZpcmdpbmlhMRMwEQYDVQQH\(\backslash\)r\(\backslash\)nEwpCbGFja3NidXJnMQ0wCwYDVQQKEwRUZXN0MQ0wCwYDVQQLEwRUZXN0MB4XDTE1\(\backslash\)r\(\backslash\)nMTAyOTEzMDYwNVoXDTE2MTAyOTEzMDYwNVowbjEZMBcGA1UEAxMQSm9obiBEb2Ug\(\backslash\)r\(\backslash\)namRvZTEyMzELMAkGA1UEBhMCVVMxETAPBgNVBAgTCFZpcmdpbmlhMRMwEQYDVQQH\(\backslash\)r\(\backslash\)nEwpCbGFja3NidXJnMQ0wCwYDVQQKEwRUZXN0MQ0wCwYDVQQLEwRUZXN0MIGfMA0G\(\backslash\)r\(\backslash\)nCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjR5FrrdZ1jirqkx3KMPnGjrcObj/vmztW\(\backslash\)r\(\backslash\)nTEZ1kX6gTskQugJUoxktzwDZza4jYODC6Ud2jouFLWeAi5BDSAeLwAQb951qVD9z\(\backslash\)r\(\backslash\)nVsmQ+63V/mvSJUojigwj7YjcxyReJ17F0YgjceqrkZaPM8YRo8h1fj1JdPc4ZOUg\(\backslash\)r\(\backslash\)nA5ASZ0h2ewIDAQABMA0GCSqGSIb3DQEBBQUAA4GBACOUglBxJ80jzR3DSSMrgRav\(\backslash\)r\(\backslash\)n7deKUPShEPC3tbVrc3LHPGpCEJUC309aK2mbMwz2jX78tr/ezePELKbyRggUvVgN\(\backslash\)r\(\backslash\)nB0XdIQkpR9X4mPdtFYkMiWKNVYKd79r0kolprgFPryhT3jsICIOnwE1Ur23Q+Fk2\(\backslash\)r\(\backslash\)nnizRS0HY4Q25JLCmsWWy\(\backslash\)r\(\backslash\)n-\/-\/-\/-\/-\/END\ CERTIFICATE-\/-\/-\/-\/-\/\(\backslash\)r\(\backslash\)n'\ \}}
+
+\end{DoxyCode}
+
+
+To override the default client CN of {\ttfamily john doe jdoe123}, add another option for {\ttfamily client\+Certificate\+CN}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pems\ =\ selfsigned.generate(null,\ \{\ clientCertificate:\ true,\ clientCertificateCN:\ 'FooBar'\ \});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22649}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2selfsigned_2_r_e_a_d_m_e_autotoc_md22649}
+MIT 

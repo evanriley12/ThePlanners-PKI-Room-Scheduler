@@ -1,0 +1,31 @@
+\chapter{is-\/map \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/is-\/map"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/is-\/map.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e}\index{is-\/map $<$sup$>$$<$a href="{}https://npmjs.org/package/is-\/map"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/is-\/map.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{is-\/map $<$sup$>$$<$a href=""https://npmjs.org/package/is-\/map"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/is-\/map.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e_autotoc_md14631}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e_autotoc_md14631}%
+ \href{https://david-dm.org/inspect-js/is-map}{\texttt{ }} \href{https://david-dm.org/inspect-js/is-map\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=is-map}{\texttt{ }}
+
+\href{https://npmjs.org/package/is-map}{\texttt{ }}
+
+Is this value a JS Map? This module works cross-\/realm/iframe, and despite ES6 @to\+String\+Tag.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e_autotoc_md14632}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e_autotoc_md14632}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isMap\ =\ require('is-\/map');}
+\DoxyCodeLine{assert(!isMap(function\ ()\ \{\}));}
+\DoxyCodeLine{assert(!isMap(null));}
+\DoxyCodeLine{assert(!isMap(function*\ ()\ \{\ yield\ 42;\ return\ Infinity;\ \});}
+\DoxyCodeLine{assert(!isMap(Symbol('foo')));}
+\DoxyCodeLine{assert(!isMap(1n));}
+\DoxyCodeLine{assert(!isMap(Object(1n)));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(!isMap(new\ Set()));}
+\DoxyCodeLine{assert(!isMap(new\ WeakSet()));}
+\DoxyCodeLine{assert(!isMap(new\ WeakMap()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert(isMap(new\ Map()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ MyMap\ extends\ Map\ \{\}}
+\DoxyCodeLine{assert(isMap(new\ MyMap()));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e_autotoc_md14633}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2is-map_2_r_e_a_d_m_e_autotoc_md14633}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

@@ -1,0 +1,68 @@
+\chapter{Release steps}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_l_e_a_s_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_l_e_a_s_e}\index{Release steps@{Release steps}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_l_e_a_s_e_autotoc_md10152}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2_r_e_l_e_a_s_e_autotoc_md10152}%
+
+\begin{DoxyEnumerate}
+\item create a {\ttfamily release-\/\mbox{[}x.\+y.\+z\mbox{]}} branch from tip of {\ttfamily main} (or whatever release commit)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ checkout\ main\ \&\&\ git\ pull\ \&\&\ git\ checkout\ -\/b\ release-\/2.1.0}
+
+\end{DoxyCode}
+
+\item bump {\ttfamily package.\+json} + update CHANGELOG version links for all releasing packages (i.\+e., root + any resolvers)
+
+In changelog for core plugin, normally leave \mbox{[}Unreleased\mbox{]} but update its link at the bottom to be rooted at the new version\textquotesingle{}s tag, and add a link for the new version rooted at last version\textquotesingle{}s tag.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[Unreleased]:\ https://github.com/import-\/js/eslint-\/plugin-\/import/compare/v2.0.1...HEAD}
+\DoxyCodeLine{[2.0.1]:\ https://github.com/import-\/js/eslint-\/plugin-\/import/compare/v2.0.0...v2.0.1}
+
+\end{DoxyCode}
+
+
+becomes
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[Unreleased]:\ https://github.com/import-\/js/eslint-\/plugin-\/import/compare/v2.1.0...HEAD}
+\DoxyCodeLine{[2.1.0]:\ https://github.com/import-\/js/eslint-\/plugin-\/import/compare/v2.0.1...v2.1.0}
+\DoxyCodeLine{[2.0.1]:\ https://github.com/import-\/js/eslint-\/plugin-\/import/compare/v2.0.0...v2.0.1}
+
+\end{DoxyCode}
+
+
+Generally, don\textquotesingle{}t use {\ttfamily npm version} for this because it creates a tag, which I normally wait until signoff from contributors and actually {\ttfamily npm publish}-\/ing to snap the tag.
+\item create pull request from {\ttfamily release-\/\mbox{[}x.\+y.\+z\mbox{]}} into {\ttfamily release} branch
+
+I like this because it
+\begin{DoxyItemize}
+\item lists all commits in the release
+\item provides a commentary location to discuss the release
+\item builds in CI and provides test results
+\end{DoxyItemize}
+\item iterate on feedback
+\begin{DoxyItemize}
+\item handle other issues
+\item merge more PRs
+\item fix issues in changelog/docs
+\end{DoxyItemize}
+\item {\ttfamily npm publish} from {\ttfamily release-\/\mbox{[}x.\+y.\+z\mbox{]}} branch
+\begin{DoxyItemize}
+\item don\textquotesingle{}t forget resolvers!
+\end{DoxyItemize}
+\item tag commit ({\ttfamily v\mbox{[}x.\+y.\+z\mbox{]}})
+\begin{DoxyItemize}
+\item again, not forgetting resolvers, if needed ({\ttfamily resolvers/\mbox{[}name\mbox{]}/v\mbox{[}t.\+u.\+v\mbox{]}})
+\end{DoxyItemize}
+\item merge {\ttfamily release-\/\mbox{[}x.\+y.\+z\mbox{]}} into {\ttfamily release} (
+\begin{DoxyItemize}
+\item ideally fast-\/forward, probably with Git CLI instead of Github
+\end{DoxyItemize}
+\item merge {\ttfamily release} into {\ttfamily main}
+\end{DoxyEnumerate}
+
+Done! 

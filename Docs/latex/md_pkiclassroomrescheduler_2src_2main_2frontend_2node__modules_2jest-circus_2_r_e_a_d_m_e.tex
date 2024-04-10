@@ -1,0 +1,66 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e}\index{README@{README}}
+\doxysection*{  jest-\/circus The next-\/gen test runner for Jest }\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e_autotoc_md15313}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e_autotoc_md15313}
+Circus is a flux-\/based test runner for Jest that is fast, maintainable, and simple to extend.
+
+Circus allows you to bind to events via an optional event handler on any \href{https://jestjs.io/docs/configuration\#testenvironment-string}{\texttt{ custom environment}}. See the \href{https://github.com/facebook/jest/blob/main/packages/jest-types/src/Circus.ts}{\texttt{ type definitions}} for more information on the events and state data currently available.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{Event,\ State\}\ from\ 'jest-\/circus';}
+\DoxyCodeLine{import\ NodeEnvironment\ from\ 'jest-\/environment-\/node';}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ MyCustomEnvironment\ extends\ NodeEnvironment\ \{}
+\DoxyCodeLine{\ \ //...}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ async\ handleTestEvent(event:\ Event,\ state:\ State)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (event.name\ ===\ 'test\_start')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ ...}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Mutating event or state data is currently unsupported and may cause unexpected behavior or break in a future release without warning. New events, event data, and/or state data will not be considered a breaking change and may be added in any minor release.
+
+Note, that {\ttfamily jest-\/circus} test runner would pause until a promise returned from {\ttfamily handle\+Test\+Event} gets fulfilled. {\bfseries{However, there are a few events that do not conform to this rule, namely}}\+: {\ttfamily start\+\_\+describe\+\_\+definition}, {\ttfamily finish\+\_\+describe\+\_\+definition}, {\ttfamily add\+\_\+hook}, {\ttfamily add\+\_\+test} or {\ttfamily error} (for the up-\/to-\/date list you can look at \href{https://github.com/facebook/jest/blob/main/packages/jest-types/src/Circus.ts}{\texttt{ Sync\+Event type in the types definitions}}). That is caused by backward compatibility reasons and `process.\+on(\textquotesingle{}unhandled\+Rejection', callback)\`{} signature, but that usually should not be a problem for most of the use cases.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e_autotoc_md15314}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e_autotoc_md15314}
+\begin{quote}
+Note\+: As of Jest 27, {\ttfamily jest-\/circus} is the default test runner, so you do not have to install it to use it. \end{quote}
+Install {\ttfamily jest-\/circus} using yarn\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ -\/-\/dev\ jest-\/circus}
+
+\end{DoxyCode}
+
+
+Or via npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ jest-\/circus}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e_autotoc_md15315}{}\doxysubsection{\texorpdfstring{Configure}{Configure}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2jest-circus_2_r_e_a_d_m_e_autotoc_md15315}
+Configure Jest to use {\ttfamily jest-\/circus} via the \href{https://jestjs.io/docs/configuration\#testrunner-string}{\texttt{ {\ttfamily test\+Runner}}} option\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}testRunner"{}:\ "{}jest-\/circus/runner"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Or via CLI\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{jest\ -\/-\/testRunner='jest-\/circus/runner'}
+
+\end{DoxyCode}
+ 

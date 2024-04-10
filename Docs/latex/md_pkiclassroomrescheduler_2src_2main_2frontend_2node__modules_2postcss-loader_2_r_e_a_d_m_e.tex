@@ -1,0 +1,1126 @@
+\chapter{README}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e}\index{README@{README}}
+  \href{https://github.com/webpack/webpack}{\texttt{  }}  \href{https://evilmartians.com/?utm_source=postcss}{\texttt{  }}  
+
+\href{https://npmjs.com/package/postcss-loader}{\texttt{ }} \href{https://nodejs.org}{\texttt{ }} \href{https://david-dm.org/webpack-contrib/postcss-loader}{\texttt{ }} \href{https://github.com/webpack-contrib/postcss-loader/actions}{\texttt{ }} \href{https://codecov.io/gh/webpack-contrib/postcss-loader}{\texttt{ }} \href{https://packagephobia.now.sh/result?p=postcss-loader}{\texttt{ }}
+
+Webpack chat\+: \href{https://gitter.im/webpack/webpack}{\texttt{ }}
+
+Post\+CSS chat\+: \href{https://gitter.im/postcss/postcss}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18916}{}\doxysection{\texorpdfstring{postcss-\/loader}{postcss-\/loader}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18916}
+Loader to process CSS with \href{https://github.com/postcss/postcss}{\texttt{ {\ttfamily Post\+CSS}}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18917}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18917}
+You need webpack v5 to use the latest version. For Webpack v4, you have to install postcss-\/loader v4.
+
+To begin, you\textquotesingle{}ll need to install {\ttfamily postcss-\/loader} and {\ttfamily postcss}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ postcss-\/loader\ postcss}
+
+\end{DoxyCode}
+
+
+Then add the plugin to your {\ttfamily webpack} config. For example\+:
+
+\begin{quote}
+In the following configuration the plugin \href{https://github.com/csstools/postcss-preset-env}{\texttt{ {\ttfamily postcss-\/preset-\/env}}} is used, which is not installed by default. \end{quote}
+{\bfseries{file.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ css\ from\ "{}file.css"{};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Alternative use with config files\+:
+
+{\bfseries{postcss.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Options}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+The loader {\bfseries{automatically}} searches for configuration files.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ ["{}style-\/loader"{},\ "{}css-\/loader"{},\ "{}postcss-\/loader"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+And run {\ttfamily webpack} via your preferred method.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18918}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18918}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+\PBS\centering \`{}execute\`{}   &\PBS\centering {\ttfamily \{Boolean\}}   &\PBS\centering {\ttfamily undefined}   &Enable Post\+CSS Parser support in {\ttfamily CSS-\/in-\/\+JS}    \\\cline{1-4}
+\PBS\centering \`{}postcss\+Options\`{}   &\PBS\centering {\ttfamily \{Object\textbackslash{}\texorpdfstring{$\vert$}{|}\+Function\}}   &\PBS\centering {\ttfamily defaults values for Postcss.\+process}   &Set {\ttfamily Post\+CSS} options and plugins    \\\cline{1-4}
+\PBS\centering \`{}source\+Map\`{}   &\PBS\centering {\ttfamily \{Boolean\}}   &\PBS\centering {\ttfamily compiler.\+devtool}   &Enables/\+Disables generation of source maps    \\\cline{1-4}
+\PBS\centering \`{}implementation\`{}   &\PBS\centering {\ttfamily \{Function\textbackslash{}\texorpdfstring{$\vert$}{|}\+String\}}   &\PBS\centering {\ttfamily postcss}   &Setup Post\+CSS implementation to use   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18919}{}\doxysubsubsection{\texorpdfstring{{\ttfamily execute}}{{\ttfamily execute}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18919}
+Type\+: {\ttfamily Boolean} Default\+: {\ttfamily undefined}
+
+If you use JS styles the \href{https://github.com/postcss/postcss-js}{\texttt{ {\ttfamily postcss-\/js}}} parser, add the {\ttfamily execute} option.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).style.js\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parser:\ "{}postcss-\/js"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ execute:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18920}{}\doxysubsubsection{\texorpdfstring{{\ttfamily postcss\+Options}}{{\ttfamily postcss\+Options}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18920}
+Type\+: {\ttfamily Object\texorpdfstring{$\vert$}{|}\+Function} Default\+: {\ttfamily undefined}
+
+Allows to set \href{https://postcss.org/api/\#processoptions}{\texttt{ {\ttfamily Post\+CSS options}}} and plugins.
+
+All {\ttfamily Post\+CSS} options are supported. There is the special {\ttfamily config} option for config files. How it works and how it can be configured is described below.
+
+We recommend do not specify {\ttfamily from}, {\ttfamily to} and {\ttfamily map} options, because this can lead to wrong path in source maps. If you need source maps please use the \`{}sourcemap\`{} option.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18921}{}\doxyparagraph{\texorpdfstring{{\ttfamily Object}}{{\ttfamily Object}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18921}
+Setup {\ttfamily plugins}\+:
+
+{\bfseries{webpack.\+config.\+js}} ({\bfseries{recommended}})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ myOtherPostcssPlugin\ =\ require("{}postcss-\/my-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).sss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/import"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ ["{}postcss-\/short"{},\ \{\ prefix:\ "{}x"{}\ \}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ require.resolve("{}my-\/postcss-\/plugin"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ myOtherPostcssPlugin(\{\ myOption:\ true\ \}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Deprecated\ and\ will\ be\ removed\ in\ the\ next\ major\ release}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ "{}postcss-\/nested"{}:\ \{\ preserveEmpty:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}} ({\bfseries{deprecated}}, will be removed in the next major release)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).sss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ plugins:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/import"{}:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/short"{}:\ \{\ prefix:\ "{}x"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Setup {\ttfamily syntax}\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).sss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}String`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ syntax:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}Object`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ syntax:\ require("{}sugarss"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Setup {\ttfamily parser}\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).sss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}String`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ parser:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}Object`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ parser:\ require("{}sugarss"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}Function`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ parser:\ require("{}sugarss"{}).parse,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Setup {\ttfamily stringifier}\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Midas\ =\ require("{}midas"{});}
+\DoxyCodeLine{const\ midas\ =\ new\ Midas();}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).sss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}String`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ stringifier:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}Object`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ stringifier:\ require("{}sugarss"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Can\ be\ \`{}Function`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ stringifier:\ midas.stringifier,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18922}{}\doxyparagraph{\texorpdfstring{{\ttfamily Function}}{{\ttfamily Function}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18922}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).(css|sss)\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ (loaderContext)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (/\(\backslash\).sss\$/.test(loaderContext.resourcePath))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parser:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ["{}postcss-\/short"{},\ \{\ prefix:\ "{}x"{}\ \}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ["{}postcss-\/short"{},\ \{\ prefix:\ "{}x"{}\ \}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18923}{}\doxyparagraph{\texorpdfstring{{\ttfamily config}}{{\ttfamily config}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18923}
+Type\+: {\ttfamily Boolean\texorpdfstring{$\vert$}{|}\+String} Default\+: {\ttfamily undefined}
+
+Allows to set options using config files. Options specified in the config file are combined with options passed to the loader, the loader options overwrite options from config.
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18924}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18924}%
+ \doxysubparagraph*{Config Files}
+
+The loader will search up the directory tree for configuration in the following places\+:
+
+
+\begin{DoxyItemize}
+\item a {\ttfamily postcss} property in {\ttfamily package.\+json}
+\item a {\ttfamily .postcssrc} file in JSON or YAML format
+\item a {\ttfamily .postcssrc.\+json}, {\ttfamily .postcssrc.\+yaml}, {\ttfamily .postcssrc.\+yml}, {\ttfamily .postcssrc.\+js}, or {\ttfamily .postcssrc.\+cjs} file
+\item a {\ttfamily postcss.\+config.\+js} or {\ttfamily postcss.\+config.\+cjs} Common\+JS module exporting an object ({\bfseries{recommended}})
+\end{DoxyItemize}
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18925}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18925}%
+ \doxysubparagraph*{Examples of Config Files}
+
+Using {\ttfamily Object} notation\+:
+
+{\bfseries{postcss.\+config.\+js}} ({\bfseries{recommend}})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ //\ You\ can\ specify\ any\ options\ from\ https://postcss.org/api/\#processoptions\ here}
+\DoxyCodeLine{\ \ //\ parser:\ 'sugarss',}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ //\ Plugins\ for\ PostCSS}
+\DoxyCodeLine{\ \ \ \ ["{}postcss-\/short"{},\ \{\ prefix:\ "{}x"{}\ \}],}
+\DoxyCodeLine{\ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Using {\ttfamily Function} notation\+:
+
+{\bfseries{postcss.\+config.\+js}} ({\bfseries{recommend}})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ (api)\ =>\ \{}
+\DoxyCodeLine{\ \ //\ \`{}api.file`\ -\/\ path\ to\ the\ file}
+\DoxyCodeLine{\ \ //\ \`{}api.mode`\ -\/\ \`{}mode`\ value\ of\ webpack,\ please\ read\ https://webpack.js.org/configuration/mode/}
+\DoxyCodeLine{\ \ //\ \`{}api.webpackLoaderContext`\ -\/\ loader\ context\ for\ complex\ use\ cases}
+\DoxyCodeLine{\ \ //\ \`{}api.env`\ -\/\ alias\ \`{}api.mode`\ for\ compatibility\ with\ \`{}postcss-\/cli`}
+\DoxyCodeLine{\ \ //\ \`{}api.options`\ -\/\ the\ \`{}postcssOptions`\ options}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ if\ (/\(\backslash\).sss\$/.test(api.file))\ \{}
+\DoxyCodeLine{\ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ You\ can\ specify\ any\ options\ from\ https://postcss.org/api/\#processoptions\ here}
+\DoxyCodeLine{\ \ \ \ \ \ parser:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Plugins\ for\ PostCSS}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ["{}postcss-\/short"{},\ \{\ prefix:\ "{}x"{}\ \}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ //\ You\ can\ specify\ any\ options\ from\ https://postcss.org/api/\#processoptions\ here}
+\DoxyCodeLine{\ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ //\ Plugins\ for\ PostCSS}
+\DoxyCodeLine{\ \ \ \ \ \ ["{}postcss-\/short"{},\ \{\ prefix:\ "{}x"{}\ \}],}
+\DoxyCodeLine{\ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{postcss.\+config.\+js}} ({\bfseries{deprecated}}, will be removed in the next major release)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ //\ You\ can\ specify\ any\ options\ from\ https://postcss.org/api/\#processoptions\ here}
+\DoxyCodeLine{\ \ //\ parser:\ 'sugarss',}
+\DoxyCodeLine{\ \ plugins:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Plugins\ for\ PostCSS}
+\DoxyCodeLine{\ \ \ \ "{}postcss-\/short"{}:\ \{\ prefix:\ "{}x"{}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}postcss-\/preset-\/env"{}:\ \{\},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18926}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18926}%
+ \doxysubparagraph*{Config Cascade}
+
+You can use different {\ttfamily postcss.\+config.\+js} files in different directories. Config lookup starts from {\ttfamily path.\+dirname(file)} and walks the file tree upwards until a config file is found.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{|–\ components}
+\DoxyCodeLine{|\ |–\ component}
+\DoxyCodeLine{|\ |\ |–\ index.js}
+\DoxyCodeLine{|\ |\ |–\ index.png}
+\DoxyCodeLine{|\ |\ |–\ style.css\ (1)}
+\DoxyCodeLine{|\ |\ |–\ postcss.config.js\ (1)}
+\DoxyCodeLine{|\ |–\ component}
+\DoxyCodeLine{|\ |\ |–\ index.js}
+\DoxyCodeLine{|\ |\ |–\ image.png}
+\DoxyCodeLine{|\ |\ |–\ style.css\ (2)}
+\DoxyCodeLine{|}
+\DoxyCodeLine{|–\ postcss.config.js\ (1\ \&\&\ 2\ (recommended))}
+\DoxyCodeLine{|–\ webpack.config.js}
+\DoxyCodeLine{|}
+\DoxyCodeLine{|–\ package.json}
+
+\end{DoxyCode}
+
+
+After setting up your {\ttfamily postcss.\+config.\+js}, add {\ttfamily postcss-\/loader} to your {\ttfamily webpack.\+config.\+js}. You can use it standalone or in conjunction with {\ttfamily css-\/loader} (recommended).
+
+Use it {\bfseries{before}} {\ttfamily css-\/loader} and {\ttfamily style-\/loader}, but {\bfseries{after}} other preprocessor loaders like e.\+g {\ttfamily sass\texorpdfstring{$\vert$}{|}less\texorpdfstring{$\vert$}{|}stylus-\/loader}, if you use any (since \href{https://webpack.js.org/concepts/loaders/\#configuration}{\texttt{ webpack loaders evaluate right to left/bottom to top}}).
+
+{\bfseries{webpack.\+config.\+js}} ({\bfseries{recommended}})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18927}{}\doxyparagraph{\texorpdfstring{Boolean}{Boolean}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18927}
+Enables/\+Disables autoloading config.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ config:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18928}{}\doxyparagraph{\texorpdfstring{String}{String}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18928}
+Allows to specify the path to the config file.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require("{}path"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ config:\ path.resolve(\_\_dirname,\ "{}custom.config.js"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18929}{}\doxysubsubsection{\texorpdfstring{{\ttfamily source\+Map}}{{\ttfamily source\+Map}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18929}
+Type\+: {\ttfamily Boolean} Default\+: depends on the {\ttfamily compiler.\+devtool} value
+
+By default generation of source maps depends on the \href{https://webpack.js.org/configuration/devtool/}{\texttt{ {\ttfamily devtool}}} option. All values enable source map generation except {\ttfamily eval} and {\ttfamily false} value.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{},\ options:\ \{\ sourceMap:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}postcss-\/loader"{},\ options:\ \{\ sourceMap:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}sass-\/loader"{},\ options:\ \{\ sourceMap:\ true\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Alternative setup\+:
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ devtool:\ "{}source-\/map"{},}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}postcss-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}sass-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18930}{}\doxysubsubsection{\texorpdfstring{{\ttfamily implementation}}{{\ttfamily implementation}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18930}
+Type\+: {\ttfamily Function \texorpdfstring{$\vert$}{|} String} Default\+: {\ttfamily postcss}
+
+The special {\ttfamily implementation} option determines which implementation of Post\+CSS to use. Overrides the locally installed {\ttfamily peer\+Dependency} version of {\ttfamily postcss}.
+
+{\bfseries{This option is only really useful for downstream tooling authors to ease the Post\+CSS 7-\/to-\/8 transition.}}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18931}{}\doxyparagraph{\texorpdfstring{Function}{Function}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18931}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ implementation:\ require("{}postcss"{})\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}sass-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18932}{}\doxyparagraph{\texorpdfstring{String}{String}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18932}
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}style-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}css-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ implementation:\ require.resolve("{}postcss"{})\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{\ loader:\ "{}sass-\/loader"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18933}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18933}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18934}{}\doxysubsubsection{\texorpdfstring{Sugar\+SS}{Sugar\+SS}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18934}
+You\textquotesingle{}ll need to install {\ttfamily sugarss}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ sugarss}
+
+\end{DoxyCode}
+
+
+Using \href{https://github.com/postcss/sugarss}{\texttt{ {\ttfamily Sugar\+SS}}} syntax.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).sss\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ importLoaders:\ 1\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parser:\ "{}sugarss"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18935}{}\doxysubsubsection{\texorpdfstring{Autoprefixer}{Autoprefixer}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18935}
+You\textquotesingle{}ll need to install {\ttfamily autoprefixer}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ autoprefixer}
+
+\end{DoxyCode}
+
+
+Add vendor prefixes to CSS rules using \href{https://github.com/postcss/autoprefixer}{\texttt{ {\ttfamily autoprefixer}}}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ importLoaders:\ 1\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}autoprefixer"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+\+:warning\+: \href{https://github.com/csstools/postcss-preset-env}{\texttt{ {\ttfamily postcss-\/preset-\/env}}} includes \href{https://github.com/postcss/autoprefixer}{\texttt{ {\ttfamily autoprefixer}}}, so adding it separately is not necessary if you already use the preset. More \href{https://github.com/csstools/postcss-preset-env\#autoprefixer}{\texttt{ information}} \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18936}{}\doxysubsubsection{\texorpdfstring{Post\+CSS Preset Env}{Post\+CSS Preset Env}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18936}
+You\textquotesingle{}ll need to install {\ttfamily postcss-\/preset-\/env}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ postcss-\/preset-\/env}
+
+\end{DoxyCode}
+
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{\ importLoaders:\ 1\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}postcss-\/preset-\/env"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18937}{}\doxysubsubsection{\texorpdfstring{CSS Modules}{CSS Modules}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18937}
+What is {\ttfamily CSS Modules}? Please \href{https://github.com/webpack-contrib/css-loader\#modules}{\texttt{ read}}.
+
+No additional options required on the {\ttfamily postcss-\/loader} side. To make them work properly, either add the {\ttfamily css-\/loader}’s {\ttfamily import\+Loaders} option.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ modules:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18938}{}\doxysubsubsection{\texorpdfstring{CSS-\/in-\/\+JS and \href{https://github.com/postcss/postcss-js}{\texttt{ {\ttfamily postcss-\/js}}}}{CSS-\/in-\/\+JS and \href{https://github.com/postcss/postcss-js}{\texttt{ {\ttfamily postcss-\/js}}}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18938}
+You\textquotesingle{}ll need to install {\ttfamily postcss-\/js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ postcss-\/js}
+
+\end{DoxyCode}
+
+
+If you want to process styles written in Java\+Script, use the \href{https://github.com/postcss/postcss-js}{\texttt{ {\ttfamily postcss-\/js}}} parser.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).style.js\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ importLoaders:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parser:\ "{}postcss-\/js"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ execute:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}babel-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+As result you will be able to write styles in the following way
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ colors\ from\ "{}./styles/colors"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ \{}
+\DoxyCodeLine{\ \ "{}.menu"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ colors.main,}
+\DoxyCodeLine{\ \ \ \ height:\ 25,}
+\DoxyCodeLine{\ \ \ \ "{}\&\_link"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ color:\ "{}white"{},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+\+:warning\+: If you are using Babel you need to do the following in order for the setup to work \end{quote}
+\begin{quote}
+1. Add \href{https://github.com/59naga/babel-plugin-add-module-exports}{\texttt{ {\ttfamily babel-\/plugin-\/add-\/module-\/exports}}} to your configuration.
+\begin{DoxyEnumerate}
+\item You need to have only one {\bfseries{default}} export per style module. 
+\end{DoxyEnumerate}\end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18939}{}\doxysubsubsection{\texorpdfstring{Extract CSS}{Extract CSS}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18939}
+Using \href{https://github.com/webpack-contrib/mini-css-extract-plugin}{\texttt{ {\ttfamily mini-\/css-\/extract-\/plugin}}}.
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ isProductionMode\ =\ process.env.NODE\_ENV\ ===\ "{}production"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ MiniCssExtractPlugin\ =\ require("{}mini-\/css-\/extract-\/plugin"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ mode:\ isProductionMode\ ?\ "{}production"{}\ :\ "{}development"{},}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ isProductionMode\ ?\ MiniCssExtractPlugin.loader\ :\ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ new\ MiniCssExtractPlugin(\{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ isProductionMode\ ?\ "{}[name].[contenthash].css"{}\ :\ "{}[name].css"{},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18940}{}\doxysubsubsection{\texorpdfstring{Emit assets}{Emit assets}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18940}
+To write a asset from Post\+CSS plugin to the webpack, need to add a message in {\ttfamily result.\+messages}.
+
+The message should contain the following fields\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily type} = {\ttfamily asset} -\/ Message type (require, should be equal {\ttfamily asset})
+\item {\ttfamily file} -\/ file name (require)
+\item {\ttfamily content} -\/ file content (require)
+\item {\ttfamily source\+Map} -\/ source\+Map
+\item {\ttfamily info} -\/ asset info
+\end{DoxyItemize}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ customPlugin\ =\ ()\ =>\ (css,\ result)\ =>\ \{}
+\DoxyCodeLine{\ \ result.messages.push(\{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}asset"{},}
+\DoxyCodeLine{\ \ \ \ file:\ "{}sprite.svg"{},}
+\DoxyCodeLine{\ \ \ \ content:\ "{}<svg>...</svg>"{},}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ postcssPlugin\ =\ postcss.plugin("{}postcss-\/assets"{},\ customPlugin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [postcssPlugin()],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18941}{}\doxysubsubsection{\texorpdfstring{Add dependencies, context\+Dependencies, build\+Dependencies, missing\+Dependencies}{Add dependencies, context\+Dependencies, build\+Dependencies, missing\+Dependencies}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18941}
+The dependencies are necessary for webpack to understand when it needs to run recompilation on the changed files.
+
+There are two way to add dependencies\+:
+
+
+\begin{DoxyEnumerate}
+\item (Recommended). The plugin may emit messages in {\ttfamily result.\+messages}.
+\end{DoxyEnumerate}
+
+The message should contain the following fields\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily type} = {\ttfamily dependency} -\/ Message type (require, should be equal {\ttfamily dependency}, {\ttfamily context-\/dependency}, {\ttfamily build-\/dependency} or {\ttfamily missing-\/dependency})
+\item {\ttfamily file} -\/ absolute file path (require)
+\end{DoxyItemize}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require("{}path"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ customPlugin\ =\ ()\ =>\ (css,\ result)\ =>\ \{}
+\DoxyCodeLine{\ \ result.messages.push(\{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}dependency"{},}
+\DoxyCodeLine{\ \ \ \ file:\ path.resolve(\_\_dirname,\ "{}path"{},\ "{}to"{},\ "{}file"{}),}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ postcssPlugin\ =\ postcss.plugin("{}postcss-\/assets"{},\ customPlugin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ plugins:\ [postcssPlugin()],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Pass {\ttfamily loader\+Context} in plugin.
+\end{DoxyEnumerate}
+
+{\bfseries{webpack.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require("{}path"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ module:\ \{}
+\DoxyCodeLine{\ \ \ \ rules:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ /\(\backslash\).css\$/i,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ use:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}style-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ "{}css-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ loader:\ "{}postcss-\/loader"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ postcssOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ config:\ path.resolve(\_\_dirname,\ "{}path/to/postcss.config.js"{}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{postcss.\+config.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ (api)\ =>\ (\{}
+\DoxyCodeLine{\ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ require("{}path/to/customPlugin"{})(\{}
+\DoxyCodeLine{\ \ \ \ \ \ loaderContext:\ api.webpackLoaderContext,}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+{\bfseries{custom\+Plugin.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require("{}path"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ customPlugin\ =\ (loaderContext)\ =>\ (css,\ result)\ =>\ \{}
+\DoxyCodeLine{\ \ loaderContext.webpack.addDependency(}
+\DoxyCodeLine{\ \ \ \ path.resolve(\_\_dirname,\ "{}path"{},\ "{}to"{},\ "{}file"{})}
+\DoxyCodeLine{\ \ );}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ postcss.plugin("{}postcss-\/assets"{},\ customPlugin);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18942}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18942}
+Please take a moment to read our contributing guidelines if you haven\textquotesingle{}t yet done so.
+
+CONTRIBUTING\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18943}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-loader_2_r_e_a_d_m_e_autotoc_md18943}
+\href{./LICENSE}{\texttt{ MIT}} 

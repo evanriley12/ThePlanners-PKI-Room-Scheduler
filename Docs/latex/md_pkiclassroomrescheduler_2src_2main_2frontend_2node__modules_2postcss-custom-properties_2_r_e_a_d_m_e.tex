@@ -1,0 +1,190 @@
+\chapter{Post\+CSS Custom Properties \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/postcss/postcss"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}https\+://postcss.\+github.\+io/postcss/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\+Post\+CSS\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e}\index{PostCSS Custom Properties $<$a href="{}https://github.com/postcss/postcss"{} $>$$<$img src=\textbackslash{}"{}https://postcss.github.io/postcss/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}PostCSS\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{PostCSS Custom Properties $<$a href=""https://github.com/postcss/postcss"" $>$$<$img src=\textbackslash{}""https://postcss.github.io/postcss/logo.svg\textbackslash{}"" alt=\textbackslash{}""PostCSS\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18556}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18556}%
+ \href{https://www.npmjs.com/package/postcss-custom-properties}{\texttt{ }} \href{https://cssdb.org/\#custom-properties}{\texttt{ }} \href{https://github.com/csstools/postcss-plugins/actions/workflows/test.yml?query=workflow/test}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties}{\texttt{ Post\+CSS Custom Properties}} lets you use Custom Properties in CSS, following the \href{https://www.w3.org/TR/css-variables-1/}{\texttt{ CSS Custom Properties}} specification.
+
+\href{https://caniuse.com/\#feat=css-variables}{\texttt{ }}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:root\ \{}
+\DoxyCodeLine{\ \ -\/-\/color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ color:\ var(-\/-\/color);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{:root\ \{}
+\DoxyCodeLine{\ \ -\/-\/color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\ \ color:\ var(-\/-\/color);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} This plugin only processes variables that are defined in the {\ttfamily \+:root} selector.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18557}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18557}
+Add \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties}{\texttt{ Post\+CSS Custom Properties}} to your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ postcss-\/custom-\/properties\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Use \href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties}{\texttt{ Post\+CSS Custom Properties}} as a \href{https://github.com/postcss/postcss}{\texttt{ Post\+CSS}} plugin\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ postcss\ =\ require('postcss');}
+\DoxyCodeLine{const\ postcssCustomProperties\ =\ require('postcss-\/custom-\/properties');}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcss([}
+\DoxyCodeLine{\ \ postcssCustomProperties(/*\ pluginOptions\ */)}
+\DoxyCodeLine{]).process(YOUR\_CSS\ /*,\ processOptions\ */);}
+
+\end{DoxyCode}
+
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-properties}{\texttt{ Post\+CSS Custom Properties}} runs in all Node environments, with special instructions for\+:
+
+\texorpdfstring{$\vert$}{|} \href{INSTALL.md\#node}{\texttt{ Node}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#postcss-cli}{\texttt{ Post\+CSS CLI}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#webpack}{\texttt{ Webpack}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#create-react-app}{\texttt{ Create React App}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#gulp}{\texttt{ Gulp}} \texorpdfstring{$\vert$}{|} \href{INSTALL.md\#grunt}{\texttt{ Grunt}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18558}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18558}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18559}{}\doxysubsection{\texorpdfstring{preserve}{preserve}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18559}
+The {\ttfamily preserve} option determines whether Custom Properties and properties using custom properties should be preserved in their original form. By default, both of these are preserved.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssCustomProperties(\{}
+\DoxyCodeLine{\ \ preserve:\ false}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{:root\ \{}
+\DoxyCodeLine{\ \ -\/-\/color:\ red;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ color:\ var(-\/-\/color);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18560}{}\doxysubsection{\texorpdfstring{import\+From}{import\+From}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18560}
+The {\ttfamily import\+From} option specifies sources where Custom Properties can be imported from, which might be CSS, JS, and JSON files, functions, and directly passed objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssCustomProperties(\{}
+\DoxyCodeLine{\ \ importFrom:\ 'path/to/file.css'\ //\ =>\ :root\ \{\ -\/-\/color:\ red\ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ color:\ var(-\/-\/color);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{h1\ \{}
+\DoxyCodeLine{\ \ color:\ red;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Multiple sources can be passed into this option, and they will be parsed in the order they are received. Java\+Script files, JSON files, functions, and objects will need to namespace Custom Properties using the {\ttfamily custom\+Properties} or {\ttfamily custom-\/properties} key.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssCustomProperties(\{}
+\DoxyCodeLine{\ \ importFrom:\ [}
+\DoxyCodeLine{\ \ \ \ 'path/to/file.css',\ \ \ //\ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\ \ \ \ 'and/then/this.js',\ \ \ //\ module.exports\ =\ \{\ customProperties:\ \{\ '-\/-\/color':\ 'red'\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ 'and/then/that.json',\ //\ \{\ "{}custom-\/properties"{}:\ \{\ "{}-\/-\/color"{}:\ "{}red"{}\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ customProperties:\ \{\ '-\/-\/color':\ 'red'\ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ const\ customProperties\ =\ \{\ '-\/-\/color':\ 'red'\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{\ customProperties\ \};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+See example imports written in \href{test/import-properties.css}{\texttt{ CSS}}, \href{test/import-properties.js}{\texttt{ JS}}, and \href{test/import-properties.json}{\texttt{ JSON}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18561}{}\doxysubsection{\texorpdfstring{override\+Import\+From\+With\+Root}{override\+Import\+From\+With\+Root}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18561}
+The {\ttfamily override\+Import\+From\+With\+Root} option determines if properties added via {\ttfamily import\+From} are overridden by properties that exist in {\ttfamily \+:root}. Defaults to {\ttfamily false}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssCustomProperties(\{}
+\DoxyCodeLine{\ \ overrideImportFromWithRoot:\ true}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18562}{}\doxysubsection{\texorpdfstring{export\+To}{export\+To}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18562}
+The {\ttfamily export\+To} option specifies destinations where Custom Properties can be exported to, which might be CSS, JS, and JSON files, functions, and directly passed objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{postcssCustomProperties(\{}
+\DoxyCodeLine{\ \ exportTo:\ 'path/to/file.css'\ //\ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Multiple destinations can be passed into this option, and they will be parsed in the order they are received. Java\+Script files, JSON files, and objects will need to namespace Custom Properties using the {\ttfamily custom\+Properties} or {\ttfamily custom-\/properties} key.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ cachedObject\ =\ \{\ customProperties:\ \{\}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{postcssCustomProperties(\{}
+\DoxyCodeLine{\ \ exportTo:\ [}
+\DoxyCodeLine{\ \ \ \ 'path/to/file.css',\ \ \ //\ :root\ \{\ -\/-\/color:\ red;\ \}}
+\DoxyCodeLine{\ \ \ \ 'and/then/this.js',\ \ \ //\ module.exports\ =\ \{\ customProperties:\ \{\ '-\/-\/color':\ 'red'\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ 'and/then/this.mjs',\ \ //\ export\ const\ customProperties\ =\ \{\ '-\/-\/color':\ 'red'\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ 'and/then/that.json',\ //\ \{\ "{}custom-\/properties"{}:\ \{\ "{}-\/-\/color"{}:\ "{}red"{}\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ 'and/then/that.scss',\ //\ \$color:\ red;}
+\DoxyCodeLine{\ \ \ \ cachedObject,}
+\DoxyCodeLine{\ \ \ \ customProperties\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ customProperties\ \ \ \ //\ \{\ '-\/-\/color':\ 'red'\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+See example exports written to \href{test/export-properties.css}{\texttt{ CSS}}, \href{test/export-properties.js}{\texttt{ JS}}, \href{test/export-properties.mjs}{\texttt{ MJS}}, \href{test/export-properties.json}{\texttt{ JSON}} and \href{test/export-properties.scss}{\texttt{ SCSS}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18563}{}\doxysubsection{\texorpdfstring{disable\+Deprecation\+Notice}{disable\+Deprecation\+Notice}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2postcss-custom-properties_2_r_e_a_d_m_e_autotoc_md18563}
+Silence the deprecation notice that is printed to the console when using {\ttfamily import\+From} or {\ttfamily export\+To}.
+
+\begin{quote}
+"{}import\+From"{} and "{}export\+To"{} will be removed in a future version of postcss-\/custom-\/properties. Check the discussion on github for more details. \href{https://github.com/csstools/postcss-plugins/discussions/192}{\texttt{ https\+://github.\+com/csstools/postcss-\/plugins/discussions/192}} \end{quote}

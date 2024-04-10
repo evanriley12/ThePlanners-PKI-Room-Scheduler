@@ -1,0 +1,32 @@
+\chapter{istanbul-\/lib-\/coverage}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-coverage_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-coverage_2_r_e_a_d_m_e}\index{istanbul-\/lib-\/coverage@{istanbul-\/lib-\/coverage}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-coverage_2_r_e_a_d_m_e_autotoc_md14943}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2istanbul-lib-coverage_2_r_e_a_d_m_e_autotoc_md14943}%
+ \href{https://greenkeeper.io/}{\texttt{ }} \href{https://travis-ci.org/istanbuljs/istanbul-lib-coverage}{\texttt{ }}
+
+An API that provides a read-\/only view of coverage information with the ability to merge and summarize coverage info.
+
+Supersedes {\ttfamily object-\/utils} and {\ttfamily collector} from the v0 istanbul API.
+
+See the docs for the full API.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ libCoverage\ =\ require('istanbul-\/lib-\/coverage');}
+\DoxyCodeLine{var\ map\ =\ libCoverage.createCoverageMap(globalCoverageVar);}
+\DoxyCodeLine{var\ summary\ =\ libCoverage.createCoverageSummary();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ merge\ another\ coverage\ map\ into\ the\ one\ we\ created}
+\DoxyCodeLine{map.merge(otherCoverageMap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ inspect\ and\ summarize\ all\ file\ coverage\ objects\ in\ the\ map}
+\DoxyCodeLine{map.files().forEach(function(f)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ fc\ =\ map.fileCoverageFor(f),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ s\ =\ fc.toSummary();}
+\DoxyCodeLine{\ \ \ \ summary.merge(s);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log('Global\ summary',\ summary);}
+
+\end{DoxyCode}
+ 

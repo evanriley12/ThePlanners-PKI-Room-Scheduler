@@ -1,0 +1,53 @@
+\chapter{tr46.\+js}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e}\index{tr46.js@{tr46.js}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27167}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27167}%
+ \begin{quote}
+An implementation of the \href{http://unicode.org/reports/tr46/}{\texttt{ Unicode TR46 specification}}. \end{quote}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27168}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27168}
+\href{http://nodejs.org}{\texttt{ Node.\+js}} {\ttfamily \texorpdfstring{$>$}{>}= 6} is required. To install, type this at the command line\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ tr46}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27169}{}\doxysection{\texorpdfstring{API}{API}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27169}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27170}{}\doxysubsection{\texorpdfstring{{\ttfamily to\+ASCII(domain\+Name\mbox{[}, options\mbox{]})}}{{\ttfamily to\+ASCII(domain\+Name\mbox{[}, options\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27170}
+Converts a string of Unicode symbols to a case-\/folded Punycode string of ASCII symbols.
+
+Available options\+:
+\begin{DoxyItemize}
+\item \`{}check\+Bidi\`{}
+\item \`{}check\+Hyphens\`{}
+\item \`{}check\+Joiners\`{}
+\item \`{}processing\+Option\`{}
+\item \`{}use\+STD3\+ASCIIRules\`{}
+\item \`{}verify\+DNSLength\`{}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27171}{}\doxysubsection{\texorpdfstring{{\ttfamily to\+Unicode(domain\+Name\mbox{[}, options\mbox{]})}}{{\ttfamily to\+Unicode(domain\+Name\mbox{[}, options\mbox{]})}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27171}
+Converts a case-\/folded Punycode string of ASCII symbols to a string of Unicode symbols.
+
+Available options\+:
+\begin{DoxyItemize}
+\item \`{}check\+Bidi\`{}
+\item \`{}check\+Hyphens\`{}
+\item \`{}check\+Joiners\`{}
+\item \`{}use\+STD3\+ASCIIRules\`{}
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27172}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27172}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27173}{}\doxysubsection{\texorpdfstring{{\ttfamily check\+Bidi}}{{\ttfamily check\+Bidi}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27173}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+ When set to {\ttfamily true}, any bi-\/directional text within the input will be checked for validation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27174}{}\doxysubsection{\texorpdfstring{{\ttfamily check\+Hyphens}}{{\ttfamily check\+Hyphens}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27174}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+ When set to {\ttfamily true}, the positions of any hyphen characters within the input will be checked for validation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27175}{}\doxysubsection{\texorpdfstring{{\ttfamily check\+Joiners}}{{\ttfamily check\+Joiners}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27175}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+ When set to {\ttfamily true}, any word joiner characters within the input will be checked for validation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27176}{}\doxysubsection{\texorpdfstring{{\ttfamily processing\+Option}}{{\ttfamily processing\+Option}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27176}
+Type\+: {\ttfamily String} ~\newline
+ Default value\+: {\ttfamily "{}nontransitional"{}} ~\newline
+ When set to {\ttfamily "{}transitional"{}}, symbols within the input will be validated according to the older IDNA2003 protocol. When set to {\ttfamily "{}nontransitional"{}}, the current IDNA2008 protocol will be used.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27177}{}\doxysubsection{\texorpdfstring{{\ttfamily use\+STD3\+ASCIIRules}}{{\ttfamily use\+STD3\+ASCIIRules}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27177}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+ When set to {\ttfamily true}, input will be validated according to \href{http://unicode.org/reports/tr46/\#STD3_Rules}{\texttt{ STD3 Rules}}.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27178}{}\doxysubsection{\texorpdfstring{{\ttfamily verify\+DNSLength}}{{\ttfamily verify\+DNSLength}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2workbox-build_2node__modules_2tr46_2_r_e_a_d_m_e_autotoc_md27178}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false} ~\newline
+ When set to {\ttfamily true}, the length of each DNS label within the input will be checked for validation. 

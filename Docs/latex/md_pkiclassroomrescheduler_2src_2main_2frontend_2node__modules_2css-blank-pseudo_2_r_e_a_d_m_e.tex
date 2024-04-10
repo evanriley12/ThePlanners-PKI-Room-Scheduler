@@ -1,0 +1,99 @@
+\chapter{CSS Blank Pseudo \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/csstools/postcss-\/plugins/tree/main/plugins/css-\/blank-\/pseudo"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src=\textbackslash{}"{}http\+://jonathantneal.\+github.\+io/js-\/logo.\+svg\textbackslash{}"{} alt=\textbackslash{}"{}\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e}\index{CSS Blank Pseudo $<$a href="{}https://github.com/csstools/postcss-\/plugins/tree/main/plugins/css-\/blank-\/pseudo"{} $>$$<$img src=\textbackslash{}"{}http://jonathantneal.github.io/js-\/logo.svg\textbackslash{}"{} alt=\textbackslash{}"{}\textbackslash{}"{} width=\textbackslash{}"{}90\textbackslash{}"{} height=\textbackslash{}"{}90\textbackslash{}"{} align=\textbackslash{}"{}right\textbackslash{}"{}$>$$<$/a$>$@{CSS Blank Pseudo $<$a href=""https://github.com/csstools/postcss-\/plugins/tree/main/plugins/css-\/blank-\/pseudo"" $>$$<$img src=\textbackslash{}""http://jonathantneal.github.io/js-\/logo.svg\textbackslash{}"" alt=\textbackslash{}""\textbackslash{}"" width=\textbackslash{}""90\textbackslash{}"" height=\textbackslash{}""90\textbackslash{}"" align=\textbackslash{}""right\textbackslash{}""$>$$<$/a$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7859}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7859}%
+ \href{https://www.npmjs.com/package/css-blank-pseudo}{\texttt{ }} \href{https://discord.gg/bUadyRwkJS}{\texttt{ \texorpdfstring{$<$}{<}img alt="{}Discord"{} src="{}https\+://shields.\+io/badge/\+Discord-\/5865\+F2?logo=discord\&logo\+Color=white"{}\texorpdfstring{$>$}{>}}}
+
+\href{https://github.com/csstools/postcss-plugins/tree/main/plugins/css-blank-pseudo}{\texttt{ CSS Blank Pseudo}} lets you style form elements when they are empty, following the \href{https://drafts.csswg.org/selectors-4/\#blank}{\texttt{ Selectors Level 4}} specification.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{input\ \{}
+\DoxyCodeLine{\ \ /*\ style\ an\ input\ */}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{input:blank\ \{}
+\DoxyCodeLine{\ \ /*\ style\ an\ input\ without\ a\ value\ */}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7860}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7860}
+From the command line, transform CSS files that use {\ttfamily \+:blank} selectors\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npx\ css-\/blank-\/pseudo\ SOURCE.css\ -\/-\/output\ TRANSFORMED.css}
+
+\end{DoxyCode}
+
+
+Next, use your transformed CSS with this script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<link\ rel="{}stylesheet"{}\ href="{}TRANSFORMED.css"{}>}
+\DoxyCodeLine{<script\ src="{}https://unpkg.com/css-\/blank-\/pseudo/dist/browser-\/global.js"{}></script>}
+\DoxyCodeLine{<script>cssBlankPseudo(document)</script>}
+
+\end{DoxyCode}
+
+
+⚠️ Please use a versioned url, like this \+: {\ttfamily \href{https://unpkg.com/css-blank-pseudo}{\texttt{ https\+://unpkg.\+com/css-\/blank-\/pseudo}}@3.\+0.\+0/dist/browser-\/global.js} Without the version, you might unexpectedly get a new major version of the library with breaking changes.
+
+⚠️ If you were using an older version via a CDN, please update the entire url. The old URL will no longer work in a future release.
+
+That’s it. The script works in most browsers.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7861}{}\doxysection{\texorpdfstring{How it works}{How it works}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7861}
+The Post\+CSS plugin clones rules containing {\ttfamily \+:blank}, replacing them with an alternative {\ttfamily \mbox{[}blank\mbox{]}} selector.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{input:blank\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{input[blank]\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{input:blank\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Next, the Java\+Script library adds a {\ttfamily blank} attribute to elements otherwise matching {\ttfamily \+:blank} natively.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<input\ value="{}"{}\ blank>}
+\DoxyCodeLine{<input\ value="{}This\ element\ has\ a\ value"{}>}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7862}{}\doxysection{\texorpdfstring{⚠️ {\ttfamily \+:not(\+:blank)}}{⚠️ {\ttfamily \+:not(\+:blank)}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2css-blank-pseudo_2_r_e_a_d_m_e_autotoc_md7862}
+with option \+: {\ttfamily preserve} {\ttfamily true}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{input:not(:blank)\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ becomes\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{input:not([blank])\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{input:not(:blank)\ \{}
+\DoxyCodeLine{\ \ background-\/color:\ yellow;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+When you do not include the JS polyfill one will always match in browsers that support {\ttfamily \+:blank} natively. In browsers that do not support {\ttfamily \+:blank} natively the rule will be invalid.
+
+{\itshape currently no browsers support {\ttfamily \+:blank}} 

@@ -1,0 +1,73 @@
+\chapter{es-\/get-\/iterator \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/es-\/get-\/iterator"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/ljharb/es-\/get-\/iterator.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e}\index{es-\/get-\/iterator $<$sup$>$$<$a href="{}https://npmjs.org/package/es-\/get-\/iterator"{} $>$$<$img src="{}https://versionbadg.es/ljharb/es-\/get-\/iterator.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{es-\/get-\/iterator $<$sup$>$$<$a href=""https://npmjs.org/package/es-\/get-\/iterator"" $>$$<$img src=""https://versionbadg.es/ljharb/es-\/get-\/iterator.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9098}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9098}%
+ \href{https://david-dm.org/ljharb/es-get-iterator}{\texttt{ }} \href{https://david-dm.org/ljharb/es-get-iterator\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=es-get-iterator}{\texttt{ }}
+
+\href{https://npmjs.org/package/es-get-iterator}{\texttt{ }}
+
+Get an iterator for any JS language value. Works robustly across all environments, all versions.
+
+In modern engines, {\ttfamily value\mbox{[}Symbol.\+iterator\mbox{]}()} is sufficient to produce an iterator (an object with a {\ttfamily .next} method) for that object. However, older engines\+:
+\begin{DoxyItemize}
+\item may lack {\ttfamily Symbol} support altogether
+\item may have {\ttfamily Symbol.\+iterator} but not implement it on everything it should, like arguments objects
+\item may have {\ttfamily Map} and {\ttfamily Set}, but a non-\/standard name for the iterator-\/producing method ({\ttfamily .iterator} or `\mbox{[}'@iterator\textquotesingle{}\mbox{]}{\ttfamily , eg)}
+\item {\ttfamily may be old versions of Firefox that produce values until they throw a Stop\+Iteration exception, rather than having iteration result objects}
+\item {\ttfamily may be polyfilled/shimmed/shammed, with}es6-\/shim{\ttfamily or}core-\/js\`{} or similar
+\end{DoxyItemize}
+
+This library attempts to provide an abstraction over all that complexity!
+
+In node v13+, {\ttfamily exports} is used to provide a lean implementation that lacks all the complexity described above, in combination with the {\ttfamily browser} field so that bundlers will pick up the proper implementation.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9099}{}\doxysection{\texorpdfstring{Targeting browsers with Symbol support}{Targeting browsers with Symbol support}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9099}
+If you are targeting browsers that definitely all have Symbol support, then you can configure your bundler to replace `require(\textquotesingle{}has-\/symbols')(){\ttfamily with a literal}true\`{}, which should allow dead code elimination to reduce the size of the bundled code.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9100}{}\doxysubsection{\texorpdfstring{With {\ttfamily @rollup/plugin-\/replace}}{With {\ttfamily @rollup/plugin-\/replace}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9100}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ rollup.config.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ replace\ from\ '@rollup/plugin-\/replace';}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ \{}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{\ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ replace(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}require('has-\/symbols')()"{}:\ 'true',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ delimiters:\ ['',\ '']}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9101}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9101}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ getIterator\ =\ require('es-\/get-\/iterator');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ iterator\ =\ getIterator('a\ 💩');}
+\DoxyCodeLine{assert.deepEqual(}
+\DoxyCodeLine{\ \ \ \ [iterator.next(),\ iterator.next(),\ iterator.next(),\ iterator.next()],}
+\DoxyCodeLine{\ \ \ \ [\{\ done:\ false,\ value:\ 'a'\ \},\ \{\ done:\ false,\ value:\ '\ '\ \},\ \{\ done:\ false,\ value:\ '💩'\ \},\ \{\ done:\ true,\ value:\ undefined\ \}]}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ iterator\ =\ getIterator([1,\ 2]);}
+\DoxyCodeLine{assert.deepEqual(}
+\DoxyCodeLine{\ \ \ \ [iterator.next(),\ iterator.next(),\ iterator.next()],}
+\DoxyCodeLine{\ \ \ \ [\{\ done:\ false,\ value:\ 1\ \},\ \{\ done:\ false,\ value:\ 2\ \},\ \{\ done:\ true,\ value:\ undefined\ \}]}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ iterator\ =\ getIterator(new\ Set([1,\ 2]));}
+\DoxyCodeLine{assert.deepEqual(}
+\DoxyCodeLine{\ \ \ \ [iterator.next(),\ iterator.next(),\ iterator.next()],}
+\DoxyCodeLine{\ \ \ \ [\{\ done:\ false,\ value:\ 1\ \},\ \{\ done:\ false,\ value:\ 2\ \},\ \{\ done:\ true,\ value:\ undefined\ \}]}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ iterator\ =\ getIterator(new\ Map([[1,\ 2],\ [3,\ 4]]));}
+\DoxyCodeLine{assert.deepEqual(}
+\DoxyCodeLine{\ \ \ \ [iterator.next(),\ iterator.next(),\ iterator.next()],}
+\DoxyCodeLine{\ \ \ \ [\{\ done:\ false,\ value:\ [1,\ 2]\ \},\ \{\ done:\ false,\ value:\ [3,\ 4]\ \},\ \{\ done:\ true,\ value:\ undefined\ \}]}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9102}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2es-get-iterator_2_r_e_a_d_m_e_autotoc_md9102}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

@@ -1,0 +1,76 @@
+\chapter{Ensure promises that have expectations in their chain are valid (\texorpdfstring{$<$}{<}tt\texorpdfstring{$>$}{>}valid-\/expect-\/in-\/promise\texorpdfstring{$<$}{<}/tt\texorpdfstring{$>$}{>})}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise}\index{Ensure promises that have expectations in their chain are valid ($<$tt$>$valid-\/expect-\/in-\/promise$<$/tt$>$)@{Ensure promises that have expectations in their chain are valid ($<$tt$>$valid-\/expect-\/in-\/promise$<$/tt$>$)}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise_autotoc_md10497}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise_autotoc_md10497}%
+ Ensure promises that include expectations are returned or awaited.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise_autotoc_md10498}{}\doxysection{\texorpdfstring{Rule details}{Rule details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-jest_2docs_2rules_2valid-expect-in-promise_autotoc_md10498}
+This rule flags any promises within the body of a test that include expectations that have either not been returned or awaited.
+
+The following patterns is considered warning\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it('promises\ a\ person',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ api.getPersonByName('bob').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Bob');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('promises\ a\ counted\ person',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ promise\ =\ api.getPersonByName('bob').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Bob');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ promise.then(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(analytics.gottenPeopleCount).toBe(1);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('promises\ multiple\ people',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ firstPromise\ =\ api.getPersonByName('bob').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Bob');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ const\ secondPromise\ =\ api.getPersonByName('alice').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Alice');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ Promise.any([firstPromise,\ secondPromise]);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The following pattern is not warning\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{it('promises\ a\ person',\ async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ await\ api.getPersonByName('bob').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Bob');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('promises\ a\ counted\ person',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ let\ promise\ =\ api.getPersonByName('bob').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Bob');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ promise\ =\ promise.then(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(analytics.gottenPeopleCount).toBe(1);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ promise;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{it('promises\ multiple\ people',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ firstPromise\ =\ api.getPersonByName('bob').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Bob');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\ \ const\ secondPromise\ =\ api.getPersonByName('alice').then(person\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ expect(person).toHaveProperty('name',\ 'Alice');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ Promise.allSettled([firstPromise,\ secondPromise]);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

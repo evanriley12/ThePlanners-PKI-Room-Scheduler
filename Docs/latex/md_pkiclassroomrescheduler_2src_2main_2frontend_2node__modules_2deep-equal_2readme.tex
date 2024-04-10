@@ -1,0 +1,54 @@
+\chapter{deep-\/equal \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/deep-\/equal"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/inspect-\/js/deep-\/equal.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme}\index{deep-\/equal $<$sup$>$$<$a href="{}https://npmjs.org/package/deep-\/equal"{} $>$$<$img src="{}https://versionbadg.es/inspect-\/js/deep-\/equal.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{deep-\/equal $<$sup$>$$<$a href=""https://npmjs.org/package/deep-\/equal"" $>$$<$img src=""https://versionbadg.es/inspect-\/js/deep-\/equal.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8329}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8329}%
+ Node\textquotesingle{}s {\ttfamily assert.\+deep\+Equal() algorithm} as a standalone module, that also works in browser environments.
+
+It mirrors the robustness of node\textquotesingle{}s own {\ttfamily assert.\+deep\+Equal} and is robust against later builtin modification.
+
+\href{https://github.com/inspect-js/node-deep-equal/actions}{\texttt{ }} \href{https://app.codecov.io/gh/inspect-js/node-deep-equal/}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=deep-equal}{\texttt{ }}
+
+\href{https://npmjs.org/package/deep-equal}{\texttt{ }}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8330}{}\doxysection{\texorpdfstring{example}{example}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8330}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ equal\ =\ require('deep-\/equal');}
+\DoxyCodeLine{console.dir([}
+\DoxyCodeLine{\ \ \ \ equal(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ a\ :\ [\ 2,\ 3\ ],\ b\ :\ [\ 4\ ]\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ a\ :\ [\ 2,\ 3\ ],\ b\ :\ [\ 4\ ]\ \}}
+\DoxyCodeLine{\ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ equal(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ x\ :\ 5,\ y\ :\ [6]\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ x\ :\ 5,\ y\ :\ 6\ \}}
+\DoxyCodeLine{\ \ \ \ )}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8331}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8331}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ deepEqual\ =\ require('deep-\/equal')}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8332}{}\doxysubsection{\texorpdfstring{deep\+Equal(a, b, opts)}{deep\+Equal(a, b, opts)}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8332}
+Compare objects {\ttfamily a} and {\ttfamily b}, returning whether they are equal according to a recursive equality algorithm.
+
+If {\ttfamily opts.\+strict} is {\ttfamily true}, use strict equality ({\ttfamily ===}) to compare leaf nodes. The default is to use coercive equality ({\ttfamily ==}) because that\textquotesingle{}s how {\ttfamily assert.\+deep\+Equal()} works by default.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8333}{}\doxysection{\texorpdfstring{install}{install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8333}
+With \href{https://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ deep-\/equal}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8334}{}\doxysection{\texorpdfstring{test}{test}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2deep-equal_2readme_autotoc_md8334}
+With \href{https://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ test}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,74 @@
+\chapter{@svgr/plugin-\/jsx}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e}\index{"@svgr/plugin-\/jsx@{"@svgr/plugin-\/jsx}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2508}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2508}%
+ \href{https://travis-ci.org/smooth-code/svgr}{\texttt{ }} \href{https://www.npmjs.com/package/@svgr/plugin-jsx}{\texttt{ }} \href{https://github.com/smooth-code/svgr/blob/master/LICENSE}{\texttt{ }}
+
+Transforms SVG into JSX.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2509}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2509}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\  }
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ @svgr/plugin-\/jsx}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2510}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2510}
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}.svgrrc\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}plugins"{}:\ ["{}@svgr/plugin-\/jsx"{}]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2511}{}\doxysection{\texorpdfstring{How does it work?}{How does it work?}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2511}
+{\ttfamily @svgr/plugin-\/jsx} consists in three phases\+:
+
+
+\begin{DoxyItemize}
+\item Parsing the SVG code using \href{https://github.com/Rich-Harris/svg-parser}{\texttt{ svg-\/parser}}
+\item Converting the \href{https://github.com/syntax-tree/hast}{\texttt{ HAST}} into a \href{https://github.com/babel/babel/blob/master/packages/babel-parser/ast/spec.md}{\texttt{ Babel AST}}
+\item Applying \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-preset_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/preset}}{0} transformations
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2512}{}\doxysection{\texorpdfstring{Applying custom transformations}{Applying custom transformations}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2512}
+You can extend the Babel config applied in this plugin using {\ttfamily jsx.\+babel\+Config} config path\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ .svgrrc.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ jsx:\ \{}
+\DoxyCodeLine{\ \ \ \ babelConfig:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ plugins:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ For\ an\ example,\ this\ plugin\ will\ remove\ "{}id"{}\ attribute\ from\ "{}svg"{}\ tag}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ '@svgr/babel-\/plugin-\/remove-\/jsx-\/attribute',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ elements:\ ['svg'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ attributes:\ ['id'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Several Babel plugins are available\+:
+
+
+\begin{DoxyItemize}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-add-jsx-attribute_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/add-\/jsx-\/attribute}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-remove-jsx-attribute_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/remove-\/jsx-\/attribute}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-remove-jsx-empty-expression_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/remove-\/jsx-\/empty-\/expression}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-replace-jsx-attribute-value_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/replace-\/jsx-\/attribute-\/value}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-svg-dynamic-title_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/svg-\/dynamic-\/title}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-svg-em-dimensions_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/svg-\/em-\/dimensions}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-transform-react-native-svg_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/transform-\/react-\/native-\/svg}}{0}
+\item \doxysectlink{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2babel-plugin-transform-svg-component_2_r_e_a_d_m_e}{{\ttfamily @svgr/babel-\/plugin-\/transform-\/svg-\/component}}{0}
+\end{DoxyItemize}
+
+If you want to create your own, reading \href{https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md}{\texttt{ Babel Handbook}} is a good start!\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2513}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2_0dsvgr_2plugin-jsx_2_r_e_a_d_m_e_autotoc_md2513}
+MIT 

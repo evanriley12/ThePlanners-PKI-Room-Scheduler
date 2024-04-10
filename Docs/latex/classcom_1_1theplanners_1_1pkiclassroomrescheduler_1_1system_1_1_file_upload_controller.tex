@@ -1,0 +1,68 @@
+\doxysection{com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+File\+Upload\+Controller Class Reference}
+\hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller}{}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller}\index{com.theplanners.pkiclassroomrescheduler.system.FileUploadController@{com.theplanners.pkiclassroomrescheduler.system.FileUploadController}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller_aae77f658a6e790e4a43bba88b06eb5a9}{File\+Upload\+Controller}} (\mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_schedule}{Schedule}} schedule, \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list}{Classroom\+List}} classroom\+List)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_section}{Section}} $>$ \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller_a01cf13fd0a6ae4f5d1090c931eb0df20}{upload\+File}} (@Request\+Param("{}file"{}) Multipart\+File file)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File\+Upload controller hosts and endpoint at /api/upload that allows the upload of a csv file containing the current course assignment information. The uploaded csv then gets parsed and saved as a Schedule
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_schedule}{com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Schedule} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller_aae77f658a6e790e4a43bba88b06eb5a9}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller_aae77f658a6e790e4a43bba88b06eb5a9} 
+\index{com.theplanners.pkiclassroomrescheduler.system.FileUploadController@{com.theplanners.pkiclassroomrescheduler.system.FileUploadController}!FileUploadController@{FileUploadController}}
+\index{FileUploadController@{FileUploadController}!com.theplanners.pkiclassroomrescheduler.system.FileUploadController@{com.theplanners.pkiclassroomrescheduler.system.FileUploadController}}
+\doxysubsubsection{\texorpdfstring{FileUploadController()}{FileUploadController()}}
+{\footnotesize\ttfamily com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+File\+Upload\+Controller.\+File\+Upload\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_schedule}{Schedule}}}]{schedule,  }\item[{\mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list}{Classroom\+List}}}]{classroom\+List }\end{DoxyParamCaption})}
+
+Constructs a new File\+Upload\+Controller with the provided Schedule and Classroom\+List instances. Uses injection to share across components
+
+
+\begin{DoxyParams}{Parameters}
+{\em schedule} & The Schedule instance to use for managing course assignments. \\
+\hline
+{\em classroom\+List} & The Classroom\+List instance to use for managing classroom information. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller_a01cf13fd0a6ae4f5d1090c931eb0df20}\label{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller_a01cf13fd0a6ae4f5d1090c931eb0df20} 
+\index{com.theplanners.pkiclassroomrescheduler.system.FileUploadController@{com.theplanners.pkiclassroomrescheduler.system.FileUploadController}!uploadFile@{uploadFile}}
+\index{uploadFile@{uploadFile}!com.theplanners.pkiclassroomrescheduler.system.FileUploadController@{com.theplanners.pkiclassroomrescheduler.system.FileUploadController}}
+\doxysubsubsection{\texorpdfstring{uploadFile()}{uploadFile()}}
+{\footnotesize\ttfamily Array\+List$<$ \mbox{\hyperlink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_section}{Section}} $>$ com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+File\+Upload\+Controller.\+upload\+File (\begin{DoxyParamCaption}\item[{@Request\+Param("{}file"{}) Multipart\+File}]{file }\end{DoxyParamCaption})}
+
+Takes an uploaded csv file and reads each line, if it is a new section, which is determined by a blank first cell, then a new section instance is created and added to the schedule. Also reads classroom list at the time of upload.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & csv file that is uploaded through the /api/upload endpoint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the schedule generated from the csv
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_schedule}{com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Schedule} 
+
+\doxylink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_section}{com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Section} 
+
+\doxylink{classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter}{com.\+theplanners.\+pkiclassroomrescheduler.\+system.\+Meeting\+Time\+Converter} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 0
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pkiclassroomrescheduler/src/main/java/com/theplanners/pkiclassroomrescheduler/system/File\+Upload\+Controller.\+java\end{DoxyCompactItemize}

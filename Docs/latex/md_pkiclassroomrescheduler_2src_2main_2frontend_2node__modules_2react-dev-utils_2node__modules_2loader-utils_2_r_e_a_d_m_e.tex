@@ -1,0 +1,183 @@
+\chapter{loader-\/utils}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e}\index{loader-\/utils@{loader-\/utils}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20293}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20293}%
+ \hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20294}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20294}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20295}{}\doxysubsection{\texorpdfstring{{\ttfamily url\+To\+Request}}{{\ttfamily url\+To\+Request}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20295}
+Converts some resource URL to a webpack module request.
+
+\begin{quote}
+i Before call {\ttfamily url\+To\+Request} you need call {\ttfamily is\+Url\+Request} to ensure it is requestable url \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ url\ =\ "{}path/to/module.js"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (loaderUtils.isUrlRequest(url))\ \{}
+\DoxyCodeLine{\ \ //\ Logic\ for\ requestable\ url}
+\DoxyCodeLine{\ \ const\ request\ =\ loaderUtils.urlToRequest(url);}
+\DoxyCodeLine{\}\ else\ \{}
+\DoxyCodeLine{\ \ //\ Logic\ for\ not\ requestable\ url}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Simple example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ url\ =\ "{}path/to/module.js"{};}
+\DoxyCodeLine{const\ request\ =\ loaderUtils.urlToRequest(url);\ //\ "{}./path/to/module.js"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20296}{}\doxysubsubsection{\texorpdfstring{Module URLs}{Module URLs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20296}
+Any URL containing a {\ttfamily \texorpdfstring{$\sim$}{\string~}} will be interpreted as a module request. Anything after the {\ttfamily \texorpdfstring{$\sim$}{\string~}} will be considered the request path.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ url\ =\ "{}\string~path/to/module.js"{};}
+\DoxyCodeLine{const\ request\ =\ loaderUtils.urlToRequest(url);\ //\ "{}path/to/module.js"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20297}{}\doxysubsubsection{\texorpdfstring{Root-\/relative URLs}{Root-\/relative URLs}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20297}
+URLs that are root-\/relative (start with {\ttfamily /}) can be resolved relative to some arbitrary path by using the {\ttfamily root} parameter\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ url\ =\ "{}/path/to/module.js"{};}
+\DoxyCodeLine{const\ root\ =\ "{}./root"{};}
+\DoxyCodeLine{const\ request\ =\ loaderUtils.urlToRequest(url,\ root);\ //\ "{}./root/path/to/module.js"{}}
+
+\end{DoxyCode}
+
+
+To convert a root-\/relative URL into a module URL, specify a {\ttfamily root} value that starts with {\ttfamily \texorpdfstring{$\sim$}{\string~}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ url\ =\ "{}/path/to/module.js"{};}
+\DoxyCodeLine{const\ root\ =\ "{}\string~"{};}
+\DoxyCodeLine{const\ request\ =\ loaderUtils.urlToRequest(url,\ root);\ //\ "{}path/to/module.js"{}}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20298}{}\doxysubsection{\texorpdfstring{{\ttfamily interpolate\+Name}}{{\ttfamily interpolate\+Name}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20298}
+Interpolates a filename template using multiple placeholders and/or a regular expression. The template and regular expression are set as query params called {\ttfamily name} and {\ttfamily reg\+Exp} on the current loader\textquotesingle{}s context.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ interpolatedName\ =\ loaderUtils.interpolateName(}
+\DoxyCodeLine{\ \ loaderContext,}
+\DoxyCodeLine{\ \ name,}
+\DoxyCodeLine{\ \ options}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+The following tokens are replaced in the {\ttfamily name} parameter\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}ext\mbox{]}} the extension of the resource
+\item {\ttfamily \mbox{[}name\mbox{]}} the basename of the resource
+\item {\ttfamily \mbox{[}path\mbox{]}} the path of the resource relative to the {\ttfamily context} query parameter or option.
+\item {\ttfamily \mbox{[}folder\mbox{]}} the folder the resource is in
+\item {\ttfamily \mbox{[}query\mbox{]}} the queryof the resource, i.\+e. {\ttfamily ?foo=bar}
+\item {\ttfamily \mbox{[}contenthash\mbox{]}} the hash of {\ttfamily options.\+content} (Buffer) (by default it\textquotesingle{}s the hex digest of the {\ttfamily xxhash64} hash)
+\item {\ttfamily \mbox{[}\texorpdfstring{$<$}{<}hash\+Type\texorpdfstring{$>$}{>}\+:contenthash\+:\texorpdfstring{$<$}{<}digest\+Type\texorpdfstring{$>$}{>}\+:\texorpdfstring{$<$}{<}length\texorpdfstring{$>$}{>}\mbox{]}} optionally one can configure
+\begin{DoxyItemize}
+\item other {\ttfamily hash\+Type}s, i. e. {\ttfamily xxhash64}, {\ttfamily sha1}, {\ttfamily md4} (wasm version), {\ttfamily native-\/md4} ({\ttfamily crypto} module version), {\ttfamily md5}, {\ttfamily sha256}, {\ttfamily sha512}
+\item other {\ttfamily digest\+Type}s, i. e. {\ttfamily hex}, {\ttfamily base26}, {\ttfamily base32}, {\ttfamily base36}, {\ttfamily base49}, {\ttfamily base52}, {\ttfamily base58}, {\ttfamily base62}, {\ttfamily base64}
+\item and {\ttfamily length} the length in chars
+\end{DoxyItemize}
+\item {\ttfamily \mbox{[}hash\mbox{]}} the hash of {\ttfamily options.\+content} (Buffer) (by default it\textquotesingle{}s the hex digest of the {\ttfamily xxhash64} hash)
+\item {\ttfamily \mbox{[}\texorpdfstring{$<$}{<}hash\+Type\texorpdfstring{$>$}{>}\+:hash\+:\texorpdfstring{$<$}{<}digest\+Type\texorpdfstring{$>$}{>}\+:\texorpdfstring{$<$}{<}length\texorpdfstring{$>$}{>}\mbox{]}} optionally one can configure
+\begin{DoxyItemize}
+\item other {\ttfamily hash\+Type}s, i. e. {\ttfamily xxhash64}, {\ttfamily sha1}, {\ttfamily md4} (wasm version), {\ttfamily native-\/md4} ({\ttfamily crypto} module version), {\ttfamily md5}, {\ttfamily sha256}, {\ttfamily sha512}
+\item other {\ttfamily digest\+Type}s, i. e. {\ttfamily hex}, {\ttfamily base26}, {\ttfamily base32}, {\ttfamily base36}, {\ttfamily base49}, {\ttfamily base52}, {\ttfamily base58}, {\ttfamily base62}, {\ttfamily base64}
+\item and {\ttfamily length} the length in chars
+\end{DoxyItemize}
+\item {\ttfamily \mbox{[}N\mbox{]}} the N-\/th match obtained from matching the current file name against {\ttfamily options.\+reg\+Exp}
+\end{DoxyItemize}
+
+In loader context {\ttfamily \mbox{[}hash\mbox{]}} and {\ttfamily \mbox{[}contenthash\mbox{]}} are the same, but we recommend using {\ttfamily \mbox{[}contenthash\mbox{]}} for avoid misleading.
+
+Examples
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/js/javascript.js"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}js/[hash].script.[ext]"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ js/9473fdd0d880a43c21b7778d34872157.script.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/js/javascript.js"{}}
+\DoxyCodeLine{//\ loaderContext.resourceQuery\ =\ "{}?foo=bar"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}js/[hash].script.[ext][query]"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ js/9473fdd0d880a43c21b7778d34872157.script.js?foo=bar}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/js/javascript.js"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}js/[contenthash].script.[ext]"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ js/9473fdd0d880a43c21b7778d34872157.script.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/page.html"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}html-\/[hash:6].html"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ html-\/9473fd.html}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/flash.txt"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}[hash]"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ c31e9820c001c9c4a86bce33ce43b679}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/img/image.png"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}[sha512:hash:base64:7].[ext]"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ 2BKDTjl.png}
+\DoxyCodeLine{//\ use\ sha512\ hash\ instead\ of\ xxhash64\ and\ with\ only\ 7\ chars\ of\ base64}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/img/myself.png"{}}
+\DoxyCodeLine{//\ loaderContext.query.name\ =}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}picture.png"{});}
+\DoxyCodeLine{//\ =>\ picture.png}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/dir/file.png"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}[path][name].[ext]?[hash]"{},\ \{\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ /app/dir/file.png?9473fdd0d880a43c21b7778d34872157}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/js/page-\/home.js"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(loaderContext,\ "{}script-\/[1].[ext]"{},\ \{\ regExp:\ "{}page-\/(.*)\(\backslash\)\(\backslash\).js"{},\ content:\ ...\ \});}
+\DoxyCodeLine{//\ =>\ script-\/home.js}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ loaderContext.resourcePath\ =\ "{}/absolute/path/to/app/js/javascript.js"{}}
+\DoxyCodeLine{//\ loaderContext.resourceQuery\ =\ "{}?foo=bar"{}}
+\DoxyCodeLine{loaderUtils.interpolateName(}
+\DoxyCodeLine{\ \ loaderContext,}
+\DoxyCodeLine{\ \ (resourcePath,\ resourceQuery)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ resourcePath\ -\/\ \`{}/app/js/javascript.js`}
+\DoxyCodeLine{\ \ \ \ //\ resourceQuery\ -\/\ \`{}?foo=bar`}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ return\ "{}js/[hash].script.[ext]"{};}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ \{\ content:\ ...\ \}}
+\DoxyCodeLine{);}
+\DoxyCodeLine{//\ =>\ js/9473fdd0d880a43c21b7778d34872157.script.js}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20299}{}\doxysubsection{\texorpdfstring{{\ttfamily get\+Hash\+Digest}}{{\ttfamily get\+Hash\+Digest}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20299}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ digestString\ =\ loaderUtils.getHashDigest(}
+\DoxyCodeLine{\ \ buffer,}
+\DoxyCodeLine{\ \ hashType,}
+\DoxyCodeLine{\ \ digestType,}
+\DoxyCodeLine{\ \ maxLength}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily buffer} the content that should be hashed
+\item {\ttfamily hash\+Type} one of {\ttfamily xxhash64}, {\ttfamily sha1}, {\ttfamily md4}, {\ttfamily md5}, {\ttfamily sha256}, {\ttfamily sha512} or any other node.\+js supported hash type
+\item {\ttfamily digest\+Type} one of {\ttfamily hex}, {\ttfamily base26}, {\ttfamily base32}, {\ttfamily base36}, {\ttfamily base49}, {\ttfamily base52}, {\ttfamily base58}, {\ttfamily base62}, {\ttfamily base64}
+\item {\ttfamily max\+Length} the maximum length in chars
+\end{DoxyItemize}\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20300}{}\doxysection{\texorpdfstring{License}{License}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2react-dev-utils_2node__modules_2loader-utils_2_r_e_a_d_m_e_autotoc_md20300}
+MIT (\href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ http\+://www.\+opensource.\+org/licenses/mit-\/license.\+php}}) 

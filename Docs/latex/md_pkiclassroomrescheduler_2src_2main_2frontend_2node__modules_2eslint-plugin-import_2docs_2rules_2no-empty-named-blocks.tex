@@ -1,0 +1,60 @@
+\chapter{import/no-\/empty-\/named-\/blocks}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks}\index{import/no-\/empty-\/named-\/blocks@{import/no-\/empty-\/named-\/blocks}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9945}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9945}%
+ 🔧💡 This rule is automatically fixable by the \href{https://eslint.org/docs/latest/user-guide/command-line-interface\#--fix}{\texttt{ {\ttfamily -\/-\/fix} CLI option}} and manually fixable by \href{https://eslint.org/docs/developer-guide/working-with-rules\#providing-suggestions}{\texttt{ editor suggestions}}.
+
+Reports the use of empty named import blocks.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9946}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9946}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9947}{}\doxysubsection{\texorpdfstring{Valid}{Valid}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9947}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ mod\ \}\ from\ 'mod'}
+\DoxyCodeLine{import\ Default,\ \{\ mod\ \}\ from\ 'mod'}
+
+\end{DoxyCode}
+
+
+When using typescript
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ type\ \{\ mod\ \}\ from\ 'mod'}
+
+\end{DoxyCode}
+
+
+When using flow
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ typeof\ \{\ mod\ \}\ from\ 'mod'}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9948}{}\doxysubsection{\texorpdfstring{Invalid}{Invalid}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-empty-named-blocks_autotoc_md9948}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\}\ from\ 'mod'}
+\DoxyCodeLine{import\ Default,\ \{\}\ from\ 'mod'}
+
+\end{DoxyCode}
+
+
+When using typescript
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ type\ Default,\ \{\}\ from\ 'mod'}
+\DoxyCodeLine{import\ type\ \{\}\ from\ 'mod'}
+
+\end{DoxyCode}
+
+
+When using flow
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ typeof\ \{\}\ from\ 'mod'}
+\DoxyCodeLine{import\ typeof\ Default,\ \{\}\ from\ 'mod'}
+
+\end{DoxyCode}
+ 

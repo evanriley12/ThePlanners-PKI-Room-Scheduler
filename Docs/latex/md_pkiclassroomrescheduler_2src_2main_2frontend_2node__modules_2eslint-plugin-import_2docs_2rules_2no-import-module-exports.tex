@@ -1,0 +1,81 @@
+\chapter{import/no-\/import-\/module-\/exports}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports}\index{import/no-\/import-\/module-\/exports@{import/no-\/import-\/module-\/exports}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9955}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9955}%
+ 🔧 This rule is automatically fixable by the \href{https://eslint.org/docs/latest/user-guide/command-line-interface\#--fix}{\texttt{ {\ttfamily -\/-\/fix} CLI option}}.
+
+Reports the use of import declarations with Common\+JS exports in any module except for the \href{https://docs.npmjs.com/files/package.json\#main}{\texttt{ main module}}.
+
+If you have multiple entry points or are using {\ttfamily js\+:next} this rule includes an {\ttfamily exceptions} option which you can use to exclude those files from the rule.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9956}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9956}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9957}{}\doxysubsection{\texorpdfstring{{\ttfamily exceptions}}{{\ttfamily exceptions}}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9957}
+
+\begin{DoxyItemize}
+\item An array of globs. The rule will be omitted from any file that matches a glob in the options array. For example, the following setting will omit the rule in the {\ttfamily some-\/file.\+js} file.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}import/no-\/import-\/module-\/exports"{}:\ ["{}error"{},\ \{}
+\DoxyCodeLine{\ \ \ \ "{}exceptions"{}:\ ["{}**/*/some-\/file.js"{}]}
+\DoxyCodeLine{\}]}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9958}{}\doxysection{\texorpdfstring{Rule Details}{Rule Details}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9958}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9959}{}\doxysubsection{\texorpdfstring{Fail}{Fail}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9959}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ stuff\ \}\ from\ 'starwars'}
+\DoxyCodeLine{module.exports\ =\ thing}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ *\ as\ allThings\ from\ 'starwars'}
+\DoxyCodeLine{exports.bar\ =\ thing}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ thing\ from\ 'other-\/thing'}
+\DoxyCodeLine{exports.foo\ =\ bar}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ thing\ from\ 'starwars'}
+\DoxyCodeLine{const\ baz\ =\ module.exports\ =\ thing}
+\DoxyCodeLine{console.log(baz)}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9960}{}\doxysubsection{\texorpdfstring{Pass}{Pass}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9960}
+Given the following package.\+json\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}main"{}:\ "{}lib/index.js"{},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ thing\ from\ 'other-\/thing'}
+\DoxyCodeLine{export\ default\ thing}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ thing\ =\ require('thing')}
+\DoxyCodeLine{module.exports\ =\ thing}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ thing\ =\ require('thing')}
+\DoxyCodeLine{exports.foo\ =\ bar}
+\DoxyCodeLine{}
+\DoxyCodeLine{import\ thing\ from\ 'otherthing'}
+\DoxyCodeLine{console.log(thing.module.exports)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ in\ lib/index.js}
+\DoxyCodeLine{import\ foo\ from\ 'path';}
+\DoxyCodeLine{module.exports\ =\ foo;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ in\ some-\/file.js}
+\DoxyCodeLine{//\ eslint\ import/no-\/import-\/module-\/exports:\ ["{}error"{},\ \{"{}exceptions"{}:\ ["{}**/*/some-\/file.js"{}]\}]}
+\DoxyCodeLine{import\ foo\ from\ 'path';}
+\DoxyCodeLine{module.exports\ =\ foo;}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9961}{}\doxysubsection{\texorpdfstring{Further Reading}{Further Reading}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2eslint-plugin-import_2docs_2rules_2no-import-module-exports_autotoc_md9961}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/webpack/webpack/issues/4039}{\texttt{ webpack issue \#4039}} 
+\end{DoxyItemize}

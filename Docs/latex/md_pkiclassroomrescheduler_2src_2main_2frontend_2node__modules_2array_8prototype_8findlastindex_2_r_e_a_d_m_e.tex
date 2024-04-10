@@ -1,0 +1,59 @@
+\chapter{array.\+prototype.\+findlastindex \texorpdfstring{$<$}{<}sup\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/array.\+prototype.\+findlastindex"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://versionbadg.\+es/es-\/shims/\+Array.\+prototype.\+find\+Last\+Index.\+svg"{} alt="{}\+Version Badge"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/sup\texorpdfstring{$>$}{>}}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e}\index{array.prototype.findlastindex $<$sup$>$$<$a href="{}https://npmjs.org/package/array.prototype.findlastindex"{} $>$$<$img src="{}https://versionbadg.es/es-\/shims/Array.prototype.findLastIndex.svg"{} alt="{}Version Badge"{}/$>$$<$/a$>$$<$/sup$>$@{array.prototype.findlastindex $<$sup$>$$<$a href=""https://npmjs.org/package/array.prototype.findlastindex"" $>$$<$img src=""https://versionbadg.es/es-\/shims/Array.prototype.findLastIndex.svg"" alt=""Version Badge""/$>$$<$/a$>$$<$/sup$>$}}
+\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5267}%
+\Hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5267}%
+ \href{https://github.com/es-shims/Array.prototype.findLastIndex}{\texttt{ }} \href{https://app.codecov.io/gh/es-shims/Array.prototype.findLastIndex/}{\texttt{ }} \href{https://david-dm.org/es-shims/Array.prototype.findLastIndex}{\texttt{ }} \href{https://david-dm.org/es-shims/Array.prototype.findLastIndex\#info=devDependencies}{\texttt{ }} \mbox{[}\mbox{]}\mbox{[}license-\/url\mbox{]} \href{https://npm-stat.com/charts.html?package=array.prototype.findlastindex}{\texttt{ }}
+
+\href{https://npmjs.org/package/array.prototype.findlastindex}{\texttt{ }}
+
+An ESnext spec-\/compliant {\ttfamily Array.\+prototype.\+find\+Last\+Index} shim/polyfill/replacement that works as far down as ES3.
+
+This package implements the \href{https://github.com/es-shims/api}{\texttt{ es-\/shim API}} interface. It works in an ES3-\/supported environment and complies with the proposed \href{https://tc39.es/proposal-array-find-from-last}{\texttt{ spec}}.
+
+Because {\ttfamily Array.\+prototype.\+find\+Last\+Index} depends on a receiver (the {\ttfamily this} value), the main export takes the array to operate on as the first argument.\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5268}{}\doxysection{\texorpdfstring{Getting started}{Getting started}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5268}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ array.prototype.findlastindex}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5269}{}\doxysection{\texorpdfstring{Usage/\+Examples}{Usage/\+Examples}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5269}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ findLastIndex\ =\ require('array.prototype.findlastindex');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ arr\ =\ [1,\ [2],\ [],\ 3,\ [[4]]];}
+\DoxyCodeLine{var\ isNumber\ =\ function\ (x)\ \{\ return\ typeof\ x\ ===\ 'number'\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.deepEqual(findLastIndex(arr,\ isNumber),\ 3);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ findLastIndex\ =\ require('array.prototype.findlastindex');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{/*\ when\ Array\#findLastIndex\ is\ not\ present\ */}
+\DoxyCodeLine{delete\ Array.prototype.findLastIndex;}
+\DoxyCodeLine{var\ shimmed\ =\ findLastIndex.shim();}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.equal(shimmed,\ findLastIndex.getPolyfill());}
+\DoxyCodeLine{assert.deepEqual(arr.findLastIndex(isNumber),\ findLastIndex(arr,\ isNumber));}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ findLastIndex\ =\ require('array.prototype.findlastindex');}
+\DoxyCodeLine{var\ assert\ =\ require('assert');}
+\DoxyCodeLine{/*\ when\ Array\#findLastIndex\ is\ present\ */}
+\DoxyCodeLine{var\ shimmed\ =\ findLastIndex.shim();}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.equal(shimmed,\ Array.prototype.findLastIndex);}
+\DoxyCodeLine{assert.deepEqual(arr.findLastIndex(isNumber),\ findLastIndex(arr,\ isNumber));}
+
+\end{DoxyCode}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5270}{}\doxysection{\texorpdfstring{Tests}{Tests}}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2array_8prototype_8findlastindex_2_r_e_a_d_m_e_autotoc_md5270}
+Simply clone the repo, {\ttfamily npm install}, and run {\ttfamily npm test} 

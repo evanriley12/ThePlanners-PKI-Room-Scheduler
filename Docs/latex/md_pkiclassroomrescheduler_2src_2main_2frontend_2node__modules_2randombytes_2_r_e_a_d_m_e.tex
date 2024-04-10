@@ -1,0 +1,16 @@
+\chapter{randombytes}
+\hypertarget{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2randombytes_2_r_e_a_d_m_e}{}\label{md_pkiclassroomrescheduler_2src_2main_2frontend_2node__modules_2randombytes_2_r_e_a_d_m_e}\index{randombytes@{randombytes}}
+\href{https://www.npmjs.org/package/randombytes}{\texttt{ }} \href{https://travis-ci.org/crypto-browserify/randombytes}{\texttt{ }}
+
+randombytes from node that works in the browser. In node you just get crypto.\+random\+Bytes, but in the browser it uses .crypto/ms\+Crypto.\+get\+Random\+Values
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ randomBytes\ =\ require('randombytes');}
+\DoxyCodeLine{randomBytes(16);//get\ 16\ random\ bytes}
+\DoxyCodeLine{randomBytes(16,\ function\ (err,\ resp)\ \{}
+\DoxyCodeLine{\ \ //\ resp\ is\ 16\ random\ bytes}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

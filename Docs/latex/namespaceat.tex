@@ -1,0 +1,911 @@
+\doxysection{at Namespace Reference}
+\hypertarget{namespaceat}{}\label{namespaceat}\index{at@{at}}
+
+
+\doxysubsection{Detailed Description}
+rules;
+\begin{DoxyItemize}
+\item the \href{https://clean-css.github.io/}{\texttt{ web interface}} gets an improved settings panel with "{}reset to defaults"{}, instant option changes, and settings being persisted across sessions.
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6905}{}\doxysubsubsection{\texorpdfstring{Important\+: 4.\+0 breaking changes}{Important\+: 4.\+0 breaking changes}}\label{namespaceat_autotoc_md6905}
+clean-\/css 4.\+0 introduces some breaking changes\+:
+
+
+\begin{DoxyItemize}
+\item API and CLI interfaces are split, so API stays in this repository while CLI moves to \href{https://github.com/clean-css/clean-css-cli}{\texttt{ clean-\/css-\/cli}};
+\item {\ttfamily root}, {\ttfamily relative\+To}, and {\ttfamily target} options are replaced by a single {\ttfamily rebase\+To} option -\/ this means that rebasing URLs and import inlining is much simpler but may not be (YMMV) as powerful as in 3.\+x;
+\item {\ttfamily debug} option is gone as stats are always provided in output object under {\ttfamily stats} property;
+\item {\ttfamily rounding\+Precision} is disabled by default;
+\item {\ttfamily rounding\+Precision} applies to {\bfseries{all}} units now, not only {\ttfamily px} as in 3.\+x;
+\item {\ttfamily process\+Import} and {\ttfamily process\+Import\+From} are merged into {\ttfamily inline} option which defaults to {\ttfamily local}. Remote {\ttfamily @import} rules are {\bfseries{NOT}} inlined by default anymore;
+\item splits {\ttfamily inliner\+: \{ request\+: ..., timeout\+: ... \}} option into {\ttfamily inline\+Request} and {\ttfamily inline\+Timeout} options;
+\item remote resources without a protocol, e.\+g. {\ttfamily //fonts.googleapis.\+com/css?family=Domine\+:700}, are not inlined anymore;
+\item changes default Internet Explorer compatibility from 9+ to 10+, to revert the old default use `\{ compatibility\+: \textquotesingle{}ie9' \}{\ttfamily flag;}
+\item {\ttfamily renames}keep\+Special\+Comments{\ttfamily to}special\+Comments{\ttfamily ;}
+\item {\ttfamily moves}rounding\+Precision{\ttfamily and}special\+Comments{\ttfamily to level 1 optimizations options, see examples;}
+\item {\ttfamily moves}media\+Merging{\ttfamily ,}restructuring{\ttfamily ,}semantic\+Merging{\ttfamily , and}shorthand\+Compacting{\ttfamily to level 2 optimizations options, see examples below;}
+\item {\ttfamily renames}shorthand\+Compacting{\ttfamily option to}merge\+Into\+Shorthands{\ttfamily ;}
+\item {\ttfamily level 1 optimizations are the new default, up to 3.\+x it was level 2; \texorpdfstring{$\ast$}{*}}keep\+Breaks{\ttfamily option is replaced with}\{ format\+: \textquotesingle{}keep-\/breaks\textquotesingle{} \}{\ttfamily to ease transition; \texorpdfstring{$\ast$}{*}}source\+Map{\ttfamily option has to be a boolean from now on -\/ to specify an input source map pass it a 2nd argument to}minify{\ttfamily method or via a hash instead; \texorpdfstring{$\ast$}{*}}aggressive\+Merging\`{} option is removed as aggressive merging is replaced by smarter override merging.
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6906}{}\doxysubsubsection{\texorpdfstring{Constructor options}{Constructor options}}\label{namespaceat_autotoc_md6906}
+clean-\/css constructor accepts a hash as a parameter with the following options available\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily compatibility} -\/ controls compatibility mode used; defaults to {\ttfamily ie10+}; see compatibility modes for examples;
+\item {\ttfamily fetch} -\/ controls a function for handling remote requests; see fetch option for examples (since 4.\+1.\+0);
+\item {\ttfamily format} -\/ controls output CSS formatting; defaults to {\ttfamily false}; see formatting options for examples;
+\item {\ttfamily inline} -\/ controls {\ttfamily @import} inlining rules; defaults to `\textquotesingle{}local'{\ttfamily ; see \mbox{[}inlining options\mbox{]}(\#inlining-\/options) for examples; \texorpdfstring{$\ast$}{*}}inline\+Request{\ttfamily -\/ controls extra options for inlining remote}@import{\ttfamily rules, can be any of \mbox{[}HTTP(\+S) request options\mbox{]}(\href{https://nodejs.org/api/http.html}{\texttt{ https\+://nodejs.\+org/api/http.\+html}}\#http\+\_\+http\+\_\+request\+\_\+options\+\_\+callback); \texorpdfstring{$\ast$}{*}}inline\+Timeout{\ttfamily -\/ controls number of milliseconds after which inlining a remote}@import{\ttfamily fails; defaults to 5000; \texorpdfstring{$\ast$}{*}}level{\ttfamily -\/ controls optimization level used; defaults to}1{\ttfamily ; see \mbox{[}optimization levels\mbox{]}(\#optimization-\/levels) for examples; \texorpdfstring{$\ast$}{*}}rebase{\ttfamily -\/ controls URL rebasing; defaults to}false{\ttfamily ; \texorpdfstring{$\ast$}{*}}rebase\+To{\ttfamily -\/ controls a directory to which all URLs are rebased, most likely the directory under which the output file will live; defaults to the current directory; \texorpdfstring{$\ast$}{*}}return\+Promise{\ttfamily -\/ controls whether}minify{\ttfamily method returns a Promise object or not; defaults to}false{\ttfamily ; see \mbox{[}promise interface\mbox{]}(\#promise-\/interface) for examples; \texorpdfstring{$\ast$}{*}}source\+Map{\ttfamily -\/ controls whether an output source map is built; defaults to}false{\ttfamily ; \texorpdfstring{$\ast$}{*}}source\+Map\+Inline\+Sources{\ttfamily -\/ controls embedding sources inside a source map\textquotesingle{}s}sources\+Content\`{} field; defaults to false.
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6907}{}\doxysubsubsection{\texorpdfstring{Compatibility modes}{Compatibility modes}}\label{namespaceat_autotoc_md6907}
+There is a certain number of compatibility mode shortcuts, namely\+:
+
+
+\begin{DoxyItemize}
+\item `new Clean\+CSS(\{ compatibility\+: '\texorpdfstring{$\ast$}{*}\textquotesingle{} \}){\ttfamily (default) -\/ Internet Explorer 10+ compatibility mode \texorpdfstring{$\ast$}{*}}new Clean\+CSS(\{ compatibility\+: \textquotesingle{}ie9\textquotesingle{} \}){\ttfamily -\/ Internet Explorer 9+ compatibility mode \texorpdfstring{$\ast$}{*}}new Clean\+CSS(\{ compatibility\+: \textquotesingle{}ie8\textquotesingle{} \}){\ttfamily -\/ Internet Explorer 8+ compatibility mode \texorpdfstring{$\ast$}{*}}new Clean\+CSS(\{ compatibility\+: \textquotesingle{}ie7\textquotesingle{} \})\`{} -\/ Internet Explorer 7+ compatibility mode
+\end{DoxyItemize}
+
+Each of these modes is an alias to a \href{https://github.com/clean-css/clean-css/blob/master/lib/options/compatibility.js}{\texttt{ fine grained configuration}}, with the following options available\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ compatibility:\ \{}
+\DoxyCodeLine{\ \ \ \ colors:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ hexAlpha:\ false,\ //\ controls\ 4-\/\ and\ 8-\/character\ hex\ color\ support}
+\DoxyCodeLine{\ \ \ \ \ \ opacity:\ true\ //\ controls\ \`{}rgba()`\ /\ \`{}hsla()`\ color\ support}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ properties:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ backgroundClipMerging:\ true,\ //\ controls\ background-\/clip\ merging\ into\ shorthand}
+\DoxyCodeLine{\ \ \ \ \ \ backgroundOriginMerging:\ true,\ //\ controls\ background-\/origin\ merging\ into\ shorthand}
+\DoxyCodeLine{\ \ \ \ \ \ backgroundSizeMerging:\ true,\ //\ controls\ background-\/size\ merging\ into\ shorthand}
+\DoxyCodeLine{\ \ \ \ \ \ colors:\ true,\ //\ controls\ color\ optimizations}
+\DoxyCodeLine{\ \ \ \ \ \ ieBangHack:\ false,\ //\ controls\ keeping\ IE\ bang\ hack}
+\DoxyCodeLine{\ \ \ \ \ \ ieFilters:\ false,\ //\ controls\ keeping\ IE\ \`{}filter`\ /\ \`{}-\/ms-\/filter`}
+\DoxyCodeLine{\ \ \ \ \ \ iePrefixHack:\ false,\ //\ controls\ keeping\ IE\ prefix\ hack}
+\DoxyCodeLine{\ \ \ \ \ \ ieSuffixHack:\ false,\ //\ controls\ keeping\ IE\ suffix\ hack}
+\DoxyCodeLine{\ \ \ \ \ \ merging:\ true,\ //\ controls\ property\ merging\ based\ on\ understandability}
+\DoxyCodeLine{\ \ \ \ \ \ shorterLengthUnits:\ false,\ //\ controls\ shortening\ pixel\ units\ into\ \`{}pc`,\ \`{}pt`,\ or\ \`{}in`\ units}
+\DoxyCodeLine{\ \ \ \ \ \ spaceAfterClosingBrace:\ true,\ //\ controls\ keeping\ space\ after\ closing\ brace\ -\/\ \`{}url()\ no-\/repeat`\ into\ \`{}url()no-\/repeat`}
+\DoxyCodeLine{\ \ \ \ \ \ urlQuotes:\ true,\ //\ controls\ keeping\ quoting\ inside\ \`{}url()`}
+\DoxyCodeLine{\ \ \ \ \ \ zeroUnits:\ true\ //\ controls\ removal\ of\ units\ \`{}0`\ value}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ selectors:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ adjacentSpace:\ false,\ //\ controls\ extra\ space\ before\ \`{}nav`\ element}
+\DoxyCodeLine{\ \ \ \ \ \ ie7Hack:\ true,\ //\ controls\ removal\ of\ IE7\ selector\ hacks,\ e.g.\ \`{}*+html...`}
+\DoxyCodeLine{\ \ \ \ \ \ mergeablePseudoClasses:\ [':active',\ ...],\ //\ controls\ a\ whitelist\ of\ mergeable\ pseudo\ classes}
+\DoxyCodeLine{\ \ \ \ \ \ mergeablePseudoElements:\ ['::after',\ ...],\ //\ controls\ a\ whitelist\ of\ mergeable\ pseudo\ elements}
+\DoxyCodeLine{\ \ \ \ \ \ mergeLimit:\ 8191,\ //\ controls\ maximum\ number\ of\ selectors\ in\ a\ single\ rule\ (since\ 4.1.0)}
+\DoxyCodeLine{\ \ \ \ \ \ multiplePseudoMerging:\ true\ //\ controls\ merging\ of\ rules\ with\ multiple\ pseudo\ classes\ /\ elements\ (since\ 4.1.0)}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ units:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ ch:\ true,\ //\ controls\ treating\ \`{}ch`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ in:\ true,\ //\ controls\ treating\ \`{}in`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ pc:\ true,\ //\ controls\ treating\ \`{}pc`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ pt:\ true,\ //\ controls\ treating\ \`{}pt`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ rem:\ true,\ //\ controls\ treating\ \`{}rem`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ vh:\ true,\ //\ controls\ treating\ \`{}vh`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ vm:\ true,\ //\ controls\ treating\ \`{}vm`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ vmax:\ true,\ //\ controls\ treating\ \`{}vmax`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \ \ vmin:\ true\ //\ controls\ treating\ \`{}vmin`\ as\ a\ supported\ unit}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+You can also use a string when setting a compatibility mode, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ compatibility:\ 'ie9,-\/properties.merging'\ //\ sets\ compatibility\ to\ IE9\ mode\ with\ disabled\ property\ merging}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6908}{}\doxysubsubsection{\texorpdfstring{Fetch option}{Fetch option}}\label{namespaceat_autotoc_md6908}
+The {\ttfamily fetch} option accepts a function which handles remote resource fetching, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ require('request');}
+\DoxyCodeLine{var\ source\ =\ '@import\ url(http://example.com/path/to/stylesheet.css);';}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ fetch:\ function\ (uri,\ inlineRequest,\ inlineTimeout,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ request(uri,\ function\ (error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(error,\ null);}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ else\ if\ (response\ \&\&\ response.statusCode\ !=\ 200)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(response.statusCode,\ null);}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ body);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}).minify(source);}
+
+\end{DoxyCode}
+
+
+This option provides a convenient way of overriding the default fetching logic if it doesn\textquotesingle{}t support a particular feature, say CONNECT proxies.
+
+Unless given, the default \href{https://github.com/clean-css/clean-css/blob/master/lib/reader/load-remote-resource.js}{\texttt{ load\+Remote\+Resource}} logic is used.\hypertarget{namespaceat_autotoc_md6909}{}\doxysubsubsection{\texorpdfstring{Formatting options}{Formatting options}}\label{namespaceat_autotoc_md6909}
+By default output CSS is formatted without any whitespace unless a {\ttfamily format} option is given. First of all there are two shorthands\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ format:\ 'beautify'\ //\ formats\ output\ in\ a\ really\ nice\ way}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+and
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ format:\ 'keep-\/breaks'\ //\ formats\ output\ the\ default\ way\ but\ adds\ line\ breaks\ for\ improved\ readability}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+however {\ttfamily format} option also accept a fine-\/grained set of options\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ format:\ \{}
+\DoxyCodeLine{\ \ \ \ breaks:\ \{\ //\ controls\ where\ to\ insert\ breaks}
+\DoxyCodeLine{\ \ \ \ \ \ afterAtRule:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ an\ at-\/rule;\ e.g.\ \`{}@charset`;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ afterBlockBegins:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ a\ block\ begins;\ e.g.\ \`{}@media`;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ afterBlockEnds:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ a\ block\ ends,\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ afterComment:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ a\ comment;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ afterProperty:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ a\ property;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ afterRuleBegins:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ a\ rule\ begins;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ afterRuleEnds:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ after\ a\ rule\ ends;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ beforeBlockEnds:\ false,\ //\ controls\ if\ a\ line\ break\ comes\ before\ a\ block\ ends;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ betweenSelectors:\ false\ //\ controls\ if\ a\ line\ break\ comes\ between\ selectors;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ breakWith:\ '\(\backslash\)n',\ //\ controls\ the\ new\ line\ character,\ can\ be\ \`{}'\(\backslash\)r\(\backslash\)n'`\ or\ \`{}'\(\backslash\)n'`\ (aliased\ as\ \`{}'windows'`\ and\ \`{}'unix'`\ or\ \`{}'crlf'`\ and\ \`{}'lf'`);\ defaults\ to\ system\ one,\ so\ former\ on\ Windows\ and\ latter\ on\ Unix}
+\DoxyCodeLine{\ \ \ \ indentBy:\ 0,\ //\ controls\ number\ of\ characters\ to\ indent\ with;\ defaults\ to\ \`{}0`}
+\DoxyCodeLine{\ \ \ \ indentWith:\ 'space',\ //\ controls\ a\ character\ to\ indent\ with,\ can\ be\ \`{}'space'`\ or\ \`{}'tab'`;\ defaults\ to\ \`{}'space'`}
+\DoxyCodeLine{\ \ \ \ spaces:\ \{\ //\ controls\ where\ to\ insert\ spaces}
+\DoxyCodeLine{\ \ \ \ \ \ aroundSelectorRelation:\ false,\ //\ controls\ if\ spaces\ come\ around\ selector\ relations;\ e.g.\ \`{}div\ >\ a`;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ beforeBlockBegins:\ false,\ //\ controls\ if\ a\ space\ comes\ before\ a\ block\ begins;\ e.g.\ \`{}.block\ \{`;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ beforeValue:\ false\ //\ controls\ if\ a\ space\ comes\ before\ a\ value;\ e.g.\ \`{}width:\ 1rem`;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ wrapAt:\ false,\ //\ controls\ maximum\ line\ length;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ semicolonAfterLastProperty:\ false\ //\ controls\ removing\ trailing\ semicolons\ in\ rule;\ defaults\ to\ \`{}false`\ -\/\ means\ remove}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Also since clean-\/css 5.\+0 you can use numerical values for all line breaks, which will repeat a line break that many times, e.\+g\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ format:\ \{}
+\DoxyCodeLine{\ \ \ \ breaks:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ afterAtRule:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ afterBlockBegins:\ 1,\ //\ 1\ is\ synonymous\ with\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ afterBlockEnds:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ afterComment:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ afterProperty:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ afterRuleBegins:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ afterRuleEnds:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ beforeBlockEnds:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ betweenSelectors:\ 0\ //\ 0\ is\ synonymous\ with\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+which will add nicer spacing between at rules and blocks.\hypertarget{namespaceat_autotoc_md6910}{}\doxysubsubsection{\texorpdfstring{Inlining options}{Inlining options}}\label{namespaceat_autotoc_md6910}
+{\ttfamily inline} option whitelists which {\ttfamily @import} rules will be processed, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ inline:\ ['local']\ //\ default;\ enables\ local\ inlining\ only}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ inline:\ ['none']\ //\ disables\ all\ inlining}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ introduced\ in\ clean-\/css\ 4.1.0}
+\DoxyCodeLine{}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ inline:\ false\ //\ disables\ all\ inlining\ (alias\ to\ \`{}['none']`)}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ inline:\ ['all']\ //\ enables\ all\ inlining,\ same\ as\ ['local',\ 'remote']}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ inline:\ ['local',\ 'mydomain.example.com']\ //\ enables\ local\ inlining\ plus\ given\ remote\ source}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ inline:\ ['local',\ 'remote',\ '!fonts.googleapis.com']\ //\ enables\ all\ inlining\ but\ from\ given\ remote\ source}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6911}{}\doxysubsubsection{\texorpdfstring{Optimization levels}{Optimization levels}}\label{namespaceat_autotoc_md6911}
+The {\ttfamily level} option can be either {\ttfamily 0}, {\ttfamily 1} (default), or {\ttfamily 2}, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ 2}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+or a fine-\/grained configuration given via a hash.
+
+Please note that level 1 optimization options are generally safe while level 2 optimizations should be safe for most users.\hypertarget{namespaceat_autotoc_md6912}{}\doxysubsubsubsection{\texorpdfstring{Level 0 optimizations}{Level 0 optimizations}}\label{namespaceat_autotoc_md6912}
+Level 0 optimizations simply means "{}no optimizations"{}. Use it when you\textquotesingle{}d like to inline imports and / or rebase URLs but skip everything else.\hypertarget{namespaceat_autotoc_md6913}{}\doxysubsubsubsection{\texorpdfstring{Level 1 optimizations}{Level 1 optimizations}}\label{namespaceat_autotoc_md6913}
+Level 1 optimizations (default) operate on single properties only, e.\+g. can remove units when not required, turn rgb colors to a shorter hex representation, remove comments, etc
+
+Here is a full list of available options\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ 1:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ cleanupCharsets:\ true,\ //\ controls\ \`{}@charset`\ moving\ to\ the\ front\ of\ a\ stylesheet;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ normalizeUrls:\ true,\ //\ controls\ URL\ normalization;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ optimizeBackground:\ true,\ //\ controls\ \`{}background`\ property\ optimizations;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ optimizeBorderRadius:\ true,\ //\ controls\ \`{}border-\/radius`\ property\ optimizations;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ optimizeFilter:\ true,\ //\ controls\ \`{}filter`\ property\ optimizations;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ optimizeFont:\ true,\ //\ controls\ \`{}font`\ property\ optimizations;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ optimizeFontWeight:\ true,\ //\ controls\ \`{}font-\/weight`\ property\ optimizations;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ optimizeOutline:\ true,\ //\ controls\ \`{}outline`\ property\ optimizations;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ removeEmpty:\ true,\ //\ controls\ removing\ empty\ rules\ and\ nested\ blocks;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ removeNegativePaddings:\ true,\ //\ controls\ removing\ negative\ paddings;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ removeQuotes:\ true,\ //\ controls\ removing\ quotes\ when\ unnecessary;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ removeWhitespace:\ true,\ //\ controls\ removing\ unused\ whitespace;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ replaceMultipleZeros:\ true,\ //\ contols\ removing\ redundant\ zeros;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ replaceTimeUnits:\ true,\ //\ controls\ replacing\ time\ units\ with\ shorter\ values;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ replaceZeroUnits:\ true,\ //\ controls\ replacing\ zero\ values\ with\ units;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ roundingPrecision:\ false,\ //\ rounds\ pixel\ values\ to\ \`{}N`\ decimal\ places;\ \`{}false`\ disables\ rounding;\ defaults\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ selectorsSortingMethod:\ 'standard',\ //\ denotes\ selector\ sorting\ method;\ can\ be\ \`{}'natural'`\ or\ \`{}'standard'`,\ \`{}'none'`,\ or\ false\ (the\ last\ two\ since\ 4.1.0);\ defaults\ to\ \`{}'standard'`}
+\DoxyCodeLine{\ \ \ \ \ \ specialComments:\ 'all',\ //\ denotes\ a\ number\ of\ /*!\ ...\ */\ comments\ preserved;\ defaults\ to\ \`{}all`}
+\DoxyCodeLine{\ \ \ \ \ \ tidyAtRules:\ true,\ //\ controls\ at-\/rules\ (e.g.\ \`{}@charset`,\ \`{}@import`)\ optimizing;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ tidyBlockScopes:\ true,\ //\ controls\ block\ scopes\ (e.g.\ \`{}@media`)\ optimizing;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ tidySelectors:\ true,\ //\ controls\ selectors\ optimizing;\ defaults\ to\ \`{}true`,}
+\DoxyCodeLine{\ \ \ \ \ \ variableValueOptimizers:\ []\ //\ controls\ value\ optimizers\ which\ are\ applied\ to\ variables}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+There is an {\ttfamily all} shortcut for toggling all options at the same time, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ 1:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ all:\ false,\ //\ set\ all\ values\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ tidySelectors:\ true\ //\ turns\ on\ optimizing\ selectors}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6914}{}\doxysubsubsubsection{\texorpdfstring{Level 2 optimizations}{Level 2 optimizations}}\label{namespaceat_autotoc_md6914}
+Level 2 optimizations operate at rules or multiple properties level, e.\+g. can remove duplicate rules, remove properties redefined further down a stylesheet, or restructure rules by moving them around.
+
+Please note that if level 2 optimizations are turned on then, unless explicitely disabled, level 1 optimizations are applied as well.
+
+Here is a full list of available options\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ 2:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ mergeAdjacentRules:\ true,\ //\ controls\ adjacent\ rules\ merging;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ mergeIntoShorthands:\ true,\ //\ controls\ merging\ properties\ into\ shorthands;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ mergeMedia:\ true,\ //\ controls\ \`{}@media`\ merging;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ mergeNonAdjacentRules:\ true,\ //\ controls\ non-\/adjacent\ rule\ merging;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ mergeSemantically:\ false,\ //\ controls\ semantic\ merging;\ defaults\ to\ false}
+\DoxyCodeLine{\ \ \ \ \ \ overrideProperties:\ true,\ //\ controls\ property\ overriding\ based\ on\ understandability;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ removeEmpty:\ true,\ //\ controls\ removing\ empty\ rules\ and\ nested\ blocks;\ defaults\ to\ \`{}true`}
+\DoxyCodeLine{\ \ \ \ \ \ reduceNonAdjacentRules:\ true,\ //\ controls\ non-\/adjacent\ rule\ reducing;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ removeDuplicateFontRules:\ true,\ //\ controls\ duplicate\ \`{}@font-\/face`\ removing;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ removeDuplicateMediaBlocks:\ true,\ //\ controls\ duplicate\ \`{}@media`\ removing;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ removeDuplicateRules:\ true,\ //\ controls\ duplicate\ rules\ removing;\ defaults\ to\ true}
+\DoxyCodeLine{\ \ \ \ \ \ removeUnusedAtRules:\ false,\ //\ controls\ unused\ at\ rule\ removing;\ defaults\ to\ false\ (available\ since\ 4.1.0)}
+\DoxyCodeLine{\ \ \ \ \ \ restructureRules:\ false,\ //\ controls\ rule\ restructuring;\ defaults\ to\ false}
+\DoxyCodeLine{\ \ \ \ \ \ skipProperties:\ []\ //\ controls\ which\ properties\ won't\ be\ optimized,\ defaults\ to\ \`{}[]`\ which\ means\ all\ will\ be\ optimized\ (since\ 4.1.0)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+There is an {\ttfamily all} shortcut for toggling all options at the same time, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ 2:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ all:\ false,\ //\ sets\ all\ values\ to\ \`{}false`}
+\DoxyCodeLine{\ \ \ \ \ \ removeDuplicateRules:\ true\ //\ turns\ on\ removing\ duplicate\ rules}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6915}{}\doxysubsubsection{\texorpdfstring{Plugins}{Plugins}}\label{namespaceat_autotoc_md6915}
+In clean-\/css version 5 and above you can define plugins which run alongside level 1 and level 2 optimizations, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ myPlugin\ =\ \{}
+\DoxyCodeLine{\ \ level1:\ \{}
+\DoxyCodeLine{\ \ \ \ property:\ function\ removeRepeatedBackgroundRepeat(\_rule,\ property,\ \_options)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ So\ \`{}background-\/repeat:no-\/repeat\ no-\/repeat`\ becomes\ \`{}background-\/repeat:no-\/repeat`}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (property.name\ ==\ 'background-\/repeat'\ \&\&\ property.value.length\ ==\ 2\ \&\&\ property.value[0][1]\ ==\ property.value[1][1])\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ property.value.pop();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ property.dirty\ =\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{new\ CleanCSS(\{plugins:\ [myPlugin]\})}
+
+\end{DoxyCode}
+
+
+Search {\ttfamily test\textbackslash{}module-\/test.\+js} for {\ttfamily plugins} or check out {\ttfamily lib/optimizer/level-\/1/property-\/optimizers} and {\ttfamily lib/optimizer/level-\/1/value-\/optimizers} for more examples.
+
+{\bfseries{Important}}\+: To rewrite your old {\ttfamily transform} as a plugin, check out \href{https://github.com/clean-css/clean-css/commit/b6ddc523267fc42cf0f6bd1626a79cad97319e17\#diff-a71ef45f934725cdb25860dc0b606bcd59e3acee9788cd6df4f9d05339e8a153}{\texttt{ this commit}}.\hypertarget{namespaceat_autotoc_md6916}{}\doxysubsubsection{\texorpdfstring{Minify method}{Minify method}}\label{namespaceat_autotoc_md6916}
+Once configured clean-\/css provides a {\ttfamily minify} method to optimize a given CSS, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ output\ =\ new\ CleanCSS(options).minify(source);}
+
+\end{DoxyCode}
+
+
+The output of the {\ttfamily minify} method is a hash with following fields\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(output.styles);\ //\ optimized\ output\ CSS\ as\ a\ string}
+\DoxyCodeLine{console.log(output.sourceMap);\ //\ output\ source\ map\ if\ requested\ with\ \`{}sourceMap`\ option}
+\DoxyCodeLine{console.log(output.errors);\ //\ a\ list\ of\ errors\ raised}
+\DoxyCodeLine{console.log(output.warnings);\ //\ a\ list\ of\ warnings\ raised}
+\DoxyCodeLine{console.log(output.stats.originalSize);\ //\ original\ content\ size\ after\ import\ inlining}
+\DoxyCodeLine{console.log(output.stats.minifiedSize);\ //\ optimized\ content\ size}
+\DoxyCodeLine{console.log(output.stats.timeSpent);\ //\ time\ spent\ on\ optimizations\ in\ milliseconds}
+\DoxyCodeLine{console.log(output.stats.efficiency);\ //\ \`{}(originalSize\ -\/\ minifiedSize)\ /\ originalSize`,\ e.g.\ 0.25\ if\ size\ is\ reduced\ from\ 100\ bytes\ to\ 75\ bytes}
+
+\end{DoxyCode}
+ Example\+: Minifying a CSS string\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ CleanCSS\ =\ require("{}clean-\/css"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ output\ =\ new\ CleanCSS().minify(`}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ a\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ div\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 5px}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(output);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Log:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ styles:\ 'a\{color:\#00f\}div\{margin:5px\}',}
+\DoxyCodeLine{\ \ stats:\ \{}
+\DoxyCodeLine{\ \ \ \ efficiency:\ 0.6704545454545454,}
+\DoxyCodeLine{\ \ \ \ minifiedSize:\ 29,}
+\DoxyCodeLine{\ \ \ \ originalSize:\ 88,}
+\DoxyCodeLine{\ \ \ \ timeSpent:\ 6}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ errors:\ [],}
+\DoxyCodeLine{\ \ inlinedStylesheets:\ [],}
+\DoxyCodeLine{\ \ warnings:\ []}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The {\ttfamily minify} method also accepts an input source map, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ output\ =\ new\ CleanCSS(options).minify(source,\ inputSourceMap);}
+
+\end{DoxyCode}
+
+
+or a callback invoked when optimizations are finished, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(options).minify(source,\ function\ (error,\ output)\ \{}
+\DoxyCodeLine{\ \ //\ \`{}output`\ is\ the\ same\ as\ in\ the\ synchronous\ call\ above}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+To optimize a single file, without reading it first, pass a path to it to {\ttfamily minify} method as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ output\ =\ new\ CleanCSS(options).minify(['path/to/file.css'])}
+
+\end{DoxyCode}
+
+
+(if you won\textquotesingle{}t enclose the path in an array, it will be treated as a CSS source instead).
+
+There are several ways to optimize multiple files at the same time, see How to optimize multiple files?.\hypertarget{namespaceat_autotoc_md6917}{}\doxysubsubsection{\texorpdfstring{Promise interface}{Promise interface}}\label{namespaceat_autotoc_md6917}
+If you prefer clean-\/css to return a Promise object then you need to explicitely ask for it, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{\ returnPromise:\ true\ \})}
+\DoxyCodeLine{\ \ .minify(source)}
+\DoxyCodeLine{\ \ .then(function\ (output)\ \{\ console.log(output.styles);\ \})}
+\DoxyCodeLine{\ \ .catch(function\ (error)\ \{\ //\ deal\ with\ errors\ \});}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6918}{}\doxysubsubsection{\texorpdfstring{CLI utility}{CLI utility}}\label{namespaceat_autotoc_md6918}
+Clean-\/css has an associated command line utility that can be installed separately using {\ttfamily npm install clean-\/css-\/cli}. For more detailed information, please visit \href{https://github.com/clean-css/clean-css-cli}{\texttt{ https\+://github.\+com/clean-\/css/clean-\/css-\/cli}}.\hypertarget{namespaceat_autotoc_md6919}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{namespaceat_autotoc_md6919}
+\hypertarget{namespaceat_autotoc_md6920}{}\doxysubsubsection{\texorpdfstring{How to optimize multiple files?}{How to optimize multiple files?}}\label{namespaceat_autotoc_md6920}
+It can be done either by passing an array of paths, or, when sources are already available, a hash or an array of hashes\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS().minify(['path/to/file/one',\ 'path/to/file/two']);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS().minify(\{}
+\DoxyCodeLine{\ \ 'path/to/file/one':\ \{}
+\DoxyCodeLine{\ \ \ \ styles:\ 'contents\ of\ file\ one'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ 'path/to/file/two':\ \{}
+\DoxyCodeLine{\ \ \ \ styles:\ 'contents\ of\ file\ two'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS().minify([}
+\DoxyCodeLine{\ \ \{'path/to/file/one':\ \{styles:\ 'contents\ of\ file\ one'\}\},}
+\DoxyCodeLine{\ \ \{'path/to/file/two':\ \{styles:\ 'contents\ of\ file\ two'\}\}}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+Passing an array of hashes allows you to explicitly specify the order in which the input files are concatenated. Whereas when you use a single hash the order is determined by the \href{http://2ality.com/2015/10/property-traversal-order-es6.html}{\texttt{ traversal order of object properties}} -\/ available since 4.\+1.\+0.
+
+Important note -\/ any {\ttfamily @import} rules already present in the hash will be resolved in memory.\hypertarget{namespaceat_autotoc_md6921}{}\doxysubsubsection{\texorpdfstring{How to process multiple files without concatenating them into one output file?}{How to process multiple files without concatenating them into one output file?}}\label{namespaceat_autotoc_md6921}
+Since clean-\/css 5.\+0 you can, when passing an array of paths, hash, or array of hashes (see above), ask clean-\/css not to join styles into one output, but instead return stylesheets optimized one by one, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ output\ =\ new\ CleanCSS(\{\ batch:\ true\ \}).minify(['path/to/file/one',\ 'path/to/file/two']);}
+\DoxyCodeLine{var\ outputOfFile1\ =\ output['path/to/file/one'].styles\ //\ all\ other\ fields,\ like\ errors,\ warnings,\ or\ stats\ are\ there\ too}
+\DoxyCodeLine{var\ outputOfFile2\ =\ output['path/to/file/two'].styles}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6922}{}\doxysubsubsection{\texorpdfstring{How to process remote {\ttfamily @import}s correctly?}{How to process remote {\ttfamily @import}s correctly?}}\label{namespaceat_autotoc_md6922}
+In order to inline remote {\ttfamily @import} statements you need to provide a callback to minify method as fetching remote assets is an asynchronous operation, e.\+g.\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ source\ =\ '@import\ url(http://example.com/path/to/remote/styles);';}
+\DoxyCodeLine{new\ CleanCSS(\{\ inline:\ ['remote']\ \}).minify(source,\ function\ (error,\ output)\ \{}
+\DoxyCodeLine{\ \ //\ output.styles}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If you don\textquotesingle{}t provide a callback, then remote {\ttfamily @import}s will be left as is.\hypertarget{namespaceat_autotoc_md6923}{}\doxysubsubsection{\texorpdfstring{How to apply arbitrary transformations to CSS properties?}{How to apply arbitrary transformations to CSS properties?}}\label{namespaceat_autotoc_md6923}
+Please see plugins.\hypertarget{namespaceat_autotoc_md6924}{}\doxysubsubsection{\texorpdfstring{How to specify a custom rounding precision?}{How to specify a custom rounding precision?}}\label{namespaceat_autotoc_md6924}
+The level 1 {\ttfamily rounding\+Precision} optimization option accept a string with per-\/unit rounding precision settings, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ 1:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ roundingPrecision:\ 'all=3,px=5'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}).minify(source)}
+
+\end{DoxyCode}
+
+
+which sets all units rounding precision to 3 digits except {\ttfamily px} unit precision of 5 digits.\hypertarget{namespaceat_autotoc_md6925}{}\doxysubsubsection{\texorpdfstring{How to optimize a stylesheet with custom {\ttfamily rpx} units?}{How to optimize a stylesheet with custom {\ttfamily rpx} units?}}\label{namespaceat_autotoc_md6925}
+Since {\ttfamily rpx} is a non standard unit (see \href{https://github.com/clean-css/clean-css/issues/1074}{\texttt{ \#1074}}), it will be dropped by default as an invalid value.
+
+However you can treat {\ttfamily rpx} units as regular ones\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ compatibility:\ \{}
+\DoxyCodeLine{\ \ \ \ customUnits:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ rpx:\ true}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}).minify(source)}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6926}{}\doxysubsubsection{\texorpdfstring{How to keep a CSS fragment intact?}{How to keep a CSS fragment intact?}}\label{namespaceat_autotoc_md6926}
+Note\+: available since 4.\+2.\+0.
+
+Wrap the CSS fragment in special comments which instruct clean-\/css to preserve it, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.block-\/1\ \{}
+\DoxyCodeLine{\ \ color:\ red}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{/*\ clean-\/css\ ignore:start\ */}
+\DoxyCodeLine{.block-\/special\ \{}
+\DoxyCodeLine{\ \ color:\ transparent}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{/*\ clean-\/css\ ignore:end\ */}
+\DoxyCodeLine{.block-\/2\ \{}
+\DoxyCodeLine{\ \ margin:\ 0}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Optimizing this CSS will result in the following output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.block-\/1\{color:red\}}
+\DoxyCodeLine{.block-\/special\ \{}
+\DoxyCodeLine{\ \ color:\ transparent}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{.block-\/2\{margin:0\}}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6927}{}\doxysubsubsection{\texorpdfstring{How to preserve a comment block?}{How to preserve a comment block?}}\label{namespaceat_autotoc_md6927}
+Use the {\ttfamily /\texorpdfstring{$\ast$}{*}!} notation instead of the standard one {\ttfamily /\texorpdfstring{$\ast$}{*}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*!}
+\DoxyCodeLine{\ \ Important\ comments\ included\ in\ optimized\ output.}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6928}{}\doxysubsubsection{\texorpdfstring{How to rebase relative image URLs?}{How to rebase relative image URLs?}}\label{namespaceat_autotoc_md6928}
+clean-\/css will handle it automatically for you in the following cases\+:
+
+
+\begin{DoxyItemize}
+\item when full paths to input files are passed in as options;
+\item when correct paths are passed in via a hash;
+\item when {\ttfamily rebase\+To} is used with any of above two.
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6929}{}\doxysubsubsection{\texorpdfstring{How to work with source maps?}{How to work with source maps?}}\label{namespaceat_autotoc_md6929}
+To generate a source map, use {\ttfamily source\+Map\+: true} option, e.\+g.\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{\ sourceMap:\ true,\ rebaseTo:\ pathToOutputDirectory\ \})}
+\DoxyCodeLine{\ \ .minify(source,\ function\ (error,\ output)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ access\ output.sourceMap\ for\ SourceMapGenerator\ object}
+\DoxyCodeLine{\ \ \ \ //\ see\ https://github.com/mozilla/source-\/map/\#sourcemapgenerator\ for\ more\ details}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+You can also pass an input source map directly as a 2nd argument to {\ttfamily minify} method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{\ sourceMap:\ true,\ rebaseTo:\ pathToOutputDirectory\ \})}
+\DoxyCodeLine{\ \ .minify(source,\ inputSourceMap,\ function\ (error,\ output)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ access\ output.sourceMap\ to\ access\ SourceMapGenerator\ object}
+\DoxyCodeLine{\ \ \ \ //\ see\ https://github.com/mozilla/source-\/map/\#sourcemapgenerator\ for\ more\ details}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+or even multiple input source maps at once\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{\ sourceMap:\ true,\ rebaseTo:\ pathToOutputDirectory\ \}).minify(\{}
+\DoxyCodeLine{\ \ 'path/to/source/1':\ \{}
+\DoxyCodeLine{\ \ \ \ styles:\ '...styles...',}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ '...source-\/map...'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ 'path/to/source/2':\ \{}
+\DoxyCodeLine{\ \ \ \ styles:\ '...styles...',}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ '...source-\/map...'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\},\ function\ (error,\ output)\ \{}
+\DoxyCodeLine{\ \ //\ access\ output.sourceMap\ as\ above}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6930}{}\doxysubsubsection{\texorpdfstring{How to apply level 1 \& 2 optimizations at the same time?}{How to apply level 1 \& 2 optimizations at the same time?}}\label{namespaceat_autotoc_md6930}
+Using the hash configuration specifying both optimization levels, e.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ CleanCSS(\{}
+\DoxyCodeLine{\ \ level:\ \{}
+\DoxyCodeLine{\ \ \ \ 1:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ all:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ normalizeUrls:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ 2:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ restructureRules:\ true}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+will apply level 1 optimizations, except url normalization, and default level 2 optimizations with rule restructuring.\hypertarget{namespaceat_autotoc_md6931}{}\doxysubsubsection{\texorpdfstring{What level 2 optimizations do?}{What level 2 optimizations do?}}\label{namespaceat_autotoc_md6931}
+All level 2 optimizations are dispatched \href{https://github.com/clean-css/clean-css/blob/master/lib/optimizer/level-2/optimize.js\#L67}{\texttt{ here}}, and this is what they do\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily recursively\+Optimize\+Blocks} -\/ does all the following operations on a nested block, like {\ttfamily @media} or {\ttfamily @keyframe};
+\item {\ttfamily recursively\+Optimize\+Properties} -\/ optimizes properties in rulesets and flat at-\/rules, like @font-\/face, by splitting them into components (e.\+g. {\ttfamily margin} into {\ttfamily margin-\/(bottom\texorpdfstring{$\vert$}{|}left\texorpdfstring{$\vert$}{|}right\texorpdfstring{$\vert$}{|}top)}), optimizing, and restoring them back. You may want to use {\ttfamily merge\+Into\+Shorthands} option to control whether you want to turn multiple components into shorthands;
+\item {\ttfamily remove\+Duplicates} -\/ gets rid of duplicate rulesets with exactly the same set of properties, e.\+g. when including a Sass / Less partial twice for no good reason;
+\item {\ttfamily merge\+Adjacent} -\/ merges adjacent rulesets with the same selector or rules;
+\item {\ttfamily reduce\+Non\+Adjacent} -\/ identifies which properties are overridden in same-\/selector non-\/adjacent rulesets, and removes them;
+\item {\ttfamily merge\+Non\+Adjacent\+By\+Selector} -\/ identifies same-\/selector non-\/adjacent rulesets which can be moved (!) to be merged, requires all intermediate rulesets to not redefine the moved properties, or if redefined to have the same value;
+\item {\ttfamily merge\+Non\+Adjacent\+By\+Body} -\/ same as the one above but for same-\/selector non-\/adjacent rulesets;
+\item {\ttfamily restructure} -\/ tries to reorganize different-\/selector different-\/rules rulesets so they take less space, e.\+g. {\ttfamily .one\{padding\+:0\}.two\{margin\+:0\}.one\{margin-\/bottom\+:3px\}} into {\ttfamily .two\{margin\+:0\}.one\{padding\+:0;margin-\/bottom\+:3px\}};
+\item {\ttfamily remove\+Duplicate\+Font\+At\+Rules} -\/ removes duplicated {\ttfamily @font-\/face} rules;
+\item {\ttfamily remove\+Duplicate\+Media\+Queries} -\/ removes duplicated {\ttfamily @media} nested blocks;
+\item {\ttfamily merge\+Media\+Queries} -\/ merges non-\/adjacent {\ttfamily @media} at-\/rules by the same rules as {\ttfamily merge\+Non\+Adjacent\+By\texorpdfstring{$\ast$}{*}} above;
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6932}{}\doxysubsubsection{\texorpdfstring{What errors and warnings are?}{What errors and warnings are?}}\label{namespaceat_autotoc_md6932}
+If clean-\/css encounters invalid CSS, it will try to remove the invalid part and continue optimizing the rest of the code. It will make you aware of the problem by generating an error or warning. Although clean-\/css can work with invalid CSS, it is always recommended that you fix warnings and errors in your CSS.
+
+Example\+: Minify invalid CSS, resulting in two warnings\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ CleanCSS\ =\ require("{}clean-\/css"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ output\ =\ new\ CleanCSS().minify(`}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ a\ \{}
+\DoxyCodeLine{\ \ \ \ -\/notarealproperty-\/:\ 5px;}
+\DoxyCodeLine{\ \ \ \ color:}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ div\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 5px}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(output);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Log:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ styles:\ 'div\{margin:5px\}',}
+\DoxyCodeLine{\ \ stats:\ \{}
+\DoxyCodeLine{\ \ \ \ efficiency:\ 0.8695652173913043,}
+\DoxyCodeLine{\ \ \ \ minifiedSize:\ 15,}
+\DoxyCodeLine{\ \ \ \ originalSize:\ 115,}
+\DoxyCodeLine{\ \ \ \ timeSpent:\ 1}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ errors:\ [],}
+\DoxyCodeLine{\ \ inlinedStylesheets:\ [],}
+\DoxyCodeLine{\ \ warnings:\ [}
+\DoxyCodeLine{\ \ \ \ "{}Invalid\ property\ name\ '-\/notarealproperty-\/'\ at\ 4:8.\ Ignoring."{},}
+\DoxyCodeLine{\ \ \ \ "{}Empty\ property\ 'color'\ at\ 5:8.\ Ignoring."{}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Example\+: Minify invalid CSS, resulting in one error\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ CleanCSS\ =\ require("{}clean-\/css"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ output\ =\ new\ CleanCSS().minify(`}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ @import\ "{}idontexist.css"{};}
+\DoxyCodeLine{\ \ a\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ blue;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ div\ \{}
+\DoxyCodeLine{\ \ \ \ margin:\ 5px}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(output);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Log:}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ styles:\ 'a\{color:\#00f\}div\{margin:5px\}',}
+\DoxyCodeLine{\ \ stats:\ \{}
+\DoxyCodeLine{\ \ \ \ efficiency:\ 0.7627118644067796,}
+\DoxyCodeLine{\ \ \ \ minifiedSize:\ 28,}
+\DoxyCodeLine{\ \ \ \ originalSize:\ 118,}
+\DoxyCodeLine{\ \ \ \ timeSpent:\ 2}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ errors:\ [}
+\DoxyCodeLine{\ \ \ \ 'Ignoring\ local\ @import\ of\ "{}idontexist.css"{}\ as\ resource\ is\ missing.'}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ inlinedStylesheets:\ [],}
+\DoxyCodeLine{\ \ warnings:\ []}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \hypertarget{namespaceat_autotoc_md6933}{}\doxysubsubsection{\texorpdfstring{Clean-\/css for Gulp}{Clean-\/css for Gulp}}\label{namespaceat_autotoc_md6933}
+An example of how you can include clean-\/css in gulp 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ src,\ dest,\ series\ \}\ =\ require('gulp');}
+\DoxyCodeLine{const\ CleanCSS\ =\ require('clean-\/css');}
+\DoxyCodeLine{const\ concat\ =\ require('gulp-\/concat');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ css()\ \{}
+\DoxyCodeLine{\ \ \ \ const\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ compatibility:\ '*',\ //\ (default)\ -\/\ Internet\ Explorer\ 10+\ compatibility\ mode}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ inline:\ ['all'],\ //\ enables\ all\ inlining,\ same\ as\ ['local',\ 'remote']}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ level:\ 2\ //\ Optimization\ levels.\ The\ level\ option\ can\ be\ either\ 0,\ 1\ (default),\ or\ 2,\ e.g.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Please\ note\ that\ level\ 1\ optimization\ options\ are\ generally\ safe\ while\ level\ 2\ optimizations\ should\ be\ safe\ for\ most\ users.}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ return\ src('app/**/*.css')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pipe(concat('style.min.css'))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .on('data',\ function(file)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ const\ buferFile\ =\ new\ CleanCSS(options).minify(file.contents)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ file.contents\ =\ Buffer.from(buferFile.styles)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pipe(dest('build'))}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{exports.css\ =\ series(css)}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6934}{}\doxysubsubsection{\texorpdfstring{How to use clean-\/css with build tools?}{How to use clean-\/css with build tools?}}\label{namespaceat_autotoc_md6934}
+There is a number of 3rd party plugins to popular build tools\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/broccolijs/broccoli\#broccoli}{\texttt{ Broccoli}}\+: \href{https://github.com/shinnn/broccoli-clean-css}{\texttt{ broccoli-\/clean-\/css}}
+\item \href{http://brunch.io/}{\texttt{ Brunch}}\+: \href{https://github.com/brunch/clean-css-brunch}{\texttt{ clean-\/css-\/brunch}}
+\item \href{http://gruntjs.com}{\texttt{ Grunt}}\+: \href{https://github.com/gruntjs/grunt-contrib-cssmin}{\texttt{ grunt-\/contrib-\/cssmin}}
+\item \href{http://gulpjs.com/}{\texttt{ Gulp}}\+: \href{https://github.com/scniro/gulp-clean-css}{\texttt{ gulp-\/clean-\/css}}
+\item \href{http://gulpjs.com/}{\texttt{ Gulp}}\+: \href{https://github.com/clean-css/clean-css/issues/342}{\texttt{ using vinyl-\/map as a wrapper -\/ courtesy of @sogko}}
+\item \href{https://github.com/component/builder2.js}{\texttt{ component-\/builder2}}\+: \href{https://github.com/poying/builder-clean-css}{\texttt{ builder-\/clean-\/css}}
+\item \href{http://metalsmith.io}{\texttt{ Metalsmith}}\+: \href{https://github.com/aymericbeaumet/metalsmith-clean-css}{\texttt{ metalsmith-\/clean-\/css}}
+\item \href{https://github.com/lasso-js/lasso}{\texttt{ Lasso}}\+: \href{https://github.com/yomed/lasso-clean-css}{\texttt{ lasso-\/clean-\/css}}
+\item \href{https://github.com/start-runner/start}{\texttt{ Start}}\+: \href{https://github.com/start-runner/clean-css}{\texttt{ start-\/clean-\/css}}
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6935}{}\doxysubsubsection{\texorpdfstring{How to use clean-\/css from web browser?}{How to use clean-\/css from web browser?}}\label{namespaceat_autotoc_md6935}
+
+\begin{DoxyItemize}
+\item \href{https://clean-css.github.io/}{\texttt{ https\+://clean-\/css.\+github.\+io/}} (official web interface)
+\item \href{http://refresh-sf.com/}{\texttt{ http\+://refresh-\/sf.\+com/}}
+\item \href{http://adamburgess.github.io/clean-css-online/}{\texttt{ http\+://adamburgess.\+github.\+io/clean-\/css-\/online/}}
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6936}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{namespaceat_autotoc_md6936}
+See \href{https://github.com/clean-css/clean-css/blob/master/CONTRIBUTING.md}{\texttt{ CONTRIBUTING.\+md}}.\hypertarget{namespaceat_autotoc_md6937}{}\doxysubsubsection{\texorpdfstring{How to get started?}{How to get started?}}\label{namespaceat_autotoc_md6937}
+First clone the sources\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ git@github.com:clean-\/css/clean-\/css.git}
+
+\end{DoxyCode}
+
+
+then install dependencies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ clean-\/css}
+\DoxyCodeLine{npm\ install}
+
+\end{DoxyCode}
+
+
+then use any of the following commands to verify your copy\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ run\ bench\ \#\ for\ clean-\/css\ benchmarks\ (see\ [test/bench.js](https://github.com/clean-\/css/clean-\/css/blob/master/test/bench.js)\ for\ details)}
+\DoxyCodeLine{npm\ run\ browserify\ \#\ to\ create\ the\ browser-\/ready\ clean-\/css\ version}
+\DoxyCodeLine{npm\ run\ check\ \#\ to\ lint\ JS\ sources\ with\ [JSHint](https://github.com/jshint/jshint/)}
+\DoxyCodeLine{npm\ test\ \#\ to\ run\ all\ tests}
+
+\end{DoxyCode}
+\hypertarget{namespaceat_autotoc_md6938}{}\doxysubsection{\texorpdfstring{Acknowledgments}{Acknowledgments}}\label{namespaceat_autotoc_md6938}
+Sorted alphabetically by Git\+Hub handle\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/abarre}{\texttt{ @abarre}} (Anthony Barre) for improvements to {\ttfamily @import} processing;
+\item \href{https://github.com/alexlamsl}{\texttt{ @alexlamsl}} (Alex Lam S.\+L.) for testing early clean-\/css 4 versions, reporting bugs, and suggesting numerous improvements.
+\item \href{https://github.com/altschuler}{\texttt{ @altschuler}} (Simon Altschuler) for fixing {\ttfamily @import} processing inside comments;
+\item \href{https://github.com/ben-eb}{\texttt{ @ben-\/eb}} (Ben Briggs) for sharing ideas about CSS optimizations;
+\item \href{https://github.com/davisjam}{\texttt{ @davisjam}} (Jamie Davis) for disclosing Re\+DOS vulnerabilities;
+\item \href{https://github.com/facelessuser}{\texttt{ @facelessuser}} (Isaac) for pointing out a flaw in clean-\/css\textquotesingle{} stateless mode;
+\item \href{https://github.com/grandrath}{\texttt{ @grandrath}} (Martin Grandrath) for improving {\ttfamily minify} method source traversal in ES6;
+\item \href{https://github.com/jmalonzo}{\texttt{ @jmalonzo}} (Jan Michael Alonzo) for a patch removing node.\+js\textquotesingle{} old {\ttfamily sys} package;
+\item \href{https://github.com/lukeapage}{\texttt{ @lukeapage}} (Luke Page) for suggestions and testing the source maps feature; Plus everyone else involved in \href{https://github.com/clean-css/clean-css/issues/125}{\texttt{ \#125}} for pushing it forward;
+\item \href{https://github.com/madwizard-thomas}{\texttt{ @madwizard-\/thomas}} for sharing ideas about {\ttfamily @import} inlining and URL rebasing.
+\item \href{https://github.com/ngyikp}{\texttt{ @ngyikp}} (Ng Yik Phang) for testing early clean-\/css 4 versions, reporting bugs, and suggesting numerous improvements.
+\item \href{https://github.com/wagenet}{\texttt{ @wagenet}} (Peter Wagenet) for suggesting improvements to {\ttfamily @import} inlining behavior;
+\item \href{https://github.com/venemo}{\texttt{ @venemo}} (Timur Kristóf) for an outstanding contribution of advanced property optimizer for 2.\+2 release;
+\item \href{https://github.com/vvo}{\texttt{ @vvo}} (Vincent Voyer) for a patch with better empty element regex and for inspiring us to do many performance improvements in 0.\+4 release;
+\item \href{https://github.com/xhmikosr}{\texttt{ @xhmikosr}} for suggesting new features, like option to remove special comments and strip out URLs quotation, and pointing out numerous improvements like JSHint, media queries, etc.
+\end{DoxyItemize}\hypertarget{namespaceat_autotoc_md6939}{}\doxysubsection{\texorpdfstring{License}{License}}\label{namespaceat_autotoc_md6939}
+clean-\/css is released under the \href{https://github.com/clean-css/clean-css/blob/master/LICENSE}{\texttt{ MIT License}}. 
