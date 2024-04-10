@@ -21,6 +21,16 @@ function ClassroomReassignment() {
     setUploadSuccess(false); // Reset upload success message when a new file is selected
   };
 
+  const downloadFile = () => {
+    const link = document.createElement("a");
+    const content = algoData;
+    const file = new Blob([content], {type: 'text/plain'});
+    link.href = URL.createObjectURL(file);
+    link.download = "results.txt"
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
 
   const handleUpload = async () => {
     const formData = new FormData();
@@ -262,6 +272,11 @@ function ClassroomReassignment() {
           <div className="ClassroomReassignment-clearResultsButtonDiv">
             <button className="ClassroomReassignment-clearResultsButton">
               Clear Results</button>
+            <button 
+            type="button"
+            className="ClassroomReassignment-clearResultsButton"
+            onClick={downloadFile}>
+            Download Results</button>
           </div>
         </header>
         {algoData ? algoData : 'No results available'}
