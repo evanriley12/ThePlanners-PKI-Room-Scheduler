@@ -1,0 +1,20 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/@webassemblyjs"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_72953eda66ccb3a2722c28e1c3e6c23b {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="node_modules", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_72953eda66ccb3a2722c28e1c3e6c23b.html",tooltip=""]
+  subgraph clusterdir_b3e94aab20e94a5d7457593ecb275426 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_b3e94aab20e94a5d7457593ecb275426.html",tooltip=""]
+    dir_b3e94aab20e94a5d7457593ecb275426 [shape=plaintext, label="@webassemblyjs"];
+  dir_df980c3b768aa78a26ee69827fcc3488 [label="ast", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_df980c3b768aa78a26ee69827fcc3488.html",tooltip=""];
+  dir_9baf037accc463f530ab90306709bc99 [label="floating-point-hex\l-parser", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_9baf037accc463f530ab90306709bc99.html",tooltip=""];
+  dir_ca5310521241ebec72f6c657b20563bd [label="wasm-edit", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_ca5310521241ebec72f6c657b20563bd.html",tooltip=""];
+  dir_868a59994eebd91a00b8abb4e488cf7d [label="wasm-parser", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_868a59994eebd91a00b8abb4e488cf7d.html",tooltip=""];
+  dir_b3aa3ad2bba611d497d49f31b3494fde [label="wast-printer", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_b3aa3ad2bba611d497d49f31b3494fde.html",tooltip=""];
+  }
+  }
+}

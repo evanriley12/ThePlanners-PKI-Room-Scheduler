@@ -1,0 +1,21 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/@jridgewell"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_72953eda66ccb3a2722c28e1c3e6c23b {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="node_modules", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_72953eda66ccb3a2722c28e1c3e6c23b.html",tooltip=""]
+  subgraph clusterdir_f70693803f4b14680b0221a72085aae5 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_f70693803f4b14680b0221a72085aae5.html",tooltip=""]
+    dir_f70693803f4b14680b0221a72085aae5 [shape=plaintext, label="@jridgewell"];
+  dir_2a015f61858f475f9dbb60309acce925 [label="gen-mapping", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_2a015f61858f475f9dbb60309acce925.html",tooltip=""];
+  dir_33fb938e8c6ebaaf9daa1752a7cca141 [label="resolve-uri", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_33fb938e8c6ebaaf9daa1752a7cca141.html",tooltip=""];
+  dir_0c29df4c2737d2a8abced0d2bc906cd3 [label="set-array", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_0c29df4c2737d2a8abced0d2bc906cd3.html",tooltip=""];
+  dir_366b1176f742b37fd17010c9a5a7429a [label="source-map", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_366b1176f742b37fd17010c9a5a7429a.html",tooltip=""];
+  dir_2e55409534cf9dcc1040da5b725cc77f [label="sourcemap-codec", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_2e55409534cf9dcc1040da5b725cc77f.html",tooltip=""];
+  dir_0e2604c187065548f60d8ecacbe323a2 [label="trace-mapping", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_0e2604c187065548f60d8ecacbe323a2.html",tooltip=""];
+  }
+  }
+}

@@ -1,0 +1,12 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/jsonpath/node_modules/esprima"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_6b65b4e854f3007699d806fc3ff797b2 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="node_modules", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_6b65b4e854f3007699d806fc3ff797b2.html",tooltip=""]
+  dir_4e6ba7f43f65f712b81022272d0a5471 [label="esprima", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_4e6ba7f43f65f712b81022272d0a5471.html",tooltip=""];
+  }
+}

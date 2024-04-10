@@ -1,0 +1,16 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/eslint-plugin-jest/docs"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_00dbe9cee1a26d3067d6ca3b20e368dd {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="eslint-plugin-jest", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_00dbe9cee1a26d3067d6ca3b20e368dd.html",tooltip=""]
+  subgraph clusterdir_507779d67b6033eb75b47b6e6e1ed128 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_507779d67b6033eb75b47b6e6e1ed128.html",tooltip=""]
+    dir_507779d67b6033eb75b47b6e6e1ed128 [shape=plaintext, label="docs"];
+  dir_6ce09609a7ba430b53e8b95d939dbc1a [label="rules", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_6ce09609a7ba430b53e8b95d939dbc1a.html",tooltip=""];
+  }
+  }
+}

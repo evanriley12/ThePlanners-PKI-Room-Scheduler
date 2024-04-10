@@ -1,0 +1,16 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/babel-loader/node_modules"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_647297e6b900ea5726b0512571b22174 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="babel-loader", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_647297e6b900ea5726b0512571b22174.html",tooltip=""]
+  subgraph clusterdir_2f9d7c1abc51b78616c3529cb06234ad {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_2f9d7c1abc51b78616c3529cb06234ad.html",tooltip=""]
+    dir_2f9d7c1abc51b78616c3529cb06234ad [shape=plaintext, label="node_modules"];
+  dir_20e5b4c54775c60280748fd231b88de4 [label="schema-utils", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_20e5b4c54775c60280748fd231b88de4.html",tooltip=""];
+  }
+  }
+}

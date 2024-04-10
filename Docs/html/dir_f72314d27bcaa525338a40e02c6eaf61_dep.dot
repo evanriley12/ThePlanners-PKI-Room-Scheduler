@@ -1,0 +1,22 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/serve-index/node_modules"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_f51e3cec871f71be87916ca3ea949f2e {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="serve-index", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_f51e3cec871f71be87916ca3ea949f2e.html",tooltip=""]
+  subgraph clusterdir_f72314d27bcaa525338a40e02c6eaf61 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_f72314d27bcaa525338a40e02c6eaf61.html",tooltip=""]
+    dir_f72314d27bcaa525338a40e02c6eaf61 [shape=plaintext, label="node_modules"];
+  dir_34a3c24d4954d60340833e01d408faec [label="debug", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_34a3c24d4954d60340833e01d408faec.html",tooltip=""];
+  dir_8a82b88572a804ed2644eedec573f09c [label="depd", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_8a82b88572a804ed2644eedec573f09c.html",tooltip=""];
+  dir_e4ee7457f4d7b133311ab0e08ad2997e [label="http-errors", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_e4ee7457f4d7b133311ab0e08ad2997e.html",tooltip=""];
+  dir_a42af178d13db56fe014a2ebf0bcf2ed [label="inherits", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_a42af178d13db56fe014a2ebf0bcf2ed.html",tooltip=""];
+  dir_0485811f7ba27801dcbb93ffde98f944 [label="ms", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_0485811f7ba27801dcbb93ffde98f944.html",tooltip=""];
+  dir_fcfafb7c8e677538bf9d93a1763b30e6 [label="setprototypeof", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_fcfafb7c8e677538bf9d93a1763b30e6.html",tooltip=""];
+  dir_048d61f116e39324a32be3a654da693f [label="statuses", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_048d61f116e39324a32be3a654da693f.html",tooltip=""];
+  }
+  }
+}

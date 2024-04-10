@@ -1,0 +1,12 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/sucrase/node_modules/minimatch"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_544d5846e68307d5ab5a67113ec55178 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="node_modules", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_544d5846e68307d5ab5a67113ec55178.html",tooltip=""]
+  dir_9ede443b071adc43665c965fe8983f20 [label="minimatch", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_9ede443b071adc43665c965fe8983f20.html",tooltip=""];
+  }
+}

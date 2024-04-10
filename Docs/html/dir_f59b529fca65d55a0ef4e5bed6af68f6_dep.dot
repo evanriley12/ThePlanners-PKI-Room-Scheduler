@@ -1,0 +1,12 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/@babel/helper-environment-visitor"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_bc8070c8b402176472541bb6f0cba6df {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="@babel", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_bc8070c8b402176472541bb6f0cba6df.html",tooltip=""]
+  dir_f59b529fca65d55a0ef4e5bed6af68f6 [label="helper-environment\l-visitor", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_f59b529fca65d55a0ef4e5bed6af68f6.html",tooltip=""];
+  }
+}

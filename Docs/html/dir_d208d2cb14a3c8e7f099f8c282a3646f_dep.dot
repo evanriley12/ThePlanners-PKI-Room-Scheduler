@@ -1,0 +1,30 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/svgo/node_modules"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_f6ab4bb88a92e6bd04a2536f525f5e3d {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="svgo", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_f6ab4bb88a92e6bd04a2536f525f5e3d.html",tooltip=""]
+  subgraph clusterdir_d208d2cb14a3c8e7f099f8c282a3646f {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_d208d2cb14a3c8e7f099f8c282a3646f.html",tooltip=""]
+    dir_d208d2cb14a3c8e7f099f8c282a3646f [shape=plaintext, label="node_modules"];
+  dir_7faeec69915966060cc6d9d0d55ea8de [label="ansi-styles", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_7faeec69915966060cc6d9d0d55ea8de.html",tooltip=""];
+  dir_3ae0bc708ceadb28284eaa3c2c1b0613 [label="chalk", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_3ae0bc708ceadb28284eaa3c2c1b0613.html",tooltip=""];
+  dir_ecd52764593a24626ccaf1ba6e80e49b [label="color-convert", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_ecd52764593a24626ccaf1ba6e80e49b.html",tooltip=""];
+  dir_1cc280d89164885fb68a42bd04bc2bae [label="color-name", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_1cc280d89164885fb68a42bd04bc2bae.html",tooltip=""];
+  dir_6c8b5f47efbf57708dd9fbc02a6f87c7 [label="css-select", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_6c8b5f47efbf57708dd9fbc02a6f87c7.html",tooltip=""];
+  dir_530454a083de5c22c4b90194a9cbfa8d [label="css-tree", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_530454a083de5c22c4b90194a9cbfa8d.html",tooltip=""];
+  dir_b275032500a86a5a888e2d246b9a3e84 [label="css-what", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_b275032500a86a5a888e2d246b9a3e84.html",tooltip=""];
+  dir_bf29c2879108f5b2f8a08b1a551be5d3 [label="dom-serializer", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_bf29c2879108f5b2f8a08b1a551be5d3.html",tooltip=""];
+  dir_8165c0f6db6c081ee84bce43ac728763 [label="domelementtype", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_8165c0f6db6c081ee84bce43ac728763.html",tooltip=""];
+  dir_cd7be4b848935769ec0f8b19ba53b992 [label="domutils", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_cd7be4b848935769ec0f8b19ba53b992.html",tooltip=""];
+  dir_cd1210b1d8d8d4f5243fd4587208f76f [label="escape-string-regexp", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_cd1210b1d8d8d4f5243fd4587208f76f.html",tooltip=""];
+  dir_84d664318feb8571acad1361dcb02f59 [label="has-flag", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_84d664318feb8571acad1361dcb02f59.html",tooltip=""];
+  dir_16bf4498b49b2dd4c435d51c7bc54716 [label="mdn-data", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_16bf4498b49b2dd4c435d51c7bc54716.html",tooltip=""];
+  dir_52d359c72d97031af3bceb1a8ad79227 [label="nth-check", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_52d359c72d97031af3bceb1a8ad79227.html",tooltip=""];
+  dir_7a59a3de1f500728af2c092c707295f2 [label="supports-color", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_7a59a3de1f500728af2c092c707295f2.html",tooltip=""];
+  }
+  }
+}

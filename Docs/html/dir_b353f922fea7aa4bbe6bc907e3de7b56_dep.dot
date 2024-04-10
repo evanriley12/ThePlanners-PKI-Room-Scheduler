@@ -1,0 +1,17 @@
+digraph "pkiclassroomrescheduler/src/main/frontend/node_modules/detect-port-alt/node_modules"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_8b64181e2828b6e34e7fa73d90fba2ad {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="detect-port-alt", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_8b64181e2828b6e34e7fa73d90fba2ad.html",tooltip=""]
+  subgraph clusterdir_b353f922fea7aa4bbe6bc907e3de7b56 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_b353f922fea7aa4bbe6bc907e3de7b56.html",tooltip=""]
+    dir_b353f922fea7aa4bbe6bc907e3de7b56 [shape=plaintext, label="node_modules"];
+  dir_c7465d12b9220c09e55efff2fc72a4d4 [label="debug", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_c7465d12b9220c09e55efff2fc72a4d4.html",tooltip=""];
+  dir_07398e9c460fc76eb0bf125cbc963343 [label="ms", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_07398e9c460fc76eb0bf125cbc963343.html",tooltip=""];
+  }
+  }
+}
