@@ -10,6 +10,10 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -48,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('dir_93fc4b3f44d2035c415e0681f4c5a264.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +90,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_c2dad58ab1be534010c341a750db1ea4.html">pkiclassroomrescheduler</a></li><li class="navelem"><a class="el" href="dir_f8f6a692d02560bde530ac517ec84905.html">src</a></li><li class="navelem"><a class="el" href="dir_b1bfd65e8821e6bbea5218b0a420a327.html">main</a></li><li class="navelem"><a class="el" href="dir_fd05e2df7e806a7c15aaab06da6174e6.html">frontend</a></li><li class="navelem"><a class="el" href="dir_72953eda66ccb3a2722c28e1c3e6c23b.html">node_modules</a></li><li class="navelem"><a class="el" href="dir_4e994157bc6d0b5f80f6b9b3b1e8b410.html">@types</a></li><li class="navelem"><a class="el" href="dir_fc1315c228bfee9dfb2dc92c49cf18ee.html">jest</a></li><li class="navelem"><a class="el" href="dir_93fc4b3f44d2035c415e0681f4c5a264.html">node_modules</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">node_modules Directory Reference</div></div>
 </div><!--header-->
@@ -82,11 +98,50 @@ $(function() {
 Directory dependency graph for node_modules:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_93fc4b3f44d2035c415e0681f4c5a264_dep.png" border="0" usemap="#adir__93fc4b3f44d2035c415e0681f4c5a264__dep" alt="pkiclassroomrescheduler/src/main/frontend/node_modules/@types/jest/node_modules"/></div>
+<map name="adir__93fc4b3f44d2035c415e0681f4c5a264__dep" id="adir__93fc4b3f44d2035c415e0681f4c5a264__dep">
+<area shape="rect" href="dir_09e8e1727fcfdd0b129ee52f84e91d54.html" title="@jest" alt="" coords="167,64,222,91"/>
+<area shape="rect" href="dir_527b7b8fd4b116a52fb2e8c0afc4ed5a.html" title="@sinclair" alt="" coords="246,64,322,91"/>
+<area shape="rect" href="dir_4d0029602afe49c447fe49518f328f1b.html" title="ansi&#45;styles" alt="" coords="346,64,430,91"/>
+<area shape="rect" href="dir_16018541fb9dc852a301aba10b6b1daf.html" title="diff&#45;sequences" alt="" coords="455,64,559,91"/>
+<area shape="rect" href="dir_309e4026750e50f62b0f65b218bdf99a.html" title="expect" alt="" coords="583,64,644,91"/>
+<area shape="rect" href="dir_dc5aa99f46e0103d74e752152936b257.html" title="jest&#45;diff" alt="" coords="668,64,730,91"/>
+<area shape="rect" href="dir_5b2853f6913787b0e57bc6b119eafbb0.html" title="jest&#45;matcher&#45;utils" alt="" coords="754,64,875,91"/>
+<area shape="rect" href="dir_071c67a3b5282db1665773717951a8e7.html" title="jest&#45;util" alt="" coords="899,64,962,91"/>
+<area shape="rect" href="dir_7a1a342f1184450ec1aa768b660f2edc.html" title="pretty&#45;format" alt="" coords="986,64,1081,91"/>
+<area shape="rect" href="dir_93fc4b3f44d2035c415e0681f4c5a264.html" alt="" coords="27,53,1091,101"/>
+<area shape="rect" href="dir_fc1315c228bfee9dfb2dc92c49cf18ee.html" title="jest" alt="" coords="16,16,1101,112"/>
+</map>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="subdirs" name="subdirs"></a>
+Directories</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_09e8e1727fcfdd0b129ee52f84e91d54.html">@jest</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_527b7b8fd4b116a52fb2e8c0afc4ed5a.html">@sinclair</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_4d0029602afe49c447fe49518f328f1b.html">ansi-styles</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_16018541fb9dc852a301aba10b6b1daf.html">diff-sequences</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_309e4026750e50f62b0f65b218bdf99a.html">expect</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_dc5aa99f46e0103d74e752152936b257.html">jest-diff</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_5b2853f6913787b0e57bc6b119eafbb0.html">jest-matcher-utils</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_071c67a3b5282db1665773717951a8e7.html">jest-util</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_7a1a342f1184450ec1aa768b660f2edc.html">pretty-format</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c2dad58ab1be534010c341a750db1ea4.html">pkiclassroomrescheduler</a></li><li class="navelem"><a class="el" href="dir_f8f6a692d02560bde530ac517ec84905.html">src</a></li><li class="navelem"><a class="el" href="dir_b1bfd65e8821e6bbea5218b0a420a327.html">main</a></li><li class="navelem"><a class="el" href="dir_fd05e2df7e806a7c15aaab06da6174e6.html">frontend</a></li><li class="navelem"><a class="el" href="dir_72953eda66ccb3a2722c28e1c3e6c23b.html">node_modules</a></li><li class="navelem"><a class="el" href="dir_4e994157bc6d0b5f80f6b9b3b1e8b410.html">@types</a></li><li class="navelem"><a class="el" href="dir_fc1315c228bfee9dfb2dc92c49cf18ee.html">jest</a></li><li class="navelem"><a class="el" href="dir_93fc4b3f44d2035c415e0681f4c5a264.html">node_modules</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
 </body>
 </html>

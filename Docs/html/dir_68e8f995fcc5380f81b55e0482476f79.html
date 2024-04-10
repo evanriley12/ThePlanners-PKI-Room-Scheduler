@@ -10,6 +10,10 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -48,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('dir_68e8f995fcc5380f81b55e0482476f79.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +90,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_c2dad58ab1be534010c341a750db1ea4.html">pkiclassroomrescheduler</a></li><li class="navelem"><a class="el" href="dir_f8f6a692d02560bde530ac517ec84905.html">src</a></li><li class="navelem"><a class="el" href="dir_b1bfd65e8821e6bbea5218b0a420a327.html">main</a></li><li class="navelem"><a class="el" href="dir_fd05e2df7e806a7c15aaab06da6174e6.html">frontend</a></li><li class="navelem"><a class="el" href="dir_72953eda66ccb3a2722c28e1c3e6c23b.html">node_modules</a></li><li class="navelem"><a class="el" href="dir_68e8f995fcc5380f81b55e0482476f79.html">@typescript-eslint</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">@typescript-eslint Directory Reference</div></div>
 </div><!--header-->
@@ -82,11 +98,50 @@ $(function() {
 Directory dependency graph for @typescript-eslint:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_68e8f995fcc5380f81b55e0482476f79_dep.png" border="0" usemap="#adir__68e8f995fcc5380f81b55e0482476f79__dep" alt="pkiclassroomrescheduler/src/main/frontend/node_modules/@typescript-eslint"/></div>
+<map name="adir__68e8f995fcc5380f81b55e0482476f79__dep" id="adir__68e8f995fcc5380f81b55e0482476f79__dep">
+<area shape="rect" href="dir_79c3d55650b2b840513b6f7577664a4f.html" title="eslint&#45;plugin" alt="" coords="187,64,277,91"/>
+<area shape="rect" href="dir_d5dd08a98ac3ed786134bb6d6efe94e4.html" title="experimental&#45;utils" alt="" coords="301,64,424,91"/>
+<area shape="rect" href="dir_b874186cf58e19aebbb291c475b2cfa7.html" title="parser" alt="" coords="449,64,506,91"/>
+<area shape="rect" href="dir_3c88d95e99bc1a9bad35c6dabc28be65.html" title="scope&#45;manager" alt="" coords="530,64,641,91"/>
+<area shape="rect" href="dir_978882aa8b36de887bb9654d9e03f3be.html" title="type&#45;utils" alt="" coords="664,64,739,91"/>
+<area shape="rect" href="dir_9f75e95e6aea88b1a1937a43e4ec7b71.html" title="types" alt="" coords="763,64,816,91"/>
+<area shape="rect" href="dir_7f58ac25e478a649edffb45776b603ee.html" title="typescript&#45;estree" alt="" coords="840,64,958,91"/>
+<area shape="rect" href="dir_06956c339785cad62116b26d664daea9.html" title="utils" alt="" coords="981,64,1027,91"/>
+<area shape="rect" href="dir_4fdc7c29c9de297c61aae2401ae339e1.html" title="visitor&#45;keys" alt="" coords="1050,64,1137,91"/>
+<area shape="rect" href="dir_68e8f995fcc5380f81b55e0482476f79.html" alt="" coords="27,53,1147,101"/>
+<area shape="rect" href="dir_72953eda66ccb3a2722c28e1c3e6c23b.html" title="node_modules" alt="" coords="16,16,1157,112"/>
+</map>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="subdirs" name="subdirs"></a>
+Directories</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_79c3d55650b2b840513b6f7577664a4f.html">eslint-plugin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_d5dd08a98ac3ed786134bb6d6efe94e4.html">experimental-utils</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_b874186cf58e19aebbb291c475b2cfa7.html">parser</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_3c88d95e99bc1a9bad35c6dabc28be65.html">scope-manager</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_978882aa8b36de887bb9654d9e03f3be.html">type-utils</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_9f75e95e6aea88b1a1937a43e4ec7b71.html">types</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_7f58ac25e478a649edffb45776b603ee.html">typescript-estree</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_06956c339785cad62116b26d664daea9.html">utils</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_4fdc7c29c9de297c61aae2401ae339e1.html">visitor-keys</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c2dad58ab1be534010c341a750db1ea4.html">pkiclassroomrescheduler</a></li><li class="navelem"><a class="el" href="dir_f8f6a692d02560bde530ac517ec84905.html">src</a></li><li class="navelem"><a class="el" href="dir_b1bfd65e8821e6bbea5218b0a420a327.html">main</a></li><li class="navelem"><a class="el" href="dir_fd05e2df7e806a7c15aaab06da6174e6.html">frontend</a></li><li class="navelem"><a class="el" href="dir_72953eda66ccb3a2722c28e1c3e6c23b.html">node_modules</a></li><li class="navelem"><a class="el" href="dir_68e8f995fcc5380f81b55e0482476f79.html">@typescript-eslint</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
 </body>
 </html>

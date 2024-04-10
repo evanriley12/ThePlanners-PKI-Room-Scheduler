@@ -10,6 +10,10 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -49,6 +53,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classes.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -78,39 +98,42 @@ $(function() {
 <div class="classindex">
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_A" name="letter_A">A</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html">Algorithm</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm_controller.html">AlgorithmController</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1_algorithms_tests.html">AlgorithmsTests</a> (com.theplanners.pkiclassroomrescheduler)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html">Algorithm</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm_controller.html">AlgorithmController</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_C" name="letter_C">C</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom.html">Classroom</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_info_controller.html">ClassroomInfoController</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list.html">ClassroomList</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1_c_s_v_file_tests.html">CSVFileTests</a> (com.theplanners.pkiclassroomrescheduler)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom.html">Classroom</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_info_controller.html">ClassroomInfoController</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list.html">ClassroomList</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_F" name="letter_F">F</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller.html">FileUploadController</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="class_flatted.html">Flatted</a></dd><dd><a class="el" href="class_flatted_string.html">FlattedString</a></dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller.html">FileUploadController</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd><dd><a class="el" href="class_flatted.html">Flatted</a></dd><dd><a class="el" href="class_flatted_string.html">FlattedString</a></dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_G" name="letter_G">G</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_get_class_info_controller.html">GetClassInfoController</a> (com.theplanners.pkiclassroomrescheduler.system)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_get_class_info_controller.html">GetClassInfoController</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_I" name="letter_I">I</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_index_controller.html">IndexController</a> (com.theplanners.pkiclassroomrescheduler.system)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_index_controller.html">IndexController</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_M" name="letter_M">M</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter.html">MeetingTimeConverter</a> (com.theplanners.pkiclassroomrescheduler.system)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_meeting_time_converter.html">MeetingTimeConverter</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_P" name="letter_P">P</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1_pkiclassroomrescheduler_application.html">PkiclassroomreschedulerApplication</a> (com.theplanners.pkiclassroomrescheduler)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1_pkiclassroomrescheduler_application.html">PkiclassroomreschedulerApplication</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler.html">com.theplanners.pkiclassroomrescheduler</a>)</dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_R" name="letter_R">R</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_read_classroom.html">ReadClassroom</a> (com.theplanners.pkiclassroomrescheduler.system)</dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_read_classroom.html">ReadClassroom</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_S" name="letter_S">S</a></dt>
-<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_schedule.html">Schedule</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_section.html">Section</a> (com.theplanners.pkiclassroomrescheduler.system)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1_servlet_initializer.html">ServletInitializer</a> (com.theplanners.pkiclassroomrescheduler)</dd><dd><a class="el" href="classstrong.html">strong</a></dd></dl>
+<dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_schedule.html">Schedule</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_section.html">Section</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">com.theplanners.pkiclassroomrescheduler.system</a>)</dd><dd><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1_servlet_initializer.html">ServletInitializer</a> (<a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler.html">com.theplanners.pkiclassroomrescheduler</a>)</dd><dd><a class="el" href="classstrong.html">strong</a></dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter__" name="letter__">_</a></dt>
-<dd><a class="el" href="classflatted_1_1___known.html">_Known</a> (flatted)</dd><dd><a class="el" href="classflatted_1_1___string.html">_String</a> (flatted)</dd></dl>
+<dd><a class="el" href="classflatted_1_1___known.html">_Known</a> (<a class="el" href="namespaceflatted.html">flatted</a>)</dd><dd><a class="el" href="classflatted_1_1___string.html">_String</a> (<a class="el" href="namespaceflatted.html">flatted</a>)</dd></dl>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
 </body>
 </html>

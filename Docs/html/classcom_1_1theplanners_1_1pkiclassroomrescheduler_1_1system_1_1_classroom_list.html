@@ -10,6 +10,10 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -48,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +90,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>com</b></li><li class="navelem"><b>theplanners</b></li><li class="navelem"><b>pkiclassroomrescheduler</b></li><li class="navelem"><b>system</b></li><li class="navelem"><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list.html">ClassroomList</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -174,6 +190,24 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the ArrayList containing lassroom objects. </p><dl class="section return"><dt>Returns</dt><dd>the ArrayList of classrooms to be returned. </dd></dl>
 
+<p class="reference">Referenced by <a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html#af5482e4055b9283103afcea5788fa9d1">com.theplanners.pkiclassroomrescheduler.system.Algorithm.doAlgorithm()</a>, <a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html#a0030913614e626b7983ef4545ccff72b">com.theplanners.pkiclassroomrescheduler.system.Algorithm.doAlgorithmOld()</a>, and <a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_info_controller.html#a15a568bcad59756668b0e278986e39b1">com.theplanners.pkiclassroomrescheduler.system.ClassroomInfoController.returnClassroomList()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_ac5dfb0544ba7e33dd9f8b6b4e5a3463e_icgraph.png" border="0" usemap="#aclasscom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_ac5dfb0544ba7e33dd9f8b6b4e5a3463e_icgraph" alt=""/></div>
+<map name="aclasscom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_ac5dfb0544ba7e33dd9f8b6b4e5a3463e_icgraph" id="aclasscom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_ac5dfb0544ba7e33dd9f8b6b4e5a3463e_icgraph">
+<area shape="rect" title=" " alt="" coords="734,72,1050,115"/>
+<area shape="rect" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html#af5482e4055b9283103afcea5788fa9d1" title=" " alt="" coords="370,5,686,48"/>
+<area shape="poly" title=" " alt="" coords="756,71,648,51,649,46,757,66"/>
+<area shape="rect" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html#a0030913614e626b7983ef4545ccff72b" title=" " alt="" coords="370,72,686,115"/>
+<area shape="poly" title=" " alt="" coords="719,96,687,96,687,91,719,91"/>
+<area shape="rect" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_info_controller.html#a15a568bcad59756668b0e278986e39b1" title=" " alt="" coords="370,139,686,181"/>
+<area shape="poly" title=" " alt="" coords="757,121,649,141,648,135,756,115"/>
+<area shape="rect" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm_controller.html#a17d4493a1a4aa4164cd3723115913915" title=" " alt="" coords="5,5,322,48"/>
+<area shape="poly" title=" " alt="" coords="354,29,322,29,322,24,354,24"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a447001e3a548c44d388615c9b5c1240a" name="a447001e3a548c44d388615c9b5c1240a"></a>
@@ -197,15 +231,33 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="reference">Referenced by <a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_read_classroom.html#a90f811785006986b378bec3563cb29f4">com.theplanners.pkiclassroomrescheduler.system.ReadClassroom.readClassroomCSV()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_a447001e3a548c44d388615c9b5c1240a_icgraph.png" border="0" usemap="#aclasscom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_a447001e3a548c44d388615c9b5c1240a_icgraph" alt=""/></div>
+<map name="aclasscom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_a447001e3a548c44d388615c9b5c1240a_icgraph" id="aclasscom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list_a447001e3a548c44d388615c9b5c1240a_icgraph">
+<area shape="rect" title=" " alt="" coords="734,5,1050,48"/>
+<area shape="rect" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_read_classroom.html#a90f811785006986b378bec3563cb29f4" title=" " alt="" coords="370,5,686,48"/>
+<area shape="poly" title=" " alt="" coords="719,29,687,29,687,24,719,24"/>
+<area shape="rect" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller.html#a01cf13fd0a6ae4f5d1090c931eb0df20" title=" " alt="" coords="5,5,322,48"/>
+<area shape="poly" title=" " alt="" coords="354,29,322,29,322,24,354,24"/>
+</map>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>pkiclassroomrescheduler/src/main/java/com/theplanners/pkiclassroomrescheduler/system/<b>ClassroomList.java</b></li>
+<li>pkiclassroomrescheduler/src/main/java/com/theplanners/pkiclassroomrescheduler/system/<a class="el" href="_classroom_list_8java.html">ClassroomList.java</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>com</b></li><li class="navelem"><b>theplanners</b></li><li class="navelem"><a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler.html">pkiclassroomrescheduler</a></li><li class="navelem"><a class="el" href="namespacecom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom_list.html">ClassroomList</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
 </body>
 </html>
