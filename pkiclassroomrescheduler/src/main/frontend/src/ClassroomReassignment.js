@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ClassroomReassignment.css";
 
+let outputResultCounter = 1;
+
 /**
  * ClassroomReassignment is the function that is responsible for handling the frontend webpage
  * presentation for the PKI Classroom rescheduler. Constants for handling different frontend
@@ -30,7 +32,6 @@ function ClassroomReassignment() {
     link.click();
     URL.revokeObjectURL(link.href);
   }
-
 
   const handleUpload = async () => {
     const formData = new FormData();
@@ -184,8 +185,9 @@ function ClassroomReassignment() {
     if (text) {
       let newDiv = document.createElement("div");
       newDiv.className = "ClassroomReassignment-outputWidget";
-      newDiv.innerHTML = text
-      resultsColumnDiv.append(newDiv);
+      newDiv.innerHTML = "Output Result #" + outputResultCounter+ ": \n" + text;
+      resultsColumnDiv.prepend(newDiv);
+      outputResultCounter++;
     }
   };
 
@@ -198,6 +200,7 @@ function ClassroomReassignment() {
     if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
         && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
       resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
+      outputResultCounter = 1;
     }
   }
 
