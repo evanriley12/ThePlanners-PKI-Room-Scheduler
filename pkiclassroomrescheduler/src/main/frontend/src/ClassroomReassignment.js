@@ -169,6 +169,38 @@ function ClassroomReassignment() {
     }
   };
 
+  const createNewOutputWidget = (text) => {
+
+    // Locate the div representing the body of the results column where output widgets are to be placed
+    let resultsColumnDiv = document.getElementById("resultsColumn");
+
+    // If there have been no outputs generated previously, clear the placeholder text before placing a result
+    if (resultsColumnDiv.innerHTML == "No results available. Please upload a schedule and select a course."
+        || resultsColumnDiv.innerHTML == "Rescheduler results cleared.") {
+      resultsColumnDiv.innerHTML = "";
+    }
+    
+    // Create a new output result and append it to the column containing rescheduler results
+    if (text) {
+      let newDiv = document.createElement("div");
+      newDiv.className = "ClassroomReassignment-outputWidget";
+      newDiv.innerHTML = text
+      resultsColumnDiv.append(newDiv);
+    }
+  };
+
+  const clearReschedulerResults = (event) => {
+
+    // Locate the div representing the body of the results column where output widgets have been placed
+    let resultsColumnDiv = document.getElementById("resultsColumn");
+
+    // Clear all rescheduler output results, no changes will occur if no results are present
+    if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
+        && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
+      resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
+    }
+  }
+
   return (
     <div className="ClassroomReassignment-page">
       <div className="ClassroomReassignment-workingColumn">
@@ -261,7 +293,7 @@ function ClassroomReassignment() {
         </div>
         <div className="ClassroomReassignment-displayColumn">
           <textarea id="classInfoDisplay" rows="10" cols="10" readOnly>
-            Display class information here...
+            No course information available. Please upload a schedule and select a course to view its corresponding information.
           </textarea>
         </div>
       </div>
@@ -276,11 +308,18 @@ function ClassroomReassignment() {
           </div>
           <div className="ClassroomReassignment-resultsLabel">Results</div>
           <div className="ClassroomReassignment-clearResultsButtonDiv">
-            <button className="ClassroomReassignment-clearResultsButton">
-              Clear Results</button>
+            <button 
+              className="ClassroomReassignment-clearResultsButton"
+              onClick={clearReschedulerResults}
+            >
+              Clear Results
+            </button>
           </div>
         </header>
-        {algoData ? algoData : 'No results available'}
+        <div className="ClassroomReassignment-resultsColumnBody" id="resultsColumn">
+          No results available. Please upload a schedule and select a course.
+          {algoData && createNewOutputWidget(algoData)}
+        </div>
       </div>
     </div>
   );

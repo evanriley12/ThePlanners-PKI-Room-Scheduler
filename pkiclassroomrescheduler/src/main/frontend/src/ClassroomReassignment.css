@@ -32,6 +32,11 @@
     font-size: calc(3px + 2vmin);
 }
 
+.ClassroomReassignment-resultsColumnBody {
+    height: 90%;
+    overflow-y: auto;
+}
+
 .ClassroomReassignment-inputColumn {
     background-color: #BCBBBA; /*Changed to UNO Light Gray*/
     float: left;
@@ -234,4 +239,12 @@ input[type="file"]::file-selector-button:hover {
     width: 100%;
     height: 100%;
     padding: 15px;
+}
+
+.ClassroomReassignment-outputWidget {
+    background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+    border: 4px solid #0A0A0A; /*Changed to UNO Black*/
+    border-radius: 10px;
+    width: 100%;
+    height: 20%;
 }
