@@ -82,7 +82,7 @@ public class Result {
         String worseString = "";
         // Create the list of equal options
         if (otherEqualClassrooms.size() == 0) {
-            equalString = "None.";
+            equalString = "None. ";
         } else {
             for (Classroom room : otherEqualClassrooms) {
                 equalString += "PKI " + room.getRoom() + ", ";
@@ -91,7 +91,7 @@ public class Result {
         equalString = equalString.substring(0, equalString.length() - 2) + ".";
         // Create the list of worse options
         if (otherWorseClassrooms.size() == 0) {
-            worseString = "None.";
+            worseString = "None. ";
         } else {
             for (Classroom room : otherWorseClassrooms) {
                 worseString += "PKI " + room.getRoom() + ", ";
