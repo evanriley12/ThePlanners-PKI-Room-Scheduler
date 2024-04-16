@@ -7,6 +7,7 @@ import com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Result;
 
 @Service
 /**
@@ -65,7 +66,7 @@ public final class Algorithm {
      * @param classroomList A ClassroomList object containing each Classroom object available in the building.
      * @return A string containing the best choice for a different classroom, options equal to the best, and options worse than the best.
      */
-    public static String doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
+    public static Result doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
         // Create the graph
         updateOverlaps(schedule);
         // Get all classrooms
@@ -74,11 +75,14 @@ public final class Algorithm {
         ArrayList<Section> neighbors = section.getOverlappingSections();
         // Filter out classrooms that will not work
         ArrayList<Classroom> possibleClassrooms = new ArrayList<Classroom>();
-        // Iterate through every classroom
+        // Iterate through every classroom and save the current classroom
+        Classroom oldClassroom = null;
         for (int i = 0; i < allClassrooms.size(); i++) {
             // Check if the classroom being checked is the sections current class or if it is too small to accomodate the new size. 
             // If either is true, move on, otherwise, add the classroom to the list of potential classrooms.
-            if (section.getRoomNumber() == allClassrooms.get(i).getRoom() || allClassrooms.get(i).getSeats() < newSize) {
+            if (section.getRoomNumber() == allClassrooms.get(i).getRoom()) {
+                oldClassroom = allClassrooms.get(i);
+            } else if (allClassrooms.get(i).getSeats() < newSize) {
                 continue;
             } else {
                 possibleClassrooms.add(allClassrooms.get(i));
@@ -96,8 +100,10 @@ public final class Algorithm {
         // Now the list of rooms only contains rooms that can actually be used.
         // Check if there are no suitable rooms
         if (possibleClassrooms.size() == 0) {
+            // If there are no rooms, determine the best neighbor to attempt to reschedule.
             // TODO: Recursive case.
-            return "No available classrooms.";
+            return null;
+            //return "No available classrooms.";
         } else {
             // Determine which of the remaining classes is the best option.
             Classroom bestClassroom = possibleClassrooms.get(0);
@@ -106,33 +112,19 @@ public final class Algorithm {
                     bestClassroom = possibleClassrooms.get(i);
                 }
             }
-            String bestOption = "The best option is to move " + section.getCourse() + " Section: " + section.getSectionNumber() + " to room " + bestClassroom.getRoom() + ".";
             // Determine if the other options are just as good or worse than the best.
-            String otherBest = "Other options with the same class size: None";
-            String otherWorst ="Other options with larger class size: None";
+            ArrayList<Classroom> otherBest = new ArrayList<Classroom>();
+            ArrayList<Classroom> otherWorst = new ArrayList<Classroom>();
             for (int i = 0; i < possibleClassrooms.size(); i++) {
                 if (possibleClassrooms.get(i).getSeats() == bestClassroom.getSeats() && possibleClassrooms.get(i) != bestClassroom) {
-                    if (otherBest.length() == 44) {
-                        otherBest = otherBest.substring(0, otherBest.length() - 4);
-                    }
-                    otherBest += possibleClassrooms.get(i).getRoom() + ", ";
+                    otherBest.add(possibleClassrooms.get(i));
                 } else if (possibleClassrooms.get(i) != bestClassroom) {
-                    if (otherWorst.length() == 42) {
-                        otherWorst = otherWorst.substring(0, otherWorst.length() - 4);
-                    }
-                    otherWorst += possibleClassrooms.get(i).getRoom() + ", ";
+                    otherWorst.add(possibleClassrooms.get(i));
                 }
             }
-            // Chop off the last two characters to remove the commas from the end.
-            if (otherBest.length() != 44) {
-                otherBest = otherBest.substring(0, otherBest.length() - 2);
-            }
-            if (otherWorst.length() != 42) {
-                otherWorst = otherWorst.substring(0, otherWorst.length() - 2);
-            }
-            // Return the results.
-            String results = bestOption + "\n\n" + otherBest + "\n\n" + otherWorst;
-            return results;
+            // Get the result
+            Result result = new Result(section, oldClassroom, bestClassroom, otherBest, otherWorst);
+            return result;
         }
     }
 }

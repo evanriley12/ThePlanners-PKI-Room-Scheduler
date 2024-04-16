@@ -57,6 +57,6 @@ public class AlgorithmController {
             }
         }
 
-        return Algorithm.doAlgorithm(result, newSize, schedule, classroomList);
+        return Algorithm.doAlgorithm(result, newSize, schedule, classroomList).toString();
     }
 }
