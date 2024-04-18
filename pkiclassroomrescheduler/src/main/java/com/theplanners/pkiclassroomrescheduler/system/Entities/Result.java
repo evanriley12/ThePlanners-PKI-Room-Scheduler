@@ -80,7 +80,7 @@ public class Result {
     public String toString() {
         // Print error if anything is null
         if (course == null || courseTitle == null || oldClassroom == null || newClassroom == null) {
-            return "Rescheduling could not be completed. Please select a different course.";
+            return "Rescheduling could not be completed. The course may be unable to move from it's current classroom, or no classroom is big enough to accomodate the increased size. Please select a different course.";
         }
         String equalString = "";
         String worseString = "";

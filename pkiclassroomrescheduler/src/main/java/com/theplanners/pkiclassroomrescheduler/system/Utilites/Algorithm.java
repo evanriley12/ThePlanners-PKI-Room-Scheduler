@@ -75,7 +75,8 @@ public final class Algorithm {
         ArrayList<Section> neighbors = section.getOverlappingSections();
         // Filter out classrooms that will not work
         ArrayList<Classroom> possibleClassrooms = new ArrayList<Classroom>();
-        // Iterate through every classroom and save the current classroom
+        // Iterate through every classroom save the current classroom, and the the biggest classroom
+        int biggestRoom = 0;
         Classroom oldClassroom = null;
         for (int i = 0; i < allClassrooms.size(); i++) {
             // Check if the classroom being checked is the sections current class or if it is too small to accomodate the new size. 
@@ -88,9 +89,17 @@ public final class Algorithm {
             } else {
                 possibleClassrooms.add(allClassrooms.get(i));
             }
+            // Update the biggest room (it should always be 100 but in the event of future changes it will handle it)
+            if (allClassrooms.get(i).getSeats() > biggestRoom) {
+                biggestRoom = allClassrooms.get(i).getSeats();
+            }
         }
         // Check if the classroom is null, which indicates that it is in the engineering building, and return an error.
         if (oldClassroom == null) {
+            return new Result(section, oldClassroom, null, null, null);
+        }
+        // Check if the biggest classroom can even handle the new size
+        if (biggestRoom < newSize) {
             return new Result(section, oldClassroom, null, null, null);
         }
         // Now with a list of potential rooms, see if any of the rooms are not in use by an adjacent node.
