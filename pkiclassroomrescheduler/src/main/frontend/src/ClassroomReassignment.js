@@ -3,6 +3,7 @@ import axios from "axios";
 import "./ClassroomReassignment.css";
 
 let outputResultCounter = 1;
+let cumulativeAlgoData = "";
 
 /**
  * ClassroomReassignment is the function that is responsible for handling the frontend webpage
@@ -25,7 +26,15 @@ function ClassroomReassignment() {
 
   const downloadFile = () => {
     const link = document.createElement("a");
-    const content = algoData;
+
+    let content;
+    if (cumulativeAlgoData !== "") {
+      content = cumulativeAlgoData;
+    }
+    else {
+      content = "No rescheduler results are available at this time.";
+    }
+
     const file = new Blob([content], {type: 'text/plain'});
     link.href = URL.createObjectURL(file);
     link.download = "results.txt"
@@ -183,9 +192,12 @@ function ClassroomReassignment() {
     
     // Create a new output result and append it to the column containing rescheduler results
     if (text) {
+      // Add the text to the variable that is used to cumulatively store info to be printed to the results file.
+      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + text + "\n\n");
+
       let newDiv = document.createElement("div");
       newDiv.className = "ClassroomReassignment-outputWidget";
-      newDiv.innerHTML = "Output Result #" + outputResultCounter+ ": \n" + text;
+      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + text;
       resultsColumnDiv.prepend(newDiv);
       outputResultCounter++;
     }
@@ -201,6 +213,7 @@ function ClassroomReassignment() {
         && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
       resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
       outputResultCounter = 1;
+      cumulativeAlgoData = "";
     }
   }
 
