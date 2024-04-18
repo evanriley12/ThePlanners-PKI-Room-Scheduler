@@ -78,6 +78,10 @@ public class Result {
     }
 
     public String toString() {
+        // Print error if anything is null
+        if (course == null || courseTitle == null || oldClassroom == null || newClassroom == null) {
+            return "Rescheduling could not be completed. Please select a different course.";
+        }
         String equalString = "";
         String worseString = "";
         // Create the list of equal options

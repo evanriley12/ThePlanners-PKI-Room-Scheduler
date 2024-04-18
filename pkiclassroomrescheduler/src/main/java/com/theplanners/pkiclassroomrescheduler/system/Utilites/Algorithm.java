@@ -81,12 +81,17 @@ public final class Algorithm {
             // Check if the classroom being checked is the sections current class or if it is too small to accomodate the new size. 
             // If either is true, move on, otherwise, add the classroom to the list of potential classrooms.
             if (section.getRoomNumber() == allClassrooms.get(i).getRoom()) {
+                // Store the old classroom as a Classroom object rather than a number
                 oldClassroom = allClassrooms.get(i);
             } else if (allClassrooms.get(i).getSeats() < newSize) {
                 continue;
             } else {
                 possibleClassrooms.add(allClassrooms.get(i));
             }
+        }
+        // Check if the classroom is null, which indicates that it is in the engineering building, and return an error.
+        if (oldClassroom == null) {
+            return new Result(section, oldClassroom, null, null, null);
         }
         // Now with a list of potential rooms, see if any of the rooms are not in use by an adjacent node.
         for (int i = 0; i < possibleClassrooms.size(); i++) {

@@ -57,6 +57,10 @@ public class AlgorithmController {
             }
         }
 
-        return Algorithm.doAlgorithm(result, newSize, schedule, classroomList).toString();
+        try { 
+            return Algorithm.doAlgorithm(result, newSize, schedule, classroomList).toString(); 
+        } catch(Exception e) {
+            return "Class could not be rescheduled.";
+        }
     }
 }
