@@ -4,7 +4,7 @@ UNO - Spring 2024 CS Capstone Project
 
 Our application is a tool to manage and reschedule classroom assignments for PKI.
 
-# Milestone 3 Release Notes:
+# Milestone 4 Release Notes:
 - New Features:
     - The Algorithm now outputs a Result object that is easier to work with on the backend, and also results in some more detailed information in the output.
     - Error handling added in a few rare cases where classes cannot be rescheduled.
