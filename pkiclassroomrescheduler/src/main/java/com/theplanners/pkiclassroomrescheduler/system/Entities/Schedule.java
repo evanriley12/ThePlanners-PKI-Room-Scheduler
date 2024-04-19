@@ -30,10 +30,38 @@ public class Schedule {
         return this.schedule;
     }
 
+    public ArrayList<Section> returnCSSchedule(){
+        ArrayList<Section> csSchedule = new ArrayList<Section>();
+        for(Section section : schedule)
+        {
+            String course = section.getCourse();
+            if(course.contains("BIOI") || 
+            course.contains("BMI") || 
+            course.contains("CIST") || 
+            course.contains("CNST") || 
+            course.contains("CSCI") || 
+            course.contains("CYBR") || 
+            course.contains("ISQA") || 
+            course.contains("ITIN") || 
+            course.contains("MATH") || 
+            course.contains("SCMT")) {
+                csSchedule.add(section);
+            }
+        }
+        return csSchedule;
+    }
+
     /**
      * Empties the list of sections in the schedule.
      */
     public void clearSchedule(){
         this.schedule.clear();
+    }
+
+    public void updateCrosslist()
+    {
+        for(Section section : schedule){
+            section.setCrossListMax(schedule);
+        }
     }
 }

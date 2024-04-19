@@ -15,6 +15,8 @@ import com.theplanners.pkiclassroomrescheduler.system.Utilites.MeetingTimeConver
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * FileUpload controller hosts and endpoint at /api/upload that allows the upload of 
@@ -75,23 +77,32 @@ public class FileUploadController {
              CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(3).build()) {
 
             String[] nextRow;
+            Pattern pattern = Pattern.compile("\\b[A-Z]{3,4} \\d{3}-\\d{3}\\b");
+            Matcher matcher;
 
             while ((nextRow = csvReader.readNext()) != null) { 
-                if(nextRow[0] == ""){
+                if(nextRow[0] == "" && Integer.parseInt(nextRow[7].replaceAll("[^\\d.]", "")) < 100){
                     MeetingTime meetingTime = MeetingTimeConverter.parseMeetingTime(nextRow[11]);
                     Section section = new Section(
                     nextRow[6], Integer.parseInt(nextRow[7].replaceAll("[^\\d.]", "")), nextRow[8], nextRow[9], meetingTime.getDays(), 
                     meetingTime.getStartTime(), meetingTime.getEndTime(), nextRow[13], 
                     Integer.parseInt(nextRow[14].replaceAll("[^\\d.]", "")), nextRow[18], nextRow[34], Integer.parseInt(nextRow[28]), Integer.parseInt(nextRow[29]));
                     schedule.addSection(section);
+                    ArrayList<String> crossList = new ArrayList<String>();
+                    matcher = pattern.matcher(nextRow[34]);
+                    while (matcher.find()) {
+                        crossList.add(matcher.group());
+                    }
+                    section.setCrossListed(crossList);
+
                 }
             } 
 
         } catch (IOException | CsvException e) {
             e.printStackTrace();
         }
-
-        return schedule.returnSchedule();
+        schedule.updateCrosslist();
+        return schedule.returnCSSchedule();
     }
 
 }

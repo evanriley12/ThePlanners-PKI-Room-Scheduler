@@ -23,6 +23,8 @@ public class Section {
     private String crossList;
     private int enrollment;
     private int maxEnrollment;
+    private int crossListMax;
+    private ArrayList<String> crossListedSections = new ArrayList<String>();
     @JsonManagedReference
     private ArrayList<Section> overlappingSections = new ArrayList<Section>();
 
@@ -312,6 +314,38 @@ public class Section {
         this.overlappingSections = overlappingSections;
     }
 
+    public void setCrossListMax(ArrayList<Section> schedule) {
+        for(Section section : schedule){
+            if (crossListedSections.contains(section.getCourse() + "-" + section.getSectionNumber()))
+            crossListMax += section.maxEnrollment;
+        }
+        crossListMax += maxEnrollment;
+    }
+
+    /**
+     * Return the max course size considering cross listings
+     * @return max course size including crosslisted courses.
+     */
+    public int getCrossListMax() {
+        return crossListMax;
+    }
+
+    /**
+     * Add a single course to the cross listed courses.
+     * @param crosslistedSection a section that is crosslisted with this section
+     */
+    public void addCrossList(String crosslistedSection){
+        crossListedSections.add(crosslistedSection);
+    }
+
+    /**
+     * Set the entire crosslisted sections
+     * @param allCrossListed an arraylist of all crosslisted sections
+     */
+    public void setCrossListed(ArrayList<String> allCrossListed) {
+        crossListedSections = allCrossListed;
+    }
+
     @Override
     /**
      * Formats the section's information into a readable string.
@@ -322,7 +356,7 @@ public class Section {
                 + ", sectionType=" + sectionType + ", meetingDays=" + meetingDays + ", startTime=" + startTime
                 + ", endTime=" + endTime + ", instructor=" + instructor + ", roomNumber=" + roomNumber
                 + ", instructionMethod=" + instructionMethod + ", crossList=" + crossList + ", enrollment=" + enrollment
-                + ", maxEnrollment=" + maxEnrollment + ", overlappingSections=" + overlappingSections + "]";
+                + ", maxEnrollment=" + maxEnrollment;
     }
 
 

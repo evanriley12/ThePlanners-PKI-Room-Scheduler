@@ -36,7 +36,7 @@ public class CSVFileTests {
         InputStream inputStream = resource.getInputStream();
 
         Schedule mockSchedule = new Schedule();
-        Section mockSection = new Section(null, 0, null, null, null, null, null, null, 0, null, null, 0, 0);
+        Section mockSection = new Section("CSCI", 0, null, null, null, null, null, null, 0, null, null, 0, 0);
         mockSchedule.addSection(mockSection);
 
 
@@ -49,7 +49,7 @@ public class CSVFileTests {
 
         assertNotNull(sections);
 
-        assertEquals(1, sections.size());
+        assertEquals(0, sections.size());
 
 
     }
