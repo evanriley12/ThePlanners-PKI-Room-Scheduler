@@ -112,6 +112,7 @@ function ClassroomReassignment() {
     let endTime = "\nEnd Time: ";
     let maxClassSize = "\n\nMax Class Size: ";
     let enrollment = "\nEnrollment: ";
+    let crosslistsize = "\nCrosslist Max Size: ";
 
     if(csvData) {
       csvData.every((element) => {
@@ -159,7 +160,8 @@ function ClassroomReassignment() {
           + endTime + element["endTime"]
           
           + maxClassSize + element["maxEnrollment"]
-          + enrollment + element["enrollment"];
+          + enrollment + element["enrollment"]
+          + crosslistsize + element["crossListMax"];
           
           document.getElementById("classInfoDisplay").value = chosenClassInformation;
 
