@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ClassroomReassignment.css";
 
+let outputResultCounter = 1;
+let cumulativeAlgoData = "";
+
+/**
+ * ClassroomReassignment is the function that is responsible for handling the frontend webpage
+ * presentation for the PKI Classroom rescheduler. Constants for handling different frontend
+ * activities are included as well as a return for the HTML used to create the webpage.
+ * 
+ * @returns An HTML webpage for users to interact with when rescheduling PKI classrooms.
+ */
 function ClassroomReassignment() {
   const [file, setFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -14,6 +24,23 @@ function ClassroomReassignment() {
     setUploadSuccess(false); // Reset upload success message when a new file is selected
   };
 
+  const downloadFile = () => {
+    const link = document.createElement("a");
+
+    let content;
+    if (cumulativeAlgoData !== "") {
+      content = cumulativeAlgoData;
+    }
+    else {
+      content = "No rescheduler results are available at this time.";
+    }
+
+    const file = new Blob([content], {type: 'text/plain'});
+    link.href = URL.createObjectURL(file);
+    link.download = "results.txt"
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
 
   const handleUpload = async () => {
     const formData = new FormData();
@@ -85,6 +112,7 @@ function ClassroomReassignment() {
     let endTime = "\nEnd Time: ";
     let maxClassSize = "\n\nMax Class Size: ";
     let enrollment = "\nEnrollment: ";
+    let crosslistsize = "\nCrosslist Max Size: ";
 
     if(csvData) {
       csvData.every((element) => {
@@ -132,7 +160,8 @@ function ClassroomReassignment() {
           + endTime + element["endTime"]
           
           + maxClassSize + element["maxEnrollment"]
-          + enrollment + element["enrollment"];
+          + enrollment + element["enrollment"]
+          + crosslistsize + element["crossListMax"];
           
           document.getElementById("classInfoDisplay").value = chosenClassInformation;
 
@@ -152,6 +181,44 @@ function ClassroomReassignment() {
     }
   };
 
+  const createNewOutputWidget = (text) => {
+
+    // Locate the div representing the body of the results column where output widgets are to be placed
+    let resultsColumnDiv = document.getElementById("resultsColumn");
+
+    // If there have been no outputs generated previously, clear the placeholder text before placing a result
+    if (resultsColumnDiv.innerHTML == "No results available. Please upload a schedule and select a course."
+        || resultsColumnDiv.innerHTML == "Rescheduler results cleared.") {
+      resultsColumnDiv.innerHTML = "";
+    }
+    
+    // Create a new output result and append it to the column containing rescheduler results
+    if (text) {
+      // Add the text to the variable that is used to cumulatively store info to be printed to the results file.
+      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + text + "\n\n");
+
+      let newDiv = document.createElement("div");
+      newDiv.className = "ClassroomReassignment-outputWidget";
+      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + text;
+      resultsColumnDiv.prepend(newDiv);
+      outputResultCounter++;
+    }
+  };
+
+  const clearReschedulerResults = (event) => {
+
+    // Locate the div representing the body of the results column where output widgets have been placed
+    let resultsColumnDiv = document.getElementById("resultsColumn");
+
+    // Clear all rescheduler output results, no changes will occur if no results are present
+    if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
+        && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
+      resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
+      outputResultCounter = 1;
+      cumulativeAlgoData = "";
+    }
+  }
+
   return (
     <div className="ClassroomReassignment-page">
       <div className="ClassroomReassignment-workingColumn">
@@ -161,11 +228,12 @@ function ClassroomReassignment() {
         <div className="ClassroomReassignment-inputColumn">
           <form>
             <div className="ClassroomReassignment-individualInput">
-              <div className="ClassroomReassignment-fileSelectionButton">
-                <input type="file" onChange={handleFileChange} />
+              <div className="ClassroomReassignment-fileSelectionButtonDiv">
+                <input type="file" onChange={handleFileChange}/>
               </div>
-              <div className="ClassroomReassignment-fileSelectionButton">
-                <button type="button" onClick={handleUpload}>
+              <div className="ClassroomReassignment-fileSelectionButtonDiv">
+                <button type="button" onClick={handleUpload}
+                className="ClassroomReassignment-fileSelectionButton">
                   Upload CSV
                 </button>
                 {uploadSuccess && <p>Upload successful!</p>}
@@ -243,19 +311,33 @@ function ClassroomReassignment() {
         </div>
         <div className="ClassroomReassignment-displayColumn">
           <textarea id="classInfoDisplay" rows="10" cols="10" readOnly>
-            Display class information here...
+            No course information available. Please upload a schedule and select a course to view its corresponding information.
           </textarea>
         </div>
       </div>
       <div className="ClassroomReassignment-resultsColumn">
         <header className="ClassroomReassignment-resultsHeader">
-          <div className="ClassroomReassignment-resultsLeftSpacer"></div>
+          <div className="ClassroomReassignment-resultsLeftSpacer">
+          <button 
+            type="button"
+            className="ClassroomReassignment-clearResultsButton"
+            onClick={downloadFile}>
+            Download Results</button>
+          </div>
           <div className="ClassroomReassignment-resultsLabel">Results</div>
-          <div className="ClassroomReassignment-clearResultsButton">
-            <button>Clear Results</button>
+          <div className="ClassroomReassignment-clearResultsButtonDiv">
+            <button 
+              className="ClassroomReassignment-clearResultsButton"
+              onClick={clearReschedulerResults}
+            >
+              Clear Results
+            </button>
           </div>
         </header>
-        {algoData ? algoData : 'No results available'}
+        <div className="ClassroomReassignment-resultsColumnBody" id="resultsColumn">
+          No results available. Please upload a schedule and select a course.
+          {algoData && createNewOutputWidget(algoData)}
+        </div>
       </div>
     </div>
   );

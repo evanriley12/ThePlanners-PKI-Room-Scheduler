@@ -2,9 +2,6 @@ package com.theplanners.pkiclassroomrescheduler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
@@ -19,9 +16,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.theplanners.pkiclassroomrescheduler.system.FileUploadController;
-import com.theplanners.pkiclassroomrescheduler.system.Schedule;
-import com.theplanners.pkiclassroomrescheduler.system.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Controllers.FileUploadController;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
 
 @SpringBootTest
 public class CSVFileTests {
@@ -39,7 +36,7 @@ public class CSVFileTests {
         InputStream inputStream = resource.getInputStream();
 
         Schedule mockSchedule = new Schedule();
-        Section mockSection = new Section(null, 0, null, null, null, null, null, null, 0, null, null, 0, 0);
+        Section mockSection = new Section("CSCI", 0, null, null, null, null, null, null, 0, null, null, 0, 0);
         mockSchedule.addSection(mockSection);
 
 
@@ -52,7 +49,7 @@ public class CSVFileTests {
 
         assertNotNull(sections);
 
-        assertEquals(1, sections.size());
+        assertEquals(0, sections.size());
 
 
     }

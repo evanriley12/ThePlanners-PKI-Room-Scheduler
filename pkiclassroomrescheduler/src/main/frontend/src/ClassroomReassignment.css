@@ -1,5 +1,11 @@
 * {
     box-sizing: border-box;
+
+    /*Specify font for wherever applicable.
+    Arial Narrow and Helvetica were specified here
+    as the primary UNO font requires a license for use
+    and these fonts listed in place of said font.*/
+    font-family: "Arial Narrow", Helvetica, sans-serif
 }
 
 .ClassroomReassignment-page:after{
@@ -24,6 +30,11 @@
 
     white-space: pre-line;
     font-size: calc(3px + 2vmin);
+}
+
+.ClassroomReassignment-resultsColumnBody {
+    height: 90%;
+    overflow-y: auto;
 }
 
 .ClassroomReassignment-inputColumn {
@@ -73,11 +84,13 @@
 .ClassroomReassignment-resultsHeader {
     background-color: #474648; /*Changed to UNO Gray*/
     color: #FFFFFF; /*Changed to UNO White*/;
+    border-bottom: 5px solid #BCBBBA; /*Changed to UNO Light Gray*/
     height: 10vh;
     font-size: calc(10px + 2vmin);
     font-weight: bold;
 }
 
+/*Style for the div contining the results header label*/
 .ClassroomReassignment-resultsLabel {
     display: flex;
     align-items: center;
@@ -87,13 +100,29 @@
     height: 100%;
 }
 
-.ClassroomReassignment-clearResultsButton {
+/*Style for the div containing the results button*/
+.ClassroomReassignment-clearResultsButtonDiv {
     display: flex;
     align-items: center;
     justify-content: center;
     float: right;
     width: 15%;
     height: 100%;
+}
+
+.ClassroomReassignment-clearResultsButton {
+    background-color: #0A0A0A; /*Changed to UNO Black*/
+    color: #FFFFFF; /*Changed to UNO White*/
+    border: 3px solid #BCBBBA; /*Changed to UNO Light Gray*/
+    border-radius: 5px;
+
+    font-weight: bold;
+    font-size: calc(3px + 1vmin);
+}
+
+.ClassroomReassignment-clearResultsButton:hover {
+    background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+    color: #0A0A0A; /*Changed to UNO Black*/
 }
 
 .ClassroomReassignment-resultsLeftSpacer {
@@ -107,11 +136,18 @@
 
 textarea {
     background-color: #FFFFFF; /*Changed to UNO White*/
+    border: 2px solid #0A0A0A; /*Changed to UNO Black*/
+    border-radius: 5px;
     justify-content: center;
     width: 100%;
     height: 100%;
     resize: none;
     font-size: calc(3px + 2vmin);
+
+}
+
+textarea:hover {
+    border: 2px solid #D71920; /*Changed to UNO Red*/
 }
 
 .ClassroomReassignment-inputForm {
@@ -141,18 +177,70 @@ textarea {
     height: 20%;
 }
 
+select {
+    background-color: #FFFFFF; /*Changed to UNO White*/
+    border: 2px solid #0A0A0A; /*Changed to UNO Black*/
+    border-radius: 5px;
+
+    font-size: calc(3px + 1.1vmin);
+}
+
+select:hover {
+    border: 2px solid #D71920; /*Changed to UNO Red*/
+}
+
 .ClassroomReassignment-rescheduleButton {
     width: 45%;
     height: 35%;
+
+    background-color:  #0A0A0A; /*Changed to UNO Black*/
+    color: #FFFFFF; /*Changed to UNO White*/
+    border: 3px solid #D71920; /*Changed to UNO Red*/
+    border-radius: 5px;
+
+    font-weight: bold;
+    font-size: calc(3px + 1.25vmin);
 }
 
-.ClassroomReassignment-fileSelectionButton {
+.ClassroomReassignment-rescheduleButton:hover {
+    background-color: #D71920; /*Changed to UNO Red*/
+}
+
+.ClassroomReassignment-fileSelectionButtonDiv {
     display: flex;
     align-items: center;
     justify-content: left;
     width: 100%;
     height: 50%;
     padding: 15px;
+}
+
+input[type="file"]::file-selector-button {
+    background-color:  #0A0A0A; /*Changed to UNO Black*/
+    color: #FFFFFF; /*Changed to UNO White*/
+    border: 2px solid #D71920; /*Changed to UNO Red*/
+    border-radius: 5px;
+
+    font-weight: bold;
+    font-size: calc(3px + 1vmin);
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #D71920; /*Changed to UNO Red*/
+}
+
+.ClassroomReassignment-fileSelectionButton {
+    background-color:  #0A0A0A; /*Changed to UNO Black*/
+    color: #FFFFFF; /*Changed to UNO White*/
+    border: 2px solid #D71920; /*Changed to UNO Red*/
+    border-radius: 5px;
+
+    font-weight: bold;
+    font-size: calc(3px + 1vmin);
+}
+
+.ClassroomReassignment-fileSelectionButton:hover {
+    background-color: #D71920; /*Changed to UNO Red*/
 }
 
 .ClassroomReassignment-fileUploadButton {
@@ -170,4 +258,25 @@ textarea {
     width: 100%;
     height: 100%;
     padding: 15px;
+}
+
+input[type="number"] {
+    background-color: #FFFFFF; /*Changed to UNO White*/
+    border: 2px solid #0A0A0A; /*Changed to UNO Black*/
+    border-radius: 5px;
+
+    font-size: calc(3px + 1.1vmin);
+}
+
+input[type="number"]:hover {
+    border: 2px solid #D71920; /*Changed to UNO Red*/
+}
+
+.ClassroomReassignment-outputWidget {
+    background-color: #BCBBBA; /*Changed to UNO Light Gray*/
+    border: 4px solid #0A0A0A; /*Changed to UNO Black*/
+    border-radius: 10px;
+    width: 100%;
+    height: 20%;
+    overflow: auto;
 }
