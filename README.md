@@ -11,7 +11,7 @@ Our application is a tool to manage and reschedule classroom assignments for PKI
     - The algorithm output display has been revamped to allow for multiple results to be displayed at once.
     - The algorithm output display window is now scrollable to allow the user to stack as many outputs as needed.
     - Added a download results button that outputs a text file containing all information in the result field to allow for a way to save results.
-    - Online courses no longer display in the course selction box, since they don't have a classroom to begin with.
+    - Online courses no longer display in the course selection box, since they don't have a classroom to begin with.
     - Added Javadocs via Doxygen to give information about all of our classes.
     - Various visual changes to the frontend to add more polish.
     - Various general bug fixes.
