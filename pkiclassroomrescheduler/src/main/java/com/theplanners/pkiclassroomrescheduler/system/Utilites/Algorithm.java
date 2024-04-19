@@ -96,11 +96,11 @@ public final class Algorithm {
         }
         // Check if the classroom is null, which indicates that it is in the engineering building, and return an error.
         if (oldClassroom == null) {
-            return new Result(section, oldClassroom, null, null, null);
+            return new Result(section, oldClassroom, null, null, null, 0);
         }
         // Check if the biggest classroom can even handle the new size
         if (biggestRoom < newSize) {
-            return new Result(section, oldClassroom, null, null, null);
+            return new Result(section, oldClassroom, null, null, null, 0);
         }
         // Now with a list of potential rooms, see if any of the rooms are not in use by an adjacent node.
         for (int i = 0; i < possibleClassrooms.size(); i++) {
@@ -137,7 +137,7 @@ public final class Algorithm {
                 }
             }
             // Get the result
-            Result result = new Result(section, oldClassroom, bestClassroom, otherBest, otherWorst);
+            Result result = new Result(section, oldClassroom, bestClassroom, otherBest, otherWorst, newSize);
             return result;
         }
     }

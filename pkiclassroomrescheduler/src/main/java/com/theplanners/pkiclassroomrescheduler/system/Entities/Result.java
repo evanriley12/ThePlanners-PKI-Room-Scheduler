@@ -10,8 +10,9 @@ public class Result {
     private Classroom newClassroom;
     private ArrayList<Classroom> otherEqualClassrooms;
     private ArrayList<Classroom> otherWorseClassrooms;
+    private int newSize;
 
-    public Result(Section section, Classroom oldClassroom, Classroom newClassroom, ArrayList<Classroom> otherEqualClassrooms, ArrayList<Classroom> otherWorseClassrooms) {
+    public Result(Section section, Classroom oldClassroom, Classroom newClassroom, ArrayList<Classroom> otherEqualClassrooms, ArrayList<Classroom> otherWorseClassrooms, int newSize) {
         this.course = section.getCourse();
         this.courseTitle = section.getCourseTitle();
         this.sectionNumber = section.getSectionNumber();
@@ -19,6 +20,7 @@ public class Result {
         this.newClassroom = newClassroom;
         this.otherEqualClassrooms = otherEqualClassrooms;
         this.otherWorseClassrooms = otherWorseClassrooms;
+        this.newSize = newSize;
     }
 
     public String getCourse() {
@@ -103,7 +105,7 @@ public class Result {
         }
         worseString = worseString.substring(0, worseString.length() - 2) + ".";
         // Return full String
-        return course + " " + courseTitle + " Section " + sectionNumber + " can be moved from PKI " + oldClassroom.getRoom() + " to PKI " + newClassroom.getRoom() + ". \n\n" +
+        return course + " " + courseTitle + " Section " + sectionNumber + " can be moved from PKI " + oldClassroom.getRoom() + " to PKI " + newClassroom.getRoom() + " to accomodate " + newSize + " students.\n\n" +
         "Other equally suitable options are: " + equalString + "\n\n" +
         "Other less suitable but available options are: " + worseString;
     }
