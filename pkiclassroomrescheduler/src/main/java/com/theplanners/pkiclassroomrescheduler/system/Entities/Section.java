@@ -315,9 +315,11 @@ public class Section {
     }
 
     public void setCrossListMax(ArrayList<Section> schedule) {
+        crossListMax = 0;
         for(Section section : schedule){
-            if (crossListedSections.contains(section.getCourse() + "-" + section.getSectionNumber()))
-            crossListMax += section.maxEnrollment;
+            if (crossListedSections.contains(section.getCourse() + "-00" + Integer.toString(section.getSectionNumber()))){
+                crossListMax += section.maxEnrollment;
+            }
         }
         crossListMax += maxEnrollment;
     }

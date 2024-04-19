@@ -77,7 +77,7 @@ public class FileUploadController {
              CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(3).build()) {
 
             String[] nextRow;
-            Pattern pattern = Pattern.compile("\\b[A-Z]{3,4} \\d{3}-\\d{3}\\b");
+            Pattern pattern = Pattern.compile("\\b[A-Z]{3,4} \\d{3,4}-\\d{3,4}\\b");
             Matcher matcher;
 
             while ((nextRow = csvReader.readNext()) != null) { 
@@ -88,12 +88,10 @@ public class FileUploadController {
                     meetingTime.getStartTime(), meetingTime.getEndTime(), nextRow[13], 
                     Integer.parseInt(nextRow[14].replaceAll("[^\\d.]", "")), nextRow[18], nextRow[34], Integer.parseInt(nextRow[28]), Integer.parseInt(nextRow[29]));
                     schedule.addSection(section);
-                    ArrayList<String> crossList = new ArrayList<String>();
                     matcher = pattern.matcher(nextRow[34]);
                     while (matcher.find()) {
-                        crossList.add(matcher.group());
+                        section.addCrossList(matcher.group());
                     }
-                    section.setCrossListed(crossList);
 
                 }
             } 
