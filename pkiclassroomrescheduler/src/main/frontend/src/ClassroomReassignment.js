@@ -166,10 +166,10 @@ function ClassroomReassignment() {
           document.getElementById("classInfoDisplay").value = chosenClassInformation;
 
           // Set the values of the number boxes for max class size and enrollment
-          document.getElementById("maxClassSize").value = element["maxEnrollment"];
+          document.getElementById("maxClassSize").value = element["crossListMax"];
           document.getElementById("enrollmentSize").value = element["enrollment"];
 
-          document.getElementById("maxClassSize").min = element["maxEnrollment"];
+          document.getElementById("maxClassSize").min = element["crossListMax"];
           document.getElementById("enrollmentSize").min = element["enrollment"];
 
           // Break out of the loop once match has been found
