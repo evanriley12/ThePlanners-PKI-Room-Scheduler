@@ -67,7 +67,7 @@ public final class Algorithm {
      * @return A string containing the best choice for a different classroom, options equal to the best, and options worse than the best.
      */
     public static Result doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
-        // Create the graph
+        // Create the graph and get a reference to the section in the schedule
         updateOverlaps(schedule);
         // Get all classrooms
         ArrayList<Classroom> allClassrooms = classroomList.returnClassrooms();
@@ -138,6 +138,8 @@ public final class Algorithm {
             }
             // Get the result
             Result result = new Result(section, oldClassroom, bestClassroom, otherBest, otherWorst, newSize);
+            //Update the schedule
+            schedule.updateSchedule(section, bestClassroom.getRoom());
             return result;
         }
     }

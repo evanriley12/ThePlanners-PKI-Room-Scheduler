@@ -64,4 +64,13 @@ public class Schedule {
             section.setCrossListMax(schedule);
         }
     }
+
+    public void updateSchedule(Section sectionToUpdate, int newRoom) {
+        // Find the section in the schedule
+        for (Section section : this.schedule) {
+            if (section == sectionToUpdate) {
+                section.setRoomNumber(newRoom);
+            }
+        }
+    }
 }
