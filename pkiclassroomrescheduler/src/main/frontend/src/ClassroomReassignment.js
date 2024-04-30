@@ -167,10 +167,8 @@ function ClassroomReassignment() {
 
           // Set the values of the number boxes for max class size and enrollment
           document.getElementById("maxClassSize").value = element["crossListMax"];
-          document.getElementById("enrollmentSize").value = element["enrollment"];
 
           document.getElementById("maxClassSize").min = element["crossListMax"];
-          document.getElementById("enrollmentSize").min = element["enrollment"];
 
           // Break out of the loop once match has been found
           return false;
@@ -275,23 +273,6 @@ function ClassroomReassignment() {
                   type="number"
                   id="maxClassSize"
                   name="maxClassSize"
-                  step="1"
-                ></input>
-              </div>
-            </div>
-            <div className="ClassroomReassignment-individualInput">
-              <div className="ClassroomReassignment-numberBox">
-                <label
-                  htmlFor="enrollmentSize"
-                  className="ClassroomResassignment-selectBoxLabel"
-                >
-                  Enrollment:{" "}
-                </label>
-                <input
-                  className="ClassroomResassignment-selectBox"
-                  type="number"
-                  id="enrollmentSize"
-                  name="enrollmentSize"
                   step="1"
                 ></input>
               </div>
