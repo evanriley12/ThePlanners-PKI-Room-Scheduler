@@ -2,6 +2,9 @@ package com.theplanners.pkiclassroomrescheduler.system.Entities;
 
 import java.util.ArrayList;
 
+/**
+ * The Result object stores all relevant information about the result of the algorithm for easy access.
+ */
 public class Result {
     private String course;
     private String courseTitle;
@@ -12,6 +15,15 @@ public class Result {
     private ArrayList<Classroom> otherWorseClassrooms;
     private int newSize;
 
+    /**
+     * The constructor for a Result object
+     * @param section The section of the course that was rescheduled.
+     * @param oldClassroom The section's classroom assignment before the algorithm executed.
+     * @param newClassroom The section's new classroom assignment after the algorithm executed.
+     * @param otherEqualClassrooms Other available classrooms of equal efficiency to the newClassroom.
+     * @param otherWorseClassrooms Other available classrooms of worse efficiency than the newClassroom.
+     * @param newSize The new size that the section can accomodate.
+     */
     public Result(Section section, Classroom oldClassroom, Classroom newClassroom, ArrayList<Classroom> otherEqualClassrooms, ArrayList<Classroom> otherWorseClassrooms, int newSize) {
         this.course = section.getCourse();
         this.courseTitle = section.getCourseTitle();
@@ -23,66 +35,14 @@ public class Result {
         this.newSize = newSize;
     }
 
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public String getCourseTitle() {
-        return courseTitle;
-    }
-
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
-    }
-
-    public int getSectionNumber() {
-        return sectionNumber;
-    }
-
-    public void setSectionNumber(int sectionNumber) {
-        this.sectionNumber = sectionNumber;
-    }
-
-    public Classroom getOldClassroom() {
-        return oldClassroom;
-    }
-
-    public void setOldClassroom(Classroom oldClassroom) {
-        this.oldClassroom = oldClassroom;
-    }
-
-    public Classroom getNewClassroom() {
-        return newClassroom;
-    }
-
-    public void setNewClassroom(Classroom newClassroom) {
-        this.newClassroom = newClassroom;
-    }
-
-    public ArrayList<Classroom> getOtherEqualClassrooms() {
-        return otherEqualClassrooms;
-    }
-
-    public void setOtherEqualClassrooms(ArrayList<Classroom> otherEqualClassrooms) {
-        this.otherEqualClassrooms = otherEqualClassrooms;
-    }
-
-    public ArrayList<Classroom> getOtherWorseClassrooms() {
-        return otherWorseClassrooms;
-    }
-
-    public void setOtherWorseClassrooms(ArrayList<Classroom> otherWorseClassrooms) {
-        this.otherWorseClassrooms = otherWorseClassrooms;
-    }
-
+    /**
+     * Formats the result's information into a readable string.
+     * @return A string containing all of the result's information.
+     */
     public String toString() {
         // Print error if anything is null
         if (course == null || courseTitle == null || oldClassroom == null || newClassroom == null) {
-            return "Rescheduling could not be completed. The course may be unable to move from it's current classroom, or no classroom is big enough to accomodate the increased size.";
+            return "Rescheduling could not be completed. No classroom is big enough to accomodate the increased size, so a new section will need to be created.";
         }
         String equalString = "";
         String worseString = "";

@@ -30,6 +30,10 @@ public class Schedule {
         return this.schedule;
     }
 
+    /**
+     * Retrieves the computer science related courses from the schedule.
+     * @return An ArrayList of every Computer Science course in the schedule.
+     */
     public ArrayList<Section> returnCSSchedule(){
         ArrayList<Section> csSchedule = new ArrayList<Section>();
         for(Section section : schedule)
@@ -56,6 +60,9 @@ public class Schedule {
         this.schedule.clear();
     }
 
+    /**
+     * Updates the crosslisting information in the schedule.
+     */
     public void updateCrosslist()
     {
         for(Section section : schedule){
@@ -63,6 +70,11 @@ public class Schedule {
         }
     }
 
+    /**
+     * Updates a section in the schedule with a new classroom assignment.
+     * @param sectionToUpdate The section that will be updated.
+     * @param newRoom The new room number the section will be assigned to.
+     */
     public void updateSchedule(Section sectionToUpdate, int newRoom) {
         // Find the section in the schedule
         for (Section section : this.schedule) {
