@@ -38,13 +38,11 @@ public class Schedule {
             if(course.contains("BIOI") || 
             course.contains("BMI") || 
             course.contains("CIST") || 
-            course.contains("CNST") || 
             course.contains("CSCI") || 
             course.contains("CYBR") || 
             course.contains("ISQA") || 
             course.contains("ITIN") || 
-            course.contains("MATH") || 
-            course.contains("SCMT")) {
+            course.contains("MATH")) {
                 csSchedule.add(section);
             }
         }
