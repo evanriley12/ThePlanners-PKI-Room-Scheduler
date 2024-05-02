@@ -203,17 +203,34 @@ function ClassroomReassignment() {
     }
   };
 
-  const clearReschedulerResults = (event) => {
+  const clearReschedulerResults = async() => {
+    try {
+      // Retrieve the original schedule from the designated endpoint
+      const response = await axios.get(baseURL + "api/reset")
+      console.log("Results cleared successfully")
 
-    // Locate the div representing the body of the results column where output widgets have been placed
-    let resultsColumnDiv = document.getElementById("resultsColumn");
+      // Update the CSV data to reflect the reset that has taken place on the backend
+      setUploadSuccess(true);
+      setCsvData(response.data);
+      console.log(response.data);
 
-    // Clear all rescheduler output results, no changes will occur if no results are present
-    if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
-        && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
-      resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
-      outputResultCounter = 1;
-      cumulativeAlgoData = "";
+      // Clear the previous results skill stored within algoData
+      setAlgoData(null);
+      console.log(algoData);
+
+      // Locate the div representing the body of the results column where output widgets have been placed
+      let resultsColumnDiv = document.getElementById("resultsColumn");
+
+      // Clear all rescheduler output results, no changes will occur if no results are present
+      if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
+          && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
+        resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
+        outputResultCounter = 1;
+        cumulativeAlgoData = "";
+      }
+    }
+    catch(error) {
+      console.error("Error clearing results:", error);
     }
   }
 
