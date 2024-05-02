@@ -3,8 +3,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * A Section is an object that contains all information about a class in the schedule.
  * It is populated with information based on what is parsed from the uploaded csv.
@@ -25,8 +24,9 @@ public class Section {
     private int maxEnrollment;
     private int crossListMax;
     private ArrayList<String> crossListedSections = new ArrayList<String>();
-    @JsonManagedReference
+    @JsonIgnore
     private ArrayList<Section> overlappingSections = new ArrayList<Section>();
+    private int originalRoom;
 
     /**
      * The constructor for a Section object, where each piece of relevant data can be added.
@@ -61,7 +61,14 @@ public class Section {
             this.crossList = crossList;
             this.enrollment = enrollment;
             this.maxEnrollment = maxEnrollment;
+            this.originalRoom = roomNumber;
         }
+
+
+    public void resetRoom() {
+        this.roomNumber = this.originalRoom;
+    }
+    
     /**
      * Retrives the course abbreviation from the Section.
      * @return A string containing the course abbreviation.
