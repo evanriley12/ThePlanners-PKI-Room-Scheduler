@@ -78,6 +78,7 @@ public class Schedule {
     public void updateSchedule(Section sectionToUpdate, int newRoom) {
         // Find the section in the schedule
         for (Section section : this.schedule) {
+            section.clearOverlappingSections();
             if (section == sectionToUpdate) {
                 section.setRoomNumber(newRoom);
             }
