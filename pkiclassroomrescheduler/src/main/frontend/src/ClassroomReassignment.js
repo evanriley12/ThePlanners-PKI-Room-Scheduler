@@ -212,14 +212,16 @@ function ClassroomReassignment() {
     
     // Create a new output result and append it to the column containing rescheduler results
     if (text) {
+      text.forEach((element) => {
       // Add the text to the variable that is used to cumulatively store info to be printed to the results file.
-      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + text + "\n\n");
+      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + element + "\n\n");
 
       let newDiv = document.createElement("div");
       newDiv.className = "ClassroomReassignment-outputWidget";
-      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + text;
+      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + element;
       resultsColumnDiv.prepend(newDiv);
       outputResultCounter++;
+    })
     }
   };
 

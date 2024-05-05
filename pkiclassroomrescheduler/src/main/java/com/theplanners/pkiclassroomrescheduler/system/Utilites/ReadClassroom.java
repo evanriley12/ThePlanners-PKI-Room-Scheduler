@@ -21,7 +21,8 @@ public final class ReadClassroom {
     /**
      * Filepath to the static resource containing the classroom information
      */
-    private static final String CSV_FILE_PATH = "ClassroomInformation.csv";
+    //private static final String CSV_FILE_PATH = "ClassroomInformation.csv";
+    private static final String CSV_FILE_PATH = "ClassroomInfoTest.csv"; // using this to test recursive output, remove when done
 
     /**
      * Utility function that takes a String with comma delimiters 
