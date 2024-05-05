@@ -63,8 +63,12 @@ public class AlgorithmController {
         try {
             ArrayList<Result> resultArr = Algorithm.doAlgorithm(result, newSize, schedule, classroomList);
             ArrayList<String> stringArr = new ArrayList<String>();
-            for (Result resultObj : resultArr) {
+            System.out.println("Result at Controller: ");
+            // Iterate through resultArr in reverse order and add each element to stringArr
+            for (int i = resultArr.size() - 1; i >= 0; i--) {
+                Result resultObj = resultArr.get(i);
                 stringArr.add(resultObj.toString());
+                System.out.println(resultObj.toString() + "/n");
             }
             return stringArr;
         } catch(Exception e) {

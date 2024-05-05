@@ -94,40 +94,36 @@ public final class Algorithm {
         // Now the list of rooms only contains rooms that can actually be used.
         // Check if there are no suitable rooms
         if (possibleClassrooms.isEmpty()) {
-            // Iterate over each neighbor to find one with a suitable classroom
+            // Determine which neighbors could work
+            ArrayList<Section> viableNeighbors = new ArrayList<Section>();
             for (Section neighbor : neighbors) {
-                // Debug if
-                if (neighbor.getRoomNumber() == 274) {
-                    continue;
-                }
-                Classroom neighborClassroom = classroomList.getClassroomByNumber(neighbor.getRoomNumber());
-                if (neighborClassroom != null && neighborClassroom.getSeats() >= newSize) {
-                    // Attempt to reschedule the neighbor
-                    ArrayList<Result> recursiveResults = doAlgorithm(neighbor, neighbor.getMaxEnrollment(), schedule, classroomList);
-                    if (recursiveResults != null && !recursiveResults.isEmpty()) {
-                        // Rescheduling of the neighbor was successful
-                        // Find the classroom freed up by the rescheduled neighbor
-                        Classroom freedClassroom = classroomList.getClassroomByNumber(neighbor.getRoomNumber());
-                        if (freedClassroom != null) {
-                            // Attempt to reschedule the original section to the freed up classroom
-                            ArrayList<Result> selfRescheduleResult = doAlgorithm(section, newSize, schedule, classroomList);
-                            if (selfRescheduleResult != null && !selfRescheduleResult.isEmpty()) {
-                                // Update the room number of the original section to the freed up classroom's room number
-                                for (Result result : selfRescheduleResult) {
-                                    if (result.getSection() == section) {
-                                        result.setNewClassroom(classroomList.getClassroomByNumber(freedClassroom.getRoom()));
-                                    }
-                                }
-                                // Add the self-rescheduling result and return the combined results
-                                schedule.updateSchedule(section, freedClassroom.getRoom());;
-                                recursiveResults.addAll(selfRescheduleResult);
-                                return recursiveResults;
-                            }
-                        }
-                    }
+                if (classroomList.getClassroomByNumber(neighbor.getRoomNumber()).getSeats() >= newSize) {
+                    viableNeighbors.add(neighbor);
                 }
             }
-            // If no suitable solution found, return null
+            // Now we have a list of each neighbor that can fit the newSize
+            // Check to see if there are any viable neighbors
+            if (viableNeighbors.isEmpty()) {
+                return null;
+            }
+            // Iterate through each potential neighbor to find a suitable classroom
+            for (Section neighbor : viableNeighbors) {
+                // Get the neighbor's classroom
+                Classroom neighborClassroom = classroomList.getClassroomByNumber(neighbor.getRoomNumber());
+                // Attempt to reschedule the current neighbor
+                ArrayList<Result> recursiveResults = doAlgorithm(neighbor, neighbor.getCrossListMax(), schedule, classroomList);
+                // Check if scheduling was successful
+                if (recursiveResults != null && !recursiveResults.isEmpty()) {
+                    // Rescheduling was successful
+                    results.add(new Result(section, oldClassroom, neighborClassroom, new ArrayList<Classroom>(), new ArrayList<Classroom>(), newSize));
+                    schedule.updateSchedule(section, neighborClassroom.getRoom());
+                    results.addAll(recursiveResults);
+                    return results;
+                } else {
+                    // Rescheduling was unsuccessful, move on to the next neighbor
+                    continue;
+                }
+            }
             return null;
         } else {
             // Determine which of the remaining classes is the best option.
