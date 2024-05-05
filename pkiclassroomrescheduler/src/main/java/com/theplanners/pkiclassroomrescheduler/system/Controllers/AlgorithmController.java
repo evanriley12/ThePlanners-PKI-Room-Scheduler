@@ -58,9 +58,9 @@ public class AlgorithmController {
         }
 
         try { 
-            return Algorithm.doAlgorithm(result, newSize, schedule, classroomList).toString(); 
+            return Algorithm.doAlgorithm(result, newSize, schedule, classroomList).get(0).toString(); 
         } catch(Exception e) {
-            return "Class could not be rescheduled.";
+            return "Class could not be rescheduled. There may be no classrooms that fit the new max size or no classrooms that can be easily rescheduled.";
         }
     }
 }

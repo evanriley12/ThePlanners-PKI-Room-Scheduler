@@ -52,4 +52,13 @@ public class ClassroomList {
     public void clearClassrooms(){
         this.classrooms.clear();
     }
+
+    public Classroom getClassroomByNumber(int roomNumber) {
+        for (Classroom classroom : classrooms) {
+            if (classroom.getRoom() == roomNumber) {
+                return classroom;
+            }
+        }
+        return null;
+    }
 }

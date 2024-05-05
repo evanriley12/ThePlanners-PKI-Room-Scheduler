@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * The Result object stores all relevant information about the result of the algorithm for easy access.
  */
 public class Result {
+    private Section section;
     private String course;
     private String courseTitle;
     private int sectionNumber;
@@ -25,6 +26,7 @@ public class Result {
      * @param newSize The new size that the section can accomodate.
      */
     public Result(Section section, Classroom oldClassroom, Classroom newClassroom, ArrayList<Classroom> otherEqualClassrooms, ArrayList<Classroom> otherWorseClassrooms, int newSize) {
+        this.section = section;
         this.course = section.getCourse();
         this.courseTitle = section.getCourseTitle();
         this.sectionNumber = section.getSectionNumber();
@@ -33,6 +35,14 @@ public class Result {
         this.otherEqualClassrooms = otherEqualClassrooms;
         this.otherWorseClassrooms = otherWorseClassrooms;
         this.newSize = newSize;
+    }
+
+    public Section getSection() {
+        return this.section;
+    }
+
+    public void setNewClassroom(Classroom newClassroom) {
+        this.newClassroom = newClassroom;
     }
 
     /**

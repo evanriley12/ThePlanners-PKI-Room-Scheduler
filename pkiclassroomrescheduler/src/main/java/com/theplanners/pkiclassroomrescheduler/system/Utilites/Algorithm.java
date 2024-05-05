@@ -29,32 +29,14 @@ public final class Algorithm {
                 // If there is an overlap and the sections arent the same section, create an edge.
                 if (!section.equals(section2) && section.Overlaps(section2)) {
                     section.addOverlappingSection(section2);
-                    //System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
+                    System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
                 }
             }
-        }
-    }
-
-    /**
-     * An older version of our Algorithm that simply checks if each classroom can fit the given class
-     * and outputs all classrooms that can. Only used for testing and will later be removed.
-     * @param section The Section object within the schedule that needs to be rescheduled.
-     * @param newSize An integer containing the updated size of the class that a classroom needs to accomodate.
-     * @param schedule The Schedule object which is a collection of all sections in the schedule.
-     * @param classroomList A ClassroomList object containing each Classroom object available in the building.
-     * @return A string containing all of the classrooms that the given section can fit in.
-     */
-    public String doAlgorithmOld(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
-        updateOverlaps(schedule);
-        int currentRoom = section.getRoomNumber();
-        ArrayList<Classroom> classrooms = classroomList.returnClassrooms();
-        ArrayList<String> newRooms = new ArrayList<String>();
-        for (int i = 0; i < classrooms.size(); i++) {
-            if (classrooms.get(i).getRoom() != currentRoom && classrooms.get(i).getSeats() >= newSize) {
-                newRooms.add(Integer.toString(classrooms.get(i).getRoom()));
+            System.out.println(section.getCourseTitle() + " overlaps with classes in rooms:");
+            for (Section sec : section.getOverlappingSections()) {
+                System.out.println(sec.getRoomNumber());
             }
         }
-        return newRooms.toString();
     }
     
     /**
@@ -66,9 +48,11 @@ public final class Algorithm {
      * @param classroomList A ClassroomList object containing each Classroom object available in the building.
      * @return A string containing the best choice for a different classroom, options equal to the best, and options worse than the best.
      */
-    public static Result doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
+    public static ArrayList<Result> doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
         // Create the graph and get a reference to the section in the schedule
         updateOverlaps(schedule);
+        // Create an array list to store all results
+        ArrayList<Result> results = new ArrayList<Result>();
         // Get all classrooms
         ArrayList<Classroom> allClassrooms = classroomList.returnClassrooms();
         // Get all adjacent sections
@@ -94,13 +78,9 @@ public final class Algorithm {
                 biggestRoom = allClassrooms.get(i).getSeats();
             }
         }
-        // Check if the classroom is null, which indicates that it is in the engineering building, and return an error.
-        if (oldClassroom == null) {
-            return new Result(section, oldClassroom, null, null, null, 0);
-        }
-        // Check if the biggest classroom can even handle the new size
-        if (biggestRoom < newSize) {
-            return new Result(section, oldClassroom, null, null, null, 0);
+        // Return null if the previous classroom is null (shouldn't happen anymore) or if the newSize is bigger than the biggest room in PKI.
+        if (oldClassroom == null || biggestRoom < newSize) {
+            return null;
         }
         // Now with a list of potential rooms, see if any of the rooms are not in use by an adjacent node.
         for (int i = 0; i < possibleClassrooms.size(); i++) {
@@ -113,11 +93,42 @@ public final class Algorithm {
         }
         // Now the list of rooms only contains rooms that can actually be used.
         // Check if there are no suitable rooms
-        if (possibleClassrooms.size() == 0) {
-            // If there are no rooms, determine the best neighbor to attempt to reschedule.
-            // TODO: Recursive case.
+        if (possibleClassrooms.isEmpty()) {
+            // Iterate over each neighbor to find one with a suitable classroom
+            for (Section neighbor : neighbors) {
+                // Debug if
+                if (neighbor.getRoomNumber() == 274) {
+                    continue;
+                }
+                Classroom neighborClassroom = classroomList.getClassroomByNumber(neighbor.getRoomNumber());
+                if (neighborClassroom != null && neighborClassroom.getSeats() >= newSize) {
+                    // Attempt to reschedule the neighbor
+                    ArrayList<Result> recursiveResults = doAlgorithm(neighbor, neighbor.getMaxEnrollment(), schedule, classroomList);
+                    if (recursiveResults != null && !recursiveResults.isEmpty()) {
+                        // Rescheduling of the neighbor was successful
+                        // Find the classroom freed up by the rescheduled neighbor
+                        Classroom freedClassroom = classroomList.getClassroomByNumber(neighbor.getRoomNumber());
+                        if (freedClassroom != null) {
+                            // Attempt to reschedule the original section to the freed up classroom
+                            ArrayList<Result> selfRescheduleResult = doAlgorithm(section, newSize, schedule, classroomList);
+                            if (selfRescheduleResult != null && !selfRescheduleResult.isEmpty()) {
+                                // Update the room number of the original section to the freed up classroom's room number
+                                for (Result result : selfRescheduleResult) {
+                                    if (result.getSection() == section) {
+                                        result.setNewClassroom(classroomList.getClassroomByNumber(freedClassroom.getRoom()));
+                                    }
+                                }
+                                // Add the self-rescheduling result and return the combined results
+                                schedule.updateSchedule(section, freedClassroom.getRoom());;
+                                recursiveResults.addAll(selfRescheduleResult);
+                                return recursiveResults;
+                            }
+                        }
+                    }
+                }
+            }
+            // If no suitable solution found, return null
             return null;
-            //return "No available classrooms.";
         } else {
             // Determine which of the remaining classes is the best option.
             Classroom bestClassroom = possibleClassrooms.get(0);
@@ -137,10 +148,13 @@ public final class Algorithm {
                 }
             }
             // Get the result
-            Result result = new Result(section, oldClassroom, bestClassroom, otherBest, otherWorst, newSize);
+            results.add(new Result(section, oldClassroom, bestClassroom, otherBest, otherWorst, newSize));
             //Update the schedule
             schedule.updateSchedule(section, bestClassroom.getRoom());
-            return result;
+            for (Result result : results) {
+                System.out.println(result.toString());
+            }
+            return results;
         }
     }
 }
