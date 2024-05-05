@@ -29,13 +29,13 @@ public final class Algorithm {
                 // If there is an overlap and the sections arent the same section, create an edge.
                 if (!section.equals(section2) && section.Overlaps(section2)) {
                     section.addOverlappingSection(section2);
-                    System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
+                    //System.out.println("Added " + section2.getCourseTitle() + " to " + section.getCourseTitle() + "'s overlaps.");
                 }
             }
-            System.out.println(section.getCourseTitle() + " overlaps with classes in rooms:");
-            for (Section sec : section.getOverlappingSections()) {
-                System.out.println(sec.getRoomNumber());
-            }
+            // System.out.println(section.getCourseTitle() + " overlaps with classes in rooms:");
+            // for (Section sec : section.getOverlappingSections()) {
+            //     System.out.println(sec.getRoomNumber());
+            // }
         }
     }
     

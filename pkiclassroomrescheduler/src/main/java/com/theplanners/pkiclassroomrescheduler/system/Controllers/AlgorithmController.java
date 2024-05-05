@@ -1,5 +1,7 @@
 package com.theplanners.pkiclassroomrescheduler.system.Controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.ClassroomList;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
+import com.theplanners.pkiclassroomrescheduler.system.Entities.Result;
 import com.theplanners.pkiclassroomrescheduler.system.Utilites.Algorithm;
 
 @RestController
@@ -43,7 +46,7 @@ public class AlgorithmController {
      * @return the optimal rearrangement of classrooms if one exists
      */
     @GetMapping("/algorithm")
-    public String runAlgorithm(@RequestParam String classSection, @RequestParam int newSize){
+    public ArrayList<String> runAlgorithm(@RequestParam String classSection, @RequestParam int newSize){
 
         String[] courseSection = classSection.split("-");
         for(int i = 0 ; i < courseSection.length ; i++){
@@ -57,10 +60,16 @@ public class AlgorithmController {
             }
         }
 
-        try { 
-            return Algorithm.doAlgorithm(result, newSize, schedule, classroomList).get(0).toString(); 
+        try {
+            ArrayList<Result> resultArr = Algorithm.doAlgorithm(result, newSize, schedule, classroomList);
+            ArrayList<String> stringArr = new ArrayList<String>();
+            for (Result resultObj : resultArr) {
+                stringArr.add(resultObj.toString());
+            }
+            return stringArr;
         } catch(Exception e) {
-            return "Class could not be rescheduled. There may be no classrooms that fit the new max size or no classrooms that can be easily rescheduled.";
+            //return "Class could not be rescheduled. There may be no classrooms that fit the new max size or no classrooms that can be easily rescheduled.";
+            return null;
         }
     }
 }
