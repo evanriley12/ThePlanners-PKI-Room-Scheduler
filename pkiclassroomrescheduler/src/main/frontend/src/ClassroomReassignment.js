@@ -4,6 +4,7 @@ import "./ClassroomReassignment.css";
 
 let outputResultCounter = 1;
 let cumulativeAlgoData = "";
+let dropdownPopulated = false;
 
 /**
  * ClassroomReassignment is the function that is responsible for handling the frontend webpage
@@ -60,6 +61,25 @@ function ClassroomReassignment() {
       setUploadSuccess(true);
       setCsvData(response.data);
       console.log(response.data);
+
+      if (response.data && dropdownPopulated == false) {
+        // Mark dropdown as being filled to avoid duplicated repopulation
+        dropdownPopulated = true;
+
+        // Populate Dropdown box
+        response.data.forEach((element) => {
+          let courseSelect = document.getElementById("courseSelect");
+          let course = document.createElement("option");
+
+          let sectionNumberString = element["sectionNumber"].toString();
+          let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
+
+          course.text = element["course"] + " - Section " + paddedSectionNumberString;
+          course.value = element["course"] + " - Section " + paddedSectionNumberString;
+          courseSelect.appendChild(course);
+        })
+      }
+
     } catch (error) {
       console.error("Error uploading file:", error);
     };
@@ -259,22 +279,6 @@ function ClassroomReassignment() {
                 <select className="ClassroomReassignment-dropdownBox" id="courseSelect" onChange={dropDownSelection}>
                   <option selected>Choose Class</option>
                 </select>
-                  {
-                    csvData && (
-                      // Populate Dropdown box
-                      csvData.forEach((element) => {
-                        let courseSelect = document.getElementById("courseSelect");
-                        let course = document.createElement("option");
-
-                        let sectionNumberString = element["sectionNumber"].toString();
-                        let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
-
-                        course.text = element["course"] + " - Section " + paddedSectionNumberString;
-                        course.value = element["course"] + " - Section " + paddedSectionNumberString;
-                        courseSelect.appendChild(course);
-                      })
-                    )
-                  }
               </div>
             </div>
             <div className="ClassroomReassignment-individualInput">
