@@ -64,7 +64,9 @@ public class Section {
             this.originalRoom = roomNumber;
         }
 
-
+    /**
+     * Sets the section's assigned room back to its original value.
+     */
     public void resetRoom() {
         this.roomNumber = this.originalRoom;
     }
@@ -374,6 +376,4 @@ public class Section {
     public void clearOverlappingSections() {
         this.overlappingSections.clear();
     }
-
-
 }

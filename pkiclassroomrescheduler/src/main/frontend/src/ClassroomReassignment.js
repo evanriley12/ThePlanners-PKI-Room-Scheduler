@@ -22,7 +22,7 @@ function ClassroomReassignment() {
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
-    setUploadSuccess(false); // Reset upload success message when a new file is selected
+    setUploadSuccess(false);
   };
 
   const downloadFile = () => {
