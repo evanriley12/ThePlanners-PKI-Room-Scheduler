@@ -73,7 +73,9 @@ public class AlgorithmController {
             return stringArr;
         } catch(Exception e) {
             //return "Class could not be rescheduled. There may be no classrooms that fit the new max size or no classrooms that can be easily rescheduled.";
-            return null;
+            ArrayList<String> stringArr = new ArrayList<String>();
+            stringArr.add("Class could not be rescheduled. There are no classrooms that fit the new maximum enrollment. The best option is likely to create a new section.");
+            return stringArr;
         }
     }
 }
