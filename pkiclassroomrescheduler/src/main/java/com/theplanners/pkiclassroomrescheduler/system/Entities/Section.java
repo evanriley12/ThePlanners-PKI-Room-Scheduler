@@ -368,6 +368,9 @@ public class Section {
                 + ", maxEnrollment=" + maxEnrollment;
     }
 
+    /**
+     * Clears the overlapping sections.
+     */
     public void clearOverlappingSections() {
         this.overlappingSections.clear();
     }

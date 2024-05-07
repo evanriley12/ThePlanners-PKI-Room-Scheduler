@@ -46,7 +46,7 @@ public final class Algorithm {
      * @param newSize An integer containign the updated course size that a classroom needs to accomodate.
      * @param schedule The Schedule object which is a collection of all sections in the schedule.
      * @param classroomList A ClassroomList object containing each Classroom object available in the building.
-     * @return A string containing the best choice for a different classroom, options equal to the best, and options worse than the best.
+     * @return An array list containing Result objects that contain all 
      */
     public static ArrayList<Result> doAlgorithm(Section section, int newSize, Schedule schedule, ClassroomList classroomList) {
         // Create the graph and get a reference to the section in the schedule
