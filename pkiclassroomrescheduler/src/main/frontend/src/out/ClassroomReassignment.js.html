@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ClassroomReassignment.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ClassroomReassignment.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
+import axios from "axios";
+import "./ClassroomReassignment.css";
+
+let outputResultCounter = 1;
+let cumulativeAlgoData = "";
+let dropdownPopulated = false;
+
+/**
+ * ClassroomReassignment is the function that is responsible for handling the frontend webpage
+ * presentation for the PKI Classroom rescheduler. Constants for handling different frontend
+ * activities are included as well as a return for the HTML used to create the webpage.
+ * 
+ * @returns An HTML webpage for users to interact with when rescheduling PKI classrooms.
+ */
+function ClassroomReassignment() {
+  const [file, setFile] = useState(null);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [csvData, setCsvData] = useState(null);
+  const [algoData, setAlgoData] = useState(null);
+  const baseURL = window.location.href;
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+    setUploadSuccess(false);
+  };
+
+  const downloadFile = () => {
+    const link = document.createElement("a");
+
+    let content;
+    if (cumulativeAlgoData !== "") {
+      content = cumulativeAlgoData;
+    }
+    else {
+      content = "No rescheduler results are available at this time.";
+    }
+
+    const file = new Blob([content], {type: 'text/plain'});
+    link.href = URL.createObjectURL(file);
+    link.download = "results.txt"
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await axios.post(
+        baseURL+"api/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("File uploaded successfully");
+      setUploadSuccess(true);
+      setCsvData(response.data);
+      console.log(response.data);
+
+      if (response.data &amp;&amp; dropdownPopulated == false) {
+        // Mark dropdown as being filled to avoid duplicated repopulation
+        dropdownPopulated = true;
+
+        // Populate Dropdown box
+        response.data.forEach((element) => {
+          let courseSelect = document.getElementById("courseSelect");
+          let course = document.createElement("option");
+
+          let sectionNumberString = element["sectionNumber"].toString();
+          let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
+
+          course.text = element["course"] + " - Section " + paddedSectionNumberString;
+          course.value = element["course"] + " - Section " + paddedSectionNumberString;
+          courseSelect.appendChild(course);
+        })
+      }
+
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    };
+  };
+
+  const runAlgorithm = async () => {
+    try {
+
+      // Remove the leading 0s before the section number before passing to Java
+      let selectedClass = document.getElementById("courseSelect").value;
+      let selectedClassNoPadding = selectedClass.replace(/Section 0+/, "Section ");
+      console.log(selectedClassNoPadding);
+
+      // If the default action is chosen, the reschedule button won't do anything
+      if (selectedClass != "Choose Class") {
+        let newMaxEnrollment = document.getElementById("maxClassSize").value;
+
+        const response = await axios.get(baseURL + "api/algorithm", {
+          params: {classSection: selectedClassNoPadding, newSize: newMaxEnrollment},
+        });
+        console.log("Algorithm executed successfully");
+        
+        setAlgoData(response.data);
+        console.log(response.data);
+      }
+    }
+    catch (error) {
+      console.error("Error executing algorithm:", error);
+    }
+  };
+
+  const dropDownSelection = (event) => {
+    // Log that a selection has changed
+    console.log("Selection Changed!");
+
+    // Check the updated value from the dropdown box selection change
+    let selectedCourse = event.target.value;
+    console.log(selectedCourse);
+
+    // Class informational Labels with groupings by return line
+    let courseAndSection = "Course/Section: ";
+    let title = "\nTitle: ";
+    let crosslisted = "\nCrosslisted Courses: ";
+    let instructor = "\n\nInstructor: ";
+    let sectionType = "\nSection Type: ";
+    let instructionMethod = "\nInstruction Method: ";
+    let meetingDays = "\n\nMeeting Days: ";
+    let roomNumber = "\nRoom Number: ";
+    let startTime = "\nStart Time: ";
+    let endTime = "\nEnd Time: ";
+    let maxClassSize = "\n\nMax Class Size: ";
+    let enrollment = "\nEnrollment: ";
+    let crosslistsize = "\nCrosslist Max Size: ";
+
+    if(csvData) {
+      csvData.every((element) => {
+
+        // Pad all sections in need of leading 0s (e.g. 001, 002, etc.)
+        let sectionNumberString = element["sectionNumber"].toString();
+        let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
+
+        // Grab the course from an element iteration in the same format of the dropdown selection
+        let currentCourseIteration = element["course"] + " - Section " + paddedSectionNumberString;
+
+        // Check if CSV entry is a match for the dropdown selection
+        if (selectedCourse === currentCourseIteration) {
+          console.log("We have a match!");
+
+          // Separate only the instructor name for display purposes
+          let instructorPart = element["instructor"].split(" (", 1);
+          if (element["instructor"].includes("Staff"))
+          {
+            instructorPart = element["instructor"].split(" [", 1);
+          }
+
+          // Separate meeting days with a ", " for matching formatting
+          let meetingDaysString = element["meetingDays"].toString();
+          let fixedMeetingDaysString = meetingDaysString.split(",").join(", ");
+        
+          // Check whether there is a cross listed course, and print "None" if so
+          let crossListedEntry = element["crossList"];
+          if (!crossListedEntry) {
+            crossListedEntry = "None";
+          }
+
+          // Fill Text Area with Class Information
+          let chosenClassInformation = courseAndSection + currentCourseIteration
+          + title + element["courseTitle"]
+          + crosslisted + crossListedEntry
+
+          + instructor + instructorPart
+          + sectionType + element["sectionType"]
+          + instructionMethod + element["instructionMethod"]
+
+          + meetingDays + fixedMeetingDaysString
+          + roomNumber + element["roomNumber"]
+          + startTime + element["startTime"]
+          + endTime + element["endTime"]
+          
+          + maxClassSize + element["maxEnrollment"]
+          + enrollment + element["enrollment"]
+          + crosslistsize + element["crossListMax"];
+          
+          document.getElementById("classInfoDisplay").value = chosenClassInformation;
+
+          // Set the values of the number boxes for max class size and enrollment
+          document.getElementById("maxClassSize").value = element["crossListMax"];
+
+          document.getElementById("maxClassSize").min = element["crossListMax"];
+
+          // Break out of the loop once match has been found
+          return false;
+        }
+
+        return true;
+      })
+    }
+  };
+
+  const createNewOutputWidget = (text) => {
+
+    // Locate the div representing the body of the results column where output widgets are to be placed
+    let resultsColumnDiv = document.getElementById("resultsColumn");
+
+    // If there have been no outputs generated previously, clear the placeholder text before placing a result
+    if (resultsColumnDiv.innerHTML == "No results available. Please upload a schedule and select a course."
+        || resultsColumnDiv.innerHTML == "Rescheduler results cleared.") {
+      resultsColumnDiv.innerHTML = "";
+    }
+    
+    // Create a new output result and append it to the column containing rescheduler results
+    if (text) {
+      text.forEach((element) => {
+      // Add the text to the variable that is used to cumulatively store info to be printed to the results file.
+      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + element + "\n\n");
+
+      let newDiv = document.createElement("div");
+      newDiv.className = "ClassroomReassignment-outputWidget";
+      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + element;
+      resultsColumnDiv.prepend(newDiv);
+      outputResultCounter++;
+    })
+    }
+  };
+
+  const clearReschedulerResults = async() => {
+    try {
+      // Retrieve the original schedule from the designated endpoint
+      const response = await axios.get(baseURL + "api/reset")
+      console.log("Results cleared successfully")
+
+      // Update the CSV data to reflect the reset that has taken place on the backend
+      setUploadSuccess(true);
+      setCsvData(response.data);
+      console.log(response.data);
+
+      // Clear the previous results skill stored within algoData
+      setAlgoData(null);
+      console.log(algoData);
+
+      // Locate the div representing the body of the results column where output widgets have been placed
+      let resultsColumnDiv = document.getElementById("resultsColumn");
+
+      // Clear all rescheduler output results, no changes will occur if no results are present
+      if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
+          &amp;&amp; resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
+        resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
+        outputResultCounter = 1;
+        cumulativeAlgoData = "";
+      }
+    }
+    catch(error) {
+      console.error("Error clearing results:", error);
+    }
+  }
+
+  return (
+    &lt;div className="ClassroomReassignment-page">
+      &lt;div className="ClassroomReassignment-workingColumn">
+        &lt;header className="ClassroomReassignment-workingHeader">
+          PKI Classroom Rescheduler
+        &lt;/header>
+        &lt;div className="ClassroomReassignment-inputColumn">
+          &lt;form>
+            &lt;div className="ClassroomReassignment-individualInput">
+              &lt;div className="ClassroomReassignment-fileSelectionButtonDiv">
+                &lt;input type="file" onChange={handleFileChange}/>
+              &lt;/div>
+              &lt;div className="ClassroomReassignment-fileSelectionButtonDiv">
+                &lt;button type="button" onClick={handleUpload}
+                className="ClassroomReassignment-fileSelectionButton">
+                  Upload CSV
+                &lt;/button>
+                {uploadSuccess &amp;&amp; &lt;p>Upload successful!&lt;/p>}
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="ClassroomReassignment-individualInput">
+              &lt;div className="ClassroomReassignment-fileUploadButton">
+                &lt;select className="ClassroomReassignment-dropdownBox" id="courseSelect" onChange={dropDownSelection}>
+                  &lt;option selected>Choose Class&lt;/option>
+                &lt;/select>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="ClassroomReassignment-individualInput">
+              &lt;div className="ClassroomReassignment-numberBox">
+                &lt;label
+                  htmlFor="maxClassSize"
+                  className="ClassroomResassignment-selectBoxLabel"
+                >
+                  Max Class Size:{" "}
+                &lt;/label>
+                &lt;input
+                  className="ClassroomResassignment-selectBox"
+                  type="number"
+                  id="maxClassSize"
+                  name="maxClassSize"
+                  step="1"
+                >&lt;/input>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="ClassroomReassignment-individualInput">
+              &lt;div className="ClassroomReassignment-fileUploadButton">
+                &lt;button
+                  type="button"
+                  className="ClassroomReassignment-rescheduleButton"
+                  onClick={runAlgorithm}
+                >
+                  Reschedule
+                &lt;/button>
+              &lt;/div>
+            &lt;/div>
+          &lt;/form>
+        &lt;/div>
+        &lt;div className="ClassroomReassignment-displayColumn">
+          &lt;textarea id="classInfoDisplay" rows="10" cols="10" readOnly>
+            No course information available. Please upload a schedule and select a course to view its corresponding information.
+          &lt;/textarea>
+        &lt;/div>
+      &lt;/div>
+      &lt;div className="ClassroomReassignment-resultsColumn">
+        &lt;header className="ClassroomReassignment-resultsHeader">
+          &lt;div className="ClassroomReassignment-resultsLeftSpacer">
+          &lt;button 
+            type="button"
+            className="ClassroomReassignment-clearResultsButton"
+            onClick={downloadFile}>
+            Download Results&lt;/button>
+          &lt;/div>
+          &lt;div className="ClassroomReassignment-resultsLabel">Results&lt;/div>
+          &lt;div className="ClassroomReassignment-clearResultsButtonDiv">
+            &lt;button 
+              className="ClassroomReassignment-clearResultsButton"
+              onClick={clearReschedulerResults}
+            >
+              Clear Results
+            &lt;/button>
+          &lt;/div>
+        &lt;/header>
+        &lt;div className="ClassroomReassignment-resultsColumnBody" id="resultsColumn">
+          No results available. Please upload a schedule and select a course.
+          {algoData &amp;&amp; createNewOutputWidget(algoData)}
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+
+export default ClassroomReassignment;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ClassroomReassignment">ClassroomReassignment</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu May 09 2024 14:08:46 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -21,7 +21,7 @@ import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
 
 @SpringBootTest
-public class CSVFileTests {
+public class FileUploadTest {
     
     @Mock
     private Schedule schedule;
@@ -42,6 +42,9 @@ public class CSVFileTests {
 
         @SuppressWarnings("null")
         MultipartFile file = new MockMultipartFile(resource.getFilename(), inputStream);
+
+        System.out.println(file.getOriginalFilename());
+
 
         when(schedule.returnSchedule()).thenReturn(mockSchedule.returnSchedule());
 
