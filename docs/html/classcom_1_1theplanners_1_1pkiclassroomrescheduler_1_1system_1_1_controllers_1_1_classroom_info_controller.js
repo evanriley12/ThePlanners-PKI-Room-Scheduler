@@ -1,0 +1,5 @@
+var classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_controllers_1_1_classroom_info_controller =
+[
+    [ "ClassroomInfoController", "classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_controllers_1_1_classroom_info_controller.html#aa1908db534cdf021f3828e3965e77051", null ],
+    [ "returnClassroomList", "classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_controllers_1_1_classroom_info_controller.html#a1d63d47e3f09300fb42e5773e2c4b3d3", null ]
+];

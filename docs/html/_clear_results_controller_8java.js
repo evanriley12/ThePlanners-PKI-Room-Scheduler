@@ -1,0 +1,4 @@
+var _clear_results_controller_8java =
+[
+    [ "com.theplanners.pkiclassroomrescheduler.system.Controllers.ClearResultsController", "classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_controllers_1_1_clear_results_controller.html", "classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_controllers_1_1_clear_results_controller" ]
+];
