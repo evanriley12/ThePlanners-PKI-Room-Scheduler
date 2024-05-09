@@ -87,7 +87,11 @@ public final class Algorithm {
             for (Section neighbor : neighbors) {
                 // If a neighbor already has one of the possible classrooms, remove said classroom from the list of possibilities.
                 if (neighbor.getRoomNumber() == possibleClassrooms.get(i).getRoom()) {
-                    possibleClassrooms.remove(i);
+                    try {
+                        possibleClassrooms.remove(i);
+                    } catch (Exception e) {
+                        return null;
+                    }
                 }
             }
         }
