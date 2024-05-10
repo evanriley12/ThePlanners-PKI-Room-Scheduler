@@ -11,7 +11,7 @@ Backend Docs: https://evanriley12.github.io/ThePlanners-PKI-Room-Scheduler/
 Frontend Docs: https://evanriley12.github.io/Rescheduler-Frontend-Docs/index.html
 
 # Usage instructions:
-- This project is designed to be used with the auto generated schedule csv files from the registrar
+- This project is designed to be used with the auto generated schedule csv files from the registrar (A copy of one such file can be found in pkiclassroomrescheduler/src/resources/Spring2023.csv)
 - Access the deployed application on a web browser
 - Select a file (The csv containing the schedule that needs classes moved)
 - Upload the file, this will populate the dropdown with all of the sections that can be resechduled
@@ -28,10 +28,10 @@ Frontend Docs: https://evanriley12.github.io/Rescheduler-Frontend-Docs/index.htm
 - The clear button will clear all results and reset the schedule to the state it was in when originally uploaded.
 
 # Build Instructions: Note: Maven is required to build this project
-- With Maven, clean then build the project. This will output a war into the target directory that can be deployed
+- With Maven, clean then build the project. This will output a WAR into the target directory that can be deployed
 
 # Deployment instructions
-- Once the war is generated, it can be deployed to a tomcat server.
+- Once the WAR is generated, it can be deployed to a Tomcat server.
 - Tomcat 10 is required for the project to deploy successfully
 
 # Milestone 4 Release Notes:

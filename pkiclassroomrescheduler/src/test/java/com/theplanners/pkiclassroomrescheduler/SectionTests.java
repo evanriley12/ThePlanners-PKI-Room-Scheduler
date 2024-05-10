@@ -12,7 +12,6 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
 
 @SpringBootTest

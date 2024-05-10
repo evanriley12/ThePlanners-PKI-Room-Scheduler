@@ -19,7 +19,6 @@ import com.theplanners.pkiclassroomrescheduler.system.Entities.Schedule;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Section;
 import com.theplanners.pkiclassroomrescheduler.system.Entities.Result;
 import com.theplanners.pkiclassroomrescheduler.system.Utilites.Algorithm;
-import com.theplanners.pkiclassroomrescheduler.system.Utilites.ReadClassroom;
 
 @SpringBootTest
 public class AlgorithmsTests {

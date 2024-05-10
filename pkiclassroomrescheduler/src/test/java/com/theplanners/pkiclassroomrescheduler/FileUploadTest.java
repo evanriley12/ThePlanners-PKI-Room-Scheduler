@@ -32,7 +32,7 @@ public class FileUploadTest {
     //Test to check whether file upload was successful
     @Test
     void uploadAndParseFile() throws IOException {
-        ClassPathResource resource = new ClassPathResource("testCSV.csv");
+        ClassPathResource resource = new ClassPathResource("Spring2023.csv");
         InputStream inputStream = resource.getInputStream();
 
         Schedule mockSchedule = new Schedule();
