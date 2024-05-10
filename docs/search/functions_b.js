@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['updateoverlaps_0',['updateOverlaps',['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_algorithm.html#a84251175b075dc29a63810885c4223a0',1,'com::theplanners::pkiclassroomrescheduler::system::Algorithm']]],
-  ['uploadfile_1',['uploadFile',['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_file_upload_controller.html#a01cf13fd0a6ae4f5d1090c931eb0df20',1,'com::theplanners::pkiclassroomrescheduler::system::FileUploadController']]]
+  ['tostring_0',['toString',['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_classroom.html#a696058fe1f8ab8e8af658470dc236ec4',1,'com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom.toString()'],['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_result.html#a45ee76385558094c44fea690b7972265',1,'com.theplanners.pkiclassroomrescheduler.system.Entities.Result.toString()'],['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_section.html#a60c24549fc6c278b11066b0a0cf617d5',1,'com.theplanners.pkiclassroomrescheduler.system.Entities.Section.toString()']]]
 ];

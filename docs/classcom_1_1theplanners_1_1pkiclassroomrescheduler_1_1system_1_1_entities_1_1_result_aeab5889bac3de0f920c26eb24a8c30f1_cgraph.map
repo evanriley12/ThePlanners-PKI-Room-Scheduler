@@ -1,0 +1,9 @@
+<map id="com.theplanners.pkiclassroomrescheduler.system.Entities.Result.Result" name="com.theplanners.pkiclassroomrescheduler.system.Entities.Result.Result">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,322,115"/>
+<area shape="rect" id="Node000002" href="$classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_section.html#a637d51dfcd5a48b36fd466affd3c6280" title=" " alt="" coords="370,5,686,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="283,69,392,49,393,54,284,74"/>
+<area shape="rect" id="Node000003" href="$classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_section.html#a70e5280d597439e9eff0594eb230dddc" title=" " alt="" coords="370,72,686,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="322,91,354,91,354,96,322,96"/>
+<area shape="rect" id="Node000004" href="$classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_section.html#a851d465b067bc94390f3471e95e60665" title=" " alt="" coords="370,139,686,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="284,113,393,133,392,138,283,118"/>
+</map>

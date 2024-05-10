@@ -4,6 +4,7 @@ import "./ClassroomReassignment.css";
 
 let outputResultCounter = 1;
 let cumulativeAlgoData = "";
+let dropdownPopulated = false;
 
 /**
  * ClassroomReassignment is the function that is responsible for handling the frontend webpage
@@ -21,7 +22,7 @@ function ClassroomReassignment() {
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
-    setUploadSuccess(false); // Reset upload success message when a new file is selected
+    setUploadSuccess(false);
   };
 
   const downloadFile = () => {
@@ -60,6 +61,25 @@ function ClassroomReassignment() {
       setUploadSuccess(true);
       setCsvData(response.data);
       console.log(response.data);
+
+      if (response.data && dropdownPopulated == false) {
+        // Mark dropdown as being filled to avoid duplicated repopulation
+        dropdownPopulated = true;
+
+        // Populate Dropdown box
+        response.data.forEach((element) => {
+          let courseSelect = document.getElementById("courseSelect");
+          let course = document.createElement("option");
+
+          let sectionNumberString = element["sectionNumber"].toString();
+          let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
+
+          course.text = element["course"] + " - Section " + paddedSectionNumberString;
+          course.value = element["course"] + " - Section " + paddedSectionNumberString;
+          courseSelect.appendChild(course);
+        })
+      }
+
     } catch (error) {
       console.error("Error uploading file:", error);
     };
@@ -166,11 +186,9 @@ function ClassroomReassignment() {
           document.getElementById("classInfoDisplay").value = chosenClassInformation;
 
           // Set the values of the number boxes for max class size and enrollment
-          document.getElementById("maxClassSize").value = element["maxEnrollment"];
-          document.getElementById("enrollmentSize").value = element["enrollment"];
+          document.getElementById("maxClassSize").value = element["crossListMax"];
 
-          document.getElementById("maxClassSize").min = element["maxEnrollment"];
-          document.getElementById("enrollmentSize").min = element["enrollment"];
+          document.getElementById("maxClassSize").min = element["crossListMax"];
 
           // Break out of the loop once match has been found
           return false;
@@ -194,28 +212,47 @@ function ClassroomReassignment() {
     
     // Create a new output result and append it to the column containing rescheduler results
     if (text) {
+      text.forEach((element) => {
       // Add the text to the variable that is used to cumulatively store info to be printed to the results file.
-      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + text + "\n\n");
+      cumulativeAlgoData += ("Output Result #" + outputResultCounter + ": \n" + element + "\n\n");
 
       let newDiv = document.createElement("div");
       newDiv.className = "ClassroomReassignment-outputWidget";
-      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + text;
+      newDiv.innerHTML = "Output Result #" + outputResultCounter + ": \n" + element;
       resultsColumnDiv.prepend(newDiv);
       outputResultCounter++;
+    })
     }
   };
 
-  const clearReschedulerResults = (event) => {
+  const clearReschedulerResults = async() => {
+    try {
+      // Retrieve the original schedule from the designated endpoint
+      const response = await axios.get(baseURL + "api/reset")
+      console.log("Results cleared successfully")
 
-    // Locate the div representing the body of the results column where output widgets have been placed
-    let resultsColumnDiv = document.getElementById("resultsColumn");
+      // Update the CSV data to reflect the reset that has taken place on the backend
+      setUploadSuccess(true);
+      setCsvData(response.data);
+      console.log(response.data);
 
-    // Clear all rescheduler output results, no changes will occur if no results are present
-    if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
-        && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
-      resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
-      outputResultCounter = 1;
-      cumulativeAlgoData = "";
+      // Clear the previous results skill stored within algoData
+      setAlgoData(null);
+      console.log(algoData);
+
+      // Locate the div representing the body of the results column where output widgets have been placed
+      let resultsColumnDiv = document.getElementById("resultsColumn");
+
+      // Clear all rescheduler output results, no changes will occur if no results are present
+      if (resultsColumnDiv.innerHTML !== "No results available. Please upload a schedule and select a course."
+          && resultsColumnDiv.innerHTML !== "Rescheduler results cleared.") {
+        resultsColumnDiv.innerHTML = "Rescheduler results cleared.";
+        outputResultCounter = 1;
+        cumulativeAlgoData = "";
+      }
+    }
+    catch(error) {
+      console.error("Error clearing results:", error);
     }
   }
 
@@ -244,22 +281,6 @@ function ClassroomReassignment() {
                 <select className="ClassroomReassignment-dropdownBox" id="courseSelect" onChange={dropDownSelection}>
                   <option selected>Choose Class</option>
                 </select>
-                  {
-                    csvData && (
-                      // Populate Dropdown box
-                      csvData.forEach((element) => {
-                        let courseSelect = document.getElementById("courseSelect");
-                        let course = document.createElement("option");
-
-                        let sectionNumberString = element["sectionNumber"].toString();
-                        let paddedSectionNumberString = sectionNumberString.padStart(3, '0');
-
-                        course.text = element["course"] + " - Section " + paddedSectionNumberString;
-                        course.value = element["course"] + " - Section " + paddedSectionNumberString;
-                        courseSelect.appendChild(course);
-                      })
-                    )
-                  }
               </div>
             </div>
             <div className="ClassroomReassignment-individualInput">
@@ -275,23 +296,6 @@ function ClassroomReassignment() {
                   type="number"
                   id="maxClassSize"
                   name="maxClassSize"
-                  step="1"
-                ></input>
-              </div>
-            </div>
-            <div className="ClassroomReassignment-individualInput">
-              <div className="ClassroomReassignment-numberBox">
-                <label
-                  htmlFor="enrollmentSize"
-                  className="ClassroomResassignment-selectBoxLabel"
-                >
-                  Enrollment:{" "}
-                </label>
-                <input
-                  className="ClassroomResassignment-selectBox"
-                  type="number"
-                  id="enrollmentSize"
-                  name="enrollmentSize"
                   step="1"
                 ></input>
               </div>

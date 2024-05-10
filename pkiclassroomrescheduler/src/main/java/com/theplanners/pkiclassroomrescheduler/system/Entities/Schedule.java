@@ -30,6 +30,10 @@ public class Schedule {
         return this.schedule;
     }
 
+    /**
+     * Retrieves the computer science related courses from the schedule.
+     * @return An ArrayList of every Computer Science course in the schedule.
+     */
     public ArrayList<Section> returnCSSchedule(){
         ArrayList<Section> csSchedule = new ArrayList<Section>();
         for(Section section : schedule)
@@ -38,13 +42,11 @@ public class Schedule {
             if(course.contains("BIOI") || 
             course.contains("BMI") || 
             course.contains("CIST") || 
-            course.contains("CNST") || 
             course.contains("CSCI") || 
             course.contains("CYBR") || 
             course.contains("ISQA") || 
             course.contains("ITIN") || 
-            course.contains("MATH") || 
-            course.contains("SCMT")) {
+            course.contains("MATH")) {
                 csSchedule.add(section);
             }
         }
@@ -58,10 +60,28 @@ public class Schedule {
         this.schedule.clear();
     }
 
+    /**
+     * Updates the crosslisting information in the schedule.
+     */
     public void updateCrosslist()
     {
         for(Section section : schedule){
             section.setCrossListMax(schedule);
+        }
+    }
+
+    /**
+     * Updates a section in the schedule with a new classroom assignment.
+     * @param sectionToUpdate The section that will be updated.
+     * @param newRoom The new room number the section will be assigned to.
+     */
+    public void updateSchedule(Section sectionToUpdate, int newRoom) {
+        // Find the section in the schedule
+        for (Section section : this.schedule) {
+            section.clearOverlappingSections();
+            if (section == sectionToUpdate) {
+                section.setRoomNumber(newRoom);
+            }
         }
     }
 }

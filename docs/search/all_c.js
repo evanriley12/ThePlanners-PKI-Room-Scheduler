@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tostring_0',['toString',['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_classroom.html#a2707ce72ba6e32320718abe96dc97e3e',1,'com.theplanners.pkiclassroomrescheduler.system.Classroom.toString()'],['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_section.html#aaa27d1ef48953c48bbba30cb7f298032',1,'com.theplanners.pkiclassroomrescheduler.system.Section.toString()']]]
+  ['tostring_0',['toString',['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_classroom.html#a696058fe1f8ab8e8af658470dc236ec4',1,'com.theplanners.pkiclassroomrescheduler.system.Entities.Classroom.toString()'],['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_result.html#a45ee76385558094c44fea690b7972265',1,'com.theplanners.pkiclassroomrescheduler.system.Entities.Result.toString()'],['../classcom_1_1theplanners_1_1pkiclassroomrescheduler_1_1system_1_1_entities_1_1_section.html#a60c24549fc6c278b11066b0a0cf617d5',1,'com.theplanners.pkiclassroomrescheduler.system.Entities.Section.toString()']]]
 ];

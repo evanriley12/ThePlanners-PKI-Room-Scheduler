@@ -13,7 +13,7 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>pkiclassroomrescheduler</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Web application to reschedule course sections in PKI</description>
 	<properties>
 		<java.version>17</java.version>
 		<frontend-src-dir>${project.basedir}/src/main/frontend</frontend-src-dir>

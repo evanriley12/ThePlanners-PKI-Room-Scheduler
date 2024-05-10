@@ -52,4 +52,18 @@ public class ClassroomList {
     public void clearClassrooms(){
         this.classrooms.clear();
     }
+
+    /**
+     * Finds a classroom based on the room number.
+     * @param roomNumber An integer of the room number to be found.
+     * @return A classroom object that matches the number input.
+     */
+    public Classroom getClassroomByNumber(int roomNumber) {
+        for (Classroom classroom : classrooms) {
+            if (classroom.getRoom() == roomNumber) {
+                return classroom;
+            }
+        }
+        return null;
+    }
 }
