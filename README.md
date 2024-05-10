@@ -4,6 +4,12 @@ UNO - Spring 2024 CS Capstone Project
 
 Our application is a tool to manage and reschedule classroom assignments for PKI.
 
+The main branch of this project is the latest version
+
+Backend Docs: https://evanriley12.github.io/ThePlanners-PKI-Room-Scheduler/
+
+Frontend Docs: https://evanriley12.github.io/Rescheduler-Frontend-Docs/index.html
+
 # Usage instructions:
 - This project is designed to be used with the auto generated schedule csv files from the registrar
 - Access the deployed application on a web browser
@@ -27,11 +33,6 @@ Our application is a tool to manage and reschedule classroom assignments for PKI
 # Deployment instructions
 - Once the war is generated, it can be deployed to a tomcat server.
 - Tomcat 10 is required for the project to deploy successfully
-
-The main branch of this project is the latest version
-
-Backend Docs: https://evanriley12.github.io/ThePlanners-PKI-Room-Scheduler/
-Frontend Docs: https://evanriley12.github.io/Rescheduler-Frontend-Docs/index.html
 
 # Milestone 4 Release Notes:
 - New Features:
